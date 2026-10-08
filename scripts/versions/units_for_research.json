@@ -1,0 +1,799 @@
+{
+ "math": [
+  {
+   "unit": "M-7A-1",
+   "semester": "7A",
+   "title": "整數的運算",
+   "concepts": [
+    "abs-number-line",
+    "factor",
+    "power",
+    "signed-ops"
+   ]
+  },
+  {
+   "unit": "M-7A-2",
+   "semester": "7A",
+   "title": "分數的運算",
+   "concepts": [
+    "complex-fraction",
+    "fraction-compare",
+    "fraction-ops",
+    "fraction-word",
+    "reduce-lcd"
+   ]
+  },
+  {
+   "unit": "M-7A-3",
+   "semester": "7A",
+   "title": "一元一次方程式",
+   "concepts": [
+    "equation-concept",
+    "solve",
+    "word"
+   ]
+  },
+  {
+   "unit": "M-7B-1",
+   "semester": "7B",
+   "title": "二元一次聯立方程式",
+   "concepts": [
+    "solution-count",
+    "solve-system",
+    "system-word"
+   ]
+  },
+  {
+   "unit": "M-7B-2",
+   "semester": "7B",
+   "title": "直角坐標與方程式的圖形",
+   "concepts": [
+    "coord-distance",
+    "line-graph",
+    "point-transform",
+    "quadrant"
+   ]
+  },
+  {
+   "unit": "M-7B-3",
+   "semester": "7B",
+   "title": "比與比例式",
+   "concepts": [
+    "continued-ratio",
+    "direct-inverse",
+    "ratio",
+    "ratio-word"
+   ]
+  },
+  {
+   "unit": "M-7B-4",
+   "semester": "7B",
+   "title": "函數及其圖形",
+   "concepts": [
+    "constant-function",
+    "function-concept",
+    "function-value",
+    "linear-function",
+    "linear-graph"
+   ]
+  },
+  {
+   "unit": "M-7B-5",
+   "semester": "7B",
+   "title": "一元一次不等式",
+   "concepts": [
+    "ineq-property",
+    "ineq-word",
+    "number-line",
+    "solve-ineq"
+   ]
+  },
+  {
+   "unit": "M-8A-1",
+   "semester": "8A",
+   "title": "乘法公式與多項式",
+   "concepts": [
+    "formula",
+    "formula-apply",
+    "poly-division",
+    "poly-ops"
+   ]
+  },
+  {
+   "unit": "M-8A-2",
+   "semester": "8A",
+   "title": "平方根與畢氏定理",
+   "concepts": [
+    "distance",
+    "pythagoras",
+    "sqrt",
+    "sqrt-ops"
+   ]
+  },
+  {
+   "unit": "M-8A-3",
+   "semester": "8A",
+   "title": "因式分解",
+   "concepts": [
+    "basic-factor",
+    "cross-factor",
+    "factor-apply"
+   ]
+  },
+  {
+   "unit": "M-8A-4",
+   "semester": "8A",
+   "title": "一元二次方程式",
+   "concepts": [
+    "discriminant",
+    "quadratic-formula",
+    "quadratic-word",
+    "solve-quadratic"
+   ]
+  },
+  {
+   "unit": "M-8B-1",
+   "semester": "8B",
+   "title": "等差數列與等差級數",
+   "concepts": [
+    "ap-apply",
+    "ap-middle",
+    "ap-sum",
+    "ap-term"
+   ]
+  },
+  {
+   "unit": "M-8B-2",
+   "semester": "8B",
+   "title": "幾何圖形與尺規作圖",
+   "concepts": [
+    "angles-polygon",
+    "construction",
+    "symmetry"
+   ]
+  },
+  {
+   "unit": "M-8B-3",
+   "semester": "8B",
+   "title": "三角形的基本性質",
+   "concepts": [
+    "angle-sum",
+    "congruence",
+    "isosceles",
+    "side-relation"
+   ]
+  },
+  {
+   "unit": "M-8B-4",
+   "semester": "8B",
+   "title": "平行與四邊形",
+   "concepts": [
+    "parallel",
+    "parallelogram",
+    "quadrilateral"
+   ]
+  },
+  {
+   "unit": "M-9A-1",
+   "semester": "9A",
+   "title": "相似形",
+   "concepts": [
+    "parallel-proportion",
+    "similar-apply",
+    "similar-criteria",
+    "similar-ratio"
+   ]
+  },
+  {
+   "unit": "M-9A-2",
+   "semester": "9A",
+   "title": "圓的性質",
+   "concepts": [
+    "arc-sector",
+    "circle-angle",
+    "circle-line",
+    "tangent"
+   ]
+  },
+  {
+   "unit": "M-9A-3",
+   "semester": "9A",
+   "title": "外心、內心與重心",
+   "concepts": [
+    "centers",
+    "centroid",
+    "circumcenter",
+    "inradius"
+   ]
+  },
+  {
+   "unit": "M-9A-4",
+   "semester": "9A",
+   "title": "幾何證明",
+   "concepts": [
+    "congruence-proof",
+    "proof-steps",
+    "similar-proof",
+    "statement-logic"
+   ]
+  },
+  {
+   "unit": "M-9B-1",
+   "semester": "9B",
+   "title": "二次函數",
+   "concepts": [
+    "axis-opening",
+    "graph-apply",
+    "intercepts",
+    "vertex"
+   ]
+  },
+  {
+   "unit": "M-9B-2",
+   "semester": "9B",
+   "title": "統計與機率",
+   "concepts": [
+    "average",
+    "boxplot",
+    "probability",
+    "statistics"
+   ]
+  },
+  {
+   "unit": "M-9B-3",
+   "semester": "9B",
+   "title": "立體圖形",
+   "concepts": [
+    "cone-net",
+    "solid-net",
+    "solid-volume",
+    "surface-area"
+   ]
+  }
+ ],
+ "science": [
+  {
+   "unit": "SC-7A-1",
+   "semester": "7A",
+   "title": "生命的基本單位：細胞",
+   "concepts": [
+    "cell-structure",
+    "diffusion-osmosis",
+    "microscope",
+    "organization-level"
+   ]
+  },
+  {
+   "unit": "SC-7A-2",
+   "semester": "7A",
+   "title": "養分與能量",
+   "concepts": [
+    "digestion",
+    "enzyme",
+    "photosynthesis",
+    "respiration"
+   ]
+  },
+  {
+   "unit": "SC-7A-3",
+   "semester": "7A",
+   "title": "生物體的運輸與協調",
+   "concepts": [
+    "circulation",
+    "endocrine-homeostasis",
+    "nervous",
+    "plant-transport"
+   ]
+  },
+  {
+   "unit": "SC-7B-1",
+   "semester": "7B",
+   "title": "生殖與遺傳",
+   "concepts": [
+    "human-genetics",
+    "mendel",
+    "reproduction"
+   ]
+  },
+  {
+   "unit": "SC-7B-2",
+   "semester": "7B",
+   "title": "演化與生物分類",
+   "concepts": [
+    "classification",
+    "evolution",
+    "kingdoms"
+   ]
+  },
+  {
+   "unit": "SC-7B-3",
+   "semester": "7B",
+   "title": "生物與環境",
+   "concepts": [
+    "ecosystem-conservation",
+    "energy-flow",
+    "food-web",
+    "population-community"
+   ]
+  },
+  {
+   "unit": "SC-8A-1",
+   "semester": "8A",
+   "title": "物質的性質與測量",
+   "concepts": [
+    "concentration",
+    "density",
+    "measurement",
+    "states-mixture"
+   ]
+  },
+  {
+   "unit": "SC-8A-2",
+   "semester": "8A",
+   "title": "波動、聲音與光",
+   "concepts": [
+    "lens-mirror",
+    "reflection-refraction",
+    "sound",
+    "wave-speed"
+   ]
+  },
+  {
+   "unit": "SC-8A-3",
+   "semester": "8A",
+   "title": "溫度與熱",
+   "concepts": [
+    "heat-transfer",
+    "specific-heat",
+    "thermal-equilibrium",
+    "thermometer"
+   ]
+  },
+  {
+   "unit": "SC-8B-1",
+   "semester": "8B",
+   "title": "化學反應與原子、分子",
+   "concepts": [
+    "balancing",
+    "mass-conservation",
+    "mole",
+    "periodic-table"
+   ]
+  },
+  {
+   "unit": "SC-8B-2",
+   "semester": "8B",
+   "title": "酸鹼鹽",
+   "concepts": [
+    "acid-base-property",
+    "electrolyte",
+    "neutralization",
+    "ph",
+    "salt"
+   ]
+  },
+  {
+   "unit": "SC-8B-3",
+   "semester": "8B",
+   "title": "氧化還原與反應速率",
+   "concepts": [
+    "equilibrium",
+    "metal-activity",
+    "organic",
+    "reaction-rate",
+    "redox"
+   ]
+  },
+  {
+   "unit": "SC-9A-1",
+   "semester": "9A",
+   "title": "直線運動與力",
+   "concepts": [
+    "acceleration",
+    "force-balance",
+    "friction",
+    "newton-law",
+    "velocity"
+   ]
+  },
+  {
+   "unit": "SC-9A-2",
+   "semester": "9A",
+   "title": "功與能",
+   "concepts": [
+    "energy",
+    "energy-conservation",
+    "power",
+    "simple-machine",
+    "work"
+   ]
+  },
+  {
+   "unit": "SC-9A-3",
+   "semester": "9A",
+   "title": "電的基礎：電流、電壓與電阻",
+   "concepts": [
+    "circuit",
+    "current",
+    "ohm-law",
+    "static"
+   ]
+  },
+  {
+   "unit": "SC-9B-1",
+   "semester": "9B",
+   "title": "電流的磁效應與電能",
+   "concepts": [
+    "electric-power",
+    "electricity-bill",
+    "electromagnetic-induction",
+    "magnetic-effect"
+   ]
+  },
+  {
+   "unit": "SC-9B-2",
+   "semester": "9B",
+   "title": "地球的構造與變動",
+   "concepts": [
+    "earth-structure",
+    "earthquake",
+    "plate-tectonics",
+    "rock-mineral",
+    "taiwan-geology"
+   ]
+  },
+  {
+   "unit": "SC-9B-3",
+   "semester": "9B",
+   "title": "天氣與天文",
+   "concepts": [
+    "earth-motion",
+    "front",
+    "monsoon-typhoon",
+    "moon-phase",
+    "solar-system"
+   ]
+  }
+ ],
+ "social": [
+  {
+   "unit": "SO-7A-1",
+   "semester": "7A",
+   "title": "地理：臺灣的位置、地形與氣候",
+   "concepts": [
+    "climate",
+    "landform",
+    "latitude-longitude",
+    "time-zone"
+   ]
+  },
+  {
+   "unit": "SO-7A-2",
+   "semester": "7A",
+   "title": "歷史：史前到清帝國時期的臺灣",
+   "concepts": [
+    "dutch-spanish",
+    "indigenous-peoples",
+    "prehistory",
+    "qing-governance",
+    "zheng-regime"
+   ]
+  },
+  {
+   "unit": "SO-7A-3",
+   "semester": "7A",
+   "title": "公民：自我、家庭與學校",
+   "concepts": [
+    "family",
+    "gender-equality",
+    "human-rights",
+    "school-autonomy"
+   ]
+  },
+  {
+   "unit": "SO-7B-1",
+   "semester": "7B",
+   "title": "地理：臺灣的人口、產業與區域",
+   "concepts": [
+    "industry",
+    "population",
+    "region"
+   ]
+  },
+  {
+   "unit": "SO-7B-2",
+   "semester": "7B",
+   "title": "歷史：日治到戰後的臺灣",
+   "concepts": [
+    "japanese-rule",
+    "postwar-economy",
+    "postwar-politics"
+   ]
+  },
+  {
+   "unit": "SO-7B-3",
+   "semester": "7B",
+   "title": "公民：社會團體、文化與社會福利",
+   "concepts": [
+    "culture",
+    "social-groups",
+    "social-welfare"
+   ]
+  },
+  {
+   "unit": "SO-8A-1",
+   "semester": "8A",
+   "title": "地理：中國的自然環境與區域",
+   "concepts": [
+    "climate",
+    "hydrology",
+    "landform",
+    "region"
+   ]
+  },
+  {
+   "unit": "SO-8A-2",
+   "semester": "8A",
+   "title": "歷史：中國古代到近代",
+   "concepts": [
+    "early-china",
+    "imperial-exam",
+    "late-qing",
+    "qin-han",
+    "trade-exchange"
+   ]
+  },
+  {
+   "unit": "SO-8A-3",
+   "semester": "8A",
+   "title": "公民：政治與民主制度",
+   "concepts": [
+    "constitution",
+    "democracy",
+    "elections",
+    "five-yuan",
+    "parties-groups"
+   ]
+  },
+  {
+   "unit": "SO-8B-1",
+   "semester": "8B",
+   "title": "地理：東北亞、東南亞、南亞與西亞",
+   "concepts": [
+    "climate-type",
+    "east-asia",
+    "monsoon-asia",
+    "south-asia",
+    "west-asia"
+   ]
+  },
+  {
+   "unit": "SO-8B-2",
+   "semester": "8B",
+   "title": "歷史：東亞的近代與現代",
+   "concepts": [
+    "chronology",
+    "korea",
+    "late-qing",
+    "meiji",
+    "republic-china"
+   ]
+  },
+  {
+   "unit": "SO-8B-3",
+   "semester": "8B",
+   "title": "公民：法律與生活",
+   "concepts": [
+    "administrative-law",
+    "civil-law",
+    "criminal-law",
+    "juvenile-justice",
+    "legal-hierarchy"
+   ]
+  },
+  {
+   "unit": "SO-9A-1",
+   "semester": "9A",
+   "title": "地理：歐洲、俄羅斯與非洲",
+   "concepts": [
+    "africa-development",
+    "africa-environment",
+    "europe-climate",
+    "mediterranean",
+    "russia"
+   ]
+  },
+  {
+   "unit": "SO-9A-2",
+   "semester": "9A",
+   "title": "歷史：古文明到近代世界",
+   "concepts": [
+    "ancient-civilization",
+    "enlightenment-revolution",
+    "greece-rome",
+    "industrial-revolution",
+    "renaissance-reformation"
+   ]
+  },
+  {
+   "unit": "SO-9A-3",
+   "semester": "9A",
+   "title": "公民：經濟生活",
+   "concepts": [
+    "government-role",
+    "market-structure",
+    "money-finance",
+    "opportunity-cost",
+    "supply-demand"
+   ]
+  },
+  {
+   "unit": "SO-9B-1",
+   "semester": "9B",
+   "title": "地理：美洲、大洋洲與全球議題",
+   "concepts": [
+    "americas",
+    "climate-type",
+    "food-water",
+    "global-warming",
+    "oceania"
+   ]
+  },
+  {
+   "unit": "SO-9B-2",
+   "semester": "9B",
+   "title": "歷史：現代世界的發展",
+   "concepts": [
+    "cold-war",
+    "decolonization",
+    "world-war"
+   ]
+  },
+  {
+   "unit": "SO-9B-3",
+   "semester": "9B",
+   "title": "公民：全球化與國際社會",
+   "concepts": [
+    "comparative-advantage",
+    "globalization",
+    "international-org",
+    "trade-policy"
+   ]
+  }
+ ],
+ "english": [
+  {
+   "unit": "EN-7A-1",
+   "semester": "7A",
+   "title": "be 動詞與人稱代名詞",
+   "concepts": [
+    "be-verb",
+    "dialogue-response",
+    "pronoun",
+    "reading-detail"
+   ]
+  },
+  {
+   "unit": "EN-7A-2",
+   "semester": "7A",
+   "title": "現在簡單式與頻率副詞",
+   "concepts": [
+    "dialogue-response",
+    "frequency",
+    "reading-detail",
+    "simple-present"
+   ]
+  },
+  {
+   "unit": "EN-7B-1",
+   "semester": "7B",
+   "title": "現在進行式與祈使句",
+   "concepts": [
+    "dialogue-response",
+    "imperative",
+    "present-progressive",
+    "reading-detail"
+   ]
+  },
+  {
+   "unit": "EN-7B-2",
+   "semester": "7B",
+   "title": "過去簡單式",
+   "concepts": [
+    "dialogue-response",
+    "irregular-verb",
+    "past-tense",
+    "reading-detail"
+   ]
+  },
+  {
+   "unit": "EN-8A-1",
+   "semester": "8A",
+   "title": "未來式與助動詞",
+   "concepts": [
+    "dialogue-response",
+    "future-tense",
+    "modal-verb",
+    "reading-detail"
+   ]
+  },
+  {
+   "unit": "EN-8A-2",
+   "semester": "8A",
+   "title": "比較級與最高級",
+   "concepts": [
+    "as-as",
+    "comparative",
+    "reading-detail",
+    "superlative"
+   ]
+  },
+  {
+   "unit": "EN-8B-1",
+   "semester": "8B",
+   "title": "不定詞與動名詞",
+   "concepts": [
+    "dialogue-response",
+    "gerund",
+    "infinitive",
+    "reading-detail",
+    "reading-main-idea"
+   ]
+  },
+  {
+   "unit": "EN-8B-2",
+   "semester": "8B",
+   "title": "連接詞與附加問句",
+   "concepts": [
+    "conjunction",
+    "dialogue-response",
+    "reading-detail",
+    "tag-question"
+   ]
+  },
+  {
+   "unit": "EN-9A-1",
+   "semester": "9A",
+   "title": "現在完成式",
+   "concepts": [
+    "dialogue-response",
+    "present-perfect",
+    "reading-detail",
+    "since-for"
+   ]
+  },
+  {
+   "unit": "EN-9A-2",
+   "semester": "9A",
+   "title": "被動語態",
+   "concepts": [
+    "active-passive",
+    "passive-tense",
+    "passive-voice",
+    "reading-detail"
+   ]
+  },
+  {
+   "unit": "EN-9B-1",
+   "semester": "9B",
+   "title": "關係代名詞",
+   "concepts": [
+    "reading-detail",
+    "relative-agreement",
+    "relative-person",
+    "relative-thing"
+   ]
+  },
+  {
+   "unit": "EN-9B-2",
+   "semester": "9B",
+   "title": "間接問句與閱讀理解",
+   "concepts": [
+    "indirect-question",
+    "reading-detail",
+    "reading-inference",
+    "reading-main-idea"
+   ]
+  }
+ ]
+}

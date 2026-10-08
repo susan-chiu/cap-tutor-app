@@ -1,0 +1,106 @@
+# 自動打包 Android 測試版（APK）
+# 每次推送到 main，或在 GitHub「Actions」頁面按「Run workflow」就會執行。
+# 打包完成後，在該次執行頁面最下方的「Artifacts」下載 APK。
+#
+# App 要連上你的 Supabase，請先到 GitHub 專案 → Settings → Secrets and variables → Actions → Variables
+# 新增 EXPO_PUBLIC_SUPABASE_URL、EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY（其他 EXPO_PUBLIC_* 選填）。
+# 沒設定也能打包，但 App 打開會顯示「還差一步設定」。
+name: Android 測試版
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: android-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: 檢查（型別、程式風格、題庫、單元測試）
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: |
+            app/package-lock.json
+            tests/package-lock.json
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: 題庫驗證（格式、答案、驗算式）
+        run: python3 scripts/build_seed.py
+      - name: 安裝 App 套件
+        working-directory: app
+        run: npm ci
+      - name: 型別檢查
+        working-directory: app
+        run: npx tsc --noEmit
+      - name: 程式風格檢查
+        working-directory: app
+        run: npx expo lint
+      - name: 單元測試（資料庫規則、小老師、段考分組、訂閱）
+        working-directory: tests
+        env:
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
+        run: |
+          npm ci
+          node db.test.mjs
+          node stages.test.mjs
+          node tutor_logic.test.mjs
+          node subscription.test.mjs
+
+  android:
+    name: 打包 APK
+    needs: check
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      SENTRY_DISABLE_AUTO_UPLOAD: 'true'
+      EXPO_NO_TELEMETRY: '1'
+      EXPO_PUBLIC_SUPABASE_URL: ${{ vars.EXPO_PUBLIC_SUPABASE_URL }}
+      EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY: ${{ vars.EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY }}
+      EXPO_PUBLIC_PRIVACY_URL: ${{ vars.EXPO_PUBLIC_PRIVACY_URL }}
+      EXPO_PUBLIC_TERMS_URL: ${{ vars.EXPO_PUBLIC_TERMS_URL }}
+      EXPO_PUBLIC_REVENUECAT_ANDROID_KEY: ${{ vars.EXPO_PUBLIC_REVENUECAT_ANDROID_KEY }}
+      EXPO_PUBLIC_ADMOB_REWARDED_ANDROID: ${{ vars.EXPO_PUBLIC_ADMOB_REWARDED_ANDROID }}
+      EXPO_PUBLIC_SENTRY_DSN: ${{ vars.EXPO_PUBLIC_SENTRY_DSN }}
+      EXPO_PUBLIC_SUPPORT_EMAIL: ${{ vars.EXPO_PUBLIC_SUPPORT_EMAIL }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: app/package-lock.json
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+      - name: 安裝 App 套件
+        working-directory: app
+        run: npm ci
+      - name: 產生 Android 專案
+        working-directory: app
+        run: npx expo prebuild --platform android --no-install --clean
+      - name: 打包 APK（release）
+        working-directory: app/android
+        run: ./gradlew assembleRelease --no-daemon -PreactNativeArchitectures=arm64-v8a,armeabi-v7a
+      - name: 整理檔名
+        id: apk
+        run: |
+          name="cap-tutor-${GITHUB_RUN_NUMBER}-${GITHUB_SHA::7}.apk"
+          cp app/android/app/build/outputs/apk/release/app-release.apk "$name"
+          echo "name=$name" >> "$GITHUB_OUTPUT"
+          ls -la "$name"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ steps.apk.outputs.name }}
+          path: ${{ steps.apk.outputs.name }}
+          retention-days: 30

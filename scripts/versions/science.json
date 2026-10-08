@@ -1,0 +1,454 @@
+{
+ "subject": "science",
+ "versions": {
+  "康軒": [
+   {
+    "unit": "SC-7A-1",
+    "semester": "7A",
+    "chapter": "1",
+    "title": "生命的特性",
+    "confidence": "medium",
+    "source": "https://www.go100.com.tw/file/108_version_compare/junior/7上/108課綱7上版本對照表_生物.pdf"
+   },
+   {
+    "unit": "SC-7A-2",
+    "semester": "7A",
+    "chapter": "2",
+    "title": "養分",
+    "confidence": "medium",
+    "source": "https://www.go100.com.tw/file/108_version_compare/junior/7上/108課綱7上版本對照表_生物.pdf"
+   },
+   {
+    "unit": "SC-7A-3",
+    "semester": "7A",
+    "chapter": "3~5",
+    "title": "生物的運輸與防禦、協調作用、恆定性",
+    "confidence": "high",
+    "source": "https://www.go100.com.tw/file/108_version_compare/junior/7上/108課綱7上版本對照表_生物.pdf"
+   },
+   {
+    "unit": "SC-7B-1",
+    "semester": "7B",
+    "chapter": "1~2",
+    "title": "新生命的誕生、遺傳",
+    "confidence": "high",
+    "source": "https://www.go100.com.tw/file/108_comparison_table/junior/7-2_comparison_biologic_114.pdf"
+   },
+   {
+    "unit": "SC-7B-2",
+    "semester": "7B",
+    "chapter": "3",
+    "title": "形形色色的生物",
+    "confidence": "medium",
+    "source": "https://www.go100.com.tw/file/108_comparison_table/junior/7-2_comparison_biologic_114.pdf"
+   },
+   {
+    "unit": "SC-7B-3",
+    "semester": "7B",
+    "chapter": "4~5",
+    "title": "生物與環境的交互作用、生物多樣性與生態保育",
+    "confidence": "high",
+    "source": "https://www.go100.com.tw/file/108_comparison_table/junior/7-2_comparison_biologic_114.pdf"
+   },
+   {
+    "unit": "SC-8A-1",
+    "semester": "8A",
+    "chapter": "1~2",
+    "title": "基本測量、物質的世界",
+    "confidence": "high",
+    "source": "https://www.go100.com.tw/file/108_version_compare/junior/8上/108課綱8上版本對照表_理化.pdf"
+   },
+   {
+    "unit": "SC-8A-2",
+    "semester": "8A",
+    "chapter": "3~4",
+    "title": "波動與聲音、光",
+    "confidence": "high",
+    "source": "https://www.go100.com.tw/file/108_version_compare/junior/8上/108課綱8上版本對照表_理化.pdf"
+   },
+   {
+    "unit": "SC-8A-3",
+    "semester": "8A",
+    "chapter": "5",
+    "title": "溫度與熱",
+    "confidence": "high",
+    "source": "https://www.go100.com.tw/file/108_version_compare/junior/8上/108課綱8上版本對照表_理化.pdf"
+   },
+   {
+    "unit": "SC-8B-1",
+    "semester": "8B",
+    "chapter": "1",
+    "title": "化學反應",
+    "confidence": "medium",
+    "source": "https://www.go100.com.tw/file/108_comparison_table/junior/8-2_comparison_physics_and_chemistry_114.pdf"
+   },
+   {
+    "unit": "SC-8B-2",
+    "semester": "8B",
+    "chapter": "3",
+    "title": "電解質及酸鹼反應",
+    "confidence": "high",
+    "source": "https://www.go100.com.tw/file/108_comparison_table/junior/8-2_comparison_physics_and_chemistry_114.pdf"
+   },
+   {
+    "unit": "SC-8B-3",
+    "semester": "8B",
+    "chapter": "2、4~5",
+    "title": "氧化與還原、反應速率與平衡、有機化合物",
+    "confidence": "medium",
+    "source": "https://www.go100.com.tw/file/108_comparison_table/junior/8-2_comparison_physics_and_chemistry_114.pdf"
+   },
+   {
+    "unit": "SC-9A-1",
+    "semester": "9A",
+    "chapter": "1~2",
+    "title": "直線運動、力與運動",
+    "confidence": "high",
+    "source": "https://www.go100.com.tw/file/108_version_compare/junior/9上/108課綱9上版本對照表_理化.pdf"
+   },
+   {
+    "unit": "SC-9A-2",
+    "semester": "9A",
+    "chapter": "3",
+    "title": "功與機械應用",
+    "confidence": "high",
+    "source": "https://www.go100.com.tw/file/108_version_compare/junior/9上/108課綱9上版本對照表_理化.pdf"
+   },
+   {
+    "unit": "SC-9A-3",
+    "semester": "9A",
+    "chapter": "4",
+    "title": "探索電的世界",
+    "confidence": "high",
+    "source": "https://www.go100.com.tw/file/108_version_compare/junior/9上/108課綱9上版本對照表_理化.pdf"
+   },
+   {
+    "unit": "SC-9B-1",
+    "semester": "9B",
+    "chapter": "1~2",
+    "title": "電的應用、電流與磁現象",
+    "confidence": "high",
+    "source": "https://www.go100.com.tw/file/108_comparison_table/junior/9-2_comparison_physics_and_chemistry_114.pdf"
+   },
+   {
+    "unit": "SC-9B-2",
+    "semester": "9A",
+    "chapter": "5~6",
+    "title": "水與陸地、板塊運動與地球歷史",
+    "confidence": "high",
+    "source": "https://www.go100.com.tw/file/108_version_compare/junior/9上/108課綱9上版本對照表_地科.pdf"
+   },
+   {
+    "unit": "SC-9B-3",
+    "semester": "9B",
+    "chapter": "3",
+    "title": "千變萬化的天氣（天文在九上第7章「運動中的天體」）",
+    "confidence": "medium",
+    "source": "https://www.go100.com.tw/file/108_version_compare/junior/9上/108課綱9上版本對照表_地科.pdf"
+   }
+  ],
+  "南一": [
+   {
+    "unit": "SC-7A-1",
+    "semester": "7A",
+    "chapter": "1",
+    "title": "生命的發現",
+    "confidence": "medium",
+    "source": "https://www.go100.com.tw/file/108_version_compare/junior/7上/108課綱7上版本對照表_生物.pdf"
+   },
+   {
+    "unit": "SC-7A-2",
+    "semester": "7A",
+    "chapter": "2",
+    "title": "生物體的營養",
+    "confidence": "high",
+    "source": "https://www.go100.com.tw/file/108_version_compare/junior/7上/108課綱7上版本對照表_生物.pdf"
+   },
+   {
+    "unit": "SC-7A-3",
+    "semester": "7A",
+    "chapter": "3~5",
+    "title": "生物體內的運輸、協調作用、恆定",
+    "confidence": "high",
+    "source": "https://www.go100.com.tw/file/108_version_compare/junior/7上/108課綱7上版本對照表_生物.pdf"
+   },
+   {
+    "unit": "SC-7B-1",
+    "semester": "7B",
+    "chapter": "1~2",
+    "title": "新生命的誕生、遺傳",
+    "confidence": "high",
+    "source": "https://www.go100.com.tw/file/108_comparison_table/junior/7-2_comparison_biologic_114.pdf"
+   },
+   {
+    "unit": "SC-7B-2",
+    "semester": "7B",
+    "chapter": "3",
+    "title": "形形色色的生物",
+    "confidence": "medium",
+    "source": "https://www.go100.com.tw/file/108_comparison_table/junior/7-2_comparison_biologic_114.pdf"
+   },
+   {
+    "unit": "SC-7B-3",
+    "semester": "7B",
+    "chapter": "4~5",
+    "title": "生物與環境的交互作用、生物多樣性與生態保育",
+    "confidence": "high",
+    "source": "https://www.go100.com.tw/file/108_comparison_table/junior/7-2_comparison_biologic_114.pdf"
+   },
+   {
+    "unit": "SC-8A-1",
+    "semester": "8A",
+    "chapter": "1~2",
+    "title": "基本測量、認識物質的世界",
+    "confidence": "high",
+    "source": "https://www.go100.com.tw/file/108_version_compare/junior/8上/108課綱8上版本對照表_理化.pdf"
+   },
+   {
+    "unit": "SC-8A-2",
+    "semester": "8A",
+    "chapter": "3~4",
+    "title": "波動與聲音的世界、光與色的世界",
+    "confidence": "high",
+    "source": "https://www.go100.com.tw/file/108_version_compare/junior/8上/108課綱8上版本對照表_理化.pdf"
+   },
+   {
+    "unit": "SC-8A-3",
+    "semester": "8A",
+    "chapter": "5",
+    "title": "冷暖天地",
+    "confidence": "high",
+    "source": "https://www.go100.com.tw/file/108_version_compare/junior/8上/108課綱8上版本對照表_理化.pdf"
+   },
+   {
+    "unit": "SC-8B-1",
+    "semester": "8B",
+    "chapter": "1",
+    "title": "化學反應",
+    "confidence": "medium",
+    "source": "https://www.go100.com.tw/file/108_comparison_table/junior/8-2_comparison_physics_and_chemistry_114.pdf"
+   },
+   {
+    "unit": "SC-8B-2",
+    "semester": "8B",
+    "chapter": "3",
+    "title": "酸、鹼、鹽",
+    "confidence": "high",
+    "source": "https://www.go100.com.tw/file/108_comparison_table/junior/8-2_comparison_physics_and_chemistry_114.pdf"
+   },
+   {
+    "unit": "SC-8B-3",
+    "semester": "8B",
+    "chapter": "2、4~5",
+    "title": "氧化還原、反應速率與平衡、有機化合物",
+    "confidence": "medium",
+    "source": "https://www.go100.com.tw/file/108_comparison_table/junior/8-2_comparison_physics_and_chemistry_114.pdf"
+   },
+   {
+    "unit": "SC-9A-1",
+    "semester": "9A",
+    "chapter": "1~2",
+    "title": "直線運動、力與運動",
+    "confidence": "high",
+    "source": "https://www.go100.com.tw/file/108_version_compare/junior/9上/108課綱9上版本對照表_理化.pdf"
+   },
+   {
+    "unit": "SC-9A-2",
+    "semester": "9A",
+    "chapter": "3",
+    "title": "功與能",
+    "confidence": "high",
+    "source": "https://www.go100.com.tw/file/108_version_compare/junior/9上/108課綱9上版本對照表_理化.pdf"
+   },
+   {
+    "unit": "SC-9A-3",
+    "semester": "9A",
+    "chapter": "4",
+    "title": "電流、電壓與歐姆定律",
+    "confidence": "high",
+    "source": "https://www.go100.com.tw/file/108_version_compare/junior/9上/108課綱9上版本對照表_理化.pdf"
+   },
+   {
+    "unit": "SC-9B-1",
+    "semester": "9B",
+    "chapter": "1~2",
+    "title": "電流與生活、生活中的電與磁",
+    "confidence": "high",
+    "source": "https://www.go100.com.tw/file/108_comparison_table/junior/9-2_comparison_physics_and_chemistry_114.pdf"
+   },
+   {
+    "unit": "SC-9B-2",
+    "semester": "9A",
+    "chapter": "5~6",
+    "title": "我們身邊的大地、地球內部的變動與地史",
+    "confidence": "high",
+    "source": "https://www.go100.com.tw/file/108_version_compare/junior/9上/108課綱9上版本對照表_地科.pdf"
+   },
+   {
+    "unit": "SC-9B-3",
+    "semester": "9B",
+    "chapter": "3",
+    "title": "複雜多變的天氣（天文在九上第7章「浩瀚的宇宙」）",
+    "confidence": "medium",
+    "source": "https://www.go100.com.tw/file/108_version_compare/junior/9上/108課綱9上版本對照表_地科.pdf"
+   }
+  ],
+  "翰林": [
+   {
+    "unit": "SC-7A-1",
+    "semester": "7A",
+    "chapter": "2",
+    "title": "生物體的組成",
+    "confidence": "high",
+    "source": "https://www.go100.com.tw/file/108_version_compare/junior/7上/108課綱7上版本對照表_生物.pdf"
+   },
+   {
+    "unit": "SC-7A-2",
+    "semester": "7A",
+    "chapter": "3",
+    "title": "生物體的營養",
+    "confidence": "high",
+    "source": "https://www.go100.com.tw/file/108_version_compare/junior/7上/108課綱7上版本對照表_生物.pdf"
+   },
+   {
+    "unit": "SC-7A-3",
+    "semester": "7A",
+    "chapter": "4~6",
+    "title": "生物體的運輸作用、協調作用、恆定",
+    "confidence": "high",
+    "source": "https://www.go100.com.tw/file/108_version_compare/junior/7上/108課綱7上版本對照表_生物.pdf"
+   },
+   {
+    "unit": "SC-7B-1",
+    "semester": "7B",
+    "chapter": "1~2",
+    "title": "生殖、遺傳",
+    "confidence": "high",
+    "source": "https://www.go100.com.tw/file/108_comparison_table/junior/7-2_comparison_biologic_114.pdf"
+   },
+   {
+    "unit": "SC-7B-2",
+    "semester": "7B",
+    "chapter": "3",
+    "title": "地球上的生物",
+    "confidence": "medium",
+    "source": "https://www.go100.com.tw/file/108_comparison_table/junior/7-2_comparison_biologic_114.pdf"
+   },
+   {
+    "unit": "SC-7B-3",
+    "semester": "7B",
+    "chapter": "4~5",
+    "title": "生態系、人類與環境",
+    "confidence": "high",
+    "source": "https://www.go100.com.tw/file/108_comparison_table/junior/7-2_comparison_biologic_114.pdf"
+   },
+   {
+    "unit": "SC-8A-1",
+    "semester": "8A",
+    "chapter": "1~2",
+    "title": "基本測量、物質的世界",
+    "confidence": "high",
+    "source": "https://www.go100.com.tw/file/108_version_compare/junior/8上/108課綱8上版本對照表_理化.pdf"
+   },
+   {
+    "unit": "SC-8A-2",
+    "semester": "8A",
+    "chapter": "3~4",
+    "title": "波動與聲音、光、影像與顏色",
+    "confidence": "high",
+    "source": "https://www.go100.com.tw/file/108_version_compare/junior/8上/108課綱8上版本對照表_理化.pdf"
+   },
+   {
+    "unit": "SC-8A-3",
+    "semester": "8A",
+    "chapter": "5",
+    "title": "溫度與熱",
+    "confidence": "high",
+    "source": "https://www.go100.com.tw/file/108_version_compare/junior/8上/108課綱8上版本對照表_理化.pdf"
+   },
+   {
+    "unit": "SC-8B-1",
+    "semester": "8B",
+    "chapter": "1",
+    "title": "化學反應",
+    "confidence": "medium",
+    "source": "https://www.go100.com.tw/file/108_comparison_table/junior/8-2_comparison_physics_and_chemistry_114.pdf"
+   },
+   {
+    "unit": "SC-8B-2",
+    "semester": "8B",
+    "chapter": "3",
+    "title": "電解質與酸鹼鹽",
+    "confidence": "high",
+    "source": "https://www.go100.com.tw/file/108_comparison_table/junior/8-2_comparison_physics_and_chemistry_114.pdf"
+   },
+   {
+    "unit": "SC-8B-3",
+    "semester": "8B",
+    "chapter": "2、4~5",
+    "title": "氧化還原反應、反應速率與平衡、有機化合物",
+    "confidence": "medium",
+    "source": "https://www.go100.com.tw/file/108_comparison_table/junior/8-2_comparison_physics_and_chemistry_114.pdf"
+   },
+   {
+    "unit": "SC-9A-1",
+    "semester": "9A",
+    "chapter": "1~2",
+    "title": "直線運動、力與運動",
+    "confidence": "high",
+    "source": "https://www.go100.com.tw/file/108_version_compare/junior/9上/108課綱9上版本對照表_理化.pdf"
+   },
+   {
+    "unit": "SC-9A-2",
+    "semester": "9A",
+    "chapter": "3",
+    "title": "功與能",
+    "confidence": "high",
+    "source": "https://www.go100.com.tw/file/108_version_compare/junior/9上/108課綱9上版本對照表_理化.pdf"
+   },
+   {
+    "unit": "SC-9A-3",
+    "semester": "9A",
+    "chapter": "4",
+    "title": "基本的靜電現象與電路",
+    "confidence": "high",
+    "source": "https://www.go100.com.tw/file/108_version_compare/junior/9上/108課綱9上版本對照表_理化.pdf"
+   },
+   {
+    "unit": "SC-9B-1",
+    "semester": "9B",
+    "chapter": "1~2",
+    "title": "電與生活、電與磁",
+    "confidence": "high",
+    "source": "https://www.go100.com.tw/file/108_comparison_table/junior/9-2_comparison_physics_and_chemistry_114.pdf"
+   },
+   {
+    "unit": "SC-9B-2",
+    "semester": "9A",
+    "chapter": "5~6",
+    "title": "地球的環境、板塊運動與岩層的祕密",
+    "confidence": "high",
+    "source": "https://www.go100.com.tw/file/108_version_compare/junior/9上/108課綱9上版本對照表_地科.pdf"
+   },
+   {
+    "unit": "SC-9B-3",
+    "semester": "9B",
+    "chapter": "3",
+    "title": "變化莫測的天氣（天文在九上第7章「太空和地球」）",
+    "confidence": "medium",
+    "source": "https://www.go100.com.tw/file/108_version_compare/junior/9上/108課綱9上版本對照表_地科.pdf"
+   }
+  ]
+ },
+ "notes": [
+  "所有目錄資料來自「升學王」(go100.com.tw) 108課綱三版本(康軒/南一/翰林)對照表 PDF，這些對照表標註為114/115學年度現行版；部分章節輔以 wincenter.com.tw 的康軒/南一/翰林八上下理化章節整理交叉核對。",
+  "地科內容與我們的預設學期不同：SC-9B-2「地球的構造與變動」在三個版本中都是排在九上（9A）第5~6章，而不是九下；已依三版本實際課程順序改填為 9A，chapter 5~6。",
+  "SC-9B-3「天氣與天文」在三版本中其實橫跨兩學期：地球運動、月相、太陽系等『天文』內容排在九上（9A）第7章，季風、鋒面等『天氣』內容則排在九下（9B）第3章。因本單元概念以天文（3/5個概念）為主，主章設為9A第7章；天氣相關概念在各版本九下第3章（康軒『千變萬化的天氣』、南一『複雜多變的天氣』、翰林『變化莫測的天氣』）另有對應，惟本單元未拆分成兩筆記錄，故 confidence 標為 medium。",
+  "SC-8B-1「化學反應與原子、分子」概念橫跨兩學期：化學反應式與質量守恆屬於八下(8B)第1章「化學反應」，但莫耳、週期表等原子結構內容其實排在八上(8A)第6章（康軒『探索物質組成』、南一『元素與化合物』、翰林『物質的基本結構』）。已依預設學期填8B第1章，並標記 confidence medium。",
+  "SC-8B-3「氧化還原與反應速率」概念橫跨三章：氧化還原(第2章)、反應速率與平衡(第4章)、有機化合物(第5章，因概念含 organic)；三版本編號一致，chapter 欄位以「2、4~5」表示。",
+  "SC-7A-1/7A-2 屬於各版本七上生物第1~3章之間的內容，康軒與南一的章名（如『生命的特性』『生命的發現』『養分』）未逐字提到細胞或呼吸作用/光合作用，是依三版本教材慣例的章節配置推斷，故標記 confidence medium；翰林章名（『生物體的組成』『生物體的營養』）直接對應，故標記 high。",
+  "SC-7B-2「演化與生物分類」三版本章名（形形色色的生物／地球上的生物）未明確寫出『演化』字樣，推測演化內容併入該章，故標記 confidence medium。",
+  "三版本九上第4章（電）中，翰林用『基本的靜電現象與電路』、南一用『電流、電壓與歐姆定律』、康軒用『探索電的世界』，內容範圍大致相同但命名差異較大，已如實依版本填寫。",
+  "本檔案未直接抄錄課本內容，僅記錄公開教學進度／課綱對照表上的章節編號與章名。"
+ ]
+}

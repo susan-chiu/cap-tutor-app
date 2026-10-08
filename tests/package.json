@@ -1,0 +1,22 @@
+{
+  "name": "cap-app-tests",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "node db.test.mjs && node stages.test.mjs && node tutor_logic.test.mjs && node subscription.test.mjs",
+    "e2e": "node e2e_web_mock.mjs /tmp/e2e",
+    "admin": "node admin_web_mock.mjs /tmp/admin-shots"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@electric-sql/pglite": "^0.5.8"
+  },
+  "devDependencies": {
+    "pg": "^8.23.0",
+    "playwright": "^1.63.0"
+  },
+  "private": true,
+  "type": "module"
+}

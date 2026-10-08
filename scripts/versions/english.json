@@ -1,0 +1,309 @@
+{
+ "subject": "english",
+ "versions": {
+  "康軒": [
+   {
+    "unit": "EN-7A-1",
+    "semester": "7A",
+    "chapter": "L1",
+    "title": "be 動詞 (Yes/No 問答句、Who...?) 與人稱代名詞",
+    "confidence": "high",
+    "source": "https://www.curriculum.chc.edu.tw/storage/53/114/5-7%E8%8B%B1%E8%AA%9E%E6%96%87.pdf/cuFfoZx0bBfNlfs1NbfIVWtyn8XVdSFakTTg34nZ.pdf"
+   },
+   {
+    "unit": "EN-7A-2",
+    "semester": "7B",
+    "chapter": "L1~L2",
+    "title": "現在簡單式與頻率副詞",
+    "confidence": "high",
+    "source": "https://www.curriculum.chc.edu.tw/storage/66/114/5-7%E8%8B%B1%E8%AA%9E%E6%96%87.pdf/c92Q5h9ETkjTrCaea2widYrnTCrAgm70aVOZ7uej.pdf"
+   },
+   {
+    "unit": "EN-7B-1",
+    "semester": "7A",
+    "chapter": "L3~L5",
+    "title": "祈使句、can 與現在進行式",
+    "confidence": "high",
+    "source": "https://www.curriculum.chc.edu.tw/storage/53/114/5-7%E8%8B%B1%E8%AA%9E%E6%96%87.pdf/cuFfoZx0bBfNlfs1NbfIVWtyn8XVdSFakTTg34nZ.pdf"
+   },
+   {
+    "unit": "EN-7B-2",
+    "semester": "7B",
+    "chapter": "L4~L5",
+    "title": "過去簡單式（含不規則動詞）",
+    "confidence": "medium",
+    "source": "https://sites.google.com/site/01wenfa/Home/di-er-ce-guo-zhong-ying-wen-fu-dao-wang-zhong-zhang-hong/13-bu-gui-ze-bian-hua-dong-ci-de-guo-qu-shi-di-er-ce"
+   },
+   {
+    "unit": "EN-8A-1",
+    "semester": "8A",
+    "chapter": "L5",
+    "title": "未來式（will / be going to）與 cost/spend/pay/take",
+    "confidence": "high",
+    "source": "https://www.curriculum.chc.edu.tw/storage/5/114/5-8%E8%8B%B1%E8%AA%9E%E6%96%87.pdf/XJn0XQ7CJ8q5cqtXq53GYwF5BNgN7LW3LQrIbfef.pdf"
+   },
+   {
+    "unit": "EN-8A-2",
+    "semester": "8B",
+    "chapter": "L1~L2",
+    "title": "比較級、as...as 與最高級",
+    "confidence": "high",
+    "source": "https://www.curriculum.chc.edu.tw/storage/5/114/5-8%E8%8B%B1%E8%AA%9E%E6%96%87.pdf/XJn0XQ7CJ8q5cqtXq53GYwF5BNgN7LW3LQrIbfef.pdf"
+   },
+   {
+    "unit": "EN-8B-1",
+    "semester": "8A",
+    "chapter": "L4",
+    "title": "不定詞與動名詞（含虛主詞 it）",
+    "confidence": "high",
+    "source": "https://www.curriculum.chc.edu.tw/storage/5/114/5-8%E8%8B%B1%E8%AA%9E%E6%96%87.pdf/XJn0XQ7CJ8q5cqtXq53GYwF5BNgN7LW3LQrIbfef.pdf"
+   },
+   {
+    "unit": "EN-8B-2",
+    "semester": "9A",
+    "chapter": "八上L2~L3＋九上",
+    "title": "連接詞（八上）、附加問句（九上）",
+    "confidence": "medium",
+    "source": "https://www.curriculum.chc.edu.tw/storage/5/114/5-8%E8%8B%B1%E8%AA%9E%E6%96%87.pdf/XJn0XQ7CJ8q5cqtXq53GYwF5BNgN7LW3LQrIbfef.pdf"
+   },
+   {
+    "unit": "EN-9A-1",
+    "semester": "9A",
+    "chapter": "L1",
+    "title": "現在完成式（for/since）",
+    "confidence": "high",
+    "source": "https://www.curriculum.chc.edu.tw/storage/77/114/5-9%E8%8B%B1%E8%AA%9E%E6%96%87.pdf/THgqTtqOHuAM3MYvp6LWB2yb83JRIYkY9xb2bRLO.pdf"
+   },
+   {
+    "unit": "EN-9A-2",
+    "semester": "9A",
+    "chapter": "L3",
+    "title": "被動語態",
+    "confidence": "high",
+    "source": "https://www.curriculum.chc.edu.tw/storage/77/114/5-9%E8%8B%B1%E8%AA%9E%E6%96%87.pdf/THgqTtqOHuAM3MYvp6LWB2yb83JRIYkY9xb2bRLO.pdf"
+   },
+   {
+    "unit": "EN-9B-1",
+    "semester": "9A",
+    "chapter": "L5~L6",
+    "title": "關係代名詞（主格、受格、whose）",
+    "confidence": "high",
+    "source": "https://www.curriculum.chc.edu.tw/storage/77/114/5-9%E8%8B%B1%E8%AA%9E%E6%96%87.pdf/THgqTtqOHuAM3MYvp6LWB2yb83JRIYkY9xb2bRLO.pdf"
+   },
+   {
+    "unit": "EN-9B-2",
+    "semester": "9A",
+    "chapter": "L4",
+    "title": "wh- 名詞子句／間接問句",
+    "confidence": "high",
+    "source": "https://www.curriculum.chc.edu.tw/storage/77/114/5-9%E8%8B%B1%E8%AA%9E%E6%96%87.pdf/THgqTtqOHuAM3MYvp6LWB2yb83JRIYkY9xb2bRLO.pdf"
+   }
+  ],
+  "南一": [
+   {
+    "unit": "EN-7A-1",
+    "semester": "7A",
+    "chapter": "L1",
+    "title": "be 動詞（What's This?）與人稱代名詞",
+    "confidence": "high",
+    "source": "https://www.curriculum.chc.edu.tw/storage/189/114/5-7%E8%8B%B1%E8%AA%9E%E6%96%87.pdf/eIvator2ezjb0rWGMPKmunRePqbrQ2keN1DE4kTQ.pdf"
+   },
+   {
+    "unit": "EN-7A-2",
+    "semester": "7B",
+    "chapter": "L1~L2",
+    "title": "現在簡單式與頻率副詞",
+    "confidence": "medium",
+    "source": "https://www.curriculum.chc.edu.tw/storage/189/114/5-7%E8%8B%B1%E8%AA%9E%E6%96%87.pdf/eIvator2ezjb0rWGMPKmunRePqbrQ2keN1DE4kTQ.pdf"
+   },
+   {
+    "unit": "EN-7B-1",
+    "semester": "7A",
+    "chapter": "L3~L5",
+    "title": "祈使句、there is/are 與現在進行式",
+    "confidence": "high",
+    "source": "https://www.curriculum.chc.edu.tw/storage/189/114/5-7%E8%8B%B1%E8%AA%9E%E6%96%87.pdf/eIvator2ezjb0rWGMPKmunRePqbrQ2keN1DE4kTQ.pdf"
+   },
+   {
+    "unit": "EN-7B-2",
+    "semester": "7B",
+    "chapter": "L3~L4",
+    "title": "過去簡單式（含不規則動詞）",
+    "confidence": "low",
+    "source": "https://www.curriculum.chc.edu.tw/storage/189/114/5-7%E8%8B%B1%E8%AA%9E%E6%96%87.pdf/eIvator2ezjb0rWGMPKmunRePqbrQ2keN1DE4kTQ.pdf"
+   },
+   {
+    "unit": "EN-8A-1",
+    "semester": "8A",
+    "chapter": "L5~L6",
+    "title": "未來式（will / be going to）與助動詞",
+    "confidence": "low",
+    "source": "https://sites.google.com/site/01wenfa/Home/di-san-ce-guo-zhong-ying-wen-fu-dao-wang-zhong-zhang-hong/07-wei-lai-shi-jian-dong-ci-de-biao-da-di-san-ce"
+   },
+   {
+    "unit": "EN-8A-2",
+    "semester": "8B",
+    "chapter": "L1~L2",
+    "title": "比較級與最高級",
+    "confidence": "medium",
+    "source": "https://sites.google.com/site/01wenfa/Home/di-si-ce/09-xing-rong-ci-fu-ci-de-yuan-ji-he-bi-jiao-ji-di-si-ce"
+   },
+   {
+    "unit": "EN-8B-1",
+    "semester": "8A",
+    "chapter": "L4",
+    "title": "不定詞與動名詞",
+    "confidence": "low",
+    "source": "https://sites.google.com/site/01wenfa/Home/di-san-ce-guo-zhong-ying-wen-fu-dao-wang-zhong-zhang-hong"
+   },
+   {
+    "unit": "EN-8B-2",
+    "semester": "9A",
+    "chapter": "八上L2~L3＋九上",
+    "title": "連接詞（八上）、附加問句（九上）",
+    "confidence": "medium",
+    "source": "https://sites.google.com/site/01wenfa/Home/di-san-ce-guo-zhong-ying-wen-fu-dao-wang-zhong-zhang-hong/09-lian-jie-ci-because-so-he-if-di-san-ce"
+   },
+   {
+    "unit": "EN-9A-1",
+    "semester": "9A",
+    "chapter": "L1",
+    "title": "現在完成式",
+    "confidence": "medium",
+    "source": "https://sites.google.com/site/01wenfa/Home/di-wu-ce/02-xian-zai-wan-cheng-shi-de-yong-fa-di-wu-ce"
+   },
+   {
+    "unit": "EN-9A-2",
+    "semester": "9A",
+    "chapter": "L3",
+    "title": "被動語態",
+    "confidence": "medium",
+    "source": "https://sites.google.com/site/01wenfa/Home/di-wu-ce/03-bei-dong-tai-de-biao-da-di-wu-ce"
+   },
+   {
+    "unit": "EN-9B-1",
+    "semester": "9A",
+    "chapter": "L5~L6",
+    "title": "關係代名詞（主格、受格）",
+    "confidence": "medium",
+    "source": "https://sites.google.com/site/01wenfa/Home/di-wu-ce/015-guan-xi-dai-ming-ci-de-yong-fa-zhu-ci-pian-di-wu-ce"
+   },
+   {
+    "unit": "EN-9B-2",
+    "semester": "9A",
+    "chapter": "L4",
+    "title": "wh- 名詞子句／間接問句",
+    "confidence": "low",
+    "source": "https://sites.google.com/site/01wenfa/Home/di-wu-ce/013-that-ming-ci-zi-ju-di-wu-ce"
+   }
+  ],
+  "翰林": [
+   {
+    "unit": "EN-7A-1",
+    "semester": "7A",
+    "chapter": "U1",
+    "title": "be 動詞（描述、Who is...?）與人稱代名詞",
+    "confidence": "high",
+    "source": "https://www.curriculum.chc.edu.tw/storage/108/114/5-7%E8%8B%B1%E8%AA%9E%E6%96%87.pdf/a8y5QYElPfrLQdNu8nEkwQZsKWAS9yqJ4DcbKUrz.pdf"
+   },
+   {
+    "unit": "EN-7A-2",
+    "semester": "7B",
+    "chapter": "U1~U2",
+    "title": "現在簡單式與頻率副詞",
+    "confidence": "medium",
+    "source": "https://wordwall.net/tc-tw/community/%E7%BF%B0%E6%9E%97%E8%8B%B1%E6%96%87%E5%9C%8B%E4%B8%80%E4%B8%8B-%E7%8F%BE%E5%9C%A8%E7%B0%A1%E5%96%AE%E5%BC%8F"
+   },
+   {
+    "unit": "EN-7B-1",
+    "semester": "7A",
+    "chapter": "U3~U4",
+    "title": "祈使句、can 與現在進行式",
+    "confidence": "high",
+    "source": "https://www.curriculum.chc.edu.tw/storage/108/114/5-7%E8%8B%B1%E8%AA%9E%E6%96%87.pdf/a8y5QYElPfrLQdNu8nEkwQZsKWAS9yqJ4DcbKUrz.pdf"
+   },
+   {
+    "unit": "EN-7B-2",
+    "semester": "7B",
+    "chapter": "U4~U5",
+    "title": "過去簡單式（含不規則動詞）",
+    "confidence": "low",
+    "source": "https://www.curriculum.chc.edu.tw/storage/108/114/5-7%E8%8B%B1%E8%AA%9E%E6%96%87.pdf/a8y5QYElPfrLQdNu8nEkwQZsKWAS9yqJ4DcbKUrz.pdf"
+   },
+   {
+    "unit": "EN-8A-1",
+    "semester": "8A",
+    "chapter": "U6",
+    "title": "未來式（will / be going to）與 cost/spend/pay/take",
+    "confidence": "high",
+    "source": "https://www.curriculum.chc.edu.tw/storage/108/114/5-8%E8%8B%B1%E8%AA%9E%E6%96%87.pdf/2zqKMeP3mBHFf9WCAiwHAdvlPUQEBzmKJ8hcKiUE.pdf"
+   },
+   {
+    "unit": "EN-8A-2",
+    "semester": "8B",
+    "chapter": "U1~U2",
+    "title": "比較級與最高級",
+    "confidence": "medium",
+    "source": "http://web.htjh.tp.edu.tw/schoolday/11102/80502.pdf"
+   },
+   {
+    "unit": "EN-8B-1",
+    "semester": "8A",
+    "chapter": "U4",
+    "title": "不定詞與動名詞（含虛主詞 it）",
+    "confidence": "high",
+    "source": "https://www.curriculum.chc.edu.tw/storage/108/114/5-8%E8%8B%B1%E8%AA%9E%E6%96%87.pdf/2zqKMeP3mBHFf9WCAiwHAdvlPUQEBzmKJ8hcKiUE.pdf"
+   },
+   {
+    "unit": "EN-8B-2",
+    "semester": "9A",
+    "chapter": "八上U2＋九上",
+    "title": "連接詞（八上）、附加問句（九上）",
+    "confidence": "medium",
+    "source": "https://www.curriculum.chc.edu.tw/storage/108/114/5-8%E8%8B%B1%E8%AA%9E%E6%96%87.pdf/2zqKMeP3mBHFf9WCAiwHAdvlPUQEBzmKJ8hcKiUE.pdf"
+   },
+   {
+    "unit": "EN-9A-1",
+    "semester": "9A",
+    "chapter": "U1",
+    "title": "現在完成式（for/since）",
+    "confidence": "high",
+    "source": "https://www.curriculum.chc.edu.tw/storage/55/114/5-9%E8%8B%B1%E8%AA%9E%E6%96%87.pdf/DkuIGUgSowgYvfsOzvkid0fyXAWDmajTsiawflL2.pdf"
+   },
+   {
+    "unit": "EN-9A-2",
+    "semester": "9A",
+    "chapter": "U3",
+    "title": "被動語態",
+    "confidence": "high",
+    "source": "https://www.curriculum.chc.edu.tw/storage/55/114/5-9%E8%8B%B1%E8%AA%9E%E6%96%87.pdf/DkuIGUgSowgYvfsOzvkid0fyXAWDmajTsiawflL2.pdf"
+   },
+   {
+    "unit": "EN-9B-1",
+    "semester": "9A",
+    "chapter": "U5~U6",
+    "title": "關係代名詞（主格、受格）",
+    "confidence": "high",
+    "source": "https://www.curriculum.chc.edu.tw/storage/55/114/5-9%E8%8B%B1%E8%AA%9E%E6%96%87.pdf/DkuIGUgSowgYvfsOzvkid0fyXAWDmajTsiawflL2.pdf"
+   },
+   {
+    "unit": "EN-9B-2",
+    "semester": "9A",
+    "chapter": "U4",
+    "title": "wh- 名詞子句／間接問句",
+    "confidence": "high",
+    "source": "https://www.curriculum.chc.edu.tw/storage/55/114/5-9%E8%8B%B1%E8%AA%9E%E6%96%87.pdf/DkuIGUgSowgYvfsOzvkid0fyXAWDmajTsiawflL2.pdf"
+   }
+  ]
+ },
+ "notes": [
+  "重大發現：三版本（康軒／南一／翰林）現行108課綱教材的『現在進行式』實際上都排在七上（不是我們預設的七下），『現在簡單式與頻率副詞』實際上都排在七下（不是我們預設的七上）；已依實際版本學期調整，chapter 供對照參考。",
+  "『不定詞與動名詞』三版本皆於八上（Book3）第4課／U4 教授，早於我們預設的八下；已調整。",
+  "『比較級與最高級』康軒官方課程計畫確認排在八下（Book4）L1~L2；翰林、南一未取得直接官方課程計畫佐證，依三版本共通108課綱進度型態推測為八下同一位置，標記 medium。",
+  "『關係代名詞』與『wh-名詞子句／間接問句』康軒、翰林官方課程計畫皆顯示排在九上（Book5，L4~L6／U4~U6），並未延到九下；南一依相同型態推測，標記 medium。已依版本實際學期調整，不同於我們預設的九下。",
+  "『連接詞與附加問句』單元的兩個文法點在三版本中相隔甚遠：連接詞（because/so、when/before/after）於八上即教授，但附加問句(tag question)實際上是延到九上（與被動語態同課或鄰課，例如康軒九上L3）才教。依規則以較早的連接詞課次為準填入八上，chapter 僅涵蓋連接詞範圍，附加問句請參考各版本九上被動語態該課。",
+  "南一版目前查無公開、明確列出各課『文法重點』欄位的官方課程計畫（多數學校課程計畫僅列課文標題與溝通功能，未逐課列文法）；七上七下的課次是由該校114學年度課程計畫中的課文標題比對推得（confidence high/medium），八上以後的課次則是依康軒／翰林已驗證的三版本共通108課綱進度型態類推（confidence low/medium），建議之後取得南一教師手冊或課本目錄後再校正。",
+  "翰林版八下（比較級/最高級所在冊）與七下過去式確切課次未取得該版本官方課程計畫直接佐證，是依三版本共通進度型態與零星補充資源（如 wordwall、學校教學計畫片段）推測，標記 medium/low。",
+  "文法重點與課次僅為研究整理摘要，未抄錄任何課文內容。"
+ ]
+}

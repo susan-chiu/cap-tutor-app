@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>會考小老師 管理後台</title>
+<style>
+  :root {
+    --bg: #F6F3EC; --card: #FFFFFF; --line: #E6E0D4; --ink: #1C2528; --muted: #5C6663;
+    --accent: #C2511B; --accent-soft: #FBE9DF; --green: #1E6B61; --green-soft: #DDF0E8;
+    --red: #B3261E; --red-soft: #FCE3E1; --night: #1C2528;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.6 system-ui, -apple-system, "Noto Sans TC", "Microsoft JhengHei", sans-serif; }
+  header { background: var(--night); color: #fff; padding: 14px 20px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+  header h1 { font-size: 17px; margin: 0; }
+  header .who { margin-left: auto; font-size: 13px; color: #C9D1CF; }
+  main { max-width: 1040px; margin: 0 auto; padding: 20px 16px 60px; }
+  nav { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+  button { font: inherit; border-radius: 10px; border: 1.5px solid var(--accent); background: var(--accent); color: #fff; padding: 8px 14px; cursor: pointer; font-weight: 700; min-height: 40px; }
+  button.secondary { background: #fff; color: var(--accent); }
+  button.green { background: var(--green); border-color: var(--green); }
+  button.danger { background: #fff; color: var(--red); border-color: var(--red); }
+  button.ghost { background: transparent; border-color: transparent; color: var(--muted); }
+  button:disabled { opacity: .5; cursor: default; }
+  nav button { background: #fff; color: var(--ink); border-color: var(--line); font-weight: 500; }
+  nav button[aria-selected="true"] { background: var(--accent); color: #fff; border-color: var(--accent); font-weight: 700; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 16px; margin-bottom: 12px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 12px; }
+  .stat .n { font-size: 30px; font-weight: 700; line-height: 1.2; }
+  .stat .l { color: var(--muted); font-size: 13px; }
+  label { display: block; font-size: 13px; font-weight: 700; margin: 10px 0 4px; }
+  input, textarea { width: 100%; font: inherit; padding: 10px 12px; border: 1px solid #D5CEC0; border-radius: 10px; background: #fff; color: var(--ink); }
+  .row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .app { display: grid; grid-template-columns: 280px 1fr; gap: 16px; }
+  .app img { width: 100%; max-height: 360px; object-fit: contain; border-radius: 10px; background: #EFEBE2; cursor: zoom-in; }
+  .tag { display: inline-block; font-size: 12px; font-weight: 700; padding: 2px 8px; border-radius: 6px; background: #EFEBE2; color: var(--muted); }
+  .tag.red { background: var(--red-soft); color: var(--red); }
+  .tag.green { background: var(--green-soft); color: var(--green); }
+  .muted { color: var(--muted); font-size: 13px; }
+  .opts li.ans { color: var(--green); font-weight: 700; }
+  .msg { padding: 10px 14px; border-radius: 10px; margin-bottom: 12px; }
+  .msg.err { background: var(--red-soft); color: var(--red); }
+  .msg.ok { background: var(--green-soft); color: var(--green); }
+  .hidden { display: none !important; }
+  @media (max-width: 720px) { .app { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<header>
+  <h1>會考小老師 管理後台</h1>
+  <span class="who" id="who"></span>
+  <button class="ghost hidden" id="logout" style="color:#C9D1CF">登出</button>
+</header>
+<main>
+  <div id="flash"></div>
+
+  <!-- 第一次使用：填入 Supabase 連線資訊（存在這台電腦的瀏覽器） -->
+  <section id="setup" class="card hidden">
+    <h2 style="margin-top:0">連線設定</h2>
+    <p class="muted">填入 Supabase 後台 Project Settings → API Keys 的網址與 Publishable key（不是 secret key）。只存在這台電腦的瀏覽器裡。</p>
+    <label for="cfg-url">Project URL</label>
+    <input id="cfg-url" placeholder="https://xxxx.supabase.co">
+    <label for="cfg-key">Publishable key</label>
+    <input id="cfg-key" placeholder="sb_publishable_…">
+    <div class="row" style="margin-top:14px"><button id="cfg-save">儲存</button></div>
+  </section>
+
+  <section id="login" class="card hidden" style="max-width:420px">
+    <h2 style="margin-top:0">管理員登入</h2>
+    <label for="email">Email</label>
+    <input id="email" type="email" autocomplete="email">
+    <label for="password">密碼</label>
+    <input id="password" type="password" autocomplete="current-password">
+    <div class="row" style="margin-top:14px">
+      <button id="login-btn">登入</button>
+      <button class="ghost" id="reset-cfg">修改連線設定</button>
+    </div>
+  </section>
+
+  <section id="panel" class="hidden">
+    <nav role="tablist">
+      <button role="tab" data-tab="overview" aria-selected="true">總覽</button>
+      <button role="tab" data-tab="apps" aria-selected="false">前三名審核 <span id="apps-count"></span></button>
+      <button role="tab" data-tab="reports" aria-selected="false">題目回報 <span id="reports-count"></span></button>
+    </nav>
+    <div id="tab-overview"></div>
+    <div id="tab-apps" class="hidden"></div>
+    <div id="tab-reports" class="hidden"></div>
+  </section>
+</main>
+
+<script type="module">
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const fmt = (t) => new Date(t).toLocaleString('zh-TW', { hour12: false });
+
+function flash(text, kind = 'ok') {
+  $('flash').innerHTML = `<div class="msg ${kind}">${esc(text)}</div>`;
+  setTimeout(() => { $('flash').innerHTML = ''; }, 5000);
+}
+
+function loadCfg() {
+  try { return JSON.parse(localStorage.getItem('cap-admin-cfg') || 'null'); } catch { return null; }
+}
+
+let sb = null;
+
+function show(id) {
+  for (const s of ['setup', 'login', 'panel']) $(s).classList.toggle('hidden', s !== id);
+  $('logout').classList.toggle('hidden', id !== 'panel');
+}
+
+async function boot() {
+  const cfg = loadCfg();
+  if (!cfg) { show('setup'); return; }
+  sb = createClient(cfg.url, cfg.key);
+  const { data } = await sb.auth.getSession();
+  if (!data.session) { show('login'); return; }
+  const { data: isAdmin } = await sb.rpc('is_admin');
+  if (!isAdmin) {
+    await sb.auth.signOut();
+    flash('這個帳號不是管理員。請先在 Supabase SQL Editor 把你的帳號加入 admins 資料表。', 'err');
+    show('login');
+    return;
+  }
+  $('who').textContent = data.session.user.email;
+  show('panel');
+  await Promise.all([loadOverview(), loadApps(), loadReports()]);
+}
+
+$('cfg-save').onclick = () => {
+  const url = $('cfg-url').value.trim(); const key = $('cfg-key').value.trim();
+  if (!/^https?:\/\//.test(url) || !key) { flash('請填入完整的網址與金鑰', 'err'); return; }
+  localStorage.setItem('cap-admin-cfg', JSON.stringify({ url, key }));
+  boot();
+};
+$('reset-cfg').onclick = () => { localStorage.removeItem('cap-admin-cfg'); show('setup'); };
+$('login-btn').onclick = async () => {
+  const { error } = await sb.auth.signInWithPassword({ email: $('email').value.trim(), password: $('password').value });
+  if (error) { flash('登入失敗：' + error.message, 'err'); return; }
+  boot();
+};
+$('logout').onclick = async () => { await sb.auth.signOut(); show('login'); };
+
+document.querySelectorAll('nav [role=tab]').forEach((b) => {
+  b.onclick = () => {
+    document.querySelectorAll('nav [role=tab]').forEach((x) => x.setAttribute('aria-selected', String(x === b)));
+    for (const t of ['overview', 'apps', 'reports']) $('tab-' + t).classList.toggle('hidden', t !== b.dataset.tab);
+  };
+});
+
+// ---------- 總覽 ----------
+async function loadOverview() {
+  const { data, error } = await sb.rpc('admin_stats');
+  if (error) { $('tab-overview').innerHTML = `<div class="msg err">${esc(error.message)}</div>`; return; }
+  const items = [
+    ['學生', data.students], ['家長', data.parents], ['今天有練習', data.active_today], ['7 天內有練習', data.active_7d],
+    ['今天作答題數', data.answers_today], ['今天小老師次數', data.tutor_today], ['訂閱中', data.subscribers],
+    ['前三名免費中', data.top_three_active], ['待審核申請', data.pending_top_three], ['未處理回報', data.open_reports],
+  ];
+  $('tab-overview').innerHTML = `<div class="grid">${items.map(([l, n]) =>
+    `<div class="card stat"><div class="n">${esc(n)}</div><div class="l">${esc(l)}</div></div>`).join('')}</div>
+    <p class="muted">數字每次打開頁面時更新。</p>`;
+}
+
+// ---------- 前三名審核 ----------
+async function loadApps() {
+  const { data, error } = await sb.rpc('admin_pending_applications');
+  const box = $('tab-apps');
+  if (error) { box.innerHTML = `<div class="msg err">${esc(error.message)}</div>`; return; }
+  $('apps-count').textContent = data.length ? `(${data.length})` : '';
+  if (!data.length) { box.innerHTML = '<div class="card muted">目前沒有待審核的申請。</div>'; return; }
+  box.innerHTML = '';
+  for (const a of data) {
+    const card = document.createElement('div');
+    card.className = 'card app';
+    card.innerHTML = `
+      <div><img alt="成績證明照片" data-role="img"><p class="muted" data-role="imgmsg">載入照片中…</p></div>
+      <div>
+        <div class="row"><strong style="font-size:17px">${esc(a.school)} · ${esc(a.grade)} 年級</strong>
+          <span class="tag red">申請第 ${esc(a.school_rank)} 名</span></div>
+        <p>考試：${esc(a.exam)}<br>暱稱：${esc(a.nickname)}<br><span class="muted">送出時間：${esc(fmt(a.created_at))}</span></p>
+        <p class="muted">請確認照片上的學校、考試名稱、全校排名與申請內容一致。通過後自動開通完整版到學期結束，照片會立即刪除。</p>
+        <label>給學生的說明（不通過時必填，學生看得到）</label>
+        <input data-role="note" maxlength="200" placeholder="例如：恭喜！／照片看不清楚排名，請重新上傳">
+        <div class="row" style="margin-top:10px">
+          <button class="green" data-role="ok">通過</button>
+          <button class="danger" data-role="no">不通過</button>
+        </div>
+      </div>`;
+    box.appendChild(card);
+    const img = card.querySelector('[data-role=img]');
+    sb.storage.from('proofs').createSignedUrl(a.proof_path, 600).then(({ data: s, error: e }) => {
+      const msg = card.querySelector('[data-role=imgmsg]');
+      if (e || !s) { msg.textContent = '照片讀取失敗（可能已被刪除）'; img.remove(); return; }
+      img.src = s.signedUrl; msg.textContent = '點照片可開新分頁放大';
+      img.onclick = () => window.open(s.signedUrl, '_blank', 'noopener');
+    });
+    const decide = async (approve) => {
+      const note = card.querySelector('[data-role=note]').value.trim();
+      if (!approve && !note) { flash('不通過時請寫說明，讓學生知道要怎麼補件', 'err'); return; }
+      card.querySelectorAll('button').forEach((b) => { b.disabled = true; });
+      const { data: path, error: e } = await sb.rpc('admin_review_top_three', { p_id: a.id, p_approve: approve, p_note: note || null });
+      if (e) { flash('審核失敗：' + e.message, 'err'); card.querySelectorAll('button').forEach((b) => { b.disabled = false; }); return; }
+      if (path) {
+        const { error: delErr } = await sb.storage.from('proofs').remove([path]);
+        if (delErr) flash('已審核，但照片刪除失敗，請到 Storage 手動刪除：' + path, 'err');
+      }
+      flash(approve ? '已通過，完整版已開通' : '已退回');
+      loadApps(); loadOverview();
+    };
+    card.querySelector('[data-role=ok]').onclick = () => decide(true);
+    card.querySelector('[data-role=no]').onclick = () => decide(false);
+  }
+}
+
+// ---------- 題目回報 ----------
+let showResolved = false;
+async function loadReports() {
+  const { data, error } = await sb.rpc('admin_reports', { p_include_resolved: showResolved });
+  const box = $('tab-reports');
+  if (error) { box.innerHTML = `<div class="msg err">${esc(error.message)}</div>`; return; }
+  const open = data.filter((r) => !r.resolved).length;
+  $('reports-count').textContent = open ? `(${open})` : '';
+  box.innerHTML = `<div class="row" style="margin-bottom:12px">
+      <label style="margin:0;font-weight:500"><input type="checkbox" id="show-resolved" ${showResolved ? 'checked' : ''} style="width:auto"> 顯示已處理</label></div>`;
+  $('show-resolved').onchange = (e) => { showResolved = e.target.checked; loadReports(); };
+  if (!data.length) { box.insertAdjacentHTML('beforeend', '<div class="card muted">沒有題目回報。</div>'); return; }
+  for (const r of data) {
+    const card = document.createElement('div');
+    card.className = 'card';
+    const opts = (r.options || []).map((o) => `<li class="${o.key === r.answer ? 'ans' : ''}">(${esc(o.key)}) ${esc(o.text)}${o.key === r.answer ? '　← 目前答案' : ''}</li>`).join('');
+    card.innerHTML = `
+      <div class="row">
+        <span class="tag ${r.kind === 'tutor_wrong' ? '' : 'red'}">${({ tutor_wrong: '小老師講錯', tutor_inappropriate: '小老師內容不恰當（優先處理）', question_wrong: '題目／答案有誤' })[r.kind] ?? r.kind}</span>
+        ${r.active ? '<span class="tag green">上架中</span>' : '<span class="tag">已下架</span>'}
+        ${r.resolved ? '<span class="tag">已處理</span>' : ''}
+        <span class="muted">${esc(r.question_id)} · ${esc(r.unit_title)} · 累計回報 ${esc(r.reported_count)} 次 · ${esc(fmt(r.created_at))}</span>
+      </div>
+      ${r.note ? `<p><strong>學生說明：</strong>${esc(r.note)}</p>` : ''}
+      <p style="font-size:16px">${esc(r.stem)}</p>
+      <ol class="opts" style="list-style:none;padding:0">${opts}</ol>
+      <p class="muted">解析：${esc(r.explanation)}</p>
+      <p class="muted">要修正題目：改 scripts/ 裡對應科目的題庫檔（題號前綴 M 數學、CH 國文、EN 英語、SC 自然、SO 社會）→ 執行 build_seed.py → 重新匯入 seed.sql。</p>
+      <div class="row">
+        <button class="${r.active ? 'danger' : 'secondary'}" data-role="toggle">${r.active ? '先下架這題' : '重新上架'}</button>
+        ${r.resolved ? '' : '<button class="secondary" data-role="resolve">標記已處理</button>'}
+      </div>`;
+    box.appendChild(card);
+    card.querySelector('[data-role=toggle]').onclick = async () => {
+      const { error: e } = await sb.rpc('admin_set_question_active', { p_question_id: r.question_id, p_active: !r.active });
+      if (e) flash(e.message, 'err'); else { flash(r.active ? '已下架' : '已重新上架'); loadReports(); }
+    };
+    const res = card.querySelector('[data-role=resolve]');
+    if (res) res.onclick = async () => {
+      const { error: e } = await sb.rpc('admin_resolve_report', { p_report_id: r.report_id });
+      if (e) flash(e.message, 'err'); else { flash('已標記處理'); loadReports(); loadOverview(); }
+    };
+  }
+}
+
+boot();
+</script>
+</body>
+</html>

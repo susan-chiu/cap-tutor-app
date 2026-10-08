@@ -1,0 +1,570 @@
+{
+  "subject": "math",
+  "versions": {
+    "康軒": [
+      {
+        "unit": "M-7A-1",
+        "semester": "7A",
+        "chapter": "1",
+        "title": "整數的運算",
+        "confidence": "medium",
+        "source": "https://www.junyiacademy.org/course-compare/math-juni/math-7/k-m7a"
+      },
+      {
+        "unit": "M-7A-2",
+        "semester": "7A",
+        "chapter": "2",
+        "title": "分數的運算",
+        "confidence": "medium",
+        "source": "https://www.junyiacademy.org/course-compare/math-juni/math-7/k-m7a"
+      },
+      {
+        "unit": "M-7A-3",
+        "semester": "7A",
+        "chapter": "3",
+        "title": "一元一次方程式",
+        "confidence": "medium",
+        "source": "https://www.junyiacademy.org/course-compare/math-juni/math-7/k-m7a"
+      },
+      {
+        "unit": "M-7B-1",
+        "semester": "7B",
+        "chapter": "1",
+        "title": "二元一次聯立方程式",
+        "confidence": "medium",
+        "source": "https://www.junyiacademy.org/course-compare/math-juni/math-7/k-m7a"
+      },
+      {
+        "unit": "M-7B-2",
+        "semester": "7B",
+        "chapter": "2",
+        "title": "直角坐標與二元一次方程式的圖形",
+        "confidence": "medium",
+        "source": "https://www.junyiacademy.org/course-compare/math-juni/math-7/k-m7a"
+      },
+      {
+        "unit": "M-7B-3",
+        "semester": "7B",
+        "chapter": "3",
+        "title": "比與比例式",
+        "confidence": "medium",
+        "source": "https://www.junyiacademy.org/course-compare/math-juni/math-7/k-m7a"
+      },
+      {
+        "unit": "M-7B-4",
+        "semester": "8B",
+        "chapter": "2",
+        "title": "函數",
+        "confidence": "low",
+        "source": "https://www.junyiacademy.org/course-compare/math-juni/math-8/k-m8a"
+      },
+      {
+        "unit": "M-7B-5",
+        "semester": "7B",
+        "chapter": "4",
+        "title": "一元一次不等式",
+        "confidence": "medium",
+        "source": "https://www.junyiacademy.org/course-compare/math-juni/math-7/k-m7a"
+      },
+      {
+        "unit": "M-8A-1",
+        "semester": "8A",
+        "chapter": "1",
+        "title": "乘法公式與多項式",
+        "confidence": "medium",
+        "source": "https://www.junyiacademy.org/course-compare/math-juni/math-8/k-m8a"
+      },
+      {
+        "unit": "M-8A-2",
+        "semester": "8A",
+        "chapter": "2",
+        "title": "平方根與畢氏定理",
+        "confidence": "medium",
+        "source": "https://www.junyiacademy.org/course-compare/math-juni/math-8/k-m8a"
+      },
+      {
+        "unit": "M-8A-3",
+        "semester": "8A",
+        "chapter": "3",
+        "title": "因式分解",
+        "confidence": "medium",
+        "source": "https://www.junyiacademy.org/course-compare/math-juni/math-8/k-m8a"
+      },
+      {
+        "unit": "M-8A-4",
+        "semester": "8A",
+        "chapter": "4",
+        "title": "一元二次方程式",
+        "confidence": "medium",
+        "source": "https://www.junyiacademy.org/course-compare/math-juni/math-8/k-m8a"
+      },
+      {
+        "unit": "M-8B-1",
+        "semester": "8B",
+        "chapter": "1",
+        "title": "數列與級數",
+        "confidence": "medium",
+        "source": "https://www.junyiacademy.org/course-compare/math-juni/math-8/k-m8a"
+      },
+      {
+        "unit": "M-8B-2",
+        "semester": "8B",
+        "chapter": "3-1~3-2",
+        "title": "三角形的基本性質（內角外角、尺規作圖）",
+        "confidence": "low",
+        "source": "https://www.junyiacademy.org/course-compare/math-juni/math-8/k-m8a"
+      },
+      {
+        "unit": "M-8B-3",
+        "semester": "8B",
+        "chapter": "3",
+        "title": "三角形的基本性質",
+        "confidence": "medium",
+        "source": "https://www.junyiacademy.org/course-compare/math-juni/math-8/k-m8a"
+      },
+      {
+        "unit": "M-8B-4",
+        "semester": "8B",
+        "chapter": "4",
+        "title": "平行與四邊形",
+        "confidence": "medium",
+        "source": "https://www.junyiacademy.org/course-compare/math-juni/math-8/k-m8a"
+      },
+      {
+        "unit": "M-9A-1",
+        "semester": "9A",
+        "chapter": "1",
+        "title": "相似形",
+        "confidence": "medium",
+        "source": "https://www.junyiacademy.org/course-compare/math-juni/math-9/k-m9a"
+      },
+      {
+        "unit": "M-9A-2",
+        "semester": "9A",
+        "chapter": "2",
+        "title": "圓",
+        "confidence": "medium",
+        "source": "https://www.junyiacademy.org/course-compare/math-juni/math-9/k-m9a"
+      },
+      {
+        "unit": "M-9A-3",
+        "semester": "9A",
+        "chapter": "3-2",
+        "title": "幾何與證明（三角形的外心、內心與重心）",
+        "confidence": "low",
+        "source": "https://www.junyiacademy.org/course-compare/math-juni/math-9/k-m9a"
+      },
+      {
+        "unit": "M-9A-4",
+        "semester": "9A",
+        "chapter": "3-1",
+        "title": "幾何與證明（證明與推理）",
+        "confidence": "low",
+        "source": "https://www.junyiacademy.org/course-compare/math-juni/math-9/k-m9a"
+      },
+      {
+        "unit": "M-9B-1",
+        "semester": "9B",
+        "chapter": "1",
+        "title": "二次函數",
+        "confidence": "medium",
+        "source": "https://www.junyiacademy.org/course-compare/math-juni/math-9/k-m9a"
+      },
+      {
+        "unit": "M-9B-2",
+        "semester": "9B",
+        "chapter": "2",
+        "title": "統計與機率",
+        "confidence": "medium",
+        "source": "https://www.junyiacademy.org/course-compare/math-juni/math-9/k-m9a"
+      },
+      {
+        "unit": "M-9B-3",
+        "semester": "9B",
+        "chapter": "3",
+        "title": "生活中的立體圖形",
+        "confidence": "medium",
+        "source": "https://www.junyiacademy.org/course-compare/math-juni/math-9/k-m9a"
+      }
+    ],
+    "南一": [
+      {
+        "unit": "M-7A-1",
+        "semester": "7A",
+        "chapter": "1",
+        "title": "整數運算與科學記號",
+        "confidence": "medium",
+        "source": "https://www.junyiacademy.org/course-compare/math-juni/math-7/n-m7a"
+      },
+      {
+        "unit": "M-7A-2",
+        "semester": "7A",
+        "chapter": "2",
+        "title": "因數分解與分數運算",
+        "confidence": "medium",
+        "source": "https://www.junyiacademy.org/course-compare/math-juni/math-7/n-m7a"
+      },
+      {
+        "unit": "M-7A-3",
+        "semester": "7A",
+        "chapter": "3",
+        "title": "一元一次方程式",
+        "confidence": "medium",
+        "source": "https://www.junyiacademy.org/course-compare/math-juni/math-7/n-m7a"
+      },
+      {
+        "unit": "M-7B-1",
+        "semester": "7B",
+        "chapter": "1",
+        "title": "二元一次聯立方程式",
+        "confidence": "medium",
+        "source": "https://www.junyiacademy.org/course-compare/math-juni/math-7/n-m7a"
+      },
+      {
+        "unit": "M-7B-2",
+        "semester": "7B",
+        "chapter": "2",
+        "title": "平面直角坐標系",
+        "confidence": "medium",
+        "source": "https://www.junyiacademy.org/course-compare/math-juni/math-7/n-m7a"
+      },
+      {
+        "unit": "M-7B-3",
+        "semester": "7B",
+        "chapter": "3",
+        "title": "比例",
+        "confidence": "medium",
+        "source": "https://www.junyiacademy.org/course-compare/math-juni/math-7/n-m7a"
+      },
+      {
+        "unit": "M-7B-4",
+        "semester": "8B",
+        "chapter": "2",
+        "title": "函數及其圖形",
+        "confidence": "low",
+        "source": "https://www.junyiacademy.org/course-compare/math-juni/math-8/n-m8a"
+      },
+      {
+        "unit": "M-7B-5",
+        "semester": "7B",
+        "chapter": "4",
+        "title": "一元一次不等式",
+        "confidence": "medium",
+        "source": "https://www.junyiacademy.org/course-compare/math-juni/math-7/n-m7a"
+      },
+      {
+        "unit": "M-8A-1",
+        "semester": "8A",
+        "chapter": "1",
+        "title": "乘法公式與多項式",
+        "confidence": "medium",
+        "source": "https://www.junyiacademy.org/course-compare/math-juni/math-8/n-m8a"
+      },
+      {
+        "unit": "M-8A-2",
+        "semester": "8A",
+        "chapter": "2",
+        "title": "平方根與畢氏定理",
+        "confidence": "medium",
+        "source": "https://www.junyiacademy.org/course-compare/math-juni/math-8/n-m8a"
+      },
+      {
+        "unit": "M-8A-3",
+        "semester": "8A",
+        "chapter": "3",
+        "title": "因式分解",
+        "confidence": "medium",
+        "source": "https://www.junyiacademy.org/course-compare/math-juni/math-8/n-m8a"
+      },
+      {
+        "unit": "M-8A-4",
+        "semester": "8A",
+        "chapter": "4",
+        "title": "一元二次方程式",
+        "confidence": "medium",
+        "source": "https://www.junyiacademy.org/course-compare/math-juni/math-8/n-m8a"
+      },
+      {
+        "unit": "M-8B-1",
+        "semester": "8B",
+        "chapter": "1",
+        "title": "數列與等差級數",
+        "confidence": "medium",
+        "source": "https://www.junyiacademy.org/course-compare/math-juni/math-8/n-m8a"
+      },
+      {
+        "unit": "M-8B-2",
+        "semester": "8B",
+        "chapter": "3-1~3-2",
+        "title": "三角形的性質與尺規作圖（內角外角、基本尺規作圖）",
+        "confidence": "low",
+        "source": "https://www.junyiacademy.org/course-compare/math-juni/math-8/n-m8a"
+      },
+      {
+        "unit": "M-8B-3",
+        "semester": "8B",
+        "chapter": "3",
+        "title": "三角形的性質與尺規作圖",
+        "confidence": "medium",
+        "source": "https://www.junyiacademy.org/course-compare/math-juni/math-8/n-m8a"
+      },
+      {
+        "unit": "M-8B-4",
+        "semester": "8B",
+        "chapter": "4",
+        "title": "平行與四邊形",
+        "confidence": "medium",
+        "source": "https://www.junyiacademy.org/course-compare/math-juni/math-8/n-m8a"
+      },
+      {
+        "unit": "M-9A-1",
+        "semester": "9A",
+        "chapter": "1",
+        "title": "比例線段與相似形",
+        "confidence": "medium",
+        "source": "https://www.junyiacademy.org/course-compare/math-juni/math-9/n-m9a"
+      },
+      {
+        "unit": "M-9A-2",
+        "semester": "9A",
+        "chapter": "2",
+        "title": "圓的性質",
+        "confidence": "medium",
+        "source": "https://www.junyiacademy.org/course-compare/math-juni/math-9/n-m9a"
+      },
+      {
+        "unit": "M-9A-3",
+        "semester": "9A",
+        "chapter": "3-2",
+        "title": "推理證明與三角形的心（外心、內心與重心）",
+        "confidence": "low",
+        "source": "https://www.junyiacademy.org/course-compare/math-juni/math-9/n-m9a"
+      },
+      {
+        "unit": "M-9A-4",
+        "semester": "9A",
+        "chapter": "3-1",
+        "title": "推理證明與三角形的心（推理與證明）",
+        "confidence": "low",
+        "source": "https://www.junyiacademy.org/course-compare/math-juni/math-9/n-m9a"
+      },
+      {
+        "unit": "M-9B-1",
+        "semester": "9B",
+        "chapter": "1",
+        "title": "二次函數",
+        "confidence": "medium",
+        "source": "https://www.junyiacademy.org/course-compare/math-juni/math-9/n-m9a"
+      },
+      {
+        "unit": "M-9B-2",
+        "semester": "9B",
+        "chapter": "2",
+        "title": "統計與機率",
+        "confidence": "medium",
+        "source": "https://www.junyiacademy.org/course-compare/math-juni/math-9/n-m9a"
+      },
+      {
+        "unit": "M-9B-3",
+        "semester": "9B",
+        "chapter": "3",
+        "title": "立體幾何圖形",
+        "confidence": "medium",
+        "source": "https://www.junyiacademy.org/course-compare/math-juni/math-9/n-m9a"
+      }
+    ],
+    "翰林": [
+      {
+        "unit": "M-7A-1",
+        "semester": "7A",
+        "chapter": "1",
+        "title": "數與數線",
+        "confidence": "medium",
+        "source": "https://www.junyiacademy.org/course-compare/math-juni/math-7/h-m7a"
+      },
+      {
+        "unit": "M-7A-2",
+        "semester": "7A",
+        "chapter": "2",
+        "title": "標準分解式與分數運算",
+        "confidence": "medium",
+        "source": "https://www.junyiacademy.org/course-compare/math-juni/math-7/h-m7a"
+      },
+      {
+        "unit": "M-7A-3",
+        "semester": "7A",
+        "chapter": "3",
+        "title": "一元一次方程式",
+        "confidence": "medium",
+        "source": "https://www.junyiacademy.org/course-compare/math-juni/math-7/h-m7a"
+      },
+      {
+        "unit": "M-7B-1",
+        "semester": "7B",
+        "chapter": "1",
+        "title": "二元一次聯立方程式",
+        "confidence": "medium",
+        "source": "https://www.junyiacademy.org/course-compare/math-juni/math-7/h-m7a"
+      },
+      {
+        "unit": "M-7B-2",
+        "semester": "7B",
+        "chapter": "2",
+        "title": "直角坐標與二元一次方程式的圖形",
+        "confidence": "medium",
+        "source": "https://www.junyiacademy.org/course-compare/math-juni/math-7/h-m7a"
+      },
+      {
+        "unit": "M-7B-3",
+        "semester": "7B",
+        "chapter": "3",
+        "title": "比例",
+        "confidence": "medium",
+        "source": "https://www.junyiacademy.org/course-compare/math-juni/math-7/h-m7a"
+      },
+      {
+        "unit": "M-7B-4",
+        "semester": "8B",
+        "chapter": "2",
+        "title": "線型函數與其圖形",
+        "confidence": "low",
+        "source": "https://www.junyiacademy.org/course-compare/math-juni/math-8/h-m8a"
+      },
+      {
+        "unit": "M-7B-5",
+        "semester": "7B",
+        "chapter": "4",
+        "title": "一元一次不等式",
+        "confidence": "medium",
+        "source": "https://www.junyiacademy.org/course-compare/math-juni/math-7/h-m7a"
+      },
+      {
+        "unit": "M-8A-1",
+        "semester": "8A",
+        "chapter": "1",
+        "title": "乘法公式與多項式",
+        "confidence": "medium",
+        "source": "https://www.junyiacademy.org/course-compare/math-juni/math-8/h-m8a"
+      },
+      {
+        "unit": "M-8A-2",
+        "semester": "8A",
+        "chapter": "2",
+        "title": "平方根與畢氏定理",
+        "confidence": "medium",
+        "source": "https://www.junyiacademy.org/course-compare/math-juni/math-8/h-m8a"
+      },
+      {
+        "unit": "M-8A-3",
+        "semester": "8A",
+        "chapter": "3",
+        "title": "因式分解",
+        "confidence": "medium",
+        "source": "https://www.junyiacademy.org/course-compare/math-juni/math-8/h-m8a"
+      },
+      {
+        "unit": "M-8A-4",
+        "semester": "8A",
+        "chapter": "4",
+        "title": "一元二次方程式",
+        "confidence": "medium",
+        "source": "https://www.junyiacademy.org/course-compare/math-juni/math-8/h-m8a"
+      },
+      {
+        "unit": "M-8B-1",
+        "semester": "8B",
+        "chapter": "1",
+        "title": "數列與級數",
+        "confidence": "medium",
+        "source": "https://www.junyiacademy.org/course-compare/math-juni/math-8/h-m8a"
+      },
+      {
+        "unit": "M-8B-2",
+        "semester": "8B",
+        "chapter": "3-1~3-2",
+        "title": "三角形的基本性質（內角外角、基本尺規作圖）",
+        "confidence": "low",
+        "source": "https://www.junyiacademy.org/course-compare/math-juni/math-8/h-m8a"
+      },
+      {
+        "unit": "M-8B-3",
+        "semester": "8B",
+        "chapter": "3",
+        "title": "三角形的基本性質",
+        "confidence": "medium",
+        "source": "https://www.junyiacademy.org/course-compare/math-juni/math-8/h-m8a"
+      },
+      {
+        "unit": "M-8B-4",
+        "semester": "8B",
+        "chapter": "4",
+        "title": "平行與四邊形",
+        "confidence": "medium",
+        "source": "https://www.junyiacademy.org/course-compare/math-juni/math-8/h-m8a"
+      },
+      {
+        "unit": "M-9A-1",
+        "semester": "9A",
+        "chapter": "1",
+        "title": "相似形與三角比",
+        "confidence": "medium",
+        "source": "https://www.junyiacademy.org/course-compare/math-juni/math-9/h-m9a"
+      },
+      {
+        "unit": "M-9A-2",
+        "semester": "9A",
+        "chapter": "2",
+        "title": "圓形",
+        "confidence": "medium",
+        "source": "https://www.junyiacademy.org/course-compare/math-juni/math-9/h-m9a"
+      },
+      {
+        "unit": "M-9A-3",
+        "semester": "9A",
+        "chapter": "3-2",
+        "title": "推理證明與三角形的心（外心、內心與重心）",
+        "confidence": "low",
+        "source": "https://www.junyiacademy.org/course-compare/math-juni/math-9/h-m9a"
+      },
+      {
+        "unit": "M-9A-4",
+        "semester": "9A",
+        "chapter": "3-1",
+        "title": "推理證明與三角形的心（推理證明）",
+        "confidence": "low",
+        "source": "https://www.junyiacademy.org/course-compare/math-juni/math-9/h-m9a"
+      },
+      {
+        "unit": "M-9B-1",
+        "semester": "9B",
+        "chapter": "1",
+        "title": "二次函數",
+        "confidence": "medium",
+        "source": "https://www.junyiacademy.org/course-compare/math-juni/math-9/h-m9a"
+      },
+      {
+        "unit": "M-9B-2",
+        "semester": "9B",
+        "chapter": "2",
+        "title": "統計與機率",
+        "confidence": "medium",
+        "source": "https://www.junyiacademy.org/course-compare/math-juni/math-9/h-m9a"
+      },
+      {
+        "unit": "M-9B-3",
+        "semester": "9B",
+        "chapter": "3",
+        "title": "立體圖形",
+        "confidence": "medium",
+        "source": "https://www.junyiacademy.org/course-compare/math-juni/math-9/h-m9a"
+      }
+    ]
+  },
+  "notes": [
+    "章節資料來源為均一教育平台（Junyi Academy）course-compare 對照頁面，該平台依三家出版社課本章節架構建置課程樹，但頁面未標示明確為114或115學年版本，故整體標為 confidence=medium；三家出版社在108課綱實施以來，此三章節結構（章序、章名）多年穩定未變，交叉比對learnmode.net上標示108學年、110學年、112學年的康軒版課程內容一致，可信度尚可，但仍建議使用前以出版社當學年度電子課本或教學進度表最終確認一次。",
+    "三家版本都把「函數」（M-7B-4 函數及其圖形）排在八年級下學期第2章，而不是我們App預設的七下，落差在三個版本一致存在，建議App若要嚴格對齊課本進度，應將此單元的建議學期改為8B，或標註為銜接／預習內容。",
+    "三家版本的「幾何圖形與尺規作圖」（M-8B-2）和「三角形的基本性質」（M-8B-3）在課本裡其實是同一章（八下第3章：內角外角、尺規作圖、三角形全等三小節合一），App把它拆成兩個單元；另外「線對稱」概念三版本都放在七下最後一章（生活中的幾何／線對稱與三視圖），不在八下，所以M-8B-2內含的symmetry標籤與該章節不完全對應，標為low confidence並在該筆notes_ref說明。",
+    "三家版本的「外心、內心與重心」（M-9A-3）與「幾何證明」（M-9A-4）在課本裡也是同一章（九上第3章：推理證明＋三角形的心），App拆成兩個單元，本檔以3-1（推理證明）對應M-9A-4、3-2（外心內心重心）對應M-9A-3，皆標為low confidence。",
+    "受限於網路存取限制（部分書局/學校官網、amathing.world 108課綱對照表圖片版無法直接讀取文字內容），本次未能取得三家出版社官方電子課本目錄頁或114/115學年教學進度表PDF作為直接來源，資料改以均一教育平台的課程對照結構為主要依據；若需要high confidence等級，建議之後補查各校114或115學年教學進度表PDF或出版社官網電子書目錄逐一核對。"
+  ]
+}
