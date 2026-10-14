@@ -8,7 +8,7 @@
     "scheme": "capapp",
     "userInterfaceStyle": "light",
     "ios": {
-      "bundleIdentifier": "tw.example.capapp",
+      "bundleIdentifier": "com.susanchiu.captutor",
       "supportsTablet": false,
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
@@ -51,7 +51,7 @@
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
       "predictiveBackGestureEnabled": false,
-      "package": "tw.example.capapp"
+      "package": "com.susanchiu.captutor"
     },
     "web": {
       "output": "single",

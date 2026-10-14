@@ -1,0 +1,127 @@
+# 打包 Google Play 正式版（AAB）
+# 到 GitHub 的「Actions」→「Google Play 正式版」→「Run workflow」手動執行。
+# 打包完成後，在該次執行頁面最下方的「Artifacts」下載 .aab，上傳到 Google Play Console。
+#
+# 執行前必須先在 Settings → Secrets and variables → Actions 設定：
+#   Secrets：ANDROID_KEYSTORE_BASE64、ANDROID_KEYSTORE_PASSWORD（上傳金鑰）
+#   Variables：EXPO_PUBLIC_SUPABASE_URL、EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY
+# 版本號（versionCode）自動用這個流程的執行次數，每次都會比上一次大。
+name: Google Play 正式版
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: play-release
+  cancel-in-progress: false
+
+jobs:
+  check:
+    name: 檢查（型別、程式風格、題庫、單元測試）
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: |
+            app/package-lock.json
+            tests/package-lock.json
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: 題庫驗證（格式、答案、驗算式）
+        run: python3 scripts/build_seed.py
+      - name: 安裝 App 套件
+        working-directory: app
+        run: npm ci
+      - name: 型別檢查
+        working-directory: app
+        run: npx tsc --noEmit
+      - name: 程式風格檢查
+        working-directory: app
+        run: npx expo lint
+      - name: 單元測試（資料庫規則、小老師、段考分組、訂閱）
+        working-directory: tests
+        env:
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
+        run: |
+          npm ci
+          node db.test.mjs
+          node stages.test.mjs
+          node tutor_logic.test.mjs
+          node subscription.test.mjs
+
+  aab:
+    name: 打包 AAB
+    needs: check
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      SENTRY_DISABLE_AUTO_UPLOAD: 'true'
+      EXPO_NO_TELEMETRY: '1'
+      EXPO_PUBLIC_SUPABASE_URL: ${{ vars.EXPO_PUBLIC_SUPABASE_URL }}
+      EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY: ${{ vars.EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY }}
+      EXPO_PUBLIC_PRIVACY_URL: ${{ vars.EXPO_PUBLIC_PRIVACY_URL }}
+      EXPO_PUBLIC_TERMS_URL: ${{ vars.EXPO_PUBLIC_TERMS_URL }}
+      EXPO_PUBLIC_REVENUECAT_ANDROID_KEY: ${{ vars.EXPO_PUBLIC_REVENUECAT_ANDROID_KEY }}
+      EXPO_PUBLIC_ADMOB_REWARDED_ANDROID: ${{ vars.EXPO_PUBLIC_ADMOB_REWARDED_ANDROID }}
+      EXPO_PUBLIC_SENTRY_DSN: ${{ vars.EXPO_PUBLIC_SENTRY_DSN }}
+      EXPO_PUBLIC_SUPPORT_EMAIL: ${{ vars.EXPO_PUBLIC_SUPPORT_EMAIL }}
+      ANDROID_VERSION_CODE: ${{ github.run_number }}
+    steps:
+      - name: 確認金鑰與設定都填好了
+        env:
+          KS_B64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          KS_PW: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+        run: |
+          missing=""
+          [ -z "$KS_B64" ] && missing="$missing ANDROID_KEYSTORE_BASE64(Secret)"
+          [ -z "$KS_PW" ] && missing="$missing ANDROID_KEYSTORE_PASSWORD(Secret)"
+          [ -z "$EXPO_PUBLIC_SUPABASE_URL" ] && missing="$missing EXPO_PUBLIC_SUPABASE_URL(Variable)"
+          [ -z "$EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY" ] && missing="$missing EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY(Variable)"
+          if [ -n "$missing" ]; then
+            echo "::error::還沒設定：$missing（Settings → Secrets and variables → Actions）"
+            exit 1
+          fi
+          echo "$KS_B64" | base64 -d > "$RUNNER_TEMP/upload-key.jks"
+          echo "ANDROID_KEYSTORE_PATH=$RUNNER_TEMP/upload-key.jks" >> "$GITHUB_ENV"
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: app/package-lock.json
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+      - name: 安裝 App 套件
+        working-directory: app
+        run: npm ci
+      - name: 產生 Android 專案
+        working-directory: app
+        run: npx expo prebuild --platform android --no-install --clean
+      - name: 打包 AAB（release，上傳金鑰簽署）
+        working-directory: app/android
+        env:
+          ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+        run: ./gradlew bundleRelease --no-daemon
+      - name: 確認簽署正確並整理檔名
+        id: aab
+        run: |
+          f=app/android/app/build/outputs/bundle/release/app-release.aab
+          keytool -printcert -jarfile "$f" | grep -E "Owner|SHA256" | head -3
+          keytool -printcert -jarfile "$f" | grep -q "CN=Susan Chiu" || { echo "::error::AAB 不是用上傳金鑰簽的"; exit 1; }
+          name="cap-tutor-v${ANDROID_VERSION_CODE}-${GITHUB_SHA::7}.aab"
+          cp "$f" "$name"
+          echo "name=$name" >> "$GITHUB_OUTPUT"
+          ls -la "$name"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ steps.aab.outputs.name }}
+          path: ${{ steps.aab.outputs.name }}
+          retention-days: 90
