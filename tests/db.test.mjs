@@ -537,7 +537,7 @@ if (hasSeed) {
     assert.ok(!('answer' in lq[0]));
   });
 
-  await test('正式題庫：國中五科、國小國語數學都有單元與題目；國中數學每單元 20 題、國小每單元 15 題', async () => {
+  await test('正式題庫：國中五科、國小國語數學都有單元與題目；國中數學每單元至少 26 題、國小每單元 15 題；國中非聽力單元至少 8 題困難題', async () => {
     const r = await db.query(`
       select u.subject, left(u.semester, 1) in ('5', '6') as elem, count(distinct u.id)::int units, count(q.id)::int qs, min(c.n)::int min_per_unit
       from public.units u left join public.questions q on q.unit_id = u.id
@@ -547,7 +547,10 @@ if (hasSeed) {
     const el = Object.fromEntries(r.rows.filter((x) => x.elem).map((x) => [x.subject, x]));
     assert.deepEqual(Object.keys(jr).sort(), ['chinese', 'english', 'math', 'science', 'social']);
     assert.deepEqual(Object.keys(el).sort(), ['chinese', 'math'], '國小只有國語、數學');
-    assert.equal(jr.math.min_per_unit, 20);
+    assert.equal(jr.math.min_per_unit, 26);
+    const hard = (await db.query(`select u.id, count(q.id) filter (where q.difficulty = 3)::int n from public.units u
+      join public.questions q on q.unit_id = u.id where u.id !~ '-[56][AB]-' and u.id !~ '-[789]L-' and u.id not like 'T-%' group by u.id`)).rows;
+    assert.ok(hard.length >= 83 && hard.every((r) => r.n >= 8), hard.filter((r) => r.n < 8).map((r) => r.id + ':' + r.n).join(','));
     for (const x of Object.values(jr)) assert.ok(x.min_per_unit >= 10, x.subject + ' 每單元至少 10 題');
     assert.equal(el.math.units, 16); assert.equal(el.chinese.units, 12);
     for (const x of Object.values(el)) assert.equal(x.min_per_unit, 15, '國小每單元 15 題');

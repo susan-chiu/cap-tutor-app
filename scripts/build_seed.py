@@ -24,12 +24,14 @@ KEYS = ["A", "B", "C", "D"]
 ORDERED_SETS = [{"第一象限", "第二象限", "第三象限", "第四象限"}]
 
 # 科目 → 題庫模組（順序很重要：決定題號）
+# 新題庫檔一律加在各科清單最後面（題號依順序產生，已上線的題目不能換號）
 SUBJECTS = {
-    "math": ["questions_math", "questions_math_x1", "questions_math_x2", "questions_math_x3", "questions_math_x4"],
-    "chinese": ["questions_chinese"],
-    "english": ["questions_english", "questions_english_listening"],
-    "science": ["questions_science_a", "questions_science_b"],
-    "social": ["questions_social_a", "questions_social_b"],
+    "math": ["questions_math", "questions_math_x1", "questions_math_x2", "questions_math_x3", "questions_math_x4",
+             "questions_math_hard_a", "questions_math_hard_b"],
+    "chinese": ["questions_chinese", "questions_chinese_hard"],
+    "english": ["questions_english", "questions_english_listening", "questions_english_hard"],
+    "science": ["questions_science_a", "questions_science_b", "questions_science_hard_a", "questions_science_hard_b"],
+    "social": ["questions_social_a", "questions_social_b", "questions_social_hard_a", "questions_social_hard_b"],
 }
 SUBJECT_LABEL = {"math": "數學", "chinese": "國文", "english": "英語", "science": "自然", "social": "社會"}
 MIN_PER_UNIT = {"math": 20, "chinese": 10, "english": 12, "science": 10, "social": 10}
