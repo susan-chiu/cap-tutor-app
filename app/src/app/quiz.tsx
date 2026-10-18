@@ -187,7 +187,8 @@ async function fetchQuestions(mode: Mode, units: string | undefined, count: stri
   }
   const ids = (units ?? '').split(',').filter(Boolean);
   const d = difficulty && /^[123]$/.test(difficulty) ? Number(difficulty) : null;
-  return api.nextQuestions(ids, mode === 'exam' ? Number(count ?? 15) : 5, d);
+  // 單元練習一輪 10 題（每單元 30 題，3 輪可以做完一遍）
+  return api.nextQuestions(ids, mode === 'exam' ? Number(count ?? 15) : 10, d);
 }
 
 function reportQuestion(questionId: string) {

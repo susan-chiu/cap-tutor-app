@@ -27,14 +27,18 @@ ORDERED_SETS = [{"第一象限", "第二象限", "第三象限", "第四象限"}
 # 新題庫檔一律加在各科清單最後面（題號依順序產生，已上線的題目不能換號）
 SUBJECTS = {
     "math": ["questions_math", "questions_math_x1", "questions_math_x2", "questions_math_x3", "questions_math_x4",
-             "questions_math_hard_a", "questions_math_hard_b"],
-    "chinese": ["questions_chinese", "questions_chinese_hard"],
-    "english": ["questions_english", "questions_english_listening", "questions_english_hard"],
-    "science": ["questions_science_a", "questions_science_b", "questions_science_hard_a", "questions_science_hard_b"],
-    "social": ["questions_social_a", "questions_social_b", "questions_social_hard_a", "questions_social_hard_b"],
+             "questions_math_hard_a", "questions_math_hard_b", "questions_math_more_a", "questions_math_more_b"],
+    "chinese": ["questions_chinese", "questions_chinese_hard",
+                "questions_chinese_more_1", "questions_chinese_more_2", "questions_chinese_more_3"],
+    "english": ["questions_english", "questions_english_listening", "questions_english_hard",
+                "questions_english_more_1", "questions_english_more_2", "questions_english_listening_more"],
+    "science": ["questions_science_a", "questions_science_b", "questions_science_hard_a", "questions_science_hard_b",
+                "questions_science_more_1", "questions_science_more_2", "questions_science_more_3", "questions_science_more_4"],
+    "social": ["questions_social_a", "questions_social_b", "questions_social_hard_a", "questions_social_hard_b",
+               "questions_social_more_1", "questions_social_more_2", "questions_social_more_3", "questions_social_more_4"],
 }
 SUBJECT_LABEL = {"math": "數學", "chinese": "國文", "english": "英語", "science": "自然", "social": "社會"}
-MIN_PER_UNIT = {"math": 20, "chinese": 10, "english": 12, "science": 10, "social": 10}
+MIN_PER_UNIT = {"math": 30, "chinese": 30, "english": 30, "science": 30, "social": 30}
 # 國小高年級（五、六年級）題庫：科目代碼和國中共用，學期是 5A～6B，每單元 15 題
 ELEMENTARY = {
     "math": ["questions_elem_math_5a", "questions_elem_math_5b", "questions_elem_math_6a", "questions_elem_math_6b"],
