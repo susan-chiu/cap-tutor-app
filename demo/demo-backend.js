@@ -171,8 +171,23 @@
       }
       return out.map(function (q) { return publicQ(q, uid); });
     },
+    get_unit_parts: function (uid, a) {
+      var subj = a.p_subject || 'social', rows = {};
+      D.questions.forEach(function (q) {
+        if (!q.exam_part || U[q.unit].subject !== subj) return;
+        var k = q.unit + '#' + q.exam_part;
+        var r = rows[k] = rows[k] || { unit_id: q.unit, part: q.exam_part, total: 0, mastered: 0, attempted: 0, answered: 0, correct: 0 };
+        var mine = db.attempts.filter(function (x) { return x.u === uid && x.q === q.id; });
+        var ok = mine.filter(function (x) { return x.c; }).length;
+        r.total++; r.answered += mine.length; r.correct += ok;
+        if (mine.length) r.attempted++;
+        if (ok && !openMistake(uid, q.id)) r.mastered++;
+      });
+      return Object.keys(rows).sort().map(function (k) { return rows[k]; });
+    },
     practice_questions: function (uid, a) {
-      var qs = shuffle(D.questions.filter(function (q) { return a.p_unit_ids.indexOf(q.unit) >= 0 && (!a.p_difficulty || q.difficulty === Number(a.p_difficulty)); }));
+      var qs = shuffle(D.questions.filter(function (q) { return a.p_unit_ids.indexOf(q.unit) >= 0 && (!a.p_difficulty || q.difficulty === Number(a.p_difficulty))
+        && (!a.p_part || q.exam_part === Number(a.p_part)); }));
       qs.sort(function (x, y) { return (seen(uid, x.id) - seen(uid, y.id)) || (openMistake(uid, y.id) - openMistake(uid, x.id)); });
       return qs.slice(0, Math.min(a.p_limit || 5, 60)).map(function (q) { return publicQ(q, uid); });
     },

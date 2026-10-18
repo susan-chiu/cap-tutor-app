@@ -1,6 +1,11 @@
 // 段考分階段：把一個學期的單元（已依課本版本排好順序）分成第一、二、三次段考，最後是學期總複習。
 // 大部分國中一學期 3 次段考；實際範圍以學校公告為準。
-export interface StageUnit { id: string; title: string; total: number; mastered: number; attempted: number; answered: number; correct: number }
+export interface StageUnit {
+  id: string; title: string; total: number; mastered: number; attempted: number; answered: number; correct: number;
+  /** 社會科：這個單元在本次段考的範圍（1～3）；沒有時代表整個單元 */
+  part?: number;
+}
+export interface PartStats { unit_id: string; part: number; total: number; mastered: number; attempted: number; answered: number; correct: number }
 export interface Stage<U extends StageUnit = StageUnit> {
   key: 'exam1' | 'exam2' | 'exam3' | 'final';
   label: string;
@@ -26,6 +31,27 @@ export function splitStages<U extends StageUnit>(units: U[]): Stage<U>[] {
   const labels = ['第一次段考', '第二次段考', '第三次段考'] as const;
   const keys = ['exam1', 'exam2', 'exam3'] as const;
   return [...groups.map((g, i) => ({ key: keys[i], label: labels[i], units: g, note: i === 2 ? note3 : undefined })), final];
+}
+
+/**
+ * 社會科：每次段考都考地理、歷史、公民各一部分。
+ * 每個段考放入所有單元在該次範圍的部分（題數與進度用 parts 的統計），學期總複習是完整單元。
+ */
+export function splitStagesByPart<U extends StageUnit>(units: U[], parts: PartStats[]): Stage<U>[] {
+  if (units.length === 0) return [];
+  const labels = ['第一次段考', '第二次段考', '第三次段考'] as const;
+  const keys = ['exam1', 'exam2', 'exam3'] as const;
+  const stages: Stage<U>[] = [];
+  for (let i = 0; i < 3; i++) {
+    const part = i + 1;
+    const stageUnits = units.flatMap((u) => {
+      const p = parts.find((x) => x.unit_id === u.id && x.part === part);
+      return p && p.total > 0 ? [{ ...u, part, total: p.total, mastered: p.mastered, attempted: p.attempted,
+        answered: p.answered, correct: p.correct }] : [];
+    });
+    if (stageUnits.length) stages.push({ key: keys[i], label: labels[i], units: stageUnits });
+  }
+  return [...stages, { key: 'final', label: '學期總複習', units }];
 }
 
 export interface StageStats {

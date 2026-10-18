@@ -18,6 +18,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
 from check_bank import check  # noqa: E402
+from exam_parts import exam_part  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 KEYS = ["A", "B", "C", "D"]
@@ -160,7 +161,7 @@ def main():
                           for u, v, sem, ch, t, n, c in version_rows) + ";")
     # 分批寫入，避免單一語句太大（Supabase SQL Editor 也比較好執行）
     for start in range(0, len(rows), 200):
-        out.append("insert into public.questions (id, unit_id, concept, stem, options, answer, explanation, hints, wrong_reasons, difficulty, source, listen_script) values")
+        out.append("insert into public.questions (id, unit_id, concept, stem, options, answer, explanation, hints, wrong_reasons, difficulty, source, listen_script, exam_part) values")
         vals = []
         for qid, _, q in rows[start:start + 200]:
             options = json.dumps([{"key": KEYS[i], "text": t} for i, t in enumerate(q["options"])], ensure_ascii=False)
@@ -171,12 +172,13 @@ def main():
                 sql_str(json.dumps(q["wrong"], ensure_ascii=False)) + "::jsonb",
                 str(q["difficulty"]), "'original'",
                 sql_str(q["listen"].strip()) if q.get("listen") else "null",
+                str(exam_part(q["unit"], q["concept"]) or "null"),
             ]) + ")")
         out.append(",\n".join(vals))
         out.append("on conflict (id) do update set unit_id = excluded.unit_id, concept = excluded.concept, stem = excluded.stem, "
                    "options = excluded.options, answer = excluded.answer, explanation = excluded.explanation, "
                    "hints = excluded.hints, wrong_reasons = excluded.wrong_reasons, difficulty = excluded.difficulty, "
-                   "listen_script = excluded.listen_script;")
+                   "listen_script = excluded.listen_script, exam_part = excluded.exam_part;")
     out.append("commit;")
     (ROOT / "supabase" / "seed.sql").write_text("\n".join(out) + "\n", encoding="utf-8")
 
@@ -184,7 +186,8 @@ def main():
     seed_dir.mkdir(exist_ok=True)
     for subject in SUBJECTS:
         (seed_dir / f"questions_{subject}.json").write_text(json.dumps(
-            [dict(id=qid, **{k: v for k, v in q.items() if k != "check"}) for qid, s, q in rows if s == subject],
+            [dict(id=qid, exam_part=exam_part(q["unit"], q["concept"]), **{k: v for k, v in q.items() if k != "check"})
+             for qid, s, q in rows if s == subject],
             ensure_ascii=False, indent=2), encoding="utf-8")
 
     n_checks = sum(1 for _, _, q in rows if q.get("check"))

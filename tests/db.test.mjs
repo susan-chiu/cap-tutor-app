@@ -461,6 +461,29 @@ if (hasSeed) {
     assert.equal(again.at(-1).seen, true);
   });
 
+  await test('社會科段考範圍：每題都有第幾次段考，依範圍出題並分段統計進度', async () => {
+    const u = await newUser({ nickname: '社會段考' });
+    const miss = (await db.query(`select count(*)::int n from public.questions where unit_id like 'SO-%' and exam_part is null`)).rows[0].n;
+    assert.equal(miss, 0, '社會題都有段考範圍');
+    const other = (await db.query(`select count(*)::int n from public.questions where unit_id not like 'SO-%' and exam_part is not null`)).rows[0].n;
+    assert.equal(other, 0, '其他科不分段');
+    const parts = (await as(u, () => db.query(`select * from public.get_unit_parts('social')`))).rows;
+    assert.equal(parts.length, 54, '18 單元 × 3 次段考');
+    assert.ok(parts.every((r) => r.total >= 5), parts.filter((r) => r.total < 5).map((r) => r.unit_id + '#' + r.part).join(','));
+    const ids = ['SO-7A-1', 'SO-7A-2', 'SO-7A-3'];
+    const qs = (await as(u, () => db.query(`select * from public.practice_questions($1, 60, null, 2::smallint)`, [ids]))).rows;
+    const want = parts.filter((r) => ids.includes(r.unit_id) && r.part === 2).reduce((a, r) => a + r.total, 0);
+    assert.equal(qs.length, want, '只出第二次段考範圍');
+    assert.deepEqual([...new Set(qs.map((q) => q.unit_id))].sort(), ids, '地理、歷史、公民都有');
+    const q = qs[0];
+    await answer(u, q.id, (await db.query(`select answer from public.questions where id = $1`, [q.id])).rows[0].answer);
+    const after = (await as(u, () => db.query(`select * from public.get_unit_parts('social')`))).rows
+      .find((r) => r.unit_id === q.unit_id && r.part === 2);
+    assert.deepEqual([after.mastered, after.attempted, after.answered, after.correct], [1, 1, 1, 1]);
+    const all = (await as(u, () => db.query(`select * from public.practice_questions($1, 60)`, [['SO-7A-1']]))).rows;
+    assert.equal(all.length, 30, '不指定範圍就整個單元');
+  });
+
   await test('段考複習：難度篩選、單元答對率、作答後才看得到完整詳解', async () => {
     const u = await newUser({ nickname: '難度' });
     for (const d of [1, 2, 3]) {

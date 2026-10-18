@@ -72,6 +72,10 @@ export interface HomeData {
   invite_code: string;
 }
 
+export interface UnitPartRow {
+  unit_id: string; part: number; total: number; mastered: number; attempted: number; answered: number; correct: number;
+}
+
 export interface UnitRow {
   id: string;
   semester: string;
@@ -86,6 +90,8 @@ export interface UnitRow {
   /** 這個單元總共作答幾次、答對幾次（算答對率、找弱點） */
   answered: number;
   correct: number;
+  /** 只在 App 內使用：社會科段考卡片裡，這個單元屬於第幾次段考的範圍 */
+  part?: number;
 }
 
 /** 完整詳解（作答過才拿得到） */
@@ -188,8 +194,10 @@ export const api = {
   home: () => rpc<HomeData>('get_home'),
   units: (subject = 'math', version: string | null = null) =>
     rpc<UnitRow[]>('get_units', { p_subject: subject, p_version: version }),
-  nextQuestions: (unitIds: string[], limit = 5, difficulty: number | null = null) =>
-    rpc<PublicQuestion[]>('practice_questions', { p_unit_ids: unitIds, p_limit: limit, p_difficulty: difficulty }),
+  /** 社會科：每個單元在第一～三次段考範圍的題數與進度 */
+  unitParts: (subject = 'social') => rpc<UnitPartRow[]>('get_unit_parts', { p_subject: subject }),
+  nextQuestions: (unitIds: string[], limit = 5, difficulty: number | null = null, part: number | null = null) =>
+    rpc<PublicQuestion[]>('practice_questions', { p_unit_ids: unitIds, p_limit: limit, p_difficulty: difficulty, p_part: part }),
   solution: (questionId: string) => rpc<Solution>('question_solution', { p_question_id: questionId }),
   /** 每日練習：伺服器依科目平均輪流出題、照學生各科版本的學期範圍 */
   dailyQuestions: (subjects: string[], maxSemester: string | null, limit = 5) =>

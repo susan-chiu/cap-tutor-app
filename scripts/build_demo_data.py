@@ -17,7 +17,7 @@ for u, v, sem, ch, t, sort, conf in version_rows:
 qs = []
 for subject in bs.SUBJECTS:
     for q in json.loads((ROOT / "supabase" / "seed" / f"questions_{subject}.json").read_text(encoding="utf-8")):
-        qs.append({k: q.get(k) for k in ["id", "unit", "concept", "stem", "options", "answer", "explanation", "hints", "wrong", "difficulty", "listen"]})
+        qs.append({k: q.get(k) for k in ["id", "unit", "concept", "stem", "options", "answer", "explanation", "hints", "wrong", "difficulty", "listen", "exam_part"]})
 data = {"units": [{"id": u, "subject": s, "semester": sem, "seq": seq, "title": t} for u, s, sem, seq, t in units],
         "versions": versions, "questions": qs}
 out = ROOT / "demo" / "demo-data.js"

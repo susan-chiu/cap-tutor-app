@@ -4,9 +4,9 @@ import { useCallback, useMemo, useRef, useState } from 'react';
 import { Pressable, View } from 'react-native';
 
 import { Button, Card, Chip, ErrorBox, H1, H2, Loading, ProgressBar, Screen, T, Tag } from '@/components/ui';
-import { api, errorText, type UnitRow } from '@/lib/api';
+import { api, errorText, type UnitPartRow, type UnitRow } from '@/lib/api';
 import { useAuth } from '@/lib/auth';
-import { currentStage, DIFFICULTIES, splitStages, stageStats, type Difficulty, type Stage } from '@/lib/stages';
+import { currentStage, DIFFICULTIES, splitStages, splitStagesByPart, stageStats, type Difficulty, type Stage } from '@/lib/stages';
 import {
   C, currentSemester, isElementary, semestersFor, subjectsFor, validSemester, validSubject, TEXTBOOK_VERSIONS, VERSIONED_SUBJECTS, type SemesterId, type SubjectId,
 } from '@/lib/theme';
@@ -17,6 +17,9 @@ const STATUS = {
   done: { label: '已完成', tone: 'green' as const },
 };
 const pctText = (v: number | null) => (v === null ? '—' : `${Math.round(v * 100)}%`);
+// 社會科每次段考都考地理、歷史、公民，各考該單元的一段課次
+const PART_LABEL: Record<number, string> = { 1: '前段課次', 2: '中段課次', 3: '後段課次' };
+const PART_SUBJECTS = ['social'];
 
 export default function Learn() {
   const { profile, refreshProfile } = useAuth();
@@ -29,6 +32,7 @@ export default function Learn() {
   // 在「我的」切換國小／國中後，原本選的學期可能不在清單裡，改用目前學期
   const sem = validSemester(profile?.grade, semPick, nowSem);
   const [units, setUnits] = useState<UnitRow[] | null>(null);
+  const [parts, setParts] = useState<UnitPartRow[] | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [difficulty, setDifficulty] = useState<Difficulty>(null);
   const [open, setOpen] = useState<string | null>(null);
@@ -53,8 +57,11 @@ export default function Learn() {
     const id = ++reqId.current;
     try {
       setError(null);
-      const rows = await api.units(subject, version);
-      if (id === reqId.current) setUnits(rows);
+      const [rows, partRows] = await Promise.all([
+        api.units(subject, version),
+        PART_SUBJECTS.includes(subject) ? api.unitParts(subject) : Promise.resolve(null),
+      ]);
+      if (id === reqId.current) { setUnits(rows); setParts(partRows); }
     } catch (e) { if (id === reqId.current) setError(errorText(e)); }
   }, [subject, version]);
 
@@ -74,21 +81,24 @@ export default function Learn() {
   useFocusEffect(useCallback(() => { load(); }, [load]));
 
   const list = useMemo(() => (units ?? []).filter((u) => u.semester === sem), [units, sem]);
-  const stages = useMemo(() => splitStages(list), [list]);
+  const stages = useMemo(() => (parts?.length ? splitStagesByPart(list, parts) : splitStages(list)), [list, parts]);
   const semStats = useMemo(() => stageStats(list), [list]);
   const now = useMemo(() => currentStage(stages), [stages]);
   const diffLabel = DIFFICULTIES.find((d) => d.id === difficulty)?.label ?? '混合';
 
-  function practice(unitIds: string[], n: number, title: string) {
+  function practice(unitIds: string[], n: number, title: string, part?: number) {
     router.push({ pathname: '/quiz', params: {
       mode: 'exam', units: unitIds.join(','), count: String(n), title,
       ...(difficulty ? { difficulty: String(difficulty) } : {}),
+      ...(part ? { part: String(part) } : {}),
     } });
   }
 
-  function practiceUnit(u: UnitRow) {
+  function practiceUnit(u: UnitRow & { part?: number }) {
     router.push({ pathname: '/quiz', params: {
-      mode: 'unit', units: u.id, title: u.title, ...(difficulty ? { difficulty: String(difficulty) } : {}),
+      mode: 'unit', units: u.id, title: u.part ? `${u.title}（${PART_LABEL[u.part]}）` : u.title,
+      ...(difficulty ? { difficulty: String(difficulty) } : {}),
+      ...(u.part ? { part: String(u.part) } : {}),
     } });
   }
 
@@ -174,12 +184,12 @@ export default function Learn() {
           {stages.map((st) => (
             <StageCard key={st.key} stage={st} current={now?.key === st.key} expanded={open === st.key}
               onToggle={() => setOpen(open === st.key ? null : st.key)}
-              onPractice={() => practice(st.units.map((u) => u.id), st.key === 'final' ? 25 : 15, `${semLabel}${st.label}`)}
+              onPractice={() => practice(st.units.map((u) => u.id), st.key === 'final' ? 25 : 15, `${semLabel}${st.label}`, st.units[0]?.part)}
               onUnit={practiceUnit} diffLabel={diffLabel} version={version} />
           ))}
 
           <T size={12} color={C.muted}>
-            段考範圍依一般學校進度估算（一學期 3 次段考，照{version ? `${version}版` : '課本'}章節順序平均分配），實際範圍以學校公告為準；
+            段考範圍依一般學校進度估算（一學期 3 次段考，照{version ? `${version}版` : '課本'}章節順序平均分配{parts?.length ? '；社會科每次段考都含地理、歷史、公民' : ''}），實際範圍以學校公告為準；
             範圍不一樣可以用下面的「自己選範圍」。
           </T>
 
@@ -216,8 +226,8 @@ export default function Learn() {
 }
 
 function StageCard({ stage, current, expanded, onToggle, onPractice, onUnit, diffLabel, version }: {
-  stage: Stage<UnitRow>; current: boolean; expanded: boolean; onToggle: () => void; onPractice: () => void;
-  onUnit: (u: UnitRow) => void; diffLabel: string; version: string | null;
+  stage: Stage<UnitRow & { part?: number }>; current: boolean; expanded: boolean; onToggle: () => void; onPractice: () => void;
+  onUnit: (u: UnitRow & { part?: number }) => void; diffLabel: string; version: string | null;
 }) {
   const s = stageStats(stage.units);
   const status = STATUS[s.status];
@@ -231,7 +241,7 @@ function StageCard({ stage, current, expanded, onToggle, onPractice, onUnit, dif
         <Tag label={status.label} tone={status.tone} />
       </View>
       <T size={13} color={C.inkSoft} numberOfLines={expanded ? undefined : 2}>
-        範圍：{final ? '整學期全部單元' : stage.units.map((u) => u.title).join('、')}
+        範圍：{final ? '整學期全部單元' : stage.units.map((u) => (u.part ? `${u.title.split('：')[0]}（${PART_LABEL[u.part]}）` : u.title)).join('、')}
       </T>
       {stage.note ? <T size={12} color={C.muted}>{stage.note}</T> : null}
       <ProgressBar value={s.progress} color={s.progress >= 0.8 ? C.green : C.accent} height={8} />
@@ -252,7 +262,7 @@ function StageCard({ stage, current, expanded, onToggle, onPractice, onUnit, dif
           <Pressable key={u.id} accessibilityRole="button" accessibilityLabel={`練習單元 ${u.title}`} onPress={() => onUnit(u)}
             style={{ borderTopWidth: 1, borderTopColor: C.line, paddingTop: 10, gap: 4 }}>
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
-              <T weight="700" style={{ flex: 1 }}>{u.title}</T>
+              <T weight="700" style={{ flex: 1 }}>{u.title}{u.part ? `（${PART_LABEL[u.part]}）` : ''}</T>
               <T size={13} weight="700" color={acc !== null && acc < 0.7 ? C.redDark : C.greenDark}>{pctText(acc)}</T>
               <T color={C.muted}>›</T>
             </View>
@@ -260,7 +270,7 @@ function StageCard({ stage, current, expanded, onToggle, onPractice, onUnit, dif
               <T size={12} color={C.muted} numberOfLines={2}>{version} {/^\d/.test(u.chapter) ? `第 ${u.chapter} 章` : u.chapter}・{u.chapter_title}</T>
             ) : null}
             <ProgressBar value={pct} color={pct >= 0.8 ? C.green : C.accent} height={6} />
-            <T size={12} color={C.muted}>熟練 {u.mastered} / {u.total} 題 · 點一下練 5 題</T>
+            <T size={12} color={C.muted}>熟練 {u.mastered} / {u.total} 題 · 點一下練 10 題</T>
           </Pressable>
         );
       }) : null}

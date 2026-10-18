@@ -16,7 +16,7 @@ type Mode = 'daily' | 'unit' | 'exam' | 'review';
 const DIFF_LABEL: Record<string, string> = { '1': '簡單', '2': '中等', '3': '困難' };
 
 export default function Quiz() {
-  const params = useLocalSearchParams<{ mode?: string; units?: string; count?: string; difficulty?: string; title?: string }>();
+  const params = useLocalSearchParams<{ mode?: string; units?: string; count?: string; difficulty?: string; title?: string; part?: string }>();
   const mode = (params.mode ?? 'daily') as Mode;
   const { profile } = useAuth();
 
@@ -39,11 +39,11 @@ export default function Quiz() {
   const subjectsKey = profile?.daily_subjects?.join(',') ?? '';
   useEffect(() => {
     let cancelled = false;
-    fetchQuestions(mode, params.units, params.count, grade, subjectsKey, params.difficulty)
+    fetchQuestions(mode, params.units, params.count, grade, subjectsKey, params.difficulty, params.part)
       .then((qs) => { if (!cancelled) { setQuestions(qs); setError(null); } })
       .catch((e) => { if (!cancelled) setError(errorText(e)); });
     return () => { cancelled = true; };
-  }, [mode, params.units, params.count, grade, subjectsKey, params.difficulty, reloadKey]);
+  }, [mode, params.units, params.count, grade, subjectsKey, params.difficulty, params.part, reloadKey]);
 
   function load() {
     setError(null);
@@ -177,7 +177,7 @@ export default function Quiz() {
 }
 
 async function fetchQuestions(mode: Mode, units: string | undefined, count: string | undefined,
-  grade: number | null, subjectsKey: string, difficulty?: string) {
+  grade: number | null, subjectsKey: string, difficulty?: string, part?: string) {
   if (mode === 'review') return (await api.dueReviews(10)).map((r) => ({ ...r.question, seen: true }));
   if (mode === 'daily') {
     // 每日 5 題：伺服器依學生選的科目平均輪流出題，只出各科版本已經教到的學期；題數不夠會自動補滿
@@ -188,7 +188,8 @@ async function fetchQuestions(mode: Mode, units: string | undefined, count: stri
   const ids = (units ?? '').split(',').filter(Boolean);
   const d = difficulty && /^[123]$/.test(difficulty) ? Number(difficulty) : null;
   // 單元練習一輪 10 題（每單元 30 題，3 輪可以做完一遍）
-  return api.nextQuestions(ids, mode === 'exam' ? Number(count ?? 15) : 10, d);
+  const p = part && /^[123]$/.test(part) ? Number(part) : null;
+  return api.nextQuestions(ids, mode === 'exam' ? Number(count ?? 15) : 10, d, p);
 }
 
 function reportQuestion(questionId: string) {

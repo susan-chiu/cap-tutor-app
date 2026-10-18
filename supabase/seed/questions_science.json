@@ -1,6 +1,7 @@
 [
   {
     "id": "SC-7A-1-01",
+    "exam_part": null,
     "unit": "SC-7A-1",
     "concept": "cell-structure",
     "difficulty": 1,
@@ -25,6 +26,7 @@
   },
   {
     "id": "SC-7A-1-02",
+    "exam_part": null,
     "unit": "SC-7A-1",
     "concept": "cell-structure",
     "difficulty": 2,
@@ -49,6 +51,7 @@
   },
   {
     "id": "SC-7A-1-03",
+    "exam_part": null,
     "unit": "SC-7A-1",
     "concept": "cell-structure",
     "difficulty": 2,
@@ -73,6 +76,7 @@
   },
   {
     "id": "SC-7A-1-04",
+    "exam_part": null,
     "unit": "SC-7A-1",
     "concept": "microscope",
     "difficulty": 1,
@@ -97,6 +101,7 @@
   },
   {
     "id": "SC-7A-1-05",
+    "exam_part": null,
     "unit": "SC-7A-1",
     "concept": "microscope",
     "difficulty": 2,
@@ -121,6 +126,7 @@
   },
   {
     "id": "SC-7A-1-06",
+    "exam_part": null,
     "unit": "SC-7A-1",
     "concept": "microscope",
     "difficulty": 3,
@@ -146,6 +152,7 @@
   },
   {
     "id": "SC-7A-1-07",
+    "exam_part": null,
     "unit": "SC-7A-1",
     "concept": "organization-level",
     "difficulty": 1,
@@ -170,6 +177,7 @@
   },
   {
     "id": "SC-7A-1-08",
+    "exam_part": null,
     "unit": "SC-7A-1",
     "concept": "organization-level",
     "difficulty": 2,
@@ -194,6 +202,7 @@
   },
   {
     "id": "SC-7A-1-09",
+    "exam_part": null,
     "unit": "SC-7A-1",
     "concept": "diffusion-osmosis",
     "difficulty": 2,
@@ -218,6 +227,7 @@
   },
   {
     "id": "SC-7A-1-10",
+    "exam_part": null,
     "unit": "SC-7A-1",
     "concept": "diffusion-osmosis",
     "difficulty": 3,
@@ -242,6 +252,7 @@
   },
   {
     "id": "SC-7A-2-01",
+    "exam_part": null,
     "unit": "SC-7A-2",
     "concept": "photosynthesis",
     "difficulty": 1,
@@ -266,6 +277,7 @@
   },
   {
     "id": "SC-7A-2-02",
+    "exam_part": null,
     "unit": "SC-7A-2",
     "concept": "photosynthesis",
     "difficulty": 2,
@@ -290,6 +302,7 @@
   },
   {
     "id": "SC-7A-2-03",
+    "exam_part": null,
     "unit": "SC-7A-2",
     "concept": "photosynthesis",
     "difficulty": 3,
@@ -314,6 +327,7 @@
   },
   {
     "id": "SC-7A-2-04",
+    "exam_part": null,
     "unit": "SC-7A-2",
     "concept": "enzyme",
     "difficulty": 1,
@@ -338,6 +352,7 @@
   },
   {
     "id": "SC-7A-2-05",
+    "exam_part": null,
     "unit": "SC-7A-2",
     "concept": "enzyme",
     "difficulty": 3,
@@ -362,6 +377,7 @@
   },
   {
     "id": "SC-7A-2-06",
+    "exam_part": null,
     "unit": "SC-7A-2",
     "concept": "digestion",
     "difficulty": 1,
@@ -386,6 +402,7 @@
   },
   {
     "id": "SC-7A-2-07",
+    "exam_part": null,
     "unit": "SC-7A-2",
     "concept": "digestion",
     "difficulty": 2,
@@ -410,6 +427,7 @@
   },
   {
     "id": "SC-7A-2-08",
+    "exam_part": null,
     "unit": "SC-7A-2",
     "concept": "digestion",
     "difficulty": 2,
@@ -434,6 +452,7 @@
   },
   {
     "id": "SC-7A-2-09",
+    "exam_part": null,
     "unit": "SC-7A-2",
     "concept": "respiration",
     "difficulty": 2,
@@ -458,6 +477,7 @@
   },
   {
     "id": "SC-7A-2-10",
+    "exam_part": null,
     "unit": "SC-7A-2",
     "concept": "respiration",
     "difficulty": 2,
@@ -482,6 +502,7 @@
   },
   {
     "id": "SC-7A-3-01",
+    "exam_part": null,
     "unit": "SC-7A-3",
     "concept": "plant-transport",
     "difficulty": 1,
@@ -506,6 +527,7 @@
   },
   {
     "id": "SC-7A-3-02",
+    "exam_part": null,
     "unit": "SC-7A-3",
     "concept": "plant-transport",
     "difficulty": 2,
@@ -530,6 +552,7 @@
   },
   {
     "id": "SC-7A-3-03",
+    "exam_part": null,
     "unit": "SC-7A-3",
     "concept": "circulation",
     "difficulty": 1,
@@ -554,6 +577,7 @@
   },
   {
     "id": "SC-7A-3-04",
+    "exam_part": null,
     "unit": "SC-7A-3",
     "concept": "circulation",
     "difficulty": 2,
@@ -578,6 +602,7 @@
   },
   {
     "id": "SC-7A-3-05",
+    "exam_part": null,
     "unit": "SC-7A-3",
     "concept": "circulation",
     "difficulty": 3,
@@ -602,6 +627,7 @@
   },
   {
     "id": "SC-7A-3-06",
+    "exam_part": null,
     "unit": "SC-7A-3",
     "concept": "nervous",
     "difficulty": 1,
@@ -626,6 +652,7 @@
   },
   {
     "id": "SC-7A-3-07",
+    "exam_part": null,
     "unit": "SC-7A-3",
     "concept": "nervous",
     "difficulty": 2,
@@ -650,6 +677,7 @@
   },
   {
     "id": "SC-7A-3-08",
+    "exam_part": null,
     "unit": "SC-7A-3",
     "concept": "nervous",
     "difficulty": 3,
@@ -674,6 +702,7 @@
   },
   {
     "id": "SC-7A-3-09",
+    "exam_part": null,
     "unit": "SC-7A-3",
     "concept": "endocrine-homeostasis",
     "difficulty": 2,
@@ -698,6 +727,7 @@
   },
   {
     "id": "SC-7A-3-10",
+    "exam_part": null,
     "unit": "SC-7A-3",
     "concept": "endocrine-homeostasis",
     "difficulty": 2,
@@ -722,6 +752,7 @@
   },
   {
     "id": "SC-7B-1-01",
+    "exam_part": null,
     "unit": "SC-7B-1",
     "concept": "reproduction",
     "difficulty": 1,
@@ -746,6 +777,7 @@
   },
   {
     "id": "SC-7B-1-02",
+    "exam_part": null,
     "unit": "SC-7B-1",
     "concept": "reproduction",
     "difficulty": 2,
@@ -770,6 +802,7 @@
   },
   {
     "id": "SC-7B-1-03",
+    "exam_part": null,
     "unit": "SC-7B-1",
     "concept": "reproduction",
     "difficulty": 1,
@@ -794,6 +827,7 @@
   },
   {
     "id": "SC-7B-1-04",
+    "exam_part": null,
     "unit": "SC-7B-1",
     "concept": "mendel",
     "difficulty": 1,
@@ -818,6 +852,7 @@
   },
   {
     "id": "SC-7B-1-05",
+    "exam_part": null,
     "unit": "SC-7B-1",
     "concept": "mendel",
     "difficulty": 2,
@@ -842,6 +877,7 @@
   },
   {
     "id": "SC-7B-1-06",
+    "exam_part": null,
     "unit": "SC-7B-1",
     "concept": "mendel",
     "difficulty": 2,
@@ -866,6 +902,7 @@
   },
   {
     "id": "SC-7B-1-07",
+    "exam_part": null,
     "unit": "SC-7B-1",
     "concept": "mendel",
     "difficulty": 2,
@@ -890,6 +927,7 @@
   },
   {
     "id": "SC-7B-1-08",
+    "exam_part": null,
     "unit": "SC-7B-1",
     "concept": "mendel",
     "difficulty": 3,
@@ -914,6 +952,7 @@
   },
   {
     "id": "SC-7B-1-09",
+    "exam_part": null,
     "unit": "SC-7B-1",
     "concept": "human-genetics",
     "difficulty": 2,
@@ -938,6 +977,7 @@
   },
   {
     "id": "SC-7B-1-10",
+    "exam_part": null,
     "unit": "SC-7B-1",
     "concept": "human-genetics",
     "difficulty": 3,
@@ -962,6 +1002,7 @@
   },
   {
     "id": "SC-7B-2-01",
+    "exam_part": null,
     "unit": "SC-7B-2",
     "concept": "evolution",
     "difficulty": 1,
@@ -986,6 +1027,7 @@
   },
   {
     "id": "SC-7B-2-02",
+    "exam_part": null,
     "unit": "SC-7B-2",
     "concept": "evolution",
     "difficulty": 2,
@@ -1010,6 +1052,7 @@
   },
   {
     "id": "SC-7B-2-03",
+    "exam_part": null,
     "unit": "SC-7B-2",
     "concept": "evolution",
     "difficulty": 2,
@@ -1034,6 +1077,7 @@
   },
   {
     "id": "SC-7B-2-04",
+    "exam_part": null,
     "unit": "SC-7B-2",
     "concept": "evolution",
     "difficulty": 3,
@@ -1058,6 +1102,7 @@
   },
   {
     "id": "SC-7B-2-05",
+    "exam_part": null,
     "unit": "SC-7B-2",
     "concept": "classification",
     "difficulty": 1,
@@ -1082,6 +1127,7 @@
   },
   {
     "id": "SC-7B-2-06",
+    "exam_part": null,
     "unit": "SC-7B-2",
     "concept": "classification",
     "difficulty": 2,
@@ -1106,6 +1152,7 @@
   },
   {
     "id": "SC-7B-2-07",
+    "exam_part": null,
     "unit": "SC-7B-2",
     "concept": "classification",
     "difficulty": 3,
@@ -1130,6 +1177,7 @@
   },
   {
     "id": "SC-7B-2-08",
+    "exam_part": null,
     "unit": "SC-7B-2",
     "concept": "kingdoms",
     "difficulty": 1,
@@ -1154,6 +1202,7 @@
   },
   {
     "id": "SC-7B-2-09",
+    "exam_part": null,
     "unit": "SC-7B-2",
     "concept": "kingdoms",
     "difficulty": 2,
@@ -1178,6 +1227,7 @@
   },
   {
     "id": "SC-7B-2-10",
+    "exam_part": null,
     "unit": "SC-7B-2",
     "concept": "kingdoms",
     "difficulty": 2,
@@ -1202,6 +1252,7 @@
   },
   {
     "id": "SC-7B-3-01",
+    "exam_part": null,
     "unit": "SC-7B-3",
     "concept": "population-community",
     "difficulty": 1,
@@ -1226,6 +1277,7 @@
   },
   {
     "id": "SC-7B-3-02",
+    "exam_part": null,
     "unit": "SC-7B-3",
     "concept": "population-community",
     "difficulty": 2,
@@ -1250,6 +1302,7 @@
   },
   {
     "id": "SC-7B-3-03",
+    "exam_part": null,
     "unit": "SC-7B-3",
     "concept": "food-web",
     "difficulty": 1,
@@ -1274,6 +1327,7 @@
   },
   {
     "id": "SC-7B-3-04",
+    "exam_part": null,
     "unit": "SC-7B-3",
     "concept": "food-web",
     "difficulty": 2,
@@ -1298,6 +1352,7 @@
   },
   {
     "id": "SC-7B-3-05",
+    "exam_part": null,
     "unit": "SC-7B-3",
     "concept": "food-web",
     "difficulty": 3,
@@ -1323,6 +1378,7 @@
   },
   {
     "id": "SC-7B-3-06",
+    "exam_part": null,
     "unit": "SC-7B-3",
     "concept": "energy-flow",
     "difficulty": 1,
@@ -1347,6 +1403,7 @@
   },
   {
     "id": "SC-7B-3-07",
+    "exam_part": null,
     "unit": "SC-7B-3",
     "concept": "energy-flow",
     "difficulty": 2,
@@ -1371,6 +1428,7 @@
   },
   {
     "id": "SC-7B-3-08",
+    "exam_part": null,
     "unit": "SC-7B-3",
     "concept": "energy-flow",
     "difficulty": 3,
@@ -1395,6 +1453,7 @@
   },
   {
     "id": "SC-7B-3-09",
+    "exam_part": null,
     "unit": "SC-7B-3",
     "concept": "ecosystem-conservation",
     "difficulty": 2,
@@ -1419,6 +1478,7 @@
   },
   {
     "id": "SC-7B-3-10",
+    "exam_part": null,
     "unit": "SC-7B-3",
     "concept": "ecosystem-conservation",
     "difficulty": 2,
@@ -1443,6 +1503,7 @@
   },
   {
     "id": "SC-8A-1-01",
+    "exam_part": null,
     "unit": "SC-8A-1",
     "concept": "measurement",
     "difficulty": 1,
@@ -1467,6 +1528,7 @@
   },
   {
     "id": "SC-8A-1-02",
+    "exam_part": null,
     "unit": "SC-8A-1",
     "concept": "measurement",
     "difficulty": 2,
@@ -1491,6 +1553,7 @@
   },
   {
     "id": "SC-8A-1-03",
+    "exam_part": null,
     "unit": "SC-8A-1",
     "concept": "density",
     "difficulty": 1,
@@ -1515,6 +1578,7 @@
   },
   {
     "id": "SC-8A-1-04",
+    "exam_part": null,
     "unit": "SC-8A-1",
     "concept": "density",
     "difficulty": 2,
@@ -1539,6 +1603,7 @@
   },
   {
     "id": "SC-8A-1-05",
+    "exam_part": null,
     "unit": "SC-8A-1",
     "concept": "density",
     "difficulty": 3,
@@ -1563,6 +1628,7 @@
   },
   {
     "id": "SC-8A-1-06",
+    "exam_part": null,
     "unit": "SC-8A-1",
     "concept": "states-mixture",
     "difficulty": 1,
@@ -1587,6 +1653,7 @@
   },
   {
     "id": "SC-8A-1-07",
+    "exam_part": null,
     "unit": "SC-8A-1",
     "concept": "states-mixture",
     "difficulty": 2,
@@ -1611,6 +1678,7 @@
   },
   {
     "id": "SC-8A-1-08",
+    "exam_part": null,
     "unit": "SC-8A-1",
     "concept": "concentration",
     "difficulty": 2,
@@ -1635,6 +1703,7 @@
   },
   {
     "id": "SC-8A-1-09",
+    "exam_part": null,
     "unit": "SC-8A-1",
     "concept": "concentration",
     "difficulty": 2,
@@ -1659,6 +1728,7 @@
   },
   {
     "id": "SC-8A-1-10",
+    "exam_part": null,
     "unit": "SC-8A-1",
     "concept": "concentration",
     "difficulty": 3,
@@ -1683,6 +1753,7 @@
   },
   {
     "id": "SC-8A-2-01",
+    "exam_part": null,
     "unit": "SC-8A-2",
     "concept": "wave-speed",
     "difficulty": 1,
@@ -1707,6 +1778,7 @@
   },
   {
     "id": "SC-8A-2-02",
+    "exam_part": null,
     "unit": "SC-8A-2",
     "concept": "wave-speed",
     "difficulty": 2,
@@ -1731,6 +1803,7 @@
   },
   {
     "id": "SC-8A-2-03",
+    "exam_part": null,
     "unit": "SC-8A-2",
     "concept": "wave-speed",
     "difficulty": 3,
@@ -1755,6 +1828,7 @@
   },
   {
     "id": "SC-8A-2-04",
+    "exam_part": null,
     "unit": "SC-8A-2",
     "concept": "sound",
     "difficulty": 1,
@@ -1779,6 +1853,7 @@
   },
   {
     "id": "SC-8A-2-05",
+    "exam_part": null,
     "unit": "SC-8A-2",
     "concept": "sound",
     "difficulty": 2,
@@ -1803,6 +1878,7 @@
   },
   {
     "id": "SC-8A-2-06",
+    "exam_part": null,
     "unit": "SC-8A-2",
     "concept": "sound",
     "difficulty": 2,
@@ -1827,6 +1903,7 @@
   },
   {
     "id": "SC-8A-2-07",
+    "exam_part": null,
     "unit": "SC-8A-2",
     "concept": "reflection-refraction",
     "difficulty": 2,
@@ -1851,6 +1928,7 @@
   },
   {
     "id": "SC-8A-2-08",
+    "exam_part": null,
     "unit": "SC-8A-2",
     "concept": "reflection-refraction",
     "difficulty": 2,
@@ -1875,6 +1953,7 @@
   },
   {
     "id": "SC-8A-2-09",
+    "exam_part": null,
     "unit": "SC-8A-2",
     "concept": "lens-mirror",
     "difficulty": 1,
@@ -1899,6 +1978,7 @@
   },
   {
     "id": "SC-8A-2-10",
+    "exam_part": null,
     "unit": "SC-8A-2",
     "concept": "lens-mirror",
     "difficulty": 3,
@@ -1923,6 +2003,7 @@
   },
   {
     "id": "SC-8A-3-01",
+    "exam_part": null,
     "unit": "SC-8A-3",
     "concept": "thermometer",
     "difficulty": 1,
@@ -1947,6 +2028,7 @@
   },
   {
     "id": "SC-8A-3-02",
+    "exam_part": null,
     "unit": "SC-8A-3",
     "concept": "thermometer",
     "difficulty": 2,
@@ -1971,6 +2053,7 @@
   },
   {
     "id": "SC-8A-3-03",
+    "exam_part": null,
     "unit": "SC-8A-3",
     "concept": "specific-heat",
     "difficulty": 1,
@@ -1995,6 +2078,7 @@
   },
   {
     "id": "SC-8A-3-04",
+    "exam_part": null,
     "unit": "SC-8A-3",
     "concept": "specific-heat",
     "difficulty": 2,
@@ -2019,6 +2103,7 @@
   },
   {
     "id": "SC-8A-3-05",
+    "exam_part": null,
     "unit": "SC-8A-3",
     "concept": "specific-heat",
     "difficulty": 2,
@@ -2043,6 +2128,7 @@
   },
   {
     "id": "SC-8A-3-06",
+    "exam_part": null,
     "unit": "SC-8A-3",
     "concept": "specific-heat",
     "difficulty": 3,
@@ -2067,6 +2153,7 @@
   },
   {
     "id": "SC-8A-3-07",
+    "exam_part": null,
     "unit": "SC-8A-3",
     "concept": "thermal-equilibrium",
     "difficulty": 2,
@@ -2091,6 +2178,7 @@
   },
   {
     "id": "SC-8A-3-08",
+    "exam_part": null,
     "unit": "SC-8A-3",
     "concept": "thermal-equilibrium",
     "difficulty": 3,
@@ -2115,6 +2203,7 @@
   },
   {
     "id": "SC-8A-3-09",
+    "exam_part": null,
     "unit": "SC-8A-3",
     "concept": "heat-transfer",
     "difficulty": 1,
@@ -2139,6 +2228,7 @@
   },
   {
     "id": "SC-8A-3-10",
+    "exam_part": null,
     "unit": "SC-8A-3",
     "concept": "heat-transfer",
     "difficulty": 2,
@@ -2163,6 +2253,7 @@
   },
   {
     "id": "SC-8B-1-01",
+    "exam_part": null,
     "unit": "SC-8B-1",
     "concept": "mass-conservation",
     "difficulty": 1,
@@ -2187,6 +2278,7 @@
   },
   {
     "id": "SC-8B-1-02",
+    "exam_part": null,
     "unit": "SC-8B-1",
     "concept": "mass-conservation",
     "difficulty": 2,
@@ -2211,6 +2303,7 @@
   },
   {
     "id": "SC-8B-1-03",
+    "exam_part": null,
     "unit": "SC-8B-1",
     "concept": "mass-conservation",
     "difficulty": 3,
@@ -2235,6 +2328,7 @@
   },
   {
     "id": "SC-8B-1-04",
+    "exam_part": null,
     "unit": "SC-8B-1",
     "concept": "balancing",
     "difficulty": 1,
@@ -2259,6 +2353,7 @@
   },
   {
     "id": "SC-8B-1-05",
+    "exam_part": null,
     "unit": "SC-8B-1",
     "concept": "balancing",
     "difficulty": 2,
@@ -2283,6 +2378,7 @@
   },
   {
     "id": "SC-8B-1-06",
+    "exam_part": null,
     "unit": "SC-8B-1",
     "concept": "balancing",
     "difficulty": 2,
@@ -2307,6 +2403,7 @@
   },
   {
     "id": "SC-8B-1-07",
+    "exam_part": null,
     "unit": "SC-8B-1",
     "concept": "mole",
     "difficulty": 1,
@@ -2331,6 +2428,7 @@
   },
   {
     "id": "SC-8B-1-08",
+    "exam_part": null,
     "unit": "SC-8B-1",
     "concept": "mole",
     "difficulty": 3,
@@ -2356,6 +2454,7 @@
   },
   {
     "id": "SC-8B-1-09",
+    "exam_part": null,
     "unit": "SC-8B-1",
     "concept": "periodic-table",
     "difficulty": 2,
@@ -2380,6 +2479,7 @@
   },
   {
     "id": "SC-8B-1-10",
+    "exam_part": null,
     "unit": "SC-8B-1",
     "concept": "periodic-table",
     "difficulty": 2,
@@ -2404,6 +2504,7 @@
   },
   {
     "id": "SC-8B-2-01",
+    "exam_part": null,
     "unit": "SC-8B-2",
     "concept": "electrolyte",
     "difficulty": 1,
@@ -2428,6 +2529,7 @@
   },
   {
     "id": "SC-8B-2-02",
+    "exam_part": null,
     "unit": "SC-8B-2",
     "concept": "electrolyte",
     "difficulty": 2,
@@ -2452,6 +2554,7 @@
   },
   {
     "id": "SC-8B-2-03",
+    "exam_part": null,
     "unit": "SC-8B-2",
     "concept": "acid-base-property",
     "difficulty": 1,
@@ -2476,6 +2579,7 @@
   },
   {
     "id": "SC-8B-2-04",
+    "exam_part": null,
     "unit": "SC-8B-2",
     "concept": "acid-base-property",
     "difficulty": 2,
@@ -2500,6 +2604,7 @@
   },
   {
     "id": "SC-8B-2-05",
+    "exam_part": null,
     "unit": "SC-8B-2",
     "concept": "ph",
     "difficulty": 1,
@@ -2524,6 +2629,7 @@
   },
   {
     "id": "SC-8B-2-06",
+    "exam_part": null,
     "unit": "SC-8B-2",
     "concept": "ph",
     "difficulty": 2,
@@ -2548,6 +2654,7 @@
   },
   {
     "id": "SC-8B-2-07",
+    "exam_part": null,
     "unit": "SC-8B-2",
     "concept": "salt",
     "difficulty": 2,
@@ -2572,6 +2679,7 @@
   },
   {
     "id": "SC-8B-2-08",
+    "exam_part": null,
     "unit": "SC-8B-2",
     "concept": "salt",
     "difficulty": 2,
@@ -2596,6 +2704,7 @@
   },
   {
     "id": "SC-8B-2-09",
+    "exam_part": null,
     "unit": "SC-8B-2",
     "concept": "neutralization",
     "difficulty": 3,
@@ -2620,6 +2729,7 @@
   },
   {
     "id": "SC-8B-2-10",
+    "exam_part": null,
     "unit": "SC-8B-2",
     "concept": "neutralization",
     "difficulty": 3,
@@ -2645,6 +2755,7 @@
   },
   {
     "id": "SC-8B-3-01",
+    "exam_part": null,
     "unit": "SC-8B-3",
     "concept": "redox",
     "difficulty": 1,
@@ -2669,6 +2780,7 @@
   },
   {
     "id": "SC-8B-3-02",
+    "exam_part": null,
     "unit": "SC-8B-3",
     "concept": "redox",
     "difficulty": 2,
@@ -2693,6 +2805,7 @@
   },
   {
     "id": "SC-8B-3-03",
+    "exam_part": null,
     "unit": "SC-8B-3",
     "concept": "metal-activity",
     "difficulty": 1,
@@ -2717,6 +2830,7 @@
   },
   {
     "id": "SC-8B-3-04",
+    "exam_part": null,
     "unit": "SC-8B-3",
     "concept": "metal-activity",
     "difficulty": 3,
@@ -2742,6 +2856,7 @@
   },
   {
     "id": "SC-8B-3-05",
+    "exam_part": null,
     "unit": "SC-8B-3",
     "concept": "reaction-rate",
     "difficulty": 1,
@@ -2766,6 +2881,7 @@
   },
   {
     "id": "SC-8B-3-06",
+    "exam_part": null,
     "unit": "SC-8B-3",
     "concept": "reaction-rate",
     "difficulty": 2,
@@ -2790,6 +2906,7 @@
   },
   {
     "id": "SC-8B-3-07",
+    "exam_part": null,
     "unit": "SC-8B-3",
     "concept": "equilibrium",
     "difficulty": 2,
@@ -2814,6 +2931,7 @@
   },
   {
     "id": "SC-8B-3-08",
+    "exam_part": null,
     "unit": "SC-8B-3",
     "concept": "equilibrium",
     "difficulty": 2,
@@ -2838,6 +2956,7 @@
   },
   {
     "id": "SC-8B-3-09",
+    "exam_part": null,
     "unit": "SC-8B-3",
     "concept": "organic",
     "difficulty": 2,
@@ -2862,6 +2981,7 @@
   },
   {
     "id": "SC-8B-3-10",
+    "exam_part": null,
     "unit": "SC-8B-3",
     "concept": "organic",
     "difficulty": 3,
@@ -2887,6 +3007,7 @@
   },
   {
     "id": "SC-9A-1-01",
+    "exam_part": null,
     "unit": "SC-9A-1",
     "concept": "velocity",
     "difficulty": 1,
@@ -2911,6 +3032,7 @@
   },
   {
     "id": "SC-9A-1-02",
+    "exam_part": null,
     "unit": "SC-9A-1",
     "concept": "velocity",
     "difficulty": 2,
@@ -2935,6 +3057,7 @@
   },
   {
     "id": "SC-9A-1-03",
+    "exam_part": null,
     "unit": "SC-9A-1",
     "concept": "acceleration",
     "difficulty": 2,
@@ -2959,6 +3082,7 @@
   },
   {
     "id": "SC-9A-1-04",
+    "exam_part": null,
     "unit": "SC-9A-1",
     "concept": "acceleration",
     "difficulty": 3,
@@ -2984,6 +3108,7 @@
   },
   {
     "id": "SC-9A-1-05",
+    "exam_part": null,
     "unit": "SC-9A-1",
     "concept": "newton-law",
     "difficulty": 1,
@@ -3008,6 +3133,7 @@
   },
   {
     "id": "SC-9A-1-06",
+    "exam_part": null,
     "unit": "SC-9A-1",
     "concept": "newton-law",
     "difficulty": 2,
@@ -3032,6 +3158,7 @@
   },
   {
     "id": "SC-9A-1-07",
+    "exam_part": null,
     "unit": "SC-9A-1",
     "concept": "friction",
     "difficulty": 1,
@@ -3056,6 +3183,7 @@
   },
   {
     "id": "SC-9A-1-08",
+    "exam_part": null,
     "unit": "SC-9A-1",
     "concept": "friction",
     "difficulty": 2,
@@ -3080,6 +3208,7 @@
   },
   {
     "id": "SC-9A-1-09",
+    "exam_part": null,
     "unit": "SC-9A-1",
     "concept": "force-balance",
     "difficulty": 2,
@@ -3104,6 +3233,7 @@
   },
   {
     "id": "SC-9A-1-10",
+    "exam_part": null,
     "unit": "SC-9A-1",
     "concept": "force-balance",
     "difficulty": 3,
@@ -3128,6 +3258,7 @@
   },
   {
     "id": "SC-9A-2-01",
+    "exam_part": null,
     "unit": "SC-9A-2",
     "concept": "work",
     "difficulty": 1,
@@ -3152,6 +3283,7 @@
   },
   {
     "id": "SC-9A-2-02",
+    "exam_part": null,
     "unit": "SC-9A-2",
     "concept": "work",
     "difficulty": 2,
@@ -3176,6 +3308,7 @@
   },
   {
     "id": "SC-9A-2-03",
+    "exam_part": null,
     "unit": "SC-9A-2",
     "concept": "power",
     "difficulty": 1,
@@ -3200,6 +3333,7 @@
   },
   {
     "id": "SC-9A-2-04",
+    "exam_part": null,
     "unit": "SC-9A-2",
     "concept": "power",
     "difficulty": 2,
@@ -3225,6 +3359,7 @@
   },
   {
     "id": "SC-9A-2-05",
+    "exam_part": null,
     "unit": "SC-9A-2",
     "concept": "energy",
     "difficulty": 1,
@@ -3249,6 +3384,7 @@
   },
   {
     "id": "SC-9A-2-06",
+    "exam_part": null,
     "unit": "SC-9A-2",
     "concept": "energy",
     "difficulty": 2,
@@ -3273,6 +3409,7 @@
   },
   {
     "id": "SC-9A-2-07",
+    "exam_part": null,
     "unit": "SC-9A-2",
     "concept": "energy-conservation",
     "difficulty": 2,
@@ -3297,6 +3434,7 @@
   },
   {
     "id": "SC-9A-2-08",
+    "exam_part": null,
     "unit": "SC-9A-2",
     "concept": "energy-conservation",
     "difficulty": 3,
@@ -3322,6 +3460,7 @@
   },
   {
     "id": "SC-9A-2-09",
+    "exam_part": null,
     "unit": "SC-9A-2",
     "concept": "simple-machine",
     "difficulty": 2,
@@ -3346,6 +3485,7 @@
   },
   {
     "id": "SC-9A-2-10",
+    "exam_part": null,
     "unit": "SC-9A-2",
     "concept": "simple-machine",
     "difficulty": 3,
@@ -3371,6 +3511,7 @@
   },
   {
     "id": "SC-9A-3-01",
+    "exam_part": null,
     "unit": "SC-9A-3",
     "concept": "static",
     "difficulty": 1,
@@ -3395,6 +3536,7 @@
   },
   {
     "id": "SC-9A-3-02",
+    "exam_part": null,
     "unit": "SC-9A-3",
     "concept": "static",
     "difficulty": 2,
@@ -3419,6 +3561,7 @@
   },
   {
     "id": "SC-9A-3-03",
+    "exam_part": null,
     "unit": "SC-9A-3",
     "concept": "current",
     "difficulty": 1,
@@ -3443,6 +3586,7 @@
   },
   {
     "id": "SC-9A-3-04",
+    "exam_part": null,
     "unit": "SC-9A-3",
     "concept": "current",
     "difficulty": 2,
@@ -3467,6 +3611,7 @@
   },
   {
     "id": "SC-9A-3-05",
+    "exam_part": null,
     "unit": "SC-9A-3",
     "concept": "ohm-law",
     "difficulty": 1,
@@ -3491,6 +3636,7 @@
   },
   {
     "id": "SC-9A-3-06",
+    "exam_part": null,
     "unit": "SC-9A-3",
     "concept": "ohm-law",
     "difficulty": 2,
@@ -3515,6 +3661,7 @@
   },
   {
     "id": "SC-9A-3-07",
+    "exam_part": null,
     "unit": "SC-9A-3",
     "concept": "circuit",
     "difficulty": 2,
@@ -3539,6 +3686,7 @@
   },
   {
     "id": "SC-9A-3-08",
+    "exam_part": null,
     "unit": "SC-9A-3",
     "concept": "circuit",
     "difficulty": 2,
@@ -3563,6 +3711,7 @@
   },
   {
     "id": "SC-9A-3-09",
+    "exam_part": null,
     "unit": "SC-9A-3",
     "concept": "ohm-law",
     "difficulty": 3,
@@ -3588,6 +3737,7 @@
   },
   {
     "id": "SC-9A-3-10",
+    "exam_part": null,
     "unit": "SC-9A-3",
     "concept": "circuit",
     "difficulty": 3,
@@ -3613,6 +3763,7 @@
   },
   {
     "id": "SC-9B-1-01",
+    "exam_part": null,
     "unit": "SC-9B-1",
     "concept": "magnetic-effect",
     "difficulty": 1,
@@ -3637,6 +3788,7 @@
   },
   {
     "id": "SC-9B-1-02",
+    "exam_part": null,
     "unit": "SC-9B-1",
     "concept": "magnetic-effect",
     "difficulty": 2,
@@ -3661,6 +3813,7 @@
   },
   {
     "id": "SC-9B-1-03",
+    "exam_part": null,
     "unit": "SC-9B-1",
     "concept": "electromagnetic-induction",
     "difficulty": 1,
@@ -3685,6 +3838,7 @@
   },
   {
     "id": "SC-9B-1-04",
+    "exam_part": null,
     "unit": "SC-9B-1",
     "concept": "electromagnetic-induction",
     "difficulty": 2,
@@ -3709,6 +3863,7 @@
   },
   {
     "id": "SC-9B-1-05",
+    "exam_part": null,
     "unit": "SC-9B-1",
     "concept": "electric-power",
     "difficulty": 1,
@@ -3733,6 +3888,7 @@
   },
   {
     "id": "SC-9B-1-06",
+    "exam_part": null,
     "unit": "SC-9B-1",
     "concept": "electric-power",
     "difficulty": 2,
@@ -3757,6 +3913,7 @@
   },
   {
     "id": "SC-9B-1-07",
+    "exam_part": null,
     "unit": "SC-9B-1",
     "concept": "electric-power",
     "difficulty": 3,
@@ -3782,6 +3939,7 @@
   },
   {
     "id": "SC-9B-1-08",
+    "exam_part": null,
     "unit": "SC-9B-1",
     "concept": "electricity-bill",
     "difficulty": 2,
@@ -3806,6 +3964,7 @@
   },
   {
     "id": "SC-9B-1-09",
+    "exam_part": null,
     "unit": "SC-9B-1",
     "concept": "electricity-bill",
     "difficulty": 2,
@@ -3830,6 +3989,7 @@
   },
   {
     "id": "SC-9B-1-10",
+    "exam_part": null,
     "unit": "SC-9B-1",
     "concept": "electricity-bill",
     "difficulty": 3,
@@ -3855,6 +4015,7 @@
   },
   {
     "id": "SC-9B-2-01",
+    "exam_part": null,
     "unit": "SC-9B-2",
     "concept": "earth-structure",
     "difficulty": 1,
@@ -3879,6 +4040,7 @@
   },
   {
     "id": "SC-9B-2-02",
+    "exam_part": null,
     "unit": "SC-9B-2",
     "concept": "earth-structure",
     "difficulty": 2,
@@ -3903,6 +4065,7 @@
   },
   {
     "id": "SC-9B-2-03",
+    "exam_part": null,
     "unit": "SC-9B-2",
     "concept": "rock-mineral",
     "difficulty": 1,
@@ -3927,6 +4090,7 @@
   },
   {
     "id": "SC-9B-2-04",
+    "exam_part": null,
     "unit": "SC-9B-2",
     "concept": "rock-mineral",
     "difficulty": 2,
@@ -3951,6 +4115,7 @@
   },
   {
     "id": "SC-9B-2-05",
+    "exam_part": null,
     "unit": "SC-9B-2",
     "concept": "plate-tectonics",
     "difficulty": 2,
@@ -3975,6 +4140,7 @@
   },
   {
     "id": "SC-9B-2-06",
+    "exam_part": null,
     "unit": "SC-9B-2",
     "concept": "plate-tectonics",
     "difficulty": 3,
@@ -4000,6 +4166,7 @@
   },
   {
     "id": "SC-9B-2-07",
+    "exam_part": null,
     "unit": "SC-9B-2",
     "concept": "earthquake",
     "difficulty": 2,
@@ -4024,6 +4191,7 @@
   },
   {
     "id": "SC-9B-2-08",
+    "exam_part": null,
     "unit": "SC-9B-2",
     "concept": "earthquake",
     "difficulty": 2,
@@ -4048,6 +4216,7 @@
   },
   {
     "id": "SC-9B-2-09",
+    "exam_part": null,
     "unit": "SC-9B-2",
     "concept": "taiwan-geology",
     "difficulty": 1,
@@ -4072,6 +4241,7 @@
   },
   {
     "id": "SC-9B-2-10",
+    "exam_part": null,
     "unit": "SC-9B-2",
     "concept": "taiwan-geology",
     "difficulty": 3,
@@ -4096,6 +4266,7 @@
   },
   {
     "id": "SC-9B-3-01",
+    "exam_part": null,
     "unit": "SC-9B-3",
     "concept": "front",
     "difficulty": 1,
@@ -4120,6 +4291,7 @@
   },
   {
     "id": "SC-9B-3-02",
+    "exam_part": null,
     "unit": "SC-9B-3",
     "concept": "front",
     "difficulty": 2,
@@ -4144,6 +4316,7 @@
   },
   {
     "id": "SC-9B-3-03",
+    "exam_part": null,
     "unit": "SC-9B-3",
     "concept": "monsoon-typhoon",
     "difficulty": 2,
@@ -4168,6 +4341,7 @@
   },
   {
     "id": "SC-9B-3-04",
+    "exam_part": null,
     "unit": "SC-9B-3",
     "concept": "monsoon-typhoon",
     "difficulty": 3,
@@ -4193,6 +4367,7 @@
   },
   {
     "id": "SC-9B-3-05",
+    "exam_part": null,
     "unit": "SC-9B-3",
     "concept": "earth-motion",
     "difficulty": 1,
@@ -4217,6 +4392,7 @@
   },
   {
     "id": "SC-9B-3-06",
+    "exam_part": null,
     "unit": "SC-9B-3",
     "concept": "earth-motion",
     "difficulty": 2,
@@ -4241,6 +4417,7 @@
   },
   {
     "id": "SC-9B-3-07",
+    "exam_part": null,
     "unit": "SC-9B-3",
     "concept": "moon-phase",
     "difficulty": 1,
@@ -4265,6 +4442,7 @@
   },
   {
     "id": "SC-9B-3-08",
+    "exam_part": null,
     "unit": "SC-9B-3",
     "concept": "moon-phase",
     "difficulty": 3,
@@ -4290,6 +4468,7 @@
   },
   {
     "id": "SC-9B-3-09",
+    "exam_part": null,
     "unit": "SC-9B-3",
     "concept": "solar-system",
     "difficulty": 2,
@@ -4314,6 +4493,7 @@
   },
   {
     "id": "SC-9B-3-10",
+    "exam_part": null,
     "unit": "SC-9B-3",
     "concept": "solar-system",
     "difficulty": 2,
@@ -4338,6 +4518,7 @@
   },
   {
     "id": "SC-7A-1-11",
+    "exam_part": null,
     "unit": "SC-7A-1",
     "concept": "microscope",
     "difficulty": 3,
@@ -4363,6 +4544,7 @@
   },
   {
     "id": "SC-7A-1-12",
+    "exam_part": null,
     "unit": "SC-7A-1",
     "concept": "microscope",
     "difficulty": 3,
@@ -4388,6 +4570,7 @@
   },
   {
     "id": "SC-7A-1-13",
+    "exam_part": null,
     "unit": "SC-7A-1",
     "concept": "diffusion-osmosis",
     "difficulty": 3,
@@ -4413,6 +4596,7 @@
   },
   {
     "id": "SC-7A-1-14",
+    "exam_part": null,
     "unit": "SC-7A-1",
     "concept": "diffusion-osmosis",
     "difficulty": 3,
@@ -4438,6 +4622,7 @@
   },
   {
     "id": "SC-7A-1-15",
+    "exam_part": null,
     "unit": "SC-7A-1",
     "concept": "cell-structure",
     "difficulty": 3,
@@ -4462,6 +4647,7 @@
   },
   {
     "id": "SC-7A-1-16",
+    "exam_part": null,
     "unit": "SC-7A-1",
     "concept": "cell-structure",
     "difficulty": 3,
@@ -4486,6 +4672,7 @@
   },
   {
     "id": "SC-7A-2-11",
+    "exam_part": null,
     "unit": "SC-7A-2",
     "concept": "photosynthesis",
     "difficulty": 3,
@@ -4511,6 +4698,7 @@
   },
   {
     "id": "SC-7A-2-12",
+    "exam_part": null,
     "unit": "SC-7A-2",
     "concept": "photosynthesis",
     "difficulty": 3,
@@ -4536,6 +4724,7 @@
   },
   {
     "id": "SC-7A-2-13",
+    "exam_part": null,
     "unit": "SC-7A-2",
     "concept": "enzyme",
     "difficulty": 3,
@@ -4561,6 +4750,7 @@
   },
   {
     "id": "SC-7A-2-14",
+    "exam_part": null,
     "unit": "SC-7A-2",
     "concept": "enzyme",
     "difficulty": 3,
@@ -4585,6 +4775,7 @@
   },
   {
     "id": "SC-7A-2-15",
+    "exam_part": null,
     "unit": "SC-7A-2",
     "concept": "digestion",
     "difficulty": 3,
@@ -4610,6 +4801,7 @@
   },
   {
     "id": "SC-7A-2-16",
+    "exam_part": null,
     "unit": "SC-7A-2",
     "concept": "respiration",
     "difficulty": 3,
@@ -4635,6 +4827,7 @@
   },
   {
     "id": "SC-7A-3-11",
+    "exam_part": null,
     "unit": "SC-7A-3",
     "concept": "plant-transport",
     "difficulty": 3,
@@ -4660,6 +4853,7 @@
   },
   {
     "id": "SC-7A-3-12",
+    "exam_part": null,
     "unit": "SC-7A-3",
     "concept": "plant-transport",
     "difficulty": 3,
@@ -4684,6 +4878,7 @@
   },
   {
     "id": "SC-7A-3-13",
+    "exam_part": null,
     "unit": "SC-7A-3",
     "concept": "circulation",
     "difficulty": 3,
@@ -4709,6 +4904,7 @@
   },
   {
     "id": "SC-7A-3-14",
+    "exam_part": null,
     "unit": "SC-7A-3",
     "concept": "circulation",
     "difficulty": 3,
@@ -4734,6 +4930,7 @@
   },
   {
     "id": "SC-7A-3-15",
+    "exam_part": null,
     "unit": "SC-7A-3",
     "concept": "nervous",
     "difficulty": 3,
@@ -4759,6 +4956,7 @@
   },
   {
     "id": "SC-7A-3-16",
+    "exam_part": null,
     "unit": "SC-7A-3",
     "concept": "endocrine-homeostasis",
     "difficulty": 3,
@@ -4784,6 +4982,7 @@
   },
   {
     "id": "SC-7B-1-11",
+    "exam_part": null,
     "unit": "SC-7B-1",
     "concept": "mendel",
     "difficulty": 3,
@@ -4809,6 +5008,7 @@
   },
   {
     "id": "SC-7B-1-12",
+    "exam_part": null,
     "unit": "SC-7B-1",
     "concept": "mendel",
     "difficulty": 3,
@@ -4834,6 +5034,7 @@
   },
   {
     "id": "SC-7B-1-13",
+    "exam_part": null,
     "unit": "SC-7B-1",
     "concept": "human-genetics",
     "difficulty": 3,
@@ -4858,6 +5059,7 @@
   },
   {
     "id": "SC-7B-1-14",
+    "exam_part": null,
     "unit": "SC-7B-1",
     "concept": "human-genetics",
     "difficulty": 3,
@@ -4882,6 +5084,7 @@
   },
   {
     "id": "SC-7B-1-15",
+    "exam_part": null,
     "unit": "SC-7B-1",
     "concept": "reproduction",
     "difficulty": 3,
@@ -4907,6 +5110,7 @@
   },
   {
     "id": "SC-7B-1-16",
+    "exam_part": null,
     "unit": "SC-7B-1",
     "concept": "reproduction",
     "difficulty": 3,
@@ -4932,6 +5136,7 @@
   },
   {
     "id": "SC-7B-2-11",
+    "exam_part": null,
     "unit": "SC-7B-2",
     "concept": "evolution",
     "difficulty": 3,
@@ -4957,6 +5162,7 @@
   },
   {
     "id": "SC-7B-2-12",
+    "exam_part": null,
     "unit": "SC-7B-2",
     "concept": "evolution",
     "difficulty": 3,
@@ -4982,6 +5188,7 @@
   },
   {
     "id": "SC-7B-2-13",
+    "exam_part": null,
     "unit": "SC-7B-2",
     "concept": "classification",
     "difficulty": 3,
@@ -5007,6 +5214,7 @@
   },
   {
     "id": "SC-7B-2-14",
+    "exam_part": null,
     "unit": "SC-7B-2",
     "concept": "classification",
     "difficulty": 3,
@@ -5031,6 +5239,7 @@
   },
   {
     "id": "SC-7B-2-15",
+    "exam_part": null,
     "unit": "SC-7B-2",
     "concept": "kingdoms",
     "difficulty": 3,
@@ -5056,6 +5265,7 @@
   },
   {
     "id": "SC-7B-2-16",
+    "exam_part": null,
     "unit": "SC-7B-2",
     "concept": "kingdoms",
     "difficulty": 3,
@@ -5081,6 +5291,7 @@
   },
   {
     "id": "SC-7B-3-11",
+    "exam_part": null,
     "unit": "SC-7B-3",
     "concept": "population-community",
     "difficulty": 3,
@@ -5106,6 +5317,7 @@
   },
   {
     "id": "SC-7B-3-12",
+    "exam_part": null,
     "unit": "SC-7B-3",
     "concept": "population-community",
     "difficulty": 3,
@@ -5131,6 +5343,7 @@
   },
   {
     "id": "SC-7B-3-13",
+    "exam_part": null,
     "unit": "SC-7B-3",
     "concept": "food-web",
     "difficulty": 3,
@@ -5156,6 +5369,7 @@
   },
   {
     "id": "SC-7B-3-14",
+    "exam_part": null,
     "unit": "SC-7B-3",
     "concept": "food-web",
     "difficulty": 3,
@@ -5181,6 +5395,7 @@
   },
   {
     "id": "SC-7B-3-15",
+    "exam_part": null,
     "unit": "SC-7B-3",
     "concept": "energy-flow",
     "difficulty": 3,
@@ -5206,6 +5421,7 @@
   },
   {
     "id": "SC-7B-3-16",
+    "exam_part": null,
     "unit": "SC-7B-3",
     "concept": "energy-flow",
     "difficulty": 3,
@@ -5231,6 +5447,7 @@
   },
   {
     "id": "SC-8A-1-11",
+    "exam_part": null,
     "unit": "SC-8A-1",
     "concept": "density",
     "difficulty": 3,
@@ -5256,6 +5473,7 @@
   },
   {
     "id": "SC-8A-1-12",
+    "exam_part": null,
     "unit": "SC-8A-1",
     "concept": "density",
     "difficulty": 3,
@@ -5280,6 +5498,7 @@
   },
   {
     "id": "SC-8A-1-13",
+    "exam_part": null,
     "unit": "SC-8A-1",
     "concept": "concentration",
     "difficulty": 3,
@@ -5305,6 +5524,7 @@
   },
   {
     "id": "SC-8A-1-14",
+    "exam_part": null,
     "unit": "SC-8A-1",
     "concept": "concentration",
     "difficulty": 3,
@@ -5330,6 +5550,7 @@
   },
   {
     "id": "SC-8A-1-15",
+    "exam_part": null,
     "unit": "SC-8A-1",
     "concept": "measurement",
     "difficulty": 3,
@@ -5355,6 +5576,7 @@
   },
   {
     "id": "SC-8A-1-16",
+    "exam_part": null,
     "unit": "SC-8A-1",
     "concept": "states-mixture",
     "difficulty": 3,
@@ -5380,6 +5602,7 @@
   },
   {
     "id": "SC-8A-2-11",
+    "exam_part": null,
     "unit": "SC-8A-2",
     "concept": "sound",
     "difficulty": 3,
@@ -5405,6 +5628,7 @@
   },
   {
     "id": "SC-8A-2-12",
+    "exam_part": null,
     "unit": "SC-8A-2",
     "concept": "sound",
     "difficulty": 3,
@@ -5430,6 +5654,7 @@
   },
   {
     "id": "SC-8A-2-13",
+    "exam_part": null,
     "unit": "SC-8A-2",
     "concept": "wave-speed",
     "difficulty": 3,
@@ -5455,6 +5680,7 @@
   },
   {
     "id": "SC-8A-2-14",
+    "exam_part": null,
     "unit": "SC-8A-2",
     "concept": "wave-speed",
     "difficulty": 3,
@@ -5480,6 +5706,7 @@
   },
   {
     "id": "SC-8A-2-15",
+    "exam_part": null,
     "unit": "SC-8A-2",
     "concept": "reflection-refraction",
     "difficulty": 3,
@@ -5505,6 +5732,7 @@
   },
   {
     "id": "SC-8A-2-16",
+    "exam_part": null,
     "unit": "SC-8A-2",
     "concept": "lens-mirror",
     "difficulty": 3,
@@ -5530,6 +5758,7 @@
   },
   {
     "id": "SC-8A-3-11",
+    "exam_part": null,
     "unit": "SC-8A-3",
     "concept": "specific-heat",
     "difficulty": 3,
@@ -5555,6 +5784,7 @@
   },
   {
     "id": "SC-8A-3-12",
+    "exam_part": null,
     "unit": "SC-8A-3",
     "concept": "specific-heat",
     "difficulty": 3,
@@ -5580,6 +5810,7 @@
   },
   {
     "id": "SC-8A-3-13",
+    "exam_part": null,
     "unit": "SC-8A-3",
     "concept": "thermal-equilibrium",
     "difficulty": 3,
@@ -5605,6 +5836,7 @@
   },
   {
     "id": "SC-8A-3-14",
+    "exam_part": null,
     "unit": "SC-8A-3",
     "concept": "thermal-equilibrium",
     "difficulty": 3,
@@ -5630,6 +5862,7 @@
   },
   {
     "id": "SC-8A-3-15",
+    "exam_part": null,
     "unit": "SC-8A-3",
     "concept": "thermometer",
     "difficulty": 3,
@@ -5655,6 +5888,7 @@
   },
   {
     "id": "SC-8A-3-16",
+    "exam_part": null,
     "unit": "SC-8A-3",
     "concept": "heat-transfer",
     "difficulty": 3,
@@ -5680,6 +5914,7 @@
   },
   {
     "id": "SC-8B-1-11",
+    "exam_part": null,
     "unit": "SC-8B-1",
     "concept": "mass-conservation",
     "difficulty": 3,
@@ -5705,6 +5940,7 @@
   },
   {
     "id": "SC-8B-1-12",
+    "exam_part": null,
     "unit": "SC-8B-1",
     "concept": "mass-conservation",
     "difficulty": 3,
@@ -5730,6 +5966,7 @@
   },
   {
     "id": "SC-8B-1-13",
+    "exam_part": null,
     "unit": "SC-8B-1",
     "concept": "balancing",
     "difficulty": 3,
@@ -5755,6 +5992,7 @@
   },
   {
     "id": "SC-8B-1-14",
+    "exam_part": null,
     "unit": "SC-8B-1",
     "concept": "balancing",
     "difficulty": 3,
@@ -5780,6 +6018,7 @@
   },
   {
     "id": "SC-8B-1-15",
+    "exam_part": null,
     "unit": "SC-8B-1",
     "concept": "mole",
     "difficulty": 3,
@@ -5805,6 +6044,7 @@
   },
   {
     "id": "SC-8B-1-16",
+    "exam_part": null,
     "unit": "SC-8B-1",
     "concept": "mole",
     "difficulty": 3,
@@ -5829,6 +6069,7 @@
   },
   {
     "id": "SC-8B-2-11",
+    "exam_part": null,
     "unit": "SC-8B-2",
     "concept": "ph",
     "difficulty": 3,
@@ -5854,6 +6095,7 @@
   },
   {
     "id": "SC-8B-2-12",
+    "exam_part": null,
     "unit": "SC-8B-2",
     "concept": "neutralization",
     "difficulty": 3,
@@ -5879,6 +6121,7 @@
   },
   {
     "id": "SC-8B-2-13",
+    "exam_part": null,
     "unit": "SC-8B-2",
     "concept": "electrolyte",
     "difficulty": 3,
@@ -5904,6 +6147,7 @@
   },
   {
     "id": "SC-8B-2-14",
+    "exam_part": null,
     "unit": "SC-8B-2",
     "concept": "electrolyte",
     "difficulty": 3,
@@ -5928,6 +6172,7 @@
   },
   {
     "id": "SC-8B-2-15",
+    "exam_part": null,
     "unit": "SC-8B-2",
     "concept": "acid-base-property",
     "difficulty": 3,
@@ -5953,6 +6198,7 @@
   },
   {
     "id": "SC-8B-2-16",
+    "exam_part": null,
     "unit": "SC-8B-2",
     "concept": "salt",
     "difficulty": 3,
@@ -5978,6 +6224,7 @@
   },
   {
     "id": "SC-8B-3-11",
+    "exam_part": null,
     "unit": "SC-8B-3",
     "concept": "metal-activity",
     "difficulty": 3,
@@ -6003,6 +6250,7 @@
   },
   {
     "id": "SC-8B-3-12",
+    "exam_part": null,
     "unit": "SC-8B-3",
     "concept": "redox",
     "difficulty": 3,
@@ -6028,6 +6276,7 @@
   },
   {
     "id": "SC-8B-3-13",
+    "exam_part": null,
     "unit": "SC-8B-3",
     "concept": "redox",
     "difficulty": 3,
@@ -6053,6 +6302,7 @@
   },
   {
     "id": "SC-8B-3-14",
+    "exam_part": null,
     "unit": "SC-8B-3",
     "concept": "reaction-rate",
     "difficulty": 3,
@@ -6078,6 +6328,7 @@
   },
   {
     "id": "SC-8B-3-15",
+    "exam_part": null,
     "unit": "SC-8B-3",
     "concept": "reaction-rate",
     "difficulty": 3,
@@ -6103,6 +6354,7 @@
   },
   {
     "id": "SC-8B-3-16",
+    "exam_part": null,
     "unit": "SC-8B-3",
     "concept": "organic",
     "difficulty": 3,
@@ -6128,6 +6380,7 @@
   },
   {
     "id": "SC-9A-1-11",
+    "exam_part": null,
     "unit": "SC-9A-1",
     "concept": "acceleration",
     "difficulty": 3,
@@ -6153,6 +6406,7 @@
   },
   {
     "id": "SC-9A-1-12",
+    "exam_part": null,
     "unit": "SC-9A-1",
     "concept": "velocity",
     "difficulty": 3,
@@ -6178,6 +6432,7 @@
   },
   {
     "id": "SC-9A-1-13",
+    "exam_part": null,
     "unit": "SC-9A-1",
     "concept": "newton-law",
     "difficulty": 3,
@@ -6203,6 +6458,7 @@
   },
   {
     "id": "SC-9A-1-14",
+    "exam_part": null,
     "unit": "SC-9A-1",
     "concept": "newton-law",
     "difficulty": 3,
@@ -6228,6 +6484,7 @@
   },
   {
     "id": "SC-9A-1-15",
+    "exam_part": null,
     "unit": "SC-9A-1",
     "concept": "friction",
     "difficulty": 3,
@@ -6253,6 +6510,7 @@
   },
   {
     "id": "SC-9A-1-16",
+    "exam_part": null,
     "unit": "SC-9A-1",
     "concept": "force-balance",
     "difficulty": 3,
@@ -6278,6 +6536,7 @@
   },
   {
     "id": "SC-9A-2-11",
+    "exam_part": null,
     "unit": "SC-9A-2",
     "concept": "work",
     "difficulty": 3,
@@ -6303,6 +6562,7 @@
   },
   {
     "id": "SC-9A-2-12",
+    "exam_part": null,
     "unit": "SC-9A-2",
     "concept": "power",
     "difficulty": 3,
@@ -6328,6 +6588,7 @@
   },
   {
     "id": "SC-9A-2-13",
+    "exam_part": null,
     "unit": "SC-9A-2",
     "concept": "energy-conservation",
     "difficulty": 3,
@@ -6353,6 +6614,7 @@
   },
   {
     "id": "SC-9A-2-14",
+    "exam_part": null,
     "unit": "SC-9A-2",
     "concept": "energy",
     "difficulty": 3,
@@ -6378,6 +6640,7 @@
   },
   {
     "id": "SC-9A-2-15",
+    "exam_part": null,
     "unit": "SC-9A-2",
     "concept": "simple-machine",
     "difficulty": 3,
@@ -6403,6 +6666,7 @@
   },
   {
     "id": "SC-9A-2-16",
+    "exam_part": null,
     "unit": "SC-9A-2",
     "concept": "simple-machine",
     "difficulty": 3,
@@ -6428,6 +6692,7 @@
   },
   {
     "id": "SC-9A-3-11",
+    "exam_part": null,
     "unit": "SC-9A-3",
     "concept": "circuit",
     "difficulty": 3,
@@ -6453,6 +6718,7 @@
   },
   {
     "id": "SC-9A-3-12",
+    "exam_part": null,
     "unit": "SC-9A-3",
     "concept": "ohm-law",
     "difficulty": 3,
@@ -6478,6 +6744,7 @@
   },
   {
     "id": "SC-9A-3-13",
+    "exam_part": null,
     "unit": "SC-9A-3",
     "concept": "circuit",
     "difficulty": 3,
@@ -6503,6 +6770,7 @@
   },
   {
     "id": "SC-9A-3-14",
+    "exam_part": null,
     "unit": "SC-9A-3",
     "concept": "circuit",
     "difficulty": 3,
@@ -6528,6 +6796,7 @@
   },
   {
     "id": "SC-9A-3-15",
+    "exam_part": null,
     "unit": "SC-9A-3",
     "concept": "static",
     "difficulty": 3,
@@ -6553,6 +6822,7 @@
   },
   {
     "id": "SC-9A-3-16",
+    "exam_part": null,
     "unit": "SC-9A-3",
     "concept": "static",
     "difficulty": 3,
@@ -6578,6 +6848,7 @@
   },
   {
     "id": "SC-9B-1-11",
+    "exam_part": null,
     "unit": "SC-9B-1",
     "concept": "magnetic-effect",
     "difficulty": 3,
@@ -6603,6 +6874,7 @@
   },
   {
     "id": "SC-9B-1-12",
+    "exam_part": null,
     "unit": "SC-9B-1",
     "concept": "magnetic-effect",
     "difficulty": 3,
@@ -6628,6 +6900,7 @@
   },
   {
     "id": "SC-9B-1-13",
+    "exam_part": null,
     "unit": "SC-9B-1",
     "concept": "electromagnetic-induction",
     "difficulty": 3,
@@ -6653,6 +6926,7 @@
   },
   {
     "id": "SC-9B-1-14",
+    "exam_part": null,
     "unit": "SC-9B-1",
     "concept": "electromagnetic-induction",
     "difficulty": 3,
@@ -6678,6 +6952,7 @@
   },
   {
     "id": "SC-9B-1-15",
+    "exam_part": null,
     "unit": "SC-9B-1",
     "concept": "electric-power",
     "difficulty": 3,
@@ -6703,6 +6978,7 @@
   },
   {
     "id": "SC-9B-1-16",
+    "exam_part": null,
     "unit": "SC-9B-1",
     "concept": "electricity-bill",
     "difficulty": 3,
@@ -6728,6 +7004,7 @@
   },
   {
     "id": "SC-9B-2-11",
+    "exam_part": null,
     "unit": "SC-9B-2",
     "concept": "earthquake",
     "difficulty": 3,
@@ -6753,6 +7030,7 @@
   },
   {
     "id": "SC-9B-2-12",
+    "exam_part": null,
     "unit": "SC-9B-2",
     "concept": "earthquake",
     "difficulty": 3,
@@ -6778,6 +7056,7 @@
   },
   {
     "id": "SC-9B-2-13",
+    "exam_part": null,
     "unit": "SC-9B-2",
     "concept": "plate-tectonics",
     "difficulty": 3,
@@ -6803,6 +7082,7 @@
   },
   {
     "id": "SC-9B-2-14",
+    "exam_part": null,
     "unit": "SC-9B-2",
     "concept": "plate-tectonics",
     "difficulty": 3,
@@ -6827,6 +7107,7 @@
   },
   {
     "id": "SC-9B-2-15",
+    "exam_part": null,
     "unit": "SC-9B-2",
     "concept": "stratum",
     "difficulty": 3,
@@ -6852,6 +7133,7 @@
   },
   {
     "id": "SC-9B-2-16",
+    "exam_part": null,
     "unit": "SC-9B-2",
     "concept": "stratum",
     "difficulty": 3,
@@ -6877,6 +7159,7 @@
   },
   {
     "id": "SC-9B-3-11",
+    "exam_part": null,
     "unit": "SC-9B-3",
     "concept": "front",
     "difficulty": 3,
@@ -6902,6 +7185,7 @@
   },
   {
     "id": "SC-9B-3-12",
+    "exam_part": null,
     "unit": "SC-9B-3",
     "concept": "pressure-system",
     "difficulty": 3,
@@ -6927,6 +7211,7 @@
   },
   {
     "id": "SC-9B-3-13",
+    "exam_part": null,
     "unit": "SC-9B-3",
     "concept": "pressure-system",
     "difficulty": 3,
@@ -6952,6 +7237,7 @@
   },
   {
     "id": "SC-9B-3-14",
+    "exam_part": null,
     "unit": "SC-9B-3",
     "concept": "monsoon-typhoon",
     "difficulty": 3,
@@ -6977,6 +7263,7 @@
   },
   {
     "id": "SC-9B-3-15",
+    "exam_part": null,
     "unit": "SC-9B-3",
     "concept": "earth-motion",
     "difficulty": 3,
@@ -7002,6 +7289,7 @@
   },
   {
     "id": "SC-9B-3-16",
+    "exam_part": null,
     "unit": "SC-9B-3",
     "concept": "moon-phase",
     "difficulty": 3,
@@ -7027,6 +7315,7 @@
   },
   {
     "id": "SC-7A-1-17",
+    "exam_part": null,
     "unit": "SC-7A-1",
     "concept": "cell-structure",
     "difficulty": 1,
@@ -7051,6 +7340,7 @@
   },
   {
     "id": "SC-7A-1-18",
+    "exam_part": null,
     "unit": "SC-7A-1",
     "concept": "cell-structure",
     "difficulty": 1,
@@ -7075,6 +7365,7 @@
   },
   {
     "id": "SC-7A-1-19",
+    "exam_part": null,
     "unit": "SC-7A-1",
     "concept": "microscope",
     "difficulty": 1,
@@ -7099,6 +7390,7 @@
   },
   {
     "id": "SC-7A-1-20",
+    "exam_part": null,
     "unit": "SC-7A-1",
     "concept": "organization-level",
     "difficulty": 1,
@@ -7123,6 +7415,7 @@
   },
   {
     "id": "SC-7A-1-21",
+    "exam_part": null,
     "unit": "SC-7A-1",
     "concept": "diffusion-osmosis",
     "difficulty": 1,
@@ -7147,6 +7440,7 @@
   },
   {
     "id": "SC-7A-1-22",
+    "exam_part": null,
     "unit": "SC-7A-1",
     "concept": "microscope",
     "difficulty": 2,
@@ -7172,6 +7466,7 @@
   },
   {
     "id": "SC-7A-1-23",
+    "exam_part": null,
     "unit": "SC-7A-1",
     "concept": "microscope",
     "difficulty": 2,
@@ -7196,6 +7491,7 @@
   },
   {
     "id": "SC-7A-1-24",
+    "exam_part": null,
     "unit": "SC-7A-1",
     "concept": "microscope",
     "difficulty": 2,
@@ -7220,6 +7516,7 @@
   },
   {
     "id": "SC-7A-1-25",
+    "exam_part": null,
     "unit": "SC-7A-1",
     "concept": "organization-level",
     "difficulty": 2,
@@ -7244,6 +7541,7 @@
   },
   {
     "id": "SC-7A-1-26",
+    "exam_part": null,
     "unit": "SC-7A-1",
     "concept": "cell-structure",
     "difficulty": 2,
@@ -7268,6 +7566,7 @@
   },
   {
     "id": "SC-7A-1-27",
+    "exam_part": null,
     "unit": "SC-7A-1",
     "concept": "diffusion-osmosis",
     "difficulty": 2,
@@ -7292,6 +7591,7 @@
   },
   {
     "id": "SC-7A-1-28",
+    "exam_part": null,
     "unit": "SC-7A-1",
     "concept": "diffusion-osmosis",
     "difficulty": 2,
@@ -7316,6 +7616,7 @@
   },
   {
     "id": "SC-7A-1-29",
+    "exam_part": null,
     "unit": "SC-7A-1",
     "concept": "diffusion-osmosis",
     "difficulty": 3,
@@ -7341,6 +7642,7 @@
   },
   {
     "id": "SC-7A-1-30",
+    "exam_part": null,
     "unit": "SC-7A-1",
     "concept": "organization-level",
     "difficulty": 3,
@@ -7366,6 +7668,7 @@
   },
   {
     "id": "SC-7A-2-17",
+    "exam_part": null,
     "unit": "SC-7A-2",
     "concept": "photosynthesis",
     "difficulty": 1,
@@ -7390,6 +7693,7 @@
   },
   {
     "id": "SC-7A-2-18",
+    "exam_part": null,
     "unit": "SC-7A-2",
     "concept": "photosynthesis",
     "difficulty": 1,
@@ -7414,6 +7718,7 @@
   },
   {
     "id": "SC-7A-2-19",
+    "exam_part": null,
     "unit": "SC-7A-2",
     "concept": "respiration",
     "difficulty": 1,
@@ -7438,6 +7743,7 @@
   },
   {
     "id": "SC-7A-2-20",
+    "exam_part": null,
     "unit": "SC-7A-2",
     "concept": "digestion",
     "difficulty": 1,
@@ -7462,6 +7768,7 @@
   },
   {
     "id": "SC-7A-2-21",
+    "exam_part": null,
     "unit": "SC-7A-2",
     "concept": "nutrient-test",
     "difficulty": 1,
@@ -7486,6 +7793,7 @@
   },
   {
     "id": "SC-7A-2-22",
+    "exam_part": null,
     "unit": "SC-7A-2",
     "concept": "nutrient-test",
     "difficulty": 2,
@@ -7510,6 +7818,7 @@
   },
   {
     "id": "SC-7A-2-23",
+    "exam_part": null,
     "unit": "SC-7A-2",
     "concept": "enzyme",
     "difficulty": 2,
@@ -7534,6 +7843,7 @@
   },
   {
     "id": "SC-7A-2-24",
+    "exam_part": null,
     "unit": "SC-7A-2",
     "concept": "enzyme",
     "difficulty": 2,
@@ -7558,6 +7868,7 @@
   },
   {
     "id": "SC-7A-2-25",
+    "exam_part": null,
     "unit": "SC-7A-2",
     "concept": "digestion",
     "difficulty": 2,
@@ -7582,6 +7893,7 @@
   },
   {
     "id": "SC-7A-2-26",
+    "exam_part": null,
     "unit": "SC-7A-2",
     "concept": "digestion",
     "difficulty": 2,
@@ -7606,6 +7918,7 @@
   },
   {
     "id": "SC-7A-2-27",
+    "exam_part": null,
     "unit": "SC-7A-2",
     "concept": "photosynthesis",
     "difficulty": 2,
@@ -7630,6 +7943,7 @@
   },
   {
     "id": "SC-7A-2-28",
+    "exam_part": null,
     "unit": "SC-7A-2",
     "concept": "respiration",
     "difficulty": 2,
@@ -7654,6 +7968,7 @@
   },
   {
     "id": "SC-7A-2-29",
+    "exam_part": null,
     "unit": "SC-7A-2",
     "concept": "photosynthesis",
     "difficulty": 3,
@@ -7679,6 +7994,7 @@
   },
   {
     "id": "SC-7A-2-30",
+    "exam_part": null,
     "unit": "SC-7A-2",
     "concept": "enzyme",
     "difficulty": 3,
@@ -7704,6 +8020,7 @@
   },
   {
     "id": "SC-7A-3-17",
+    "exam_part": null,
     "unit": "SC-7A-3",
     "concept": "plant-transport",
     "difficulty": 1,
@@ -7728,6 +8045,7 @@
   },
   {
     "id": "SC-7A-3-18",
+    "exam_part": null,
     "unit": "SC-7A-3",
     "concept": "plant-transport",
     "difficulty": 1,
@@ -7752,6 +8070,7 @@
   },
   {
     "id": "SC-7A-3-19",
+    "exam_part": null,
     "unit": "SC-7A-3",
     "concept": "circulation",
     "difficulty": 1,
@@ -7776,6 +8095,7 @@
   },
   {
     "id": "SC-7A-3-20",
+    "exam_part": null,
     "unit": "SC-7A-3",
     "concept": "nervous",
     "difficulty": 1,
@@ -7800,6 +8120,7 @@
   },
   {
     "id": "SC-7A-3-21",
+    "exam_part": null,
     "unit": "SC-7A-3",
     "concept": "endocrine-homeostasis",
     "difficulty": 1,
@@ -7824,6 +8145,7 @@
   },
   {
     "id": "SC-7A-3-22",
+    "exam_part": null,
     "unit": "SC-7A-3",
     "concept": "plant-transport",
     "difficulty": 2,
@@ -7848,6 +8170,7 @@
   },
   {
     "id": "SC-7A-3-23",
+    "exam_part": null,
     "unit": "SC-7A-3",
     "concept": "circulation",
     "difficulty": 2,
@@ -7872,6 +8195,7 @@
   },
   {
     "id": "SC-7A-3-24",
+    "exam_part": null,
     "unit": "SC-7A-3",
     "concept": "circulation",
     "difficulty": 2,
@@ -7896,6 +8220,7 @@
   },
   {
     "id": "SC-7A-3-25",
+    "exam_part": null,
     "unit": "SC-7A-3",
     "concept": "nervous",
     "difficulty": 2,
@@ -7920,6 +8245,7 @@
   },
   {
     "id": "SC-7A-3-26",
+    "exam_part": null,
     "unit": "SC-7A-3",
     "concept": "nervous",
     "difficulty": 2,
@@ -7944,6 +8270,7 @@
   },
   {
     "id": "SC-7A-3-27",
+    "exam_part": null,
     "unit": "SC-7A-3",
     "concept": "endocrine-homeostasis",
     "difficulty": 2,
@@ -7968,6 +8295,7 @@
   },
   {
     "id": "SC-7A-3-28",
+    "exam_part": null,
     "unit": "SC-7A-3",
     "concept": "endocrine-homeostasis",
     "difficulty": 2,
@@ -7992,6 +8320,7 @@
   },
   {
     "id": "SC-7A-3-29",
+    "exam_part": null,
     "unit": "SC-7A-3",
     "concept": "endocrine-homeostasis",
     "difficulty": 3,
@@ -8017,6 +8346,7 @@
   },
   {
     "id": "SC-7A-3-30",
+    "exam_part": null,
     "unit": "SC-7A-3",
     "concept": "nervous",
     "difficulty": 3,
@@ -8042,6 +8372,7 @@
   },
   {
     "id": "SC-7B-1-17",
+    "exam_part": null,
     "unit": "SC-7B-1",
     "concept": "reproduction",
     "difficulty": 1,
@@ -8066,6 +8397,7 @@
   },
   {
     "id": "SC-7B-1-18",
+    "exam_part": null,
     "unit": "SC-7B-1",
     "concept": "reproduction",
     "difficulty": 1,
@@ -8090,6 +8422,7 @@
   },
   {
     "id": "SC-7B-1-19",
+    "exam_part": null,
     "unit": "SC-7B-1",
     "concept": "human-genetics",
     "difficulty": 1,
@@ -8114,6 +8447,7 @@
   },
   {
     "id": "SC-7B-1-20",
+    "exam_part": null,
     "unit": "SC-7B-1",
     "concept": "mendel",
     "difficulty": 1,
@@ -8138,6 +8472,7 @@
   },
   {
     "id": "SC-7B-1-21",
+    "exam_part": null,
     "unit": "SC-7B-1",
     "concept": "mutation-biotech",
     "difficulty": 1,
@@ -8162,6 +8497,7 @@
   },
   {
     "id": "SC-7B-1-22",
+    "exam_part": null,
     "unit": "SC-7B-1",
     "concept": "reproduction",
     "difficulty": 2,
@@ -8186,6 +8522,7 @@
   },
   {
     "id": "SC-7B-1-23",
+    "exam_part": null,
     "unit": "SC-7B-1",
     "concept": "reproduction",
     "difficulty": 2,
@@ -8210,6 +8547,7 @@
   },
   {
     "id": "SC-7B-1-24",
+    "exam_part": null,
     "unit": "SC-7B-1",
     "concept": "mendel",
     "difficulty": 2,
@@ -8234,6 +8572,7 @@
   },
   {
     "id": "SC-7B-1-25",
+    "exam_part": null,
     "unit": "SC-7B-1",
     "concept": "mendel",
     "difficulty": 2,
@@ -8258,6 +8597,7 @@
   },
   {
     "id": "SC-7B-1-26",
+    "exam_part": null,
     "unit": "SC-7B-1",
     "concept": "human-genetics",
     "difficulty": 2,
@@ -8282,6 +8622,7 @@
   },
   {
     "id": "SC-7B-1-27",
+    "exam_part": null,
     "unit": "SC-7B-1",
     "concept": "human-genetics",
     "difficulty": 2,
@@ -8306,6 +8647,7 @@
   },
   {
     "id": "SC-7B-1-28",
+    "exam_part": null,
     "unit": "SC-7B-1",
     "concept": "mutation-biotech",
     "difficulty": 2,
@@ -8330,6 +8672,7 @@
   },
   {
     "id": "SC-7B-1-29",
+    "exam_part": null,
     "unit": "SC-7B-1",
     "concept": "mendel",
     "difficulty": 3,
@@ -8355,6 +8698,7 @@
   },
   {
     "id": "SC-7B-1-30",
+    "exam_part": null,
     "unit": "SC-7B-1",
     "concept": "human-genetics",
     "difficulty": 3,
@@ -8380,6 +8724,7 @@
   },
   {
     "id": "SC-7B-2-17",
+    "exam_part": null,
     "unit": "SC-7B-2",
     "concept": "evolution",
     "difficulty": 1,
@@ -8404,6 +8749,7 @@
   },
   {
     "id": "SC-7B-2-18",
+    "exam_part": null,
     "unit": "SC-7B-2",
     "concept": "classification",
     "difficulty": 1,
@@ -8428,6 +8774,7 @@
   },
   {
     "id": "SC-7B-2-19",
+    "exam_part": null,
     "unit": "SC-7B-2",
     "concept": "kingdoms",
     "difficulty": 1,
@@ -8452,6 +8799,7 @@
   },
   {
     "id": "SC-7B-2-20",
+    "exam_part": null,
     "unit": "SC-7B-2",
     "concept": "classification",
     "difficulty": 1,
@@ -8476,6 +8824,7 @@
   },
   {
     "id": "SC-7B-2-21",
+    "exam_part": null,
     "unit": "SC-7B-2",
     "concept": "kingdoms",
     "difficulty": 1,
@@ -8500,6 +8849,7 @@
   },
   {
     "id": "SC-7B-2-22",
+    "exam_part": null,
     "unit": "SC-7B-2",
     "concept": "evolution",
     "difficulty": 2,
@@ -8524,6 +8874,7 @@
   },
   {
     "id": "SC-7B-2-23",
+    "exam_part": null,
     "unit": "SC-7B-2",
     "concept": "evolution",
     "difficulty": 2,
@@ -8548,6 +8899,7 @@
   },
   {
     "id": "SC-7B-2-24",
+    "exam_part": null,
     "unit": "SC-7B-2",
     "concept": "evolution",
     "difficulty": 2,
@@ -8572,6 +8924,7 @@
   },
   {
     "id": "SC-7B-2-25",
+    "exam_part": null,
     "unit": "SC-7B-2",
     "concept": "classification",
     "difficulty": 2,
@@ -8596,6 +8949,7 @@
   },
   {
     "id": "SC-7B-2-26",
+    "exam_part": null,
     "unit": "SC-7B-2",
     "concept": "classification",
     "difficulty": 2,
@@ -8620,6 +8974,7 @@
   },
   {
     "id": "SC-7B-2-27",
+    "exam_part": null,
     "unit": "SC-7B-2",
     "concept": "classification",
     "difficulty": 2,
@@ -8644,6 +8999,7 @@
   },
   {
     "id": "SC-7B-2-28",
+    "exam_part": null,
     "unit": "SC-7B-2",
     "concept": "kingdoms",
     "difficulty": 2,
@@ -8669,6 +9025,7 @@
   },
   {
     "id": "SC-7B-2-29",
+    "exam_part": null,
     "unit": "SC-7B-2",
     "concept": "classification",
     "difficulty": 3,
@@ -8694,6 +9051,7 @@
   },
   {
     "id": "SC-7B-2-30",
+    "exam_part": null,
     "unit": "SC-7B-2",
     "concept": "evolution",
     "difficulty": 3,
@@ -8719,6 +9077,7 @@
   },
   {
     "id": "SC-7B-3-17",
+    "exam_part": null,
     "unit": "SC-7B-3",
     "concept": "population-community",
     "difficulty": 1,
@@ -8743,6 +9102,7 @@
   },
   {
     "id": "SC-7B-3-18",
+    "exam_part": null,
     "unit": "SC-7B-3",
     "concept": "food-web",
     "difficulty": 1,
@@ -8767,6 +9127,7 @@
   },
   {
     "id": "SC-7B-3-19",
+    "exam_part": null,
     "unit": "SC-7B-3",
     "concept": "energy-flow",
     "difficulty": 1,
@@ -8791,6 +9152,7 @@
   },
   {
     "id": "SC-7B-3-20",
+    "exam_part": null,
     "unit": "SC-7B-3",
     "concept": "ecosystem-conservation",
     "difficulty": 1,
@@ -8815,6 +9177,7 @@
   },
   {
     "id": "SC-7B-3-21",
+    "exam_part": null,
     "unit": "SC-7B-3",
     "concept": "matter-cycle",
     "difficulty": 1,
@@ -8839,6 +9202,7 @@
   },
   {
     "id": "SC-7B-3-22",
+    "exam_part": null,
     "unit": "SC-7B-3",
     "concept": "population-community",
     "difficulty": 2,
@@ -8863,6 +9227,7 @@
   },
   {
     "id": "SC-7B-3-23",
+    "exam_part": null,
     "unit": "SC-7B-3",
     "concept": "population-community",
     "difficulty": 2,
@@ -8887,6 +9252,7 @@
   },
   {
     "id": "SC-7B-3-24",
+    "exam_part": null,
     "unit": "SC-7B-3",
     "concept": "food-web",
     "difficulty": 2,
@@ -8911,6 +9277,7 @@
   },
   {
     "id": "SC-7B-3-25",
+    "exam_part": null,
     "unit": "SC-7B-3",
     "concept": "energy-flow",
     "difficulty": 2,
@@ -8935,6 +9302,7 @@
   },
   {
     "id": "SC-7B-3-26",
+    "exam_part": null,
     "unit": "SC-7B-3",
     "concept": "energy-flow",
     "difficulty": 2,
@@ -8959,6 +9327,7 @@
   },
   {
     "id": "SC-7B-3-27",
+    "exam_part": null,
     "unit": "SC-7B-3",
     "concept": "matter-cycle",
     "difficulty": 2,
@@ -8983,6 +9352,7 @@
   },
   {
     "id": "SC-7B-3-28",
+    "exam_part": null,
     "unit": "SC-7B-3",
     "concept": "ecosystem-conservation",
     "difficulty": 2,
@@ -9007,6 +9377,7 @@
   },
   {
     "id": "SC-7B-3-29",
+    "exam_part": null,
     "unit": "SC-7B-3",
     "concept": "population-community",
     "difficulty": 3,
@@ -9032,6 +9403,7 @@
   },
   {
     "id": "SC-7B-3-30",
+    "exam_part": null,
     "unit": "SC-7B-3",
     "concept": "matter-cycle",
     "difficulty": 3,
@@ -9057,6 +9429,7 @@
   },
   {
     "id": "SC-8A-1-17",
+    "exam_part": null,
     "unit": "SC-8A-1",
     "concept": "measurement",
     "difficulty": 1,
@@ -9081,6 +9454,7 @@
   },
   {
     "id": "SC-8A-1-18",
+    "exam_part": null,
     "unit": "SC-8A-1",
     "concept": "density",
     "difficulty": 1,
@@ -9105,6 +9479,7 @@
   },
   {
     "id": "SC-8A-1-19",
+    "exam_part": null,
     "unit": "SC-8A-1",
     "concept": "physical-chemical-property",
     "difficulty": 1,
@@ -9129,6 +9504,7 @@
   },
   {
     "id": "SC-8A-1-20",
+    "exam_part": null,
     "unit": "SC-8A-1",
     "concept": "concentration",
     "difficulty": 1,
@@ -9153,6 +9529,7 @@
   },
   {
     "id": "SC-8A-1-21",
+    "exam_part": null,
     "unit": "SC-8A-1",
     "concept": "states-mixture",
     "difficulty": 1,
@@ -9177,6 +9554,7 @@
   },
   {
     "id": "SC-8A-1-22",
+    "exam_part": null,
     "unit": "SC-8A-1",
     "concept": "measurement",
     "difficulty": 2,
@@ -9201,6 +9579,7 @@
   },
   {
     "id": "SC-8A-1-23",
+    "exam_part": null,
     "unit": "SC-8A-1",
     "concept": "density",
     "difficulty": 2,
@@ -9225,6 +9604,7 @@
   },
   {
     "id": "SC-8A-1-24",
+    "exam_part": null,
     "unit": "SC-8A-1",
     "concept": "density",
     "difficulty": 2,
@@ -9249,6 +9629,7 @@
   },
   {
     "id": "SC-8A-1-25",
+    "exam_part": null,
     "unit": "SC-8A-1",
     "concept": "concentration",
     "difficulty": 2,
@@ -9273,6 +9654,7 @@
   },
   {
     "id": "SC-8A-1-26",
+    "exam_part": null,
     "unit": "SC-8A-1",
     "concept": "concentration",
     "difficulty": 2,
@@ -9297,6 +9679,7 @@
   },
   {
     "id": "SC-8A-1-27",
+    "exam_part": null,
     "unit": "SC-8A-1",
     "concept": "states-mixture",
     "difficulty": 2,
@@ -9321,6 +9704,7 @@
   },
   {
     "id": "SC-8A-1-28",
+    "exam_part": null,
     "unit": "SC-8A-1",
     "concept": "physical-chemical-property",
     "difficulty": 2,
@@ -9345,6 +9729,7 @@
   },
   {
     "id": "SC-8A-1-29",
+    "exam_part": null,
     "unit": "SC-8A-1",
     "concept": "density",
     "difficulty": 3,
@@ -9370,6 +9755,7 @@
   },
   {
     "id": "SC-8A-1-30",
+    "exam_part": null,
     "unit": "SC-8A-1",
     "concept": "concentration",
     "difficulty": 3,
@@ -9395,6 +9781,7 @@
   },
   {
     "id": "SC-8A-2-17",
+    "exam_part": null,
     "unit": "SC-8A-2",
     "concept": "wave-speed",
     "difficulty": 1,
@@ -9419,6 +9806,7 @@
   },
   {
     "id": "SC-8A-2-18",
+    "exam_part": null,
     "unit": "SC-8A-2",
     "concept": "sound",
     "difficulty": 1,
@@ -9443,6 +9831,7 @@
   },
   {
     "id": "SC-8A-2-19",
+    "exam_part": null,
     "unit": "SC-8A-2",
     "concept": "reflection-refraction",
     "difficulty": 1,
@@ -9467,6 +9856,7 @@
   },
   {
     "id": "SC-8A-2-20",
+    "exam_part": null,
     "unit": "SC-8A-2",
     "concept": "lens-mirror",
     "difficulty": 1,
@@ -9491,6 +9881,7 @@
   },
   {
     "id": "SC-8A-2-21",
+    "exam_part": null,
     "unit": "SC-8A-2",
     "concept": "sound",
     "difficulty": 1,
@@ -9515,6 +9906,7 @@
   },
   {
     "id": "SC-8A-2-22",
+    "exam_part": null,
     "unit": "SC-8A-2",
     "concept": "wave-speed",
     "difficulty": 2,
@@ -9539,6 +9931,7 @@
   },
   {
     "id": "SC-8A-2-23",
+    "exam_part": null,
     "unit": "SC-8A-2",
     "concept": "wave-speed",
     "difficulty": 2,
@@ -9563,6 +9956,7 @@
   },
   {
     "id": "SC-8A-2-24",
+    "exam_part": null,
     "unit": "SC-8A-2",
     "concept": "sound",
     "difficulty": 2,
@@ -9587,6 +9981,7 @@
   },
   {
     "id": "SC-8A-2-25",
+    "exam_part": null,
     "unit": "SC-8A-2",
     "concept": "sound",
     "difficulty": 2,
@@ -9611,6 +10006,7 @@
   },
   {
     "id": "SC-8A-2-26",
+    "exam_part": null,
     "unit": "SC-8A-2",
     "concept": "reflection-refraction",
     "difficulty": 2,
@@ -9635,6 +10031,7 @@
   },
   {
     "id": "SC-8A-2-27",
+    "exam_part": null,
     "unit": "SC-8A-2",
     "concept": "lens-mirror",
     "difficulty": 2,
@@ -9659,6 +10056,7 @@
   },
   {
     "id": "SC-8A-2-28",
+    "exam_part": null,
     "unit": "SC-8A-2",
     "concept": "reflection-refraction",
     "difficulty": 2,
@@ -9683,6 +10081,7 @@
   },
   {
     "id": "SC-8A-2-29",
+    "exam_part": null,
     "unit": "SC-8A-2",
     "concept": "lens-mirror",
     "difficulty": 3,
@@ -9708,6 +10107,7 @@
   },
   {
     "id": "SC-8A-2-30",
+    "exam_part": null,
     "unit": "SC-8A-2",
     "concept": "sound",
     "difficulty": 3,
@@ -9733,6 +10133,7 @@
   },
   {
     "id": "SC-8A-3-17",
+    "exam_part": null,
     "unit": "SC-8A-3",
     "concept": "thermometer",
     "difficulty": 1,
@@ -9757,6 +10158,7 @@
   },
   {
     "id": "SC-8A-3-18",
+    "exam_part": null,
     "unit": "SC-8A-3",
     "concept": "specific-heat",
     "difficulty": 1,
@@ -9781,6 +10183,7 @@
   },
   {
     "id": "SC-8A-3-19",
+    "exam_part": null,
     "unit": "SC-8A-3",
     "concept": "heat-transfer",
     "difficulty": 1,
@@ -9805,6 +10208,7 @@
   },
   {
     "id": "SC-8A-3-20",
+    "exam_part": null,
     "unit": "SC-8A-3",
     "concept": "thermal-equilibrium",
     "difficulty": 1,
@@ -9829,6 +10233,7 @@
   },
   {
     "id": "SC-8A-3-21",
+    "exam_part": null,
     "unit": "SC-8A-3",
     "concept": "heat-transfer",
     "difficulty": 1,
@@ -9853,6 +10258,7 @@
   },
   {
     "id": "SC-8A-3-22",
+    "exam_part": null,
     "unit": "SC-8A-3",
     "concept": "thermometer",
     "difficulty": 2,
@@ -9877,6 +10283,7 @@
   },
   {
     "id": "SC-8A-3-23",
+    "exam_part": null,
     "unit": "SC-8A-3",
     "concept": "specific-heat",
     "difficulty": 2,
@@ -9901,6 +10308,7 @@
   },
   {
     "id": "SC-8A-3-24",
+    "exam_part": null,
     "unit": "SC-8A-3",
     "concept": "specific-heat",
     "difficulty": 2,
@@ -9925,6 +10333,7 @@
   },
   {
     "id": "SC-8A-3-25",
+    "exam_part": null,
     "unit": "SC-8A-3",
     "concept": "thermal-equilibrium",
     "difficulty": 2,
@@ -9949,6 +10358,7 @@
   },
   {
     "id": "SC-8A-3-26",
+    "exam_part": null,
     "unit": "SC-8A-3",
     "concept": "heat-transfer",
     "difficulty": 2,
@@ -9973,6 +10383,7 @@
   },
   {
     "id": "SC-8A-3-27",
+    "exam_part": null,
     "unit": "SC-8A-3",
     "concept": "thermal-equilibrium",
     "difficulty": 2,
@@ -9997,6 +10408,7 @@
   },
   {
     "id": "SC-8A-3-28",
+    "exam_part": null,
     "unit": "SC-8A-3",
     "concept": "thermometer",
     "difficulty": 2,
@@ -10021,6 +10433,7 @@
   },
   {
     "id": "SC-8A-3-29",
+    "exam_part": null,
     "unit": "SC-8A-3",
     "concept": "thermal-equilibrium",
     "difficulty": 3,
@@ -10046,6 +10459,7 @@
   },
   {
     "id": "SC-8A-3-30",
+    "exam_part": null,
     "unit": "SC-8A-3",
     "concept": "heat-transfer",
     "difficulty": 3,
@@ -10071,6 +10485,7 @@
   },
   {
     "id": "SC-8B-1-17",
+    "exam_part": null,
     "unit": "SC-8B-1",
     "concept": "mass-conservation",
     "difficulty": 1,
@@ -10095,6 +10510,7 @@
   },
   {
     "id": "SC-8B-1-18",
+    "exam_part": null,
     "unit": "SC-8B-1",
     "concept": "periodic-table",
     "difficulty": 1,
@@ -10119,6 +10535,7 @@
   },
   {
     "id": "SC-8B-1-19",
+    "exam_part": null,
     "unit": "SC-8B-1",
     "concept": "mole",
     "difficulty": 1,
@@ -10143,6 +10560,7 @@
   },
   {
     "id": "SC-8B-1-20",
+    "exam_part": null,
     "unit": "SC-8B-1",
     "concept": "balancing",
     "difficulty": 1,
@@ -10167,6 +10585,7 @@
   },
   {
     "id": "SC-8B-1-21",
+    "exam_part": null,
     "unit": "SC-8B-1",
     "concept": "mass-conservation",
     "difficulty": 1,
@@ -10191,6 +10610,7 @@
   },
   {
     "id": "SC-8B-1-22",
+    "exam_part": null,
     "unit": "SC-8B-1",
     "concept": "mole",
     "difficulty": 2,
@@ -10215,6 +10635,7 @@
   },
   {
     "id": "SC-8B-1-23",
+    "exam_part": null,
     "unit": "SC-8B-1",
     "concept": "balancing",
     "difficulty": 2,
@@ -10240,6 +10661,7 @@
   },
   {
     "id": "SC-8B-1-24",
+    "exam_part": null,
     "unit": "SC-8B-1",
     "concept": "mass-conservation",
     "difficulty": 2,
@@ -10265,6 +10687,7 @@
   },
   {
     "id": "SC-8B-1-25",
+    "exam_part": null,
     "unit": "SC-8B-1",
     "concept": "mole",
     "difficulty": 2,
@@ -10289,6 +10712,7 @@
   },
   {
     "id": "SC-8B-1-26",
+    "exam_part": null,
     "unit": "SC-8B-1",
     "concept": "periodic-table",
     "difficulty": 2,
@@ -10313,6 +10737,7 @@
   },
   {
     "id": "SC-8B-1-27",
+    "exam_part": null,
     "unit": "SC-8B-1",
     "concept": "periodic-table",
     "difficulty": 2,
@@ -10337,6 +10762,7 @@
   },
   {
     "id": "SC-8B-1-28",
+    "exam_part": null,
     "unit": "SC-8B-1",
     "concept": "balancing",
     "difficulty": 2,
@@ -10361,6 +10787,7 @@
   },
   {
     "id": "SC-8B-1-29",
+    "exam_part": null,
     "unit": "SC-8B-1",
     "concept": "mole",
     "difficulty": 3,
@@ -10386,6 +10813,7 @@
   },
   {
     "id": "SC-8B-1-30",
+    "exam_part": null,
     "unit": "SC-8B-1",
     "concept": "mass-conservation",
     "difficulty": 3,
@@ -10411,6 +10839,7 @@
   },
   {
     "id": "SC-8B-2-17",
+    "exam_part": null,
     "unit": "SC-8B-2",
     "concept": "electrolyte",
     "difficulty": 1,
@@ -10435,6 +10864,7 @@
   },
   {
     "id": "SC-8B-2-18",
+    "exam_part": null,
     "unit": "SC-8B-2",
     "concept": "acid-base-property",
     "difficulty": 1,
@@ -10459,6 +10889,7 @@
   },
   {
     "id": "SC-8B-2-19",
+    "exam_part": null,
     "unit": "SC-8B-2",
     "concept": "ph",
     "difficulty": 1,
@@ -10483,6 +10914,7 @@
   },
   {
     "id": "SC-8B-2-20",
+    "exam_part": null,
     "unit": "SC-8B-2",
     "concept": "neutralization",
     "difficulty": 1,
@@ -10507,6 +10939,7 @@
   },
   {
     "id": "SC-8B-2-21",
+    "exam_part": null,
     "unit": "SC-8B-2",
     "concept": "salt",
     "difficulty": 1,
@@ -10531,6 +10964,7 @@
   },
   {
     "id": "SC-8B-2-22",
+    "exam_part": null,
     "unit": "SC-8B-2",
     "concept": "electrolyte",
     "difficulty": 2,
@@ -10555,6 +10989,7 @@
   },
   {
     "id": "SC-8B-2-23",
+    "exam_part": null,
     "unit": "SC-8B-2",
     "concept": "acid-base-property",
     "difficulty": 2,
@@ -10579,6 +11014,7 @@
   },
   {
     "id": "SC-8B-2-24",
+    "exam_part": null,
     "unit": "SC-8B-2",
     "concept": "ph",
     "difficulty": 2,
@@ -10604,6 +11040,7 @@
   },
   {
     "id": "SC-8B-2-25",
+    "exam_part": null,
     "unit": "SC-8B-2",
     "concept": "neutralization",
     "difficulty": 2,
@@ -10628,6 +11065,7 @@
   },
   {
     "id": "SC-8B-2-26",
+    "exam_part": null,
     "unit": "SC-8B-2",
     "concept": "salt",
     "difficulty": 2,
@@ -10652,6 +11090,7 @@
   },
   {
     "id": "SC-8B-2-27",
+    "exam_part": null,
     "unit": "SC-8B-2",
     "concept": "ph",
     "difficulty": 2,
@@ -10677,6 +11116,7 @@
   },
   {
     "id": "SC-8B-2-28",
+    "exam_part": null,
     "unit": "SC-8B-2",
     "concept": "electrolyte",
     "difficulty": 2,
@@ -10701,6 +11141,7 @@
   },
   {
     "id": "SC-8B-2-29",
+    "exam_part": null,
     "unit": "SC-8B-2",
     "concept": "neutralization",
     "difficulty": 3,
@@ -10726,6 +11167,7 @@
   },
   {
     "id": "SC-8B-2-30",
+    "exam_part": null,
     "unit": "SC-8B-2",
     "concept": "electrolyte",
     "difficulty": 3,
@@ -10751,6 +11193,7 @@
   },
   {
     "id": "SC-8B-3-17",
+    "exam_part": null,
     "unit": "SC-8B-3",
     "concept": "redox",
     "difficulty": 1,
@@ -10775,6 +11218,7 @@
   },
   {
     "id": "SC-8B-3-18",
+    "exam_part": null,
     "unit": "SC-8B-3",
     "concept": "reaction-rate",
     "difficulty": 1,
@@ -10799,6 +11243,7 @@
   },
   {
     "id": "SC-8B-3-19",
+    "exam_part": null,
     "unit": "SC-8B-3",
     "concept": "organic",
     "difficulty": 1,
@@ -10823,6 +11268,7 @@
   },
   {
     "id": "SC-8B-3-20",
+    "exam_part": null,
     "unit": "SC-8B-3",
     "concept": "metal-activity",
     "difficulty": 1,
@@ -10847,6 +11293,7 @@
   },
   {
     "id": "SC-8B-3-21",
+    "exam_part": null,
     "unit": "SC-8B-3",
     "concept": "equilibrium",
     "difficulty": 1,
@@ -10871,6 +11318,7 @@
   },
   {
     "id": "SC-8B-3-22",
+    "exam_part": null,
     "unit": "SC-8B-3",
     "concept": "redox",
     "difficulty": 2,
@@ -10895,6 +11343,7 @@
   },
   {
     "id": "SC-8B-3-23",
+    "exam_part": null,
     "unit": "SC-8B-3",
     "concept": "metal-activity",
     "difficulty": 2,
@@ -10920,6 +11369,7 @@
   },
   {
     "id": "SC-8B-3-24",
+    "exam_part": null,
     "unit": "SC-8B-3",
     "concept": "reaction-rate",
     "difficulty": 2,
@@ -10944,6 +11394,7 @@
   },
   {
     "id": "SC-8B-3-25",
+    "exam_part": null,
     "unit": "SC-8B-3",
     "concept": "equilibrium",
     "difficulty": 2,
@@ -10969,6 +11420,7 @@
   },
   {
     "id": "SC-8B-3-26",
+    "exam_part": null,
     "unit": "SC-8B-3",
     "concept": "organic",
     "difficulty": 2,
@@ -10993,6 +11445,7 @@
   },
   {
     "id": "SC-8B-3-27",
+    "exam_part": null,
     "unit": "SC-8B-3",
     "concept": "redox",
     "difficulty": 2,
@@ -11017,6 +11470,7 @@
   },
   {
     "id": "SC-8B-3-28",
+    "exam_part": null,
     "unit": "SC-8B-3",
     "concept": "metal-activity",
     "difficulty": 2,
@@ -11041,6 +11495,7 @@
   },
   {
     "id": "SC-8B-3-29",
+    "exam_part": null,
     "unit": "SC-8B-3",
     "concept": "reaction-rate",
     "difficulty": 3,
@@ -11066,6 +11521,7 @@
   },
   {
     "id": "SC-8B-3-30",
+    "exam_part": null,
     "unit": "SC-8B-3",
     "concept": "redox",
     "difficulty": 3,
@@ -11091,6 +11547,7 @@
   },
   {
     "id": "SC-9A-1-17",
+    "exam_part": null,
     "unit": "SC-9A-1",
     "concept": "velocity",
     "difficulty": 1,
@@ -11115,6 +11572,7 @@
   },
   {
     "id": "SC-9A-1-18",
+    "exam_part": null,
     "unit": "SC-9A-1",
     "concept": "newton-law",
     "difficulty": 1,
@@ -11139,6 +11597,7 @@
   },
   {
     "id": "SC-9A-1-19",
+    "exam_part": null,
     "unit": "SC-9A-1",
     "concept": "friction",
     "difficulty": 1,
@@ -11163,6 +11622,7 @@
   },
   {
     "id": "SC-9A-1-20",
+    "exam_part": null,
     "unit": "SC-9A-1",
     "concept": "acceleration",
     "difficulty": 1,
@@ -11187,6 +11647,7 @@
   },
   {
     "id": "SC-9A-1-21",
+    "exam_part": null,
     "unit": "SC-9A-1",
     "concept": "force-balance",
     "difficulty": 1,
@@ -11211,6 +11672,7 @@
   },
   {
     "id": "SC-9A-1-22",
+    "exam_part": null,
     "unit": "SC-9A-1",
     "concept": "velocity",
     "difficulty": 2,
@@ -11235,6 +11697,7 @@
   },
   {
     "id": "SC-9A-1-23",
+    "exam_part": null,
     "unit": "SC-9A-1",
     "concept": "acceleration",
     "difficulty": 2,
@@ -11259,6 +11722,7 @@
   },
   {
     "id": "SC-9A-1-24",
+    "exam_part": null,
     "unit": "SC-9A-1",
     "concept": "newton-law",
     "difficulty": 2,
@@ -11283,6 +11747,7 @@
   },
   {
     "id": "SC-9A-1-25",
+    "exam_part": null,
     "unit": "SC-9A-1",
     "concept": "friction",
     "difficulty": 2,
@@ -11308,6 +11773,7 @@
   },
   {
     "id": "SC-9A-1-26",
+    "exam_part": null,
     "unit": "SC-9A-1",
     "concept": "force-balance",
     "difficulty": 2,
@@ -11332,6 +11798,7 @@
   },
   {
     "id": "SC-9A-1-27",
+    "exam_part": null,
     "unit": "SC-9A-1",
     "concept": "velocity",
     "difficulty": 2,
@@ -11356,6 +11823,7 @@
   },
   {
     "id": "SC-9A-1-28",
+    "exam_part": null,
     "unit": "SC-9A-1",
     "concept": "newton-law",
     "difficulty": 2,
@@ -11380,6 +11848,7 @@
   },
   {
     "id": "SC-9A-1-29",
+    "exam_part": null,
     "unit": "SC-9A-1",
     "concept": "friction",
     "difficulty": 3,
@@ -11405,6 +11874,7 @@
   },
   {
     "id": "SC-9A-1-30",
+    "exam_part": null,
     "unit": "SC-9A-1",
     "concept": "force-balance",
     "difficulty": 3,
@@ -11430,6 +11900,7 @@
   },
   {
     "id": "SC-9A-2-17",
+    "exam_part": null,
     "unit": "SC-9A-2",
     "concept": "work",
     "difficulty": 1,
@@ -11454,6 +11925,7 @@
   },
   {
     "id": "SC-9A-2-18",
+    "exam_part": null,
     "unit": "SC-9A-2",
     "concept": "energy",
     "difficulty": 1,
@@ -11478,6 +11950,7 @@
   },
   {
     "id": "SC-9A-2-19",
+    "exam_part": null,
     "unit": "SC-9A-2",
     "concept": "simple-machine",
     "difficulty": 1,
@@ -11502,6 +11975,7 @@
   },
   {
     "id": "SC-9A-2-20",
+    "exam_part": null,
     "unit": "SC-9A-2",
     "concept": "power",
     "difficulty": 1,
@@ -11526,6 +12000,7 @@
   },
   {
     "id": "SC-9A-2-21",
+    "exam_part": null,
     "unit": "SC-9A-2",
     "concept": "energy-conservation",
     "difficulty": 1,
@@ -11550,6 +12025,7 @@
   },
   {
     "id": "SC-9A-2-22",
+    "exam_part": null,
     "unit": "SC-9A-2",
     "concept": "work",
     "difficulty": 2,
@@ -11574,6 +12050,7 @@
   },
   {
     "id": "SC-9A-2-23",
+    "exam_part": null,
     "unit": "SC-9A-2",
     "concept": "power",
     "difficulty": 2,
@@ -11598,6 +12075,7 @@
   },
   {
     "id": "SC-9A-2-24",
+    "exam_part": null,
     "unit": "SC-9A-2",
     "concept": "energy",
     "difficulty": 2,
@@ -11622,6 +12100,7 @@
   },
   {
     "id": "SC-9A-2-25",
+    "exam_part": null,
     "unit": "SC-9A-2",
     "concept": "energy-conservation",
     "difficulty": 2,
@@ -11646,6 +12125,7 @@
   },
   {
     "id": "SC-9A-2-26",
+    "exam_part": null,
     "unit": "SC-9A-2",
     "concept": "simple-machine",
     "difficulty": 2,
@@ -11670,6 +12150,7 @@
   },
   {
     "id": "SC-9A-2-27",
+    "exam_part": null,
     "unit": "SC-9A-2",
     "concept": "simple-machine",
     "difficulty": 2,
@@ -11694,6 +12175,7 @@
   },
   {
     "id": "SC-9A-2-28",
+    "exam_part": null,
     "unit": "SC-9A-2",
     "concept": "work",
     "difficulty": 2,
@@ -11718,6 +12200,7 @@
   },
   {
     "id": "SC-9A-2-29",
+    "exam_part": null,
     "unit": "SC-9A-2",
     "concept": "energy-conservation",
     "difficulty": 3,
@@ -11743,6 +12226,7 @@
   },
   {
     "id": "SC-9A-2-30",
+    "exam_part": null,
     "unit": "SC-9A-2",
     "concept": "simple-machine",
     "difficulty": 3,
@@ -11768,6 +12252,7 @@
   },
   {
     "id": "SC-9A-3-17",
+    "exam_part": null,
     "unit": "SC-9A-3",
     "concept": "static",
     "difficulty": 1,
@@ -11792,6 +12277,7 @@
   },
   {
     "id": "SC-9A-3-18",
+    "exam_part": null,
     "unit": "SC-9A-3",
     "concept": "current",
     "difficulty": 1,
@@ -11816,6 +12302,7 @@
   },
   {
     "id": "SC-9A-3-19",
+    "exam_part": null,
     "unit": "SC-9A-3",
     "concept": "ohm-law",
     "difficulty": 1,
@@ -11840,6 +12327,7 @@
   },
   {
     "id": "SC-9A-3-20",
+    "exam_part": null,
     "unit": "SC-9A-3",
     "concept": "circuit",
     "difficulty": 1,
@@ -11864,6 +12352,7 @@
   },
   {
     "id": "SC-9A-3-21",
+    "exam_part": null,
     "unit": "SC-9A-3",
     "concept": "resistance-factor",
     "difficulty": 1,
@@ -11888,6 +12377,7 @@
   },
   {
     "id": "SC-9A-3-22",
+    "exam_part": null,
     "unit": "SC-9A-3",
     "concept": "static",
     "difficulty": 2,
@@ -11912,6 +12402,7 @@
   },
   {
     "id": "SC-9A-3-23",
+    "exam_part": null,
     "unit": "SC-9A-3",
     "concept": "current",
     "difficulty": 2,
@@ -11936,6 +12427,7 @@
   },
   {
     "id": "SC-9A-3-24",
+    "exam_part": null,
     "unit": "SC-9A-3",
     "concept": "ohm-law",
     "difficulty": 2,
@@ -11960,6 +12452,7 @@
   },
   {
     "id": "SC-9A-3-25",
+    "exam_part": null,
     "unit": "SC-9A-3",
     "concept": "circuit",
     "difficulty": 2,
@@ -11984,6 +12477,7 @@
   },
   {
     "id": "SC-9A-3-26",
+    "exam_part": null,
     "unit": "SC-9A-3",
     "concept": "circuit",
     "difficulty": 2,
@@ -12008,6 +12502,7 @@
   },
   {
     "id": "SC-9A-3-27",
+    "exam_part": null,
     "unit": "SC-9A-3",
     "concept": "resistance-factor",
     "difficulty": 2,
@@ -12032,6 +12527,7 @@
   },
   {
     "id": "SC-9A-3-28",
+    "exam_part": null,
     "unit": "SC-9A-3",
     "concept": "ohm-law",
     "difficulty": 2,
@@ -12056,6 +12552,7 @@
   },
   {
     "id": "SC-9A-3-29",
+    "exam_part": null,
     "unit": "SC-9A-3",
     "concept": "circuit",
     "difficulty": 3,
@@ -12080,6 +12577,7 @@
   },
   {
     "id": "SC-9A-3-30",
+    "exam_part": null,
     "unit": "SC-9A-3",
     "concept": "ohm-law",
     "difficulty": 3,
@@ -12104,6 +12602,7 @@
   },
   {
     "id": "SC-9B-1-17",
+    "exam_part": null,
     "unit": "SC-9B-1",
     "concept": "magnetic-effect",
     "difficulty": 1,
@@ -12128,6 +12627,7 @@
   },
   {
     "id": "SC-9B-1-18",
+    "exam_part": null,
     "unit": "SC-9B-1",
     "concept": "electromagnetic-induction",
     "difficulty": 1,
@@ -12152,6 +12652,7 @@
   },
   {
     "id": "SC-9B-1-19",
+    "exam_part": null,
     "unit": "SC-9B-1",
     "concept": "electric-power",
     "difficulty": 1,
@@ -12176,6 +12677,7 @@
   },
   {
     "id": "SC-9B-1-20",
+    "exam_part": null,
     "unit": "SC-9B-1",
     "concept": "electricity-bill",
     "difficulty": 1,
@@ -12200,6 +12702,7 @@
   },
   {
     "id": "SC-9B-1-21",
+    "exam_part": null,
     "unit": "SC-9B-1",
     "concept": "electric-safety",
     "difficulty": 1,
@@ -12224,6 +12727,7 @@
   },
   {
     "id": "SC-9B-1-22",
+    "exam_part": null,
     "unit": "SC-9B-1",
     "concept": "magnetic-effect",
     "difficulty": 2,
@@ -12248,6 +12752,7 @@
   },
   {
     "id": "SC-9B-1-23",
+    "exam_part": null,
     "unit": "SC-9B-1",
     "concept": "electromagnetic-induction",
     "difficulty": 2,
@@ -12272,6 +12777,7 @@
   },
   {
     "id": "SC-9B-1-24",
+    "exam_part": null,
     "unit": "SC-9B-1",
     "concept": "electric-power",
     "difficulty": 2,
@@ -12296,6 +12802,7 @@
   },
   {
     "id": "SC-9B-1-25",
+    "exam_part": null,
     "unit": "SC-9B-1",
     "concept": "electricity-bill",
     "difficulty": 2,
@@ -12320,6 +12827,7 @@
   },
   {
     "id": "SC-9B-1-26",
+    "exam_part": null,
     "unit": "SC-9B-1",
     "concept": "electric-safety",
     "difficulty": 2,
@@ -12344,6 +12852,7 @@
   },
   {
     "id": "SC-9B-1-27",
+    "exam_part": null,
     "unit": "SC-9B-1",
     "concept": "electric-power",
     "difficulty": 2,
@@ -12368,6 +12877,7 @@
   },
   {
     "id": "SC-9B-1-28",
+    "exam_part": null,
     "unit": "SC-9B-1",
     "concept": "magnetic-effect",
     "difficulty": 2,
@@ -12392,6 +12902,7 @@
   },
   {
     "id": "SC-9B-1-29",
+    "exam_part": null,
     "unit": "SC-9B-1",
     "concept": "electricity-bill",
     "difficulty": 3,
@@ -12416,6 +12927,7 @@
   },
   {
     "id": "SC-9B-1-30",
+    "exam_part": null,
     "unit": "SC-9B-1",
     "concept": "electromagnetic-induction",
     "difficulty": 3,
@@ -12440,6 +12952,7 @@
   },
   {
     "id": "SC-9B-2-17",
+    "exam_part": null,
     "unit": "SC-9B-2",
     "concept": "earth-structure",
     "difficulty": 1,
@@ -12464,6 +12977,7 @@
   },
   {
     "id": "SC-9B-2-18",
+    "exam_part": null,
     "unit": "SC-9B-2",
     "concept": "rock-mineral",
     "difficulty": 1,
@@ -12488,6 +13002,7 @@
   },
   {
     "id": "SC-9B-2-19",
+    "exam_part": null,
     "unit": "SC-9B-2",
     "concept": "weathering-erosion",
     "difficulty": 1,
@@ -12512,6 +13027,7 @@
   },
   {
     "id": "SC-9B-2-20",
+    "exam_part": null,
     "unit": "SC-9B-2",
     "concept": "stratum",
     "difficulty": 1,
@@ -12536,6 +13052,7 @@
   },
   {
     "id": "SC-9B-2-21",
+    "exam_part": null,
     "unit": "SC-9B-2",
     "concept": "earthquake",
     "difficulty": 1,
@@ -12560,6 +13077,7 @@
   },
   {
     "id": "SC-9B-2-22",
+    "exam_part": null,
     "unit": "SC-9B-2",
     "concept": "rock-mineral",
     "difficulty": 2,
@@ -12584,6 +13102,7 @@
   },
   {
     "id": "SC-9B-2-23",
+    "exam_part": null,
     "unit": "SC-9B-2",
     "concept": "weathering-erosion",
     "difficulty": 2,
@@ -12608,6 +13127,7 @@
   },
   {
     "id": "SC-9B-2-24",
+    "exam_part": null,
     "unit": "SC-9B-2",
     "concept": "plate-tectonics",
     "difficulty": 2,
@@ -12632,6 +13152,7 @@
   },
   {
     "id": "SC-9B-2-25",
+    "exam_part": null,
     "unit": "SC-9B-2",
     "concept": "taiwan-geology",
     "difficulty": 2,
@@ -12656,6 +13177,7 @@
   },
   {
     "id": "SC-9B-2-26",
+    "exam_part": null,
     "unit": "SC-9B-2",
     "concept": "earthquake",
     "difficulty": 2,
@@ -12680,6 +13202,7 @@
   },
   {
     "id": "SC-9B-2-27",
+    "exam_part": null,
     "unit": "SC-9B-2",
     "concept": "earth-structure",
     "difficulty": 2,
@@ -12704,6 +13227,7 @@
   },
   {
     "id": "SC-9B-2-28",
+    "exam_part": null,
     "unit": "SC-9B-2",
     "concept": "stratum",
     "difficulty": 2,
@@ -12728,6 +13252,7 @@
   },
   {
     "id": "SC-9B-2-29",
+    "exam_part": null,
     "unit": "SC-9B-2",
     "concept": "plate-tectonics",
     "difficulty": 3,
@@ -12752,6 +13277,7 @@
   },
   {
     "id": "SC-9B-2-30",
+    "exam_part": null,
     "unit": "SC-9B-2",
     "concept": "rock-mineral",
     "difficulty": 3,
@@ -12776,6 +13302,7 @@
   },
   {
     "id": "SC-9B-3-17",
+    "exam_part": null,
     "unit": "SC-9B-3",
     "concept": "front",
     "difficulty": 1,
@@ -12800,6 +13327,7 @@
   },
   {
     "id": "SC-9B-3-18",
+    "exam_part": null,
     "unit": "SC-9B-3",
     "concept": "moon-phase",
     "difficulty": 1,
@@ -12824,6 +13352,7 @@
   },
   {
     "id": "SC-9B-3-19",
+    "exam_part": null,
     "unit": "SC-9B-3",
     "concept": "solar-system",
     "difficulty": 1,
@@ -12848,6 +13377,7 @@
   },
   {
     "id": "SC-9B-3-20",
+    "exam_part": null,
     "unit": "SC-9B-3",
     "concept": "earth-motion",
     "difficulty": 1,
@@ -12872,6 +13402,7 @@
   },
   {
     "id": "SC-9B-3-21",
+    "exam_part": null,
     "unit": "SC-9B-3",
     "concept": "tide",
     "difficulty": 1,
@@ -12896,6 +13427,7 @@
   },
   {
     "id": "SC-9B-3-22",
+    "exam_part": null,
     "unit": "SC-9B-3",
     "concept": "pressure-system",
     "difficulty": 2,
@@ -12920,6 +13452,7 @@
   },
   {
     "id": "SC-9B-3-23",
+    "exam_part": null,
     "unit": "SC-9B-3",
     "concept": "monsoon-typhoon",
     "difficulty": 2,
@@ -12944,6 +13477,7 @@
   },
   {
     "id": "SC-9B-3-24",
+    "exam_part": null,
     "unit": "SC-9B-3",
     "concept": "moon-phase",
     "difficulty": 2,
@@ -12968,6 +13502,7 @@
   },
   {
     "id": "SC-9B-3-25",
+    "exam_part": null,
     "unit": "SC-9B-3",
     "concept": "tide",
     "difficulty": 2,
@@ -12992,6 +13527,7 @@
   },
   {
     "id": "SC-9B-3-26",
+    "exam_part": null,
     "unit": "SC-9B-3",
     "concept": "earth-motion",
     "difficulty": 2,
@@ -13016,6 +13552,7 @@
   },
   {
     "id": "SC-9B-3-27",
+    "exam_part": null,
     "unit": "SC-9B-3",
     "concept": "front",
     "difficulty": 2,
@@ -13040,6 +13577,7 @@
   },
   {
     "id": "SC-9B-3-28",
+    "exam_part": null,
     "unit": "SC-9B-3",
     "concept": "solar-system",
     "difficulty": 2,
@@ -13064,6 +13602,7 @@
   },
   {
     "id": "SC-9B-3-29",
+    "exam_part": null,
     "unit": "SC-9B-3",
     "concept": "tide",
     "difficulty": 3,
@@ -13088,6 +13627,7 @@
   },
   {
     "id": "SC-9B-3-30",
+    "exam_part": null,
     "unit": "SC-9B-3",
     "concept": "earth-motion",
     "difficulty": 3,

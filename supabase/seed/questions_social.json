@@ -1,6 +1,7 @@
 [
   {
     "id": "SO-7A-1-01",
+    "exam_part": 1,
     "unit": "SO-7A-1",
     "concept": "latitude-longitude",
     "difficulty": 1,
@@ -25,6 +26,7 @@
   },
   {
     "id": "SO-7A-1-02",
+    "exam_part": 1,
     "unit": "SO-7A-1",
     "concept": "latitude-longitude",
     "difficulty": 2,
@@ -49,6 +51,7 @@
   },
   {
     "id": "SO-7A-1-03",
+    "exam_part": 1,
     "unit": "SO-7A-1",
     "concept": "time-zone",
     "difficulty": 2,
@@ -73,6 +76,7 @@
   },
   {
     "id": "SO-7A-1-04",
+    "exam_part": 1,
     "unit": "SO-7A-1",
     "concept": "time-zone",
     "difficulty": 3,
@@ -97,6 +101,7 @@
   },
   {
     "id": "SO-7A-1-05",
+    "exam_part": 2,
     "unit": "SO-7A-1",
     "concept": "landform",
     "difficulty": 1,
@@ -121,6 +126,7 @@
   },
   {
     "id": "SO-7A-1-06",
+    "exam_part": 2,
     "unit": "SO-7A-1",
     "concept": "landform",
     "difficulty": 2,
@@ -145,6 +151,7 @@
   },
   {
     "id": "SO-7A-1-07",
+    "exam_part": 2,
     "unit": "SO-7A-1",
     "concept": "landform",
     "difficulty": 2,
@@ -169,6 +176,7 @@
   },
   {
     "id": "SO-7A-1-08",
+    "exam_part": 3,
     "unit": "SO-7A-1",
     "concept": "climate",
     "difficulty": 1,
@@ -193,6 +201,7 @@
   },
   {
     "id": "SO-7A-1-09",
+    "exam_part": 3,
     "unit": "SO-7A-1",
     "concept": "climate",
     "difficulty": 2,
@@ -217,6 +226,7 @@
   },
   {
     "id": "SO-7A-1-10",
+    "exam_part": 3,
     "unit": "SO-7A-1",
     "concept": "climate",
     "difficulty": 3,
@@ -241,6 +251,7 @@
   },
   {
     "id": "SO-7A-2-01",
+    "exam_part": 1,
     "unit": "SO-7A-2",
     "concept": "prehistory",
     "difficulty": 1,
@@ -265,6 +276,7 @@
   },
   {
     "id": "SO-7A-2-02",
+    "exam_part": 1,
     "unit": "SO-7A-2",
     "concept": "prehistory",
     "difficulty": 2,
@@ -289,6 +301,7 @@
   },
   {
     "id": "SO-7A-2-03",
+    "exam_part": 1,
     "unit": "SO-7A-2",
     "concept": "indigenous-peoples",
     "difficulty": 1,
@@ -313,6 +326,7 @@
   },
   {
     "id": "SO-7A-2-04",
+    "exam_part": 1,
     "unit": "SO-7A-2",
     "concept": "indigenous-peoples",
     "difficulty": 2,
@@ -337,6 +351,7 @@
   },
   {
     "id": "SO-7A-2-05",
+    "exam_part": 2,
     "unit": "SO-7A-2",
     "concept": "dutch-spanish",
     "difficulty": 1,
@@ -361,6 +376,7 @@
   },
   {
     "id": "SO-7A-2-06",
+    "exam_part": 2,
     "unit": "SO-7A-2",
     "concept": "dutch-spanish",
     "difficulty": 2,
@@ -385,6 +401,7 @@
   },
   {
     "id": "SO-7A-2-07",
+    "exam_part": 2,
     "unit": "SO-7A-2",
     "concept": "zheng-regime",
     "difficulty": 2,
@@ -409,6 +426,7 @@
   },
   {
     "id": "SO-7A-2-08",
+    "exam_part": 2,
     "unit": "SO-7A-2",
     "concept": "zheng-regime",
     "difficulty": 2,
@@ -433,6 +451,7 @@
   },
   {
     "id": "SO-7A-2-09",
+    "exam_part": 3,
     "unit": "SO-7A-2",
     "concept": "qing-governance",
     "difficulty": 3,
@@ -457,6 +476,7 @@
   },
   {
     "id": "SO-7A-2-10",
+    "exam_part": 3,
     "unit": "SO-7A-2",
     "concept": "qing-governance",
     "difficulty": 3,
@@ -481,6 +501,7 @@
   },
   {
     "id": "SO-7A-3-01",
+    "exam_part": 2,
     "unit": "SO-7A-3",
     "concept": "gender-equality",
     "difficulty": 1,
@@ -505,6 +526,7 @@
   },
   {
     "id": "SO-7A-3-02",
+    "exam_part": 2,
     "unit": "SO-7A-3",
     "concept": "gender-equality",
     "difficulty": 2,
@@ -529,6 +551,7 @@
   },
   {
     "id": "SO-7A-3-03",
+    "exam_part": 2,
     "unit": "SO-7A-3",
     "concept": "gender-equality",
     "difficulty": 2,
@@ -553,6 +576,7 @@
   },
   {
     "id": "SO-7A-3-04",
+    "exam_part": 3,
     "unit": "SO-7A-3",
     "concept": "family",
     "difficulty": 1,
@@ -577,6 +601,7 @@
   },
   {
     "id": "SO-7A-3-05",
+    "exam_part": 3,
     "unit": "SO-7A-3",
     "concept": "family",
     "difficulty": 2,
@@ -601,6 +626,7 @@
   },
   {
     "id": "SO-7A-3-06",
+    "exam_part": 3,
     "unit": "SO-7A-3",
     "concept": "family",
     "difficulty": 3,
@@ -625,6 +651,7 @@
   },
   {
     "id": "SO-7A-3-07",
+    "exam_part": 3,
     "unit": "SO-7A-3",
     "concept": "school-autonomy",
     "difficulty": 2,
@@ -649,6 +676,7 @@
   },
   {
     "id": "SO-7A-3-08",
+    "exam_part": 3,
     "unit": "SO-7A-3",
     "concept": "school-autonomy",
     "difficulty": 2,
@@ -673,6 +701,7 @@
   },
   {
     "id": "SO-7A-3-09",
+    "exam_part": 1,
     "unit": "SO-7A-3",
     "concept": "human-rights",
     "difficulty": 1,
@@ -697,6 +726,7 @@
   },
   {
     "id": "SO-7A-3-10",
+    "exam_part": 1,
     "unit": "SO-7A-3",
     "concept": "human-rights",
     "difficulty": 3,
@@ -721,6 +751,7 @@
   },
   {
     "id": "SO-7B-1-01",
+    "exam_part": 1,
     "unit": "SO-7B-1",
     "concept": "population",
     "difficulty": 1,
@@ -745,6 +776,7 @@
   },
   {
     "id": "SO-7B-1-02",
+    "exam_part": 1,
     "unit": "SO-7B-1",
     "concept": "population",
     "difficulty": 2,
@@ -769,6 +801,7 @@
   },
   {
     "id": "SO-7B-1-03",
+    "exam_part": 1,
     "unit": "SO-7B-1",
     "concept": "population",
     "difficulty": 2,
@@ -793,6 +826,7 @@
   },
   {
     "id": "SO-7B-1-04",
+    "exam_part": 1,
     "unit": "SO-7B-1",
     "concept": "population",
     "difficulty": 3,
@@ -817,6 +851,7 @@
   },
   {
     "id": "SO-7B-1-05",
+    "exam_part": 2,
     "unit": "SO-7B-1",
     "concept": "industry",
     "difficulty": 1,
@@ -841,6 +876,7 @@
   },
   {
     "id": "SO-7B-1-06",
+    "exam_part": 2,
     "unit": "SO-7B-1",
     "concept": "industry",
     "difficulty": 2,
@@ -865,6 +901,7 @@
   },
   {
     "id": "SO-7B-1-07",
+    "exam_part": 2,
     "unit": "SO-7B-1",
     "concept": "industry",
     "difficulty": 2,
@@ -889,6 +926,7 @@
   },
   {
     "id": "SO-7B-1-08",
+    "exam_part": 3,
     "unit": "SO-7B-1",
     "concept": "region",
     "difficulty": 1,
@@ -913,6 +951,7 @@
   },
   {
     "id": "SO-7B-1-09",
+    "exam_part": 3,
     "unit": "SO-7B-1",
     "concept": "region",
     "difficulty": 2,
@@ -937,6 +976,7 @@
   },
   {
     "id": "SO-7B-1-10",
+    "exam_part": 3,
     "unit": "SO-7B-1",
     "concept": "region",
     "difficulty": 3,
@@ -961,6 +1001,7 @@
   },
   {
     "id": "SO-7B-2-01",
+    "exam_part": 1,
     "unit": "SO-7B-2",
     "concept": "japanese-rule",
     "difficulty": 1,
@@ -985,6 +1026,7 @@
   },
   {
     "id": "SO-7B-2-02",
+    "exam_part": 1,
     "unit": "SO-7B-2",
     "concept": "japanese-rule",
     "difficulty": 2,
@@ -1009,6 +1051,7 @@
   },
   {
     "id": "SO-7B-2-03",
+    "exam_part": 1,
     "unit": "SO-7B-2",
     "concept": "japanese-rule",
     "difficulty": 2,
@@ -1033,6 +1076,7 @@
   },
   {
     "id": "SO-7B-2-04",
+    "exam_part": 1,
     "unit": "SO-7B-2",
     "concept": "japanese-rule",
     "difficulty": 3,
@@ -1057,6 +1101,7 @@
   },
   {
     "id": "SO-7B-2-05",
+    "exam_part": 2,
     "unit": "SO-7B-2",
     "concept": "postwar-politics",
     "difficulty": 1,
@@ -1081,6 +1126,7 @@
   },
   {
     "id": "SO-7B-2-06",
+    "exam_part": 2,
     "unit": "SO-7B-2",
     "concept": "postwar-politics",
     "difficulty": 2,
@@ -1105,6 +1151,7 @@
   },
   {
     "id": "SO-7B-2-07",
+    "exam_part": 2,
     "unit": "SO-7B-2",
     "concept": "postwar-politics",
     "difficulty": 2,
@@ -1129,6 +1176,7 @@
   },
   {
     "id": "SO-7B-2-08",
+    "exam_part": 3,
     "unit": "SO-7B-2",
     "concept": "postwar-economy",
     "difficulty": 1,
@@ -1153,6 +1201,7 @@
   },
   {
     "id": "SO-7B-2-09",
+    "exam_part": 3,
     "unit": "SO-7B-2",
     "concept": "postwar-economy",
     "difficulty": 2,
@@ -1177,6 +1226,7 @@
   },
   {
     "id": "SO-7B-2-10",
+    "exam_part": 3,
     "unit": "SO-7B-2",
     "concept": "postwar-economy",
     "difficulty": 3,
@@ -1201,6 +1251,7 @@
   },
   {
     "id": "SO-7B-3-01",
+    "exam_part": 1,
     "unit": "SO-7B-3",
     "concept": "social-groups",
     "difficulty": 1,
@@ -1225,6 +1276,7 @@
   },
   {
     "id": "SO-7B-3-02",
+    "exam_part": 1,
     "unit": "SO-7B-3",
     "concept": "social-groups",
     "difficulty": 2,
@@ -1249,6 +1301,7 @@
   },
   {
     "id": "SO-7B-3-03",
+    "exam_part": 1,
     "unit": "SO-7B-3",
     "concept": "social-groups",
     "difficulty": 2,
@@ -1273,6 +1326,7 @@
   },
   {
     "id": "SO-7B-3-04",
+    "exam_part": 2,
     "unit": "SO-7B-3",
     "concept": "culture",
     "difficulty": 2,
@@ -1297,6 +1351,7 @@
   },
   {
     "id": "SO-7B-3-05",
+    "exam_part": 2,
     "unit": "SO-7B-3",
     "concept": "culture",
     "difficulty": 1,
@@ -1321,6 +1376,7 @@
   },
   {
     "id": "SO-7B-3-06",
+    "exam_part": 2,
     "unit": "SO-7B-3",
     "concept": "culture",
     "difficulty": 2,
@@ -1345,6 +1401,7 @@
   },
   {
     "id": "SO-7B-3-07",
+    "exam_part": 2,
     "unit": "SO-7B-3",
     "concept": "culture",
     "difficulty": 3,
@@ -1369,6 +1426,7 @@
   },
   {
     "id": "SO-7B-3-08",
+    "exam_part": 3,
     "unit": "SO-7B-3",
     "concept": "social-welfare",
     "difficulty": 1,
@@ -1393,6 +1451,7 @@
   },
   {
     "id": "SO-7B-3-09",
+    "exam_part": 3,
     "unit": "SO-7B-3",
     "concept": "social-welfare",
     "difficulty": 2,
@@ -1417,6 +1476,7 @@
   },
   {
     "id": "SO-7B-3-10",
+    "exam_part": 3,
     "unit": "SO-7B-3",
     "concept": "social-welfare",
     "difficulty": 3,
@@ -1441,6 +1501,7 @@
   },
   {
     "id": "SO-8A-1-01",
+    "exam_part": 1,
     "unit": "SO-8A-1",
     "concept": "landform",
     "difficulty": 1,
@@ -1465,6 +1526,7 @@
   },
   {
     "id": "SO-8A-1-02",
+    "exam_part": 1,
     "unit": "SO-8A-1",
     "concept": "landform",
     "difficulty": 2,
@@ -1489,6 +1551,7 @@
   },
   {
     "id": "SO-8A-1-03",
+    "exam_part": 1,
     "unit": "SO-8A-1",
     "concept": "landform",
     "difficulty": 2,
@@ -1513,6 +1576,7 @@
   },
   {
     "id": "SO-8A-1-04",
+    "exam_part": 2,
     "unit": "SO-8A-1",
     "concept": "climate",
     "difficulty": 1,
@@ -1537,6 +1601,7 @@
   },
   {
     "id": "SO-8A-1-05",
+    "exam_part": 2,
     "unit": "SO-8A-1",
     "concept": "climate",
     "difficulty": 2,
@@ -1561,6 +1626,7 @@
   },
   {
     "id": "SO-8A-1-06",
+    "exam_part": 2,
     "unit": "SO-8A-1",
     "concept": "climate",
     "difficulty": 3,
@@ -1585,6 +1651,7 @@
   },
   {
     "id": "SO-8A-1-07",
+    "exam_part": 3,
     "unit": "SO-8A-1",
     "concept": "hydrology",
     "difficulty": 2,
@@ -1609,6 +1676,7 @@
   },
   {
     "id": "SO-8A-1-08",
+    "exam_part": 3,
     "unit": "SO-8A-1",
     "concept": "hydrology",
     "difficulty": 1,
@@ -1633,6 +1701,7 @@
   },
   {
     "id": "SO-8A-1-09",
+    "exam_part": 3,
     "unit": "SO-8A-1",
     "concept": "region",
     "difficulty": 2,
@@ -1657,6 +1726,7 @@
   },
   {
     "id": "SO-8A-1-10",
+    "exam_part": 3,
     "unit": "SO-8A-1",
     "concept": "region",
     "difficulty": 3,
@@ -1681,6 +1751,7 @@
   },
   {
     "id": "SO-8A-2-01",
+    "exam_part": 1,
     "unit": "SO-8A-2",
     "concept": "early-china",
     "difficulty": 1,
@@ -1705,6 +1776,7 @@
   },
   {
     "id": "SO-8A-2-02",
+    "exam_part": 1,
     "unit": "SO-8A-2",
     "concept": "early-china",
     "difficulty": 2,
@@ -1729,6 +1801,7 @@
   },
   {
     "id": "SO-8A-2-03",
+    "exam_part": 1,
     "unit": "SO-8A-2",
     "concept": "qin-han",
     "difficulty": 1,
@@ -1753,6 +1826,7 @@
   },
   {
     "id": "SO-8A-2-04",
+    "exam_part": 1,
     "unit": "SO-8A-2",
     "concept": "qin-han",
     "difficulty": 2,
@@ -1777,6 +1851,7 @@
   },
   {
     "id": "SO-8A-2-05",
+    "exam_part": 2,
     "unit": "SO-8A-2",
     "concept": "imperial-exam",
     "difficulty": 1,
@@ -1801,6 +1876,7 @@
   },
   {
     "id": "SO-8A-2-06",
+    "exam_part": 2,
     "unit": "SO-8A-2",
     "concept": "imperial-exam",
     "difficulty": 3,
@@ -1825,6 +1901,7 @@
   },
   {
     "id": "SO-8A-2-07",
+    "exam_part": 2,
     "unit": "SO-8A-2",
     "concept": "trade-exchange",
     "difficulty": 2,
@@ -1849,6 +1926,7 @@
   },
   {
     "id": "SO-8A-2-08",
+    "exam_part": 2,
     "unit": "SO-8A-2",
     "concept": "trade-exchange",
     "difficulty": 2,
@@ -1873,6 +1951,7 @@
   },
   {
     "id": "SO-8A-2-09",
+    "exam_part": 3,
     "unit": "SO-8A-2",
     "concept": "late-qing",
     "difficulty": 2,
@@ -1897,6 +1976,7 @@
   },
   {
     "id": "SO-8A-2-10",
+    "exam_part": 3,
     "unit": "SO-8A-2",
     "concept": "late-qing",
     "difficulty": 3,
@@ -1921,6 +2001,7 @@
   },
   {
     "id": "SO-8A-3-01",
+    "exam_part": 1,
     "unit": "SO-8A-3",
     "concept": "democracy",
     "difficulty": 1,
@@ -1945,6 +2026,7 @@
   },
   {
     "id": "SO-8A-3-02",
+    "exam_part": 1,
     "unit": "SO-8A-3",
     "concept": "democracy",
     "difficulty": 2,
@@ -1969,6 +2051,7 @@
   },
   {
     "id": "SO-8A-3-03",
+    "exam_part": 1,
     "unit": "SO-8A-3",
     "concept": "constitution",
     "difficulty": 2,
@@ -1993,6 +2076,7 @@
   },
   {
     "id": "SO-8A-3-04",
+    "exam_part": 1,
     "unit": "SO-8A-3",
     "concept": "constitution",
     "difficulty": 2,
@@ -2017,6 +2101,7 @@
   },
   {
     "id": "SO-8A-3-05",
+    "exam_part": 2,
     "unit": "SO-8A-3",
     "concept": "five-yuan",
     "difficulty": 1,
@@ -2041,6 +2126,7 @@
   },
   {
     "id": "SO-8A-3-06",
+    "exam_part": 2,
     "unit": "SO-8A-3",
     "concept": "five-yuan",
     "difficulty": 3,
@@ -2065,6 +2151,7 @@
   },
   {
     "id": "SO-8A-3-07",
+    "exam_part": 3,
     "unit": "SO-8A-3",
     "concept": "elections",
     "difficulty": 1,
@@ -2089,6 +2176,7 @@
   },
   {
     "id": "SO-8A-3-08",
+    "exam_part": 3,
     "unit": "SO-8A-3",
     "concept": "elections",
     "difficulty": 2,
@@ -2113,6 +2201,7 @@
   },
   {
     "id": "SO-8A-3-09",
+    "exam_part": 3,
     "unit": "SO-8A-3",
     "concept": "parties-groups",
     "difficulty": 2,
@@ -2137,6 +2226,7 @@
   },
   {
     "id": "SO-8A-3-10",
+    "exam_part": 3,
     "unit": "SO-8A-3",
     "concept": "parties-groups",
     "difficulty": 3,
@@ -2161,6 +2251,7 @@
   },
   {
     "id": "SO-8B-1-01",
+    "exam_part": 1,
     "unit": "SO-8B-1",
     "concept": "monsoon-asia",
     "difficulty": 1,
@@ -2185,6 +2276,7 @@
   },
   {
     "id": "SO-8B-1-02",
+    "exam_part": 1,
     "unit": "SO-8B-1",
     "concept": "monsoon-asia",
     "difficulty": 2,
@@ -2209,6 +2301,7 @@
   },
   {
     "id": "SO-8B-1-03",
+    "exam_part": 1,
     "unit": "SO-8B-1",
     "concept": "climate-type",
     "difficulty": 2,
@@ -2233,6 +2326,7 @@
   },
   {
     "id": "SO-8B-1-04",
+    "exam_part": 1,
     "unit": "SO-8B-1",
     "concept": "climate-type",
     "difficulty": 3,
@@ -2257,6 +2351,7 @@
   },
   {
     "id": "SO-8B-1-05",
+    "exam_part": 3,
     "unit": "SO-8B-1",
     "concept": "west-asia",
     "difficulty": 1,
@@ -2281,6 +2376,7 @@
   },
   {
     "id": "SO-8B-1-06",
+    "exam_part": 3,
     "unit": "SO-8B-1",
     "concept": "west-asia",
     "difficulty": 2,
@@ -2305,6 +2401,7 @@
   },
   {
     "id": "SO-8B-1-07",
+    "exam_part": 1,
     "unit": "SO-8B-1",
     "concept": "east-asia",
     "difficulty": 1,
@@ -2329,6 +2426,7 @@
   },
   {
     "id": "SO-8B-1-08",
+    "exam_part": 1,
     "unit": "SO-8B-1",
     "concept": "east-asia",
     "difficulty": 2,
@@ -2353,6 +2451,7 @@
   },
   {
     "id": "SO-8B-1-09",
+    "exam_part": 2,
     "unit": "SO-8B-1",
     "concept": "south-asia",
     "difficulty": 2,
@@ -2377,6 +2476,7 @@
   },
   {
     "id": "SO-8B-1-10",
+    "exam_part": 2,
     "unit": "SO-8B-1",
     "concept": "south-asia",
     "difficulty": 3,
@@ -2401,6 +2501,7 @@
   },
   {
     "id": "SO-8B-2-01",
+    "exam_part": 1,
     "unit": "SO-8B-2",
     "concept": "meiji",
     "difficulty": 1,
@@ -2425,6 +2526,7 @@
   },
   {
     "id": "SO-8B-2-02",
+    "exam_part": 1,
     "unit": "SO-8B-2",
     "concept": "meiji",
     "difficulty": 3,
@@ -2449,6 +2551,7 @@
   },
   {
     "id": "SO-8B-2-03",
+    "exam_part": 1,
     "unit": "SO-8B-2",
     "concept": "late-qing",
     "difficulty": 1,
@@ -2473,6 +2576,7 @@
   },
   {
     "id": "SO-8B-2-04",
+    "exam_part": 1,
     "unit": "SO-8B-2",
     "concept": "late-qing",
     "difficulty": 2,
@@ -2497,6 +2601,7 @@
   },
   {
     "id": "SO-8B-2-05",
+    "exam_part": 2,
     "unit": "SO-8B-2",
     "concept": "korea",
     "difficulty": 1,
@@ -2521,6 +2626,7 @@
   },
   {
     "id": "SO-8B-2-06",
+    "exam_part": 2,
     "unit": "SO-8B-2",
     "concept": "korea",
     "difficulty": 2,
@@ -2545,6 +2651,7 @@
   },
   {
     "id": "SO-8B-2-07",
+    "exam_part": 2,
     "unit": "SO-8B-2",
     "concept": "republic-china",
     "difficulty": 2,
@@ -2569,6 +2676,7 @@
   },
   {
     "id": "SO-8B-2-08",
+    "exam_part": 2,
     "unit": "SO-8B-2",
     "concept": "republic-china",
     "difficulty": 2,
@@ -2593,6 +2701,7 @@
   },
   {
     "id": "SO-8B-2-09",
+    "exam_part": 3,
     "unit": "SO-8B-2",
     "concept": "chronology",
     "difficulty": 2,
@@ -2617,6 +2726,7 @@
   },
   {
     "id": "SO-8B-2-10",
+    "exam_part": 3,
     "unit": "SO-8B-2",
     "concept": "chronology",
     "difficulty": 3,
@@ -2641,6 +2751,7 @@
   },
   {
     "id": "SO-8B-3-01",
+    "exam_part": 1,
     "unit": "SO-8B-3",
     "concept": "legal-hierarchy",
     "difficulty": 1,
@@ -2665,6 +2776,7 @@
   },
   {
     "id": "SO-8B-3-02",
+    "exam_part": 1,
     "unit": "SO-8B-3",
     "concept": "legal-hierarchy",
     "difficulty": 2,
@@ -2689,6 +2801,7 @@
   },
   {
     "id": "SO-8B-3-03",
+    "exam_part": 1,
     "unit": "SO-8B-3",
     "concept": "civil-law",
     "difficulty": 2,
@@ -2713,6 +2826,7 @@
   },
   {
     "id": "SO-8B-3-04",
+    "exam_part": 1,
     "unit": "SO-8B-3",
     "concept": "civil-law",
     "difficulty": 3,
@@ -2737,6 +2851,7 @@
   },
   {
     "id": "SO-8B-3-05",
+    "exam_part": 2,
     "unit": "SO-8B-3",
     "concept": "criminal-law",
     "difficulty": 1,
@@ -2761,6 +2876,7 @@
   },
   {
     "id": "SO-8B-3-06",
+    "exam_part": 2,
     "unit": "SO-8B-3",
     "concept": "criminal-law",
     "difficulty": 2,
@@ -2785,6 +2901,7 @@
   },
   {
     "id": "SO-8B-3-07",
+    "exam_part": 3,
     "unit": "SO-8B-3",
     "concept": "administrative-law",
     "difficulty": 1,
@@ -2809,6 +2926,7 @@
   },
   {
     "id": "SO-8B-3-08",
+    "exam_part": 3,
     "unit": "SO-8B-3",
     "concept": "administrative-law",
     "difficulty": 3,
@@ -2833,6 +2951,7 @@
   },
   {
     "id": "SO-8B-3-09",
+    "exam_part": 2,
     "unit": "SO-8B-3",
     "concept": "juvenile-justice",
     "difficulty": 2,
@@ -2857,6 +2976,7 @@
   },
   {
     "id": "SO-8B-3-10",
+    "exam_part": 2,
     "unit": "SO-8B-3",
     "concept": "juvenile-justice",
     "difficulty": 2,
@@ -2881,6 +3001,7 @@
   },
   {
     "id": "SO-9A-1-01",
+    "exam_part": 1,
     "unit": "SO-9A-1",
     "concept": "europe-climate",
     "difficulty": 1,
@@ -2905,6 +3026,7 @@
   },
   {
     "id": "SO-9A-1-02",
+    "exam_part": 1,
     "unit": "SO-9A-1",
     "concept": "europe-climate",
     "difficulty": 3,
@@ -2929,6 +3051,7 @@
   },
   {
     "id": "SO-9A-1-03",
+    "exam_part": 1,
     "unit": "SO-9A-1",
     "concept": "mediterranean",
     "difficulty": 2,
@@ -2953,6 +3076,7 @@
   },
   {
     "id": "SO-9A-1-04",
+    "exam_part": 1,
     "unit": "SO-9A-1",
     "concept": "mediterranean",
     "difficulty": 1,
@@ -2977,6 +3101,7 @@
   },
   {
     "id": "SO-9A-1-05",
+    "exam_part": 2,
     "unit": "SO-9A-1",
     "concept": "russia",
     "difficulty": 1,
@@ -3001,6 +3126,7 @@
   },
   {
     "id": "SO-9A-1-06",
+    "exam_part": 2,
     "unit": "SO-9A-1",
     "concept": "russia",
     "difficulty": 2,
@@ -3025,6 +3151,7 @@
   },
   {
     "id": "SO-9A-1-07",
+    "exam_part": 3,
     "unit": "SO-9A-1",
     "concept": "africa-environment",
     "difficulty": 2,
@@ -3049,6 +3176,7 @@
   },
   {
     "id": "SO-9A-1-08",
+    "exam_part": 3,
     "unit": "SO-9A-1",
     "concept": "africa-environment",
     "difficulty": 2,
@@ -3073,6 +3201,7 @@
   },
   {
     "id": "SO-9A-1-09",
+    "exam_part": 3,
     "unit": "SO-9A-1",
     "concept": "africa-development",
     "difficulty": 2,
@@ -3097,6 +3226,7 @@
   },
   {
     "id": "SO-9A-1-10",
+    "exam_part": 3,
     "unit": "SO-9A-1",
     "concept": "africa-development",
     "difficulty": 3,
@@ -3121,6 +3251,7 @@
   },
   {
     "id": "SO-9A-2-01",
+    "exam_part": 1,
     "unit": "SO-9A-2",
     "concept": "ancient-civilization",
     "difficulty": 1,
@@ -3145,6 +3276,7 @@
   },
   {
     "id": "SO-9A-2-02",
+    "exam_part": 1,
     "unit": "SO-9A-2",
     "concept": "ancient-civilization",
     "difficulty": 2,
@@ -3169,6 +3301,7 @@
   },
   {
     "id": "SO-9A-2-03",
+    "exam_part": 1,
     "unit": "SO-9A-2",
     "concept": "greece-rome",
     "difficulty": 2,
@@ -3193,6 +3326,7 @@
   },
   {
     "id": "SO-9A-2-04",
+    "exam_part": 1,
     "unit": "SO-9A-2",
     "concept": "greece-rome",
     "difficulty": 1,
@@ -3217,6 +3351,7 @@
   },
   {
     "id": "SO-9A-2-05",
+    "exam_part": 2,
     "unit": "SO-9A-2",
     "concept": "renaissance-reformation",
     "difficulty": 2,
@@ -3241,6 +3376,7 @@
   },
   {
     "id": "SO-9A-2-06",
+    "exam_part": 2,
     "unit": "SO-9A-2",
     "concept": "renaissance-reformation",
     "difficulty": 2,
@@ -3265,6 +3401,7 @@
   },
   {
     "id": "SO-9A-2-07",
+    "exam_part": 3,
     "unit": "SO-9A-2",
     "concept": "enlightenment-revolution",
     "difficulty": 2,
@@ -3289,6 +3426,7 @@
   },
   {
     "id": "SO-9A-2-08",
+    "exam_part": 3,
     "unit": "SO-9A-2",
     "concept": "enlightenment-revolution",
     "difficulty": 3,
@@ -3313,6 +3451,7 @@
   },
   {
     "id": "SO-9A-2-09",
+    "exam_part": 3,
     "unit": "SO-9A-2",
     "concept": "industrial-revolution",
     "difficulty": 1,
@@ -3337,6 +3476,7 @@
   },
   {
     "id": "SO-9A-2-10",
+    "exam_part": 3,
     "unit": "SO-9A-2",
     "concept": "industrial-revolution",
     "difficulty": 3,
@@ -3361,6 +3501,7 @@
   },
   {
     "id": "SO-9A-3-01",
+    "exam_part": 1,
     "unit": "SO-9A-3",
     "concept": "opportunity-cost",
     "difficulty": 1,
@@ -3385,6 +3526,7 @@
   },
   {
     "id": "SO-9A-3-02",
+    "exam_part": 1,
     "unit": "SO-9A-3",
     "concept": "opportunity-cost",
     "difficulty": 3,
@@ -3409,6 +3551,7 @@
   },
   {
     "id": "SO-9A-3-03",
+    "exam_part": 1,
     "unit": "SO-9A-3",
     "concept": "supply-demand",
     "difficulty": 2,
@@ -3433,6 +3576,7 @@
   },
   {
     "id": "SO-9A-3-04",
+    "exam_part": 1,
     "unit": "SO-9A-3",
     "concept": "supply-demand",
     "difficulty": 3,
@@ -3457,6 +3601,7 @@
   },
   {
     "id": "SO-9A-3-05",
+    "exam_part": 2,
     "unit": "SO-9A-3",
     "concept": "market-structure",
     "difficulty": 1,
@@ -3481,6 +3626,7 @@
   },
   {
     "id": "SO-9A-3-06",
+    "exam_part": 2,
     "unit": "SO-9A-3",
     "concept": "market-structure",
     "difficulty": 2,
@@ -3505,6 +3651,7 @@
   },
   {
     "id": "SO-9A-3-07",
+    "exam_part": 2,
     "unit": "SO-9A-3",
     "concept": "money-finance",
     "difficulty": 2,
@@ -3529,6 +3676,7 @@
   },
   {
     "id": "SO-9A-3-08",
+    "exam_part": 2,
     "unit": "SO-9A-3",
     "concept": "money-finance",
     "difficulty": 2,
@@ -3553,6 +3701,7 @@
   },
   {
     "id": "SO-9A-3-09",
+    "exam_part": 3,
     "unit": "SO-9A-3",
     "concept": "government-role",
     "difficulty": 1,
@@ -3577,6 +3726,7 @@
   },
   {
     "id": "SO-9A-3-10",
+    "exam_part": 3,
     "unit": "SO-9A-3",
     "concept": "government-role",
     "difficulty": 2,
@@ -3601,6 +3751,7 @@
   },
   {
     "id": "SO-9B-1-01",
+    "exam_part": 1,
     "unit": "SO-9B-1",
     "concept": "climate-type",
     "difficulty": 1,
@@ -3625,6 +3776,7 @@
   },
   {
     "id": "SO-9B-1-02",
+    "exam_part": 1,
     "unit": "SO-9B-1",
     "concept": "climate-type",
     "difficulty": 2,
@@ -3649,6 +3801,7 @@
   },
   {
     "id": "SO-9B-1-03",
+    "exam_part": 1,
     "unit": "SO-9B-1",
     "concept": "americas",
     "difficulty": 2,
@@ -3673,6 +3826,7 @@
   },
   {
     "id": "SO-9B-1-04",
+    "exam_part": 1,
     "unit": "SO-9B-1",
     "concept": "americas",
     "difficulty": 3,
@@ -3697,6 +3851,7 @@
   },
   {
     "id": "SO-9B-1-05",
+    "exam_part": 2,
     "unit": "SO-9B-1",
     "concept": "oceania",
     "difficulty": 1,
@@ -3721,6 +3876,7 @@
   },
   {
     "id": "SO-9B-1-06",
+    "exam_part": 2,
     "unit": "SO-9B-1",
     "concept": "oceania",
     "difficulty": 2,
@@ -3745,6 +3901,7 @@
   },
   {
     "id": "SO-9B-1-07",
+    "exam_part": 3,
     "unit": "SO-9B-1",
     "concept": "global-warming",
     "difficulty": 1,
@@ -3769,6 +3926,7 @@
   },
   {
     "id": "SO-9B-1-08",
+    "exam_part": 3,
     "unit": "SO-9B-1",
     "concept": "global-warming",
     "difficulty": 2,
@@ -3793,6 +3951,7 @@
   },
   {
     "id": "SO-9B-1-09",
+    "exam_part": 3,
     "unit": "SO-9B-1",
     "concept": "food-water",
     "difficulty": 3,
@@ -3817,6 +3976,7 @@
   },
   {
     "id": "SO-9B-1-10",
+    "exam_part": 3,
     "unit": "SO-9B-1",
     "concept": "food-water",
     "difficulty": 2,
@@ -3841,6 +4001,7 @@
   },
   {
     "id": "SO-9B-2-01",
+    "exam_part": 1,
     "unit": "SO-9B-2",
     "concept": "world-war",
     "difficulty": 1,
@@ -3865,6 +4026,7 @@
   },
   {
     "id": "SO-9B-2-02",
+    "exam_part": 1,
     "unit": "SO-9B-2",
     "concept": "world-war",
     "difficulty": 2,
@@ -3889,6 +4051,7 @@
   },
   {
     "id": "SO-9B-2-03",
+    "exam_part": 1,
     "unit": "SO-9B-2",
     "concept": "world-war",
     "difficulty": 2,
@@ -3913,6 +4076,7 @@
   },
   {
     "id": "SO-9B-2-04",
+    "exam_part": 1,
     "unit": "SO-9B-2",
     "concept": "world-war",
     "difficulty": 3,
@@ -3937,6 +4101,7 @@
   },
   {
     "id": "SO-9B-2-05",
+    "exam_part": 2,
     "unit": "SO-9B-2",
     "concept": "cold-war",
     "difficulty": 1,
@@ -3961,6 +4126,7 @@
   },
   {
     "id": "SO-9B-2-06",
+    "exam_part": 2,
     "unit": "SO-9B-2",
     "concept": "cold-war",
     "difficulty": 2,
@@ -3985,6 +4151,7 @@
   },
   {
     "id": "SO-9B-2-07",
+    "exam_part": 2,
     "unit": "SO-9B-2",
     "concept": "cold-war",
     "difficulty": 2,
@@ -4009,6 +4176,7 @@
   },
   {
     "id": "SO-9B-2-08",
+    "exam_part": 3,
     "unit": "SO-9B-2",
     "concept": "decolonization",
     "difficulty": 2,
@@ -4033,6 +4201,7 @@
   },
   {
     "id": "SO-9B-2-09",
+    "exam_part": 3,
     "unit": "SO-9B-2",
     "concept": "decolonization",
     "difficulty": 1,
@@ -4057,6 +4226,7 @@
   },
   {
     "id": "SO-9B-2-10",
+    "exam_part": 3,
     "unit": "SO-9B-2",
     "concept": "decolonization",
     "difficulty": 3,
@@ -4081,6 +4251,7 @@
   },
   {
     "id": "SO-9B-3-01",
+    "exam_part": 1,
     "unit": "SO-9B-3",
     "concept": "globalization",
     "difficulty": 1,
@@ -4105,6 +4276,7 @@
   },
   {
     "id": "SO-9B-3-02",
+    "exam_part": 1,
     "unit": "SO-9B-3",
     "concept": "globalization",
     "difficulty": 2,
@@ -4129,6 +4301,7 @@
   },
   {
     "id": "SO-9B-3-03",
+    "exam_part": 2,
     "unit": "SO-9B-3",
     "concept": "comparative-advantage",
     "difficulty": 3,
@@ -4153,6 +4326,7 @@
   },
   {
     "id": "SO-9B-3-04",
+    "exam_part": 2,
     "unit": "SO-9B-3",
     "concept": "comparative-advantage",
     "difficulty": 2,
@@ -4177,6 +4351,7 @@
   },
   {
     "id": "SO-9B-3-05",
+    "exam_part": 2,
     "unit": "SO-9B-3",
     "concept": "comparative-advantage",
     "difficulty": 1,
@@ -4201,6 +4376,7 @@
   },
   {
     "id": "SO-9B-3-06",
+    "exam_part": 2,
     "unit": "SO-9B-3",
     "concept": "trade-policy",
     "difficulty": 2,
@@ -4225,6 +4401,7 @@
   },
   {
     "id": "SO-9B-3-07",
+    "exam_part": 2,
     "unit": "SO-9B-3",
     "concept": "trade-policy",
     "difficulty": 3,
@@ -4249,6 +4426,7 @@
   },
   {
     "id": "SO-9B-3-08",
+    "exam_part": 3,
     "unit": "SO-9B-3",
     "concept": "international-org",
     "difficulty": 2,
@@ -4273,6 +4451,7 @@
   },
   {
     "id": "SO-9B-3-09",
+    "exam_part": 3,
     "unit": "SO-9B-3",
     "concept": "international-org",
     "difficulty": 1,
@@ -4297,6 +4476,7 @@
   },
   {
     "id": "SO-9B-3-10",
+    "exam_part": 3,
     "unit": "SO-9B-3",
     "concept": "international-org",
     "difficulty": 2,
@@ -4321,6 +4501,7 @@
   },
   {
     "id": "SO-7A-1-11",
+    "exam_part": 1,
     "unit": "SO-7A-1",
     "concept": "latitude-longitude",
     "difficulty": 3,
@@ -4345,6 +4526,7 @@
   },
   {
     "id": "SO-7A-1-12",
+    "exam_part": 1,
     "unit": "SO-7A-1",
     "concept": "time-zone",
     "difficulty": 3,
@@ -4370,6 +4552,7 @@
   },
   {
     "id": "SO-7A-1-13",
+    "exam_part": 2,
     "unit": "SO-7A-1",
     "concept": "landform",
     "difficulty": 3,
@@ -4395,6 +4578,7 @@
   },
   {
     "id": "SO-7A-1-14",
+    "exam_part": 3,
     "unit": "SO-7A-1",
     "concept": "climate",
     "difficulty": 3,
@@ -4420,6 +4604,7 @@
   },
   {
     "id": "SO-7A-1-15",
+    "exam_part": 2,
     "unit": "SO-7A-1",
     "concept": "landform",
     "difficulty": 3,
@@ -4444,6 +4629,7 @@
   },
   {
     "id": "SO-7A-1-16",
+    "exam_part": 3,
     "unit": "SO-7A-1",
     "concept": "climate",
     "difficulty": 3,
@@ -4468,6 +4654,7 @@
   },
   {
     "id": "SO-7A-2-11",
+    "exam_part": 1,
     "unit": "SO-7A-2",
     "concept": "prehistory",
     "difficulty": 3,
@@ -4492,6 +4679,7 @@
   },
   {
     "id": "SO-7A-2-12",
+    "exam_part": 1,
     "unit": "SO-7A-2",
     "concept": "indigenous-peoples",
     "difficulty": 3,
@@ -4516,6 +4704,7 @@
   },
   {
     "id": "SO-7A-2-13",
+    "exam_part": 2,
     "unit": "SO-7A-2",
     "concept": "dutch-spanish",
     "difficulty": 3,
@@ -4540,6 +4729,7 @@
   },
   {
     "id": "SO-7A-2-14",
+    "exam_part": 2,
     "unit": "SO-7A-2",
     "concept": "zheng-regime",
     "difficulty": 3,
@@ -4565,6 +4755,7 @@
   },
   {
     "id": "SO-7A-2-15",
+    "exam_part": 3,
     "unit": "SO-7A-2",
     "concept": "qing-governance",
     "difficulty": 3,
@@ -4590,6 +4781,7 @@
   },
   {
     "id": "SO-7A-2-16",
+    "exam_part": 3,
     "unit": "SO-7A-2",
     "concept": "qing-governance",
     "difficulty": 3,
@@ -4614,6 +4806,7 @@
   },
   {
     "id": "SO-7A-3-11",
+    "exam_part": 3,
     "unit": "SO-7A-3",
     "concept": "family",
     "difficulty": 3,
@@ -4639,6 +4832,7 @@
   },
   {
     "id": "SO-7A-3-12",
+    "exam_part": 2,
     "unit": "SO-7A-3",
     "concept": "gender-equality",
     "difficulty": 3,
@@ -4663,6 +4857,7 @@
   },
   {
     "id": "SO-7A-3-13",
+    "exam_part": 1,
     "unit": "SO-7A-3",
     "concept": "human-rights",
     "difficulty": 3,
@@ -4687,6 +4882,7 @@
   },
   {
     "id": "SO-7A-3-14",
+    "exam_part": 3,
     "unit": "SO-7A-3",
     "concept": "school-autonomy",
     "difficulty": 3,
@@ -4711,6 +4907,7 @@
   },
   {
     "id": "SO-7A-3-15",
+    "exam_part": 3,
     "unit": "SO-7A-3",
     "concept": "family",
     "difficulty": 3,
@@ -4735,6 +4932,7 @@
   },
   {
     "id": "SO-7A-3-16",
+    "exam_part": 2,
     "unit": "SO-7A-3",
     "concept": "gender-equality",
     "difficulty": 3,
@@ -4759,6 +4957,7 @@
   },
   {
     "id": "SO-7B-1-11",
+    "exam_part": 1,
     "unit": "SO-7B-1",
     "concept": "population",
     "difficulty": 3,
@@ -4783,6 +4982,7 @@
   },
   {
     "id": "SO-7B-1-12",
+    "exam_part": 1,
     "unit": "SO-7B-1",
     "concept": "population",
     "difficulty": 3,
@@ -4807,6 +5007,7 @@
   },
   {
     "id": "SO-7B-1-13",
+    "exam_part": 2,
     "unit": "SO-7B-1",
     "concept": "industry",
     "difficulty": 3,
@@ -4831,6 +5032,7 @@
   },
   {
     "id": "SO-7B-1-14",
+    "exam_part": 2,
     "unit": "SO-7B-1",
     "concept": "industry",
     "difficulty": 3,
@@ -4855,6 +5057,7 @@
   },
   {
     "id": "SO-7B-1-15",
+    "exam_part": 3,
     "unit": "SO-7B-1",
     "concept": "region",
     "difficulty": 3,
@@ -4879,6 +5082,7 @@
   },
   {
     "id": "SO-7B-1-16",
+    "exam_part": 3,
     "unit": "SO-7B-1",
     "concept": "region",
     "difficulty": 3,
@@ -4903,6 +5107,7 @@
   },
   {
     "id": "SO-7B-2-11",
+    "exam_part": 1,
     "unit": "SO-7B-2",
     "concept": "japanese-rule",
     "difficulty": 3,
@@ -4927,6 +5132,7 @@
   },
   {
     "id": "SO-7B-2-12",
+    "exam_part": 1,
     "unit": "SO-7B-2",
     "concept": "japanese-rule",
     "difficulty": 3,
@@ -4951,6 +5157,7 @@
   },
   {
     "id": "SO-7B-2-13",
+    "exam_part": 2,
     "unit": "SO-7B-2",
     "concept": "postwar-politics",
     "difficulty": 3,
@@ -4975,6 +5182,7 @@
   },
   {
     "id": "SO-7B-2-14",
+    "exam_part": 3,
     "unit": "SO-7B-2",
     "concept": "postwar-economy",
     "difficulty": 3,
@@ -4999,6 +5207,7 @@
   },
   {
     "id": "SO-7B-2-15",
+    "exam_part": 2,
     "unit": "SO-7B-2",
     "concept": "postwar-politics",
     "difficulty": 3,
@@ -5023,6 +5232,7 @@
   },
   {
     "id": "SO-7B-2-16",
+    "exam_part": 3,
     "unit": "SO-7B-2",
     "concept": "postwar-economy",
     "difficulty": 3,
@@ -5047,6 +5257,7 @@
   },
   {
     "id": "SO-7B-3-11",
+    "exam_part": 2,
     "unit": "SO-7B-3",
     "concept": "culture",
     "difficulty": 3,
@@ -5072,6 +5283,7 @@
   },
   {
     "id": "SO-7B-3-12",
+    "exam_part": 2,
     "unit": "SO-7B-3",
     "concept": "culture",
     "difficulty": 3,
@@ -5096,6 +5308,7 @@
   },
   {
     "id": "SO-7B-3-13",
+    "exam_part": 3,
     "unit": "SO-7B-3",
     "concept": "social-welfare",
     "difficulty": 3,
@@ -5120,6 +5333,7 @@
   },
   {
     "id": "SO-7B-3-14",
+    "exam_part": 3,
     "unit": "SO-7B-3",
     "concept": "social-welfare",
     "difficulty": 3,
@@ -5144,6 +5358,7 @@
   },
   {
     "id": "SO-7B-3-15",
+    "exam_part": 1,
     "unit": "SO-7B-3",
     "concept": "social-groups",
     "difficulty": 3,
@@ -5168,6 +5383,7 @@
   },
   {
     "id": "SO-7B-3-16",
+    "exam_part": 1,
     "unit": "SO-7B-3",
     "concept": "social-groups",
     "difficulty": 3,
@@ -5192,6 +5408,7 @@
   },
   {
     "id": "SO-8A-1-11",
+    "exam_part": 3,
     "unit": "SO-8A-1",
     "concept": "hydrology",
     "difficulty": 3,
@@ -5216,6 +5433,7 @@
   },
   {
     "id": "SO-8A-1-12",
+    "exam_part": 2,
     "unit": "SO-8A-1",
     "concept": "climate",
     "difficulty": 3,
@@ -5241,6 +5459,7 @@
   },
   {
     "id": "SO-8A-1-13",
+    "exam_part": 1,
     "unit": "SO-8A-1",
     "concept": "landform",
     "difficulty": 3,
@@ -5265,6 +5484,7 @@
   },
   {
     "id": "SO-8A-1-14",
+    "exam_part": 3,
     "unit": "SO-8A-1",
     "concept": "region",
     "difficulty": 3,
@@ -5289,6 +5509,7 @@
   },
   {
     "id": "SO-8A-1-15",
+    "exam_part": 2,
     "unit": "SO-8A-1",
     "concept": "climate",
     "difficulty": 3,
@@ -5313,6 +5534,7 @@
   },
   {
     "id": "SO-8A-1-16",
+    "exam_part": 3,
     "unit": "SO-8A-1",
     "concept": "hydrology",
     "difficulty": 3,
@@ -5337,6 +5559,7 @@
   },
   {
     "id": "SO-8A-2-11",
+    "exam_part": 1,
     "unit": "SO-8A-2",
     "concept": "qin-han",
     "difficulty": 3,
@@ -5361,6 +5584,7 @@
   },
   {
     "id": "SO-8A-2-12",
+    "exam_part": 2,
     "unit": "SO-8A-2",
     "concept": "trade-exchange",
     "difficulty": 3,
@@ -5385,6 +5609,7 @@
   },
   {
     "id": "SO-8A-2-13",
+    "exam_part": 2,
     "unit": "SO-8A-2",
     "concept": "imperial-exam",
     "difficulty": 3,
@@ -5409,6 +5634,7 @@
   },
   {
     "id": "SO-8A-2-14",
+    "exam_part": 3,
     "unit": "SO-8A-2",
     "concept": "late-qing",
     "difficulty": 3,
@@ -5433,6 +5659,7 @@
   },
   {
     "id": "SO-8A-2-15",
+    "exam_part": 3,
     "unit": "SO-8A-2",
     "concept": "late-qing",
     "difficulty": 3,
@@ -5457,6 +5684,7 @@
   },
   {
     "id": "SO-8A-2-16",
+    "exam_part": 1,
     "unit": "SO-8A-2",
     "concept": "early-china",
     "difficulty": 3,
@@ -5481,6 +5709,7 @@
   },
   {
     "id": "SO-8A-3-11",
+    "exam_part": 3,
     "unit": "SO-8A-3",
     "concept": "elections",
     "difficulty": 3,
@@ -5505,6 +5734,7 @@
   },
   {
     "id": "SO-8A-3-12",
+    "exam_part": 2,
     "unit": "SO-8A-3",
     "concept": "five-yuan",
     "difficulty": 3,
@@ -5529,6 +5759,7 @@
   },
   {
     "id": "SO-8A-3-13",
+    "exam_part": 1,
     "unit": "SO-8A-3",
     "concept": "constitution",
     "difficulty": 3,
@@ -5553,6 +5784,7 @@
   },
   {
     "id": "SO-8A-3-14",
+    "exam_part": 1,
     "unit": "SO-8A-3",
     "concept": "democracy",
     "difficulty": 3,
@@ -5577,6 +5809,7 @@
   },
   {
     "id": "SO-8A-3-15",
+    "exam_part": 3,
     "unit": "SO-8A-3",
     "concept": "parties-groups",
     "difficulty": 3,
@@ -5601,6 +5834,7 @@
   },
   {
     "id": "SO-8A-3-16",
+    "exam_part": 3,
     "unit": "SO-8A-3",
     "concept": "elections",
     "difficulty": 3,
@@ -5625,6 +5859,7 @@
   },
   {
     "id": "SO-8B-1-11",
+    "exam_part": 1,
     "unit": "SO-8B-1",
     "concept": "monsoon-asia",
     "difficulty": 3,
@@ -5649,6 +5884,7 @@
   },
   {
     "id": "SO-8B-1-12",
+    "exam_part": 2,
     "unit": "SO-8B-1",
     "concept": "southeast-asia",
     "difficulty": 3,
@@ -5673,6 +5909,7 @@
   },
   {
     "id": "SO-8B-1-13",
+    "exam_part": 3,
     "unit": "SO-8B-1",
     "concept": "west-asia",
     "difficulty": 3,
@@ -5697,6 +5934,7 @@
   },
   {
     "id": "SO-8B-1-14",
+    "exam_part": 1,
     "unit": "SO-8B-1",
     "concept": "east-asia",
     "difficulty": 3,
@@ -5721,6 +5959,7 @@
   },
   {
     "id": "SO-8B-1-15",
+    "exam_part": 2,
     "unit": "SO-8B-1",
     "concept": "south-asia",
     "difficulty": 3,
@@ -5745,6 +5984,7 @@
   },
   {
     "id": "SO-8B-1-16",
+    "exam_part": 2,
     "unit": "SO-8B-1",
     "concept": "southeast-asia",
     "difficulty": 3,
@@ -5769,6 +6009,7 @@
   },
   {
     "id": "SO-8B-2-11",
+    "exam_part": 1,
     "unit": "SO-8B-2",
     "concept": "late-qing",
     "difficulty": 3,
@@ -5793,6 +6034,7 @@
   },
   {
     "id": "SO-8B-2-12",
+    "exam_part": 1,
     "unit": "SO-8B-2",
     "concept": "meiji",
     "difficulty": 3,
@@ -5817,6 +6059,7 @@
   },
   {
     "id": "SO-8B-2-13",
+    "exam_part": 2,
     "unit": "SO-8B-2",
     "concept": "republic-china",
     "difficulty": 3,
@@ -5841,6 +6084,7 @@
   },
   {
     "id": "SO-8B-2-14",
+    "exam_part": 3,
     "unit": "SO-8B-2",
     "concept": "chronology",
     "difficulty": 3,
@@ -5865,6 +6109,7 @@
   },
   {
     "id": "SO-8B-2-15",
+    "exam_part": 2,
     "unit": "SO-8B-2",
     "concept": "korea",
     "difficulty": 3,
@@ -5889,6 +6134,7 @@
   },
   {
     "id": "SO-8B-2-16",
+    "exam_part": 2,
     "unit": "SO-8B-2",
     "concept": "korea",
     "difficulty": 3,
@@ -5913,6 +6159,7 @@
   },
   {
     "id": "SO-8B-3-11",
+    "exam_part": 1,
     "unit": "SO-8B-3",
     "concept": "civil-law",
     "difficulty": 3,
@@ -5937,6 +6184,7 @@
   },
   {
     "id": "SO-8B-3-12",
+    "exam_part": 2,
     "unit": "SO-8B-3",
     "concept": "criminal-law",
     "difficulty": 3,
@@ -5961,6 +6209,7 @@
   },
   {
     "id": "SO-8B-3-13",
+    "exam_part": 3,
     "unit": "SO-8B-3",
     "concept": "administrative-law",
     "difficulty": 3,
@@ -5985,6 +6234,7 @@
   },
   {
     "id": "SO-8B-3-14",
+    "exam_part": 1,
     "unit": "SO-8B-3",
     "concept": "legal-hierarchy",
     "difficulty": 3,
@@ -6009,6 +6259,7 @@
   },
   {
     "id": "SO-8B-3-15",
+    "exam_part": 2,
     "unit": "SO-8B-3",
     "concept": "juvenile-justice",
     "difficulty": 3,
@@ -6033,6 +6284,7 @@
   },
   {
     "id": "SO-8B-3-16",
+    "exam_part": 3,
     "unit": "SO-8B-3",
     "concept": "administrative-law",
     "difficulty": 3,
@@ -6057,6 +6309,7 @@
   },
   {
     "id": "SO-9A-1-11",
+    "exam_part": 1,
     "unit": "SO-9A-1",
     "concept": "europe-climate",
     "difficulty": 3,
@@ -6081,6 +6334,7 @@
   },
   {
     "id": "SO-9A-1-12",
+    "exam_part": 1,
     "unit": "SO-9A-1",
     "concept": "mediterranean",
     "difficulty": 3,
@@ -6105,6 +6359,7 @@
   },
   {
     "id": "SO-9A-1-13",
+    "exam_part": 2,
     "unit": "SO-9A-1",
     "concept": "russia",
     "difficulty": 3,
@@ -6129,6 +6384,7 @@
   },
   {
     "id": "SO-9A-1-14",
+    "exam_part": 3,
     "unit": "SO-9A-1",
     "concept": "africa-environment",
     "difficulty": 3,
@@ -6153,6 +6409,7 @@
   },
   {
     "id": "SO-9A-1-15",
+    "exam_part": 3,
     "unit": "SO-9A-1",
     "concept": "africa-development",
     "difficulty": 3,
@@ -6177,6 +6434,7 @@
   },
   {
     "id": "SO-9A-1-16",
+    "exam_part": 2,
     "unit": "SO-9A-1",
     "concept": "russia",
     "difficulty": 3,
@@ -6201,6 +6459,7 @@
   },
   {
     "id": "SO-9A-2-11",
+    "exam_part": 1,
     "unit": "SO-9A-2",
     "concept": "ancient-civilization",
     "difficulty": 3,
@@ -6225,6 +6484,7 @@
   },
   {
     "id": "SO-9A-2-12",
+    "exam_part": 1,
     "unit": "SO-9A-2",
     "concept": "greece-rome",
     "difficulty": 3,
@@ -6249,6 +6509,7 @@
   },
   {
     "id": "SO-9A-2-13",
+    "exam_part": 2,
     "unit": "SO-9A-2",
     "concept": "renaissance-reformation",
     "difficulty": 3,
@@ -6273,6 +6534,7 @@
   },
   {
     "id": "SO-9A-2-14",
+    "exam_part": 3,
     "unit": "SO-9A-2",
     "concept": "enlightenment-revolution",
     "difficulty": 3,
@@ -6297,6 +6559,7 @@
   },
   {
     "id": "SO-9A-2-15",
+    "exam_part": 3,
     "unit": "SO-9A-2",
     "concept": "industrial-revolution",
     "difficulty": 3,
@@ -6321,6 +6584,7 @@
   },
   {
     "id": "SO-9A-2-16",
+    "exam_part": 1,
     "unit": "SO-9A-2",
     "concept": "greece-rome",
     "difficulty": 3,
@@ -6345,6 +6609,7 @@
   },
   {
     "id": "SO-9A-3-11",
+    "exam_part": 1,
     "unit": "SO-9A-3",
     "concept": "opportunity-cost",
     "difficulty": 3,
@@ -6369,6 +6634,7 @@
   },
   {
     "id": "SO-9A-3-12",
+    "exam_part": 1,
     "unit": "SO-9A-3",
     "concept": "supply-demand",
     "difficulty": 3,
@@ -6393,6 +6659,7 @@
   },
   {
     "id": "SO-9A-3-13",
+    "exam_part": 2,
     "unit": "SO-9A-3",
     "concept": "market-structure",
     "difficulty": 3,
@@ -6417,6 +6684,7 @@
   },
   {
     "id": "SO-9A-3-14",
+    "exam_part": 2,
     "unit": "SO-9A-3",
     "concept": "money-finance",
     "difficulty": 3,
@@ -6441,6 +6709,7 @@
   },
   {
     "id": "SO-9A-3-15",
+    "exam_part": 3,
     "unit": "SO-9A-3",
     "concept": "government-role",
     "difficulty": 3,
@@ -6465,6 +6734,7 @@
   },
   {
     "id": "SO-9A-3-16",
+    "exam_part": 3,
     "unit": "SO-9A-3",
     "concept": "government-role",
     "difficulty": 3,
@@ -6489,6 +6759,7 @@
   },
   {
     "id": "SO-9B-1-11",
+    "exam_part": 1,
     "unit": "SO-9B-1",
     "concept": "americas",
     "difficulty": 3,
@@ -6513,6 +6784,7 @@
   },
   {
     "id": "SO-9B-1-12",
+    "exam_part": 1,
     "unit": "SO-9B-1",
     "concept": "climate-type",
     "difficulty": 3,
@@ -6537,6 +6809,7 @@
   },
   {
     "id": "SO-9B-1-13",
+    "exam_part": 2,
     "unit": "SO-9B-1",
     "concept": "oceania",
     "difficulty": 3,
@@ -6561,6 +6834,7 @@
   },
   {
     "id": "SO-9B-1-14",
+    "exam_part": 3,
     "unit": "SO-9B-1",
     "concept": "global-warming",
     "difficulty": 3,
@@ -6585,6 +6859,7 @@
   },
   {
     "id": "SO-9B-1-15",
+    "exam_part": 3,
     "unit": "SO-9B-1",
     "concept": "food-water",
     "difficulty": 3,
@@ -6609,6 +6884,7 @@
   },
   {
     "id": "SO-9B-1-16",
+    "exam_part": 1,
     "unit": "SO-9B-1",
     "concept": "americas",
     "difficulty": 3,
@@ -6633,6 +6909,7 @@
   },
   {
     "id": "SO-9B-2-11",
+    "exam_part": 1,
     "unit": "SO-9B-2",
     "concept": "world-war",
     "difficulty": 3,
@@ -6657,6 +6934,7 @@
   },
   {
     "id": "SO-9B-2-12",
+    "exam_part": 1,
     "unit": "SO-9B-2",
     "concept": "world-war",
     "difficulty": 3,
@@ -6681,6 +6959,7 @@
   },
   {
     "id": "SO-9B-2-13",
+    "exam_part": 2,
     "unit": "SO-9B-2",
     "concept": "cold-war",
     "difficulty": 3,
@@ -6705,6 +6984,7 @@
   },
   {
     "id": "SO-9B-2-14",
+    "exam_part": 2,
     "unit": "SO-9B-2",
     "concept": "cold-war",
     "difficulty": 3,
@@ -6729,6 +7009,7 @@
   },
   {
     "id": "SO-9B-2-15",
+    "exam_part": 3,
     "unit": "SO-9B-2",
     "concept": "decolonization",
     "difficulty": 3,
@@ -6753,6 +7034,7 @@
   },
   {
     "id": "SO-9B-2-16",
+    "exam_part": 3,
     "unit": "SO-9B-2",
     "concept": "decolonization",
     "difficulty": 3,
@@ -6777,6 +7059,7 @@
   },
   {
     "id": "SO-9B-3-11",
+    "exam_part": 2,
     "unit": "SO-9B-3",
     "concept": "comparative-advantage",
     "difficulty": 3,
@@ -6801,6 +7084,7 @@
   },
   {
     "id": "SO-9B-3-12",
+    "exam_part": 1,
     "unit": "SO-9B-3",
     "concept": "globalization",
     "difficulty": 3,
@@ -6825,6 +7109,7 @@
   },
   {
     "id": "SO-9B-3-13",
+    "exam_part": 2,
     "unit": "SO-9B-3",
     "concept": "trade-policy",
     "difficulty": 3,
@@ -6849,6 +7134,7 @@
   },
   {
     "id": "SO-9B-3-14",
+    "exam_part": 3,
     "unit": "SO-9B-3",
     "concept": "international-org",
     "difficulty": 3,
@@ -6873,6 +7159,7 @@
   },
   {
     "id": "SO-9B-3-15",
+    "exam_part": 1,
     "unit": "SO-9B-3",
     "concept": "globalization",
     "difficulty": 3,
@@ -6897,6 +7184,7 @@
   },
   {
     "id": "SO-9B-3-16",
+    "exam_part": 3,
     "unit": "SO-9B-3",
     "concept": "international-org",
     "difficulty": 3,
@@ -6921,6 +7209,7 @@
   },
   {
     "id": "SO-7A-1-17",
+    "exam_part": 1,
     "unit": "SO-7A-1",
     "concept": "latitude-longitude",
     "difficulty": 1,
@@ -6945,6 +7234,7 @@
   },
   {
     "id": "SO-7A-1-18",
+    "exam_part": 1,
     "unit": "SO-7A-1",
     "concept": "time-zone",
     "difficulty": 1,
@@ -6969,6 +7259,7 @@
   },
   {
     "id": "SO-7A-1-19",
+    "exam_part": 2,
     "unit": "SO-7A-1",
     "concept": "landform",
     "difficulty": 1,
@@ -6994,6 +7285,7 @@
   },
   {
     "id": "SO-7A-1-20",
+    "exam_part": 2,
     "unit": "SO-7A-1",
     "concept": "landform",
     "difficulty": 1,
@@ -7018,6 +7310,7 @@
   },
   {
     "id": "SO-7A-1-21",
+    "exam_part": 3,
     "unit": "SO-7A-1",
     "concept": "climate",
     "difficulty": 1,
@@ -7042,6 +7335,7 @@
   },
   {
     "id": "SO-7A-1-22",
+    "exam_part": 1,
     "unit": "SO-7A-1",
     "concept": "latitude-longitude",
     "difficulty": 2,
@@ -7066,6 +7360,7 @@
   },
   {
     "id": "SO-7A-1-23",
+    "exam_part": 1,
     "unit": "SO-7A-1",
     "concept": "latitude-longitude",
     "difficulty": 2,
@@ -7090,6 +7385,7 @@
   },
   {
     "id": "SO-7A-1-24",
+    "exam_part": 1,
     "unit": "SO-7A-1",
     "concept": "time-zone",
     "difficulty": 2,
@@ -7114,6 +7410,7 @@
   },
   {
     "id": "SO-7A-1-25",
+    "exam_part": 2,
     "unit": "SO-7A-1",
     "concept": "landform",
     "difficulty": 2,
@@ -7138,6 +7435,7 @@
   },
   {
     "id": "SO-7A-1-26",
+    "exam_part": 2,
     "unit": "SO-7A-1",
     "concept": "landform",
     "difficulty": 2,
@@ -7162,6 +7460,7 @@
   },
   {
     "id": "SO-7A-1-27",
+    "exam_part": 3,
     "unit": "SO-7A-1",
     "concept": "climate",
     "difficulty": 2,
@@ -7186,6 +7485,7 @@
   },
   {
     "id": "SO-7A-1-28",
+    "exam_part": 3,
     "unit": "SO-7A-1",
     "concept": "climate",
     "difficulty": 2,
@@ -7210,6 +7510,7 @@
   },
   {
     "id": "SO-7A-1-29",
+    "exam_part": 1,
     "unit": "SO-7A-1",
     "concept": "time-zone",
     "difficulty": 3,
@@ -7235,6 +7536,7 @@
   },
   {
     "id": "SO-7A-1-30",
+    "exam_part": 3,
     "unit": "SO-7A-1",
     "concept": "climate",
     "difficulty": 3,
@@ -7259,6 +7561,7 @@
   },
   {
     "id": "SO-7A-2-17",
+    "exam_part": 1,
     "unit": "SO-7A-2",
     "concept": "prehistory",
     "difficulty": 1,
@@ -7283,6 +7586,7 @@
   },
   {
     "id": "SO-7A-2-18",
+    "exam_part": 1,
     "unit": "SO-7A-2",
     "concept": "indigenous-peoples",
     "difficulty": 1,
@@ -7307,6 +7611,7 @@
   },
   {
     "id": "SO-7A-2-19",
+    "exam_part": 2,
     "unit": "SO-7A-2",
     "concept": "dutch-spanish",
     "difficulty": 1,
@@ -7331,6 +7636,7 @@
   },
   {
     "id": "SO-7A-2-20",
+    "exam_part": 2,
     "unit": "SO-7A-2",
     "concept": "zheng-regime",
     "difficulty": 1,
@@ -7355,6 +7661,7 @@
   },
   {
     "id": "SO-7A-2-21",
+    "exam_part": 3,
     "unit": "SO-7A-2",
     "concept": "qing-governance",
     "difficulty": 1,
@@ -7379,6 +7686,7 @@
   },
   {
     "id": "SO-7A-2-22",
+    "exam_part": 1,
     "unit": "SO-7A-2",
     "concept": "prehistory",
     "difficulty": 2,
@@ -7403,6 +7711,7 @@
   },
   {
     "id": "SO-7A-2-23",
+    "exam_part": 1,
     "unit": "SO-7A-2",
     "concept": "prehistory",
     "difficulty": 2,
@@ -7427,6 +7736,7 @@
   },
   {
     "id": "SO-7A-2-24",
+    "exam_part": 1,
     "unit": "SO-7A-2",
     "concept": "indigenous-peoples",
     "difficulty": 2,
@@ -7451,6 +7761,7 @@
   },
   {
     "id": "SO-7A-2-25",
+    "exam_part": 2,
     "unit": "SO-7A-2",
     "concept": "dutch-spanish",
     "difficulty": 2,
@@ -7475,6 +7786,7 @@
   },
   {
     "id": "SO-7A-2-26",
+    "exam_part": 2,
     "unit": "SO-7A-2",
     "concept": "zheng-regime",
     "difficulty": 2,
@@ -7499,6 +7811,7 @@
   },
   {
     "id": "SO-7A-2-27",
+    "exam_part": 2,
     "unit": "SO-7A-2",
     "concept": "zheng-regime",
     "difficulty": 2,
@@ -7523,6 +7836,7 @@
   },
   {
     "id": "SO-7A-2-28",
+    "exam_part": 3,
     "unit": "SO-7A-2",
     "concept": "qing-governance",
     "difficulty": 2,
@@ -7547,6 +7861,7 @@
   },
   {
     "id": "SO-7A-2-29",
+    "exam_part": 2,
     "unit": "SO-7A-2",
     "concept": "dutch-spanish",
     "difficulty": 3,
@@ -7571,6 +7886,7 @@
   },
   {
     "id": "SO-7A-2-30",
+    "exam_part": 3,
     "unit": "SO-7A-2",
     "concept": "qing-governance",
     "difficulty": 3,
@@ -7596,6 +7912,7 @@
   },
   {
     "id": "SO-7A-3-17",
+    "exam_part": 2,
     "unit": "SO-7A-3",
     "concept": "gender-equality",
     "difficulty": 1,
@@ -7620,6 +7937,7 @@
   },
   {
     "id": "SO-7A-3-18",
+    "exam_part": 3,
     "unit": "SO-7A-3",
     "concept": "family",
     "difficulty": 1,
@@ -7644,6 +7962,7 @@
   },
   {
     "id": "SO-7A-3-19",
+    "exam_part": 3,
     "unit": "SO-7A-3",
     "concept": "family",
     "difficulty": 1,
@@ -7668,6 +7987,7 @@
   },
   {
     "id": "SO-7A-3-20",
+    "exam_part": 3,
     "unit": "SO-7A-3",
     "concept": "school-autonomy",
     "difficulty": 1,
@@ -7692,6 +8012,7 @@
   },
   {
     "id": "SO-7A-3-21",
+    "exam_part": 1,
     "unit": "SO-7A-3",
     "concept": "human-rights",
     "difficulty": 1,
@@ -7716,6 +8037,7 @@
   },
   {
     "id": "SO-7A-3-22",
+    "exam_part": 2,
     "unit": "SO-7A-3",
     "concept": "gender-equality",
     "difficulty": 2,
@@ -7740,6 +8062,7 @@
   },
   {
     "id": "SO-7A-3-23",
+    "exam_part": 2,
     "unit": "SO-7A-3",
     "concept": "gender-equality",
     "difficulty": 2,
@@ -7764,6 +8087,7 @@
   },
   {
     "id": "SO-7A-3-24",
+    "exam_part": 2,
     "unit": "SO-7A-3",
     "concept": "gender-equality",
     "difficulty": 2,
@@ -7788,6 +8112,7 @@
   },
   {
     "id": "SO-7A-3-25",
+    "exam_part": 3,
     "unit": "SO-7A-3",
     "concept": "family",
     "difficulty": 2,
@@ -7812,6 +8137,7 @@
   },
   {
     "id": "SO-7A-3-26",
+    "exam_part": 3,
     "unit": "SO-7A-3",
     "concept": "school-autonomy",
     "difficulty": 2,
@@ -7836,6 +8162,7 @@
   },
   {
     "id": "SO-7A-3-27",
+    "exam_part": 1,
     "unit": "SO-7A-3",
     "concept": "human-rights",
     "difficulty": 2,
@@ -7860,6 +8187,7 @@
   },
   {
     "id": "SO-7A-3-28",
+    "exam_part": 1,
     "unit": "SO-7A-3",
     "concept": "human-rights",
     "difficulty": 2,
@@ -7884,6 +8212,7 @@
   },
   {
     "id": "SO-7A-3-29",
+    "exam_part": 3,
     "unit": "SO-7A-3",
     "concept": "school-autonomy",
     "difficulty": 3,
@@ -7909,6 +8238,7 @@
   },
   {
     "id": "SO-7A-3-30",
+    "exam_part": 1,
     "unit": "SO-7A-3",
     "concept": "human-rights",
     "difficulty": 3,
@@ -7934,6 +8264,7 @@
   },
   {
     "id": "SO-7B-1-17",
+    "exam_part": 1,
     "unit": "SO-7B-1",
     "concept": "population",
     "difficulty": 1,
@@ -7958,6 +8289,7 @@
   },
   {
     "id": "SO-7B-1-18",
+    "exam_part": 1,
     "unit": "SO-7B-1",
     "concept": "population",
     "difficulty": 1,
@@ -7982,6 +8314,7 @@
   },
   {
     "id": "SO-7B-1-19",
+    "exam_part": 2,
     "unit": "SO-7B-1",
     "concept": "industry",
     "difficulty": 1,
@@ -8006,6 +8339,7 @@
   },
   {
     "id": "SO-7B-1-20",
+    "exam_part": 3,
     "unit": "SO-7B-1",
     "concept": "region",
     "difficulty": 1,
@@ -8030,6 +8364,7 @@
   },
   {
     "id": "SO-7B-1-21",
+    "exam_part": 3,
     "unit": "SO-7B-1",
     "concept": "region",
     "difficulty": 1,
@@ -8054,6 +8389,7 @@
   },
   {
     "id": "SO-7B-1-22",
+    "exam_part": 1,
     "unit": "SO-7B-1",
     "concept": "population",
     "difficulty": 2,
@@ -8078,6 +8414,7 @@
   },
   {
     "id": "SO-7B-1-23",
+    "exam_part": 1,
     "unit": "SO-7B-1",
     "concept": "population",
     "difficulty": 2,
@@ -8102,6 +8439,7 @@
   },
   {
     "id": "SO-7B-1-24",
+    "exam_part": 2,
     "unit": "SO-7B-1",
     "concept": "industry",
     "difficulty": 2,
@@ -8126,6 +8464,7 @@
   },
   {
     "id": "SO-7B-1-25",
+    "exam_part": 2,
     "unit": "SO-7B-1",
     "concept": "industry",
     "difficulty": 2,
@@ -8150,6 +8489,7 @@
   },
   {
     "id": "SO-7B-1-26",
+    "exam_part": 2,
     "unit": "SO-7B-1",
     "concept": "industry",
     "difficulty": 2,
@@ -8174,6 +8514,7 @@
   },
   {
     "id": "SO-7B-1-27",
+    "exam_part": 3,
     "unit": "SO-7B-1",
     "concept": "region",
     "difficulty": 2,
@@ -8198,6 +8539,7 @@
   },
   {
     "id": "SO-7B-1-28",
+    "exam_part": 3,
     "unit": "SO-7B-1",
     "concept": "region",
     "difficulty": 2,
@@ -8222,6 +8564,7 @@
   },
   {
     "id": "SO-7B-1-29",
+    "exam_part": 1,
     "unit": "SO-7B-1",
     "concept": "population",
     "difficulty": 3,
@@ -8247,6 +8590,7 @@
   },
   {
     "id": "SO-7B-1-30",
+    "exam_part": 3,
     "unit": "SO-7B-1",
     "concept": "region",
     "difficulty": 3,
@@ -8271,6 +8615,7 @@
   },
   {
     "id": "SO-7B-2-17",
+    "exam_part": 1,
     "unit": "SO-7B-2",
     "concept": "japanese-rule",
     "difficulty": 1,
@@ -8295,6 +8640,7 @@
   },
   {
     "id": "SO-7B-2-18",
+    "exam_part": 1,
     "unit": "SO-7B-2",
     "concept": "japanese-rule",
     "difficulty": 1,
@@ -8319,6 +8665,7 @@
   },
   {
     "id": "SO-7B-2-19",
+    "exam_part": 2,
     "unit": "SO-7B-2",
     "concept": "postwar-politics",
     "difficulty": 1,
@@ -8343,6 +8690,7 @@
   },
   {
     "id": "SO-7B-2-20",
+    "exam_part": 3,
     "unit": "SO-7B-2",
     "concept": "postwar-economy",
     "difficulty": 1,
@@ -8367,6 +8715,7 @@
   },
   {
     "id": "SO-7B-2-21",
+    "exam_part": 3,
     "unit": "SO-7B-2",
     "concept": "postwar-economy",
     "difficulty": 1,
@@ -8391,6 +8740,7 @@
   },
   {
     "id": "SO-7B-2-22",
+    "exam_part": 1,
     "unit": "SO-7B-2",
     "concept": "japanese-rule",
     "difficulty": 2,
@@ -8415,6 +8765,7 @@
   },
   {
     "id": "SO-7B-2-23",
+    "exam_part": 1,
     "unit": "SO-7B-2",
     "concept": "japanese-rule",
     "difficulty": 2,
@@ -8439,6 +8790,7 @@
   },
   {
     "id": "SO-7B-2-24",
+    "exam_part": 1,
     "unit": "SO-7B-2",
     "concept": "japanese-rule",
     "difficulty": 2,
@@ -8463,6 +8815,7 @@
   },
   {
     "id": "SO-7B-2-25",
+    "exam_part": 2,
     "unit": "SO-7B-2",
     "concept": "postwar-politics",
     "difficulty": 2,
@@ -8487,6 +8840,7 @@
   },
   {
     "id": "SO-7B-2-26",
+    "exam_part": 2,
     "unit": "SO-7B-2",
     "concept": "postwar-politics",
     "difficulty": 2,
@@ -8511,6 +8865,7 @@
   },
   {
     "id": "SO-7B-2-27",
+    "exam_part": 3,
     "unit": "SO-7B-2",
     "concept": "postwar-economy",
     "difficulty": 2,
@@ -8535,6 +8890,7 @@
   },
   {
     "id": "SO-7B-2-28",
+    "exam_part": 3,
     "unit": "SO-7B-2",
     "concept": "postwar-economy",
     "difficulty": 2,
@@ -8559,6 +8915,7 @@
   },
   {
     "id": "SO-7B-2-29",
+    "exam_part": 1,
     "unit": "SO-7B-2",
     "concept": "japanese-rule",
     "difficulty": 3,
@@ -8583,6 +8940,7 @@
   },
   {
     "id": "SO-7B-2-30",
+    "exam_part": 2,
     "unit": "SO-7B-2",
     "concept": "postwar-politics",
     "difficulty": 3,
@@ -8607,6 +8965,7 @@
   },
   {
     "id": "SO-7B-3-17",
+    "exam_part": 1,
     "unit": "SO-7B-3",
     "concept": "social-groups",
     "difficulty": 1,
@@ -8631,6 +8990,7 @@
   },
   {
     "id": "SO-7B-3-18",
+    "exam_part": 2,
     "unit": "SO-7B-3",
     "concept": "culture",
     "difficulty": 1,
@@ -8655,6 +9015,7 @@
   },
   {
     "id": "SO-7B-3-19",
+    "exam_part": 2,
     "unit": "SO-7B-3",
     "concept": "culture",
     "difficulty": 1,
@@ -8679,6 +9040,7 @@
   },
   {
     "id": "SO-7B-3-20",
+    "exam_part": 3,
     "unit": "SO-7B-3",
     "concept": "social-welfare",
     "difficulty": 1,
@@ -8703,6 +9065,7 @@
   },
   {
     "id": "SO-7B-3-21",
+    "exam_part": 3,
     "unit": "SO-7B-3",
     "concept": "social-welfare",
     "difficulty": 1,
@@ -8727,6 +9090,7 @@
   },
   {
     "id": "SO-7B-3-22",
+    "exam_part": 1,
     "unit": "SO-7B-3",
     "concept": "social-groups",
     "difficulty": 2,
@@ -8751,6 +9115,7 @@
   },
   {
     "id": "SO-7B-3-23",
+    "exam_part": 1,
     "unit": "SO-7B-3",
     "concept": "social-groups",
     "difficulty": 2,
@@ -8775,6 +9140,7 @@
   },
   {
     "id": "SO-7B-3-24",
+    "exam_part": 1,
     "unit": "SO-7B-3",
     "concept": "social-groups",
     "difficulty": 2,
@@ -8799,6 +9165,7 @@
   },
   {
     "id": "SO-7B-3-25",
+    "exam_part": 2,
     "unit": "SO-7B-3",
     "concept": "culture",
     "difficulty": 2,
@@ -8823,6 +9190,7 @@
   },
   {
     "id": "SO-7B-3-26",
+    "exam_part": 2,
     "unit": "SO-7B-3",
     "concept": "culture",
     "difficulty": 2,
@@ -8847,6 +9215,7 @@
   },
   {
     "id": "SO-7B-3-27",
+    "exam_part": 3,
     "unit": "SO-7B-3",
     "concept": "social-welfare",
     "difficulty": 2,
@@ -8871,6 +9240,7 @@
   },
   {
     "id": "SO-7B-3-28",
+    "exam_part": 3,
     "unit": "SO-7B-3",
     "concept": "social-welfare",
     "difficulty": 2,
@@ -8895,6 +9265,7 @@
   },
   {
     "id": "SO-7B-3-29",
+    "exam_part": 1,
     "unit": "SO-7B-3",
     "concept": "social-groups",
     "difficulty": 3,
@@ -8920,6 +9291,7 @@
   },
   {
     "id": "SO-7B-3-30",
+    "exam_part": 2,
     "unit": "SO-7B-3",
     "concept": "culture",
     "difficulty": 3,
@@ -8945,6 +9317,7 @@
   },
   {
     "id": "SO-8A-1-17",
+    "exam_part": 1,
     "unit": "SO-8A-1",
     "concept": "landform",
     "difficulty": 1,
@@ -8969,6 +9342,7 @@
   },
   {
     "id": "SO-8A-1-18",
+    "exam_part": 1,
     "unit": "SO-8A-1",
     "concept": "landform",
     "difficulty": 1,
@@ -8993,6 +9367,7 @@
   },
   {
     "id": "SO-8A-1-19",
+    "exam_part": 2,
     "unit": "SO-8A-1",
     "concept": "climate",
     "difficulty": 1,
@@ -9017,6 +9392,7 @@
   },
   {
     "id": "SO-8A-1-20",
+    "exam_part": 3,
     "unit": "SO-8A-1",
     "concept": "hydrology",
     "difficulty": 1,
@@ -9041,6 +9417,7 @@
   },
   {
     "id": "SO-8A-1-21",
+    "exam_part": 3,
     "unit": "SO-8A-1",
     "concept": "region",
     "difficulty": 1,
@@ -9065,6 +9442,7 @@
   },
   {
     "id": "SO-8A-1-22",
+    "exam_part": 1,
     "unit": "SO-8A-1",
     "concept": "landform",
     "difficulty": 2,
@@ -9089,6 +9467,7 @@
   },
   {
     "id": "SO-8A-1-23",
+    "exam_part": 1,
     "unit": "SO-8A-1",
     "concept": "landform",
     "difficulty": 2,
@@ -9113,6 +9492,7 @@
   },
   {
     "id": "SO-8A-1-24",
+    "exam_part": 2,
     "unit": "SO-8A-1",
     "concept": "climate",
     "difficulty": 2,
@@ -9137,6 +9517,7 @@
   },
   {
     "id": "SO-8A-1-25",
+    "exam_part": 3,
     "unit": "SO-8A-1",
     "concept": "hydrology",
     "difficulty": 2,
@@ -9161,6 +9542,7 @@
   },
   {
     "id": "SO-8A-1-26",
+    "exam_part": 3,
     "unit": "SO-8A-1",
     "concept": "hydrology",
     "difficulty": 2,
@@ -9185,6 +9567,7 @@
   },
   {
     "id": "SO-8A-1-27",
+    "exam_part": 3,
     "unit": "SO-8A-1",
     "concept": "region",
     "difficulty": 2,
@@ -9209,6 +9592,7 @@
   },
   {
     "id": "SO-8A-1-28",
+    "exam_part": 2,
     "unit": "SO-8A-1",
     "concept": "climate",
     "difficulty": 2,
@@ -9233,6 +9617,7 @@
   },
   {
     "id": "SO-8A-1-29",
+    "exam_part": 2,
     "unit": "SO-8A-1",
     "concept": "climate",
     "difficulty": 3,
@@ -9258,6 +9643,7 @@
   },
   {
     "id": "SO-8A-1-30",
+    "exam_part": 3,
     "unit": "SO-8A-1",
     "concept": "hydrology",
     "difficulty": 3,
@@ -9283,6 +9669,7 @@
   },
   {
     "id": "SO-8A-2-17",
+    "exam_part": 1,
     "unit": "SO-8A-2",
     "concept": "early-china",
     "difficulty": 1,
@@ -9307,6 +9694,7 @@
   },
   {
     "id": "SO-8A-2-18",
+    "exam_part": 1,
     "unit": "SO-8A-2",
     "concept": "qin-han",
     "difficulty": 1,
@@ -9331,6 +9719,7 @@
   },
   {
     "id": "SO-8A-2-19",
+    "exam_part": 2,
     "unit": "SO-8A-2",
     "concept": "imperial-exam",
     "difficulty": 1,
@@ -9355,6 +9744,7 @@
   },
   {
     "id": "SO-8A-2-20",
+    "exam_part": 2,
     "unit": "SO-8A-2",
     "concept": "trade-exchange",
     "difficulty": 1,
@@ -9379,6 +9769,7 @@
   },
   {
     "id": "SO-8A-2-21",
+    "exam_part": 3,
     "unit": "SO-8A-2",
     "concept": "late-qing",
     "difficulty": 1,
@@ -9403,6 +9794,7 @@
   },
   {
     "id": "SO-8A-2-22",
+    "exam_part": 1,
     "unit": "SO-8A-2",
     "concept": "early-china",
     "difficulty": 2,
@@ -9427,6 +9819,7 @@
   },
   {
     "id": "SO-8A-2-23",
+    "exam_part": 1,
     "unit": "SO-8A-2",
     "concept": "qin-han",
     "difficulty": 2,
@@ -9451,6 +9844,7 @@
   },
   {
     "id": "SO-8A-2-24",
+    "exam_part": 1,
     "unit": "SO-8A-2",
     "concept": "qin-han",
     "difficulty": 2,
@@ -9475,6 +9869,7 @@
   },
   {
     "id": "SO-8A-2-25",
+    "exam_part": 2,
     "unit": "SO-8A-2",
     "concept": "imperial-exam",
     "difficulty": 2,
@@ -9499,6 +9894,7 @@
   },
   {
     "id": "SO-8A-2-26",
+    "exam_part": 2,
     "unit": "SO-8A-2",
     "concept": "trade-exchange",
     "difficulty": 2,
@@ -9523,6 +9919,7 @@
   },
   {
     "id": "SO-8A-2-27",
+    "exam_part": 3,
     "unit": "SO-8A-2",
     "concept": "late-qing",
     "difficulty": 2,
@@ -9547,6 +9944,7 @@
   },
   {
     "id": "SO-8A-2-28",
+    "exam_part": 3,
     "unit": "SO-8A-2",
     "concept": "late-qing",
     "difficulty": 2,
@@ -9571,6 +9969,7 @@
   },
   {
     "id": "SO-8A-2-29",
+    "exam_part": 2,
     "unit": "SO-8A-2",
     "concept": "trade-exchange",
     "difficulty": 3,
@@ -9595,6 +9994,7 @@
   },
   {
     "id": "SO-8A-2-30",
+    "exam_part": 3,
     "unit": "SO-8A-2",
     "concept": "late-qing",
     "difficulty": 3,
@@ -9620,6 +10020,7 @@
   },
   {
     "id": "SO-8A-3-17",
+    "exam_part": 1,
     "unit": "SO-8A-3",
     "concept": "democracy",
     "difficulty": 1,
@@ -9644,6 +10045,7 @@
   },
   {
     "id": "SO-8A-3-18",
+    "exam_part": 1,
     "unit": "SO-8A-3",
     "concept": "constitution",
     "difficulty": 1,
@@ -9668,6 +10070,7 @@
   },
   {
     "id": "SO-8A-3-19",
+    "exam_part": 2,
     "unit": "SO-8A-3",
     "concept": "five-yuan",
     "difficulty": 1,
@@ -9692,6 +10095,7 @@
   },
   {
     "id": "SO-8A-3-20",
+    "exam_part": 3,
     "unit": "SO-8A-3",
     "concept": "elections",
     "difficulty": 1,
@@ -9716,6 +10120,7 @@
   },
   {
     "id": "SO-8A-3-21",
+    "exam_part": 3,
     "unit": "SO-8A-3",
     "concept": "parties-groups",
     "difficulty": 1,
@@ -9740,6 +10145,7 @@
   },
   {
     "id": "SO-8A-3-22",
+    "exam_part": 1,
     "unit": "SO-8A-3",
     "concept": "democracy",
     "difficulty": 2,
@@ -9764,6 +10170,7 @@
   },
   {
     "id": "SO-8A-3-23",
+    "exam_part": 1,
     "unit": "SO-8A-3",
     "concept": "democracy",
     "difficulty": 2,
@@ -9788,6 +10195,7 @@
   },
   {
     "id": "SO-8A-3-24",
+    "exam_part": 1,
     "unit": "SO-8A-3",
     "concept": "constitution",
     "difficulty": 2,
@@ -9812,6 +10220,7 @@
   },
   {
     "id": "SO-8A-3-25",
+    "exam_part": 2,
     "unit": "SO-8A-3",
     "concept": "five-yuan",
     "difficulty": 2,
@@ -9836,6 +10245,7 @@
   },
   {
     "id": "SO-8A-3-26",
+    "exam_part": 2,
     "unit": "SO-8A-3",
     "concept": "five-yuan",
     "difficulty": 2,
@@ -9860,6 +10270,7 @@
   },
   {
     "id": "SO-8A-3-27",
+    "exam_part": 3,
     "unit": "SO-8A-3",
     "concept": "elections",
     "difficulty": 2,
@@ -9884,6 +10295,7 @@
   },
   {
     "id": "SO-8A-3-28",
+    "exam_part": 3,
     "unit": "SO-8A-3",
     "concept": "parties-groups",
     "difficulty": 2,
@@ -9908,6 +10320,7 @@
   },
   {
     "id": "SO-8A-3-29",
+    "exam_part": 2,
     "unit": "SO-8A-3",
     "concept": "five-yuan",
     "difficulty": 3,
@@ -9933,6 +10346,7 @@
   },
   {
     "id": "SO-8A-3-30",
+    "exam_part": 3,
     "unit": "SO-8A-3",
     "concept": "elections",
     "difficulty": 3,
@@ -9958,6 +10372,7 @@
   },
   {
     "id": "SO-8B-1-17",
+    "exam_part": 1,
     "unit": "SO-8B-1",
     "concept": "monsoon-asia",
     "difficulty": 1,
@@ -9982,6 +10397,7 @@
   },
   {
     "id": "SO-8B-1-18",
+    "exam_part": 1,
     "unit": "SO-8B-1",
     "concept": "east-asia",
     "difficulty": 1,
@@ -10006,6 +10422,7 @@
   },
   {
     "id": "SO-8B-1-19",
+    "exam_part": 2,
     "unit": "SO-8B-1",
     "concept": "south-asia",
     "difficulty": 1,
@@ -10030,6 +10447,7 @@
   },
   {
     "id": "SO-8B-1-20",
+    "exam_part": 2,
     "unit": "SO-8B-1",
     "concept": "southeast-asia",
     "difficulty": 1,
@@ -10054,6 +10472,7 @@
   },
   {
     "id": "SO-8B-1-21",
+    "exam_part": 3,
     "unit": "SO-8B-1",
     "concept": "west-asia",
     "difficulty": 1,
@@ -10078,6 +10497,7 @@
   },
   {
     "id": "SO-8B-1-22",
+    "exam_part": 1,
     "unit": "SO-8B-1",
     "concept": "monsoon-asia",
     "difficulty": 2,
@@ -10102,6 +10522,7 @@
   },
   {
     "id": "SO-8B-1-23",
+    "exam_part": 1,
     "unit": "SO-8B-1",
     "concept": "climate-type",
     "difficulty": 2,
@@ -10126,6 +10547,7 @@
   },
   {
     "id": "SO-8B-1-24",
+    "exam_part": 1,
     "unit": "SO-8B-1",
     "concept": "east-asia",
     "difficulty": 2,
@@ -10150,6 +10572,7 @@
   },
   {
     "id": "SO-8B-1-25",
+    "exam_part": 2,
     "unit": "SO-8B-1",
     "concept": "south-asia",
     "difficulty": 2,
@@ -10174,6 +10597,7 @@
   },
   {
     "id": "SO-8B-1-26",
+    "exam_part": 2,
     "unit": "SO-8B-1",
     "concept": "south-asia",
     "difficulty": 2,
@@ -10198,6 +10622,7 @@
   },
   {
     "id": "SO-8B-1-27",
+    "exam_part": 2,
     "unit": "SO-8B-1",
     "concept": "southeast-asia",
     "difficulty": 2,
@@ -10222,6 +10647,7 @@
   },
   {
     "id": "SO-8B-1-28",
+    "exam_part": 3,
     "unit": "SO-8B-1",
     "concept": "west-asia",
     "difficulty": 2,
@@ -10246,6 +10672,7 @@
   },
   {
     "id": "SO-8B-1-29",
+    "exam_part": 3,
     "unit": "SO-8B-1",
     "concept": "west-asia",
     "difficulty": 3,
@@ -10270,6 +10697,7 @@
   },
   {
     "id": "SO-8B-1-30",
+    "exam_part": 2,
     "unit": "SO-8B-1",
     "concept": "southeast-asia",
     "difficulty": 3,
@@ -10294,6 +10722,7 @@
   },
   {
     "id": "SO-8B-2-17",
+    "exam_part": 1,
     "unit": "SO-8B-2",
     "concept": "late-qing",
     "difficulty": 1,
@@ -10318,6 +10747,7 @@
   },
   {
     "id": "SO-8B-2-18",
+    "exam_part": 1,
     "unit": "SO-8B-2",
     "concept": "meiji",
     "difficulty": 1,
@@ -10342,6 +10772,7 @@
   },
   {
     "id": "SO-8B-2-19",
+    "exam_part": 2,
     "unit": "SO-8B-2",
     "concept": "korea",
     "difficulty": 1,
@@ -10366,6 +10797,7 @@
   },
   {
     "id": "SO-8B-2-20",
+    "exam_part": 2,
     "unit": "SO-8B-2",
     "concept": "republic-china",
     "difficulty": 1,
@@ -10390,6 +10822,7 @@
   },
   {
     "id": "SO-8B-2-21",
+    "exam_part": 3,
     "unit": "SO-8B-2",
     "concept": "chronology",
     "difficulty": 1,
@@ -10414,6 +10847,7 @@
   },
   {
     "id": "SO-8B-2-22",
+    "exam_part": 1,
     "unit": "SO-8B-2",
     "concept": "meiji",
     "difficulty": 2,
@@ -10438,6 +10872,7 @@
   },
   {
     "id": "SO-8B-2-23",
+    "exam_part": 1,
     "unit": "SO-8B-2",
     "concept": "late-qing",
     "difficulty": 2,
@@ -10462,6 +10897,7 @@
   },
   {
     "id": "SO-8B-2-24",
+    "exam_part": 2,
     "unit": "SO-8B-2",
     "concept": "korea",
     "difficulty": 2,
@@ -10486,6 +10922,7 @@
   },
   {
     "id": "SO-8B-2-25",
+    "exam_part": 2,
     "unit": "SO-8B-2",
     "concept": "republic-china",
     "difficulty": 2,
@@ -10510,6 +10947,7 @@
   },
   {
     "id": "SO-8B-2-26",
+    "exam_part": 3,
     "unit": "SO-8B-2",
     "concept": "postwar-japan",
     "difficulty": 2,
@@ -10534,6 +10972,7 @@
   },
   {
     "id": "SO-8B-2-27",
+    "exam_part": 1,
     "unit": "SO-8B-2",
     "concept": "late-qing",
     "difficulty": 2,
@@ -10558,6 +10997,7 @@
   },
   {
     "id": "SO-8B-2-28",
+    "exam_part": 2,
     "unit": "SO-8B-2",
     "concept": "republic-china",
     "difficulty": 2,
@@ -10582,6 +11022,7 @@
   },
   {
     "id": "SO-8B-2-29",
+    "exam_part": 1,
     "unit": "SO-8B-2",
     "concept": "meiji",
     "difficulty": 3,
@@ -10606,6 +11047,7 @@
   },
   {
     "id": "SO-8B-2-30",
+    "exam_part": 3,
     "unit": "SO-8B-2",
     "concept": "postwar-japan",
     "difficulty": 3,
@@ -10630,6 +11072,7 @@
   },
   {
     "id": "SO-8B-3-17",
+    "exam_part": 1,
     "unit": "SO-8B-3",
     "concept": "legal-hierarchy",
     "difficulty": 1,
@@ -10654,6 +11097,7 @@
   },
   {
     "id": "SO-8B-3-18",
+    "exam_part": 1,
     "unit": "SO-8B-3",
     "concept": "civil-law",
     "difficulty": 1,
@@ -10678,6 +11122,7 @@
   },
   {
     "id": "SO-8B-3-19",
+    "exam_part": 2,
     "unit": "SO-8B-3",
     "concept": "criminal-law",
     "difficulty": 1,
@@ -10702,6 +11147,7 @@
   },
   {
     "id": "SO-8B-3-20",
+    "exam_part": 3,
     "unit": "SO-8B-3",
     "concept": "administrative-law",
     "difficulty": 1,
@@ -10726,6 +11172,7 @@
   },
   {
     "id": "SO-8B-3-21",
+    "exam_part": 2,
     "unit": "SO-8B-3",
     "concept": "juvenile-justice",
     "difficulty": 1,
@@ -10750,6 +11197,7 @@
   },
   {
     "id": "SO-8B-3-22",
+    "exam_part": 1,
     "unit": "SO-8B-3",
     "concept": "civil-law",
     "difficulty": 2,
@@ -10774,6 +11222,7 @@
   },
   {
     "id": "SO-8B-3-23",
+    "exam_part": 1,
     "unit": "SO-8B-3",
     "concept": "civil-law",
     "difficulty": 2,
@@ -10798,6 +11247,7 @@
   },
   {
     "id": "SO-8B-3-24",
+    "exam_part": 2,
     "unit": "SO-8B-3",
     "concept": "criminal-law",
     "difficulty": 2,
@@ -10822,6 +11272,7 @@
   },
   {
     "id": "SO-8B-3-25",
+    "exam_part": 2,
     "unit": "SO-8B-3",
     "concept": "criminal-law",
     "difficulty": 2,
@@ -10846,6 +11297,7 @@
   },
   {
     "id": "SO-8B-3-26",
+    "exam_part": 1,
     "unit": "SO-8B-3",
     "concept": "legal-hierarchy",
     "difficulty": 2,
@@ -10870,6 +11322,7 @@
   },
   {
     "id": "SO-8B-3-27",
+    "exam_part": 3,
     "unit": "SO-8B-3",
     "concept": "administrative-law",
     "difficulty": 2,
@@ -10894,6 +11347,7 @@
   },
   {
     "id": "SO-8B-3-28",
+    "exam_part": 2,
     "unit": "SO-8B-3",
     "concept": "juvenile-justice",
     "difficulty": 2,
@@ -10918,6 +11372,7 @@
   },
   {
     "id": "SO-8B-3-29",
+    "exam_part": 1,
     "unit": "SO-8B-3",
     "concept": "legal-hierarchy",
     "difficulty": 3,
@@ -10942,6 +11397,7 @@
   },
   {
     "id": "SO-8B-3-30",
+    "exam_part": 3,
     "unit": "SO-8B-3",
     "concept": "administrative-law",
     "difficulty": 3,
@@ -10966,6 +11422,7 @@
   },
   {
     "id": "SO-9A-1-17",
+    "exam_part": 1,
     "unit": "SO-9A-1",
     "concept": "europe-climate",
     "difficulty": 1,
@@ -10990,6 +11447,7 @@
   },
   {
     "id": "SO-9A-1-18",
+    "exam_part": 1,
     "unit": "SO-9A-1",
     "concept": "mediterranean",
     "difficulty": 1,
@@ -11014,6 +11472,7 @@
   },
   {
     "id": "SO-9A-1-19",
+    "exam_part": 2,
     "unit": "SO-9A-1",
     "concept": "russia",
     "difficulty": 1,
@@ -11038,6 +11497,7 @@
   },
   {
     "id": "SO-9A-1-20",
+    "exam_part": 3,
     "unit": "SO-9A-1",
     "concept": "africa-environment",
     "difficulty": 1,
@@ -11062,6 +11522,7 @@
   },
   {
     "id": "SO-9A-1-21",
+    "exam_part": 3,
     "unit": "SO-9A-1",
     "concept": "africa-development",
     "difficulty": 1,
@@ -11086,6 +11547,7 @@
   },
   {
     "id": "SO-9A-1-22",
+    "exam_part": 1,
     "unit": "SO-9A-1",
     "concept": "europe-landform",
     "difficulty": 2,
@@ -11110,6 +11572,7 @@
   },
   {
     "id": "SO-9A-1-23",
+    "exam_part": 1,
     "unit": "SO-9A-1",
     "concept": "europe-landform",
     "difficulty": 2,
@@ -11134,6 +11597,7 @@
   },
   {
     "id": "SO-9A-1-24",
+    "exam_part": 1,
     "unit": "SO-9A-1",
     "concept": "mediterranean",
     "difficulty": 2,
@@ -11158,6 +11622,7 @@
   },
   {
     "id": "SO-9A-1-25",
+    "exam_part": 2,
     "unit": "SO-9A-1",
     "concept": "russia",
     "difficulty": 2,
@@ -11182,6 +11647,7 @@
   },
   {
     "id": "SO-9A-1-26",
+    "exam_part": 2,
     "unit": "SO-9A-1",
     "concept": "russia",
     "difficulty": 2,
@@ -11206,6 +11672,7 @@
   },
   {
     "id": "SO-9A-1-27",
+    "exam_part": 3,
     "unit": "SO-9A-1",
     "concept": "africa-environment",
     "difficulty": 2,
@@ -11230,6 +11697,7 @@
   },
   {
     "id": "SO-9A-1-28",
+    "exam_part": 3,
     "unit": "SO-9A-1",
     "concept": "africa-development",
     "difficulty": 2,
@@ -11254,6 +11722,7 @@
   },
   {
     "id": "SO-9A-1-29",
+    "exam_part": 1,
     "unit": "SO-9A-1",
     "concept": "mediterranean",
     "difficulty": 3,
@@ -11278,6 +11747,7 @@
   },
   {
     "id": "SO-9A-1-30",
+    "exam_part": 2,
     "unit": "SO-9A-1",
     "concept": "russia",
     "difficulty": 3,
@@ -11302,6 +11772,7 @@
   },
   {
     "id": "SO-9A-2-17",
+    "exam_part": 1,
     "unit": "SO-9A-2",
     "concept": "ancient-civilization",
     "difficulty": 1,
@@ -11326,6 +11797,7 @@
   },
   {
     "id": "SO-9A-2-18",
+    "exam_part": 1,
     "unit": "SO-9A-2",
     "concept": "greece-rome",
     "difficulty": 1,
@@ -11350,6 +11822,7 @@
   },
   {
     "id": "SO-9A-2-19",
+    "exam_part": 2,
     "unit": "SO-9A-2",
     "concept": "renaissance-reformation",
     "difficulty": 1,
@@ -11374,6 +11847,7 @@
   },
   {
     "id": "SO-9A-2-20",
+    "exam_part": 3,
     "unit": "SO-9A-2",
     "concept": "industrial-revolution",
     "difficulty": 1,
@@ -11398,6 +11872,7 @@
   },
   {
     "id": "SO-9A-2-21",
+    "exam_part": 2,
     "unit": "SO-9A-2",
     "concept": "age-of-exploration",
     "difficulty": 1,
@@ -11422,6 +11897,7 @@
   },
   {
     "id": "SO-9A-2-22",
+    "exam_part": 1,
     "unit": "SO-9A-2",
     "concept": "ancient-civilization",
     "difficulty": 2,
@@ -11446,6 +11922,7 @@
   },
   {
     "id": "SO-9A-2-23",
+    "exam_part": 1,
     "unit": "SO-9A-2",
     "concept": "ancient-civilization",
     "difficulty": 2,
@@ -11470,6 +11947,7 @@
   },
   {
     "id": "SO-9A-2-24",
+    "exam_part": 1,
     "unit": "SO-9A-2",
     "concept": "greece-rome",
     "difficulty": 2,
@@ -11494,6 +11972,7 @@
   },
   {
     "id": "SO-9A-2-25",
+    "exam_part": 2,
     "unit": "SO-9A-2",
     "concept": "renaissance-reformation",
     "difficulty": 2,
@@ -11518,6 +11997,7 @@
   },
   {
     "id": "SO-9A-2-26",
+    "exam_part": 3,
     "unit": "SO-9A-2",
     "concept": "enlightenment-revolution",
     "difficulty": 2,
@@ -11542,6 +12022,7 @@
   },
   {
     "id": "SO-9A-2-27",
+    "exam_part": 3,
     "unit": "SO-9A-2",
     "concept": "enlightenment-revolution",
     "difficulty": 2,
@@ -11566,6 +12047,7 @@
   },
   {
     "id": "SO-9A-2-28",
+    "exam_part": 2,
     "unit": "SO-9A-2",
     "concept": "age-of-exploration",
     "difficulty": 2,
@@ -11590,6 +12072,7 @@
   },
   {
     "id": "SO-9A-2-29",
+    "exam_part": 3,
     "unit": "SO-9A-2",
     "concept": "industrial-revolution",
     "difficulty": 3,
@@ -11614,6 +12097,7 @@
   },
   {
     "id": "SO-9A-2-30",
+    "exam_part": 2,
     "unit": "SO-9A-2",
     "concept": "age-of-exploration",
     "difficulty": 3,
@@ -11638,6 +12122,7 @@
   },
   {
     "id": "SO-9A-3-17",
+    "exam_part": 1,
     "unit": "SO-9A-3",
     "concept": "opportunity-cost",
     "difficulty": 1,
@@ -11662,6 +12147,7 @@
   },
   {
     "id": "SO-9A-3-18",
+    "exam_part": 1,
     "unit": "SO-9A-3",
     "concept": "supply-demand",
     "difficulty": 1,
@@ -11686,6 +12172,7 @@
   },
   {
     "id": "SO-9A-3-19",
+    "exam_part": 2,
     "unit": "SO-9A-3",
     "concept": "market-structure",
     "difficulty": 1,
@@ -11710,6 +12197,7 @@
   },
   {
     "id": "SO-9A-3-20",
+    "exam_part": 2,
     "unit": "SO-9A-3",
     "concept": "money-finance",
     "difficulty": 1,
@@ -11734,6 +12222,7 @@
   },
   {
     "id": "SO-9A-3-21",
+    "exam_part": 3,
     "unit": "SO-9A-3",
     "concept": "government-role",
     "difficulty": 1,
@@ -11758,6 +12247,7 @@
   },
   {
     "id": "SO-9A-3-22",
+    "exam_part": 1,
     "unit": "SO-9A-3",
     "concept": "opportunity-cost",
     "difficulty": 2,
@@ -11783,6 +12273,7 @@
   },
   {
     "id": "SO-9A-3-23",
+    "exam_part": 1,
     "unit": "SO-9A-3",
     "concept": "supply-demand",
     "difficulty": 2,
@@ -11807,6 +12298,7 @@
   },
   {
     "id": "SO-9A-3-24",
+    "exam_part": 1,
     "unit": "SO-9A-3",
     "concept": "supply-demand",
     "difficulty": 2,
@@ -11831,6 +12323,7 @@
   },
   {
     "id": "SO-9A-3-25",
+    "exam_part": 2,
     "unit": "SO-9A-3",
     "concept": "market-structure",
     "difficulty": 2,
@@ -11855,6 +12348,7 @@
   },
   {
     "id": "SO-9A-3-26",
+    "exam_part": 2,
     "unit": "SO-9A-3",
     "concept": "money-finance",
     "difficulty": 2,
@@ -11879,6 +12373,7 @@
   },
   {
     "id": "SO-9A-3-27",
+    "exam_part": 2,
     "unit": "SO-9A-3",
     "concept": "money-finance",
     "difficulty": 2,
@@ -11903,6 +12398,7 @@
   },
   {
     "id": "SO-9A-3-28",
+    "exam_part": 3,
     "unit": "SO-9A-3",
     "concept": "government-role",
     "difficulty": 2,
@@ -11927,6 +12423,7 @@
   },
   {
     "id": "SO-9A-3-29",
+    "exam_part": 1,
     "unit": "SO-9A-3",
     "concept": "supply-demand",
     "difficulty": 3,
@@ -11952,6 +12449,7 @@
   },
   {
     "id": "SO-9A-3-30",
+    "exam_part": 2,
     "unit": "SO-9A-3",
     "concept": "market-structure",
     "difficulty": 3,
@@ -11977,6 +12475,7 @@
   },
   {
     "id": "SO-9B-1-17",
+    "exam_part": 1,
     "unit": "SO-9B-1",
     "concept": "climate-type",
     "difficulty": 1,
@@ -12001,6 +12500,7 @@
   },
   {
     "id": "SO-9B-1-18",
+    "exam_part": 1,
     "unit": "SO-9B-1",
     "concept": "americas",
     "difficulty": 1,
@@ -12025,6 +12525,7 @@
   },
   {
     "id": "SO-9B-1-19",
+    "exam_part": 2,
     "unit": "SO-9B-1",
     "concept": "oceania",
     "difficulty": 1,
@@ -12049,6 +12550,7 @@
   },
   {
     "id": "SO-9B-1-20",
+    "exam_part": 3,
     "unit": "SO-9B-1",
     "concept": "global-warming",
     "difficulty": 1,
@@ -12073,6 +12575,7 @@
   },
   {
     "id": "SO-9B-1-21",
+    "exam_part": 3,
     "unit": "SO-9B-1",
     "concept": "food-water",
     "difficulty": 1,
@@ -12097,6 +12600,7 @@
   },
   {
     "id": "SO-9B-1-22",
+    "exam_part": 1,
     "unit": "SO-9B-1",
     "concept": "climate-type",
     "difficulty": 2,
@@ -12121,6 +12625,7 @@
   },
   {
     "id": "SO-9B-1-23",
+    "exam_part": 1,
     "unit": "SO-9B-1",
     "concept": "americas",
     "difficulty": 2,
@@ -12145,6 +12650,7 @@
   },
   {
     "id": "SO-9B-1-24",
+    "exam_part": 1,
     "unit": "SO-9B-1",
     "concept": "americas",
     "difficulty": 2,
@@ -12169,6 +12675,7 @@
   },
   {
     "id": "SO-9B-1-25",
+    "exam_part": 2,
     "unit": "SO-9B-1",
     "concept": "oceania",
     "difficulty": 2,
@@ -12193,6 +12700,7 @@
   },
   {
     "id": "SO-9B-1-26",
+    "exam_part": 2,
     "unit": "SO-9B-1",
     "concept": "oceania",
     "difficulty": 2,
@@ -12217,6 +12725,7 @@
   },
   {
     "id": "SO-9B-1-27",
+    "exam_part": 3,
     "unit": "SO-9B-1",
     "concept": "global-warming",
     "difficulty": 2,
@@ -12241,6 +12750,7 @@
   },
   {
     "id": "SO-9B-1-28",
+    "exam_part": 3,
     "unit": "SO-9B-1",
     "concept": "food-water",
     "difficulty": 2,
@@ -12265,6 +12775,7 @@
   },
   {
     "id": "SO-9B-1-29",
+    "exam_part": 1,
     "unit": "SO-9B-1",
     "concept": "climate-type",
     "difficulty": 3,
@@ -12290,6 +12801,7 @@
   },
   {
     "id": "SO-9B-1-30",
+    "exam_part": 3,
     "unit": "SO-9B-1",
     "concept": "global-warming",
     "difficulty": 3,
@@ -12314,6 +12826,7 @@
   },
   {
     "id": "SO-9B-2-17",
+    "exam_part": 1,
     "unit": "SO-9B-2",
     "concept": "world-war",
     "difficulty": 1,
@@ -12338,6 +12851,7 @@
   },
   {
     "id": "SO-9B-2-18",
+    "exam_part": 1,
     "unit": "SO-9B-2",
     "concept": "world-war",
     "difficulty": 1,
@@ -12362,6 +12876,7 @@
   },
   {
     "id": "SO-9B-2-19",
+    "exam_part": 2,
     "unit": "SO-9B-2",
     "concept": "cold-war",
     "difficulty": 1,
@@ -12386,6 +12901,7 @@
   },
   {
     "id": "SO-9B-2-20",
+    "exam_part": 2,
     "unit": "SO-9B-2",
     "concept": "cold-war",
     "difficulty": 1,
@@ -12410,6 +12926,7 @@
   },
   {
     "id": "SO-9B-2-21",
+    "exam_part": 3,
     "unit": "SO-9B-2",
     "concept": "decolonization",
     "difficulty": 1,
@@ -12434,6 +12951,7 @@
   },
   {
     "id": "SO-9B-2-22",
+    "exam_part": 1,
     "unit": "SO-9B-2",
     "concept": "world-war",
     "difficulty": 2,
@@ -12458,6 +12976,7 @@
   },
   {
     "id": "SO-9B-2-23",
+    "exam_part": 1,
     "unit": "SO-9B-2",
     "concept": "world-war",
     "difficulty": 2,
@@ -12482,6 +13001,7 @@
   },
   {
     "id": "SO-9B-2-24",
+    "exam_part": 1,
     "unit": "SO-9B-2",
     "concept": "world-war",
     "difficulty": 2,
@@ -12506,6 +13026,7 @@
   },
   {
     "id": "SO-9B-2-25",
+    "exam_part": 2,
     "unit": "SO-9B-2",
     "concept": "cold-war",
     "difficulty": 2,
@@ -12530,6 +13051,7 @@
   },
   {
     "id": "SO-9B-2-26",
+    "exam_part": 2,
     "unit": "SO-9B-2",
     "concept": "cold-war",
     "difficulty": 2,
@@ -12554,6 +13076,7 @@
   },
   {
     "id": "SO-9B-2-27",
+    "exam_part": 3,
     "unit": "SO-9B-2",
     "concept": "decolonization",
     "difficulty": 2,
@@ -12578,6 +13101,7 @@
   },
   {
     "id": "SO-9B-2-28",
+    "exam_part": 3,
     "unit": "SO-9B-2",
     "concept": "decolonization",
     "difficulty": 2,
@@ -12602,6 +13126,7 @@
   },
   {
     "id": "SO-9B-2-29",
+    "exam_part": 2,
     "unit": "SO-9B-2",
     "concept": "cold-war",
     "difficulty": 3,
@@ -12627,6 +13152,7 @@
   },
   {
     "id": "SO-9B-2-30",
+    "exam_part": 3,
     "unit": "SO-9B-2",
     "concept": "decolonization",
     "difficulty": 3,
@@ -12652,6 +13178,7 @@
   },
   {
     "id": "SO-9B-3-17",
+    "exam_part": 1,
     "unit": "SO-9B-3",
     "concept": "globalization",
     "difficulty": 1,
@@ -12676,6 +13203,7 @@
   },
   {
     "id": "SO-9B-3-18",
+    "exam_part": 2,
     "unit": "SO-9B-3",
     "concept": "comparative-advantage",
     "difficulty": 1,
@@ -12700,6 +13228,7 @@
   },
   {
     "id": "SO-9B-3-19",
+    "exam_part": 2,
     "unit": "SO-9B-3",
     "concept": "trade-policy",
     "difficulty": 1,
@@ -12724,6 +13253,7 @@
   },
   {
     "id": "SO-9B-3-20",
+    "exam_part": 3,
     "unit": "SO-9B-3",
     "concept": "international-org",
     "difficulty": 1,
@@ -12748,6 +13278,7 @@
   },
   {
     "id": "SO-9B-3-21",
+    "exam_part": 3,
     "unit": "SO-9B-3",
     "concept": "international-org",
     "difficulty": 1,
@@ -12772,6 +13303,7 @@
   },
   {
     "id": "SO-9B-3-22",
+    "exam_part": 1,
     "unit": "SO-9B-3",
     "concept": "globalization",
     "difficulty": 2,
@@ -12796,6 +13328,7 @@
   },
   {
     "id": "SO-9B-3-23",
+    "exam_part": 1,
     "unit": "SO-9B-3",
     "concept": "globalization",
     "difficulty": 2,
@@ -12820,6 +13353,7 @@
   },
   {
     "id": "SO-9B-3-24",
+    "exam_part": 2,
     "unit": "SO-9B-3",
     "concept": "comparative-advantage",
     "difficulty": 2,
@@ -12845,6 +13379,7 @@
   },
   {
     "id": "SO-9B-3-25",
+    "exam_part": 2,
     "unit": "SO-9B-3",
     "concept": "comparative-advantage",
     "difficulty": 2,
@@ -12869,6 +13404,7 @@
   },
   {
     "id": "SO-9B-3-26",
+    "exam_part": 2,
     "unit": "SO-9B-3",
     "concept": "trade-policy",
     "difficulty": 2,
@@ -12893,6 +13429,7 @@
   },
   {
     "id": "SO-9B-3-27",
+    "exam_part": 2,
     "unit": "SO-9B-3",
     "concept": "trade-policy",
     "difficulty": 2,
@@ -12917,6 +13454,7 @@
   },
   {
     "id": "SO-9B-3-28",
+    "exam_part": 3,
     "unit": "SO-9B-3",
     "concept": "international-org",
     "difficulty": 2,
@@ -12941,6 +13479,7 @@
   },
   {
     "id": "SO-9B-3-29",
+    "exam_part": 2,
     "unit": "SO-9B-3",
     "concept": "comparative-advantage",
     "difficulty": 3,
@@ -12966,6 +13505,7 @@
   },
   {
     "id": "SO-9B-3-30",
+    "exam_part": 3,
     "unit": "SO-9B-3",
     "concept": "international-org",
     "difficulty": 3,
