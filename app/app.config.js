@@ -7,6 +7,6 @@ module.exports = ({ config }) => {
   return {
     ...config,
     android: { ...config.android, versionCode },
-    plugins: [...(config.plugins ?? []), './plugins/withReleaseSigning'],
+    plugins: [...(config.plugins ?? []), './plugins/withReleaseSigning', './plugins/withAdsBackend'],
   };
 };
