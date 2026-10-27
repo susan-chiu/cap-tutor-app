@@ -65,11 +65,14 @@ export const SUBJECTS = [
 ] as const;
 export type SubjectId = (typeof SUBJECTS)[number]['id'];
 export const ALL_SUBJECTS: SubjectId[] = SUBJECTS.map((s) => s.id);
-/** 國小版目前有的科目（國文在國小叫「國語」） */
+/** 國小版的科目（國文在國小叫「國語」） */
 export const ELEM_SUBJECTS = [
   { id: 'chinese', label: '國語' },
   { id: 'math', label: '數學' },
+  { id: 'science', label: '自然' },
+  { id: 'social', label: '社會' },
 ] as const satisfies readonly { id: SubjectId; label: string }[];
+export const ELEM_SUBJECT_IDS: SubjectId[] = ELEM_SUBJECTS.map((s) => s.id);
 export const subjectsFor = (grade: number | null | undefined): readonly { id: SubjectId; label: string }[] =>
   (isElementary(grade) ? ELEM_SUBJECTS : SUBJECTS);
 export const validSubject = (grade: number | null | undefined, pick: SubjectId): SubjectId =>

@@ -6,7 +6,7 @@ import { Pressable, View } from 'react-native';
 import { Button, Card, Chip, ErrorBox, H1, H2, Loading, ProgressBar, Screen, T, Tag } from '@/components/ui';
 import { api, errorText, type UnitPartRow, type UnitRow } from '@/lib/api';
 import { useAuth } from '@/lib/auth';
-import { currentStage, DIFFICULTIES, splitStages, splitStagesByPart, stageStats, type Difficulty, type Stage } from '@/lib/stages';
+import { currentStage, DIFFICULTIES, splitElementaryStages, splitStages, splitStagesByPart, stageStats, type Difficulty, type Stage } from '@/lib/stages';
 import {
   C, currentSemester, isElementary, semestersFor, subjectsFor, validSemester, validSubject, TEXTBOOK_VERSIONS, VERSIONED_SUBJECTS, type SemesterId, type SubjectId,
 } from '@/lib/theme';
@@ -59,11 +59,12 @@ export default function Learn() {
       setError(null);
       const [rows, partRows] = await Promise.all([
         api.units(subject, version),
-        PART_SUBJECTS.includes(subject) ? api.unitParts(subject) : Promise.resolve(null),
+        // 社會科分段考範圍只用在國中（國小只有期中、期末，照單元前後分）
+        !elementary && PART_SUBJECTS.includes(subject) ? api.unitParts(subject) : Promise.resolve(null),
       ]);
       if (id === reqId.current) { setUnits(rows); setParts(partRows); }
     } catch (e) { if (id === reqId.current) setError(errorText(e)); }
-  }, [subject, version]);
+  }, [subject, version, elementary]);
 
   async function chooseVersion(v: string | null) {
     if (v === version) return;
@@ -81,7 +82,8 @@ export default function Learn() {
   useFocusEffect(useCallback(() => { load(); }, [load]));
 
   const list = useMemo(() => (units ?? []).filter((u) => u.semester === sem), [units, sem]);
-  const stages = useMemo(() => (parts?.length ? splitStagesByPart(list, parts) : splitStages(list)), [list, parts]);
+  const stages = useMemo(() => (elementary ? splitElementaryStages(list)
+    : parts?.length ? splitStagesByPart(list, parts) : splitStages(list)), [elementary, list, parts]);
   const semStats = useMemo(() => stageStats(list), [list]);
   const now = useMemo(() => currentStage(stages), [stages]);
   const diffLabel = DIFFICULTIES.find((d) => d.id === difficulty)?.label ?? '混合';
@@ -189,7 +191,9 @@ export default function Learn() {
           ))}
 
           <T size={12} color={C.muted}>
-            段考範圍依一般學校進度估算（一學期 3 次段考，照{version ? `${version}版` : '課本'}章節順序平均分配{parts?.length ? '；社會科每次段考都含地理、歷史、公民' : ''}），實際範圍以學校公告為準；
+            {elementary
+              ? '考試範圍依一般學校進度估算（國小一學期期中考、期末考各一次，前半學期的單元考期中、後半考期末），實際範圍以學校公告為準；'
+              : `段考範圍依一般學校進度估算（一學期 3 次段考，照${version ? `${version}版` : '課本'}章節順序平均分配${parts?.length ? '；社會科每次段考都含地理、歷史、公民' : ''}），實際範圍以學校公告為準；`}
             範圍不一樣可以用下面的「自己選範圍」。
           </T>
 

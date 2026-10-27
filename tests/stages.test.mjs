@@ -1,6 +1,6 @@
 // 段考分階段邏輯測試：node stages.test.mjs
 import assert from 'node:assert/strict';
-import { currentStage, splitStages, splitStagesByPart, stageStats } from '../app/src/lib/stages.ts';
+import { currentStage, splitElementaryStages, splitStages, splitStagesByPart, stageStats } from '../app/src/lib/stages.ts';
 
 const u = (id, o = {}) => ({ id, title: id, total: 20, mastered: 0, attempted: 0, answered: 0, correct: 0, ...o });
 let passed = 0;
@@ -36,6 +36,16 @@ test('社會科：每次段考都含地理、歷史、公民的對應段落，�
   assert.equal(currentStage(st).key, 'exam2');
   assert.equal(st[3].units[0].total, 30);
   assert.equal(st[3].units[0].part, undefined);
+});
+test('國小：只有期中考、期末考，前半單元考期中、後半考期末', () => {
+  const four = splitElementaryStages([u('A'), u('B'), u('C'), u('D')]);
+  assert.deepEqual(four.map((s) => s.label), ['期中考', '期末考']);
+  assert.deepEqual(four.map((s) => s.units.map((x) => x.id).join('+')), ['A+B', 'C+D']);
+  assert.deepEqual(splitElementaryStages([u('A'), u('B'), u('C')]).map((s) => s.units.length), [2, 1], '奇數時中間單元放期中');
+  assert.deepEqual(splitElementaryStages([u('A')]).map((s) => s.label), ['期末考']);
+  assert.deepEqual(splitElementaryStages([]), []);
+  const done = splitElementaryStages([u('A', { mastered: 20 }), u('B', { mastered: 20 }), u('C'), u('D')]);
+  assert.equal(currentStage(done).label, '期末考', '期中範圍熟練後，目前階段是期末考');
 });
 test('進度、答對率、最需要加強的單元', () => {
   const s = stageStats([u('A', { mastered: 10, attempted: 12, answered: 10, correct: 9 }), u('B', { mastered: 2, attempted: 5, answered: 5, correct: 2 }), u('C', { answered: 2, correct: 0, attempted: 2 })]);

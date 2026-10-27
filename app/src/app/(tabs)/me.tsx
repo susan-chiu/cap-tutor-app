@@ -11,7 +11,7 @@ import { shareText } from '@/lib/share';
 import {
   disableReminders, enableReminders, loadReminderSettings, REMINDER_TIMES, remindersSupported, rescheduleReminders, parentWeeklyEnabled, setParentWeekly,
 } from '@/lib/reminders';
-import { ALL_SUBJECTS, C, GRADES, gradeLabel, isElementary, PERSONAS, subjectsFor, localToday } from '@/lib/theme';
+import { ALL_SUBJECTS, C, ELEM_SUBJECT_IDS, GRADES, gradeLabel, isElementary, PERSONAS, subjectsFor, localToday } from '@/lib/theme';
 
 export default function Me() {
   const { profile, refreshProfile, signOut } = useAuth();
@@ -126,7 +126,7 @@ export default function Me() {
                 <Chip key={g} label={gradeLabel(g)} selected={profile.grade === g}
                   onPress={() => update(isElementary(g) === isElementary(profile.grade) ? { grade: g }
                     // 國小、國中切換時，每日練習科目跟著換
-                    : { grade: g, daily_subjects: isElementary(g) ? ['chinese', 'math'] : ALL_SUBJECTS })} />
+                    : { grade: g, daily_subjects: isElementary(g) ? ELEM_SUBJECT_IDS : ALL_SUBJECTS })} />
               ))}
             </View>
             <H2>小老師</H2>

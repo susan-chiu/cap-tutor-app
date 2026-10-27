@@ -34,6 +34,20 @@ export function splitStages<U extends StageUnit>(units: U[]): Stage<U>[] {
 }
 
 /**
+ * 國小：一學期只有期中考和期末考。前半學期的單元考期中、後半考期末（單元數是奇數時，中間那個單元放期中）。
+ */
+export function splitElementaryStages<U extends StageUnit>(units: U[]): Stage<U>[] {
+  const n = units.length;
+  if (n === 0) return [];
+  if (n === 1) return [{ key: 'exam2', label: '期末考', units }];
+  const cut = Math.ceil(n / 2);
+  return [
+    { key: 'exam1', label: '期中考', units: units.slice(0, cut) },
+    { key: 'exam2', label: '期末考', units: units.slice(cut) },
+  ];
+}
+
+/**
  * 社會科：每次段考都考地理、歷史、公民各一部分。
  * 每個段考放入所有單元在該次範圍的部分（題數與進度用 parts 的統計），學期總複習是完整單元。
  */

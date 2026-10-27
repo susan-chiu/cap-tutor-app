@@ -4,7 +4,7 @@ import { Alert, View } from 'react-native';
 import { Button, Card, Chip, H1, H2, Screen, T } from '@/components/ui';
 import { api, errorText } from '@/lib/api';
 import { useAuth } from '@/lib/auth';
-import { C, GRADES, gradeLabel, isElementary, PERSONAS } from '@/lib/theme';
+import { C, ELEM_SUBJECT_IDS, GRADES, gradeLabel, isElementary, PERSONAS } from '@/lib/theme';
 
 const VERSIONS = ['康軒', '南一', '翰林'] as const;
 
@@ -20,8 +20,8 @@ export default function Onboarding() {
     setBusy(true);
     try {
       await api.updateProfile(isElementary(grade)
-        // 國小版：國語、數學，題目各版本通用
-        ? { grade, textbook_version: null, tutor_persona: persona, textbook_versions: {}, daily_subjects: ['chinese', 'math'] }
+        // 國小版：國語、數學、自然、社會，題目各版本通用
+        ? { grade, textbook_version: null, tutor_persona: persona, textbook_versions: {}, daily_subjects: ELEM_SUBJECT_IDS }
         : {
           grade, textbook_version: version, tutor_persona: persona,
           // 先把數學、英語、自然、社會都設成同一版本；各科不同可以在「學期複習」個別調整
@@ -57,7 +57,7 @@ export default function Onboarding() {
           ))}
         </View>
         {isElementary(grade) ? (
-          <T size={13} color={C.muted}>國小版目前有國語、數學（五、六年級），題目各版本通用。</T>
+          <T size={13} color={C.muted}>國小版有國語、數學、自然、社會（五、六年級），題目各版本通用。</T>
         ) : null}
       </Card>
 
