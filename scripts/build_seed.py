@@ -44,10 +44,15 @@ MIN_PER_UNIT = {"math": 30, "chinese": 30, "english": 30, "science": 30, "social
 ELEMENTARY = {
     "math": ["questions_elem_math_5a", "questions_elem_math_5b", "questions_elem_math_6a", "questions_elem_math_6b"],
     "chinese": ["questions_elem_chinese_5a", "questions_elem_chinese_5b", "questions_elem_chinese_6a", "questions_elem_chinese_6b"],
+    "science": ["questions_elem_science_5a_a", "questions_elem_science_5a_b", "questions_elem_science_5b_a", "questions_elem_science_5b_b",
+                "questions_elem_science_6a_a", "questions_elem_science_6a_b", "questions_elem_science_6b_a", "questions_elem_science_6b_b"],
+    "social": ["questions_elem_social_5a_a", "questions_elem_social_5a_b", "questions_elem_social_5b_a", "questions_elem_social_5b_b",
+               "questions_elem_social_6a_a", "questions_elem_social_6a_b", "questions_elem_social_6b_a", "questions_elem_social_6b_b"],
 }
-ELEMENTARY_MIN = 15
+# 國小每單元題數（國語、數學 15 題，自然、社會 30 題）
+ELEMENTARY_MIN = {"math": 15, "chinese": 15, "science": 30, "social": 30}
 GROUPS = [(s, n, MIN_PER_UNIT[s], "") for s, n in SUBJECTS.items()] + \
-         [(s, n, ELEMENTARY_MIN, "國小") for s, n in ELEMENTARY.items()]
+         [(s, n, ELEMENTARY_MIN[s], "國小") for s, n in ELEMENTARY.items()]
 
 
 def shuffle(q, qid):

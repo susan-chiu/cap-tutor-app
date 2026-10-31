@@ -463,10 +463,10 @@ if (hasSeed) {
 
   await test('社會科段考範圍：每題都有第幾次段考，依範圍出題並分段統計進度', async () => {
     const u = await newUser({ nickname: '社會段考' });
-    const miss = (await db.query(`select count(*)::int n from public.questions where unit_id like 'SO-%' and exam_part is null`)).rows[0].n;
-    assert.equal(miss, 0, '社會題都有段考範圍');
-    const other = (await db.query(`select count(*)::int n from public.questions where unit_id not like 'SO-%' and exam_part is not null`)).rows[0].n;
-    assert.equal(other, 0, '其他科不分段');
+    const miss = (await db.query(`select count(*)::int n from public.questions where unit_id like 'SO-%' and unit_id !~ '-[56][AB]-' and exam_part is null`)).rows[0].n;
+    assert.equal(miss, 0, '國中社會題都有段考範圍');
+    const other = (await db.query(`select count(*)::int n from public.questions where (unit_id not like 'SO-%' or unit_id ~ '-[56][AB]-') and exam_part is not null`)).rows[0].n;
+    assert.equal(other, 0, '其他科與國小不分段');
     const parts = (await as(u, () => db.query(`select * from public.get_unit_parts('social')`))).rows;
     assert.equal(parts.length, 54, '18 單元 × 3 次段考');
     assert.ok(parts.every((r) => r.total >= 5), parts.filter((r) => r.total < 5).map((r) => r.unit_id + '#' + r.part).join(','));
@@ -560,7 +560,7 @@ if (hasSeed) {
     assert.ok(!('answer' in lq[0]));
   });
 
-  await test('正式題庫：國中五科、國小國語數學都有單元與題目；國中每單元 30 題、國小每單元 15 題；國中非聽力單元至少 8 題困難題', async () => {
+  await test('正式題庫：國中五科、國小國語數學自然社會都有單元與題目；國中每單元 30 題、國小國語數學 15 題、自然社會 30 題；國中非聽力單元至少 8 題困難題', async () => {
     const r = await db.query(`
       select u.subject, left(u.semester, 1) in ('5', '6') as elem, count(distinct u.id)::int units, count(q.id)::int qs, min(c.n)::int min_per_unit
       from public.units u left join public.questions q on q.unit_id = u.id
@@ -569,13 +569,13 @@ if (hasSeed) {
     const jr = Object.fromEntries(r.rows.filter((x) => !x.elem).map((x) => [x.subject, x]));
     const el = Object.fromEntries(r.rows.filter((x) => x.elem).map((x) => [x.subject, x]));
     assert.deepEqual(Object.keys(jr).sort(), ['chinese', 'english', 'math', 'science', 'social']);
-    assert.deepEqual(Object.keys(el).sort(), ['chinese', 'math'], '國小只有國語、數學');
+    assert.deepEqual(Object.keys(el).sort(), ['chinese', 'math', 'science', 'social'], '國小有國語、數學、自然、社會');
     for (const x of Object.values(jr)) assert.equal(x.min_per_unit, 30, x.subject + ' 每單元 30 題');
     const hard = (await db.query(`select u.id, count(q.id) filter (where q.difficulty = 3)::int n from public.units u
       join public.questions q on q.unit_id = u.id where u.id !~ '-[56][AB]-' and u.id !~ '-[789]L-' and u.id not like 'T-%' group by u.id`)).rows;
     assert.ok(hard.length >= 83 && hard.every((r) => r.n >= 8), hard.filter((r) => r.n < 8).map((r) => r.id + ':' + r.n).join(','));
-    assert.equal(el.math.units, 16); assert.equal(el.chinese.units, 12);
-    for (const x of Object.values(el)) assert.equal(x.min_per_unit, 15, '國小每單元 15 題');
+    assert.equal(el.math.units, 16); assert.equal(el.chinese.units, 12); assert.equal(el.science.units, 16); assert.equal(el.social.units, 16);
+    for (const [k, n] of [['math', 15], ['chinese', 15], ['science', 30], ['social', 30]]) assert.equal(el[k].min_per_unit, n, `國小${k}每單元 ${n} 題`);
     const d = (await db.query(`select difficulty, count(*)::int n from public.questions where unit_id ~ '^(M|CH)-[56]' group by 1 order by 1`)).rows;
     assert.deepEqual(d.map((x) => x.difficulty), [1, 2, 3], '國小簡單、中等、困難都有');
   });
