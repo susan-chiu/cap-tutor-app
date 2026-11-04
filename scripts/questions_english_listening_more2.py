@@ -360,15 +360,15 @@ N: Question: Which of the following is true according to Sam's message?""")
 
 # ---- 短文 3 題 ----
 Q("EN-9L-1", "short-talk", 1, "Why does Grace cook dinner on Sundays?",
-  ["Her parents can't cook very well.", "She wants to be a cook someday.", "Her little brother asks her to.", "She wants to thank her parents."], "D",
-  "Grace 說爸媽星期一到星期六都工作得很辛苦，所以她每個星期天煮晚餐，「It's my way of saying thank you to them.」，這是她向爸媽表達感謝的方式。",
-  ["Grace 的爸媽平常怎麼樣？", "注意 It's my way of... 這一句，她煮晚餐是為了表達什麼？"],
+  ["Her parents can't cook very well.", "She wants to be a cook someday.", "Her little brother asks her to.", "She wants to do something nice for her parents."], "D",
+  "Grace 說爸媽星期一到星期六都工作得很辛苦，所以她每個星期天煮晚餐，「I want them to relax and enjoy a nice meal on their day off.」，她想讓爸媽在休假日好好休息、吃頓好飯，也就是為爸媽做一件貼心的事。",
+  ["Grace 的爸媽平常怎麼樣？", "注意 I want them to... 這一句，她希望爸媽星期天怎麼樣？"],
   {"A": "短文說的是爸媽工作很辛苦，沒有說他們不會煮飯。", "B": "短文中沒有提到她以後想當廚師。", "C": "弟弟只是吃了還想再來一碗，並不是弟弟要她煮的。"},
-  None, listen="""N: Hi, I'm Grace. I love cooking. My parents work very hard from Monday to Saturday, so every Sunday I cook dinner for my family. It's my way of saying thank you to them. Last Sunday, I made fried rice and tomato soup. My little brother asked for a second bowl!
+  None, listen="""N: Hi, I'm Grace. I love cooking. My parents work very hard from Monday to Saturday, so every Sunday I cook dinner for my family. I want them to relax and enjoy a nice meal on their day off. Last Sunday, I made fried rice and tomato soup. My little brother asked for a second bowl!
 N: Question: Why does Grace cook dinner on Sundays?""")
 Q("EN-9L-1", "short-talk", 2, "What do Plant Club members do during summer vacation?",
-  ["Members water the plants in turns.", "They meet twice a week after school.", "They sell vegetables at the fair.", "They plant tomatoes and carrots."], "A",
-  "短文說暑假沒有上課，但植物還是需要水，「So members take turns coming to school to water them.」，社員輪流到學校澆水。每週二、四放學後照顧花園是上課期間的事，春天種菜、秋天賣菜也都不是暑假。",
+  ["They go back to school to give the plants water.", "They meet twice a week after school.", "They sell vegetables at the fair.", "They plant tomatoes and carrots."], "A",
+  "短文說暑假沒有上課，但植物還是需要水，「So members take turns coming to school to water them.」，社員輪流回學校幫植物澆水。每週二、四放學後照顧花園是上課期間的事，春天種菜、秋天賣菜也都不是暑假。",
   ["短文依照季節說了社團在不同時候做的事，暑假是哪一段？", "暑假沒有上課，植物需要什麼？社員怎麼安排？"],
   {"B": "每週二、四放學後是上課期間的活動，暑假沒有上課。", "C": "賣菜是秋天（In the fall）在學校園遊會的事。", "D": "種番茄和紅蘿蔔是春天（In spring）的事。"},
   None, listen="""N: Our school has a Plant Club. Every Tuesday and Thursday after school, club members take care of the school garden. In spring, we grow vegetables like tomatoes and carrots. In summer vacation, there are no classes, but the plants still need water. So members take turns coming to school to water them. In the fall, we sell our vegetables at the school fair and use the money to buy new tools.
