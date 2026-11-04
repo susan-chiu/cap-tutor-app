@@ -11426,5 +11426,5702 @@
       "A": "購物袋只是其中一個細節，短文也沒有和塑膠袋比較。"
     },
     "listen": "N: Many people throw away old clothes when they don't want them anymore. But Lily's class found a better idea. They collected old clothes from students and parents. Clothes in good condition were sold at the school fair, and the money was given to a children's home. Clothes that were too old to wear were cut into pieces and made into shopping bags. In the end, almost nothing was thrown away.\nN: Question: What is the main idea of this talk?"
+  },
+  {
+    "id": "EN-7A-1-31",
+    "exam_part": null,
+    "unit": "EN-7A-1",
+    "concept": "be-verb",
+    "difficulty": 1,
+    "stem": "You ＿＿＿ my best friend, Kelly. Thank you for your help.",
+    "options": [
+      "are",
+      "be",
+      "is",
+      "am"
+    ],
+    "answer": "A",
+    "explanation": "主詞是 You（你），不論 you 指一個人還是很多人，be 動詞都要用 are，所以是 You are my best friend（你是我最好的朋友）。",
+    "hints": [
+      "先找出這句的主詞是哪一個代名詞。",
+      "I 配 am，he、she、it 配 is，那 you 要配哪一個？"
+    ],
+    "wrong": {
+      "C": "以為 You 只指 Kelly 一個人就是單數而用 is；但 you 不論單複數，be 動詞都用 are。",
+      "D": "以為單數主詞都可以用 am；am 只能和 I 搭配。",
+      "B": "be 是原形，句子裡的 be 動詞要依主詞變成 am、is 或 are，不能直接用 be。"
+    }
+  },
+  {
+    "id": "EN-7A-1-32",
+    "exam_part": null,
+    "unit": "EN-7A-1",
+    "concept": "be-verb",
+    "difficulty": 1,
+    "stem": "My dog's name ＿＿＿ Lucky. He is three years old.",
+    "options": [
+      "be",
+      "is",
+      "am",
+      "are"
+    ],
+    "answer": "B",
+    "explanation": "主詞是 My dog's name（我的狗的名字），真正的主詞是 name，是單數名詞，所以 be 動詞用 is。dog's 的 's 是所有格「……的」，不是複數。",
+    "hints": [
+      "這句真正的主詞是 dog 還是 name？",
+      "dog's 的 's 代表複數，還是代表「……的」？"
+    ],
+    "wrong": {
+      "D": "看到 dog's 後面有 s 就以為主詞是複數；'s 是所有格，主詞 name 仍是單數。",
+      "C": "am 只能和 I 搭配，主詞 name 不是 I。",
+      "A": "be 是原形，不能直接當句子的動詞，要依主詞改成 is。"
+    }
+  },
+  {
+    "id": "EN-7A-1-33",
+    "exam_part": null,
+    "unit": "EN-7A-1",
+    "concept": "pronoun",
+    "difficulty": 1,
+    "stem": "Look at those birds. I like ＿＿＿ very much.",
+    "options": [
+      "them",
+      "their",
+      "they",
+      "theirs"
+    ],
+    "answer": "A",
+    "explanation": "空格在動詞 like 後面，是受詞的位置，要用受格。those birds（那些鳥）是複數，they 的受格是 them，所以是 I like them very much。",
+    "hints": [
+      "空格在動詞的前面還是後面？放在動詞後面的是主詞還是受詞？",
+      "複數的「他們／牠們」當受詞時要用哪一個形式？"
+    ],
+    "wrong": {
+      "C": "they 是主格，只能放在動詞前面當主詞；like 後面要用受格。",
+      "B": "their 是所有格，後面一定要接名詞（例如 their songs），不能單獨當受詞。",
+      "D": "theirs 是「他們的東西」，這裡喜歡的是鳥本身，不是鳥的東西。"
+    }
+  },
+  {
+    "id": "EN-7A-1-34",
+    "exam_part": null,
+    "unit": "EN-7A-1",
+    "concept": "pronoun",
+    "difficulty": 1,
+    "stem": "I have a cat. ＿＿＿ name is Mimi.",
+    "options": [
+      "Their",
+      "It",
+      "Its",
+      "It's"
+    ],
+    "answer": "C",
+    "explanation": "空格後面接名詞 name，要用所有格「牠的」。一隻貓用 it 代替，it 的所有格是 its（沒有撇號），所以是 Its name is Mimi。",
+    "hints": [
+      "空格後面緊接著名詞 name，空格需要表示「誰的」名字。",
+      "it 的所有格寫法和 It is 的縮寫長得很像，要分清楚。"
+    ],
+    "wrong": {
+      "B": "It 是主格，後面不能直接接名詞 name 當主詞。",
+      "D": "It's 是 It is 的縮寫，放進去會變成 It is name is Mimi，一句有兩個 is，不通。",
+      "A": "their 是「他們的」，用在複數；這裡只有一隻貓，要用 its。"
+    }
+  },
+  {
+    "id": "EN-7A-1-35",
+    "exam_part": null,
+    "unit": "EN-7A-1",
+    "concept": "dialogue-response",
+    "difficulty": 1,
+    "stem": "A: Who is that girl under the tree?\nB: ＿＿＿",
+    "options": [
+      "Yes, she is.",
+      "She's fine, thank you.",
+      "It's my sister's bag.",
+      "She's my sister, Ann."
+    ],
+    "answer": "D",
+    "explanation": "Who 是問「是誰」，回答要說明這個人的身分或名字。She's my sister, Ann. 表示「她是我的妹妹（或姊姊）Ann」，回答了是誰。",
+    "hints": [
+      "Who 是在問什麼？人的身分、心情，還是東西？",
+      "以疑問詞開頭的問句，可以用 Yes 或 No 回答嗎？"
+    ],
+    "wrong": {
+      "B": "把 Who 問句當成 How is she?（她好嗎）來回答；fine 是說心情或身體狀況，不是身分。",
+      "A": "Who 是疑問詞問句，不能用 Yes 或 No 回答。",
+      "C": "問的是樹下那個女孩是誰，這個回答說的是一個袋子，對象不對。"
+    }
+  },
+  {
+    "id": "EN-7A-1-36",
+    "exam_part": null,
+    "unit": "EN-7A-1",
+    "concept": "be-verb",
+    "difficulty": 2,
+    "stem": "My hair ＿＿＿ long, but my sister's hair ＿＿＿ short.",
+    "options": [
+      "is; are",
+      "are; are",
+      "is; is",
+      "are; is"
+    ],
+    "answer": "C",
+    "explanation": "hair 指一整頭頭髮時是不可數名詞，要當單數看，be 動詞用 is。兩個空格的主詞都是 hair（my hair 和 my sister's hair），所以都用 is。",
+    "hints": [
+      "hair 指整頭頭髮時，是可數還是不可數名詞？",
+      "第二個主詞是 sister 還是 hair？sister's 的 's 是什麼意思？"
+    ],
+    "wrong": {
+      "D": "以為頭髮有很多根就是複數；hair 指整頭頭髮時是不可數名詞，要用 is。",
+      "A": "看到 sister's 的 s 就以為是複數；'s 是所有格，第二句的主詞仍然是 hair。",
+      "B": "把 hair 當成可數的複數名詞，兩格都用了 are。"
+    }
+  },
+  {
+    "id": "EN-7A-1-37",
+    "exam_part": null,
+    "unit": "EN-7A-1",
+    "concept": "be-verb",
+    "difficulty": 2,
+    "stem": "How old ＿＿＿ your twin brothers? — They're ten.",
+    "options": [
+      "is",
+      "do",
+      "does",
+      "are"
+    ],
+    "answer": "D",
+    "explanation": "主詞是 your twin brothers（你的雙胞胎兄弟），brothers 是複數，be 動詞用 are；回答用 They're 也看得出主詞是複數。問年齡用 be 動詞，不用 do／does。",
+    "hints": [
+      "How old 後面的主詞是單數還是複數？",
+      "看看回答用的是 He's 還是 They're。"
+    ],
+    "wrong": {
+      "A": "只記得 How old is ...? 的句型就直接用 is，沒注意主詞 brothers 是複數。",
+      "B": "句子裡沒有一般動詞，問年齡要用 be 動詞，不需要助動詞 do。",
+      "C": "does 是助動詞，句中沒有一般動詞；而且主詞是複數，也不能用 does。"
+    }
+  },
+  {
+    "id": "EN-7A-1-38",
+    "exam_part": null,
+    "unit": "EN-7A-1",
+    "concept": "pronoun",
+    "difficulty": 2,
+    "stem": "Ken and ＿＿＿ are on the same baseball team.",
+    "options": [
+      "my",
+      "I",
+      "me",
+      "mine"
+    ],
+    "answer": "B",
+    "explanation": "Ken and ＿＿＿ 放在 be 動詞 are 前面，是句子的主詞，主詞位置要用主格，所以是 Ken and I（Ken 和我）。",
+    "hints": [
+      "空格是在動詞 are 的前面還是後面？",
+      "放在動詞前面當主詞時，「我」要用哪一個形式？"
+    ],
+    "wrong": {
+      "C": "me 是受格，要放在動詞或介系詞後面；這裡是主詞位置，要用主格 I。",
+      "A": "my 是所有格，後面要接名詞（例如 my brother），不能單獨當主詞。",
+      "D": "mine 是「我的東西」，這裡說的是我本人在球隊，不是我的東西。"
+    }
+  },
+  {
+    "id": "EN-7A-1-39",
+    "exam_part": null,
+    "unit": "EN-7A-1",
+    "concept": "pronoun",
+    "difficulty": 2,
+    "stem": "This gift is for Amy and ＿＿＿. Thank you, Uncle Tom!",
+    "options": [
+      "my",
+      "I",
+      "mine",
+      "me"
+    ],
+    "answer": "D",
+    "explanation": "for 是介系詞，介系詞後面的代名詞要用受格。Amy and ＿＿＿ 都是 for 的受詞，所以「我」要用 me：for Amy and me（給 Amy 和我的）。",
+    "hints": [
+      "空格前面的 for 是什麼詞性？",
+      "介系詞後面的代名詞要用主格還是受格？"
+    ],
+    "wrong": {
+      "B": "看到 Amy and 就以為要用主格 I；但這裡在介系詞 for 後面，要用受格。",
+      "A": "my 是所有格，後面要接名詞，不能單獨放在句尾。",
+      "C": "mine 是「我的東西」，for mine 意思不通；禮物是要給我這個人的。"
+    }
+  },
+  {
+    "id": "EN-7A-1-40",
+    "exam_part": null,
+    "unit": "EN-7A-1",
+    "concept": "dialogue-response",
+    "difficulty": 2,
+    "stem": "A: Where are you and your brother from?\nB: ＿＿＿",
+    "options": [
+      "Yes, we are.",
+      "They're from Tainan.",
+      "We're in the classroom.",
+      "We're from Tainan."
+    ],
+    "answer": "D",
+    "explanation": "Where ... from? 是問「來自哪裡」。問句的主詞是 you and your brother（你和你哥哥／弟弟），回答時自己要說「我們」，所以用 We're from Tainan.（我們來自臺南）。",
+    "hints": [
+      "Where are you from? 問的是現在的位置，還是從哪裡來？",
+      "問「你和你的兄弟」，回答的人自己要說「他們」還是「我們」？"
+    ],
+    "wrong": {
+      "B": "問的是「你和你的兄弟」，回答的人包含自己，要用 we，不能用 they。",
+      "C": "把 Where ... from? 當成問現在在哪裡；from 表示來自哪裡，不是現在的位置。",
+      "A": "Where 是疑問詞問句，不能用 Yes 或 No 回答。"
+    }
+  },
+  {
+    "id": "EN-7A-1-41",
+    "exam_part": null,
+    "unit": "EN-7A-1",
+    "concept": "reading-detail",
+    "difficulty": 2,
+    "stem": "Dear Yuki,\nI'm Wendy, your new pen pal. I'm twelve, and I'm from Taiwan. My father is a cook, and my mother is a bus driver. My brother, Max, is sixteen. He is a high school student. Our dog, Coco, is two. She is white and very cute.\nWendy\n\nWho is sixteen years old?",
+    "options": [
+      "Wendy's father",
+      "Wendy's dog",
+      "Wendy's pen pal",
+      "Wendy's brother"
+    ],
+    "answer": "D",
+    "explanation": "信中寫 My brother, Max, is sixteen.，所以十六歲的是 Max，也就是 Wendy 的哥哥。Wendy 自己十二歲，狗 Coco 兩歲，筆友 Yuki 和爸爸的年齡都沒有提到。",
+    "hints": [
+      "在信中找到 sixteen 這個字。",
+      "sixteen 前面說的人是誰？他和 Wendy 是什麼關係？"
+    ],
+    "wrong": {
+      "C": "Wendy's pen pal 是收信的 Yuki，信中沒有提到 Yuki 的年齡。",
+      "A": "信中只說爸爸是廚師，沒有說爸爸幾歲。",
+      "B": "Coco 是兩歲，不是十六歲；可能把 two 和 sixteen 看錯了對象。"
+    }
+  },
+  {
+    "id": "EN-7A-1-42",
+    "exam_part": null,
+    "unit": "EN-7A-1",
+    "concept": "reading-detail",
+    "difficulty": 2,
+    "stem": "Is this your bag?\nIt is black and small. Two books and a red pen are in it. The books are not new. The bag is in the school office now. Please come and get it.\n— Mr. Hall\n\nWhat do we know about the bag?",
+    "options": [
+      "It isn't a big bag.",
+      "It is in Mr. Hall's classroom.",
+      "It is red.",
+      "Two new books are in it."
+    ],
+    "answer": "A",
+    "explanation": "公告寫 It is black and small.，袋子又黑又小，換句話說就是「它不是一個大袋子」。袋子是黑色的（紅色的是筆）；書不是新的；袋子在學校辦公室，不是教室。",
+    "hints": [
+      "公告用哪兩個形容詞描述這個袋子？",
+      "small 的相反詞是什麼？如果是 small，就不會是……？"
+    ],
+    "wrong": {
+      "C": "把紅色的筆當成袋子的顏色；袋子是黑色的。",
+      "D": "公告說 The books are not new.，書並不是新的。",
+      "B": "公告說袋子在 school office（學校辦公室），不是在 Mr. Hall 的教室。"
+    }
+  },
+  {
+    "id": "EN-7A-1-43",
+    "exam_part": null,
+    "unit": "EN-7A-1",
+    "concept": "be-verb",
+    "difficulty": 3,
+    "stem": "Hi, I'm Jill. Ann and I (1)＿＿＿ classmates, but we (2)＿＿＿ in the same club. Ann is in the art club, and I am in the music club. We are good friends.\n\nWhich is the best choice for (1) and (2)?",
+    "options": [
+      "are; aren't",
+      "is; are not",
+      "am; aren't",
+      "are; are"
+    ],
+    "answer": "A",
+    "explanation": "(1) 主詞 Ann and I 是兩個人，屬於複數，be 動詞用 are。(2) 主詞是 we；後文說 Ann 在美術社、我在音樂社，兩人不在同一個社團，而且前面有 but 表示語氣轉折，所以要用否定 aren't。",
+    "hints": [
+      "(1) 的主詞 Ann and I 是幾個人？",
+      "看後面那句：Ann 和 Jill 參加的是同一個社團嗎？but 前後的意思是相同還是相反？"
+    ],
+    "wrong": {
+      "C": "(1) 只看最靠近空格的 I 就用 am；主詞是 Ann and I 兩個人，要用 are。",
+      "D": "(1) 正確，但沒注意到 but 和後面「兩人在不同社團」的說明，(2) 應該用否定。",
+      "B": "(1) 以為 Ann 一個人是單數而用 is，忽略了 and I 讓主詞變成複數。"
+    }
+  },
+  {
+    "id": "EN-7A-1-44",
+    "exam_part": null,
+    "unit": "EN-7A-1",
+    "concept": "pronoun",
+    "difficulty": 3,
+    "stem": "Hi, I'm Sandy. Jill and I are in Class 708. Mr. Lin is (1)＿＿＿ homeroom teacher. He is very kind to (2)＿＿＿, and he is funny, too.\n\nWhich is the best choice for (1) and (2)?",
+    "options": [
+      "our; us",
+      "we; our",
+      "us; we",
+      "our; we"
+    ],
+    "answer": "A",
+    "explanation": "Jill and I 合起來就是「我們」。(1) 空格後面接名詞 homeroom teacher，要用所有格 our（我們的導師）。(2) 空格在介系詞 to 後面，要用受格 us（對我們很好）。",
+    "hints": [
+      "Jill and I 可以用哪一個代名詞代替？",
+      "(1) 後面接名詞，要用所有格；(2) 前面是介系詞 to，要用哪一格？"
+    ],
+    "wrong": {
+      "B": "(1) 後面接名詞 homeroom teacher，要用所有格 our，不能用主格 we；(2) 也不能用所有格。",
+      "C": "(1) us 是受格，不能放在名詞前面修飾；(2) to 後面要用受格，不能用主格 we。",
+      "D": "(1) 正確，但 (2) 在介系詞 to 後面，要用受格 us，不是主格 we。"
+    }
+  },
+  {
+    "id": "EN-7A-1-45",
+    "exam_part": null,
+    "unit": "EN-7A-1",
+    "concept": "reading-detail",
+    "difficulty": 3,
+    "stem": "Hi, I'm Eric. I'm fourteen. My parents are doctors. My sisters, Amy and Ann, are twins. They are ten. Amy is quiet, but Ann isn't. She is very noisy! Grandma is at home with us, too. She is seventy, but she is very healthy.\n\nWhich is TRUE?",
+    "options": [
+      "Eric's sisters are the same age.",
+      "Amy is fourteen years old.",
+      "Ann is a quiet girl.",
+      "Eric and his parents are doctors."
+    ],
+    "answer": "A",
+    "explanation": "Amy 和 Ann 是雙胞胎（twins），文中也說 They are ten.，所以 Eric 的兩個妹妹年紀一樣大。Ann 很吵不安靜；十四歲的是 Eric；醫生是爸媽，Eric 是學生年紀。",
+    "hints": [
+      "twins（雙胞胎）的年紀會一樣嗎？",
+      "逐一核對：誰安靜？誰十四歲？誰是醫生？"
+    ],
+    "wrong": {
+      "C": "文中說 Amy is quiet, but Ann isn't.，安靜的是 Amy，Ann 很吵。",
+      "B": "十四歲的是 Eric 自己，Amy 和 Ann 都是十歲。",
+      "D": "文中只說 My parents are doctors.，醫生是爸媽，不包含 Eric。"
+    }
+  },
+  {
+    "id": "EN-7A-2-31",
+    "exam_part": null,
+    "unit": "EN-7A-2",
+    "concept": "simple-present",
+    "difficulty": 1,
+    "stem": "Ms. Lin ＿＿＿ a big black dog. Its name is Max.",
+    "options": [
+      "have",
+      "is have",
+      "has",
+      "haves"
+    ],
+    "answer": "C",
+    "explanation": "主詞 Ms. Lin 是第三人稱單數，現在簡單式的 have 要變成 has（不規則變化，不是加 s），所以是 Ms. Lin has a big black dog.（林老師有一隻大黑狗）。",
+    "hints": [
+      "主詞 Ms. Lin 是第幾人稱？單數還是複數？",
+      "have 遇到第三人稱單數時，不是直接加 s，而是變成另一個字。"
+    ],
+    "wrong": {
+      "A": "忘了主詞 Ms. Lin 是第三人稱單數，動詞要變化。",
+      "D": "以為第三人稱單數一律加 s；have 的第三人稱單數是 has。",
+      "B": "把 be 動詞和一般動詞放在一起用；一句話只需要一個動詞 has。"
+    }
+  },
+  {
+    "id": "EN-7A-2-32",
+    "exam_part": null,
+    "unit": "EN-7A-2",
+    "concept": "simple-present",
+    "difficulty": 1,
+    "stem": "Grandpa ＿＿＿ the news on TV every evening.",
+    "options": [
+      "watches",
+      "watching",
+      "watch",
+      "watchs"
+    ],
+    "answer": "A",
+    "explanation": "every evening 表示習慣，用現在簡單式。主詞 Grandpa 是第三人稱單數，動詞要變化；watch 字尾是 -ch，要加 es，所以是 watches。",
+    "hints": [
+      "every evening 表示習慣還是正在做的事？",
+      "字尾是 s、sh、ch、x、o 的動詞，第三人稱單數要加什麼？"
+    ],
+    "wrong": {
+      "D": "知道要加 s，但忘了字尾 -ch 的動詞要加 es。",
+      "C": "忘了主詞 Grandpa 是第三人稱單數，動詞要變化。",
+      "B": "V-ing 前面要有 be 動詞才能當動詞；而且 every evening 表示習慣，用現在簡單式。"
+    }
+  },
+  {
+    "id": "EN-7A-2-33",
+    "exam_part": null,
+    "unit": "EN-7A-2",
+    "concept": "frequency",
+    "difficulty": 1,
+    "stem": "I ＿＿＿ to bed at ten on school nights.",
+    "options": [
+      "am usually go",
+      "usually goes",
+      "go usually",
+      "usually go"
+    ],
+    "answer": "D",
+    "explanation": "頻率副詞（usually、always、often 等）要放在一般動詞的前面。主詞是 I，動詞用原形 go，所以是 I usually go to bed at ten.（我通常十點睡覺）。",
+    "hints": [
+      "usually 要放在一般動詞的前面還是後面？",
+      "主詞是 I，動詞 go 需要加 es 嗎？"
+    ],
+    "wrong": {
+      "C": "把頻率副詞放到一般動詞後面了；usually 要放在 go 前面。",
+      "B": "主詞是 I，不是第三人稱單數，go 不用加 es。",
+      "A": "句子已經有一般動詞 go，不需要再加 be 動詞 am。"
+    }
+  },
+  {
+    "id": "EN-7A-2-34",
+    "exam_part": null,
+    "unit": "EN-7A-2",
+    "concept": "frequency",
+    "difficulty": 1,
+    "stem": "Amy goes to the gym on Mondays, Wednesdays, and Fridays. She goes there ＿＿＿ a week.",
+    "options": [
+      "four times",
+      "seven times",
+      "three times",
+      "twice"
+    ],
+    "answer": "C",
+    "explanation": "Amy 一週去健身房的日子是星期一、三、五，共三天，所以是一週三次 three times a week。once 是一次、twice 是兩次，三次以上用「數字 + times」。",
+    "hints": [
+      "數一數 Amy 一週去了哪幾天。",
+      "一次、兩次之後，三次要怎麼說？"
+    ],
+    "wrong": {
+      "D": "twice 是兩次，但 Amy 一週去了三天。",
+      "B": "以為她每天都去；文中只列出星期一、三、五。",
+      "A": "多數了一天；Mondays、Wednesdays、Fridays 只有三天。"
+    }
+  },
+  {
+    "id": "EN-7A-2-35",
+    "exam_part": null,
+    "unit": "EN-7A-2",
+    "concept": "dialogue-response",
+    "difficulty": 1,
+    "stem": "A: Do you like math?\nB: ＿＿＿ It's my favorite subject.",
+    "options": [
+      "Yes, I am.",
+      "Yes, you do.",
+      "Yes, I do.",
+      "No, I don't."
+    ],
+    "answer": "C",
+    "explanation": "Do you ...? 要用 Yes, I do. 或 No, I don't. 回答。B 後面說 It's my favorite subject.（那是我最喜歡的科目），表示喜歡數學，所以用肯定 Yes, I do.。",
+    "hints": [
+      "問句用 Do 開頭，回答要用 do 還是 be 動詞？",
+      "B 說數學是最喜歡的科目，答案是肯定還是否定？"
+    ],
+    "wrong": {
+      "D": "簡答形式對了，但後面說數學是最喜歡的科目，應該是肯定回答。",
+      "A": "問句用助動詞 Do 開頭，回答也要用 do，不能用 be 動詞 am。",
+      "B": "問的是「你」喜不喜歡，回答時要說「我」，應該用 I 不是 you。"
+    }
+  },
+  {
+    "id": "EN-7A-2-36",
+    "exam_part": null,
+    "unit": "EN-7A-2",
+    "concept": "simple-present",
+    "difficulty": 2,
+    "stem": "＿＿＿ Ben and Ken ＿＿＿ in the same building? — Yes, they do.",
+    "options": [
+      "Are; live",
+      "Does; live",
+      "Do; live",
+      "Do; lives"
+    ],
+    "answer": "C",
+    "explanation": "主詞 Ben and Ken 是兩個人，屬於複數，一般動詞的疑問句要用助動詞 Do 開頭；有了助動詞，後面的動詞要用原形 live，所以是 Do Ben and Ken live ...?。回答 Yes, they do. 也對得上。",
+    "hints": [
+      "主詞是一個人還是兩個人？要用 Do 還是 Does？",
+      "句子用了助動詞之後，後面的動詞要用什麼形式？"
+    ],
+    "wrong": {
+      "B": "主詞 Ben and Ken 是複數，要用 Do，不能用 Does。",
+      "D": "助動詞 Do 後面的動詞要用原形，不能再加 s。",
+      "A": "live 是一般動詞，疑問句要用助動詞 Do，不能用 be 動詞 Are；回答也是 they do。"
+    }
+  },
+  {
+    "id": "EN-7A-2-37",
+    "exam_part": null,
+    "unit": "EN-7A-2",
+    "concept": "simple-present",
+    "difficulty": 2,
+    "stem": "My baby brother ＿＿＿ when he is hungry.",
+    "options": [
+      "is cry",
+      "cry",
+      "crys",
+      "cries"
+    ],
+    "answer": "D",
+    "explanation": "這句說的是習慣（肚子餓的時候就會哭），用現在簡單式。主詞是第三人稱單數，cry 是「子音 + y」結尾，要去 y 加 ies，所以是 cries。",
+    "hints": [
+      "主詞 my baby brother 是第三人稱單數嗎？",
+      "字尾是「子音 + y」的動詞，第三人稱單數要怎麼變？"
+    ],
+    "wrong": {
+      "C": "知道要加 s，但忘了「子音 + y」結尾要去 y 加 ies。",
+      "B": "忘了主詞是第三人稱單數，動詞要變化。",
+      "A": "把 be 動詞和一般動詞放在一起用；句中只需要一個動詞 cries。"
+    }
+  },
+  {
+    "id": "EN-7A-2-38",
+    "exam_part": null,
+    "unit": "EN-7A-2",
+    "concept": "frequency",
+    "difficulty": 2,
+    "stem": "Linda doesn't like fish, so she ＿＿＿ orders fish at restaurants.",
+    "options": [
+      "often",
+      "seldom",
+      "always",
+      "usually"
+    ],
+    "answer": "B",
+    "explanation": "Linda 不喜歡吃魚，所以她在餐廳很少點魚，要用表示「很少」的 seldom。always（總是）、usually（通常）、often（常常）都和「不喜歡魚」的意思矛盾。",
+    "hints": [
+      "前半句說 Linda 喜不喜歡魚？",
+      "不喜歡的東西，會常常點還是很少點？so 前後是因果關係。"
+    ],
+    "wrong": {
+      "C": "沒有注意到前半句的 doesn't like；不喜歡魚卻總是點魚，前後矛盾。",
+      "D": "usually 是「通常」，頻率很高，和不喜歡魚的原因不合。",
+      "A": "often 是「常常」，和 so 前面的原因「不喜歡魚」對不上。"
+    }
+  },
+  {
+    "id": "EN-7A-2-39",
+    "exam_part": null,
+    "unit": "EN-7A-2",
+    "concept": "frequency",
+    "difficulty": 2,
+    "stem": "Peter ＿＿＿ his homework after dinner. Sometimes he does it before dinner.",
+    "options": [
+      "usually does",
+      "always does",
+      "usually doing",
+      "never does"
+    ],
+    "answer": "A",
+    "explanation": "後一句說 Peter 有時候（sometimes）晚餐前寫功課，表示大部分時候是晚餐後寫，所以用 usually does（通常晚餐後寫功課）。主詞是第三人稱單數，do 要變成 does。",
+    "hints": [
+      "第二句的 sometimes 告訴你什麼？Peter 每一次都在晚餐後寫嗎？",
+      "如果大多數時候在晚餐後、偶爾在晚餐前，要用哪一個頻率副詞？"
+    ],
+    "wrong": {
+      "B": "always 表示每一次都在晚餐後，和後一句「有時候晚餐前寫」矛盾。",
+      "D": "never 表示從不在晚餐後寫，但 sometimes 晚餐前寫，暗示其他時候是晚餐後寫，意思不合。",
+      "C": "頻率副詞後面要接動詞的現在式 does，V-ing 不能單獨當句子的動詞。"
+    }
+  },
+  {
+    "id": "EN-7A-2-40",
+    "exam_part": null,
+    "unit": "EN-7A-2",
+    "concept": "dialogue-response",
+    "difficulty": 2,
+    "stem": "A: What does your mother do?\nB: ＿＿＿",
+    "options": [
+      "She cooks very well.",
+      "Yes, she does.",
+      "She does the dishes.",
+      "She's a cook."
+    ],
+    "answer": "D",
+    "explanation": "What does + 某人 + do? 是問「某人的職業是什麼」，所以要回答工作。She's a cook.（她是廚師）回答了媽媽的職業。",
+    "hints": [
+      "What does your mother do? 是在問媽媽現在在做什麼、會做什麼，還是她的工作？",
+      "回答要是一種職業。"
+    ],
+    "wrong": {
+      "C": "看到問句有 do 就回答「做家事」；這句是在問職業，不是問做什麼家事。",
+      "B": "What 是疑問詞問句，不能用 Yes 或 No 回答。",
+      "A": "這是說媽媽很會煮菜，不是說出她的職業。"
+    }
+  },
+  {
+    "id": "EN-7A-2-41",
+    "exam_part": null,
+    "unit": "EN-7A-2",
+    "concept": "reading-detail",
+    "difficulty": 2,
+    "stem": "Hi, I'm Jake. I have a dog and a bird. Every morning, I walk my dog, Max, in the park. My sister, Joy, feeds the bird. After school, I usually play with Max in the yard. Joy doesn't like dogs, so she never plays with Max.\n\nWhat does Joy do for the bird?",
+    "options": [
+      "She takes it to school.",
+      "She gives it food.",
+      "She plays with it in the yard.",
+      "She walks it in the park."
+    ],
+    "answer": "B",
+    "explanation": "文中說 My sister, Joy, feeds the bird.，feed 是「餵食」，換句話說就是她給鳥食物。去公園散步和在院子裡玩的是 Jake 和狗 Max。",
+    "hints": [
+      "找到文中提到 Joy 和 bird 的那一句。",
+      "feed 這個字是什麼意思？"
+    ],
+    "wrong": {
+      "D": "每天早上去公園散步的是 Jake 和他的狗，不是 Joy 和鳥。",
+      "C": "放學後在院子玩的是 Jake 和狗 Max，文中沒說 Joy 和鳥一起玩。",
+      "A": "文中沒有提到任何人帶鳥去學校。"
+    }
+  },
+  {
+    "id": "EN-7A-2-42",
+    "exam_part": null,
+    "unit": "EN-7A-2",
+    "concept": "reading-detail",
+    "difficulty": 2,
+    "stem": "Happy Swim Club\nOpen: 6:00 a.m.–9:00 p.m. every day\nSwimming lessons for kids: Wednesday and Saturday afternoons\nMembers: NT$100 a time / Others: NT$150 a time\n\nHow often are there swimming lessons for kids?",
+    "options": [
+      "Three times a week",
+      "Once a week",
+      "Every day",
+      "Twice a week"
+    ],
+    "answer": "D",
+    "explanation": "公告寫兒童游泳課在 Wednesday and Saturday afternoons（星期三和星期六下午），一週有兩天，所以是一週兩次 twice a week。every day 是游泳池的開放時間，不是上課時間。",
+    "hints": [
+      "How often 是在問什麼？",
+      "數一數兒童游泳課一週在哪幾天。"
+    ],
+    "wrong": {
+      "C": "把游泳池每天開放的時間當成兒童游泳課的時間了。",
+      "B": "只看到其中一天；課程在星期三和星期六兩天。",
+      "A": "多算了一天；公告只寫了星期三和星期六。"
+    }
+  },
+  {
+    "id": "EN-7A-2-43",
+    "exam_part": null,
+    "unit": "EN-7A-2",
+    "concept": "simple-present",
+    "difficulty": 3,
+    "stem": "My aunt (1)＿＿＿ in a bookstore. She (2)＿＿＿ on Mondays, so she often visits us on that day.\n\nWhich is the best choice for (1) and (2)?",
+    "options": [
+      "works; doesn't works",
+      "work; doesn't work",
+      "works; don't work",
+      "works; doesn't work"
+    ],
+    "answer": "D",
+    "explanation": "(1) 主詞 My aunt 是第三人稱單數，現在簡單式要用 works。(2) 後面說她常在星期一來我們家，表示星期一不用上班，要用否定；第三人稱單數的否定是 doesn't + 原形動詞，所以是 doesn't work。",
+    "hints": [
+      "(1) 主詞 my aunt 是第三人稱單數，動詞要怎麼變？",
+      "(2) 她星期一常來我們家，那天她有沒有上班？否定句的 doesn't 後面接什麼形式的動詞？"
+    ],
+    "wrong": {
+      "B": "(2) 對了，但 (1) 忘了主詞 my aunt 是第三人稱單數，work 要加 s。",
+      "A": "(2) 用了 doesn't 之後，後面的動詞要用原形，不能再加 s。",
+      "C": "(2) 主詞 She 是第三人稱單數，否定要用 doesn't，不能用 don't。"
+    }
+  },
+  {
+    "id": "EN-7A-2-44",
+    "exam_part": null,
+    "unit": "EN-7A-2",
+    "concept": "frequency",
+    "difficulty": 3,
+    "stem": "Leo's week:\nMonday, Wednesday, Friday: dance class after school\nTuesday, Thursday: helps at his uncle's store\nSaturday, Sunday: stays home with his family\n\nLeo has dance class (1)＿＿＿, and he (2)＿＿＿ goes out on weekends.\n\nWhich is the best choice for (1) and (2)?",
+    "options": [
+      "twice a week; never",
+      "twice a week; seldom",
+      "three times a week; never",
+      "three times a week; always"
+    ],
+    "answer": "C",
+    "explanation": "(1) 舞蹈課在星期一、三、五，一週三次，是 three times a week。(2) 週末兩天 Leo 都待在家，所以週末從不出門，用 never。",
+    "hints": [
+      "(1) 數一數舞蹈課一週有幾天；不要和去叔叔店裡幫忙的天數搞混。",
+      "(2) 週末兩天 Leo 都做什麼？那他週末出門的頻率是？"
+    ],
+    "wrong": {
+      "A": "(2) 對了，但 (1) 把舞蹈課和去叔叔店裡幫忙（星期二、四）的天數搞混了。",
+      "D": "(1) 對了，但週末 Leo 都待在家，(2) 應該是 never，不是 always。",
+      "B": "(1) 數錯天數；而且週末兩天都待在家，(2) 應該是 never，不是 seldom。"
+    }
+  },
+  {
+    "id": "EN-7A-2-45",
+    "exam_part": null,
+    "unit": "EN-7A-2",
+    "concept": "reading-detail",
+    "difficulty": 3,
+    "stem": "In Sara's family, Dad cooks dinner from Monday to Friday, and Mom cooks on Saturdays. On Sundays, the family always eats out with Grandma.\n\nWhich is TRUE about dinner in Sara's family?",
+    "options": [
+      "They eat out twice a week.",
+      "Mom cooks dinner once a week.",
+      "Grandma cooks dinner on Sundays.",
+      "Dad cooks dinner every day."
+    ],
+    "answer": "B",
+    "explanation": "媽媽只在星期六煮晚餐，一週一次，所以「媽媽一週煮一次晚餐」正確。爸爸只煮星期一到五；全家只有星期日外食，一週一次；星期日是和奶奶一起去外面吃，不是奶奶煮。",
+    "hints": [
+      "把一週七天分成三段：誰煮？哪天外食？",
+      "媽媽一週煮幾天晚餐？外食一週幾天？"
+    ],
+    "wrong": {
+      "D": "爸爸只煮星期一到星期五，週末不是他煮。",
+      "A": "全家只有星期日外食，一週一次，不是兩次。",
+      "C": "星期日是全家和奶奶一起去外面吃（eats out），不是奶奶在家煮。"
+    }
+  },
+  {
+    "id": "EN-7B-1-31",
+    "exam_part": null,
+    "unit": "EN-7B-1",
+    "concept": "present-progressive",
+    "difficulty": 1,
+    "stem": "Look! The dog is ＿＿＿ after the ball.",
+    "options": [
+      "run",
+      "runs",
+      "runing",
+      "running"
+    ],
+    "answer": "D",
+    "explanation": "Look! 表示動作正在發生，用現在進行式 be + V-ing。run 是「短母音 + 一個子音」結尾，加 ing 前要重複字尾 n，所以是 running。",
+    "hints": [
+      "Look! 提醒你這個動作是正在進行還是每天的習慣？",
+      "run 加 ing 時，字尾的 n 要怎麼處理？"
+    ],
+    "wrong": {
+      "C": "知道要加 ing，但忘了 run 這種「短母音 + 子音」結尾要重複字尾再加 ing。",
+      "B": "空格前已經有 is，進行式是 is + V-ing，不能接 runs。",
+      "A": "is 後面不能直接接原形動詞，進行式要用 V-ing。"
+    }
+  },
+  {
+    "id": "EN-7B-1-32",
+    "exam_part": null,
+    "unit": "EN-7B-1",
+    "concept": "present-progressive",
+    "difficulty": 1,
+    "stem": "I ＿＿＿ to music in my room now.",
+    "options": [
+      "am listening",
+      "listen",
+      "is listening",
+      "listening"
+    ],
+    "answer": "A",
+    "explanation": "now 表示「現在正在」，要用現在進行式 be + V-ing。主詞 I 搭配 am，所以是 I am listening to music.（我現在正在聽音樂）。",
+    "hints": [
+      "句尾的 now 表示什麼時態？",
+      "主詞是 I，進行式前面的 be 動詞要用哪一個？"
+    ],
+    "wrong": {
+      "D": "V-ing 不能單獨當動詞，前面要有 be 動詞。",
+      "C": "is 要配第三人稱單數，主詞是 I 要用 am。",
+      "B": "現在簡單式用來說習慣，但句尾有 now，表示正在做，要用進行式。"
+    }
+  },
+  {
+    "id": "EN-7B-1-33",
+    "exam_part": null,
+    "unit": "EN-7B-1",
+    "concept": "imperative",
+    "difficulty": 1,
+    "stem": "Please ＿＿＿ the door. It's cold in here.",
+    "options": [
+      "closes",
+      "close",
+      "closing",
+      "to close"
+    ],
+    "answer": "B",
+    "explanation": "祈使句用來請別人做事，句子用原形動詞開頭，前面可以加 Please，所以是 Please close the door.（請關門）。",
+    "hints": [
+      "這句是在描述別人的習慣，還是在請對方做一件事？",
+      "祈使句的動詞要用什麼形式？"
+    ],
+    "wrong": {
+      "A": "祈使句的主詞 you 被省略了，動詞用原形，不能加 s。",
+      "C": "V-ing 不能放在 Please 後面當祈使句的動詞。",
+      "D": "祈使句直接用原形動詞，不需要 to。"
+    }
+  },
+  {
+    "id": "EN-7B-1-34",
+    "exam_part": null,
+    "unit": "EN-7B-1",
+    "concept": "imperative",
+    "difficulty": 1,
+    "stem": "＿＿＿ me, please. This box is too heavy.",
+    "options": [
+      "Helps",
+      "Help",
+      "To help",
+      "Helping"
+    ],
+    "answer": "B",
+    "explanation": "箱子太重，說話者在請對方幫忙，要用祈使句，以原形動詞開頭：Help me, please.（請幫我）。",
+    "hints": [
+      "說話的人是在描述事情，還是在請對方做事？",
+      "祈使句開頭的動詞要用什麼形式？"
+    ],
+    "wrong": {
+      "A": "祈使句的動詞用原形，不能加 s。",
+      "D": "V-ing 開頭不能當祈使句。",
+      "C": "祈使句不需要 to，直接用原形動詞開頭。"
+    }
+  },
+  {
+    "id": "EN-7B-1-35",
+    "exam_part": null,
+    "unit": "EN-7B-1",
+    "concept": "dialogue-response",
+    "difficulty": 1,
+    "stem": "A: Is Dad watching TV?\nB: ＿＿＿ He's reading in his room.",
+    "options": [
+      "Yes, he is.",
+      "No, he isn't.",
+      "Yes, he does.",
+      "No, he doesn't."
+    ],
+    "answer": "B",
+    "explanation": "問句是 Is Dad watching TV?，用 be 動詞 is 問，回答也用 is。B 接著說爸爸正在房間看書，表示沒有在看電視，所以用否定 No, he isn't.。",
+    "hints": [
+      "問句用哪個字開頭？回答要用 is 還是 does？",
+      "B 後面說爸爸在做什麼？那答案是肯定還是否定？"
+    ],
+    "wrong": {
+      "A": "簡答形式對了，但後面說爸爸在看書，表示沒有在看電視，要用否定。",
+      "D": "進行式問句用 Is 開頭，回答要用 is，不能用 doesn't。",
+      "C": "進行式問句要用 is 回答，而且後面說爸爸在看書，也不該是肯定。"
+    }
+  },
+  {
+    "id": "EN-7B-1-36",
+    "exam_part": null,
+    "unit": "EN-7B-1",
+    "concept": "present-progressive",
+    "difficulty": 2,
+    "stem": "Who ＿＿＿ the piano in the next room? It sounds great.",
+    "options": [
+      "play",
+      "are playing",
+      "playing",
+      "is playing"
+    ],
+    "answer": "D",
+    "explanation": "It sounds great.（聽起來很棒）表示琴聲正在傳來，要用現在進行式。Who 當主詞時視為單數，所以 be 動詞用 is：Who is playing the piano?。",
+    "hints": [
+      "琴聲是現在正在傳來的嗎？要用哪一種時態？",
+      "疑問詞 Who 當主詞時，be 動詞用單數還是複數？"
+    ],
+    "wrong": {
+      "B": "Who 當主詞時視為第三人稱單數，be 動詞要用 is。",
+      "C": "V-ing 前面一定要有 be 動詞，不能單獨當動詞。",
+      "A": "Who 當主詞時，現在簡單式要用 plays；而且琴聲正在傳來，要用進行式。"
+    }
+  },
+  {
+    "id": "EN-7B-1-37",
+    "exam_part": null,
+    "unit": "EN-7B-1",
+    "concept": "present-progressive",
+    "difficulty": 2,
+    "stem": "It's eight o'clock now. Dad ＿＿＿ the dishes, and I am helping him.",
+    "options": [
+      "does",
+      "is doing",
+      "doing",
+      "are doing"
+    ],
+    "answer": "B",
+    "explanation": "now 和後半句的 I am helping him 都表示正在發生，要用現在進行式。主詞 Dad 是第三人稱單數，be 動詞用 is，所以是 is doing the dishes（正在洗碗）。",
+    "hints": [
+      "句子裡有哪些字告訴你動作正在進行？",
+      "主詞 Dad 要配哪一個 be 動詞？"
+    ],
+    "wrong": {
+      "A": "現在簡單式用來說習慣，但 now 和 I am helping him 表示正在做。",
+      "D": "主詞 Dad 是單數，be 動詞要用 is，不是 are。",
+      "C": "V-ing 前面少了 be 動詞，不能當句子的動詞。"
+    }
+  },
+  {
+    "id": "EN-7B-1-38",
+    "exam_part": null,
+    "unit": "EN-7B-1",
+    "concept": "present-progressive",
+    "difficulty": 2,
+    "stem": "The kids ＿＿＿ TV now. They're playing in the yard.",
+    "options": [
+      "aren't watch",
+      "isn't watching",
+      "aren't watching",
+      "don't watch"
+    ],
+    "answer": "C",
+    "explanation": "now 表示現在，後面說他們正在院子裡玩，所以此刻沒有在看電視，要用進行式否定 be + not + V-ing。主詞 The kids 是複數，用 aren't watching。",
+    "hints": [
+      "後一句說小孩們正在做什麼？他們現在有沒有在看電視？",
+      "現在進行式的否定是在哪裡加 not？主詞是單數還是複數？"
+    ],
+    "wrong": {
+      "D": "don't watch 是說平常沒有看電視的習慣；這裡說的是現在這一刻，要用進行式。",
+      "B": "主詞 The kids 是複數，be 動詞要用 are，不是 is。",
+      "A": "進行式要用 be + V-ing，aren't 後面不能接原形 watch。"
+    }
+  },
+  {
+    "id": "EN-7B-1-39",
+    "exam_part": null,
+    "unit": "EN-7B-1",
+    "concept": "imperative",
+    "difficulty": 2,
+    "stem": "＿＿＿ afraid, Lily. The dog is very friendly.",
+    "options": [
+      "Doesn't be",
+      "Aren't",
+      "Not be",
+      "Don't be"
+    ],
+    "answer": "D",
+    "explanation": "叫別人「不要……」用否定祈使句 Don't + 原形動詞。afraid 是形容詞，前面需要 be 動詞，所以是 Don't be afraid.（別害怕）。",
+    "hints": [
+      "說話者是在請 Lily「不要」怎麼樣。",
+      "否定祈使句用哪兩個字開頭？afraid 是形容詞，前面需要什麼動詞？"
+    ],
+    "wrong": {
+      "A": "祈使句的否定一律用 Don't，不用 Doesn't。",
+      "C": "否定祈使句不能只用 Not，要用 Don't 開頭。",
+      "B": "Aren't 開頭會變成問句，而且祈使句的否定要用 Don't be。"
+    }
+  },
+  {
+    "id": "EN-7B-1-40",
+    "exam_part": null,
+    "unit": "EN-7B-1",
+    "concept": "imperative",
+    "difficulty": 2,
+    "stem": "A: Mom, can I go to the park with Joe?\nB: Yes, but ＿＿＿ home before six.",
+    "options": [
+      "coming",
+      "to come",
+      "comes",
+      "come"
+    ],
+    "answer": "D",
+    "explanation": "媽媽答應了，但提醒孩子六點前回家，but 後面是祈使句（省略主詞 you），動詞用原形，所以是 come home before six。",
+    "hints": [
+      "媽媽在 but 後面是描述事情，還是在叮嚀孩子？",
+      "叮嚀、命令的句子動詞要用什麼形式？"
+    ],
+    "wrong": {
+      "C": "祈使句的動詞用原形，不能加 s。",
+      "A": "V-ing 不能當祈使句的動詞。",
+      "B": "祈使句直接用原形動詞，不需要加 to。"
+    }
+  },
+  {
+    "id": "EN-7B-1-41",
+    "exam_part": null,
+    "unit": "EN-7B-1",
+    "concept": "dialogue-response",
+    "difficulty": 2,
+    "stem": "A: Let's go to the beach this afternoon.\nB: ＿＿＿ I'm doing my science report now.",
+    "options": [
+      "Yes, let's.",
+      "Good idea.",
+      "Sorry, I can't.",
+      "You're welcome."
+    ],
+    "answer": "C",
+    "explanation": "A 用 Let's 邀請 B 下午去海邊；B 後面說自己正在做自然報告，表示沒空，所以要先婉拒 Sorry, I can't.（抱歉，我沒辦法）。",
+    "hints": [
+      "B 後面那句話說明他現在在做什麼？他有空去嗎？",
+      "要拒絕別人的邀請，可以怎麼說？"
+    ],
+    "wrong": {
+      "B": "Good idea. 是接受邀請，但後面說正在做報告，前後意思不合。",
+      "A": "Yes, let's. 也是答應邀請，和後面忙著做報告的說明矛盾。",
+      "D": "You're welcome. 是回應別人的道謝，這裡 A 是在邀請，不是道謝。"
+    }
+  },
+  {
+    "id": "EN-7B-1-42",
+    "exam_part": null,
+    "unit": "EN-7B-1",
+    "concept": "reading-detail",
+    "difficulty": 2,
+    "stem": "Kevin,\nI'm working late tonight. Feed the fish before you go to school. After dinner, take out the trash. Don't play computer games before you finish your homework.\nDad\n\nWhich job is for after dinner?",
+    "options": [
+      "Playing computer games",
+      "Doing his homework",
+      "Feeding the fish",
+      "Taking the trash out"
+    ],
+    "answer": "D",
+    "explanation": "爸爸寫 After dinner, take out the trash.，晚餐後要做的事是把垃圾拿出去倒。餵魚是上學前；打電動是寫完功課才可以，紙條也沒說功課要在晚餐後寫。",
+    "hints": [
+      "在紙條裡找到 After dinner 這幾個字。",
+      "每一件事各自是在什麼時間做？"
+    ],
+    "wrong": {
+      "C": "餵魚是 before you go to school（上學前），不是晚餐後。",
+      "A": "紙條是叫 Kevin 寫完功課前不要打電動，這不是爸爸交代的工作。",
+      "B": "紙條只說打電動前要先寫完功課，沒有說寫功課是晚餐後的工作。"
+    }
+  },
+  {
+    "id": "EN-7B-1-43",
+    "exam_part": null,
+    "unit": "EN-7B-1",
+    "concept": "imperative",
+    "difficulty": 3,
+    "stem": "How to Make Fruit Milk\n1. Wash an apple and a banana.\n2. Cut them into small pieces.\n3. Put the fruit into a cup of milk.\n4. Don't add sugar. The fruit is sweet.\n\nAnn is cutting the banana into small pieces now. What is her next step?",
+    "options": [
+      "Putting the fruit in the milk",
+      "Drinking the cup of milk",
+      "Washing the apple and the banana",
+      "Adding some sugar to the milk"
+    ],
+    "answer": "A",
+    "explanation": "Ann 正在切香蕉，也就是在做第 2 步；下一步是第 3 步 Put the fruit into a cup of milk.，把水果放進牛奶裡。洗水果是第 1 步，已經做過了；第 4 步說不要加糖。",
+    "hints": [
+      "Ann 現在正在做的是第幾個步驟？",
+      "那個步驟的下一步是什麼？注意第 4 步是用 Don't 開頭。"
+    ],
+    "wrong": {
+      "C": "洗水果是第 1 步，Ann 已經在切水果了，表示洗的步驟已經做完。",
+      "D": "第 4 步是 Don't add sugar.（不要加糖），沒注意到否定祈使句的 Don't。",
+      "B": "步驟裡沒有寫喝牛奶，而且放水果進牛奶之前還不能喝。"
+    }
+  },
+  {
+    "id": "EN-7B-1-44",
+    "exam_part": null,
+    "unit": "EN-7B-1",
+    "concept": "reading-detail",
+    "difficulty": 3,
+    "stem": "Mom: Hi, Ken. Where are you now?\nKen: I'm at Leo's house. We're making a poster for our art class.\nMom: Is Leo's mother at home?\nKen: No, she's working at her store. But his grandfather is here. He's cooking dinner for us.\nMom: OK. Have a good time, and come home before eight.\n\nWhich is TRUE?",
+    "options": [
+      "Ken is having dinner at home now.",
+      "Leo's mother isn't at home now.",
+      "Ken and Leo are cooking dinner.",
+      "Leo's grandfather is making a poster."
+    ],
+    "answer": "B",
+    "explanation": "Ken 說 Leo 的媽媽 is working at her store（正在她的店裡工作），所以她現在不在家。Ken 在 Leo 家不在自己家；煮晚餐的是 Leo 的爺爺；做海報的是 Ken 和 Leo。",
+    "hints": [
+      "逐一找出每個人現在正在做什麼、在哪裡。",
+      "Leo 的媽媽在店裡工作，那她在不在家？"
+    ],
+    "wrong": {
+      "A": "Ken 現在在 Leo 家，而且晚餐還在煮，他不是在自己家吃晚餐。",
+      "C": "正在煮晚餐的是 Leo 的爺爺；Ken 和 Leo 正在做海報。",
+      "D": "做海報的是 Ken 和 Leo，爺爺是在煮晚餐，把兩件事的人搞混了。"
+    }
+  },
+  {
+    "id": "EN-7B-1-45",
+    "exam_part": null,
+    "unit": "EN-7B-1",
+    "concept": "reading-detail",
+    "difficulty": 3,
+    "stem": "Sunny Junior High School Open Day\n10:00–10:20 Gym: The basketball team is practicing.\n10:00–11:00 Room 201: Art club members are drawing pictures.\n10:00–11:30 Playground: Students are playing soccer.\n10:30–11:00 Library: A teacher is telling stories.\n\nIt is 10:40 now. Jake loves sports, and he wants to see a ball game. Where can he go?",
+    "options": [
+      "To the library",
+      "To the school gym",
+      "To the playground",
+      "To Room 201"
+    ],
+    "answer": "C",
+    "explanation": "Jake 想看球類運動。籃球隊在體育館練習只到 10:20，現在 10:40 已經結束；操場的足球從 10:00 到 11:30，現在還在進行，所以他可以去操場。",
+    "hints": [
+      "哪兩個地點有球類運動？",
+      "現在是 10:40，這兩個活動哪一個還在進行？"
+    ],
+    "wrong": {
+      "B": "體育館的籃球練習 10:20 就結束了，沒有注意現在已經 10:40。",
+      "D": "201 教室是美術社在畫畫，不是球類運動。",
+      "A": "圖書館是老師在說故事，和運動無關。"
+    }
+  },
+  {
+    "id": "EN-7B-2-31",
+    "exam_part": null,
+    "unit": "EN-7B-2",
+    "concept": "past-tense",
+    "difficulty": 1,
+    "stem": "The rain ＿＿＿ an hour ago. Let's go out and play.",
+    "options": [
+      "stop",
+      "stopped",
+      "stops",
+      "stoped"
+    ],
+    "answer": "B",
+    "explanation": "an hour ago（一小時前）表示過去，要用過去式。stop 是「短母音 + 一個子音」結尾，加 ed 前要重複字尾 p，所以是 stopped。",
+    "hints": [
+      "an hour ago 表示現在、過去還是未來？",
+      "stop 加 ed 時，字尾的 p 要怎麼處理？"
+    ],
+    "wrong": {
+      "D": "知道要加 ed，但忘了 stop 要重複字尾 p 再加 ed。",
+      "C": "an hour ago 是過去時間，不能用現在式。",
+      "A": "主詞 The rain 是單數，而且 an hour ago 是過去，要用過去式。"
+    }
+  },
+  {
+    "id": "EN-7B-2-32",
+    "exam_part": null,
+    "unit": "EN-7B-2",
+    "concept": "past-tense",
+    "difficulty": 1,
+    "stem": "＿＿＿ Kevin at school yesterday? — No, he wasn't. He was sick at home.",
+    "options": [
+      "Were",
+      "Is",
+      "Did",
+      "Was"
+    ],
+    "answer": "D",
+    "explanation": "yesterday 表示過去，句中沒有一般動詞，要用 be 動詞的過去式。主詞 Kevin 是單數，用 was，所以是 Was Kevin at school yesterday?，回答 No, he wasn't. 也對得上。",
+    "hints": [
+      "yesterday 表示什麼時態？句中有沒有一般動詞？",
+      "單數主詞的 be 動詞過去式是哪一個？"
+    ],
+    "wrong": {
+      "A": "were 要配 you 或複數主詞，Kevin 是單數要用 was。",
+      "C": "句中沒有一般動詞，at school 前要用 be 動詞，不能用助動詞 did。",
+      "B": "yesterday 是過去時間，要用過去式 was，不能用現在式 is。"
+    }
+  },
+  {
+    "id": "EN-7B-2-33",
+    "exam_part": null,
+    "unit": "EN-7B-2",
+    "concept": "irregular-verb",
+    "difficulty": 1,
+    "stem": "I ＿＿＿ to bed at eleven last night, so I'm tired now.",
+    "options": [
+      "gone",
+      "went",
+      "goed",
+      "go"
+    ],
+    "answer": "B",
+    "explanation": "last night（昨晚）表示過去，要用過去式。go 是不規則動詞，過去式是 went，所以是 I went to bed at eleven last night.。",
+    "hints": [
+      "last night 表示什麼時態？",
+      "go 的過去式是加 ed，還是不規則變化？"
+    ],
+    "wrong": {
+      "C": "把 go 當成規則動詞加 ed；go 的過去式是不規則的 went。",
+      "D": "last night 是過去時間，不能用原形或現在式。",
+      "A": "gone 是 go 的過去分詞，不能單獨當過去式動詞。"
+    }
+  },
+  {
+    "id": "EN-7B-2-34",
+    "exam_part": null,
+    "unit": "EN-7B-2",
+    "concept": "irregular-verb",
+    "difficulty": 1,
+    "stem": "Dad ＿＿＿ me a new watch for my birthday last month.",
+    "options": [
+      "bought",
+      "buyed",
+      "buys",
+      "buy"
+    ],
+    "answer": "A",
+    "explanation": "last month（上個月）表示過去，要用過去式。buy 是不規則動詞，過去式是 bought，所以是 Dad bought me a new watch.（爸爸買了一支新手錶給我）。",
+    "hints": [
+      "last month 表示什麼時態？",
+      "buy 的過去式是規則還是不規則變化？"
+    ],
+    "wrong": {
+      "B": "把 buy 當成規則動詞加 ed；buy 的過去式是 bought。",
+      "C": "last month 是過去時間，不能用現在式 buys。",
+      "D": "主詞是 Dad，而且是過去發生的事，不能用原形 buy。"
+    }
+  },
+  {
+    "id": "EN-7B-2-35",
+    "exam_part": null,
+    "unit": "EN-7B-2",
+    "concept": "dialogue-response",
+    "difficulty": 1,
+    "stem": "A: Why were you late this morning?\nB: ＿＿＿",
+    "options": [
+      "Because I miss the bus.",
+      "Yes, I was late for school.",
+      "Because I missed the bus.",
+      "By bus with my brother."
+    ],
+    "answer": "C",
+    "explanation": "Why 問原因，要用 Because 回答；遲到是今天早上已經發生的事，所以錯過公車也要用過去式 missed：Because I missed the bus.（因為我錯過了公車）。",
+    "hints": [
+      "Why 是在問什麼？要用哪個字開頭回答？",
+      "this morning 發生的事，現在說起來要用什麼時態？"
+    ],
+    "wrong": {
+      "A": "用 Because 回答是對的，但錯過公車是已經發生的事，要用過去式 missed。",
+      "B": "Why 是疑問詞問句，不能用 Yes 或 No 回答。",
+      "D": "這是在回答 How（怎麼去），不是回答 Why（為什麼）。"
+    }
+  },
+  {
+    "id": "EN-7B-2-36",
+    "exam_part": null,
+    "unit": "EN-7B-2",
+    "concept": "past-tense",
+    "difficulty": 2,
+    "stem": "＿＿＿ you ＿＿＿ my birthday card yesterday? — Yes. Thank you for it.",
+    "options": [
+      "Did; got",
+      "Did; get",
+      "Do; got",
+      "Were; get"
+    ],
+    "answer": "B",
+    "explanation": "yesterday 表示過去，一般動詞的過去式疑問句用 Did 開頭；助動詞 Did 已經表示過去，後面的動詞要用原形 get，所以是 Did you get my birthday card yesterday?。",
+    "hints": [
+      "yesterday 表示什麼時態？一般動詞的疑問句要用哪個助動詞？",
+      "用了 Did 之後，後面的動詞還要改成過去式嗎？"
+    ],
+    "wrong": {
+      "A": "Did 已經表示過去，後面的動詞要用原形，不能再用過去式 got。",
+      "D": "get 是一般動詞，疑問句要用助動詞 Did，不能用 be 動詞 Were。",
+      "C": "yesterday 是過去，要用 Did 不能用 Do；而且助動詞後面要用原形。"
+    }
+  },
+  {
+    "id": "EN-7B-2-37",
+    "exam_part": null,
+    "unit": "EN-7B-2",
+    "concept": "past-tense",
+    "difficulty": 2,
+    "stem": "My sister ＿＿＿ happy last night because she couldn't find her favorite pen.",
+    "options": [
+      "didn't",
+      "weren't",
+      "wasn't",
+      "isn't"
+    ],
+    "answer": "C",
+    "explanation": "last night 表示過去，happy 是形容詞，前面要用 be 動詞；主詞 My sister 是單數，be 動詞過去式用 was。她找不到最喜歡的筆，所以不開心，用否定 wasn't。",
+    "hints": [
+      "happy 是形容詞，前面需要 be 動詞還是助動詞？",
+      "主詞是單數，last night 是過去，be 動詞要用哪一個？"
+    ],
+    "wrong": {
+      "B": "weren't 要配複數主詞或 you；My sister 是單數，要用 wasn't。",
+      "A": "happy 是形容詞，前面要用 be 動詞，不能用助動詞 didn't。",
+      "D": "last night 是過去時間，不能用現在式 isn't。"
+    }
+  },
+  {
+    "id": "EN-7B-2-38",
+    "exam_part": null,
+    "unit": "EN-7B-2",
+    "concept": "past-tense",
+    "difficulty": 2,
+    "stem": "Ken ＿＿＿ basketball with his friends yesterday afternoon.",
+    "options": [
+      "played",
+      "plaied",
+      "playing",
+      "plays"
+    ],
+    "answer": "A",
+    "explanation": "yesterday afternoon 表示過去，要用過去式。play 的字尾是「母音 a + y」，y 不用改，直接加 ed，所以是 played。只有「子音 + y」結尾（例如 cry、study）才要去 y 加 ied。",
+    "hints": [
+      "yesterday afternoon 表示什麼時態？",
+      "play 的 y 前面是母音還是子音？y 需要改成 i 嗎？"
+    ],
+    "wrong": {
+      "B": "把「子音 + y 去 y 加 ied」的規則用錯了；play 的 y 前面是母音 a，直接加 ed。",
+      "D": "yesterday afternoon 是過去時間，不能用現在式 plays。",
+      "C": "V-ing 前面沒有 be 動詞，不能當句子的動詞；而且這裡要用過去式。"
+    }
+  },
+  {
+    "id": "EN-7B-2-39",
+    "exam_part": null,
+    "unit": "EN-7B-2",
+    "concept": "irregular-verb",
+    "difficulty": 2,
+    "stem": "The movie ＿＿＿ at seven and ended at nine.",
+    "options": [
+      "began",
+      "beginned",
+      "begun",
+      "begins"
+    ],
+    "answer": "A",
+    "explanation": "後半句的 ended 是過去式，兩個動作都是過去發生的。begin 是不規則動詞，過去式是 began，所以是 The movie began at seven and ended at nine.。",
+    "hints": [
+      "看看 and 後面的 ended，這句說的是過去還是現在？",
+      "begin 的過去式是規則加 ed，還是不規則變化？"
+    ],
+    "wrong": {
+      "B": "把 begin 當成規則動詞加 ed；begin 的過去式是 began。",
+      "C": "begun 是過去分詞，不能單獨當過去式動詞。",
+      "D": "and 後面用了過去式 ended，前面的動詞也要用過去式，不能用現在式。"
+    }
+  },
+  {
+    "id": "EN-7B-2-40",
+    "exam_part": null,
+    "unit": "EN-7B-2",
+    "concept": "irregular-verb",
+    "difficulty": 2,
+    "stem": "Amy ＿＿＿ her keys on the bus yesterday, so she waited outside for her mom.",
+    "options": [
+      "lost",
+      "lose",
+      "loses",
+      "losted"
+    ],
+    "answer": "A",
+    "explanation": "yesterday 表示過去，要用過去式。lose（遺失）是不規則動詞，過去式是 lost，所以是 Amy lost her keys on the bus yesterday.（Amy 昨天把鑰匙掉在公車上）。",
+    "hints": [
+      "yesterday 表示什麼時態？",
+      "lose 的過去式本身就是不規則變化，還需要再加 ed 嗎？"
+    ],
+    "wrong": {
+      "D": "lost 已經是過去式，不能再加 ed。",
+      "C": "yesterday 是過去時間，不能用現在式 loses。",
+      "B": "主詞 Amy 是單數，而且是過去發生的事，不能用原形 lose。"
+    }
+  },
+  {
+    "id": "EN-7B-2-41",
+    "exam_part": null,
+    "unit": "EN-7B-2",
+    "concept": "dialogue-response",
+    "difficulty": 2,
+    "stem": "A: Did you call me last night?\nB: ＿＿＿ I wanted to ask you about the math homework.",
+    "options": [
+      "Yes, I did.",
+      "Yes, you did.",
+      "No, I didn't.",
+      "Yes, I was."
+    ],
+    "answer": "A",
+    "explanation": "Did you ...? 要用 Yes, I did. 或 No, I didn't. 回答。B 後面說自己想問數學作業，表示確實有打電話，所以用肯定 Yes, I did.。",
+    "hints": [
+      "問句用 Did 開頭，回答要用 did 還是 was？",
+      "B 說想問數學作業，代表他有沒有打電話？"
+    ],
+    "wrong": {
+      "C": "簡答形式對了，但 B 說想問作業，表示有打電話，應該是肯定。",
+      "B": "問的是「你」有沒有打，回答時要說「我」，應該用 I 不是 you。",
+      "D": "問句用助動詞 Did 開頭，回答要用 did，不能用 be 動詞 was。"
+    }
+  },
+  {
+    "id": "EN-7B-2-42",
+    "exam_part": null,
+    "unit": "EN-7B-2",
+    "concept": "reading-detail",
+    "difficulty": 2,
+    "stem": "Sunday, June 2\nThis morning, my friend Rita and I rode our bikes along the river. At noon, we had lunch at a small shop. Rita had a sandwich, and I had beef noodles. In the afternoon, it was too hot outside, so we went to the library and read comic books there.\n\nWhy did the writer and Rita go to the library?",
+    "options": [
+      "Rita's bike was broken.",
+      "It rained in the afternoon.",
+      "The weather was very hot.",
+      "They wanted to have lunch."
+    ],
+    "answer": "C",
+    "explanation": "日記寫 In the afternoon, it was too hot outside, so we went to the library.，so 前面就是原因：下午外面太熱，換句話說就是天氣很熱，所以她們去圖書館。",
+    "hints": [
+      "找到 library 出現的那一句。",
+      "so 前面說的是原因還是結果？"
+    ],
+    "wrong": {
+      "B": "日記裡沒有提到下雨，下午是天氣太熱。",
+      "A": "日記沒有說 Rita 的腳踏車壞了，她們早上還一起騎車。",
+      "D": "她們中午是在一家小店吃午餐，不是在圖書館。"
+    }
+  },
+  {
+    "id": "EN-7B-2-43",
+    "exam_part": null,
+    "unit": "EN-7B-2",
+    "concept": "irregular-verb",
+    "difficulty": 3,
+    "stem": "Last Monday, Kate (1)＿＿＿ her umbrella at home. It rained hard after school, so she (2)＿＿＿ wet on her way home.\n\nWhich is the best choice for (1) and (2)?",
+    "options": [
+      "forgot; got",
+      "forgetted; got",
+      "forgot; getted",
+      "forgets; gets"
+    ],
+    "answer": "A",
+    "explanation": "Last Monday 表示過去，兩個空格都要用過去式。forget（忘記）和 get（變得）都是不規則動詞，過去式分別是 forgot 和 got，所以是 forgot her umbrella（忘了帶傘）、got wet（淋濕了）。",
+    "hints": [
+      "Last Monday 表示什麼時態？兩個空格都要改嗎？",
+      "forget 和 get 的過去式都是不規則變化，想想它們長得像不像。"
+    ],
+    "wrong": {
+      "D": "Last Monday 是過去時間，兩格都不能用現在式。",
+      "C": "(1) 對了，但 get 的過去式是 got，不能加 ed。",
+      "B": "(2) 對了，但 forget 的過去式是 forgot，不能加 ed。"
+    }
+  },
+  {
+    "id": "EN-7B-2-44",
+    "exam_part": null,
+    "unit": "EN-7B-2",
+    "concept": "past-tense",
+    "difficulty": 3,
+    "stem": "Which of these sentences about the past is correct?",
+    "options": [
+      "Ken didn't came to class yesterday.",
+      "Did your parents stay home last night?",
+      "My mom cook a big dinner for us last night.",
+      "Were you play tennis last Sunday?"
+    ],
+    "answer": "B",
+    "explanation": "Did your parents stay home last night? 用助動詞 Did 開頭，後面接原形動詞 stay，是正確的過去式疑問句。其他句子：didn't 後面要接原形 come；play 是一般動詞，要用 Did you play；有 last night 時 cook 要改成 cooked。",
+    "hints": [
+      "過去式的疑問句、否定句，助動詞後面要接什麼形式的動詞？",
+      "一般動詞的問句可以用 be 動詞開頭嗎？肯定句有過去時間時，動詞要改嗎？"
+    ],
+    "wrong": {
+      "A": "didn't 已經表示過去，後面要接原形 come，不能用過去式 came。",
+      "D": "play 是一般動詞，過去式問句要用 Did you play...?，不能用 Were 加原形動詞。",
+      "C": "有 last night，肯定句的動詞要改成過去式 cooked，不能用原形 cook。"
+    }
+  },
+  {
+    "id": "EN-7B-2-45",
+    "exam_part": null,
+    "unit": "EN-7B-2",
+    "concept": "reading-detail",
+    "difficulty": 3,
+    "stem": "Monday, March 3\nTwo days ago, my family went to the zoo. We saw some pandas, and they were very cute. Yesterday it rained all day, so we stayed home and made dumplings with Grandma. Today I told my classmates about the pandas. They all want to go to the zoo now.\n\nWhat did the writer do on Saturday?",
+    "options": [
+      "Made dumplings with Grandma",
+      "Watched a movie with the family",
+      "Talked to classmates about pandas",
+      "Visited the zoo with the family"
+    ],
+    "answer": "D",
+    "explanation": "日記的日期是星期一，Two days ago（兩天前）就是星期六，那天全家去了動物園。昨天（星期日）下雨在家包水餃；今天（星期一）跟同學講熊貓的事。",
+    "hints": [
+      "日記是哪一天寫的？",
+      "從星期一往前推兩天是星期幾？那天作者做了什麼？"
+    ],
+    "wrong": {
+      "A": "包水餃是 Yesterday，也就是星期日，不是星期六。",
+      "C": "跟同學說熊貓的事是 Today，也就是星期一。",
+      "B": "日記裡沒有提到看電影；星期六全家是去動物園。"
+    }
+  },
+  {
+    "id": "EN-8A-1-31",
+    "exam_part": null,
+    "unit": "EN-8A-1",
+    "concept": "future-tense",
+    "difficulty": 1,
+    "stem": "Mr. Chen ＿＿＿ to Japan next Monday. He has a meeting in Tokyo.",
+    "options": [
+      "will fly",
+      "was flying",
+      "flew",
+      "will flies"
+    ],
+    "answer": "A",
+    "explanation": "next Monday（下星期一）是未來的時間，要用未來式 will + 原形動詞，所以是 will fly，意思是「陳先生下星期一要飛去日本」。",
+    "hints": [
+      "先找句子裡的時間詞：next Monday 是過去還是未來？",
+      "未來式 will 後面的動詞要用什麼形式？"
+    ],
+    "wrong": {
+      "C": "沒注意到 next Monday 是未來時間，用了過去式 flew。",
+      "D": "以為主詞是第三人稱單數就要加 s，但 will 後面一定接原形動詞。",
+      "B": "把過去進行式和未來式搞混了；was flying 表示過去某時正在飛，和 next Monday 不合。"
+    }
+  },
+  {
+    "id": "EN-8A-1-32",
+    "exam_part": null,
+    "unit": "EN-8A-1",
+    "concept": "future-tense",
+    "difficulty": 1,
+    "stem": "It's cloudy now, but it ＿＿＿ sunny tomorrow.",
+    "options": [
+      "will be",
+      "will is",
+      "was",
+      "is going"
+    ],
+    "answer": "A",
+    "explanation": "tomorrow 是未來，要用未來式。sunny 是形容詞，前面需要 be 動詞，will 後面接原形 be，所以是 will be sunny（明天會是晴天）。",
+    "hints": [
+      "tomorrow 告訴你要用哪一種時態？",
+      "will 後面的 be 動詞要用原形還是 is？"
+    ],
+    "wrong": {
+      "B": "知道要用 will，卻忘了 will 後面要接原形 be，不能接 is。",
+      "C": "沒看到 tomorrow，用了過去式 was。",
+      "D": "想用 be going to 卻少了 to be；is going sunny 不是完整的未來式。"
+    }
+  },
+  {
+    "id": "EN-8A-1-33",
+    "exam_part": null,
+    "unit": "EN-8A-1",
+    "concept": "modal-verb",
+    "difficulty": 1,
+    "stem": "Amy ＿＿＿ to finish her report today. The teacher wants it tomorrow morning.",
+    "options": [
+      "has",
+      "should",
+      "have",
+      "must"
+    ],
+    "answer": "A",
+    "explanation": "have to 表示「必須」，空格後面有 to，所以要用 have to 的形式；主詞 Amy 是第三人稱單數，要用 has to finish。",
+    "hints": [
+      "空格後面緊接著 to，哪一個助動詞片語後面會有 to？",
+      "主詞 Amy 是第三人稱單數，have 要怎麼變？"
+    ],
+    "wrong": {
+      "C": "知道是 have to 的句型，卻忘了主詞 Amy 是第三人稱單數，要用 has。",
+      "D": "must 的意思也對，但 must 後面直接接原形動詞，不能再加 to。",
+      "B": "should 後面也是直接接原形動詞，should to finish 是錯的。"
+    }
+  },
+  {
+    "id": "EN-8A-1-34",
+    "exam_part": null,
+    "unit": "EN-8A-1",
+    "concept": "dialogue-response",
+    "difficulty": 1,
+    "stem": "A: Can you help me carry this box?\nB: ＿＿＿ It looks heavy.",
+    "options": [
+      "No, you can't.",
+      "Sure, no problem.",
+      "Yes, I did.",
+      "You're welcome."
+    ],
+    "answer": "B",
+    "explanation": "對方問「你能幫我搬這個箱子嗎？」，回答者接著說「它看起來很重」，表示願意幫忙，所以回答 Sure, no problem.（當然，沒問題）最合理。",
+    "hints": [
+      "對方是在請你幫忙，還是在謝謝你？",
+      "空格後面說箱子看起來很重，回答的人是要幫忙還是拒絕？"
+    ],
+    "wrong": {
+      "A": "沒注意人稱；別人問 Can you…? 是在問「你」能不能，回答 you can't 變成在說對方不行。",
+      "C": "問句用 can，回答卻用了過去式 did，助動詞和時態都對不上。",
+      "D": "You're welcome. 是回應別人道謝的話，但對方是在請求幫忙，不是在說謝謝。"
+    }
+  },
+  {
+    "id": "EN-8A-1-35",
+    "exam_part": null,
+    "unit": "EN-8A-1",
+    "concept": "reading-detail",
+    "difficulty": 1,
+    "stem": "Notice\nThe school library will be closed this Friday because some workers are going to fix the lights. It will open again next Monday at 8:00 a.m.\n\nWhen can students use the library again?",
+    "options": [
+      "On Saturday afternoon",
+      "On Monday morning",
+      "On Friday morning",
+      "On Sunday morning"
+    ],
+    "answer": "B",
+    "explanation": "公告說圖書館這星期五因為工人要修電燈而關閉，下星期一早上 8 點才會再開放（open again next Monday at 8:00 a.m.），所以學生下星期一早上才能再使用圖書館。",
+    "hints": [
+      "找出公告裡 open again 後面接的時間。",
+      "8:00 a.m. 是早上還是下午？"
+    ],
+    "wrong": {
+      "C": "星期五正是關閉的那一天，學生不能使用圖書館。",
+      "A": "公告只說下星期一才重新開放，星期六還沒有開。",
+      "D": "公告說的是下星期一重新開放，星期日還在關閉期間。"
+    }
+  },
+  {
+    "id": "EN-8A-1-36",
+    "exam_part": null,
+    "unit": "EN-8A-1",
+    "concept": "future-tense",
+    "difficulty": 2,
+    "stem": "My cousin ＿＿＿ to Taipei two years ago, and she ＿＿＿ back to Kaohsiung next year.",
+    "options": [
+      "will move; came",
+      "moved; came",
+      "moves; comes",
+      "moved; will come"
+    ],
+    "answer": "D",
+    "explanation": "第一個空格有 two years ago（兩年前），是過去，要用過去式 moved；第二個空格有 next year（明年），是未來，要用 will come。兩個時間詞決定了兩個不同的時態。",
+    "hints": [
+      "這句有兩個時間詞，分別是什麼？",
+      "two years ago 用過去式，next year 要用哪一種時態？"
+    ],
+    "wrong": {
+      "A": "把兩個時態放反了：兩年前要用過去式，明年才用 will。",
+      "C": "沒有注意時間詞，兩個空格都用了現在式。",
+      "B": "第一格對了，但第二格 next year 是未來，不能用過去式 came。"
+    }
+  },
+  {
+    "id": "EN-8A-1-37",
+    "exam_part": null,
+    "unit": "EN-8A-1",
+    "concept": "future-tense",
+    "difficulty": 2,
+    "stem": "A: What are you going to do this Sunday?\nB: I'm not sure. Maybe I ＿＿＿ my grandparents.",
+    "options": [
+      "visited",
+      "visiting",
+      "will visit",
+      "visit to"
+    ],
+    "answer": "C",
+    "explanation": "對方問的是「這個星期日要做什麼」，是未來的計畫；回答的人還不確定，說「也許我會去看爺爺奶奶」，要用未來式 will visit。",
+    "hints": [
+      "問句問的是過去還是未來的事？",
+      "Maybe 後面接完整的句子，主詞 I 後面需要一個完整的動詞。"
+    ],
+    "wrong": {
+      "A": "問句問的是這星期日的計畫，用過去式 visited 時態不對。",
+      "D": "visit 是及物動詞，後面直接接受詞，不需要 to。",
+      "B": "I visiting 少了 be 動詞，不是完整的句子。"
+    }
+  },
+  {
+    "id": "EN-8A-1-38",
+    "exam_part": null,
+    "unit": "EN-8A-1",
+    "concept": "modal-verb",
+    "difficulty": 2,
+    "stem": "Take an umbrella with you. It ＿＿＿ rain this afternoon.",
+    "options": [
+      "won't",
+      "mustn't",
+      "doesn't have to",
+      "may"
+    ],
+    "answer": "D",
+    "explanation": "前一句叫你帶傘，表示下午「可能」會下雨。may 可以表示「可能」，所以 It may rain this afternoon.（今天下午可能會下雨）最合理。",
+    "hints": [
+      "為什麼要叫對方帶雨傘？",
+      "表示「可能會……」要用哪一個助動詞？"
+    ],
+    "wrong": {
+      "B": "mustn't 表示「禁止」，用在下雨這種天氣狀況不合理。",
+      "C": "doesn't have to 表示「不必」，天氣不需要被規定要不要下雨，意思不通。",
+      "A": "won't rain 是「不會下雨」，那就不需要帶傘了，和前一句矛盾。"
+    }
+  },
+  {
+    "id": "EN-8A-1-39",
+    "exam_part": null,
+    "unit": "EN-8A-1",
+    "concept": "modal-verb",
+    "difficulty": 2,
+    "stem": "Yesterday was Sunday, but my dad ＿＿＿ go to work because his office was very busy.",
+    "options": [
+      "has to",
+      "will have to",
+      "must",
+      "had to"
+    ],
+    "answer": "D",
+    "explanation": "Yesterday（昨天）是過去的事，「必須」的過去式要用 had to。must 沒有過去式，所以說過去「不得不」時要用 had to go to work。",
+    "hints": [
+      "這件事發生在什麼時候？",
+      "must 和 have to 哪一個可以變成過去式？"
+    ],
+    "wrong": {
+      "A": "沒注意 Yesterday 和 was，用了現在式 has to。",
+      "C": "must 沒有過去式的用法，說昨天的事不能用 must。",
+      "B": "will have to 是未來的「將必須」，和昨天的時間不合。"
+    }
+  },
+  {
+    "id": "EN-8A-1-40",
+    "exam_part": null,
+    "unit": "EN-8A-1",
+    "concept": "modal-verb",
+    "difficulty": 2,
+    "stem": "A: Must I finish this report today?\nB: No, you ＿＿＿. You can finish it tomorrow.",
+    "options": [
+      "can't",
+      "don't have to",
+      "shouldn't",
+      "mustn't"
+    ],
+    "answer": "B",
+    "explanation": "用 Must I…? 問「我必須……嗎？」，否定回答要說「不必」，用 don't have to。後面又說明天再完成也可以，所以是「今天不必完成」。",
+    "hints": [
+      "後面說明天完成也可以，所以意思是「不准」還是「不必」？",
+      "must 的否定 mustn't 是「禁止」，那「不必」要怎麼說？"
+    ],
+    "wrong": {
+      "D": "以為 Must 的否定回答就是 mustn't，但 mustn't 是「禁止」，和「明天完成也可以」矛盾。",
+      "A": "can't 是「不可以、不能」，和後面說明天可以完成的意思不合。",
+      "C": "shouldn't 是「不應該」，回答的人並沒有說今天做是不好的事，只是不必今天做。"
+    }
+  },
+  {
+    "id": "EN-8A-1-41",
+    "exam_part": null,
+    "unit": "EN-8A-1",
+    "concept": "dialogue-response",
+    "difficulty": 2,
+    "stem": "A: I'm going to visit Japan with my family next week.\nB: ＿＿＿",
+    "options": [
+      "Have a nice trip!",
+      "Welcome back!",
+      "Nice to meet you.",
+      "Sorry to hear that."
+    ],
+    "answer": "A",
+    "explanation": "對方說下星期要和家人去日本玩，是即將出發的旅行，最合適的回應是祝對方旅途愉快：Have a nice trip!",
+    "hints": [
+      "對方的旅行是已經回來了，還是還沒出發？",
+      "對要去旅行的人，通常會說什麼祝福的話？"
+    ],
+    "wrong": {
+      "B": "Welcome back! 是對旅行回來的人說的，但對方下星期才要出發。",
+      "C": "Nice to meet you. 是第一次見面時說的，和旅行無關。",
+      "D": "Sorry to hear that. 用在聽到壞消息時，去日本玩是好消息。"
+    }
+  },
+  {
+    "id": "EN-8A-1-42",
+    "exam_part": null,
+    "unit": "EN-8A-1",
+    "concept": "reading-detail",
+    "difficulty": 2,
+    "stem": "Tina,\nI'll be home late tonight because I have to work until eight. There is some rice and soup in the fridge. Please heat them up for dinner. Your father will pick you up from your piano lesson at six. Don't forget to feed the dog.\nMom\n\nWho will take Tina home after her piano lesson?",
+    "options": [
+      "Her grandmother",
+      "Her father",
+      "Her mother",
+      "Her piano teacher"
+    ],
+    "answer": "B",
+    "explanation": "紙條裡寫 Your father will pick you up from your piano lesson at six.，pick you up 是「去接你」，所以鋼琴課後是爸爸接 Tina 回家。媽媽要工作到八點，不能去接。",
+    "hints": [
+      "找一找紙條裡提到 piano lesson 的那一句。",
+      "pick you up 是什麼意思？那一句的主詞是誰？"
+    ],
+    "wrong": {
+      "C": "寫紙條的是媽媽，但媽媽說她要工作到八點，晚上會晚回家。",
+      "D": "紙條裡沒有提到鋼琴老師會送 Tina 回家。",
+      "A": "紙條裡沒有出現奶奶，這是自己猜的。"
+    }
+  },
+  {
+    "id": "EN-8A-1-43",
+    "exam_part": null,
+    "unit": "EN-8A-1",
+    "concept": "future-tense",
+    "difficulty": 3,
+    "stem": "Every summer, my family goes to Kenting for a week. But this year we (1)＿＿＿ there because my dad has to work in July. Instead, we (2)＿＿＿ at home and have a barbecue in our yard. I'm a little sad, but a barbecue sounds fun, too.\n\nWhich is the best choice for (1) and (2)?",
+    "options": [
+      "won't go; will stays",
+      "won't go; are going to stay",
+      "won't go; going to stay",
+      "didn't go; stayed"
+    ],
+    "answer": "B",
+    "explanation": "第一句 Every summer 是每年的習慣；但 this year 爸爸七月要工作（has to 是現在式），表示今年的計畫還沒發生，要用未來式。(1) 用 won't go（不會去），(2) 用 are going to stay（打算待在家），be going to 的 be 動詞不能省略。",
+    "hints": [
+      "文章說爸爸 has to work in July，這是已經發生的事還是接下來的計畫？",
+      "(2) 的主詞是 we，be going to 的 be 動詞要用什麼？",
+      "注意 will 後面要接原形動詞。"
+    ],
+    "wrong": {
+      "A": "(1) 對了，但 will 後面要接原形動詞 stay，不能加 s。",
+      "D": "以為 this year 一定是過去，但從 has to work 和 sounds fun 看得出是還沒發生的計畫，不能用過去式。",
+      "C": "(2) 少了 be 動詞 are，going to stay 不能直接放在主詞後面。"
+    }
+  },
+  {
+    "id": "EN-8A-1-44",
+    "exam_part": null,
+    "unit": "EN-8A-1",
+    "concept": "modal-verb",
+    "difficulty": 3,
+    "stem": "Doctor: Leo, you have a bad cold. Stay in bed and drink a lot of water until your fever is gone. After that, you should go back to school. Please take this medicine three times a day, and keep taking it until you stop coughing.\n\nOn Thursday, Leo doesn't have a fever, but he still coughs. What should he do?",
+    "options": [
+      "Stay home and stop taking the medicine",
+      "Go to school and stop taking the medicine",
+      "Stay home and keep taking the medicine",
+      "Go to school and keep taking the medicine"
+    ],
+    "answer": "D",
+    "explanation": "醫生說要在床上休息到退燒為止，退燒後就應該（should）回學校，星期四 Leo 已經不發燒，所以要去上學；醫生又說要一直吃藥到不咳嗽為止（keep taking it until you stop coughing），但 Leo 還在咳，所以要繼續吃藥。兩個條件合起來：去上學、繼續吃藥。",
+    "hints": [
+      "醫生說什麼時候應該回學校？Leo 星期四還發燒嗎？",
+      "醫生說藥要吃到什麼時候？Leo 還在咳嗽嗎？",
+      "把兩個條件分開判斷，再合起來。"
+    ],
+    "wrong": {
+      "C": "只記得醫生叫他躺在床上休息，沒注意到那是退燒以前的事，燒退了就應該回學校。",
+      "B": "上學的部分對了，但 Leo 還在咳嗽，醫生說藥要吃到不咳嗽為止。",
+      "A": "兩個條件都判斷錯了：燒退了就應該上學，還在咳嗽就要繼續吃藥。"
+    }
+  },
+  {
+    "id": "EN-8A-1-45",
+    "exam_part": null,
+    "unit": "EN-8A-1",
+    "concept": "reading-detail",
+    "difficulty": 3,
+    "stem": "Hi Mia,\nI'm sorry, but I can't go shopping with you on Saturday morning. My aunt and her two kids are going to visit us, and I'll have to take care of my little cousins. They're going to leave after lunch, so I'll be free in the afternoon. On Sunday, I have a piano lesson from 9 a.m. until noon.\nLisa\n\nWhen can Lisa go shopping with Mia?",
+    "options": [
+      "Saturday at 11 a.m.",
+      "Sunday at 10 a.m.",
+      "Saturday at 9 a.m.",
+      "Saturday at 3 p.m."
+    ],
+    "answer": "D",
+    "explanation": "Lisa 星期六早上要照顧表弟妹，他們吃完午餐才離開，所以星期六下午才有空；星期日早上 9 點到中午要上鋼琴課。四個時間中只有星期六下午 3 點她有空。",
+    "hints": [
+      "Lisa 星期六什麼時候忙、什麼時候有空？",
+      "親戚是在什麼時候離開？11 a.m. 是在午餐前還是午餐後？",
+      "星期日的鋼琴課是幾點到幾點？"
+    ],
+    "wrong": {
+      "C": "沒注意 Lisa 星期六早上要照顧表弟妹，早上 9 點沒空。",
+      "A": "以為 11 點已經比較晚了，但親戚吃完午餐才離開，11 點 Lisa 還在照顧表弟妹。",
+      "B": "沒注意星期日 9 點到中午要上鋼琴課，10 點正在上課。"
+    }
+  },
+  {
+    "id": "EN-8A-2-31",
+    "exam_part": null,
+    "unit": "EN-8A-2",
+    "concept": "comparative",
+    "difficulty": 1,
+    "stem": "This box is ＿＿＿ than that one. I can't carry it.",
+    "options": [
+      "heaviest",
+      "heavier",
+      "heavy",
+      "heavyer"
+    ],
+    "answer": "B",
+    "explanation": "空格後面有 than，要用比較級。heavy 是「子音 + y」結尾，要把 y 改成 i 再加 -er，變成 heavier。",
+    "hints": [
+      "看到 than，要用原級、比較級還是最高級？",
+      "heavy 是 y 結尾，加 -er 之前要先怎麼改？"
+    ],
+    "wrong": {
+      "C": "沒注意到 than，用了原級 heavy。",
+      "A": "heaviest 是最高級，和 than 不能一起用。",
+      "D": "知道要用比較級，但忘了「子音 + y」要先把 y 改成 i。"
+    }
+  },
+  {
+    "id": "EN-8A-2-32",
+    "exam_part": null,
+    "unit": "EN-8A-2",
+    "concept": "superlative",
+    "difficulty": 1,
+    "stem": "This is the ＿＿＿ day of my life! I won first prize in the contest.",
+    "options": [
+      "happiest",
+      "happier",
+      "more happy",
+      "happy"
+    ],
+    "answer": "A",
+    "explanation": "the ＿＿＿ day of my life 是「我一生中最……的一天」，有 the 又有 of 表示範圍，要用最高級。happy 把 y 改成 i 再加 -est，變成 happiest。",
+    "hints": [
+      "空格前面有 the，後面有 of my life，表示在一個範圍裡比較。",
+      "happy 的最高級要怎麼變化？"
+    ],
+    "wrong": {
+      "D": "原級 happy 無法表示「一生中最快樂」的意思。",
+      "B": "happier 是比較級，用在兩者比較；這裡是一生中所有日子裡最快樂的一天。",
+      "C": "happy 是短的形容詞，比較時要加字尾，而且這裡要用最高級，不是比較級。"
+    }
+  },
+  {
+    "id": "EN-8A-2-33",
+    "exam_part": null,
+    "unit": "EN-8A-2",
+    "concept": "as-as",
+    "difficulty": 1,
+    "stem": "This park is not as ＿＿＿ as Da-an Park, but it is very beautiful.",
+    "options": [
+      "the biggest",
+      "biggest",
+      "bigger",
+      "big"
+    ],
+    "answer": "D",
+    "explanation": "as + 形容詞原級 + as 表示「和……一樣」，not as big as 就是「沒有……那麼大」。as…as 中間只能放原級，所以用 big。",
+    "hints": [
+      "as…as 中間要放原級、比較級還是最高級？",
+      "not as big as 是什麼意思？"
+    ],
+    "wrong": {
+      "C": "看到兩個公園在比較就用比較級，但 as…as 中間要放原級。",
+      "B": "biggest 是最高級，不能放在 as…as 中間。",
+      "A": "the biggest 是最高級，as…as 句型只能用原級。"
+    }
+  },
+  {
+    "id": "EN-8A-2-34",
+    "exam_part": null,
+    "unit": "EN-8A-2",
+    "concept": "comparative",
+    "difficulty": 1,
+    "stem": "Mary gets up early, but her mother gets up even ＿＿＿.",
+    "options": [
+      "earliest",
+      "earlier",
+      "more early",
+      "early"
+    ],
+    "answer": "B",
+    "explanation": "even 放在比較級前面表示「更……」，媽媽比 Mary 起得更早，所以用比較級 earlier。early 是 y 結尾，把 y 改成 i 加 -er。",
+    "hints": [
+      "even 後面常接哪一級？",
+      "early 的比較級要怎麼拼？"
+    ],
+    "wrong": {
+      "D": "原級 early 前面加 even，無法表示媽媽比 Mary 更早。",
+      "A": "earliest 是最高級，這裡只是兩個人比較。",
+      "C": "early 是短的字，比較級要加 -er 變成 earlier，不用 more。"
+    }
+  },
+  {
+    "id": "EN-8A-2-35",
+    "exam_part": null,
+    "unit": "EN-8A-2",
+    "concept": "reading-detail",
+    "difficulty": 1,
+    "stem": "Peter is 14 years old. His sister Amy is four years younger than him, and his brother Ted is two years older than him.\n\nHow old is Ted?",
+    "options": [
+      "12",
+      "18",
+      "16",
+      "10"
+    ],
+    "answer": "C",
+    "explanation": "Ted 比 Peter 大兩歲（two years older than him），Peter 14 歲，所以 Ted 是 14 + 2 = 16 歲。Amy 比 Peter 小四歲，是 10 歲。",
+    "hints": [
+      "題目問的是 Ted，找到描述 Ted 的那一句。",
+      "older 是比較大還是比較小？要加還是減？"
+    ],
+    "wrong": {
+      "D": "10 歲是 Amy 的年紀（14 − 4），不是 Ted 的。",
+      "A": "把 older 看成 younger，用 14 − 2 算成 12。",
+      "B": "把 Amy 的四歲差距用到 Ted 身上，算成 14 + 4。"
+    }
+  },
+  {
+    "id": "EN-8A-2-36",
+    "exam_part": null,
+    "unit": "EN-8A-2",
+    "concept": "comparative",
+    "difficulty": 2,
+    "stem": "I have ＿＿＿ books than my brother. He only has ten.",
+    "options": [
+      "more",
+      "many",
+      "most",
+      "much"
+    ],
+    "answer": "A",
+    "explanation": "空格後面有 than，要用比較級。many（很多）的比較級是不規則變化 more，所以是 more books than my brother（我的書比哥哥多）。",
+    "hints": [
+      "看到 than，要用哪一級？",
+      "many 的比較級是加 -er 嗎？"
+    ],
+    "wrong": {
+      "B": "many 是原級，後面有 than 要改用比較級。",
+      "C": "most 是最高級，兩個人比較要用比較級。",
+      "D": "much 用在不可數名詞，而且也是原級；books 是可數名詞。"
+    }
+  },
+  {
+    "id": "EN-8A-2-37",
+    "exam_part": null,
+    "unit": "EN-8A-2",
+    "concept": "comparative",
+    "difficulty": 2,
+    "stem": "My cold was bad yesterday, but today it's even ＿＿＿. I think I should see a doctor.",
+    "options": [
+      "more bad",
+      "badder",
+      "worse",
+      "worst"
+    ],
+    "answer": "C",
+    "explanation": "even 後面接比較級，表示「更……」。bad 的比較級是不規則變化 worse，最高級是 worst。感冒今天比昨天更嚴重，所以用 worse。",
+    "hints": [
+      "even 後面要接哪一級？",
+      "bad 的比較級是規則還是不規則變化？"
+    ],
+    "wrong": {
+      "B": "把 bad 當成規則變化加 -er，但 bad 的比較級是 worse。",
+      "D": "worst 是最高級，這裡是今天和昨天兩者比較。",
+      "A": "bad 的比較級不是加 more，要用不規則變化 worse。"
+    }
+  },
+  {
+    "id": "EN-8A-2-38",
+    "exam_part": null,
+    "unit": "EN-8A-2",
+    "concept": "superlative",
+    "difficulty": 2,
+    "stem": "Kaohsiung is one of the ＿＿＿ in Taiwan.",
+    "options": [
+      "big cities",
+      "bigger cities",
+      "biggest city",
+      "biggest cities"
+    ],
+    "answer": "D",
+    "explanation": "one of the + 最高級 + 複數名詞 表示「最……的……之一」。高雄是臺灣最大的城市之一，要用最高級 biggest，名詞用複數 cities。",
+    "hints": [
+      "one of the 後面的名詞要用單數還是複數？",
+      "「最大的城市之一」的「最大」要用哪一級？"
+    ],
+    "wrong": {
+      "C": "最高級對了，但 one of 是「其中之一」，後面名詞要用複數 cities。",
+      "B": "用了比較級 bigger；one of the 後面要接最高級。",
+      "A": "原級 big 無法表示「最大的之一」，要用最高級。"
+    }
+  },
+  {
+    "id": "EN-8A-2-39",
+    "exam_part": null,
+    "unit": "EN-8A-2",
+    "concept": "superlative",
+    "difficulty": 2,
+    "stem": "This is the ＿＿＿ restaurant in our town. One dinner here costs NT$3,000.",
+    "options": [
+      "expensivest",
+      "most expensive",
+      "more expensive",
+      "expensive"
+    ],
+    "answer": "B",
+    "explanation": "the ＿＿＿ restaurant in our town 是在全鎮的餐廳裡比較，要用最高級。expensive 是長的形容詞，最高級在前面加 most，變成 the most expensive。",
+    "hints": [
+      "in our town 表示在一個範圍裡比較，要用哪一級？",
+      "expensive 是長的字，最高級要怎麼變？"
+    ],
+    "wrong": {
+      "C": "more expensive 是比較級，用在兩者比較；這裡是全鎮的餐廳。",
+      "A": "expensive 是長的字，不能加 -est，要在前面加 most。",
+      "D": "原級 expensive 前面有 the 又有 in our town，意思表達不出「最貴」。"
+    }
+  },
+  {
+    "id": "EN-8A-2-40",
+    "exam_part": null,
+    "unit": "EN-8A-2",
+    "concept": "as-as",
+    "difficulty": 2,
+    "stem": "Ben's bike costs NT$5,000, and Tom's bike costs NT$3,000. Tom's bike is not as ＿＿＿ as Ben's.",
+    "options": [
+      "expensive",
+      "cheap",
+      "cheaper",
+      "more expensive"
+    ],
+    "answer": "A",
+    "explanation": "Tom 的腳踏車 3,000 元，比 Ben 的 5,000 元便宜，也就是「沒有 Ben 的那麼貴」：not as expensive as Ben's。as…as 中間要用原級。",
+    "hints": [
+      "誰的腳踏車比較貴？",
+      "not as … as 是「沒有……那麼……」，空格要填「貴」還是「便宜」？",
+      "as…as 中間要放原級。"
+    ],
+    "wrong": {
+      "B": "Tom 的腳踏車比較便宜，說「沒有 Ben 的那麼便宜」就變成 Tom 的比較貴，意思反了。",
+      "C": "as…as 中間不能放比較級，而且 cheap 的意思也反了。",
+      "D": "意思對了，但 as…as 中間只能放原級，不能用比較級 more expensive。"
+    }
+  },
+  {
+    "id": "EN-8A-2-41",
+    "exam_part": null,
+    "unit": "EN-8A-2",
+    "concept": "as-as",
+    "difficulty": 2,
+    "stem": "Please call me back as ＿＿＿ as you can. It's important.",
+    "options": [
+      "the soonest",
+      "sooner",
+      "soonest",
+      "soon"
+    ],
+    "answer": "D",
+    "explanation": "as + 副詞原級 + as you can 表示「盡你所能地……」，as soon as you can 就是「盡快」。as…as 中間要放原級 soon。",
+    "hints": [
+      "as…as 中間要放哪一級？",
+      "「盡快」英文怎麼說？"
+    ],
+    "wrong": {
+      "B": "sooner 是比較級，不能放在 as…as 中間。",
+      "C": "soonest 是最高級，as…as 句型只用原級。",
+      "A": "the soonest 是最高級，不能放在 as…as 中間。"
+    }
+  },
+  {
+    "id": "EN-8A-2-42",
+    "exam_part": null,
+    "unit": "EN-8A-2",
+    "concept": "reading-detail",
+    "difficulty": 2,
+    "stem": "In last week's English test, Ken got 92 points, Lily got 88, and Jo got 85. Jo was not happy because she studied the hardest of the three.\n\nWhich is TRUE?",
+    "options": [
+      "Lily's score was the lowest of the three.",
+      "Jo got a higher score than Lily.",
+      "Ken studied harder than Jo.",
+      "No one got a higher score than Ken."
+    ],
+    "answer": "D",
+    "explanation": "Ken 92 分是三人中最高分，也就是「沒有人分數比 Ken 高」。Lily 88 分不是最低，Jo 85 分才是最低；文章說 Jo 是三人中最用功的，所以 Ken 沒有比 Jo 更用功。",
+    "hints": [
+      "先把三個人的分數從高排到低。",
+      "文章說誰最用功？",
+      "No one got a higher score than Ken 換句話說就是 Ken 的分數怎麼樣？"
+    ],
+    "wrong": {
+      "A": "三人中最低分的是 Jo（85 分），不是 Lily（88 分）。",
+      "B": "Jo 85 分比 Lily 88 分低，把大小比反了。",
+      "C": "文章說 Jo 讀書最用功（studied the hardest），分數高不代表比較用功。"
+    }
+  },
+  {
+    "id": "EN-8A-2-43",
+    "exam_part": null,
+    "unit": "EN-8A-2",
+    "concept": "comparative",
+    "difficulty": 3,
+    "stem": "Weather for tomorrow:\nTaipei: 18°C, rainy\nTaichung: 24°C, sunny\nKaohsiung: 27°C, sunny\n\nWhich is TRUE about tomorrow's weather?",
+    "options": [
+      "Taipei is the coldest, and it is sunny there.",
+      "Taichung is warmer than Taipei, and it is sunny.",
+      "Kaohsiung is the warmest, and it is rainy there.",
+      "Taichung is colder than Taipei, but it is sunny."
+    ],
+    "answer": "B",
+    "explanation": "臺中 24°C 比臺北 18°C 高，所以臺中比臺北溫暖，而且臺中是晴天。其他選項的前半或後半有錯：高雄最暖但是晴天；臺中沒有比臺北冷；臺北最冷但是下雨。",
+    "hints": [
+      "每個選項都有兩個部分：溫度的比較和天氣，兩個都要對。",
+      "先比較臺中和臺北的溫度，誰比較高？",
+      "再看看每個城市是晴天還是雨天。"
+    ],
+    "wrong": {
+      "C": "高雄確實最溫暖，但高雄是晴天，不是雨天；只看了前半句。",
+      "D": "臺中 24°C 比臺北 18°C 高，是比較暖，不是比較冷。",
+      "A": "臺北確實最冷，但臺北是雨天，不是晴天；只看了前半句。"
+    }
+  },
+  {
+    "id": "EN-8A-2-44",
+    "exam_part": null,
+    "unit": "EN-8A-2",
+    "concept": "superlative",
+    "difficulty": 3,
+    "stem": "Amy is older than Ben but younger than Dan. Cindy is not as old as Ben.\n\nWho is the second youngest of the four?",
+    "options": [
+      "Cindy",
+      "Amy",
+      "Ben",
+      "Dan"
+    ],
+    "answer": "C",
+    "explanation": "Amy 比 Ben 大、比 Dan 小，所以 Dan > Amy > Ben；Cindy 沒有 Ben 那麼大，所以 Ben > Cindy。四人從大到小是 Dan、Amy、Ben、Cindy，最小的是 Cindy，第二小的是 Ben。",
+    "hints": [
+      "先用第一句排出 Amy、Ben、Dan 三人的大小。",
+      "Cindy is not as old as Ben 表示 Cindy 比 Ben 大還是小？",
+      "排好四人順序後，從最小的往上數第二個。"
+    ],
+    "wrong": {
+      "B": "Amy 是第二大的，把題目的 second youngest（第二小）看成了第二大。",
+      "A": "Cindy 是最小的，題目問的是第二小，少往上數了一個。",
+      "D": "Dan 是四人中最大的，把 youngest 誤看成 oldest。"
+    }
+  },
+  {
+    "id": "EN-8A-2-45",
+    "exam_part": null,
+    "unit": "EN-8A-2",
+    "concept": "as-as",
+    "difficulty": 3,
+    "stem": "Kevin and Leo are classmates, and they are both fourteen. Kevin is 168 cm tall, and Leo is 160 cm. Leo's sister, May, is three years younger than Leo, but she is as tall as her brother.\n\nWhich is TRUE?",
+    "options": [
+      "May is as old as Kevin.",
+      "Leo is taller than May.",
+      "Kevin is older than Leo.",
+      "Kevin is taller than May."
+    ],
+    "answer": "D",
+    "explanation": "May 和哥哥 Leo 一樣高（as tall as her brother），所以 May 也是 160 公分；Kevin 168 公分，比 May 高。May 比 Leo 小三歲，所以和 Kevin 不同年紀；Kevin 和 Leo 都是 14 歲，一樣大。",
+    "hints": [
+      "May 和誰一樣高？那 May 是幾公分？",
+      "Kevin 和 Leo 的年紀有不一樣嗎？",
+      "逐一比較每個選項的兩個人。"
+    ],
+    "wrong": {
+      "A": "May 比 Leo 小三歲，而 Kevin 和 Leo 同年，所以 May 比 Kevin 小，不是一樣大。",
+      "B": "May 和 Leo 一樣高（as tall as），不是 Leo 比較高。",
+      "C": "Kevin 和 Leo 都是 14 歲，文章沒有說 Kevin 比較大。"
+    }
+  },
+  {
+    "id": "EN-8B-1-31",
+    "exam_part": null,
+    "unit": "EN-8B-1",
+    "concept": "gerund",
+    "difficulty": 1,
+    "stem": "My brother practices ＿＿＿ the piano every day.",
+    "options": [
+      "to play",
+      "plays",
+      "play",
+      "playing"
+    ],
+    "answer": "D",
+    "explanation": "practice（練習）後面接動詞時要用動名詞 V-ing，所以是 practices playing the piano，意思是「我哥哥每天練習彈鋼琴」。",
+    "hints": [
+      "practice 後面接動詞，習慣用 to V 還是 V-ing？",
+      "它和 enjoy、finish 是同一類動詞嗎？"
+    ],
+    "wrong": {
+      "C": "句子已經有動詞 practices，第二個動詞不能直接用原形。",
+      "A": "把 practice 和 want、hope 這類接 to V 的動詞搞混了。",
+      "B": "以為主詞是第三人稱單數就加 s，但 s 已經加在 practices 上，第二個動詞要用 V-ing。"
+    }
+  },
+  {
+    "id": "EN-8B-1-32",
+    "exam_part": null,
+    "unit": "EN-8B-1",
+    "concept": "infinitive",
+    "difficulty": 1,
+    "stem": "We plan ＿＿＿ a trip to Kenting this summer.",
+    "options": [
+      "take",
+      "taking",
+      "to take",
+      "took"
+    ],
+    "answer": "C",
+    "explanation": "plan（計畫）後面接動詞要用不定詞 to V，所以是 plan to take a trip，意思是「我們計畫今年夏天去墾丁旅行」。",
+    "hints": [
+      "plan 是「計畫」，計畫的事是還沒做的事。",
+      "plan 後面接動詞要先加哪一個小字？"
+    ],
+    "wrong": {
+      "A": "句子已經有動詞 plan，第二個動詞不能直接接原形。",
+      "B": "把 plan 和 enjoy 這類接 V-ing 的動詞搞混了；plan 要接 to V。",
+      "D": "旅行是今年夏天才要去，而且 plan 後面要接 to V，不能接過去式。"
+    }
+  },
+  {
+    "id": "EN-8B-1-33",
+    "exam_part": null,
+    "unit": "EN-8B-1",
+    "concept": "gerund",
+    "difficulty": 1,
+    "stem": "How about ＿＿＿ to the movies tonight?",
+    "options": [
+      "to go",
+      "go",
+      "went",
+      "going"
+    ],
+    "answer": "D",
+    "explanation": "How about 的 about 是介系詞，後面的動詞要用動名詞 V-ing。How about going to the movies tonight? 意思是「今晚去看電影怎麼樣？」，用來提出建議。",
+    "hints": [
+      "How about 的 about 是什麼詞性？",
+      "介系詞後面接動詞要用什麼形式？"
+    ],
+    "wrong": {
+      "B": "以為提建議就用原形動詞，但 about 是介系詞，後面要接 V-ing。",
+      "C": "說的是今晚的事，不能用過去式，而且介系詞後面要接 V-ing。",
+      "A": "介系詞 about 後面不能接 to V。"
+    }
+  },
+  {
+    "id": "EN-8B-1-34",
+    "exam_part": null,
+    "unit": "EN-8B-1",
+    "concept": "infinitive",
+    "difficulty": 1,
+    "stem": "I would like ＿＿＿ a glass of water, please.",
+    "options": [
+      "has",
+      "having",
+      "had",
+      "to have"
+    ],
+    "answer": "D",
+    "explanation": "would like（想要）後面接動詞要用不定詞 to V，所以是 would like to have a glass of water，意思是「我想要一杯水」。",
+    "hints": [
+      "would like 的意思和 want 很像，want 後面接什麼？",
+      "would like 後面接動詞時要加 to 嗎？"
+    ],
+    "wrong": {
+      "B": "把 would like 和 like 的用法混在一起；would like 後面要接 to V。",
+      "C": "would 雖然長得像過去式，但這句是現在想要，後面要接 to V。",
+      "A": "主詞是 I，不需要加 s，而且 would like 後面要接 to V。"
+    }
+  },
+  {
+    "id": "EN-8B-1-35",
+    "exam_part": null,
+    "unit": "EN-8B-1",
+    "concept": "dialogue-response",
+    "difficulty": 1,
+    "stem": "A: What do you like to do on weekends?\nB: ＿＿＿",
+    "options": [
+      "I like hiking with my dad.",
+      "I'm going to the park now.",
+      "I went hiking with my dad.",
+      "Yes, I like it very much."
+    ],
+    "answer": "A",
+    "explanation": "對方問「你週末喜歡做什麼？」，是問平常的喜好，要用現在式回答喜歡做的事：I like hiking with my dad.（我喜歡和爸爸去爬山）。",
+    "hints": [
+      "問句用 What 開頭，可以用 Yes 或 No 回答嗎？",
+      "問的是平常的喜好、過去的事，還是現在正在做的事？"
+    ],
+    "wrong": {
+      "C": "問的是平常喜歡做什麼，用過去式回答變成在說某一次已經做過的事。",
+      "D": "What 開頭的問句要回答具體內容，不能用 Yes 回答。",
+      "B": "這是在說現在要去哪裡，沒有回答週末喜歡做什麼。"
+    }
+  },
+  {
+    "id": "EN-8B-1-36",
+    "exam_part": null,
+    "unit": "EN-8B-1",
+    "concept": "gerund",
+    "difficulty": 2,
+    "stem": "Keep ＿＿＿, and you will get better at English.",
+    "options": [
+      "practicing",
+      "practice",
+      "to practice",
+      "practiced"
+    ],
+    "answer": "A",
+    "explanation": "keep（持續）後面接動詞要用動名詞 V-ing，Keep practicing 意思是「持續練習」。整句是「持續練習，你的英文就會變得更好」。",
+    "hints": [
+      "keep 後面接動詞時要用哪一種形式？",
+      "「一直做某事」的 keep 和 enjoy、finish 用法一樣嗎？"
+    ],
+    "wrong": {
+      "B": "句首 Keep 已經是原形動詞（祈使句），第二個動詞不能再用原形。",
+      "C": "把 keep 和 want、hope 這類接 to V 的動詞搞混了。",
+      "D": "看到後面有 will 卻用過去式，而且 keep 後面要接 V-ing。"
+    }
+  },
+  {
+    "id": "EN-8B-1-37",
+    "exam_part": null,
+    "unit": "EN-8B-1",
+    "concept": "gerund",
+    "difficulty": 2,
+    "stem": "I'm looking forward to ＿＿＿ you again next summer.",
+    "options": [
+      "sees",
+      "seen",
+      "seeing",
+      "see"
+    ],
+    "answer": "C",
+    "explanation": "look forward to（期待）的 to 是介系詞，不是不定詞的 to，所以後面的動詞要用 V-ing，要說 looking forward to seeing you。",
+    "hints": [
+      "look forward to 的 to 是不定詞還是介系詞？",
+      "介系詞後面接動詞要怎麼變？"
+    ],
+    "wrong": {
+      "D": "以為 to 後面都接原形動詞，但這裡的 to 是介系詞。",
+      "B": "seen 是過去分詞，不能直接放在介系詞後面當動詞用。",
+      "A": "sees 是第三人稱單數現在式，不能放在介系詞後面。"
+    }
+  },
+  {
+    "id": "EN-8B-1-38",
+    "exam_part": null,
+    "unit": "EN-8B-1",
+    "concept": "infinitive",
+    "difficulty": 2,
+    "stem": "The soup is too hot for me ＿＿＿ now.",
+    "options": [
+      "eating",
+      "to eat",
+      "ate",
+      "eat"
+    ],
+    "answer": "B",
+    "explanation": "too + 形容詞 + (for 人) + to V 表示「太……而無法……」。The soup is too hot for me to eat now. 意思是「湯太燙了，我現在沒辦法喝」。",
+    "hints": [
+      "too … to 是什麼意思？",
+      "too hot for me 後面接動詞要用哪一種形式？"
+    ],
+    "wrong": {
+      "D": "too…to 句型裡的 to 不能省略，要用 to eat。",
+      "A": "把 too…to 的句型記成接 V-ing 了。",
+      "C": "句子說的是現在（now），不能用過去式，而且要用 to V。"
+    }
+  },
+  {
+    "id": "EN-8B-1-39",
+    "exam_part": null,
+    "unit": "EN-8B-1",
+    "concept": "infinitive",
+    "difficulty": 2,
+    "stem": "Ben is old enough ＿＿＿ to school by himself now.",
+    "options": [
+      "walking",
+      "to walk",
+      "walked",
+      "walk"
+    ],
+    "answer": "B",
+    "explanation": "形容詞 + enough + to V 表示「夠……可以……」。Ben is old enough to walk to school by himself. 意思是「Ben 年紀夠大，可以自己走路上學了」。",
+    "hints": [
+      "enough 放在形容詞後面時，後面接動詞要用什麼形式？",
+      "和 too…to 一樣，這個句型也要用不定詞嗎？"
+    ],
+    "wrong": {
+      "D": "句子已經有動詞 is，walk 不能直接接在 enough 後面。",
+      "A": "把 enough to V 記成接 V-ing 了。",
+      "C": "句子說的是現在（now），而且 enough 後面要接 to V。"
+    }
+  },
+  {
+    "id": "EN-8B-1-40",
+    "exam_part": null,
+    "unit": "EN-8B-1",
+    "concept": "gerund",
+    "difficulty": 2,
+    "stem": "Lucy left the classroom without ＿＿＿ goodbye to anyone.",
+    "options": [
+      "saying",
+      "say",
+      "said",
+      "to say"
+    ],
+    "answer": "A",
+    "explanation": "without（沒有）是介系詞，後面的動詞要用動名詞，所以是 without saying goodbye，意思是「Lucy 沒有跟任何人說再見就離開教室」。",
+    "hints": [
+      "without 是什麼詞性？",
+      "介系詞後面接動詞要用什麼形式？"
+    ],
+    "wrong": {
+      "B": "介系詞 without 後面不能接原形動詞。",
+      "D": "介系詞 without 後面不能接 to V。",
+      "C": "看到 left 是過去式就跟著用過去式，但 without 後面要接 V-ing。"
+    }
+  },
+  {
+    "id": "EN-8B-1-41",
+    "exam_part": null,
+    "unit": "EN-8B-1",
+    "concept": "dialogue-response",
+    "difficulty": 2,
+    "stem": "A: Do you feel like going for a walk?\nB: ＿＿＿ I'm a little tired now.",
+    "options": [
+      "Here you are.",
+      "Not really.",
+      "Yes, let's go.",
+      "Sounds great!"
+    ],
+    "answer": "B",
+    "explanation": "feel like + V-ing 是「想要做……」。回答的人接著說「我現在有點累」，表示不想去，所以回答 Not really.（不太想）最合理。",
+    "hints": [
+      "空格後面那句「我有點累」，表示回答的人想不想去散步？",
+      "哪一個回答是委婉地說「不想」？"
+    ],
+    "wrong": {
+      "D": "Sounds great! 是贊成提議，和後面說自己很累不合。",
+      "C": "Yes, let's go. 表示答應要去，和後面說很累矛盾。",
+      "A": "Here you are. 是把東西拿給別人時說的話，和邀請散步無關。"
+    }
+  },
+  {
+    "id": "EN-8B-1-42",
+    "exam_part": null,
+    "unit": "EN-8B-1",
+    "concept": "reading-main-idea",
+    "difficulty": 2,
+    "stem": "Do you write a diary? Writing a diary is a good habit. First, it helps you remember the special things in your life. Second, it is a good way to practice writing. Also, writing down your feelings can make you feel better when you are sad. Why not start a diary today?\n\nWhat is the passage mainly about?",
+    "options": [
+      "How to buy a nice diary",
+      "When people started writing diaries",
+      "Why keeping a diary is helpful",
+      "What a famous writer wrote"
+    ],
+    "answer": "C",
+    "explanation": "文章一開始說寫日記是好習慣，接著用 First、Second、Also 列出寫日記的三個好處，最後鼓勵讀者開始寫。所以主旨是「寫日記為什麼有幫助」。",
+    "hints": [
+      "文章用 First、Second、Also 列出了什麼？",
+      "這幾個重點合起來是在說寫日記的什麼？"
+    ],
+    "wrong": {
+      "A": "文章沒有提到要去哪裡買日記本或怎麼挑選。",
+      "B": "文章沒有提到寫日記的歷史。",
+      "D": "文章沒有提到任何作家，只是在說寫日記的好處。"
+    }
+  },
+  {
+    "id": "EN-8B-1-43",
+    "exam_part": null,
+    "unit": "EN-8B-1",
+    "concept": "gerund",
+    "difficulty": 3,
+    "stem": "Mom: Did you lock the door when we left?\nKen: Yes. I remember (1)＿＿＿ it. I did it before we got in the car.\nMom: Good. And don't forget (2)＿＿＿ Grandma tonight. It's her birthday.\n\nWhich is the best choice for (1) and (2)?",
+    "options": [
+      "locking; to call",
+      "to lock; calling",
+      "to lock; to call",
+      "locking; calling"
+    ],
+    "answer": "A",
+    "explanation": "remember + V-ing 是「記得做過某事」（事情已經做了），remember + to V 是「記得要去做某事」（還沒做）。Ken 說他上車前已經鎖了，所以 (1) 用 locking；打電話給奶奶是今晚才要做的事，forget to V 是「忘記去做」，所以 (2) 用 to call。",
+    "hints": [
+      "(1) 鎖門這件事已經做了，還是還沒做？",
+      "(2) 打電話給奶奶是已經做了，還是今晚才要做？",
+      "remember / forget 接 V-ing 和接 to V 的意思不同。"
+    ],
+    "wrong": {
+      "B": "兩格都放反了：鎖門已經做過要用 V-ing，打電話還沒做要用 to V。",
+      "D": "(1) 對了，但打電話是今晚才要做的事，don't forget 後面要用 to call。",
+      "C": "(2) 對了，但 Ken 說已經鎖了門，記得做過的事要用 remember locking。"
+    }
+  },
+  {
+    "id": "EN-8B-1-44",
+    "exam_part": null,
+    "unit": "EN-8B-1",
+    "concept": "reading-detail",
+    "difficulty": 3,
+    "stem": "Lily's dream is to become an animal doctor. Every Saturday, she goes to an animal shelter to help. At first, she was afraid of touching big dogs, but now she enjoys walking them. Her parents are happy to see her work hard, but they also want her to spend more time studying science.\n\nWhich is TRUE about Lily?",
+    "options": [
+      "Her parents don't want her to go there.",
+      "She helps care for animals at the shelter.",
+      "She is still afraid of touching big dogs.",
+      "She goes to the shelter every day."
+    ],
+    "answer": "B",
+    "explanation": "文章說 Lily 每週六去動物收容所幫忙，現在還喜歡帶大狗散步，所以她在收容所幫忙照顧動物。她一開始怕大狗，但現在不怕了；父母很高興看到她努力，只是希望她多讀自然科學；她是每週六去，不是每天。",
+    "hints": [
+      "文章說 Lily 去收容所做什麼？",
+      "注意 At first 和 now 的差別。",
+      "她多久去一次收容所？父母對這件事的態度是什麼？"
+    ],
+    "wrong": {
+      "C": "只看到 At first 那半句，沒注意到 but now she enjoys walking them，她現在已經不怕了。",
+      "A": "看到 but 就以為父母反對，但文章說父母很高興，只是希望她多花時間讀自然科學。",
+      "D": "文章說的是 Every Saturday（每週六），不是每天。"
+    }
+  },
+  {
+    "id": "EN-8B-1-45",
+    "exam_part": null,
+    "unit": "EN-8B-1",
+    "concept": "reading-main-idea",
+    "difficulty": 3,
+    "stem": "Many students are afraid of making mistakes in English class, so they never raise their hands. But making mistakes is a part of learning. When you say something wrong, your teacher can help you fix it, and you will remember the right way better. So next time, raise your hand and say what you think!\n\nWhat does the writer want students to do?",
+    "options": [
+      "Study grammar books instead of speaking",
+      "Speak in class without worrying about mistakes",
+      "Ask other students to fix their mistakes",
+      "Stay quiet until they know the right answer"
+    ],
+    "answer": "B",
+    "explanation": "作者先說很多學生怕犯錯所以不舉手，接著說犯錯是學習的一部分，老師會幫忙改正，最後鼓勵學生舉手說出想法。所以作者希望學生「上課勇於發言，不要擔心犯錯」。",
+    "hints": [
+      "文章的轉折詞 But 後面，作者對「犯錯」的看法是什麼？",
+      "最後一句作者叫學生做什麼？"
+    ],
+    "wrong": {
+      "D": "這是文章開頭描述的學生現況，作者其實是不贊成這樣做的。",
+      "A": "文章沒有提到讀文法書，作者鼓勵的是開口說。",
+      "C": "文章說的是老師會幫忙改正錯誤，不是請其他同學改。"
+    }
+  },
+  {
+    "id": "EN-8B-2-31",
+    "exam_part": null,
+    "unit": "EN-8B-2",
+    "concept": "conjunction",
+    "difficulty": 1,
+    "stem": "＿＿＿ Ken and Ben are my good friends. We often play basketball together.",
+    "options": [
+      "Either",
+      "Not only",
+      "Neither",
+      "Both"
+    ],
+    "answer": "D",
+    "explanation": "both … and … 表示「兩者都……」，主詞是兩個人，所以動詞用 are。Both Ken and Ben are my good friends. 意思是「Ken 和 Ben 都是我的好朋友」。",
+    "hints": [
+      "空格後面用的連接詞是 and，哪一個字和 and 搭配？",
+      "Either 和 Neither 各自要搭配哪一個字？"
+    ],
+    "wrong": {
+      "A": "either 要和 or 搭配（either … or …），不能和 and 一起用。",
+      "C": "neither 要和 nor 搭配，而且意思是「兩者都不」，和後面一起打球的意思不合。",
+      "B": "not only 要和 but also 搭配，不能只接 and。"
+    }
+  },
+  {
+    "id": "EN-8B-2-32",
+    "exam_part": null,
+    "unit": "EN-8B-2",
+    "concept": "tag-question",
+    "difficulty": 1,
+    "stem": "Your mother is a nurse, ＿＿＿?",
+    "options": [
+      "isn't it",
+      "doesn't she",
+      "is she",
+      "isn't she"
+    ],
+    "answer": "D",
+    "explanation": "前面是肯定句，附加問句要用否定；前句的動詞是 is，所以附加問句用 isn't；主詞 your mother 用代名詞 she 代替，答案是 isn't she。",
+    "hints": [
+      "前面的句子是肯定還是否定？附加問句要相反。",
+      "前句用的是 be 動詞還是一般動詞？",
+      "your mother 要換成哪一個代名詞？"
+    ],
+    "wrong": {
+      "C": "前句是肯定句，附加問句要用否定，不能用 is she。",
+      "B": "前句的動詞是 be 動詞 is，不是一般動詞，不能用 does。",
+      "A": "主詞是 your mother（一個女性），代名詞要用 she，不是 it。"
+    }
+  },
+  {
+    "id": "EN-8B-2-33",
+    "exam_part": null,
+    "unit": "EN-8B-2",
+    "concept": "tag-question",
+    "difficulty": 1,
+    "stem": "You like ice cream, ＿＿＿?",
+    "options": [
+      "didn't you",
+      "aren't you",
+      "do you",
+      "don't you"
+    ],
+    "answer": "D",
+    "explanation": "前句是肯定句，動詞 like 是一般動詞的現在式，主詞是 you，所以附加問句用否定的 don't you。",
+    "hints": [
+      "前句是肯定還是否定？",
+      "like 是一般動詞，附加問句要用哪一個助動詞？",
+      "時態是現在還是過去？"
+    ],
+    "wrong": {
+      "C": "前句是肯定句，附加問句要用否定的 don't you。",
+      "B": "like 是一般動詞，不能用 be 動詞 are 來做附加問句。",
+      "A": "前句是現在式，不能用過去式 didn't。"
+    }
+  },
+  {
+    "id": "EN-8B-2-34",
+    "exam_part": null,
+    "unit": "EN-8B-2",
+    "concept": "conjunction",
+    "difficulty": 1,
+    "stem": "I was sleeping ＿＿＿ the phone rang.",
+    "options": [
+      "when",
+      "because",
+      "so",
+      "or"
+    ],
+    "answer": "A",
+    "explanation": "when 表示「當……的時候」。I was sleeping when the phone rang. 意思是「電話響的時候，我正在睡覺」，用來說明一個動作發生時另一個動作正在進行。",
+    "hints": [
+      "前後兩件事是什麼關係？是原因、結果，還是同時發生？",
+      "「當……的時候」要用哪一個連接詞？"
+    ],
+    "wrong": {
+      "C": "so 表示結果，但睡覺不會造成電話響。",
+      "D": "or 表示「或者」，用在選擇，這裡沒有要二選一。",
+      "B": "because 表示原因，但電話響不是讓人睡覺的原因。"
+    }
+  },
+  {
+    "id": "EN-8B-2-35",
+    "exam_part": null,
+    "unit": "EN-8B-2",
+    "concept": "dialogue-response",
+    "difficulty": 1,
+    "stem": "A: You're from Japan, aren't you?\nB: ＿＿＿ I'm from Korea.",
+    "options": [
+      "Yes, I am.",
+      "No, I don't.",
+      "No, I'm not.",
+      "No, they aren't."
+    ],
+    "answer": "C",
+    "explanation": "回答附加問句時，看事實決定 Yes 或 No。回答的人說自己來自韓國，不是日本，所以要否定回答 No, I'm not.；問句用 be 動詞，回答也要用 be 動詞。",
+    "hints": [
+      "回答的人其實是從哪個國家來的？",
+      "問句用 be 動詞 are，回答要用 be 動詞還是 do？"
+    ],
+    "wrong": {
+      "A": "回答的人說自己來自韓國，回答 Yes, I am. 就變成承認自己是日本人。",
+      "B": "問句用的是 be 動詞，回答不能用 don't。",
+      "D": "問的是「你」，回答要用 I，不是 they。"
+    }
+  },
+  {
+    "id": "EN-8B-2-36",
+    "exam_part": null,
+    "unit": "EN-8B-2",
+    "concept": "conjunction",
+    "difficulty": 2,
+    "stem": "You can ＿＿＿ take the bus or ride your bike to the station.",
+    "options": [
+      "both",
+      "neither",
+      "not only",
+      "either"
+    ],
+    "answer": "D",
+    "explanation": "either … or … 表示「兩者擇一」。去車站可以搭公車，也可以騎腳踏車，選一種就好，所以用 either。",
+    "hints": [
+      "空格後面的連接詞是 or，哪一個字和 or 搭配？",
+      "搭公車和騎腳踏車可以同時做嗎？"
+    ],
+    "wrong": {
+      "A": "both 要和 and 搭配，而且不可能同時搭公車又騎腳踏車。",
+      "B": "neither 要和 nor 搭配，意思是兩者都不。",
+      "C": "not only 要和 but also 搭配，不能和 or 一起用。"
+    }
+  },
+  {
+    "id": "EN-8B-2-37",
+    "exam_part": null,
+    "unit": "EN-8B-2",
+    "concept": "conjunction",
+    "difficulty": 2,
+    "stem": "＿＿＿ my father nor my mother can speak Japanese. They only speak Chinese and English.",
+    "options": [
+      "Neither",
+      "Not only",
+      "Both",
+      "Either"
+    ],
+    "answer": "A",
+    "explanation": "neither … nor … 表示「兩者都不」。後一句說爸媽只會說中文和英文，所以兩人都不會說日文，用 Neither … nor。",
+    "hints": [
+      "空格後面出現 nor，哪一個字和 nor 搭配？",
+      "後一句告訴你爸媽會不會說日文？"
+    ],
+    "wrong": {
+      "D": "either 要和 or 搭配，不能和 nor 一起用。",
+      "C": "both 要和 and 搭配，而且意思是兩人都會，和後一句矛盾。",
+      "B": "not only 要和 but also 搭配，不能和 nor 一起用。"
+    }
+  },
+  {
+    "id": "EN-8B-2-38",
+    "exam_part": null,
+    "unit": "EN-8B-2",
+    "concept": "conjunction",
+    "difficulty": 2,
+    "stem": "Mia finished her homework at 7:00 and turned on the TV at 7:30. She did her homework ＿＿＿ she watched TV.",
+    "options": [
+      "before",
+      "after",
+      "because",
+      "until"
+    ],
+    "answer": "A",
+    "explanation": "Mia 7 點寫完作業，7 點半才開電視，所以寫作業發生在看電視之前，用 before（在……之前）。",
+    "hints": [
+      "先比較兩件事的時間：寫完作業是幾點？開電視是幾點？",
+      "哪一件事先發生？"
+    ],
+    "wrong": {
+      "B": "把先後順序弄反了；寫作業在 7 點以前，看電視在 7 點半以後。",
+      "D": "until 是「直到……為止」，表示寫作業一直寫到看電視，但中間還隔了半小時。",
+      "C": "because 表示原因，看電視不是寫作業的原因。"
+    }
+  },
+  {
+    "id": "EN-8B-2-39",
+    "exam_part": null,
+    "unit": "EN-8B-2",
+    "concept": "tag-question",
+    "difficulty": 2,
+    "stem": "Let's go for a walk after dinner, ＿＿＿?",
+    "options": [
+      "shall we",
+      "don't we",
+      "aren't we",
+      "will you"
+    ],
+    "answer": "A",
+    "explanation": "Let's（讓我們）開頭的提議句，附加問句固定用 shall we，意思是「晚餐後去散步，好嗎？」。",
+    "hints": [
+      "Let's 是 Let us 的縮寫，包含說話的人自己。",
+      "Let's 開頭的句子，附加問句有固定的用法。"
+    ],
+    "wrong": {
+      "D": "will you 用在一般的祈使句（請對方做事），Let's 包含說話者自己，要用 shall we。",
+      "B": "Let's 不是一般動詞的肯定句，不能用 don't we。",
+      "C": "句子裡沒有 be 動詞，不能用 aren't we。"
+    }
+  },
+  {
+    "id": "EN-8B-2-40",
+    "exam_part": null,
+    "unit": "EN-8B-2",
+    "concept": "tag-question",
+    "difficulty": 2,
+    "stem": "There weren't many people at the party, ＿＿＿?",
+    "options": [
+      "were they",
+      "did they",
+      "weren't there",
+      "were there"
+    ],
+    "answer": "D",
+    "explanation": "There be 句型的附加問句要用 there；前句是否定的 weren't，附加問句要用肯定的 were，所以是 were there。",
+    "hints": [
+      "前句是肯定還是否定？",
+      "There be 句型的附加問句，主詞要用 there 還是 they？"
+    ],
+    "wrong": {
+      "C": "前句已經是否定句（weren't），附加問句要用肯定。",
+      "A": "There be 句型的附加問句要保留 there，不能改成 they。",
+      "B": "前句用的是 be 動詞 weren't，不是一般動詞，不能用 did。"
+    }
+  },
+  {
+    "id": "EN-8B-2-41",
+    "exam_part": null,
+    "unit": "EN-8B-2",
+    "concept": "dialogue-response",
+    "difficulty": 2,
+    "stem": "A: Peter can't come to the meeting, can he?\nB: ＿＿＿ He has to see a doctor.",
+    "options": [
+      "No, he doesn't.",
+      "Yes, he does.",
+      "Yes, he can.",
+      "No, he can't."
+    ],
+    "answer": "D",
+    "explanation": "回答的人說 Peter 要去看醫生，所以他不能來開會，事實是否定的，要回答 No, he can't.；問句用 can，回答也要用 can。",
+    "hints": [
+      "Peter 要去看醫生，那他能不能來開會？",
+      "問句用的助動詞是什麼？回答要用一樣的。"
+    ],
+    "wrong": {
+      "C": "Peter 要去看醫生，事實是不能來，回答 Yes, he can. 和後一句矛盾。",
+      "A": "否定的意思對了，但問句用 can，回答不能用 doesn't。",
+      "B": "問句用 can，回答不能用 does，而且 Yes 的意思和事實不合。"
+    }
+  },
+  {
+    "id": "EN-8B-2-42",
+    "exam_part": null,
+    "unit": "EN-8B-2",
+    "concept": "reading-detail",
+    "difficulty": 2,
+    "stem": "Last Sunday was Mother's Day. Jim wanted to buy a nice gift for his mom, but he didn't have enough money. So he made a card by himself, and he cooked dinner for her with his dad's help. When his mom saw the card and the food, she was very happy and gave him a big hug.\n\nWhat did Jim do for his mom?",
+    "options": [
+      "He made her a card and a meal.",
+      "He gave her some money.",
+      "He took her to a restaurant.",
+      "He bought her an expensive gift."
+    ],
+    "answer": "A",
+    "explanation": "文章說 Jim 想買禮物，但錢不夠（but），所以（So）他自己做了一張卡片，又在爸爸幫忙下煮了晚餐給媽媽。也就是說他為媽媽做了卡片和一頓飯。",
+    "hints": [
+      "注意 but 和 So 這兩個連接詞，Jim 最後有沒有買禮物？",
+      "So 後面寫了 Jim 做的哪兩件事？"
+    ],
+    "wrong": {
+      "D": "Jim 雖然想買禮物，但錢不夠（didn't have enough money），所以沒有買。",
+      "C": "Jim 是自己在家煮晚餐，文章沒有說去餐廳。",
+      "B": "Jim 自己錢都不夠，文章也沒有說他給媽媽錢。"
+    }
+  },
+  {
+    "id": "EN-8B-2-43",
+    "exam_part": null,
+    "unit": "EN-8B-2",
+    "concept": "conjunction",
+    "difficulty": 3,
+    "stem": "Ray got up late this morning. He ran to the bus stop, (1)＿＿＿ the bus was already gone. (2)＿＿＿ he walked very fast, he was still ten minutes late for school.\n\nWhich is the best choice for (1) and (2)?",
+    "options": [
+      "but; Because",
+      "and; If",
+      "so; Because",
+      "but; Although"
+    ],
+    "answer": "D",
+    "explanation": "(1) Ray 跑去公車站，公車卻已經開走了，前後意思相反，用 but；(2) 他走得很快，卻還是遲到十分鐘，前後也是轉折，用 Although（雖然）。注意 Although 和 but 不能放在同一個句子裡，這兩格分屬兩個句子，所以沒問題。",
+    "hints": [
+      "(1) 跑去公車站和公車已經開走，是因果還是轉折？",
+      "(2) 走得很快，結果還是遲到，這是因果還是「雖然……還是……」？",
+      "句子裡有 still，常常和哪一個連接詞一起出現？"
+    ],
+    "wrong": {
+      "C": "跑去公車站不會造成公車開走，(1) 不能用 so；走得快也不是遲到的原因。",
+      "B": "(1) 用 and 無法表現「跑去了卻沒趕上」的轉折；(2) 走得快是已經發生的事，不是假設。",
+      "A": "(1) 對了，但走得快不是遲到的原因，(2) 要用表示讓步的 Although。"
+    }
+  },
+  {
+    "id": "EN-8B-2-44",
+    "exam_part": null,
+    "unit": "EN-8B-2",
+    "concept": "tag-question",
+    "difficulty": 3,
+    "stem": "Tom: We don't have class tomorrow, (1)＿＿＿?\nMia: (2)＿＿＿ Tomorrow is a holiday, so we can sleep late.\n\nWhich is the best choice for (1) and (2)?",
+    "options": [
+      "don't we; No, we don't.",
+      "do we; No, we don't.",
+      "do we; Yes, we do.",
+      "are we; No, we aren't."
+    ],
+    "answer": "B",
+    "explanation": "(1) 前句是否定句 We don't have…，附加問句要用肯定的 do we。(2) Mia 說明天放假，所以事實是「沒有課」，要回答 No, we don't.，助動詞和問句一樣用 do。",
+    "hints": [
+      "前句是肯定還是否定？附加問句要相反。",
+      "Mia 說明天是假日，那明天到底有沒有課？",
+      "回答時 Yes / No 要跟著事實走，而不是跟著問句的形式。"
+    ],
+    "wrong": {
+      "A": "(2) 對了，但前句已經是否定句，附加問句要用肯定的 do we。",
+      "C": "(1) 對了，但明天放假沒有課，回答 Yes, we do. 和事實不合。",
+      "D": "前句用的是一般動詞 have（助動詞 don't），附加問句和回答都要用 do，不能用 are。"
+    }
+  },
+  {
+    "id": "EN-8B-2-45",
+    "exam_part": null,
+    "unit": "EN-8B-2",
+    "concept": "reading-detail",
+    "difficulty": 3,
+    "stem": "Sunny Summer Camp\n- For students from 12 to 15 years old\n- Camp fee: NT$3,000. Sign up before June 10, and you only pay NT$2,500.\n- Please bring both a hat and a water bottle.\n- You can either take the camp bus or ask your parents to drive you there.\n\nJoe is 13 years old. He signed up on June 15, and he will take the camp bus. Which is TRUE about Joe?",
+    "options": [
+      "He is too old to join the camp.",
+      "He will pay NT$3,000 for the camp.",
+      "He doesn't have to bring a hat.",
+      "He will pay NT$2,500 for the camp."
+    ],
+    "answer": "B",
+    "explanation": "Joe 13 歲，在 12 到 15 歲之間，可以參加。他 6 月 15 日才報名，沒有在 6 月 10 日以前報名，不能享有 2,500 元的優惠，所以要付原價 3,000 元。帽子和水壺兩樣（both…and）都要帶。",
+    "hints": [
+      "先確認 Joe 的年紀符不符合參加資格。",
+      "6 月 15 日是在 6 月 10 日之前還是之後？",
+      "both a hat and a water bottle 表示要帶幾樣東西？"
+    ],
+    "wrong": {
+      "A": "營隊收 12 到 15 歲的學生，13 歲符合資格。",
+      "D": "2,500 元是 6 月 10 日前報名才有的價格，Joe 是 6 月 15 日才報名。",
+      "C": "公告說帽子和水壺兩樣都要帶（both … and），搭營隊巴士也一樣要帶。"
+    }
+  },
+  {
+    "id": "EN-9A-1-31",
+    "exam_part": null,
+    "unit": "EN-9A-1",
+    "concept": "present-perfect",
+    "difficulty": 1,
+    "stem": "Jason has already ＿＿＿ his room, so it looks very clean now.",
+    "options": [
+      "clean",
+      "cleans",
+      "cleaning",
+      "cleaned"
+    ],
+    "answer": "D",
+    "explanation": "already（已經）常和現在完成式一起用。現在完成式的形式是 have/has + 過去分詞，clean 的過去分詞是 cleaned，所以是 has already cleaned his room（已經打掃好房間了）。",
+    "hints": [
+      "already（已經）常和哪一種時態一起出現？",
+      "現在完成式是 have/has 加上動詞的哪一種形式？"
+    ],
+    "wrong": {
+      "A": "看到 has 就以為後面接原形動詞；現在完成式是 has/have + 過去分詞，不能接原形。",
+      "C": "把現在完成式和進行式搞混了，has 後面不能直接接 V-ing。",
+      "B": "看到主詞 Jason 是第三人稱單數就加 s，但 has 已經表示單數，後面的動詞要用過去分詞。"
+    }
+  },
+  {
+    "id": "EN-9A-1-32",
+    "exam_part": null,
+    "unit": "EN-9A-1",
+    "concept": "present-perfect",
+    "difficulty": 1,
+    "stem": "My brother ＿＿＿ never eaten stinky tofu. He doesn't like the smell.",
+    "options": [
+      "is",
+      "does",
+      "have",
+      "has"
+    ],
+    "answer": "D",
+    "explanation": "eaten 是 eat 的過去分詞，前面要用助動詞 have/has 組成現在完成式，表示「從來沒吃過」的經驗（never）。主詞 My brother 是第三人稱單數，所以用 has。",
+    "hints": [
+      "空格後面的 eaten 是動詞的哪一種形式？",
+      "過去分詞前面要搭配哪一個助動詞才能表示「經驗」？主詞是單數還是複數？"
+    ],
+    "wrong": {
+      "C": "主詞 My brother 是第三人稱單數，現在完成式的助動詞要用 has，不是 have。",
+      "B": "以為否定的意思要用 does，但空格後的 eaten 是過去分詞，要和 has 組成現在完成式。",
+      "A": "看到 eaten 就以為是被動語態 be + p.p.，但哥哥不是被吃的，這裡說的是「從來沒吃過」的經驗。"
+    }
+  },
+  {
+    "id": "EN-9A-1-33",
+    "exam_part": null,
+    "unit": "EN-9A-1",
+    "concept": "present-perfect",
+    "difficulty": 2,
+    "stem": "Tina ＿＿＿ her wallet two days ago, and she hasn't found it yet.",
+    "options": [
+      "loses",
+      "has lost",
+      "lost",
+      "have lost"
+    ],
+    "answer": "C",
+    "explanation": "two days ago（兩天前）是明確的過去時間點，要用過去簡單式 lost；後半句 hasn't found it yet（到現在還沒找到）才用現在完成式表示持續到現在的狀態。現在完成式不能和 ago、yesterday 這類明確的過去時間連用。",
+    "hints": [
+      "句中哪一個時間詞告訴你錢包是什麼時候掉的？",
+      "現在完成式可以和 ago 這種明確的過去時間一起用嗎？"
+    ],
+    "wrong": {
+      "B": "看到後半句用現在完成式就跟著用，但 two days ago 是明確的過去時間，不能和現在完成式一起用。",
+      "D": "不但和 two days ago 衝突，主詞 Tina 是單數也不能用 have。",
+      "A": "沒注意到 two days ago 表示過去，用了現在簡單式。"
+    }
+  },
+  {
+    "id": "EN-9A-1-34",
+    "exam_part": null,
+    "unit": "EN-9A-1",
+    "concept": "present-perfect",
+    "difficulty": 2,
+    "stem": "So far, Ms. Huang ＿＿＿ five storybooks for children.",
+    "options": [
+      "has written",
+      "writes",
+      "have written",
+      "is written"
+    ],
+    "answer": "A",
+    "explanation": "So far（到目前為止）表示從過去累積到現在的結果，要用現在完成式 have/has + p.p.。主詞 Ms. Huang 是單數，write 的過去分詞是 written，所以是 has written（到目前已經寫了五本）。",
+    "hints": [
+      "So far 是「到目前為止」，常和哪一種時態一起出現？",
+      "主詞是一個人，要用 have 還是 has？write 的過去分詞是什麼？"
+    ],
+    "wrong": {
+      "C": "時態對了，但主詞 Ms. Huang 是單數，助動詞要用 has。",
+      "B": "沒注意到 So far（到目前為止）是現在完成式的訊號，用了現在簡單式。",
+      "D": "把被動語態和現在完成式搞混了；黃老師是寫書的人，不是被寫的。"
+    }
+  },
+  {
+    "id": "EN-9A-1-35",
+    "exam_part": null,
+    "unit": "EN-9A-1",
+    "concept": "present-perfect",
+    "difficulty": 3,
+    "stem": "Grandpa: Welcome to Tainan, Max! Is this your first visit?\nMax: No, Grandpa. I (1)＿＿＿ here twice before. My first trip (2)＿＿＿ in 2022, when I came with my class.\nGrandpa: Then let's go somewhere new this time.\n\nWhich is the best choice for (1) and (2)?",
+    "options": [
+      "went; has been",
+      "have been; was",
+      "have been; has been",
+      "have gone; was"
+    ],
+    "answer": "B",
+    "explanation": "(1) twice before（以前來過兩次）說的是到現在為止的經驗，「曾經到過某地」要用 have been（have gone 是去了還沒回來）。(2) in 2022 是明確的過去時間，要用過去簡單式 was。所以是 have been; was。",
+    "hints": [
+      "(1)「去過、已經回來」和「去了還沒回來」分別要用什麼？",
+      "(2) 句中的 in 2022 是明確的過去時間，還是到現在為止的一段時間？"
+    ],
+    "wrong": {
+      "D": "(1) have gone 表示「去了還沒回來」，Max 說的是以前來過、已經回去的經驗，要用 have been。",
+      "C": "(1) 對了，但 (2) 有 in 2022 這個明確的過去時間，要用過去式 was，不能用現在完成式。",
+      "A": "(1) twice before 是到現在為止的經驗次數，要用現在完成式；(2) 有過去時間 in 2022，用 has been 也不對。"
+    }
+  },
+  {
+    "id": "EN-9A-1-36",
+    "exam_part": null,
+    "unit": "EN-9A-1",
+    "concept": "since-for",
+    "difficulty": 1,
+    "stem": "We haven't seen Aunt Mei ＿＿＿ last Christmas. We miss her a lot.",
+    "options": [
+      "ago",
+      "for",
+      "in",
+      "since"
+    ],
+    "answer": "D",
+    "explanation": "last Christmas（去年聖誕節）是一個過去的時間點，現在完成式要表示「從那時一直到現在都沒見到」，時間點前面用 since。記法：since + 時間點，for + 一段時間。",
+    "hints": [
+      "last Christmas 是「一個時間點」還是「一段時間」？",
+      "表示「自從某個時間點以來」要用哪一個字？"
+    ],
+    "wrong": {
+      "B": "for 後面要接一段時間（例如 two months），last Christmas 是一個時間點。",
+      "A": "ago 要放在一段時間的後面（例如 two years ago），而且不能和現在完成式連用。",
+      "C": "in last Christmas 不合文法；這句要表示「從去年聖誕節到現在」，要用表示起點的字。"
+    }
+  },
+  {
+    "id": "EN-9A-1-37",
+    "exam_part": null,
+    "unit": "EN-9A-1",
+    "concept": "since-for",
+    "difficulty": 2,
+    "stem": "Ben ＿＿＿ a teacher since 2016, and he still loves his job.",
+    "options": [
+      "was",
+      "has become",
+      "is",
+      "has been"
+    ],
+    "answer": "D",
+    "explanation": "since 2016 表示「從 2016 年一直到現在」，要用現在完成式。「當老師」是持續的狀態，要用 be 動詞的完成式 has been。become（成為）是瞬間動作，不能和 since 連用來表示持續。",
+    "hints": [
+      "since 2016 告訴你這件事從什麼時候持續到什麼時候？",
+      "「成為老師」是一瞬間的事，「當老師」是持續的狀態，哪一個能和 since 一起用？"
+    ],
+    "wrong": {
+      "B": "become（變成）是一下子就完成的動作，不能和 since 這種表示持續的時間連用；要表示「當老師當到現在」要用 be 動詞。",
+      "A": "since 2016 表示從 2016 年一直到現在，要用現在完成式，不能用過去式。",
+      "C": "現在簡單式 is 不能和 since 2016 一起表示「持續到現在」的時間。"
+    }
+  },
+  {
+    "id": "EN-9A-1-38",
+    "exam_part": null,
+    "unit": "EN-9A-1",
+    "concept": "since-for",
+    "difficulty": 2,
+    "stem": "A: How long have you lived in Taipei?\nB: ＿＿＿",
+    "options": [
+      "For three years.",
+      "In three years.",
+      "Three years ago.",
+      "Last year."
+    ],
+    "answer": "A",
+    "explanation": "How long 問的是「持續多久」，現在完成式的問句要用 for + 一段時間（或 since + 時間點）回答。For three years. 表示「已經住了三年」。",
+    "hints": [
+      "How long 問的是「什麼時候」還是「多久」？",
+      "回答「到現在持續多久」，要用哪一個介系詞加上一段時間？"
+    ],
+    "wrong": {
+      "C": "ago 回答的是「什麼時候」，不是「到現在多久了」；How long 要用 for 或 since 回答。",
+      "B": "In three years 表示「三年後」，是未來的時間，不能回答已經住了多久。",
+      "D": "Last year 是一個時間點，用來回答 When 的問句，不能回答 How long。"
+    }
+  },
+  {
+    "id": "EN-9A-1-39",
+    "exam_part": null,
+    "unit": "EN-9A-1",
+    "concept": "since-for",
+    "difficulty": 3,
+    "stem": "Amy's family moved to Hualien in 2020. Two years later, they got a dog and named him Max. Amy started junior high school in 2023, and the next year she joined the school tennis team. She still plays tennis with the team and walks Max every evening.\n\nIt is 2026 now. Which is TRUE?",
+    "options": [
+      "Amy has lived in Hualien since 2022.",
+      "Amy has been on the tennis team for three years.",
+      "Amy has had Max for four years.",
+      "Amy's family has had Max since 2020."
+    ],
+    "answer": "C",
+    "explanation": "搬到花蓮是 2020 年；Two years later（兩年後）是 2022 年養了 Max，到 2026 年是四年，所以 Amy has had Max for four years 正確。網球隊是 2023 年的下一年（2024 年）加入，到現在是兩年。",
+    "hints": [
+      "先把每件事發生的年份寫下來：搬家、養狗、上國中、加入網球隊。",
+      "Two years later 和 the next year 各是以哪一年為基準？",
+      "再用 2026 年去算每件事到現在幾年，看哪一個選項對得上。"
+    ],
+    "wrong": {
+      "A": "把養狗的年份 2022 當成搬家的年份；文章說 2020 年就搬到花蓮了。",
+      "B": "the next year 是 2023 年的下一年，也就是 2024 年，到 2026 年是兩年，不是三年。",
+      "D": "Two years later 是搬家兩年後（2022 年）才養狗，2020 年是搬家的時間。"
+    }
+  },
+  {
+    "id": "EN-9A-1-40",
+    "exam_part": null,
+    "unit": "EN-9A-1",
+    "concept": "dialogue-response",
+    "difficulty": 1,
+    "stem": "A: Has Peter come back from Japan yet?\nB: ＿＿＿ He got home last night.",
+    "options": [
+      "Yes, he is.",
+      "Yes, he has.",
+      "Yes, he did.",
+      "No, he hasn't."
+    ],
+    "answer": "B",
+    "explanation": "問句是現在完成式 Has Peter come back...?，簡答要用 Yes, he has. 或 No, he hasn't.。B 後面說 He got home last night.（他昨晚就到家了），表示已經回來了，所以回答肯定的簡答。",
+    "hints": [
+      "問句是用哪一個助動詞開頭的？簡答要用同一個助動詞。",
+      "B 的第二句話說 Peter 什麼時候到家？那他回來了沒？"
+    ],
+    "wrong": {
+      "D": "B 接著說他昨晚已經到家了，表示已經回來，不能回答 No。",
+      "C": "問句用 Has 開頭，簡答要用 has 回答，不能用 did。",
+      "A": "問句的助動詞是 Has 不是 Is，簡答要配合問句。"
+    }
+  },
+  {
+    "id": "EN-9A-1-41",
+    "exam_part": null,
+    "unit": "EN-9A-1",
+    "concept": "dialogue-response",
+    "difficulty": 2,
+    "stem": "A: Oh no, I can't find my English book anywhere!\nB: ＿＿＿\nA: Yes, I've looked there twice. It isn't there.",
+    "options": [
+      "When did you last use it?",
+      "Have you checked your bag?",
+      "Who has borrowed it from you?",
+      "How long have you had it?"
+    ],
+    "answer": "B",
+    "explanation": "A 最後說 Yes, I've looked there twice.（對，我已經找過那裡兩次了）。用 Yes 回答表示 B 問的是 Yes/No 問句，there 表示 B 提到了一個地方，所以 B 是在建議 A 去某處找：Have you checked your bag?（你找過你的書包了嗎？）。",
+    "hints": [
+      "看 A 的最後一句：用 Yes 回答，表示 B 問的是哪一種問句？",
+      "A 說的 there 指的是一個地方，B 的話裡應該要提到什麼？"
+    ],
+    "wrong": {
+      "C": "Who 開頭的問句要回答人，不能用 Yes 回答，也沒有提到地方讓 A 說 there。",
+      "A": "When 問的是時間，A 不會用 Yes, I've looked there 回答。",
+      "D": "問擁有這本書多久要回答一段時間，不能用 Yes 和 there 回答。"
+    }
+  },
+  {
+    "id": "EN-9A-1-42",
+    "exam_part": null,
+    "unit": "EN-9A-1",
+    "concept": "dialogue-response",
+    "difficulty": 2,
+    "stem": "A: Sorry I'm late. Have you waited long?\nB: ＿＿＿ I arrived only a minute ago, too.",
+    "options": [
+      "Yes, for an hour.",
+      "You're welcome.",
+      "No, not long.",
+      "Here you are."
+    ],
+    "answer": "C",
+    "explanation": "A 為遲到道歉，問 Have you waited long?（你等很久了嗎？）。B 後面說 I arrived only a minute ago, too.（我也才剛到一分鐘），表示沒有等很久，所以回答 No, not long.（不，沒多久）。",
+    "hints": [
+      "A 問的是什麼？",
+      "B 的第二句話說自己什麼時候到的？那他等很久了嗎？"
+    ],
+    "wrong": {
+      "A": "B 接著說自己也是一分鐘前才到，所以不可能已經等了一個小時。",
+      "B": "You're welcome 是回應別人道謝的話，A 是在道歉並詢問，不是說謝謝。",
+      "D": "Here you are 是把東西交給別人時說的，和等了多久無關。"
+    }
+  },
+  {
+    "id": "EN-9A-1-43",
+    "exam_part": null,
+    "unit": "EN-9A-1",
+    "concept": "reading-detail",
+    "difficulty": 1,
+    "stem": "Dear Mom,\nI've fed the cat and watered the plants. I haven't washed the dishes yet because I have to go to piano class now. I'll wash them when I get back.\nLove,\nElla\n\nWhat does Ella still need to do?",
+    "options": [
+      "Give the cat its food",
+      "Clean the bowls and plates",
+      "Give water to the plants",
+      "Cook dinner for the family"
+    ],
+    "answer": "B",
+    "explanation": "Ella 說 I've fed the cat and watered the plants（已經餵貓、澆花了），但 I haven't washed the dishes yet（還沒洗碗），要上完鋼琴課回來再洗。所以她還要做的是把碗盤洗乾淨。",
+    "hints": [
+      "找出信裡用 have/has + p.p. 說「已經做了」的事。",
+      "haven't ... yet 表示哪一件事還沒做？"
+    ],
+    "wrong": {
+      "A": "信中 I've fed the cat 表示已經餵過貓了。",
+      "C": "信中 I've watered the plants 表示已經澆過花了。",
+      "D": "信中沒有提到煮晚餐，Ella 回來後要做的是另一件事。"
+    }
+  },
+  {
+    "id": "EN-9A-1-44",
+    "exam_part": null,
+    "unit": "EN-9A-1",
+    "concept": "reading-detail",
+    "difficulty": 2,
+    "stem": "I started working as a volunteer at the city zoo last spring. Every Saturday, I help the workers feed the animals. So far, I've fed elephants, monkeys, and zebras. I've never fed the lions because only the workers are allowed to do that. Next month, I'm going to help take care of a new baby giraffe.\n\nWhich is TRUE about the writer?",
+    "options": [
+      "The writer helps at the zoo once a week.",
+      "The writer has fed the lions a few times.",
+      "The writer started helping at the zoo last winter.",
+      "The writer has taken care of a baby giraffe."
+    ],
+    "answer": "A",
+    "explanation": "文中說 Every Saturday, I help the workers...（每個星期六去幫忙），換句話說就是一週去動物園幫忙一次。作者從來沒餵過獅子，照顧小長頸鹿是下個月的事，開始當志工是去年春天。",
+    "hints": [
+      "Every Saturday 換一種說法，是一週幾次？",
+      "注意 never、next month、last spring 這些表示時間和次數的字。"
+    ],
+    "wrong": {
+      "B": "文中說 I've never fed the lions，作者從來沒有餵過獅子。",
+      "D": "照顧小長頸鹿是 Next month（下個月）才要做的事，還沒有做過。",
+      "C": "文中說作者是 last spring（去年春天）開始當志工的。"
+    }
+  },
+  {
+    "id": "EN-9A-1-45",
+    "exam_part": null,
+    "unit": "EN-9A-1",
+    "concept": "reading-detail",
+    "difficulty": 3,
+    "stem": "Mia: Have you seen the movie Star Road yet?\nOwen: Not yet. I've wanted to see it since it came out, but I've had a lot of exams.\nMia: I've seen it twice. It's my favorite movie this year!\nOwen: My last exam is this Friday. After that, I'll be free.\nMia: Then let's go together on Saturday. I don't mind seeing it again.\n\nWhich is TRUE?",
+    "options": [
+      "Owen has already seen the movie once.",
+      "Mia doesn't want to see the movie again.",
+      "Mia plans to see it a third time.",
+      "Owen's exams ended last Friday."
+    ],
+    "answer": "C",
+    "explanation": "Mia 說 I've seen it twice（已經看過兩次），又約 Owen 星期六一起去看、說不介意再看一次，所以這會是她第三次看。Owen 還沒看過（Not yet），他的考試要到這個星期五才結束。",
+    "hints": [
+      "Mia 已經看過幾次了？星期六她打算做什麼？",
+      "Owen 回答 Not yet 是什麼意思？他的最後一科考試是哪一天？"
+    ],
+    "wrong": {
+      "A": "Owen 回答 Not yet，表示他還沒看過這部電影。",
+      "D": "Owen 說最後一科是 this Friday（這個星期五），考試還沒結束。",
+      "B": "Mia 說 I don't mind seeing it again（不介意再看一次），還主動約 Owen 去看。"
+    }
+  },
+  {
+    "id": "EN-9A-2-31",
+    "exam_part": null,
+    "unit": "EN-9A-2",
+    "concept": "passive-voice",
+    "difficulty": 1,
+    "stem": "This cake was ＿＿＿ by my grandma this morning. Try a piece!",
+    "options": [
+      "baked",
+      "bake",
+      "bakes",
+      "baking"
+    ],
+    "answer": "A",
+    "explanation": "蛋糕是「被」奶奶烤出來的，要用被動語態 be + 過去分詞，bake 的過去分詞是 baked。was baked by my grandma 意思是「被奶奶烤好的」。",
+    "hints": [
+      "蛋糕是自己烤東西，還是被人烤？",
+      "被動語態的形式是 be 動詞加上動詞的哪一種形式？"
+    ],
+    "wrong": {
+      "B": "was 後面接原形動詞不合文法；被動語態是 be + 過去分詞。",
+      "D": "was baking 是過去進行式，表示主詞正在烤東西；蛋糕不會自己烤東西，而且後面有 by my grandma。",
+      "C": "be 動詞後面不能接加 s 的動詞。"
+    }
+  },
+  {
+    "id": "EN-9A-2-32",
+    "exam_part": null,
+    "unit": "EN-9A-2",
+    "concept": "passive-voice",
+    "difficulty": 1,
+    "stem": "The menu in this restaurant ＿＿＿ in English and Chinese, so visitors from other countries can read it.",
+    "options": [
+      "is written",
+      "writes",
+      "wrote",
+      "is writing"
+    ],
+    "answer": "A",
+    "explanation": "菜單是「被寫成」英文和中文的，要用被動語態 be + p.p.。說的是現在的情況，主詞 The menu 是單數，所以用 is written。",
+    "hints": [
+      "菜單會自己寫字嗎？",
+      "說的是現在的狀況，主詞是單數，be 動詞要用哪一個？"
+    ],
+    "wrong": {
+      "B": "菜單不會自己寫字，菜單是被寫成英文和中文的，要用被動語態。",
+      "D": "is writing 表示「正在寫」，菜單不會寫東西。",
+      "C": "這是主動的過去式，菜單不會寫字；而且整句在說現在的情況。"
+    }
+  },
+  {
+    "id": "EN-9A-2-33",
+    "exam_part": null,
+    "unit": "EN-9A-2",
+    "concept": "passive-voice",
+    "difficulty": 2,
+    "stem": "The baby panda was born last month. She ＿＿＿ Coco by the zoo workers.",
+    "options": [
+      "was named",
+      "was naming",
+      "named",
+      "has named"
+    ],
+    "answer": "A",
+    "explanation": "熊貓寶寶是「被」動物園人員取名為 Coco 的，要用被動語態；取名發生在過去（上個月出生之後），所以用 was named（被命名為）。by the zoo workers 說明是誰取的名字。",
+    "hints": [
+      "是熊貓幫別人取名字，還是別人幫熊貓取名字？",
+      "by the zoo workers 這個片語通常出現在哪一種句子裡？"
+    ],
+    "wrong": {
+      "C": "主動語態表示熊貓去替別人取名字；熊貓是被取名的。",
+      "B": "was naming 是過去進行式，表示熊貓正在幫別人取名。",
+      "D": "has named 是主動的現在完成式，熊貓不會取名字；後面的 by the zoo workers 也表示這是被動句。"
+    }
+  },
+  {
+    "id": "EN-9A-2-34",
+    "exam_part": null,
+    "unit": "EN-9A-2",
+    "concept": "passive-voice",
+    "difficulty": 2,
+    "stem": "＿＿＿ these photos taken by your father? They look great!",
+    "options": [
+      "Have",
+      "Was",
+      "Did",
+      "Were"
+    ],
+    "answer": "D",
+    "explanation": "taken 是 take 的過去分詞，照片是「被」爸爸拍的，要用被動語態 be + p.p.。被動句改成問句時把 be 動詞移到句首；主詞 these photos 是複數，說的是過去拍的照片，所以用 Were。",
+    "hints": [
+      "taken 是動詞的哪一種形式？要和哪一類動詞搭配？",
+      "主詞 these photos 是單數還是複數？"
+    ],
+    "wrong": {
+      "C": "taken 是過去分詞，要和 be 動詞組成被動；Did 後面要接原形動詞 take。",
+      "B": "時態對了，但主詞 these photos 是複數，be 動詞要用 were。",
+      "A": "Have these photos taken 不是被動問句；被動語態要用 be 動詞 + p.p.。"
+    }
+  },
+  {
+    "id": "EN-9A-2-35",
+    "exam_part": null,
+    "unit": "EN-9A-2",
+    "concept": "passive-voice",
+    "difficulty": 3,
+    "stem": "The old gym at our school (1)＿＿＿ in 1985. It was too small for our 2,000 students, so last year the principal (2)＿＿＿ to build a new one. We'll start using the new gym next month, and we can't wait!\n\nWhich is the best choice for (1) and (2)?",
+    "options": [
+      "built; was decided",
+      "was built; decided",
+      "was built; was decided",
+      "is built; decided"
+    ],
+    "answer": "B",
+    "explanation": "(1) 體育館是「被」蓋的，in 1985 是過去，要用過去式被動 was built。(2) 主詞 the principal（校長）是自己做決定的人，要用主動語態，last year 是過去，所以用 decided。",
+    "hints": [
+      "(1) 體育館會自己蓋房子嗎？in 1985 是什麼時候？",
+      "(2) 是校長做決定，還是校長被決定？"
+    ],
+    "wrong": {
+      "A": "兩格剛好弄反了：(1) 體育館是被建造的要用被動；(2) 校長是做決定的人，不能用被動。",
+      "C": "(1) 對了，但 (2) 主詞 the principal 是主動做決定的人，用 was decided 會變成「校長被決定」。",
+      "D": "(1) in 1985 是過去的時間，要用過去式被動 was built。"
+    }
+  },
+  {
+    "id": "EN-9A-2-36",
+    "exam_part": null,
+    "unit": "EN-9A-2",
+    "concept": "passive-tense",
+    "difficulty": 1,
+    "stem": "The test results will ＿＿＿ to your parents next Monday.",
+    "options": [
+      "sending",
+      "send",
+      "sent",
+      "be sent"
+    ],
+    "answer": "D",
+    "explanation": "考試成績是「被」寄給家長的，要用被動；next Monday 是未來，未來式被動是 will be + p.p.，send 的過去分詞是 sent，所以是 will be sent。",
+    "hints": [
+      "考試成績會自己寄東西嗎？",
+      "未來式的被動語態，will 後面要先接哪個字？"
+    ],
+    "wrong": {
+      "B": "will send 是主動，表示成績會去寄東西；成績是被寄出去的。",
+      "C": "will 後面要接原形，不能直接接過去分詞 sent，要先加 be。",
+      "A": "will 後面不能接 V-ing，而且成績是被寄的，要用被動。"
+    }
+  },
+  {
+    "id": "EN-9A-2-37",
+    "exam_part": null,
+    "unit": "EN-9A-2",
+    "concept": "passive-tense",
+    "difficulty": 2,
+    "stem": "Plastic bottles should ＿＿＿ into the blue trash can, not the green one.",
+    "options": [
+      "be putting",
+      "put",
+      "putted",
+      "be put"
+    ],
+    "answer": "D",
+    "explanation": "塑膠瓶是「被」放進藍色垃圾桶的，要用被動；助動詞 should 後面的被動是 should be + p.p.，put 的過去分詞還是 put，所以是 should be put。",
+    "hints": [
+      "瓶子會自己把東西放進垃圾桶嗎？",
+      "助動詞後面的被動語態要先加哪個字？put 的過去分詞長什麼樣子？"
+    ],
+    "wrong": {
+      "B": "should put 是主動，表示塑膠瓶要去放東西；瓶子是被放進垃圾桶的。",
+      "A": "be putting 是進行的形式，不是被動語態；被動要用 be + 過去分詞。",
+      "C": "put 是不規則動詞，三態都是 put，沒有 putted 這個字；而且前面還少了 be。"
+    }
+  },
+  {
+    "id": "EN-9A-2-38",
+    "exam_part": null,
+    "unit": "EN-9A-2",
+    "concept": "passive-tense",
+    "difficulty": 2,
+    "stem": "More than two hundred people ＿＿＿ to Uncle Tim's wedding last Saturday.",
+    "options": [
+      "was invited",
+      "invited",
+      "are invited",
+      "were invited"
+    ],
+    "answer": "D",
+    "explanation": "兩百多人是「被」邀請去婚禮的客人，要用被動語態；last Saturday 是過去，主詞 people 是複數，所以用 were invited。",
+    "hints": [
+      "這些人是邀請別人，還是被邀請？",
+      "注意時間 last Saturday，以及主詞 people 是單數還是複數。"
+    ],
+    "wrong": {
+      "B": "主動式表示這些人去邀請別人；他們是被邀請的客人，而且後面沒有受詞。",
+      "A": "時態對了，但主詞 people 是複數，be 動詞要用 were。",
+      "C": "last Saturday 是過去的時間，be 動詞要用過去式。"
+    }
+  },
+  {
+    "id": "EN-9A-2-39",
+    "exam_part": null,
+    "unit": "EN-9A-2",
+    "concept": "passive-tense",
+    "difficulty": 3,
+    "stem": "Notice\nThe roof of the music room (1)＿＿＿ by the typhoon last week. Workers are fixing it now, and it (2)＿＿＿ by next Friday. Until then, music classes will be in the library.\n\nWhich is the best choice for (1) and (2)?",
+    "options": [
+      "was damaged; was repaired",
+      "is damaged; will repair",
+      "was damaged; will be repaired",
+      "damaged; will repair"
+    ],
+    "answer": "C",
+    "explanation": "(1) 屋頂是「被」颱風損壞的，last week 是過去，用 was damaged。(2) 工人現在正在修，by next Friday（下週五以前）是未來，屋頂是被修好的，要用未來式被動 will be repaired。",
+    "hints": [
+      "屋頂是自己做這些動作，還是被做這些動作？",
+      "(1) 和 (2) 的時間分別是 last week 和 by next Friday，各要用什麼時態？"
+    ],
+    "wrong": {
+      "D": "屋頂是被颱風弄壞、被工人修理的，兩格都要用被動。",
+      "A": "(1) 對了，但工人現在還在修，by next Friday 是未來，(2) 要用未來式被動。",
+      "B": "(1) last week 是過去，要用 was；(2) 屋頂不會自己修東西，要用被動。"
+    }
+  },
+  {
+    "id": "EN-9A-2-40",
+    "exam_part": null,
+    "unit": "EN-9A-2",
+    "concept": "active-passive",
+    "difficulty": 1,
+    "stem": "My mom ＿＿＿ dinner for us every evening. Her soup is the best!",
+    "options": [
+      "is cooked",
+      "was cooked",
+      "cooks",
+      "cooked by"
+    ],
+    "answer": "C",
+    "explanation": "主詞 My mom 是做「煮」這個動作的人，後面有受詞 dinner，要用主動語態；every evening 表示習慣，主詞是第三人稱單數，所以用 cooks。",
+    "hints": [
+      "是媽媽煮晚餐，還是媽媽被煮？",
+      "every evening 表示習慣，要用什麼時態？"
+    ],
+    "wrong": {
+      "A": "媽媽是煮飯的人，不是被煮的，要用主動語態。",
+      "B": "媽媽是主動煮晚餐的人；而且 every evening 是習慣，要用現在式。",
+      "D": "cooked by 後面要接做動作的人，這裡主詞就是煮飯的媽媽，句子不通。"
+    }
+  },
+  {
+    "id": "EN-9A-2-41",
+    "exam_part": null,
+    "unit": "EN-9A-2",
+    "concept": "active-passive",
+    "difficulty": 2,
+    "stem": "Students use this room for club meetings. → This room ＿＿＿ for club meetings.",
+    "options": [
+      "uses",
+      "is used",
+      "is using",
+      "was used"
+    ],
+    "answer": "B",
+    "explanation": "主動句 Students use this room 改成被動，受詞 this room 變成主詞，動詞改成 be + p.p.；原句是現在簡單式，主詞 This room 是單數，所以是 is used（by students 可以省略）。",
+    "hints": [
+      "換成 This room 當主詞後，房間是使用的人還是被使用的東西？",
+      "原句的時態是什麼？改成被動時時態要不要變？"
+    ],
+    "wrong": {
+      "A": "改成以 This room 當主詞後，房間是被使用的，要用被動。",
+      "C": "is using 是現在進行式，表示房間正在使用東西。",
+      "D": "原句是現在簡單式 use，改成被動時時態不能變，不能改成過去式。"
+    }
+  },
+  {
+    "id": "EN-9A-2-42",
+    "exam_part": null,
+    "unit": "EN-9A-2",
+    "concept": "active-passive",
+    "difficulty": 2,
+    "stem": "A: Who ＿＿＿ this beautiful picture?\nB: My brother did. He's in the art club.",
+    "options": [
+      "is painted",
+      "painted",
+      "was painted",
+      "paints"
+    ],
+    "answer": "B",
+    "explanation": "Who 在這裡是主詞，問「誰畫了這幅畫」，畫畫的人是主動做動作，要用主動語態；B 用 My brother did. 回答，did 表示過去式，所以用 painted。",
+    "hints": [
+      "問句的主詞 Who 是畫畫的人，還是被畫的東西？",
+      "B 回答時用了 did，代表問句是什麼時態？"
+    ],
+    "wrong": {
+      "C": "Who 是畫畫的人，要用主動；B 用 did 回答，也表示問句是主動的過去式。",
+      "A": "Who 是做動作的人，不能用被動；而且 B 用 did 回答，表示是過去式。",
+      "D": "B 用 did 回答，表示問的是過去發生的事，不能用現在式。"
+    }
+  },
+  {
+    "id": "EN-9A-2-43",
+    "exam_part": null,
+    "unit": "EN-9A-2",
+    "concept": "reading-detail",
+    "difficulty": 1,
+    "stem": "Notice\nThis park is cleaned every Monday from 8 a.m. to 11 a.m. During that time, dogs are not allowed in the park. Thank you for your help!\n\nWhen can't people bring their dogs into the park?",
+    "options": [
+      "On Monday mornings",
+      "Every afternoon",
+      "On Sunday nights",
+      "On weekend mornings"
+    ],
+    "answer": "A",
+    "explanation": "公告說公園每週一早上 8 點到 11 點打掃，這段時間 dogs are not allowed（不准帶狗進入），所以星期一早上不能帶狗進公園。",
+    "hints": [
+      "公園什麼時候打掃？",
+      "8 a.m. to 11 a.m. 是一天中的哪個時段？"
+    ],
+    "wrong": {
+      "C": "公園打掃是星期一，不是星期日晚上。",
+      "B": "打掃時間是早上 8 點到 11 點，下午不在禁止的時段。",
+      "D": "打掃是每個星期一，不是週末。"
+    }
+  },
+  {
+    "id": "EN-9A-2-44",
+    "exam_part": null,
+    "unit": "EN-9A-2",
+    "concept": "reading-detail",
+    "difficulty": 2,
+    "stem": "Sunny Bakery was opened by Mr. and Mrs. Ho in 2010. Its pineapple cakes are made by hand every morning, and they are usually sold out before noon. Many of them are bought by visitors as gifts. The bakery is closed on Tuesdays.\n\nIf you want to buy pineapple cakes at Sunny Bakery, when is the best time to go?",
+    "options": [
+      "On a Monday morning",
+      "On a Friday afternoon",
+      "On a Sunday evening",
+      "On a Tuesday morning"
+    ],
+    "answer": "A",
+    "explanation": "鳳梨酥每天早上手工做、通常中午前就賣光（sold out before noon），而且店在星期二公休。所以要在星期二以外的早上去，四個選項中只有星期一早上符合。",
+    "hints": [
+      "鳳梨酥通常什麼時候就賣完了？",
+      "這家店哪一天不營業？"
+    ],
+    "wrong": {
+      "D": "店每週二公休（closed on Tuesdays），星期二去買不到。",
+      "B": "鳳梨酥通常中午前就賣完了，下午去很可能買不到。",
+      "C": "晚上比下午更晚，鳳梨酥中午前就賣完了。"
+    }
+  },
+  {
+    "id": "EN-9A-2-45",
+    "exam_part": null,
+    "unit": "EN-9A-2",
+    "concept": "reading-detail",
+    "difficulty": 3,
+    "stem": "This teapot was made in China about 100 years ago. It was given to my great-grandfather by a friend before he came to Taiwan. Later, it was passed down to my grandmother, and she used it every day. When Grandma moved into a smaller house, the teapot was given to my mom. Now it is kept in a glass box in our living room, and it is only used on Chinese New Year.\n\nWhich is TRUE about the teapot?",
+    "options": [
+      "It was made in Taiwan about 100 years ago.",
+      "It is used every day in the writer's home.",
+      "It was bought by the writer's grandmother.",
+      "The writer's mom got it after Grandma moved."
+    ],
+    "answer": "D",
+    "explanation": "文中說 When Grandma moved into a smaller house, the teapot was given to my mom.（祖母搬到較小的房子時，茶壺給了作者的媽媽），所以作者的媽媽是在祖母搬家後得到茶壺的。茶壺是一百年前在中國做的、由朋友送給曾祖父，現在只在農曆新年使用。",
+    "hints": [
+      "把茶壺的主人依時間順序排出來：誰 → 誰 → 誰。",
+      "被動句 was given to 後面接的是收到東西的人。",
+      "現在茶壺放在哪裡？什麼時候才會用？"
+    ],
+    "wrong": {
+      "C": "茶壺是朋友送給曾祖父、再傳給祖母的，不是祖母買的。",
+      "B": "每天用茶壺的是以前的祖母；現在茶壺放在玻璃櫃裡，只有農曆新年才用。",
+      "A": "茶壺是一百年前在中國做的；Taiwan 是曾祖父後來來的地方。"
+    }
+  },
+  {
+    "id": "EN-9B-1-31",
+    "exam_part": null,
+    "unit": "EN-9B-1",
+    "concept": "relative-person",
+    "difficulty": 1,
+    "stem": "A pilot is a person ＿＿＿ flies airplanes.",
+    "options": [
+      "who",
+      "which",
+      "whose",
+      "where"
+    ],
+    "answer": "A",
+    "explanation": "先行詞 a person（人）在關係子句裡當主詞（這個人開飛機），要用關係代名詞 who。A pilot is a person who flies airplanes. 意思是「飛行員是開飛機的人」。",
+    "hints": [
+      "空格前面被說明的名詞是人還是事物？",
+      "空格後面直接接動詞 flies，關係代名詞在子句裡當什麼？"
+    ],
+    "wrong": {
+      "B": "先行詞 a person 是人，which 是用在事物或動物的。",
+      "C": "whose 後面要接名詞表示「……的」，這裡空格後直接接動詞 flies。",
+      "D": "where 用來說明地點，a person 是人。"
+    }
+  },
+  {
+    "id": "EN-9B-1-32",
+    "exam_part": null,
+    "unit": "EN-9B-1",
+    "concept": "relative-person",
+    "difficulty": 1,
+    "stem": "The boy ＿＿＿ we saw at the park yesterday is Sam's brother.",
+    "options": [
+      "which",
+      "where",
+      "who",
+      "whose"
+    ],
+    "answer": "C",
+    "explanation": "先行詞 The boy 是人，在關係子句 we saw ___ at the park 裡當 saw 的受詞（我們看到那個男孩），指人的關係代名詞用 who（也可以用 whom 或 that）。",
+    "hints": [
+      "先行詞 The boy 是人還是東西？",
+      "把子句還原成 we saw the boy at the park，男孩在子句裡是什麼角色？"
+    ],
+    "wrong": {
+      "A": "先行詞 The boy 是人，不能用 which。",
+      "D": "whose 後面要接名詞，這裡空格後面是主詞 we 和動詞 saw。",
+      "B": "where 是說明地點用的，而且子句 we saw ___ 缺的是 saw 的受詞（那個男孩）。"
+    }
+  },
+  {
+    "id": "EN-9B-1-33",
+    "exam_part": null,
+    "unit": "EN-9B-1",
+    "concept": "relative-person",
+    "difficulty": 2,
+    "stem": "I have a classmate ＿＿＿ mother is a famous singer.",
+    "options": [
+      "who",
+      "who's",
+      "whose",
+      "which"
+    ],
+    "answer": "C",
+    "explanation": "空格後面是名詞 mother，意思是「他的媽媽是有名的歌手」。表示「……的」要用所有格關係代名詞 whose，whose 後面一定接名詞。",
+    "hints": [
+      "空格後面接的是名詞還是動詞？",
+      "要表示「那位同學的媽媽」，要用哪一種形式的關係代名詞？"
+    ],
+    "wrong": {
+      "A": "空格後面是名詞 mother，要表示「他的媽媽」，who 後面不能直接接名詞再接動詞。",
+      "B": "who's 是 who is 的縮寫，放進去會變成 who is mother is，多了一個動詞。",
+      "D": "先行詞 a classmate 是人，而且這裡要表示「……的」。"
+    }
+  },
+  {
+    "id": "EN-9B-1-34",
+    "exam_part": null,
+    "unit": "EN-9B-1",
+    "concept": "relative-person",
+    "difficulty": 2,
+    "stem": "The girl won first prize. Her drawing is on the wall. → The girl ＿＿＿ won first prize.",
+    "options": [
+      "whose drawing is on the wall",
+      "whose her drawing is on the wall",
+      "which drawing is on the wall",
+      "who drawing is on the wall"
+    ],
+    "answer": "A",
+    "explanation": "第二句的 Her drawing（她的畫）指的是 the girl 的畫，合併時用所有格關係代名詞 whose 代替 Her：The girl whose drawing is on the wall won first prize.（畫掛在牆上的那個女孩得了第一名）。",
+    "hints": [
+      "第二句的 Her 指的是誰？",
+      "合併後要用什麼字代替 Her？代替之後 Her 還要留著嗎？"
+    ],
+    "wrong": {
+      "D": "who 不能直接接名詞 drawing；要表示「她的畫」要用所有格。",
+      "C": "先行詞 The girl 是人，而且這裡要表示所有格「她的」。",
+      "B": "whose 已經代替了 Her，後面不能再寫 her。"
+    }
+  },
+  {
+    "id": "EN-9B-1-35",
+    "exam_part": null,
+    "unit": "EN-9B-1",
+    "concept": "relative-person",
+    "difficulty": 3,
+    "stem": "Tina: Excuse me. I'm looking for a book (1)＿＿＿ can teach me how to make desserts.\nClerk: How about this one? It was written by a cook (2)＿＿＿ restaurant is very famous in Tainan.\nTina: Great! I'll take it.\n\nWhich is the best choice for (1) and (2)?",
+    "options": [
+      "which; whose",
+      "which; who",
+      "what; whose",
+      "who; whose"
+    ],
+    "answer": "A",
+    "explanation": "(1) 先行詞 a book 是事物，在子句中當主詞（這本書可以教我），用 which。(2) 空格後是名詞 restaurant，意思是「這位廚師的餐廳很有名」，要用所有格 whose。",
+    "hints": [
+      "(1) 空格前被說明的名詞是人還是東西？",
+      "(2) 空格後面直接接名詞 restaurant，要表示誰的餐廳？"
+    ],
+    "wrong": {
+      "D": "(2) 對了，但 (1) 先行詞 a book 是事物，不能用 who。",
+      "B": "(1) 對了，但 (2) 空格後面是名詞 restaurant，要表示「這位廚師的餐廳」，要用所有格。",
+      "C": "(1) what 不能當關係代名詞放在名詞 a book 後面。"
+    }
+  },
+  {
+    "id": "EN-9B-1-36",
+    "exam_part": null,
+    "unit": "EN-9B-1",
+    "concept": "relative-thing",
+    "difficulty": 1,
+    "stem": "Elephants are animals ＿＿＿ have long noses and big ears.",
+    "options": [
+      "which",
+      "where",
+      "whose",
+      "who"
+    ],
+    "answer": "A",
+    "explanation": "先行詞 animals（動物）屬於事物這一類，在子句中當主詞（動物有長鼻子），要用 which（也可以用 that）。",
+    "hints": [
+      "animals 是人還是事物？",
+      "空格後面接動詞 have，關係代名詞在子句裡當主詞還是所有格？"
+    ],
+    "wrong": {
+      "D": "先行詞 animals 是動物，不是人，不用 who。",
+      "C": "whose 後面要接名詞，這裡空格後直接接動詞 have。",
+      "B": "where 用來說明地點，animals 不是地點。"
+    }
+  },
+  {
+    "id": "EN-9B-1-37",
+    "exam_part": null,
+    "unit": "EN-9B-1",
+    "concept": "relative-thing",
+    "difficulty": 2,
+    "stem": "This is the park ＿＿＿ I visited with my class last week.",
+    "options": [
+      "where",
+      "whose",
+      "who",
+      "which"
+    ],
+    "answer": "D",
+    "explanation": "先行詞 the park 雖然是地點，但子句 I visited ___ 缺少 visited 的受詞（我參觀了這座公園），所以要用關係代名詞 which。where 只能在子句已經完整、表示「在那裡」時使用。",
+    "hints": [
+      "把子句還原成 I visited ___ with my class，visited 後面缺了什麼？",
+      "能在子句裡當受詞的，是關係代名詞還是表示地點的字？"
+    ],
+    "wrong": {
+      "A": "visited 後面缺了受詞，要用能當受詞的關係代名詞；where 要用在子句已經完整的時候。",
+      "C": "先行詞 the park 是地方，不是人。",
+      "B": "whose 後面要接名詞，這裡空格後面是主詞 I 和動詞 visited。"
+    }
+  },
+  {
+    "id": "EN-9B-1-38",
+    "exam_part": null,
+    "unit": "EN-9B-1",
+    "concept": "relative-thing",
+    "difficulty": 2,
+    "stem": "The shoes ＿＿＿ on sale are only NT$500 this week.",
+    "options": [
+      "which is",
+      "who are",
+      "which are",
+      "they are"
+    ],
+    "answer": "C",
+    "explanation": "先行詞 The shoes（鞋子）是事物，用 which；鞋子是複數，子句的 be 動詞要用 are。The shoes which are on sale 意思是「正在特價的鞋子」。",
+    "hints": [
+      "shoes 是人還是物？是單數還是複數？",
+      "關係子句的動詞要和誰一致？"
+    ],
+    "wrong": {
+      "A": "先行詞 The shoes 是複數，關係子句的動詞要用複數。",
+      "B": "先行詞 shoes 是物品，不能用 who。",
+      "D": "they are 沒有連接的作用，句子會變成兩個動詞卻沒有連接詞。"
+    }
+  },
+  {
+    "id": "EN-9B-1-39",
+    "exam_part": null,
+    "unit": "EN-9B-1",
+    "concept": "relative-thing",
+    "difficulty": 3,
+    "stem": "Lily wrote four sentences in her diary. Only one of them is correct. Which one is it?",
+    "options": [
+      "The cake who Mom made yesterday was sweet.",
+      "The cake which Mom made yesterday was sweet.",
+      "The cake which Mom made yesterday were sweet.",
+      "The cake which Mom made it yesterday was sweet."
+    ],
+    "answer": "B",
+    "explanation": "先行詞 The cake 是事物，用 which；which 在子句中已經當 made 的受詞，後面不能再寫 it；整句的主詞是單數 The cake，主要動詞用 was。四句中只有 The cake which Mom made yesterday was sweet. 完全正確。",
+    "hints": [
+      "先找出整句的主詞和主要動詞。",
+      "which 在子句 Mom made ___ 裡當什麼？後面還需要 it 嗎？",
+      "主要動詞要和哪一個名詞一致？"
+    ],
+    "wrong": {
+      "D": "which 已經代替 the cake 當 made 的受詞，後面不能再加 it。",
+      "A": "先行詞 The cake 是事物，不能用 who。",
+      "C": "整句的主詞是單數 The cake，主要動詞要用 was。"
+    }
+  },
+  {
+    "id": "EN-9B-1-40",
+    "exam_part": null,
+    "unit": "EN-9B-1",
+    "concept": "relative-agreement",
+    "difficulty": 1,
+    "stem": "The students ＿＿＿ in the music club practice every Friday.",
+    "options": [
+      "who are",
+      "who is",
+      "they are",
+      "which are"
+    ],
+    "answer": "A",
+    "explanation": "先行詞 The students 是人，用 who；who 代替的是複數的 students，子句的動詞要和 students 一致，所以用 are。整句意思是「音樂社的學生每週五練習」。",
+    "hints": [
+      "先行詞是人還是物？",
+      "who 代替的名詞是單數還是複數？"
+    ],
+    "wrong": {
+      "B": "who 代替的是 The students（複數），be 動詞要用 are。",
+      "D": "先行詞 students 是人，不能用 which。",
+      "C": "they are 沒有連接作用，句子會有兩個動詞卻沒有連接詞。"
+    }
+  },
+  {
+    "id": "EN-9B-1-41",
+    "exam_part": null,
+    "unit": "EN-9B-1",
+    "concept": "relative-agreement",
+    "difficulty": 2,
+    "stem": "The letter ＿＿＿ to me last month had a photo in it.",
+    "options": [
+      "which my pen pal sent",
+      "who my pen pal sent",
+      "which my pen pal send",
+      "which my pen pal sends"
+    ],
+    "answer": "A",
+    "explanation": "先行詞 The letter 是事物，用 which；關係子句 my pen pal ___ to me last month 的主詞是 my pen pal，時間是 last month（上個月），要用過去式 sent。子句的動詞要配合子句自己的主詞和時間。",
+    "hints": [
+      "先行詞 The letter 是人還是物？",
+      "關係子句裡的時間詞是什麼？要用什麼時態？"
+    ],
+    "wrong": {
+      "D": "子句中有 last month（上個月），要用過去式。",
+      "B": "先行詞 The letter 是物品，不能用 who。",
+      "C": "子句的主詞 my pen pal 是單數，而且時間是過去，原形 send 不對。"
+    }
+  },
+  {
+    "id": "EN-9B-1-42",
+    "exam_part": null,
+    "unit": "EN-9B-1",
+    "concept": "relative-agreement",
+    "difficulty": 2,
+    "stem": "My uncle has two sons ＿＿＿ in Canada now.",
+    "options": [
+      "who live",
+      "which live",
+      "who living",
+      "who lives"
+    ],
+    "answer": "A",
+    "explanation": "先行詞 two sons（兩個兒子）是人，用 who；who 代替的是複數的 sons，所以子句動詞用原形 live，不加 s。My uncle has two sons who live in Canada now. 意思是「叔叔有兩個住在加拿大的兒子」。",
+    "hints": [
+      "who 代替的是 my uncle 還是 two sons？",
+      "這個名詞是單數還是複數？動詞要不要加 s？"
+    ],
+    "wrong": {
+      "D": "who 代替的是 two sons（複數），動詞不能加 s。",
+      "B": "先行詞 sons 是人，不能用 which。",
+      "C": "關係子句需要一個動詞，living 不能單獨當動詞。"
+    }
+  },
+  {
+    "id": "EN-9B-1-43",
+    "exam_part": null,
+    "unit": "EN-9B-1",
+    "concept": "reading-detail",
+    "difficulty": 1,
+    "stem": "Wanted: Cat Sitter\nWe need someone to take care of our cat from July 5 to July 10 while we are away. Our cat, Mimi, is a quiet cat that sleeps most of the day. Please call Mrs. Lee at 0933-123-456.\n\nWhat is Mrs. Lee looking for?",
+    "options": [
+      "A new cat for her children",
+      "Someone to care for her cat",
+      "A doctor for her sick cat",
+      "A new home for her old cat"
+    ],
+    "answer": "B",
+    "explanation": "標題 Wanted: Cat Sitter 和第一句 We need someone to take care of our cat 都說明李太太在找一個人，在她們不在家的 7 月 5 日到 10 日幫忙照顧貓。",
+    "hints": [
+      "標題 Wanted 後面寫的是她要找什麼？",
+      "第一句 We need someone... 要那個人做什麼事？"
+    ],
+    "wrong": {
+      "A": "Mimi 是她自己的貓，她不是要找一隻新貓。",
+      "C": "文中沒說貓生病，只說 Mimi 很安靜、常睡覺。",
+      "D": "她只需要 7 月 5 日到 10 日有人照顧貓，不是要把貓送走。"
+    }
+  },
+  {
+    "id": "EN-9B-1-44",
+    "exam_part": null,
+    "unit": "EN-9B-1",
+    "concept": "reading-detail",
+    "difficulty": 2,
+    "stem": "Club Day!\n- Nature Club: Do you love plants and animals? Join us!\n- Book Club: Do you enjoy reading stories and talking about them? Come and join us!\n- Robot Club: Do you want to build machines with computers? This club is for you!\n\nIvy loves storybooks and often tells her friends about the stories she has read. Her friend Ray likes making machines with his computer. Which clubs will Ivy and Ray probably join?",
+    "options": [
+      "Ivy: Robot Club; Ray: Book Club",
+      "Ivy: Book Club; Ray: Robot Club",
+      "Ivy: Book Club; Ray: Nature Club",
+      "Ivy: Nature Club; Ray: Robot Club"
+    ],
+    "answer": "B",
+    "explanation": "Ivy 喜歡故事書、常和朋友分享讀過的故事，符合 Book Club（喜歡讀故事、聊故事）；Ray 喜歡用電腦做機器，符合 Robot Club（想用電腦做機器）。",
+    "hints": [
+      "先看每個社團在找喜歡什麼的學生。",
+      "再把 Ivy 和 Ray 各自喜歡的事拿去比對。"
+    ],
+    "wrong": {
+      "D": "Ray 對了，但文中沒說 Ivy 喜歡動植物，她喜歡的是讀故事、分享故事。",
+      "C": "Ivy 對了，但 Ray 喜歡用電腦做機器，和自然社無關。",
+      "A": "把兩個人的興趣對調了；喜歡故事的是 Ivy，喜歡做機器的是 Ray。"
+    }
+  },
+  {
+    "id": "EN-9B-1-45",
+    "exam_part": null,
+    "unit": "EN-9B-1",
+    "concept": "reading-detail",
+    "difficulty": 3,
+    "stem": "There are five players on our school basketball team. Leo is the tallest of all. Max lives next door to our coach, so they often ride to practice together. Ray scores the most points, but he is shorter than Max. Ken and Joe are twins, and they joined the team this year.\n\nWhich is TRUE?",
+    "options": [
+      "The boy who scores the most is not the tallest.",
+      "The boy who lives next door to the coach is Leo.",
+      "The player who scores the most points is Max.",
+      "The player who is the tallest of all is Ray."
+    ],
+    "answer": "A",
+    "explanation": "得分最多的是 Ray，而全隊最高的是 Leo（Ray 甚至比 Max 還矮），所以「得分最多的那個男孩不是最高的」正確。住在教練隔壁的是 Max，最高的是 Leo。",
+    "hints": [
+      "先把每個人的特點整理出來：最高、住教練隔壁、得分最多各是誰？",
+      "每個選項的 who 子句說的是哪一位？把他換進句子裡檢查。"
+    ],
+    "wrong": {
+      "D": "全隊最高的是 Leo；Ray 比 Max 矮，不可能是最高的。",
+      "B": "住在教練隔壁的是 Max，不是 Leo。",
+      "C": "得分最多的是 Ray，Max 是住在教練隔壁的那位。"
+    }
+  },
+  {
+    "id": "EN-9B-2-31",
+    "exam_part": null,
+    "unit": "EN-9B-2",
+    "concept": "indirect-question",
+    "difficulty": 1,
+    "stem": "Do you know ＿＿＿ the library opens? I want to borrow some books early.",
+    "options": [
+      "what",
+      "who",
+      "when",
+      "which"
+    ],
+    "answer": "C",
+    "explanation": "說話的人想早點去借書，想知道的是圖書館「什麼時候」開門，要用疑問詞 when。間接問句 when the library opens 用的是「疑問詞 + 主詞 + 動詞」的直述句語序。",
+    "hints": [
+      "說話的人想知道圖書館的什麼資訊？",
+      "問「時間」可以用哪一個疑問詞？"
+    ],
+    "wrong": {
+      "B": "who 問的是人，這裡想知道的是圖書館開門的時間。",
+      "A": "what 單獨用是問「什麼東西」，要問時間得說 what time，只有 what 不對。",
+      "D": "which 要問「哪一個」，通常後面接名詞，不能用來問開門的時間。"
+    }
+  },
+  {
+    "id": "EN-9B-2-32",
+    "exam_part": null,
+    "unit": "EN-9B-2",
+    "concept": "indirect-question",
+    "difficulty": 1,
+    "stem": "I don't know why ＿＿＿ angry with me. Did I say something wrong?",
+    "options": [
+      "she is",
+      "does she",
+      "she does",
+      "is she"
+    ],
+    "answer": "A",
+    "explanation": "間接問句放在 I don't know 後面，要用直述句語序「疑問詞 + 主詞 + 動詞」：why she is angry。angry 是形容詞，前面要用 be 動詞 is。",
+    "hints": [
+      "間接問句的主詞和動詞要怎麼排？",
+      "angry 是形容詞，前面要搭配哪一種動詞？"
+    ],
+    "wrong": {
+      "D": "這是直接問句的語序；放在 I don't know 後面要改成主詞在前、動詞在後。",
+      "B": "間接問句不用 does 倒裝，而且 angry 是形容詞，要用 be 動詞。",
+      "C": "angry 是形容詞，前面要用 be 動詞，不能用 does。"
+    }
+  },
+  {
+    "id": "EN-9B-2-33",
+    "exam_part": null,
+    "unit": "EN-9B-2",
+    "concept": "indirect-question",
+    "difficulty": 2,
+    "stem": "Do you know ＿＿＿ in your class?",
+    "options": [
+      "how many are there students",
+      "how many students is there",
+      "how many students are there",
+      "how many students there are"
+    ],
+    "answer": "D",
+    "explanation": "直接問句 How many students are there in your class? 放進 Do you know 後面變成間接問句，要把 are 移到 there 後面，改成直述句語序：how many students there are。",
+    "hints": [
+      "直接問句是 How many students are there...?，間接問句要改成什麼語序？",
+      "there 和 are 的位置要怎麼調換？"
+    ],
+    "wrong": {
+      "C": "這是直接問句的語序；放進 Do you know 後面要改成 there are。",
+      "A": "把 students 從 how many 後面拆開了，而且還是問句語序。",
+      "B": "students 是複數要用 are，而且 is there 仍是問句語序。"
+    }
+  },
+  {
+    "id": "EN-9B-2-34",
+    "exam_part": null,
+    "unit": "EN-9B-2",
+    "concept": "indirect-question",
+    "difficulty": 2,
+    "stem": "What does this word mean? → Can you tell me ＿＿＿?",
+    "options": [
+      "what means this word",
+      "what this word means",
+      "what does this word mean",
+      "what this word mean"
+    ],
+    "answer": "B",
+    "explanation": "直接問句 What does this word mean? 改成間接問句時，要去掉助動詞 does，語序改成「what + 主詞 + 動詞」；主詞 this word 是第三人稱單數，現在式動詞要加 s：what this word means。",
+    "hints": [
+      "間接問句裡還要保留助動詞 does 嗎？",
+      "去掉 does 之後，動詞 mean 要配合主詞 this word 做什麼改變？"
+    ],
+    "wrong": {
+      "C": "這是直接問句的語序；間接問句要去掉 does。",
+      "D": "語序對了，但去掉 does 之後，主詞 this word 是第三人稱單數，現在式動詞要加 s。",
+      "A": "主詞 this word 要放在動詞前面。"
+    }
+  },
+  {
+    "id": "EN-9B-2-35",
+    "exam_part": null,
+    "unit": "EN-9B-2",
+    "concept": "indirect-question",
+    "difficulty": 2,
+    "stem": "Where did Ann go after school? → I wonder ＿＿＿ after school.",
+    "options": [
+      "where Ann go",
+      "where Ann goes",
+      "where Ann went",
+      "where did Ann go"
+    ],
+    "answer": "C",
+    "explanation": "直接問句 Where did Ann go...? 改成間接問句，要去掉助動詞 did，並把動詞改成過去式（go → went），語序是「where + 主詞 + 動詞」：where Ann went。",
+    "hints": [
+      "原句的 did 表示什麼時態？",
+      "去掉 did 之後，過去的時間要靠哪個字表現？go 的過去式是什麼？"
+    ],
+    "wrong": {
+      "D": "這是直接問句的語序；間接問句要去掉 did。",
+      "B": "語序對了，但原句是過去式（did），去掉 did 後動詞要改成過去式。",
+      "A": "去掉 did 之後，過去的時間要由動詞表現，go 要改成過去式。"
+    }
+  },
+  {
+    "id": "EN-9B-2-36",
+    "exam_part": null,
+    "unit": "EN-9B-2",
+    "concept": "indirect-question",
+    "difficulty": 3,
+    "stem": "Clerk: Good evening. Welcome to Sunrise Hotel.\nGuest: Hi. I'd like to know (1)＿＿＿ a room for tonight.\nClerk: Yes, we have one room left on the fifth floor.\nGuest: Great. Could you also tell me (2)＿＿＿ breakfast?\nClerk: From 6:30 to 9:30 a.m. in the dining room.\n\nWhich is the best choice for (1) and (2)?",
+    "options": [
+      "do you have; what time you serve",
+      "what you have; what time you serve",
+      "if you have; what time do you serve",
+      "if you have; what time you serve"
+    ],
+    "answer": "D",
+    "explanation": "(1) 原本的問句是 Do you have a room for tonight?（Yes/No 問句），變成間接問句要用 if 連接、去掉 do：if you have a room。(2) What time do you serve breakfast? 變成間接問句也要去掉 do：what time you serve breakfast。",
+    "hints": [
+      "(1) 店員用 Yes 回答，表示原本是哪一種問句？這種問句變成間接問句要加什麼字？",
+      "(2) 間接問句裡還能保留助動詞 do 嗎？"
+    ],
+    "wrong": {
+      "A": "(2) 對了，但 (1) 原本是 Yes/No 問句，放進 I'd like to know 後面要用 if 連接，不能保留 do 的問句語序。",
+      "C": "(1) 對了，但 (2) 間接問句要去掉 do，用直述句語序。",
+      "B": "店員用 Yes 回答，表示 (1) 問的是「有沒有空房」，要用 if，不是 what。"
+    }
+  },
+  {
+    "id": "EN-9B-2-37",
+    "exam_part": null,
+    "unit": "EN-9B-2",
+    "concept": "reading-detail",
+    "difficulty": 1,
+    "stem": "Nora's Weekend Plan\nSaturday morning: Clean my room\nSaturday afternoon: Go swimming with Jenny\nSunday morning: Visit Grandma\nSunday afternoon: Finish my math homework\n\nWhen will Nora see her grandmother?",
+    "options": [
+      "On Saturday morning",
+      "On Sunday morning",
+      "On Saturday afternoon",
+      "On Sunday afternoon"
+    ],
+    "answer": "B",
+    "explanation": "計畫表寫 Sunday morning: Visit Grandma（星期日早上去看奶奶），題目的 grandmother 就是 Grandma，所以 Nora 會在星期日早上見到奶奶。",
+    "hints": [
+      "題目的 grandmother 在計畫表裡是用哪個字表示？",
+      "找到那個字，看它寫在哪一天的哪個時段。"
+    ],
+    "wrong": {
+      "A": "星期六早上的計畫是打掃房間。",
+      "C": "星期六下午是和 Jenny 去游泳。",
+      "D": "星期日下午是寫數學作業。"
+    }
+  },
+  {
+    "id": "EN-9B-2-38",
+    "exam_part": null,
+    "unit": "EN-9B-2",
+    "concept": "reading-detail",
+    "difficulty": 2,
+    "stem": "Man: Excuse me. How long does it take to get to the zoo by bus?\nWoman: About forty minutes. But the MRT is faster. It only takes twenty minutes.\nMan: How much is an MRT ticket?\nWoman: It's NT$35. A bus ticket is only NT$15.\n\nWhich is TRUE?",
+    "options": [
+      "The man is going to the museum.",
+      "The MRT costs more than the bus.",
+      "It takes forty minutes by MRT.",
+      "The bus is faster than the MRT."
+    ],
+    "answer": "B",
+    "explanation": "捷運票 NT$35，公車票 NT$15，所以搭捷運比搭公車貴（costs more）。時間方面，公車約 40 分鐘、捷運 20 分鐘，捷運比較快。",
+    "hints": [
+      "把公車和捷運的「時間」和「票價」分別整理出來。",
+      "比較兩種交通工具：哪一個比較快？哪一個比較貴？"
+    ],
+    "wrong": {
+      "D": "公車要 40 分鐘、捷運只要 20 分鐘，捷運比較快。",
+      "C": "40 分鐘是搭公車的時間，搭捷運只要 20 分鐘。",
+      "A": "男子問的是去動物園（the zoo）怎麼走，不是博物館。"
+    }
+  },
+  {
+    "id": "EN-9B-2-39",
+    "exam_part": null,
+    "unit": "EN-9B-2",
+    "concept": "reading-main-idea",
+    "difficulty": 1,
+    "stem": "Dogs are good friends to people. Some dogs help people who can't see walk safely on the street. Some dogs help the police find lost children. Others visit hospitals to make sick people happy.\n\nWhat is the main idea of this passage?",
+    "options": [
+      "Dogs like to visit hospitals.",
+      "The police need more dogs.",
+      "Dogs help people in many ways.",
+      "Sick people should keep pet dogs."
+    ],
+    "answer": "C",
+    "explanation": "第一句 Dogs are good friends to people. 是主題句，後面舉了帶看不見的人走路、幫警察找走失的孩子、到醫院陪伴病人三個例子，說明狗用很多不同的方式幫助人。",
+    "hints": [
+      "第一句話在說什麼？",
+      "後面三個例子有什麼共同點？"
+    ],
+    "wrong": {
+      "A": "去醫院只是其中一個例子，不是整篇文章的重點。",
+      "B": "幫警察找人只是例子之一，文章沒說警察需要更多狗。",
+      "D": "文中說狗去醫院讓病人開心，沒有建議病人養狗。"
+    }
+  },
+  {
+    "id": "EN-9B-2-40",
+    "exam_part": null,
+    "unit": "EN-9B-2",
+    "concept": "reading-main-idea",
+    "difficulty": 2,
+    "stem": "Many students stay up late to study or play games on their phones. But sleep is very important. When you sleep, your body gets rest, and your brain remembers the things you learned during the day. Students who don't sleep enough may get sick more easily and find it hard to listen carefully in class.\n\nWhat is the best title for this passage?",
+    "options": [
+      "Why Students Need Enough Sleep",
+      "How to Play Games on Phones",
+      "Ways to Get Sick Less Often",
+      "The Best Time of Day to Study"
+    ],
+    "answer": "A",
+    "explanation": "文章先說很多學生熬夜，接著用 But 轉折說 sleep is very important，再說明睡覺時身體休息、大腦記住白天學的東西，以及睡不夠的壞處，所以最好的標題是「為什麼學生需要足夠的睡眠」。",
+    "hints": [
+      "第二句 But... 轉折之後說了什麼？",
+      "後面的句子都在說明哪一件事的好處和壞處？"
+    ],
+    "wrong": {
+      "B": "玩手機只是學生熬夜的原因之一，文章沒有教人怎麼玩遊戲。",
+      "D": "文章沒有討論一天中什麼時候讀書最好。",
+      "C": "容易生病只是睡眠不足的壞處之一，文章重點在睡眠的重要。"
+    }
+  },
+  {
+    "id": "EN-9B-2-41",
+    "exam_part": null,
+    "unit": "EN-9B-2",
+    "concept": "reading-main-idea",
+    "difficulty": 3,
+    "stem": "Before a trip, packing can be a big problem for many people. Here is a simple idea: make a list a week before you leave. First, check the weather of the place that you will visit. Then think about what you are going to do there. If you plan to go hiking, you need good shoes. If it may rain, bring an umbrella. Finally, pack only the things on your list. This way, you won't forget anything important, and your bag won't be too heavy.\n\nWhat is the passage mainly about?",
+    "options": [
+      "Why people should bring umbrellas",
+      "How to decide what to take on a trip",
+      "Why heavy bags are bad for travelers",
+      "How to choose good shoes for hiking"
+    ],
+    "answer": "B",
+    "explanation": "第一句提出問題：旅行前打包對很多人來說很困擾。接著提出方法：出發前一週列清單、查天氣、想想要做什麼活動，最後只帶清單上的東西。整篇主要在說「如何決定旅行要帶哪些東西」，雨傘、鞋子、行李重量都只是例子或好處。",
+    "hints": [
+      "第一句提出了什麼問題？第二句 Here is a simple idea 要介紹什麼？",
+      "雨傘和登山的鞋子在文中是主旨還是例子？",
+      "哪一個選項能涵蓋全文所有的步驟？"
+    ],
+    "wrong": {
+      "A": "帶雨傘只是依天氣準備東西的一個例子，不是整篇的主旨。",
+      "D": "要去爬山就帶好鞋只是例子，文章沒有教怎麼挑鞋子。",
+      "C": "行李不會太重是照清單打包的好處之一，不是文章主要在說的事。"
+    }
+  },
+  {
+    "id": "EN-9B-2-42",
+    "exam_part": null,
+    "unit": "EN-9B-2",
+    "concept": "reading-inference",
+    "difficulty": 1,
+    "stem": "Tom: Mom, can I have another piece of cake?\nMom: Another one? You've already had three pieces!\n\nWhat does Mom mean?",
+    "options": [
+      "The cake is not sweet enough.",
+      "Mom wants to bake more cake.",
+      "Tom can have one more piece.",
+      "Tom has eaten enough cake."
+    ],
+    "answer": "D",
+    "explanation": "媽媽反問 Another one?（還要一塊？），又說 You've already had three pieces!（你已經吃三塊了！），語氣表示他已經吃得夠多了，不應該再吃。",
+    "hints": [
+      "媽媽重複 Another one? 是什麼樣的語氣？",
+      "already had three pieces 想強調什麼？"
+    ],
+    "wrong": {
+      "C": "媽媽強調他已經吃了三塊，是不想讓他再吃。",
+      "A": "媽媽說的是 Tom 吃的數量，不是蛋糕的味道。",
+      "B": "對話中沒有提到媽媽要再烤蛋糕。"
+    }
+  },
+  {
+    "id": "EN-9B-2-43",
+    "exam_part": null,
+    "unit": "EN-9B-2",
+    "concept": "reading-inference",
+    "difficulty": 2,
+    "stem": "Man: Excuse me. Where's the milk?\nWoman: It's over there, next to the eggs.\nMan: Thanks. Is the bread fresh today?\nWoman: Yes. It was baked this morning.\n\nWhere does this conversation probably take place?",
+    "options": [
+      "In a supermarket",
+      "In a library",
+      "In a post office",
+      "In a hospital"
+    ],
+    "answer": "A",
+    "explanation": "男子問牛奶放在哪裡、今天的麵包新不新鮮，女子回答牛奶在雞蛋旁邊、麵包是今天早上烤的。能同時買到牛奶、雞蛋和麵包的地方，最可能是超市。",
+    "hints": [
+      "對話中提到了哪些東西？",
+      "在哪裡可以同時找到這些東西？"
+    ],
+    "wrong": {
+      "D": "醫院不是買牛奶、雞蛋和麵包的地方。",
+      "B": "圖書館是借書的地方，不會擺放牛奶和麵包。",
+      "C": "郵局是寄信、寄包裹的地方，不賣牛奶和麵包。"
+    }
+  },
+  {
+    "id": "EN-9B-2-44",
+    "exam_part": null,
+    "unit": "EN-9B-2",
+    "concept": "reading-inference",
+    "difficulty": 2,
+    "stem": "Ken and his friends planned a beach trip for two weeks. On Saturday morning, Ken looked out the window. It was raining hard, and the news said the rain would not stop until Monday. Ken looked sad and put his swimsuit back in the closet.\n\nWhat can we learn from the passage?",
+    "options": [
+      "Ken couldn't find his swimsuit.",
+      "Ken likes rainy days more than sunny ones.",
+      "Ken swam at the beach on Saturday.",
+      "Ken's beach trip probably didn't happen."
+    ],
+    "answer": "D",
+    "explanation": "Ken 和朋友計畫了兩週的海邊之旅，但星期六下大雨，新聞說雨會下到星期一，Ken 難過地把泳衣收回衣櫃。由此可以推論這個週末的海邊行程大概沒有成行。",
+    "hints": [
+      "星期六天氣怎麼樣？雨會下到什麼時候？",
+      "Ken 把泳衣放回衣櫃，代表他決定怎麼做？"
+    ],
+    "wrong": {
+      "C": "雨下得很大，Ken 還把泳衣收回衣櫃，表示他沒有去海邊。",
+      "A": "他把泳衣放回衣櫃，表示泳衣就在他手上，不是找不到。",
+      "B": "Ken 看到下雨覺得難過，可見他不喜歡這場雨。"
+    }
+  },
+  {
+    "id": "EN-9B-2-45",
+    "exam_part": null,
+    "unit": "EN-9B-2",
+    "concept": "reading-inference",
+    "difficulty": 3,
+    "stem": "Grandma: Lucy, have you seen my glasses? I can't read the newspaper without them.\nLucy: Have you looked in the kitchen?\nGrandma: Yes, and in the bedroom, too. I've looked everywhere!\nLucy: (laughing) Grandma, why don't you look in the mirror?\nGrandma: Oh, my! I've had them on my head all this time!\n\nWhy did Lucy ask Grandma to look in the mirror?",
+    "options": [
+      "She wanted Grandma to fix her hair.",
+      "She saw the glasses on Grandma's head.",
+      "She thought Grandma looked tired.",
+      "She thought the glasses were in the bathroom."
+    ],
+    "answer": "B",
+    "explanation": "Lucy 笑著叫奶奶照鏡子，奶奶照了之後說 I've had them on my head all this time!（眼鏡一直都在我頭上！）。可以推論 Lucy 早就看到眼鏡在奶奶頭上，所以叫她照鏡子自己發現。",
+    "hints": [
+      "Lucy 說這句話時有什麼反應？",
+      "奶奶照鏡子之後發現了什麼？",
+      "把 Lucy 的笑和奶奶最後一句話連起來想。"
+    ],
+    "wrong": {
+      "A": "Lucy 是笑著提醒奶奶，奶奶照鏡子後發現的是眼鏡，不是頭髮亂了。",
+      "D": "Lucy 叫奶奶照鏡子是要她看自己身上，不是要她去浴室找。",
+      "C": "Lucy 是笑著說的，奶奶接著發現眼鏡在頭上，和看起來累不累無關。"
+    }
+  },
+  {
+    "id": "EN-7L-1-31",
+    "exam_part": null,
+    "unit": "EN-7L-1",
+    "concept": "basic-response",
+    "difficulty": 1,
+    "stem": "請聽一句話，選出最適當的回應。（新同學自我介紹後）",
+    "options": [
+      "I'm fine, thank you.",
+      "Nice to meet you, too.",
+      "See you tomorrow.",
+      "You're welcome, Daniel."
+    ],
+    "answer": "B",
+    "explanation": "聽力原文是「Hi, I'm Daniel. I'm new in this class. Nice to meet you.」（嗨，我是 Daniel，我是這班的新同學，很高興認識你），第一次見面對方說 Nice to meet you，要回答 Nice to meet you, too.（我也很高興認識你）。",
+    "hints": [
+      "說話的人和你是第一次見面，還是老朋友？",
+      "對方最後一句是打招呼的話，第一次見面時要怎麼回應同一句話？"
+    ],
+    "wrong": {
+      "A": "I'm fine, thank you. 是回答 How are you?（你好嗎），對方並沒有問你好不好。",
+      "C": "See you tomorrow. 是道別時說的，對方才剛和你打招呼、互相認識。",
+      "D": "You're welcome. 是回應別人道謝，對方沒有說謝謝，只是聽到他的名字就選了。"
+    },
+    "listen": "M: Hi, I'm Daniel. I'm new in this class. Nice to meet you."
+  },
+  {
+    "id": "EN-7L-1-32",
+    "exam_part": null,
+    "unit": "EN-7L-1",
+    "concept": "basic-response",
+    "difficulty": 1,
+    "stem": "請聽一句話，選出最適當的回應。（寫聯絡簿時）",
+    "options": [
+      "It's nine o'clock.",
+      "It's sunny and warm.",
+      "It's May twentieth.",
+      "It's Friday today."
+    ],
+    "answer": "C",
+    "explanation": "聽力原文是「What's the date today?」（今天幾月幾日？），date 是「日期」，所以要回答月份和日子：It's May twentieth.（五月二十日）。",
+    "hints": [
+      "問句裡最重要的名詞是哪一個？",
+      "date 和 day 意思不一樣，date 要回答幾月幾日。"
+    ],
+    "wrong": {
+      "D": "把 date（日期）和 day（星期幾）搞混了，What day is it today? 才是問星期幾。",
+      "A": "這是回答 What time is it?（幾點），問句問的不是時間。",
+      "B": "這是回答天氣（What's the weather like?），和日期無關。"
+    },
+    "listen": "W: What's the date today?"
+  },
+  {
+    "id": "EN-7L-1-33",
+    "exam_part": null,
+    "unit": "EN-7L-1",
+    "concept": "basic-response",
+    "difficulty": 1,
+    "stem": "請聽一句話，選出最適當的回應。（和新同學聊天）",
+    "options": [
+      "At seven thirty.",
+      "I usually walk.",
+      "With my sister.",
+      "It's near the park."
+    ],
+    "answer": "B",
+    "explanation": "聽力原文是「How do you go to school every day?」（你每天怎麼去上學？），How 在這裡問「方法、交通方式」，所以回答 I usually walk.（我通常走路去）。",
+    "hints": [
+      "問句開頭的疑問詞是什麼？",
+      "How do you go to...? 想知道的是時間、同伴，還是去的方式？"
+    ],
+    "wrong": {
+      "A": "這是回答 What time do you go to school?（幾點去），不是怎麼去。",
+      "C": "這是回答 Who do you go with?（和誰一起去），沒有說出交通方式。",
+      "D": "這是說學校的位置（Where is it?），問句沒有問學校在哪裡。"
+    },
+    "listen": "M: How do you go to school every day?"
+  },
+  {
+    "id": "EN-7L-1-34",
+    "exam_part": null,
+    "unit": "EN-7L-1",
+    "concept": "basic-response",
+    "difficulty": 2,
+    "stem": "請聽一句話，選出最適當的回應。（聊到家人時）",
+    "options": [
+      "He's cooking dinner.",
+      "He's a bus driver.",
+      "He likes fishing.",
+      "He's tall and thin."
+    ],
+    "answer": "B",
+    "explanation": "聽力原文是「What does your father do?」（你爸爸是做什麼的？），What does he do? 是問職業，所以回答 He's a bus driver.（他是公車司機）。",
+    "hints": [
+      "問句用的是 does...do，還是 is...doing？",
+      "What does your father do? 是問「此刻在做什麼」，還是問「他的工作」？"
+    ],
+    "wrong": {
+      "A": "把 What does he do?（職業）聽成 What is he doing?（正在做什麼），所以回答正在煮晚餐。",
+      "D": "這是回答 What does he look like?（他長什麼樣子），是外表不是職業。",
+      "C": "這是回答 What does he like to do?（他喜歡做什麼），是興趣不是職業。"
+    },
+    "listen": "W: What does your father do?"
+  },
+  {
+    "id": "EN-7L-1-35",
+    "exam_part": null,
+    "unit": "EN-7L-1",
+    "concept": "basic-response",
+    "difficulty": 2,
+    "stem": "請聽一句話，選出最適當的回應。（下課時在走廊）",
+    "options": [
+      "No, they aren't mine.",
+      "Thanks for your help.",
+      "Yes, I can read them.",
+      "Sure. I'll take some."
+    ],
+    "answer": "D",
+    "explanation": "聽力原文是「These books are so heavy. Can you help me?」（這些書好重，你可以幫我嗎？），對方請你幫忙搬書，最適當的回應是答應並幫他分擔：Sure. I'll take some.（當然，我來拿一些）。",
+    "hints": [
+      "說話的人遇到了什麼麻煩？",
+      "Can you help me? 是請你幫忙，你可以怎麼答應他？"
+    ],
+    "wrong": {
+      "C": "聽到 books 就想到讀書，但對方是說書很重、請你幫忙拿，不是問你會不會讀。",
+      "B": "角色搞反了，是對方請你幫忙，該說謝謝的是對方，不是你。",
+      "A": "對方沒有問書是不是你的，這樣回答也沒有回應他的請求。"
+    },
+    "listen": "W: These books are so heavy. Can you help me?"
+  },
+  {
+    "id": "EN-7L-1-36",
+    "exam_part": null,
+    "unit": "EN-7L-1",
+    "concept": "basic-response",
+    "difficulty": 2,
+    "stem": "請聽一句話，選出最適當的回應。（在寵物店）",
+    "options": [
+      "I have two cats at home.",
+      "Yes, I like them a lot.",
+      "Dogs. They're friendly.",
+      "They're in that big box."
+    ],
+    "answer": "C",
+    "explanation": "聽力原文是「Which do you like better, cats or dogs?」（貓和狗你比較喜歡哪一個？），Which...better 要從兩個中選一個，所以回答 Dogs. They're friendly.（狗，牠們很友善），選出一個並說明原因。",
+    "hints": [
+      "問句開頭是 Which，表示要你做什麼？",
+      "對方給了兩個選擇，回答要說出其中一個。"
+    ],
+    "wrong": {
+      "B": "Which 開頭的問句不能用 Yes 回答，而且沒有說出比較喜歡哪一個。",
+      "A": "只說家裡有兩隻貓，沒有說出比較喜歡哪一種；有養貓不代表就比較喜歡貓。",
+      "D": "這是回答 Where are they?（牠們在哪裡），問句沒有問位置。"
+    },
+    "listen": "M: Which do you like better, cats or dogs?"
+  },
+  {
+    "id": "EN-7L-1-37",
+    "exam_part": null,
+    "unit": "EN-7L-1",
+    "concept": "basic-response",
+    "difficulty": 2,
+    "stem": "請聽一句話，選出最適當的回應。（媽媽在門口提醒）",
+    "options": [
+      "No, I didn't.",
+      "Sorry, I don't.",
+      "OK, I won't.",
+      "Yes, I forgot it."
+    ],
+    "answer": "C",
+    "explanation": "聽力原文是「Don't forget to bring your raincoat.」（別忘了帶雨衣），這是提醒，回答 OK, I won't.（好，我不會忘的）表示自己會記得帶。won't 是跟著 Don't forget 的意思回答「不會忘記」。",
+    "hints": [
+      "媽媽是在問問題，還是在提醒你？",
+      "Don't forget... 是「別忘了」，如果你會記得，要說「我會」還是「我不會」忘記？"
+    ],
+    "wrong": {
+      "D": "forgot 表示已經忘了，但媽媽是在出門前提醒，雨衣還沒有忘記帶。",
+      "A": "No, I didn't. 是回答過去式 Did you...? 的問句，媽媽沒有問過去的事。",
+      "B": "Sorry, I don't. 是回答 Do you...? 的問句，沒有回應媽媽的提醒。"
+    },
+    "listen": "W: Don't forget to bring your raincoat."
+  },
+  {
+    "id": "EN-7L-1-38",
+    "exam_part": null,
+    "unit": "EN-7L-1",
+    "concept": "basic-response",
+    "difficulty": 3,
+    "stem": "請聽一句話，選出最適當的回應。（在公車站等車）",
+    "options": [
+      "Yes, I have lots of time.",
+      "Sure. It's ten past three.",
+      "Sorry, I'm busy today.",
+      "I have a watch, too."
+    ],
+    "answer": "B",
+    "explanation": "聽力原文是「Excuse me, do you have the time?」，多了 the 的 Do you have the time? 意思是「你知道現在幾點嗎？」，和 Do you have time?（你有空嗎）不同，所以回答時間：Sure. It's ten past three.（三點十分）。",
+    "hints": [
+      "注意 time 前面有沒有 the。",
+      "在公車站，陌生人會問你有沒有空，還是問你現在幾點？",
+      "Do you have the time? 和 What time is it? 意思很接近。"
+    ],
+    "wrong": {
+      "C": "把 the time 聽成 time，以為對方問你有沒有空，所以說自己很忙。",
+      "A": "同樣以為是問「有沒有空」，回答自己時間很多，沒有告訴對方幾點。",
+      "D": "只說自己也有手錶，沒有告訴對方現在幾點，而且對方沒有說他有手錶。"
+    },
+    "listen": "M: Excuse me, do you have the time?"
+  },
+  {
+    "id": "EN-7L-1-39",
+    "exam_part": null,
+    "unit": "EN-7L-1",
+    "concept": "dialogue-detail",
+    "difficulty": 1,
+    "stem": "Which one is Mike's sister?",
+    "options": [
+      "The girl with short hair and glasses.",
+      "The girl with long, straight hair.",
+      "The girl with long hair and glasses.",
+      "The girl with short hair and a big hat."
+    ],
+    "answer": "A",
+    "explanation": "女孩問是不是長頭髮的那位，Mike 說「No, that's my cousin. My sister has short hair, and she wears glasses.」，長頭髮的是表姊妹，他的妹妹是短頭髮又戴眼鏡。",
+    "hints": [
+      "女孩猜的長頭髮女生是誰？",
+      "Mike 說他妹妹有哪兩個特徵？兩個都要對才行。"
+    ],
+    "wrong": {
+      "B": "長頭髮的女孩是 Mike 的 cousin（表姊妹），不是他妹妹。",
+      "C": "眼鏡對了，但 Mike 的妹妹是短頭髮，長頭髮的是表姊妹。",
+      "D": "短頭髮對了，但 Mike 說妹妹戴的是眼鏡（glasses），沒有提到帽子。"
+    },
+    "listen": "W: Is this your family photo, Mike?\nM: Yes. That's my sister.\nW: The girl with long hair?\nM: No, that's my cousin. My sister has short hair, and she wears glasses.\nN: Question: Which one is Mike's sister?"
+  },
+  {
+    "id": "EN-7L-1-40",
+    "exam_part": null,
+    "unit": "EN-7L-1",
+    "concept": "dialogue-detail",
+    "difficulty": 1,
+    "stem": "What is the weather like now?",
+    "options": [
+      "It's sunny and hot.",
+      "It's raining now.",
+      "It's windy but dry.",
+      "It's cold and snowy."
+    ],
+    "answer": "B",
+    "explanation": "男孩說「The ground is all wet, and people are using umbrellas.」，地上都濕了、大家都在撐傘，女孩也改成在家玩牌，可以推論外面正在下雨。",
+    "hints": [
+      "男孩叫女孩往窗外看，他看到了什麼？",
+      "地上濕濕的、大家撐著傘，通常是什麼天氣？"
+    ],
+    "wrong": {
+      "A": "大太陽不會讓地上全濕，他們也不會因此不出去打球。",
+      "D": "對話沒有提到冷，臺灣一般也不會下雪，地上濕是因為下雨。",
+      "C": "地上都是濕的（all wet），不可能是乾的。"
+    },
+    "listen": "W: Let's go out and play basketball.\nM: Look out the window. The ground is all wet, and people are using umbrellas.\nW: Oh no. Then let's play cards at home.\nN: Question: What is the weather like now?"
+  },
+  {
+    "id": "EN-7L-1-41",
+    "exam_part": null,
+    "unit": "EN-7L-1",
+    "concept": "dialogue-detail",
+    "difficulty": 2,
+    "stem": "What time does the boy's piano lesson start?",
+    "options": [
+      "At three thirty.",
+      "At four o'clock.",
+      "At five o'clock.",
+      "At four thirty."
+    ],
+    "answer": "D",
+    "explanation": "Eric 說鋼琴課「starts thirty minutes after school」（放學後三十分鐘開始），女士確認學校四點放學，所以 4:00 再加 30 分鐘，鋼琴課是 4:30 開始。",
+    "hints": [
+      "學校幾點放學？",
+      "鋼琴課是放學「之前」還是「之後」？差多少時間？"
+    ],
+    "wrong": {
+      "B": "四點是放學的時間，鋼琴課要再晚三十分鐘。",
+      "A": "把 after（之後）當成 before（之前），往前推了三十分鐘。",
+      "C": "多加了一個小時，對話說的是 thirty minutes（三十分鐘）。"
+    },
+    "listen": "W: Do you have a piano lesson today, Eric?\nM: Yes. It starts thirty minutes after school.\nW: School is over at four, right?\nM: Yes, so I need to hurry.\nN: Question: What time does the boy's piano lesson start?"
+  },
+  {
+    "id": "EN-7L-1-42",
+    "exam_part": null,
+    "unit": "EN-7L-1",
+    "concept": "dialogue-detail",
+    "difficulty": 2,
+    "stem": "What will the girl do tonight?",
+    "options": [
+      "Watch a ball game.",
+      "Take a math test.",
+      "Play video games.",
+      "Study for her test."
+    ],
+    "answer": "D",
+    "explanation": "Sandy 拒絕晚上打電動，因為「I have a math test tomorrow morning, and I'm not ready yet.」，明天早上要考數學、她還沒準備好，所以今晚她會唸書準備考試。",
+    "hints": [
+      "男孩邀 Sandy 做什麼？她答應了嗎？",
+      "數學考試是今晚還是明天？她說自己準備好了沒？"
+    ],
+    "wrong": {
+      "C": "打電動是男孩的邀請，但 Sandy 說 Sorry, I can't，沒有答應。",
+      "B": "數學考試在明天早上（tomorrow morning），今晚還不是考試的時間。",
+      "A": "對話中沒有提到看球賽。"
+    },
+    "listen": "M: Do you want to play video games with me tonight, Sandy?\nW: Sorry, I can't. I have a math test tomorrow morning, and I'm not ready yet.\nM: OK. Good luck!\nN: Question: What will the girl do tonight?"
+  },
+  {
+    "id": "EN-7L-1-43",
+    "exam_part": null,
+    "unit": "EN-7L-1",
+    "concept": "dialogue-detail",
+    "difficulty": 2,
+    "stem": "Why won't they eat at the noodle shop?",
+    "options": [
+      "The noodles there cost too much.",
+      "It's too far away from them.",
+      "It isn't open today.",
+      "The boy doesn't like noodles."
+    ],
+    "answer": "C",
+    "explanation": "女孩說「But today is Monday. It never opens on Mondays.」，那家麵店星期一都不營業，而今天正好是星期一，所以他們不能去，改去新的三明治店。",
+    "hints": [
+      "女孩用 But 提出了什麼問題？",
+      "今天星期幾？那家店星期幾不開？"
+    ],
+    "wrong": {
+      "B": "麵店就在公園附近（near the park），對話沒有說太遠。",
+      "D": "提議去吃麵的就是男孩，表示他喜歡吃麵。",
+      "A": "對話中沒有提到麵店的價錢。"
+    },
+    "listen": "M: I'm hungry. Let's have lunch at the noodle shop near the park.\nW: But today is Monday. It never opens on Mondays.\nM: Oh, right. Then let's try the new sandwich shop.\nN: Question: Why won't they eat at the noodle shop?"
+  },
+  {
+    "id": "EN-7L-1-44",
+    "exam_part": null,
+    "unit": "EN-7L-1",
+    "concept": "dialogue-detail",
+    "difficulty": 3,
+    "stem": "When is Amy's birthday?",
+    "options": [
+      "Next Wednesday.",
+      "Next Sunday.",
+      "Next Thursday.",
+      "Next Tuesday."
+    ],
+    "answer": "A",
+    "explanation": "Amy 說校外教學是下星期五，「my birthday is two days before that」，星期五往前兩天是星期三；男孩又說是英文考試（星期二）的隔天，星期二的後一天也是星期三，兩個線索都指向下星期三。",
+    "hints": [
+      "校外教學是星期幾？Amy 的生日比它早幾天還是晚幾天？",
+      "再用英文考試的日期確認一次：the day after 是往前還是往後一天？"
+    ],
+    "wrong": {
+      "D": "星期二是英文考試的日子，生日是考試的隔天。",
+      "C": "星期五只往前推了一天，但 Amy 說的是 two days before（早兩天）。",
+      "B": "把 before（之前）當成 after（之後），從星期五往後推了兩天。"
+    },
+    "listen": "M: Amy, is your birthday next week?\nW: Yes. Our school trip is next Friday, and my birthday is two days before that.\nM: So it's the day after our English test?\nW: That's right. The test is on Tuesday.\nN: Question: When is Amy's birthday?"
+  },
+  {
+    "id": "EN-7L-1-45",
+    "exam_part": null,
+    "unit": "EN-7L-1",
+    "concept": "dialogue-detail",
+    "difficulty": 3,
+    "stem": "Which bus will the woman probably take?",
+    "options": [
+      "Bus 3.",
+      "Bus 40.",
+      "Bus 13.",
+      "Bus 30."
+    ],
+    "answer": "C",
+    "explanation": "男士說 13 號和 30 號都到動物園，但 30 號剛開走、下一班要等四十分鐘；女士說等不了那麼久，男士建議「take the other one. It comes every ten minutes.」，另一班就是 13 號，所以她會搭 13 號公車。",
+    "hints": [
+      "哪兩班公車會到動物園？要分清楚 thirteen 和 thirty 的發音。",
+      "哪一班剛開走、要等很久？the other one 指的是哪一班？"
+    ],
+    "wrong": {
+      "D": "30 號剛開走，下一班要等四十分鐘，女士說 I can't wait that long。",
+      "A": "只聽到 thir- 的部分，漏掉了 thirteen 後面的 -teen，對話中沒有 3 號公車。",
+      "B": "把 forty minutes（四十分鐘）的 forty 當成公車號碼，其實那是等車的時間。"
+    },
+    "listen": "W: Excuse me. Which bus goes to the zoo?\nM: Bus 13 and Bus 30. But Bus 30 just left, and the next one comes in forty minutes.\nW: Oh, I can't wait that long.\nM: Then take the other one. It comes every ten minutes.\nN: Question: Which bus will the woman probably take?"
+  },
+  {
+    "id": "EN-8L-1-31",
+    "exam_part": null,
+    "unit": "EN-8L-1",
+    "concept": "basic-response",
+    "difficulty": 1,
+    "stem": "請聽一句話，選出最適當的回應。（看到同學手上包著繃帶）",
+    "options": [
+      "I fell off my bike yesterday.",
+      "My arms are long and very strong.",
+      "I'm going to wash it later.",
+      "Yes, it happened last week."
+    ],
+    "answer": "A",
+    "explanation": "聽力原文是「What happened to your arm?」（你的手臂怎麼了？），What happened 是問「發生了什麼事」，要說出受傷的經過：I fell off my bike yesterday.（我昨天騎腳踏車摔倒了）。",
+    "hints": [
+      "問句開頭是 What happened，想知道的是什麼？",
+      "同學手上包著繃帶，你可以怎麼說明受傷的原因？"
+    ],
+    "wrong": {
+      "B": "只描述手臂的樣子，沒有說發生了什麼事。",
+      "C": "說等一下要洗，沒有回答手臂發生了什麼事。",
+      "D": "What 開頭的問句不能用 Yes 回答，而且沒有說出發生了什麼。"
+    },
+    "listen": "W: What happened to your arm?"
+  },
+  {
+    "id": "EN-8L-1-32",
+    "exam_part": null,
+    "unit": "EN-8L-1",
+    "concept": "basic-response",
+    "difficulty": 1,
+    "stem": "請聽一句話，選出最適當的回應。（在餐桌上）",
+    "options": [
+      "It's too salty for me.",
+      "Of course. Here it is.",
+      "Yes, I could pass it.",
+      "No, I didn't pass it."
+    ],
+    "answer": "B",
+    "explanation": "聽力原文是「Could you pass me the salt, please?」（可以請你把鹽遞給我嗎？），Could you...? 是客氣的請求，最適當的回應是答應並把鹽遞過去：Of course. Here it is.（當然，給你）。",
+    "hints": [
+      "Could you..., please? 是在問能力，還是在請你幫忙？",
+      "別人請你遞東西時，遞過去的時候會說什麼？"
+    ],
+    "wrong": {
+      "C": "聽到 Could you 就用 Yes, I could 回答，但這是請求不是問能力，而且沒有真的把鹽遞過去。",
+      "A": "聽到 salt 就想到 salty（鹹），但對方是請你遞鹽，不是問你覺得鹹不鹹。",
+      "D": "把 pass 想成「通過考試」，又用過去式回答，和遞鹽的請求無關。"
+    },
+    "listen": "M: Could you pass me the salt, please?"
+  },
+  {
+    "id": "EN-8L-1-33",
+    "exam_part": null,
+    "unit": "EN-8L-1",
+    "concept": "basic-response",
+    "difficulty": 2,
+    "stem": "請聽一句話，選出最適當的回應。（放假前一天）",
+    "options": [
+      "It was a fun trip.",
+      "Sorry to hear that.",
+      "Have a good trip!",
+      "Welcome back home!"
+    ],
+    "answer": "C",
+    "explanation": "聽力原文是「I'm leaving for Japan tomorrow morning.」（我明天早上要出發去日本），旅行還沒開始，適合祝對方旅途愉快：Have a good trip!",
+    "hints": [
+      "對方是要出發，還是已經回來了？",
+      "leave for... 是「出發前往……」，對要去旅行的人可以說什麼祝福？"
+    ],
+    "wrong": {
+      "D": "Welcome back 是對旅行回來的人說的，對方明天才要出發。",
+      "A": "用過去式說旅行很好玩，但對方的旅行還沒開始。",
+      "B": "這是聽到壞消息時表示遺憾，要出國旅行不是壞消息。"
+    },
+    "listen": "W: I'm leaving for Japan tomorrow morning."
+  },
+  {
+    "id": "EN-8L-1-34",
+    "exam_part": null,
+    "unit": "EN-8L-1",
+    "concept": "basic-response",
+    "difficulty": 2,
+    "stem": "請聽一句話，選出最適當的回應。（早上在校門口）",
+    "options": [
+      "Yes, I answered it.",
+      "I was taking a shower.",
+      "I'm watching TV now.",
+      "I'll call you tonight."
+    ],
+    "answer": "B",
+    "explanation": "聽力原文是「I called you at eight last night, but no one answered. What were you doing?」，What were you doing? 是過去進行式，問「昨晚八點那時你正在做什麼」，所以回答 I was taking a shower.（我那時正在洗澡），也說明了為什麼沒接電話。",
+    "hints": [
+      "問句的時間是現在、過去還是未來？",
+      "What were you doing? 要用哪一種時態回答？"
+    ],
+    "wrong": {
+      "C": "用現在進行式說「現在正在看電視」，但對方問的是昨晚八點的事。",
+      "D": "說今晚會打給他，沒有回答昨晚那時在做什麼。",
+      "A": "What 問句不能用 Yes 回答，而且對方說沒人接，說自己有接也互相矛盾。"
+    },
+    "listen": "M: I called you at eight last night, but no one answered. What were you doing?"
+  },
+  {
+    "id": "EN-8L-1-35",
+    "exam_part": null,
+    "unit": "EN-8L-1",
+    "concept": "dialogue-detail",
+    "difficulty": 1,
+    "stem": "What is the boy's problem?",
+    "options": [
+      "He lost his new sports shoes.",
+      "His shoes are too big now.",
+      "His shoes are too small now.",
+      "He hurt his leg in a game."
+    ],
+    "answer": "C",
+    "explanation": "男孩說穿這雙鞋走路腳趾會痛，媽媽說「You grew so fast this year. Your feet are bigger now.」，他的腳變大了，所以鞋子變得太小、穿不下了。",
+    "hints": [
+      "男孩說哪裡會痛？什麼時候會痛？",
+      "媽媽說他的腳怎麼了？腳變大了，鞋子會變得怎樣？"
+    ],
+    "wrong": {
+      "D": "男孩說的是腳趾痛（my toes hurt），而且是因為鞋子，不是比賽受傷。",
+      "A": "他正穿著這雙鞋（in these shoes），鞋子沒有不見。",
+      "B": "腳變大了（feet are bigger），所以鞋子是變小，不是變大。"
+    },
+    "listen": "M: Mom, my toes hurt when I walk in these shoes.\nW: Let me see. You grew so fast this year. Your feet are bigger now.\nM: Can we go shopping this weekend?\nW: Sure.\nN: Question: What is the boy's problem?"
+  },
+  {
+    "id": "EN-8L-1-36",
+    "exam_part": null,
+    "unit": "EN-8L-1",
+    "concept": "dialogue-detail",
+    "difficulty": 2,
+    "stem": "Who is the tallest of the three children?",
+    "options": [
+      "Joe's sister.",
+      "Joe and his brother.",
+      "Joe's brother.",
+      "Joe himself."
+    ],
+    "answer": "C",
+    "explanation": "Joe 說去年他比弟弟（或哥哥）高，「but he grew a lot. Now he's taller than me.」，現在兄弟比 Joe 高；妹妹（或姊姊）是全家最矮的。所以三個孩子裡最高的是 Joe 的兄弟。",
+    "hints": [
+      "Joe 去年和現在，誰比較高？",
+      "Joe 的姊妹在家裡是什麼樣的身高？把三個人排一排。"
+    ],
+    "wrong": {
+      "D": "Joe 是「去年」比較高，現在兄弟已經比他高了（Now he's taller than me）。",
+      "A": "Joe 說姊妹是 the shortest（最矮的），不是最高。",
+      "B": "Joe 說兄弟現在比他高，兩人不是一樣高。"
+    },
+    "listen": "W: Joe, are you taller than your brother?\nM: I was last year, but he grew a lot. Now he's taller than me.\nW: What about your sister?\nM: She's the shortest in our family.\nN: Question: Who is the tallest of the three children?"
+  },
+  {
+    "id": "EN-8L-1-37",
+    "exam_part": null,
+    "unit": "EN-8L-1",
+    "concept": "dialogue-detail",
+    "difficulty": 2,
+    "stem": "What does the girl want the boy to do?",
+    "options": [
+      "Help her with history.",
+      "Turn off the room lights.",
+      "Make the music quieter.",
+      "Play the music louder."
+    ],
+    "answer": "C",
+    "explanation": "女孩說「can you turn down the music? I'm trying to study」，turn down 是「把音量調小」，男孩調整後她說 Much better，表示她要男孩把音樂調小聲一點。",
+    "hints": [
+      "女孩正在做什麼？什麼東西讓她不舒服？",
+      "turn down 是把音量調大還是調小？"
+    ],
+    "wrong": {
+      "B": "對話中沒有提到燈，女孩在意的是音樂。",
+      "A": "history 是她要準備的考試科目，她沒有請男孩教她。",
+      "D": "把 turn down（調小）想成 turn up（調大），意思剛好相反。"
+    },
+    "listen": "W: Tom, can you turn down the music? I'm trying to study for my history test.\nM: Oh, sorry. Is this OK?\nW: Much better. Thanks.\nN: Question: What does the girl want the boy to do?"
+  },
+  {
+    "id": "EN-8L-1-38",
+    "exam_part": null,
+    "unit": "EN-8L-1",
+    "concept": "dialogue-detail",
+    "difficulty": 3,
+    "stem": "When will they have dinner?",
+    "options": [
+      "At about eight o'clock.",
+      "Before seven o'clock.",
+      "Right after the movie.",
+      "At around nine o'clock."
+    ],
+    "answer": "B",
+    "explanation": "電影七點開始、大約兩小時，所以九點才結束；但餐廳「closes at nine」，看完電影餐廳就關了，女孩說「we'd better eat first」，所以他們要在七點電影開始前吃晚餐。",
+    "hints": [
+      "電影幾點開始？演多久？幾點結束？",
+      "餐廳幾點關門？看完電影還來得及嗎？",
+      "女孩最後說 eat first，first 是指在什麼之前？"
+    ],
+    "wrong": {
+      "C": "這是女孩一開始的提議，但電影九點才結束，餐廳九點就關門了。",
+      "A": "八點左右他們正在看電影，不會去吃飯。",
+      "D": "九點餐廳已經關門了，電影也才剛結束。"
+    },
+    "listen": "M: The movie starts at seven, and it's about two hours long.\nW: Then let's have dinner at the Italian restaurant after the movie.\nM: But that restaurant closes at nine.\nW: Oh. Then we'd better eat first.\nN: Question: When will they have dinner?"
+  },
+  {
+    "id": "EN-8L-1-39",
+    "exam_part": null,
+    "unit": "EN-8L-1",
+    "concept": "announcement",
+    "difficulty": 1,
+    "stem": "What does the announcement ask people to do?",
+    "options": [
+      "Finish shopping and pay soon.",
+      "Come back in ten minutes.",
+      "Get a free gift at the counter.",
+      "Leave their bags at the door."
+    ],
+    "answer": "A",
+    "explanation": "廣播說商店再十分鐘就要關門，「Please take the things you want to buy to the checkout counters now.」，請顧客現在把要買的東西拿去結帳櫃檯，也就是盡快買完、付錢。",
+    "hints": [
+      "商店還有多久關門？",
+      "Please... 後面請顧客把東西拿到哪裡？去那裡要做什麼？"
+    ],
+    "wrong": {
+      "B": "ten minutes 是商店再十分鐘就關門，不是請大家十分鐘後再來。",
+      "D": "廣播中沒有提到把包包放在門口。",
+      "C": "聽到 counters 就以為是去櫃檯拿禮物，但結帳櫃檯是付錢的地方。"
+    },
+    "listen": "N: Dear customers, our store will close in ten minutes. Please take the things you want to buy to the checkout counters now. We will open again at nine tomorrow morning. Thank you for shopping with us.\nN: Question: What does the announcement ask people to do?"
+  },
+  {
+    "id": "EN-8L-1-40",
+    "exam_part": null,
+    "unit": "EN-8L-1",
+    "concept": "announcement",
+    "difficulty": 2,
+    "stem": "What will the weather be like in southern Taiwan tomorrow?",
+    "options": [
+      "Cloudy in the morning, rainy later.",
+      "Sunny in the morning, rainy later.",
+      "Rainy and cool for the whole day.",
+      "Clear skies and hot all day long."
+    ],
+    "answer": "D",
+    "explanation": "氣象報告說「In the south, there will be no clouds all day, but it will be very hot.」，南部明天整天沒有雲（晴朗）、天氣很熱，氣溫可能到 34 度；早上多雲、下午下雨的是北部。",
+    "hints": [
+      "氣象報告分別說了哪兩個地區的天氣？",
+      "注意 In the south 後面的內容，no clouds all day 是什麼樣的天空？"
+    ],
+    "wrong": {
+      "A": "早上多雲、下午下雨是北部（Northern Taiwan）的天氣。",
+      "C": "南部是很熱（very hot），不是涼爽，也沒有下雨。",
+      "B": "南部整天都沒有雲，沒有說下午會下雨，把北部下午的雨套到南部了。"
+    },
+    "listen": "N: Here is the weather report for tomorrow. Northern Taiwan will be cloudy in the morning, and it will start to rain in the afternoon. In the south, there will be no clouds all day, but it will be very hot. The temperature may go up to thirty-four degrees.\nN: Question: What will the weather be like in southern Taiwan tomorrow?"
+  },
+  {
+    "id": "EN-8L-1-41",
+    "exam_part": null,
+    "unit": "EN-8L-1",
+    "concept": "announcement",
+    "difficulty": 2,
+    "stem": "What should students do if they want to join the singing contest?",
+    "options": [
+      "Practice in the school hall on Fridays.",
+      "Sign up at an office before Friday.",
+      "Sign up at the school hall on May 10.",
+      "Find three classmates to sing with."
+    ],
+    "answer": "B",
+    "explanation": "廣播說「Students who want to join should sign up at the English teachers' office before this Friday.」，想參加的人要在這星期五前到英文老師辦公室報名；五月十日在禮堂是比賽的日期和地點。",
+    "hints": [
+      "廣播裡出現了哪兩個地點、哪兩個日期？各是什麼事情的？",
+      "注意 should sign up... 後面報名的地點和期限。"
+    ],
+    "wrong": {
+      "C": "五月十日、學校禮堂是比賽舉行的時間和地點，不是報名的地方。",
+      "D": "每班只能派兩位同學（only two students），廣播是請大家先和同學討論，不是找三個人一起唱。",
+      "A": "廣播中沒有說每週五要在禮堂練習，Friday 是報名截止的日子。"
+    },
+    "listen": "N: Attention, students. The English singing contest will be held in the school hall on May tenth. Students who want to join should sign up at the English teachers' office before this Friday. Each class can send only two students, so talk with your classmates first.\nN: Question: What should students do if they want to join the singing contest?"
+  },
+  {
+    "id": "EN-8L-1-42",
+    "exam_part": null,
+    "unit": "EN-8L-1",
+    "concept": "announcement",
+    "difficulty": 3,
+    "stem": "If it rains tomorrow, what will the students do?",
+    "options": [
+      "Visit a museum and eat lunch there.",
+      "Go to the mountain with their own lunch.",
+      "Visit a museum with their own lunch.",
+      "Stay at school and have their classes."
+    ],
+    "answer": "A",
+    "explanation": "廣播說「If it rains, we will visit the science museum instead.」，下雨就改去科學博物館；還說「you don't need to bring lunch, because we will eat at the museum restaurant」，不用帶午餐，在博物館的餐廳吃。所以下雨時是去博物館並在那裡吃午餐。",
+    "hints": [
+      "原本的計畫是去哪裡？要帶什麼？",
+      "If it rains 後面改成去哪裡？那時午餐要怎麼解決？",
+      "選項要地點和午餐兩個部分都對。"
+    ],
+    "wrong": {
+      "B": "去山上、自己帶午餐是「沒下雨」時的原本計畫。",
+      "D": "廣播說下雨會改去博物館（instead），不是留在學校上課。",
+      "C": "地點對了，但下雨時不用帶午餐（don't need to bring lunch），要在博物館餐廳吃。"
+    },
+    "listen": "N: Good afternoon, Class 805. Tomorrow we are going to Yangmingshan. The bus will leave at seven thirty, so please come to school fifteen minutes before that. There are no stores on the mountain, so please bring your own lunch. If it rains, we will visit the science museum instead. In that case, you don't need to bring lunch, because we will eat at the museum restaurant.\nN: Question: If it rains tomorrow, what will the students do?"
+  },
+  {
+    "id": "EN-8L-1-43",
+    "exam_part": null,
+    "unit": "EN-8L-1",
+    "concept": "message",
+    "difficulty": 1,
+    "stem": "What does Ted's mom want him to do?",
+    "options": [
+      "Check the fridge and text her.",
+      "Bring the list to the store.",
+      "Clean the fridge before dinner.",
+      "Go to the supermarket for her."
+    ],
+    "answer": "A",
+    "explanation": "媽媽說她在超市但忘了帶購物清單，「Can you look in the fridge and send me a message about what we need?」，請 Ted 看看冰箱裡缺什麼，再傳訊息告訴她。",
+    "hints": [
+      "媽媽現在在哪裡？她忘了什麼？",
+      "注意 Can you... 後面請 Ted 做的兩件事。"
+    ],
+    "wrong": {
+      "D": "媽媽自己已經在超市了，不需要 Ted 去。",
+      "C": "媽媽是請 Ted 看冰箱裡缺什麼，不是打掃冰箱。",
+      "B": "媽媽雖然忘了帶清單，但她是請 Ted 傳訊息，沒有要他把清單送過去。"
+    },
+    "listen": "W: Hi, Ted. It's Mom. I'm at the supermarket now, but I forgot my shopping list at home. Can you look in the fridge and send me a message about what we need? Thanks, dear.\nN: Question: What does Ted's mom want him to do?"
+  },
+  {
+    "id": "EN-8L-1-44",
+    "exam_part": null,
+    "unit": "EN-8L-1",
+    "concept": "message",
+    "difficulty": 2,
+    "stem": "What should the listener do before next Wednesday?",
+    "options": [
+      "Pay for a new library card.",
+      "Return the book Ocean Animals.",
+      "Pick up the book she wanted.",
+      "Call the library about the book."
+    ],
+    "answer": "C",
+    "explanation": "圖書館說林小姐要的書「has come back. We will keep it for you until next Wednesday.」，書已經有人還回來了，館方幫她保留到下星期三，所以她要在那之前帶借書證去把書借走。",
+    "hints": [
+      "林小姐之前向圖書館要了什麼？",
+      "has come back 是誰把書還回來？圖書館幫她保留到什麼時候？"
+    ],
+    "wrong": {
+      "B": "has come back 是別人把書還回圖書館了，不是要林小姐還書。",
+      "A": "留言是請她帶借書證來（bring your library card），不是辦新的。",
+      "D": "留言中沒有要她回電，只要她來拿書。"
+    },
+    "listen": "W: Hello, this is the City Library calling for Ms. Lin. The book you asked for, Ocean Animals, has come back. We will keep it for you until next Wednesday. Please bring your library card when you come. Thank you.\nN: Question: What should the listener do before next Wednesday?"
+  },
+  {
+    "id": "EN-8L-1-45",
+    "exam_part": null,
+    "unit": "EN-8L-1",
+    "concept": "message",
+    "difficulty": 3,
+    "stem": "When and where will the two girls meet?",
+    "options": [
+      "At 4:00 at the MRT station.",
+      "At 4:00 at the bookstore.",
+      "At 4:30 at the bookstore.",
+      "At 1:30 at the MRT station."
+    ],
+    "answer": "B",
+    "explanation": "Rita 說兩點那場賣完了，所以買了四點半的票，「Let's meet thirty minutes before the movie starts.」，4:30 提早 30 分鐘是 4:00；地點改成「the bookstore next to the theater, not at the MRT station」。所以四點在書店見面。",
+    "hints": [
+      "Rita 最後買的是幾點的電影？",
+      "見面時間要比電影早多少？地點從哪裡改到哪裡？",
+      "時間和地點兩個都要對。"
+    ],
+    "wrong": {
+      "D": "用原本兩點的場次往前推三十分鐘，地點也還是原本的捷運站，兩個都沒有更新。",
+      "A": "時間對了，但 Rita 說 not at the MRT station，地點改成書店了。",
+      "C": "地點對了，但 4:30 是電影開始的時間，要提早三十分鐘見面。"
+    },
+    "listen": "W: Hi, Kate. It's Rita. About the movie tomorrow: the two o'clock show is sold out, so I bought tickets for the four thirty show. Let's meet thirty minutes before the movie starts. And let's meet at the bookstore next to the theater, not at the MRT station.\nN: Question: When and where will the two girls meet?"
+  },
+  {
+    "id": "EN-9L-1-31",
+    "exam_part": null,
+    "unit": "EN-9L-1",
+    "concept": "basic-response",
+    "difficulty": 1,
+    "stem": "請聽一句話，選出最適當的回應。（頒獎典禮後）",
+    "options": [
+      "Don't worry. You'll win next time.",
+      "I'm sorry. I didn't do well.",
+      "You're welcome. It's my pleasure.",
+      "Thank you. I practiced a lot."
+    ],
+    "answer": "D",
+    "explanation": "聽力原文是「Congratulations on winning first place in the speech contest!」（恭喜你演講比賽得第一名！），別人恭喜你時要道謝，所以回答 Thank you. I practiced a lot.（謝謝，我練習了很多次）。",
+    "hints": [
+      "Congratulations 是在安慰、道歉，還是恭喜？",
+      "別人恭喜你得獎時，要怎麼回應？"
+    ],
+    "wrong": {
+      "A": "這是安慰沒得獎的人說的話，但對方是在恭喜你得了第一名。",
+      "C": "You're welcome. 是回應別人的道謝，對方是在恭喜你，不是謝謝你。",
+      "B": "你得了第一名，說自己表現不好和事實不符。"
+    },
+    "listen": "W: Congratulations on winning first place in the speech contest!"
+  },
+  {
+    "id": "EN-9L-1-32",
+    "exam_part": null,
+    "unit": "EN-9L-1",
+    "concept": "basic-response",
+    "difficulty": 1,
+    "stem": "請聽一句話，選出最適當的回應。（逛街時遇到同學）",
+    "options": [
+      "It was five hundred dollars.",
+      "At a shop near my school.",
+      "It's my favorite color.",
+      "I bought it last Sunday."
+    ],
+    "answer": "B",
+    "explanation": "聽力原文是「Your dress looks great. Where did you get it?」（你的洋裝很好看，在哪裡買的？），Where 問地點，所以回答 At a shop near my school.（在我學校附近的一家店）。",
+    "hints": [
+      "對方最後一句的疑問詞是什麼？",
+      "Where did you get it? 要回答價錢、時間，還是地點？"
+    ],
+    "wrong": {
+      "A": "這是回答 How much was it?（多少錢），不是在哪裡買。",
+      "D": "這是回答 When did you buy it?（什麼時候買的），沒有說地點。",
+      "C": "只說是自己最喜歡的顏色，沒有回答在哪裡買的。"
+    },
+    "listen": "M: Your dress looks great. Where did you get it?"
+  },
+  {
+    "id": "EN-9L-1-33",
+    "exam_part": null,
+    "unit": "EN-9L-1",
+    "concept": "basic-response",
+    "difficulty": 2,
+    "stem": "請聽一句話，選出最適當的回應。（拿到新制服時）",
+    "options": [
+      "I'd like a bigger one, please.",
+      "I got it from the school office.",
+      "It looks nice, but it's too warm.",
+      "I wear it on Mondays and Fridays."
+    ],
+    "answer": "C",
+    "explanation": "聽力原文是「How do you like our new school uniform?」，How do you like...? 是問「你覺得……怎麼樣」，要說出感想，所以回答 It looks nice, but it's too warm.（很好看，但是太熱了）。",
+    "hints": [
+      "How do you like...? 是問喜不喜歡、覺得怎麼樣，還是問想要什麼？",
+      "回答要說出你對新制服的看法。"
+    ],
+    "wrong": {
+      "D": "這是回答 When do you wear it?（什麼時候穿），沒有說出感想。",
+      "A": "把 How do you like 聽成 What would you like（想要什麼），回答要大一號的，是在店裡買東西的說法。",
+      "B": "這是回答 Where did you get it?（從哪裡拿到的），沒有說覺得怎麼樣。"
+    },
+    "listen": "W: How do you like our new school uniform?"
+  },
+  {
+    "id": "EN-9L-1-34",
+    "exam_part": null,
+    "unit": "EN-9L-1",
+    "concept": "dialogue-inference",
+    "difficulty": 1,
+    "stem": "Where does this conversation most likely take place?",
+    "options": [
+      "At a bank.",
+      "At a post office.",
+      "At a train station.",
+      "At a bookstore."
+    ],
+    "answer": "B",
+    "explanation": "女士說要把箱子寄給臺南的奶奶，男士幫忙秤重（Let me weigh it）、算郵資一百八十元，還請她寫上地址，說兩天會送到。寄包裹、秤重、寫地址，可以推論是在郵局。",
+    "hints": [
+      "女士想把箱子怎麼樣？",
+      "秤重、算錢、寫收件人地址，這些事通常在哪裡做？"
+    ],
+    "wrong": {
+      "D": "書店是買書的地方，不會幫人秤箱子、寫地址寄送。",
+      "C": "火車站是買票搭車的地方，對話中沒有車票或班次。",
+      "A": "銀行處理的是錢和帳戶，不會秤重寄箱子。"
+    },
+    "listen": "W: Hi. I'd like to send this box to my grandmother in Tainan.\nM: Sure. Let me weigh it first. It's two kilograms, so that's one hundred eighty dollars.\nW: How soon will it get there?\nM: In two days. Please write her address here.\nN: Question: Where does this conversation most likely take place?"
+  },
+  {
+    "id": "EN-9L-1-35",
+    "exam_part": null,
+    "unit": "EN-9L-1",
+    "concept": "dialogue-inference",
+    "difficulty": 2,
+    "stem": "What is the relationship between the two speakers?",
+    "options": [
+      "A doctor and a patient.",
+      "A teacher and a student.",
+      "A father and a daughter.",
+      "A clerk and a customer."
+    ],
+    "answer": "B",
+    "explanation": "Annie 稱對方 Mr. Lee，為沒交自然報告道歉；Mr. Lee 說其他同學（classmates）昨天都交了，還提醒下週要期末考。交報告、同學、期末考這些線索，表示兩人是老師和學生。",
+    "hints": [
+      "女孩為了什麼事情道歉？",
+      "男士提到了 classmates 和 final exam，誰會說這些話？"
+    ],
+    "wrong": {
+      "A": "對話中沒有看病、身體不舒服的內容。",
+      "C": "女孩稱對方 Mr. Lee，女兒不會這樣稱呼爸爸，而且提到班上同學交報告。",
+      "D": "對話中沒有買東西或付錢的內容。"
+    },
+    "listen": "W: Mr. Lee, I'm sorry. I left my science report at home again.\nM: That's the second time this month, Annie. All your classmates handed theirs in yesterday.\nW: I'll bring it to your office tomorrow morning.\nM: OK. And don't forget that the final exam is next week.\nN: Question: What is the relationship between the two speakers?"
+  },
+  {
+    "id": "EN-9L-1-36",
+    "exam_part": null,
+    "unit": "EN-9L-1",
+    "concept": "dialogue-inference",
+    "difficulty": 2,
+    "stem": "How does the girl probably feel?",
+    "options": [
+      "She is excited about the result.",
+      "She is proud of her dance.",
+      "She is bored with dancing now.",
+      "She is upset about how she did."
+    ],
+    "answer": "D",
+    "explanation": "Wendy 練了三個月，比賽時卻忘了舞步、站在那裡不動；男孩安慰她「Don't be so hard on yourself」，她說「I can't stop thinking about it」，一直想著這件事，可以推論她對自己的表現很難過、很在意。",
+    "hints": [
+      "Wendy 比賽時發生了什麼事？",
+      "男孩為什麼要安慰她？她最後說一直在想這件事，表示心情如何？"
+    ],
+    "wrong": {
+      "B": "她在比賽中忘了舞步，男孩還要安慰她，不會是覺得驕傲。",
+      "A": "她一直想著自己的失誤，對結果並不興奮。",
+      "C": "她練了三個月，是在意這次表現，不是對跳舞感到無聊。"
+    },
+    "listen": "M: How was the dance contest yesterday, Wendy?\nW: I practiced every day for three months, but in the middle of the dance, I forgot the steps. I just stood there.\nM: Don't be so hard on yourself. Everyone makes mistakes.\nW: I know, but I can't stop thinking about it.\nN: Question: How does the girl probably feel?"
+  },
+  {
+    "id": "EN-9L-1-37",
+    "exam_part": null,
+    "unit": "EN-9L-1",
+    "concept": "dialogue-inference",
+    "difficulty": 3,
+    "stem": "Which phone case will the woman probably buy?",
+    "options": [
+      "The red one.",
+      "The black one.",
+      "The blue one.",
+      "The white one."
+    ],
+    "answer": "D",
+    "explanation": "紅色最便宜但太大，不合手機；黑色剛好但要六百元，她只帶了五百元，買不起；白色合手機、四百五十元，錢也夠。男孩提醒她不喜歡白色，她說可以貼貼紙，表示這個缺點她能解決，所以她最可能買白色的。",
+    "hints": [
+      "三種手機殼各有什麼優點和缺點？",
+      "她帶了多少錢？哪一個買得起又合手機？",
+      "男孩提出的問題，她最後怎麼回應？"
+    ],
+    "wrong": {
+      "A": "紅色雖然最便宜，但 it's too big for your phone，太大不合用。",
+      "B": "黑色合手機，但要六百元，她只帶了五百元。",
+      "C": "對話中沒有提到藍色的手機殼。"
+    },
+    "listen": "W: Which phone case should I buy?\nM: The red one is the cheapest, but it's too big for your phone. The black one fits well, but it's six hundred dollars.\nW: I only brought five hundred. What about the white one? It fits, and it's four hundred fifty.\nM: But you said you didn't like white things.\nW: Well, I can put some stickers on it.\nN: Question: Which phone case will the woman probably buy?"
+  },
+  {
+    "id": "EN-9L-1-38",
+    "exam_part": null,
+    "unit": "EN-9L-1",
+    "concept": "announcement",
+    "difficulty": 1,
+    "stem": "Who is this announcement for?",
+    "options": [
+      "People riding the MRT.",
+      "People watching a movie.",
+      "People waiting at an airport.",
+      "People shopping in a mall."
+    ],
+    "answer": "A",
+    "explanation": "廣播說「The next station is City Hall. The doors on the left will open.」，還請要去動物園的人在這站換搭棕線（change to the Brown Line），並請大家握好扶手、讓座。下一站、左側開門、換線，可以推論是給搭捷運的乘客聽的。",
+    "hints": [
+      "廣播一開始說「下一個」什麼？",
+      "換到另一條「線」、握好扶手、讓座，這是在什麼交通工具上？"
+    ],
+    "wrong": {
+      "C": "機場的廣播會說班機和登機門，不會說下一站和換線。",
+      "B": "看電影時不會有下一站、開門和讓座的廣播。",
+      "D": "購物中心的廣播會說特價或樓層，不會說換搭某條線。"
+    },
+    "listen": "N: The next station is City Hall. The doors on the left will open. Passengers going to the zoo, please change to the Brown Line at this station. Please hold the handrail and give your seat to people who need it.\nN: Question: Who is this announcement for?"
+  },
+  {
+    "id": "EN-9L-1-39",
+    "exam_part": null,
+    "unit": "EN-9L-1",
+    "concept": "announcement",
+    "difficulty": 2,
+    "stem": "What will listeners hear at nine tonight?",
+    "options": [
+      "Story Time and then a report.",
+      "The program Story Time.",
+      "Tomorrow's weather report.",
+      "A report about a ball game."
+    ],
+    "answer": "D",
+    "explanation": "廣播說今晚九點的節目 Story Time 不播（will not be on at nine），「Instead, we will bring you a special report on the high school basketball final.」，改播高中籃球決賽的特別報導，所以九點會聽到球賽的報導。",
+    "hints": [
+      "Story Time 平常幾點播？今晚會照常播嗎？",
+      "Instead 後面說改播什麼？"
+    ],
+    "wrong": {
+      "B": "廣播說 Story Time will not be on at nine，今晚九點不播。",
+      "C": "廣播中沒有提到天氣預報。",
+      "A": "Story Time 今晚不會播，要明天晚上才回來，不是先播故事再播報導。"
+    },
+    "listen": "N: Thank you for listening to Happy Radio. Tonight, our program Story Time will not be on at nine as usual. Instead, we will bring you a special report on the high school basketball final. Story Time will be back tomorrow night at the same time.\nN: Question: What will listeners hear at nine tonight?"
+  },
+  {
+    "id": "EN-9L-1-40",
+    "exam_part": null,
+    "unit": "EN-9L-1",
+    "concept": "announcement",
+    "difficulty": 2,
+    "stem": "What will happen if a visitor returns a bike at 6:30 p.m.?",
+    "options": [
+      "The visitor will pay 100 dollars more.",
+      "The visitor will get a free helmet.",
+      "The visitor can't rent bikes again.",
+      "The visitor will pay 200 dollars more."
+    ],
+    "answer": "A",
+    "explanation": "廣播說腳踏車要在下午五點半前歸還，晚還「you will need to pay one hundred dollars for each extra hour」，每多一小時付一百元。六點半還車比五點半晚了一小時，所以要多付 100 × 1 = 100 元。",
+    "hints": [
+      "腳踏車要在幾點以前還？",
+      "六點半比規定的時間晚了幾小時？每晚一小時要付多少錢？"
+    ],
+    "wrong": {
+      "D": "把晚還的時間算成兩小時，五點半到六點半只差一小時。",
+      "C": "廣播只說晚還要付錢，沒有說以後不能再租。",
+      "B": "安全帽是全程都要戴的規定（wear a helmet at all times），不是送給遊客的禮物。"
+    },
+    "listen": "N: Welcome to the Lakeside Bike Path. You can rent bikes at the visitor center. Please wear a helmet at all times. All bikes must be returned by five thirty p.m. If you return your bike late, you will need to pay one hundred dollars for each extra hour.\nN: Question: What will happen if a visitor returns a bike at 6:30 p.m.?"
+  },
+  {
+    "id": "EN-9L-1-41",
+    "exam_part": null,
+    "unit": "EN-9L-1",
+    "concept": "message",
+    "difficulty": 2,
+    "stem": "What will Mr. Brown get because of the problem?",
+    "options": [
+      "One more night at no cost.",
+      "A cheaper room for Friday.",
+      "Two breakfasts at no cost.",
+      "Free use of the pool on Monday."
+    ],
+    "answer": "C",
+    "explanation": "飯店說游泳池這個週末要維修、不能用，「To say sorry, we will give you breakfast for free on both mornings.」，為了表示歉意，他住的兩個早上都提供免費早餐，也就是兩頓不用錢的早餐。",
+    "hints": [
+      "飯店發生了什麼問題？",
+      "To say sorry 後面，飯店說要給 Brown 先生什麼？",
+      "both mornings 是幾個早上？"
+    ],
+    "wrong": {
+      "A": "飯店沒有說要免費多住一晚，他訂的還是兩晚。",
+      "D": "游泳池是維修中的設施，飯店沒有說星期一可以免費使用。",
+      "B": "留言中沒有提到給他比較便宜的房間。"
+    },
+    "listen": "W: Hello, Mr. Brown. This is Sunshine Hotel. You have a room with us for two nights, starting this Friday. I'm sorry to tell you that our swimming pool will be closed this weekend for repairs. To say sorry, we will give you breakfast for free on both mornings. If you have any questions, please call us at 2233-4455.\nN: Question: What will Mr. Brown get because of the problem?"
+  },
+  {
+    "id": "EN-9L-1-42",
+    "exam_part": null,
+    "unit": "EN-9L-1",
+    "concept": "message",
+    "difficulty": 3,
+    "stem": "Which of the following is true according to Sam's message?",
+    "options": [
+      "The group will meet in the afternoon.",
+      "Sam's laptop will be used for the work.",
+      "Ivy still has to finish the poster.",
+      "They will meet at nine on Sunday morning."
+    ],
+    "answer": "A",
+    "explanation": "Sam 說因為 Lisa 星期六不能來，改成星期天；圖書館九點開，但早上的讀書室都被訂走了，「so let's meet at one」，一點是下午，所以小組會在下午見面。另外 Sam 的筆電壞了、要 Ivy 帶，海報 Sam 已經做好了。",
+    "hints": [
+      "見面的日子為什麼從星期六改成星期天？",
+      "九點是什麼的時間？他們最後約幾點？那是上午還是下午？",
+      "再確認：誰的筆電壞了？海報做完了沒？"
+    ],
+    "wrong": {
+      "C": "Sam 說 I've already finished it，海報他已經做好了，Ivy 不用再做。",
+      "B": "Sam 說 mine is broken，他的筆電壞了，所以請 Ivy 帶她的。",
+      "D": "九點是圖書館開門的時間，但早上的讀書室都被訂走了，他們約的是一點。"
+    },
+    "listen": "M: Hi, Ivy. It's Sam. I'm calling about our group project. Lisa can't come on Saturday, so we'll meet on Sunday instead. The library opens at nine on Sundays, but all the study rooms are booked in the morning, so let's meet at one. Please bring your laptop, because mine is broken. And don't worry about the poster. I've already finished it.\nN: Question: Which of the following is true according to Sam's message?"
+  },
+  {
+    "id": "EN-9L-1-43",
+    "exam_part": null,
+    "unit": "EN-9L-1",
+    "concept": "short-talk",
+    "difficulty": 1,
+    "stem": "Why does Grace cook dinner on Sundays?",
+    "options": [
+      "She wants to be a cook someday.",
+      "Her parents can't cook very well.",
+      "Her little brother asks her to.",
+      "She wants to do something nice for her parents."
+    ],
+    "answer": "D",
+    "explanation": "Grace 說爸媽星期一到星期六都工作得很辛苦，所以她每個星期天煮晚餐，「I want them to relax and enjoy a nice meal on their day off.」，她想讓爸媽在休假日好好休息、吃頓好飯，也就是為爸媽做一件貼心的事。",
+    "hints": [
+      "Grace 的爸媽平常怎麼樣？",
+      "注意 I want them to... 這一句，她希望爸媽星期天怎麼樣？"
+    ],
+    "wrong": {
+      "B": "短文說的是爸媽工作很辛苦，沒有說他們不會煮飯。",
+      "A": "短文中沒有提到她以後想當廚師。",
+      "C": "弟弟只是吃了還想再來一碗，並不是弟弟要她煮的。"
+    },
+    "listen": "N: Hi, I'm Grace. I love cooking. My parents work very hard from Monday to Saturday, so every Sunday I cook dinner for my family. I want them to relax and enjoy a nice meal on their day off. Last Sunday, I made fried rice and tomato soup. My little brother asked for a second bowl!\nN: Question: Why does Grace cook dinner on Sundays?"
+  },
+  {
+    "id": "EN-9L-1-44",
+    "exam_part": null,
+    "unit": "EN-9L-1",
+    "concept": "short-talk",
+    "difficulty": 2,
+    "stem": "What do Plant Club members do during summer vacation?",
+    "options": [
+      "They sell vegetables at the fair.",
+      "They meet twice a week after school.",
+      "They go back to school to give the plants water.",
+      "They plant tomatoes and carrots."
+    ],
+    "answer": "C",
+    "explanation": "短文說暑假沒有上課，但植物還是需要水，「So members take turns coming to school to water them.」，社員輪流回學校幫植物澆水。每週二、四放學後照顧花園是上課期間的事，春天種菜、秋天賣菜也都不是暑假。",
+    "hints": [
+      "短文依照季節說了社團在不同時候做的事，暑假是哪一段？",
+      "暑假沒有上課，植物需要什麼？社員怎麼安排？"
+    ],
+    "wrong": {
+      "B": "每週二、四放學後是上課期間的活動，暑假沒有上課。",
+      "A": "賣菜是秋天（In the fall）在學校園遊會的事。",
+      "D": "種番茄和紅蘿蔔是春天（In spring）的事。"
+    },
+    "listen": "N: Our school has a Plant Club. Every Tuesday and Thursday after school, club members take care of the school garden. In spring, we grow vegetables like tomatoes and carrots. In summer vacation, there are no classes, but the plants still need water. So members take turns coming to school to water them. In the fall, we sell our vegetables at the school fair and use the money to buy new tools.\nN: Question: What do Plant Club members do during summer vacation?"
+  },
+  {
+    "id": "EN-9L-1-45",
+    "exam_part": null,
+    "unit": "EN-9L-1",
+    "concept": "short-talk",
+    "difficulty": 3,
+    "stem": "What does the speaker suggest students do?",
+    "options": [
+      "Review everything the night before a test.",
+      "Rest well and review early for tests.",
+      "Sleep less so they have time to review.",
+      "Study late at night before a big test."
+    ],
+    "answer": "B",
+    "explanation": "短文先說很多學生以為熬夜讀書最好，再用 However 轉折：睡眠對學習很重要，睡覺時大腦會整理白天學的東西；睡不到七小時的學生上課容易累、容易忘。最後建議「review your lessons a few days early, and go to bed on time the night before」，也就是早點複習、考前好好睡覺。",
+    "hints": [
+      "短文一開始提到很多學生相信什麼？However 後面的說法一樣嗎？",
+      "最後一句 So next time... 是作者的建議，他要學生做哪兩件事？"
+    ],
+    "wrong": {
+      "D": "熬夜讀書是很多學生「以為」的方法，作者用 However 表示不同意。",
+      "C": "作者說睡不到七小時的學生容易累、容易忘，不會建議少睡。",
+      "A": "作者建議提早幾天複習（a few days early），考前一晚要準時睡覺，不是考前一晚才全部複習。"
+    },
+    "listen": "N: Many students believe that studying late at night is the best way to get good grades. However, scientists have found that sleep plays an important part in learning. While we are sleeping, our brains organize what we learned during the day and help us remember it. Students who sleep less than seven hours often feel tired in class and forget things easily. So next time you have a big test, review your lessons a few days early, and go to bed on time the night before.\nN: Question: What does the speaker suggest students do?"
   }
 ]

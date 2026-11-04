@@ -28,29 +28,36 @@ ORDERED_SETS = [{"第一象限", "第二象限", "第三象限", "第四象限"}
 # 新題庫檔一律加在各科清單最後面（題號依順序產生，已上線的題目不能換號）
 SUBJECTS = {
     "math": ["questions_math", "questions_math_x1", "questions_math_x2", "questions_math_x3", "questions_math_x4",
-             "questions_math_hard_a", "questions_math_hard_b", "questions_math_more_a", "questions_math_more_b"],
+             "questions_math_hard_a", "questions_math_hard_b", "questions_math_more_a", "questions_math_more_b",
+             "questions_math_more2_1", "questions_math_more2_2", "questions_math_more2_3", "questions_math_more2_4", "questions_math_more2_5"],
     "chinese": ["questions_chinese", "questions_chinese_hard",
-                "questions_chinese_more_1", "questions_chinese_more_2", "questions_chinese_more_3"],
+                "questions_chinese_more_1", "questions_chinese_more_2", "questions_chinese_more_3",
+                "questions_chinese_more2_1", "questions_chinese_more2_2", "questions_chinese_more2_3"],
     "english": ["questions_english", "questions_english_listening", "questions_english_hard",
-                "questions_english_more_1", "questions_english_more_2", "questions_english_listening_more"],
+                "questions_english_more_1", "questions_english_more_2", "questions_english_listening_more",
+                "questions_english_more2_1", "questions_english_more2_2", "questions_english_more2_3", "questions_english_listening_more2"],
     "science": ["questions_science_a", "questions_science_b", "questions_science_hard_a", "questions_science_hard_b",
-                "questions_science_more_1", "questions_science_more_2", "questions_science_more_3", "questions_science_more_4"],
+                "questions_science_more_1", "questions_science_more_2", "questions_science_more_3", "questions_science_more_4",
+                "questions_science_more2_1", "questions_science_more2_2", "questions_science_more2_3", "questions_science_more2_4"],
     "social": ["questions_social_a", "questions_social_b", "questions_social_hard_a", "questions_social_hard_b",
-               "questions_social_more_1", "questions_social_more_2", "questions_social_more_3", "questions_social_more_4"],
+               "questions_social_more_1", "questions_social_more_2", "questions_social_more_3", "questions_social_more_4",
+               "questions_social_more2_1", "questions_social_more2_2", "questions_social_more2_3", "questions_social_more2_4"],
 }
 SUBJECT_LABEL = {"math": "數學", "chinese": "國文", "english": "英語", "science": "自然", "social": "社會"}
-MIN_PER_UNIT = {"math": 30, "chinese": 30, "english": 30, "science": 30, "social": 30}
+MIN_PER_UNIT = {"math": 45, "chinese": 45, "english": 45, "science": 45, "social": 45}
 # 國小高年級（五、六年級）題庫：科目代碼和國中共用，學期是 5A～6B，每單元 15 題
 ELEMENTARY = {
-    "math": ["questions_elem_math_5a", "questions_elem_math_5b", "questions_elem_math_6a", "questions_elem_math_6b"],
-    "chinese": ["questions_elem_chinese_5a", "questions_elem_chinese_5b", "questions_elem_chinese_6a", "questions_elem_chinese_6b"],
+    "math": ["questions_elem_math_5a", "questions_elem_math_5b", "questions_elem_math_6a", "questions_elem_math_6b",
+             "questions_elem_math_more_1", "questions_elem_math_more_2", "questions_elem_math_more_3", "questions_elem_math_more_4"],
+    "chinese": ["questions_elem_chinese_5a", "questions_elem_chinese_5b", "questions_elem_chinese_6a", "questions_elem_chinese_6b",
+                "questions_elem_chinese_more_1", "questions_elem_chinese_more_2", "questions_elem_chinese_more_3"],
     "science": ["questions_elem_science_5a_a", "questions_elem_science_5a_b", "questions_elem_science_5b_a", "questions_elem_science_5b_b",
                 "questions_elem_science_6a_a", "questions_elem_science_6a_b", "questions_elem_science_6b_a", "questions_elem_science_6b_b"],
     "social": ["questions_elem_social_5a_a", "questions_elem_social_5a_b", "questions_elem_social_5b_a", "questions_elem_social_5b_b",
                "questions_elem_social_6a_a", "questions_elem_social_6a_b", "questions_elem_social_6b_a", "questions_elem_social_6b_b"],
 }
-# 國小每單元題數（國語、數學 15 題，自然、社會 30 題）
-ELEMENTARY_MIN = {"math": 15, "chinese": 15, "science": 30, "social": 30}
+# 國小每單元 30 題
+ELEMENTARY_MIN = {"math": 30, "chinese": 30, "science": 30, "social": 30}
 GROUPS = [(s, n, MIN_PER_UNIT[s], "") for s, n in SUBJECTS.items()] + \
          [(s, n, ELEMENTARY_MIN[s], "國小") for s, n in ELEMENTARY.items()]
 
