@@ -50,6 +50,16 @@ export interface AnswerResult {
   mistake_status: string | null;
 }
 
+export interface GardenUnit {
+  unit_id: string; subject: string; semester: string; seq: number; title: string;
+  total: number; mastered: number; attempted: number;
+}
+export interface LeaderRow { rank: number; alias: string; level: number; xp: number; me: boolean }
+export interface Leaderboard {
+  week_start: string; school: 'junior' | 'elementary'; top: LeaderRow[];
+  me: { alias: string; level: number; xp: number; rank: number | null; hidden: boolean };
+}
+
 export interface HomeData {
   nickname: string;
   grade: number | null;
@@ -195,6 +205,11 @@ export const api = {
   units: (subject = 'math', version: string | null = null) =>
     rpc<UnitRow[]>('get_units', { p_subject: subject, p_version: version }),
   /** 社會科：每個單元在第一～三次段考範圍的題數與進度 */
+  /** 學習花園：這個學段每個單元的熟練進度 */
+  garden: () => rpc<GardenUnit[]>('garden'),
+  /** 匿名週排行 */
+  leaderboard: () => rpc<Leaderboard>('weekly_leaderboard', { p_limit: 20 }),
+  setLeaderboardHidden: (hidden: boolean) => rpc<null>('set_leaderboard_hidden', { p_hidden: hidden }),
   unitParts: (subject = 'social') => rpc<UnitPartRow[]>('get_unit_parts', { p_subject: subject }),
   nextQuestions: (unitIds: string[], limit = 5, difficulty: number | null = null, part: number | null = null) =>
     rpc<PublicQuestion[]>('practice_questions', { p_unit_ids: unitIds, p_limit: limit, p_difficulty: difficulty, p_part: part }),

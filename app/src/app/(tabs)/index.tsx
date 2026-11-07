@@ -8,6 +8,7 @@ import { Button, Card, ErrorBox, H2, Loading, ProgressBar, Screen, T } from '@/c
 import { api, errorText, type HomeData, type Limits } from '@/lib/api';
 import { rescheduleReminders } from '@/lib/reminders';
 import { useAuth } from '@/lib/auth';
+import { levelInfo } from '@/lib/game';
 import { C, gradeCheckNeeded, gradeLabel } from '@/lib/theme';
 
 const WEEKDAY = ['日', '一', '二', '三', '四', '五', '六'];
@@ -123,6 +124,8 @@ function StudentHome() {
         </Pressable>
       </Card>
 
+      <LevelCard xp={data.xp} />
+
       <Card style={{ gap: 14 }}>
         <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
           <H2>每日任務</H2>
@@ -200,5 +203,37 @@ function Task({ done, title, detail, progress, action, onPress }: {
       </View>
       {action ? <Button title={action} onPress={onPress} style={{ minHeight: 44, paddingHorizontal: 14 }} /> : null}
     </View>
+  );
+}
+
+/** 等級卡：等級、稱號、升級進度，加上學習花園與週排行的入口 */
+function LevelCard({ xp }: { xp: number }) {
+  const lv = levelInfo(xp);
+  return (
+    <Card style={{ gap: 12 }}>
+      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+        <View style={{ width: 52, height: 52, borderRadius: 26, backgroundColor: C.greenSoft, alignItems: 'center', justifyContent: 'center' }}>
+          <T size={11} color={C.green} weight="700">Lv</T>
+          <T size={20} weight="700" color={C.green} style={{ lineHeight: 22 }}>{lv.level}</T>
+        </View>
+        <View style={{ flex: 1, gap: 4 }}>
+          <T weight="700" size={17}>{lv.title}</T>
+          <ProgressBar value={lv.progress} color={C.green} />
+          <T size={12} color={C.muted}>再 {lv.next - lv.current} XP 升到 Lv {lv.level + 1}（答對 1 題 +10）</T>
+        </View>
+      </View>
+      <View style={{ flexDirection: 'row', gap: 10 }}>
+        <Pressable accessibilityRole="button" onPress={() => router.push('/garden')}
+          style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 6, justifyContent: 'center', minHeight: 44, borderRadius: 12, backgroundColor: C.greenSoft }}>
+          <Ionicons name="flower-outline" size={18} color={C.green} />
+          <T weight="700" color={C.green}>學習花園</T>
+        </Pressable>
+        <Pressable accessibilityRole="button" onPress={() => router.push('/leaderboard')}
+          style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 6, justifyContent: 'center', minHeight: 44, borderRadius: 12, backgroundColor: C.accentSoft }}>
+          <Ionicons name="trophy-outline" size={18} color={C.accentDark} />
+          <T weight="700" color={C.accentDark}>本週排行</T>
+        </Pressable>
+      </View>
+    </Card>
   );
 }

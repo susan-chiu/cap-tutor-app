@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "test": "node db.test.mjs && node stages.test.mjs && node tutor_logic.test.mjs && node subscription.test.mjs",
+    "test": "node db.test.mjs && node stages.test.mjs && node game.test.mjs && node tutor_logic.test.mjs && node subscription.test.mjs",
     "e2e": "node e2e_web_mock.mjs /tmp/e2e",
     "admin": "node admin_web_mock.mjs /tmp/admin-shots"
   },

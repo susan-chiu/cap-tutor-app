@@ -593,6 +593,49 @@ if (hasSeed) {
     assert.ok(jq.length > 0 && jq.every((q) => !/-[56][AB]-/.test(q.unit_id)), '國中生不會拿到國小題');
   });
 
+  await test('遊戲化：經驗值記到本週、匿名週排行（國中國小分開、可隱藏、家長不列）、學習花園進度', async () => {
+    const a = await newUser({ nickname: '真名不外露' });
+    const b = await newUser({ nickname: '第二名' });
+    const kid = await newUser({ nickname: '小五生' });
+    const par = await newUser({ nickname: '家長', role: 'parent' });
+    await as(kid, () => db.query(`update public.profiles set grade = 5 where id = auth.uid()`));
+    const ans = async (u, unit, n) => {
+      const qs = (await db.query(`select id, answer from public.questions where unit_id = $1 and active order by id limit $2`, [unit, n])).rows;
+      for (const q of qs) await answer(u, q.id, q.answer);
+    };
+    await ans(a, 'M-7A-1', 3);       // 30 XP
+    await ans(b, 'M-7A-1', 1);       // 10 XP
+    await ans(kid, 'M-5A-1', 2);     // 20 XP
+    const wk = (await db.query(`select sum(xp)::int n from public.xp_daily where user_id = $1`, [a])).rows[0].n;
+    assert.equal(wk, 30, '答對 3 題記 30 XP');
+    const lb = (await as(a, () => db.query(`select public.weekly_leaderboard() r`))).rows[0].r;
+    assert.equal(lb.school, 'junior');
+    const ids = lb.top.map((r) => r.alias);
+    const xs = lb.top.map((r) => r.xp); assert.deepEqual(xs, [...xs].sort((p, q) => q - p), '依本週 XP 由高到低');
+    assert.ok(!JSON.stringify(lb).includes('真名不外露') && !JSON.stringify(lb).includes('第二名'), '不露出暱稱');
+    assert.ok(lb.top.every((r) => /^[\u4e00-\u9fff]+\d{4}$/.test(r.alias)), '代號＝植物名＋四位數');
+    assert.equal(lb.me.xp, 30); assert.equal(lb.me.level, 1);
+    assert.ok(lb.me.rank >= 1 && lb.top.some((r) => r.me && r.xp === 30));
+    assert.ok(!ids.includes((await as(kid, () => db.query(`select public.weekly_leaderboard() r`))).rows[0].r.me.alias), '國小生不在國中榜');
+    const klb = (await as(kid, () => db.query(`select public.weekly_leaderboard() r`))).rows[0].r;
+    assert.equal(klb.school, 'elementary'); assert.ok(klb.top.some((r) => r.me && r.xp === 20));
+    assert.ok(klb.top.every((r) => r.level >= 1));
+    await as(a, () => db.query(`select public.set_leaderboard_hidden(true)`));
+    const lb2 = (await as(b, () => db.query(`select public.weekly_leaderboard() r`))).rows[0].r;
+    assert.ok(!lb2.top.some((r) => r.xp === 30 && r.alias === lb.me.alias), '隱藏後不在排行榜');
+    const me2 = (await as(a, () => db.query(`select public.weekly_leaderboard() r`))).rows[0].r.me;
+    assert.equal(me2.hidden, true); assert.equal(me2.rank, null);
+    assert.equal((await db.query(`select public.xp_level(0) a, public.xp_level(99) b, public.xp_level(100) c, public.xp_level(1000) d`)).rows[0].d, 5);
+    const g = (await as(a, () => db.query(`select * from public.garden()`))).rows.filter((u) => !u.unit_id.startsWith('T-'));
+    assert.ok(g.length === 86 && g.every((u) => !/-[56][AB]-/.test(u.unit_id)), '國中花園 86 個單元');
+    const m1 = g.find((u) => u.unit_id === 'M-7A-1');
+    assert.deepEqual([m1.total, m1.mastered, m1.attempted], [45, 3, 3]);
+    const kg = (await as(kid, () => db.query(`select * from public.garden()`))).rows;
+    assert.equal(kg.length, 60, '國小花園 60 個單元');
+    assert.equal((await as(par, () => db.query(`select count(*)::int n from public.xp_daily`))).rows[0].n, 0, '不能直接讀別人的經驗值紀錄');
+    assert.ok(!lb.top.some((r) => r.xp === 0), '沒得分的人（例如家長）不列');
+  });
+
   await test('正式題庫：每題答案都在選項內、都有解析與提示', async () => {
     const r = await db.query(`
       select id from public.questions q

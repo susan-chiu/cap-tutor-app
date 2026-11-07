@@ -57,6 +57,8 @@ for name in ['page.html', 'index.html']:
     s = s.replace(m.group(0), '')
     s = s.replace('<script src="./demo-backend.js"></script>', f'<script src="./demo-backend.js" data-entry="{m.group(1)}"></script>')
     p.write_text(s, encoding='utf-8')
+b = Path('demo/dist/demo-backend.js')
+b.write_text(b.read_text(encoding='utf-8').replace("'__CAP_ENTRY_FILE__'", repr(m.group(1))), encoding='utf-8')
 PY
 # 網頁可能放在子路徑（例如 /_f/版本號）：頁面路徑、圖示與圖片改成依實際位置（window.__CAP_PATH）
 python3 - <<'PY'

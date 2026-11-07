@@ -4,10 +4,12 @@ import { useEffect, useRef, useState } from 'react';
 import { Alert, BackHandler, Pressable, ScrollView, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
+import { BossBar, buzz, LevelUpBanner, Stars, XpPop } from '@/components/game-fx';
 import { Feedback, QuestionView, SolutionCard } from '@/components/question';
 import { Button, Card, ErrorBox, H1, Loading, ProgressBar, T } from '@/components/ui';
 import { api, errorText, type AnswerResult } from '@/lib/api';
 import { useAuth } from '@/lib/auth';
+import { BOSS_HEARTS, bossStars, comboMessage, levelFor } from '@/lib/game';
 import { shareText } from '@/lib/share';
 import { ALL_SUBJECTS, C, currentSemester } from '@/lib/theme';
 import { goBack } from '@/lib/nav';
@@ -16,7 +18,7 @@ type Mode = 'daily' | 'unit' | 'exam' | 'review';
 const DIFF_LABEL: Record<string, string> = { '1': '簡單', '2': '中等', '3': '困難' };
 
 export default function Quiz() {
-  const params = useLocalSearchParams<{ mode?: string; units?: string; count?: string; difficulty?: string; title?: string; part?: string }>();
+  const params = useLocalSearchParams<{ mode?: string; units?: string; count?: string; difficulty?: string; title?: string; part?: string; boss?: string }>();
   const mode = (params.mode ?? 'daily') as Mode;
   const { profile } = useAuth();
 
@@ -27,6 +29,11 @@ export default function Quiz() {
   const [result, setResult] = useState<AnswerResult | null>(null);
   const [busy, setBusy] = useState(false);
   const [combo, setCombo] = useState(0);
+  // 遊戲效果：飄起的 +XP、升級提示、Boss 被打的震動
+  const [pop, setPop] = useState<{ seq: number; text: string; sub: string | null }>({ seq: 0, text: '', sub: null });
+  const [levelUp, setLevelUp] = useState<number | null>(null);
+  const [bossHit, setBossHit] = useState(0);
+  const boss = mode === 'exam' && params.boss ? params.boss : null;
   const [stats, setStats] = useState({ answered: 0, correct: 0, xp: 0, streak: 0, streakUp: false });
 
   const [reloadKey, setReloadKey] = useState(0);
@@ -64,7 +71,15 @@ export default function Quiz() {
       setResult(r);
       // 答錯時捲到選項底部，長題目也看得到正確答案（不會被下方解析擋住）
       if (!r.correct) setTimeout(() => scrollRef.current?.scrollToEnd({ animated: true }), 150);
-      setCombo((c) => (r.correct ? c + 1 : 0));
+      const nextCombo = r.correct ? combo + 1 : 0;
+      setCombo(nextCombo);
+      buzz(r.correct ? 'correct' : 'wrong');
+      if (r.correct) {
+        setPop((p) => ({ seq: p.seq + 1, text: `+${r.xp_gained} XP`, sub: comboMessage(nextCombo) }));
+        setBossHit((h) => h + 1);
+      }
+      const before = levelFor(r.xp_total - r.xp_gained), after = levelFor(r.xp_total);
+      if (after > before) { setLevelUp(after); buzz('levelup'); } else setLevelUp(null);
       setStats((s) => ({
         answered: s.answered + 1, correct: s.correct + (r.correct ? 1 : 0), xp: s.xp + r.xp_gained,
         streak: r.streak, streakUp: s.streakUp || r.streak_up,
@@ -83,6 +98,7 @@ export default function Quiz() {
   }
 
   function next() {
+    setLevelUp(null);
     setPicked(null);
     setResult(null);
     setIdx((i) => i + 1);
@@ -135,9 +151,13 @@ export default function Quiz() {
             <Button title="回上一頁" onPress={() => goBack()} />
           </View>
         ) : finished ? (
-          <Summary stats={stats} total={questions.length} allSeen={mode !== 'review' && questions.every((x) => x.seen)} mode={mode} onAgain={() => { setIdx(0); setStats({ answered: 0, correct: 0, xp: 0, streak: 0, streakUp: false }); load(); }} />
+          <Summary stats={stats} total={questions.length} allSeen={mode !== 'review' && questions.every((x) => x.seen)} mode={mode} boss={boss}
+            onAgain={() => { setIdx(0); setCombo(0); setStats({ answered: 0, correct: 0, xp: 0, streak: 0, streakUp: false }); load(); }} />
         ) : q ? (
           <>
+            {boss ? <BossBar name={boss} hp={questions.length - stats.correct} maxHp={questions.length}
+              hearts={Math.max(BOSS_HEARTS - (stats.answered - stats.correct), 0)} hit={bossHit} /> : null}
+            <XpPop seq={pop.seq} text={pop.text} sub={pop.sub} />
             <ScrollView ref={scrollRef} contentContainerStyle={{ padding: 20, gap: 16 }}>
               <T size={13} color={C.muted}>第 {idx + 1} 題 / 共 {questions.length} 題{mode === 'review' ? ' · 錯題複習' : mode === 'exam' ? ` · ${params.title || '段考複習卷'}` : ''}{DIFF_LABEL[params.difficulty ?? ''] ? ` · ${DIFF_LABEL[params.difficulty ?? '']}` : ''}</T>
               <QuestionView q={q} picked={picked} result={result} onPick={setPicked} />
@@ -154,6 +174,7 @@ export default function Quiz() {
                 <>
                   {/* 解析很長或字體放大時可以捲動，不會把題目整個擠掉 */}
                   <ScrollView style={{ flexShrink: 1 }} contentContainerStyle={{ gap: 8 }}>
+                    {levelUp ? <LevelUpBanner level={levelUp} /> : null}
                     <Feedback result={result} compact />
                   </ScrollView>
                   {result.correct ? (
@@ -202,17 +223,27 @@ function reportQuestion(questionId: string) {
   ]);
 }
 
-function Summary({ stats, total, allSeen, mode, onAgain }: {
+function Summary({ stats, total, allSeen, mode, boss, onAgain }: {
   stats: { answered: number; correct: number; xp: number; streak: number; streakUp: boolean };
-  total: number; allSeen: boolean; mode: Mode; onAgain: () => void;
+  total: number; allSeen: boolean; mode: Mode; boss: string | null; onAgain: () => void;
 }) {
+  const stars = bossStars(stats.correct, total);
+  const won = stars >= 1;
   function share() {
     const streak = stats.streak > 0 ? `，連勝 ${stats.streak} 天` : '';
     shareText(`我在「會考小老師」答對 ${stats.correct} / ${total} 題${streak}！一起來練會考 💪`);
   }
   return (
     <ScrollView contentContainerStyle={{ padding: 20, gap: 14 }}>
-      <H1>這一輪完成了！</H1>
+      <H1>{boss ? (won ? `打敗${boss}了！` : `${boss}還沒倒下…`) : '這一輪完成了！'}</H1>
+      {boss ? (
+        <Card style={{ alignItems: 'center', gap: 8 }}>
+          <Stars n={stars} />
+          <T color={C.muted} style={{ textAlign: 'center' }}>
+            {stars === 3 ? '完美通關！答對 9 成以上' : stars === 2 ? '答對 7 成以上，再拚一次拿三顆星！' : stars === 1 ? '答對 5 成以上，過關了！' : '答對不到 5 成，把錯題弄懂再來挑戰！'}
+          </T>
+        </Card>
+      ) : null}
       <Card dark style={{ gap: 6 }}>
         <T size={40} weight="700" color="#FFFFFF" style={{ lineHeight: 48 }}>{stats.correct} / {total}</T>
         <T color="#C9D1CF">答對題數 · 獲得 {stats.xp} XP</T>
@@ -227,7 +258,7 @@ function Summary({ stats, total, allSeen, mode, onAgain }: {
           <T size={14} color={C.accentDark}>接下來會重複出現做過的題目。可以去「錯題本」把錯題弄懂，或到「學期複習」預習下學期、練其他科目。</T>
         </Card>
       ) : null}
-      <Button title="再來一輪" kind="green" onPress={onAgain} />
+      <Button title={boss ? (stars === 3 ? '再挑戰一次' : '再挑戰，拿更多星星') : '再來一輪'} kind="green" onPress={onAgain} />
       <Button title="回首頁" kind="secondary" onPress={() => goBack()} />
       <Button title="分享成績" kind="ghost" onPress={share} />
     </ScrollView>

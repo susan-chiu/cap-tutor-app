@@ -48,6 +48,8 @@ function RootNavigator() {
         <Stack.Screen name="paywall" options={{ presentation: 'modal' }} />
         <Stack.Screen name="help" />
         <Stack.Screen name="mock-exam" options={{ gestureEnabled: false }} />
+        <Stack.Screen name="garden" />
+        <Stack.Screen name="leaderboard" />
       </Stack.Protected>
     </Stack>
   );

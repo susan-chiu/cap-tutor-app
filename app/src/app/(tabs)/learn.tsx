@@ -6,6 +6,7 @@ import { Pressable, View } from 'react-native';
 import { Button, Card, Chip, ErrorBox, H1, H2, Loading, ProgressBar, Screen, T, Tag } from '@/components/ui';
 import { api, errorText, type UnitPartRow, type UnitRow } from '@/lib/api';
 import { useAuth } from '@/lib/auth';
+import { BOSS_NAMES } from '@/lib/game';
 import { currentStage, DIFFICULTIES, splitElementaryStages, splitStages, splitStagesByPart, stageStats, type Difficulty, type Stage } from '@/lib/stages';
 import {
   C, currentSemester, isElementary, semestersFor, subjectsFor, validSemester, validSubject, TEXTBOOK_VERSIONS, VERSIONED_SUBJECTS, type SemesterId, type SubjectId,
@@ -88,9 +89,10 @@ export default function Learn() {
   const now = useMemo(() => currentStage(stages), [stages]);
   const diffLabel = DIFFICULTIES.find((d) => d.id === difficulty)?.label ?? '混合';
 
-  function practice(unitIds: string[], n: number, title: string, part?: number) {
+  function practice(unitIds: string[], n: number, title: string, part?: number, boss?: string) {
     router.push({ pathname: '/quiz', params: {
       mode: 'exam', units: unitIds.join(','), count: String(n), title,
+      ...(boss ? { boss } : {}),
       ...(difficulty ? { difficulty: String(difficulty) } : {}),
       ...(part ? { part: String(part) } : {}),
     } });
@@ -186,7 +188,8 @@ export default function Learn() {
           {stages.map((st) => (
             <StageCard key={st.key} stage={st} current={now?.key === st.key} expanded={open === st.key}
               onToggle={() => setOpen(open === st.key ? null : st.key)}
-              onPractice={() => practice(st.units.map((u) => u.id), st.key === 'final' ? 25 : 15, `${semLabel}${st.label}`, st.units[0]?.part)}
+              onPractice={() => practice(st.units.map((u) => u.id), st.key === 'final' ? 25 : 15, `${semLabel}${st.label}`, st.units[0]?.part,
+                elementary ? `${st.label}魔王` : BOSS_NAMES[st.key])}
               onUnit={practiceUnit} diffLabel={diffLabel} version={version} />
           ))}
 
@@ -254,7 +257,7 @@ function StageCard({ stage, current, expanded, onToggle, onPractice, onUnit, dif
         <T size={13} weight="700" color={C.redDark}>需要加強：{s.weakest.title}（答對 {pctText(s.weakest.accuracy)}）</T>
       ) : null}
       <View style={{ flexDirection: 'row', gap: 8 }}>
-        <Button title={`${final ? '總複習' : '段考複習'} · ${final ? 25 : 15} 題`} kind={final ? 'primary' : 'green'} style={{ flex: 1 }} onPress={onPractice}
+        <Button title={`挑戰${final ? '終極魔王' : '魔王'} · ${final ? 25 : 15} 題`} kind={final ? 'primary' : 'green'} style={{ flex: 1 }} onPress={onPractice}
           accessibilityLabel={`開始${stage.label}・${diffLabel}`} />
         <Button title={expanded ? '收起單元' : '看單元'} kind="secondary" style={{ flex: 1 }} onPress={onToggle}
           accessibilityLabel={`${expanded ? '收起' : '看'}${stage.label}的單元`} />

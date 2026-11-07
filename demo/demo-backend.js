@@ -15,7 +15,9 @@
     var cur = document.currentScript;
     var me = cur && cur.src;
     window.__CAP_BASE = me ? me.replace(/demo-backend\.js(\?.*)?$/, '') : location.origin + '/';
-    window.__CAP_ENTRY = cur && cur.getAttribute('data-entry');
+    // 打包時把目前的 App 檔名寫進這裡（ENTRY_FILE），舊的頁面副本也會載入最新版 App
+    var ENTRY_FILE = '__CAP_ENTRY_FILE__';
+    window.__CAP_ENTRY = /^app\//.test(ENTRY_FILE) ? ENTRY_FILE : cur && cur.getAttribute('data-entry');
     window.__CAP_PATH = new URL(window.__CAP_BASE).pathname.replace(/\/$/, '');
     var rest = location.pathname.indexOf(window.__CAP_PATH + '/') === 0 ? location.pathname.slice(window.__CAP_PATH.length + 1) : null;
     var first = rest === null ? null : rest.split('/')[0];
@@ -91,6 +93,10 @@
   }
   function seen(uid, qid) { return db.attempts.some(function (a) { return a.u === uid && a.q === qid; }); }
   function mistakesOf(uid) { return db.mistakes[uid] || (db.mistakes[uid] = {}); }
+  var PLANTS = ['向日葵','蒲公英','含羞草','鬱金香','薄荷','仙人掌','百合','櫻花','楓葉','綠竹','蘭花','茉莉','桂花','牽牛花','薰衣草','銀杏'];
+  function hsh(s) { var h = 0; for (var i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) | 0; return Math.abs(h); }
+  function alias(id) { return PLANTS[hsh(id) % 16] + ('000' + (hsh('n' + id) % 10000)).slice(-4); }
+  function level(xp) { return Math.max(1, Math.floor((1 + Math.sqrt(1 + 0.08 * Math.max(xp || 0, 0))) / 2)); }
   function openMistake(uid, qid) { var m = mistakesOf(uid)[qid]; return !!(m && m.status !== 'graduated'); }
   function dayRow(uid, d) { var k = uid + '|' + d; return db.daily[k] || (db.daily[k] = { answered: 0, correct: 0 }); }
   function unitSemester(unitId, version) {
@@ -171,6 +177,39 @@
       }
       return out.map(function (q) { return publicQ(q, uid); });
     },
+    garden: function (uid) {
+      var elem = (db.profiles[uid].grade || 7) <= 6;
+      return D.units.filter(function (u) { return /^[56]/.test(u.semester) === elem; }).map(function (u) {
+        var qs = D.questions.filter(function (q) { return q.unit === u.id; }), att = 0, ok = 0;
+        qs.forEach(function (q) {
+          var mine = db.attempts.filter(function (x) { return x.u === uid && x.q === q.id; });
+          if (mine.length) att++;
+          if (mine.some(function (x) { return x.c; }) && !openMistake(uid, q.id)) ok++;
+        });
+        return { unit_id: u.id, subject: u.subject, semester: u.semester, seq: u.seq, title: u.title, total: qs.length, mastered: ok, attempted: att };
+      }).sort(function (x, y) { return x.semester < y.semester ? -1 : x.semester > y.semester ? 1 : x.subject < y.subject ? -1 : x.subject > y.subject ? 1 : x.seq - y.seq; });
+    },
+    weekly_leaderboard: function (uid) {
+      var me = db.profiles[uid], elem = (me.grade || 7) <= 6, t = today();
+      var d = new Date(t + 'T00:00:00Z'), dow = (d.getUTCDay() + 6) % 7;
+      var week = new Date(d.getTime() - dow * 86400000).toISOString().slice(0, 10);
+      var wx = function (id) { var xd = (db.xpd || {})[id] || {}; return Object.keys(xd).reduce(function (n, k) { return k >= week ? n + xd[k] : n; }, 0); };
+      // 試用版只有你一位真的使用者，另外放幾位虛擬同學陪你比（分數依本週過了幾天增加）
+      var rows = Object.keys(db.profiles).filter(function (id) { var p = db.profiles[id];
+        return p.role === 'student' && !p.leaderboard_hidden && ((p.grade || 7) <= 6) === elem; })
+        .map(function (id) { return { id: id, alias: alias(id), level: level(db.profiles[id].xp), xp: wx(id), me: id === uid }; });
+      for (var i = 0; i < 12; i++) {
+        var bx = Math.round((40 + ((i * 37) % 90)) * (dow + 1) / 10) * 10;
+        rows.push({ id: 'bot' + i, alias: alias('bot' + i + (elem ? 'e' : 'j')), level: level(bx * 6), xp: bx, me: false });
+      }
+      rows = rows.filter(function (r) { return r.xp > 0; }).sort(function (x, y) { return y.xp - x.xp; });
+      rows.forEach(function (r, i) { r.rank = i > 0 && rows[i - 1].xp === r.xp ? rows[i - 1].rank : i + 1; });
+      var mine = rows.filter(function (r) { return r.me; })[0];
+      return { week_start: week, school: elem ? 'elementary' : 'junior',
+        top: rows.slice(0, 20).map(function (r) { return { rank: r.rank, alias: r.alias, level: r.level, xp: r.xp, me: r.me }; }),
+        me: { alias: alias(uid), level: level(me.xp), xp: wx(uid), rank: mine && !me.leaderboard_hidden ? mine.rank : null, hidden: !!me.leaderboard_hidden } };
+    },
+    set_leaderboard_hidden: function (uid, a) { db.profiles[uid].leaderboard_hidden = !!a.p_hidden; save(); return null; },
     get_unit_parts: function (uid, a) {
       var subj = a.p_subject || 'social', rows = {};
       D.questions.forEach(function (q) {
@@ -231,6 +270,7 @@
         status = target.status;
       }
       p.xp += xp;
+      if (xp > 0) { db.xpd = db.xpd || {}; var xd = db.xpd[uid] = db.xpd[uid] || {}; xd[t] = (xd[t] || 0) + xp; }
       var up = false;
       if (dr.answered === CFG.daily_goal) { onGoalMet(uid, p); up = true; }
       save();
