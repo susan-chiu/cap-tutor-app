@@ -78,7 +78,7 @@ function message(streak: number, dayOffset: number): { title: string; body: stri
     return { title: `連勝 ${streak} 天，今天還沒練習喔`, body: '5 題大約 5 分鐘，保住你的火焰！' };
   }
   const bodies = ['今天的 5 題準備好了，來挑戰吧！', '錯題小老師在等你，一起把錯題弄懂。', '每天一點點，會考更有把握。'];
-  return { title: '會考小老師', body: bodies[dayOffset % bodies.length] };
+  return { title: '勇敢學吧', body: bodies[dayOffset % bodies.length] };
 }
 
 // 重新排程：首頁每次載入時呼叫
@@ -128,7 +128,7 @@ export async function setParentWeekly(on: boolean): Promise<boolean> {
   if (!granted) return false;
   await Notifications.scheduleNotificationAsync({
     identifier: PARENT_ID,
-    content: { title: '會考小老師・本週學習摘要', body: '來看看孩子這週練習了幾天、哪些單元需要加強。' },
+    content: { title: '勇敢學吧・本週學習摘要', body: '來看看孩子這週練習了幾天、哪些單元需要加強。' },
     trigger: { type: Notifications.SchedulableTriggerInputTypes.WEEKLY, weekday: 1, hour: 20, minute: 0, channelId: 'weekly' },
   });
   try { globalThis.localStorage?.setItem(PARENT_KEY, '1'); } catch { /* 忽略 */ }

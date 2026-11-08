@@ -35,7 +35,7 @@ from pathlib import Path
 s = Path('demo/dist/index.html').read_text(encoding='utf-8')
 style = re.search(r'<style id="expo-reset">.*?</style>', s, re.S).group(0)
 scripts = ''.join(re.findall(r'<script[^>]*></script>', s))
-page = ('<title>會考小老師</title>\n' + style +
+page = ('<title>勇敢學吧</title>\n' + style +
         '\n<style>html,body{background:#F6F3EC;margin:0}:root{padding:0!important}</style>\n'
         '<div id="root"></div>\n' + scripts + '\n')
 Path('demo/dist/page.html').write_text(page, encoding='utf-8')

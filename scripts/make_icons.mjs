@@ -1,3 +1,4 @@
+// ⚠ 舊版圖示（對話框＋打勾）產生器：App 已改用勇者插圖（art/icon-original.png），不要再執行，否則會蓋掉新圖示。
 // 產生 App 圖示：node scripts/make_icons.mjs（需要 tests 資料夾已安裝 playwright）
 // 圖案：小老師的對話框＋打勾，代表「錯題弄懂了」。原創設計，可自行替換。
 import { createRequire } from 'node:module';

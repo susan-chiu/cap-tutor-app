@@ -14,7 +14,7 @@ export function contactSupport(userId: string | undefined, topic = '意見回饋
     `App 版本：${APP_VERSION}（${Platform.OS}）`,
     `使用者代碼：${userId ? userId.slice(0, 8) : '未登入'}`,
   ].join('\n');
-  const url = `mailto:${SUPPORT_EMAIL}?subject=${encodeURIComponent(`【會考小老師】${topic}`)}&body=${encodeURIComponent(body)}`;
+  const url = `mailto:${SUPPORT_EMAIL}?subject=${encodeURIComponent(`【勇敢學吧】${topic}`)}&body=${encodeURIComponent(body)}`;
   Linking.openURL(url).catch(() => {});
 }
 export const supportAvailable = !!SUPPORT_EMAIL;

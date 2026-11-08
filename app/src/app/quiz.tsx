@@ -243,7 +243,7 @@ function Summary({ stats, total, allSeen, mode, boss, bossKey, questionIds, onAg
   const won = stars >= 1;
   function share() {
     const streak = stats.streak > 0 ? `，連勝 ${stats.streak} 天` : '';
-    shareText(`我在「會考小老師」答對 ${stats.correct} / ${total} 題${streak}！一起來練會考 💪`);
+    shareText(`我在「勇敢學吧」答對 ${stats.correct} / ${total} 題${streak}！一起來勇敢學 💪`);
   }
   return (
     <ScrollView contentContainerStyle={{ padding: 20, gap: 14 }}>

@@ -287,7 +287,7 @@ await step('使用說明：從「我的」打開常見問題、展開答案、�
   await byText(page, '保護卡是什麼？').click();
   await page.getByText('每連勝 7 天再送 1 張', { exact: false }).waitFor({ timeout: 10000 });
   await page.getByRole('button', { name: '寫信給客服' }).waitFor();
-  await page.getByText('會考小老師 v', { exact: false }).last().waitFor();
+  await page.getByText('勇敢學吧 v', { exact: false }).last().waitFor();
   await shot(page, '09f-help');
 });
 

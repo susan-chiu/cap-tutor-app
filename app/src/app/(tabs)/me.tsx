@@ -67,7 +67,7 @@ export default function Me() {
 
   async function toggleParentWeekly(on: boolean) {
     const ok = await setParentWeekly(on);
-    if (!ok) { Alert.alert('沒有開啟通知權限', '請到手機設定允許「會考小老師」傳送通知。'); return; }
+    if (!ok) { Alert.alert('沒有開啟通知權限', '請到手機設定允許「勇敢學吧」傳送通知。'); return; }
     setParentWeeklyState(on);
   }
 
@@ -191,7 +191,7 @@ export default function Me() {
             <T size={13} color={C.muted}>家長註冊「家長帳號」後輸入這組代碼，就能看到你的學習週報。</T>
             <T size={28} weight="700" style={{ letterSpacing: 6 }}>{profile.invite_code}</T>
             <Button title="分享給家長" kind="secondary"
-              onPress={() => shareText(`我在「會考小老師」練習會考題，家長邀請碼：${profile.invite_code}`)} />
+              onPress={() => shareText(`我在「勇敢學吧」練習，家長邀請碼：${profile.invite_code}`)} />
             <Button title="換一組新代碼" kind="ghost" onPress={rotateCode} />
           </Card>
 
@@ -254,7 +254,7 @@ export default function Me() {
         <Button title="登出" kind="secondary" onPress={signOut} />
         <Button title="刪除帳號" kind="ghost" onPress={confirmDelete} />
       </Card>
-      <T size={12} color={C.faint} style={{ textAlign: 'center' }}>會考小老師 v{APP_VERSION}</T>
+      <T size={12} color={C.faint} style={{ textAlign: 'center' }}>勇敢學吧 v{APP_VERSION}</T>
     </Screen>
   );
 }

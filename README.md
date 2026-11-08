@@ -1,4 +1,4 @@
-# 會考小老師 — 國中會考練習 App
+# 勇敢學吧 — 國中考前複習 App
 
 每天 5 題會考練習、答錯自動收進錯題本、AI 錯題小老師一步步引導、多鄰國式連勝，
 全校前三名上傳證明可免費使用。iOS、Android 共用同一套程式。
@@ -262,10 +262,10 @@ Expo Go 裡**購買會是模擬模式、不會顯示廣告**，每日提醒也�
 
 編輯 `app/app.json`：
 
-- `name`：App 顯示名稱（目前是「會考小老師」，上架前先查商標與同名 App）。
+- `name`：App 顯示名稱（目前是「勇敢學吧」，上架前先查商標與同名 App；`slug`、`android.package` 不要跟著改）。
 - `ios.bundleIdentifier`、`android.package`：改成你自己的，例如 `tw.susan.capapp`，**上架後就不能改**。
-- 圖示：已經做好一組原創圖示（對話框＋打勾）。想換成自己的設計，替換 `app/assets/images/` 裡的
-  `icon.png`（1024×1024，不能透明）、`android-icon-*.png`、`splash-icon.png`，或修改 `scripts/make_icons.mjs` 重新產生。
+- 圖示：目前用勇者插圖（原圖在 `art/icon-original.png`），已切好 `icon.png`、Android 自適應圖示、啟動畫面、`favicon.png`，以及 Play 商店用的 `store/android/icon-512.png`。
+  `android-icon-monochrome.png` 只用在通知小圖示（必須是白色剪影）。舊的 `scripts/make_icons.mjs` 會產生舊版對話框圖示，不要再執行。
 - `ios.supportsTablet` 設為 `false`：只支援 iPhone，就不需要準備 iPad 截圖（iPad 仍可用相容模式執行）。
 
 隱私權政策和服務條款：把 `docs/` 裡的草稿修改後放到網站（Google Sites、Notion 公開頁都可以），

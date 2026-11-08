@@ -84,7 +84,7 @@ export default function AuthScreen() {
   return (
     <Screen edges={['top', 'bottom']}>
       <View style={{ paddingVertical: 24, gap: 6 }}>
-        <T size={14} color={C.accent} weight="700">會考小老師</T>
+        <T size={14} color={C.accent} weight="700">勇敢學吧</T>
         <H1>{mode === 'signin' ? '歡迎回來' : '建立帳號'}</H1>
         <T color={C.muted}>每天 5 題練習（國小五年級～國中會考），錯題有小老師陪你弄懂。</T>
       </View>

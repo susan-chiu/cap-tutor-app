@@ -1,7 +1,7 @@
 // 產生商店截圖：node scripts/make_store_images.mjs <App 截圖資料夾（3 倍解析度）>
 // 輸出到 store/ios（1290×2796）、store/android（1080×1920）與 store/android/feature-graphic.png（1024×500）
 import { createRequire } from 'node:module';
-import { mkdirSync, readFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync } from 'node:fs';
 const require = createRequire(new URL('../tests/package.json', import.meta.url));
 const { chromium } = require('playwright');
 
@@ -41,17 +41,15 @@ function slideHtml(s, w, h) {
   </div></body></html>`;
 }
 
+const ICON = readFileSync(new URL('../app/assets/images/icon.png', import.meta.url)).toString('base64');
 const FEATURE = `<html><body style="margin:0">
-  <div style="width:1024px;height:500px;background:${CLAY};display:flex;align-items:center;gap:56px;padding:0 80px;box-sizing:border-box;
+  <div style="width:1024px;height:500px;background:radial-gradient(circle at 25% 50%,#0B3A7A 0%,#02143B 70%);display:flex;align-items:center;gap:56px;padding:0 80px;box-sizing:border-box;
     font-family:'Noto Sans CJK TC','Noto Sans TC',sans-serif">
-    <svg width="220" height="220" viewBox="0 0 100 100">
-      <path d="M22 20 h56 a12 12 0 0 1 12 12 v30 a12 12 0 0 1 -12 12 h-30 l-14 12 v-12 h-12 a12 12 0 0 1 -12 -12 v-30 a12 12 0 0 1 12 -12 z" fill="#FFF6EC"/>
-      <path d="M34 47 l10 10 l22 -22" fill="none" stroke="${CLAY}" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
-      <circle cx="84" cy="18" r="6" fill="#FFB067"/>
-    </svg>
+    <img src="data:image/png;base64,${ICON}" style="width:300px;height:300px;border-radius:64px;box-shadow:0 0 60px rgba(80,200,255,.45)">
     <div>
-      <div style="font-size:76px;font-weight:900;color:#fff;line-height:1.1">會考小老師</div>
-      <div style="font-size:34px;color:#FBE9DF;margin-top:18px">每日 5 題・AI 錯題講解・連勝養成</div>
+      <div style="font-size:92px;font-weight:900;color:#fff;line-height:1.1;text-shadow:0 0 24px rgba(80,200,255,.6)">勇敢學吧</div>
+      <div style="font-size:34px;color:#9FE3FF;margin-top:20px">國中考前小練習・打魔王複習</div>
+      <div style="font-size:26px;color:#C9D6EA;margin-top:12px">每日 5 題・AI 錯題講解・連勝養成</div>
     </div>
   </div></body></html>`;
 
@@ -62,7 +60,7 @@ const render = async (html, w, h, path) => {
   await page.setContent(html, { waitUntil: 'load' });
   await page.screenshot({ path, clip: { x: 0, y: 0, width: w, height: h } });
 };
-for (const [i, s] of SLIDES.entries()) {
+for (const [i, s] of (existsSync(SRC) ? SLIDES : []).entries()) {
   const n = String(i + 1).padStart(2, '0');
   await render(slideHtml(s, 1290, 2796), 1290, 2796, `${OUT}ios/${n}.png`);
   await render(slideHtml(s, 1080, 1920), 1080, 1920, `${OUT}android/${n}.png`);
