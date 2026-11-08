@@ -55,7 +55,7 @@ export function ListenPlayer({ script, revealed }: { script: string; revealed: b
   }
 
   return (
-    <View style={{ gap: 10, backgroundColor: '#EEF4F2', borderRadius: 14, padding: 14 }}>
+    <View style={{ gap: 10, backgroundColor: C.surfaceAlt, borderRadius: 14, padding: 14 }}>
       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
         <Ionicons name="headset-outline" size={20} color={C.greenDark} />
         <T size={14} weight="700" color={C.greenDark} style={{ flex: 1 }}>英語聽力{plays ? `・已播放 ${plays} 次` : ''}</T>
@@ -90,9 +90,9 @@ function ListenButton({ icon, label, onPress, primary }: {
   return (
     <Pressable accessibilityRole="button" accessibilityLabel={label} onPress={onPress}
       style={{ minHeight: 44, flexDirection: 'row', alignItems: 'center', gap: 6, paddingHorizontal: 16, borderRadius: 999,
-        backgroundColor: primary ? C.green : '#FFFFFF', borderWidth: primary ? 0 : 1, borderColor: C.green }}>
-      <Ionicons name={icon} size={18} color={primary ? '#FFFFFF' : C.green} />
-      <T size={15} weight="700" color={primary ? '#FFFFFF' : C.green}>{label}</T>
+        backgroundColor: primary ? C.green : 'transparent', borderWidth: primary ? 0 : 1, borderColor: C.green }}>
+      <Ionicons name={icon} size={18} color={primary ? C.onAccent : C.green} />
+      <T size={15} weight="700" color={primary ? C.onAccent : C.green}>{label}</T>
     </Pressable>
   );
 }

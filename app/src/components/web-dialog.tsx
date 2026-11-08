@@ -36,8 +36,8 @@ export function WebDialogHost() {
 
   return (
     <View accessibilityViewIsModal style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 1000,
-      backgroundColor: 'rgba(20, 30, 28, 0.45)', alignItems: 'center', justifyContent: 'center', padding: 24 }}>
-      <View accessibilityRole="alert" style={{ width: '100%', maxWidth: 360, backgroundColor: '#FFFFFF', borderRadius: 18, padding: 20, gap: 10 }}>
+      backgroundColor: 'rgba(2, 6, 16, 0.7)', alignItems: 'center', justifyContent: 'center', padding: 24 }}>
+      <View accessibilityRole="alert" style={{ width: '100%', maxWidth: 360, backgroundColor: C.card, borderWidth: 1, borderColor: C.nightLine, borderRadius: 18, padding: 20, gap: 10 }}>
         <T size={17} weight="700">{d.title}</T>
         {d.message ? <T size={14} color={C.inkSoft}>{d.message}</T> : null}
         <View style={{ flexDirection: ordered.length > 2 ? 'column' : 'row', gap: 8, marginTop: 6 }}>
@@ -48,9 +48,9 @@ export function WebDialogHost() {
               <Pressable key={`${b.text}-${i}`} accessibilityRole="button" onPress={() => close(b)}
                 style={{ flex: ordered.length > 2 ? undefined : 1, minHeight: 44, borderRadius: 12, alignItems: 'center', justifyContent: 'center',
                   paddingHorizontal: 12,
-                  backgroundColor: danger ? C.red : primary ? C.accent : '#FFFFFF',
+                  backgroundColor: danger ? C.red : primary ? C.accent : C.surfaceAlt,
                   borderWidth: danger || primary ? 0 : 1, borderColor: C.lineStrong }}>
-                <T size={15} weight="700" color={danger || primary ? '#FFFFFF' : C.ink}>{b.text ?? '好'}</T>
+                <T size={15} weight="700" color={danger ? '#FFFFFF' : primary ? C.onAccent : C.ink}>{b.text ?? '好'}</T>
               </Pressable>
             );
           })}

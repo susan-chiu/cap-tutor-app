@@ -2,15 +2,17 @@ import { useFocusEffect } from 'expo-router';
 import { useCallback, useState } from 'react';
 import { Alert, Pressable, TextInput, View } from 'react-native';
 
+import { Radar } from '@/components/radar';
 import { EXAM_SUBJECT_LABEL, ScoreChart } from '@/components/score-chart';
 import { Button, Card, ErrorBox, H1, H2, Loading, ProgressBar, Screen, T } from '@/components/ui';
-import { api, errorText, type ChildSummary, type MockExamRow } from '@/lib/api';
+import { api, errorText, type ChildSummary, type MockExamRow, type Wish } from '@/lib/api';
+import { WISH_GOAL } from '@/lib/game';
 import { C, ERROR_TYPE_LABEL, isElementary, semesterLabel } from '@/lib/theme';
 
 const SUBJECT_LABEL: Record<string, string> = { math: '數學', chinese: '國文', english: '英語', science: '自然', social: '社會' };
 
 export function ParentHome() {
-  const [children, setChildren] = useState<{ id: string; summary: ChildSummary; exams: MockExamRow[] }[] | null>(null);
+  const [children, setChildren] = useState<{ id: string; summary: ChildSummary; exams: MockExamRow[]; wishes: Wish[] }[] | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [code, setCode] = useState('');
   const [busy, setBusy] = useState(false);
@@ -20,8 +22,9 @@ export function ParentHome() {
       setError(null);
       const ids = await api.children();
       const list = await Promise.all(ids.map(async (id) => {
-        const [summary, exams] = await Promise.all([api.childSummary(id), api.childMockExams(id, 60).catch(() => [])]);
-        return { id, summary, exams };
+        const [summary, exams, wishes] = await Promise.all([api.childSummary(id), api.childMockExams(id, 60).catch(() => []),
+          api.childWishes(id).catch(() => [])]);
+        return { id, summary, exams, wishes };
       }));
       setChildren(list);
     } catch (e) { setError(errorText(e)); }
@@ -45,10 +48,10 @@ export function ParentHome() {
 
   return (
     <Screen>
-      <T size={13} color={C.muted}>家長端</T>
-      <H1>孩子的學習狀況</H1>
+      <T size={13} color={C.muted}>騎士團長（家長端）</T>
+      <H1>勇者戰報</H1>
 
-      {children.map(({ id, summary, exams }) => <ChildCard key={id} s={summary} exams={exams} />)}
+      {children.map(({ id, summary, exams, wishes }) => <ChildCard key={id} s={summary} exams={exams} wishes={wishes} onChanged={load} />)}
 
       <Card style={{ gap: 10 }}>
         <H2>{children.length ? '再綁定一位孩子' : '綁定孩子的帳號'}</H2>
@@ -56,7 +59,7 @@ export function ParentHome() {
         <TextInput
           value={code} onChangeText={(t) => setCode(t.toUpperCase().replace(/\s/g, ''))} maxLength={8} autoCapitalize="characters"
           accessibilityLabel="孩子的邀請碼" placeholder="例如 K7P2QX9M" placeholderTextColor={C.faint}
-          style={{ height: 48, borderWidth: 1, borderColor: C.lineStrong, borderRadius: 10, paddingHorizontal: 12, fontSize: 18, letterSpacing: 4, backgroundColor: '#FFFFFF', color: C.ink }}
+          style={{ height: 48, borderWidth: 1, borderColor: C.lineStrong, borderRadius: 10, paddingHorizontal: 12, fontSize: 18, letterSpacing: 4, backgroundColor: C.card, color: C.ink }}
         />
         <Button title="綁定" onPress={link} disabled={code.replace(/\s/g, '').length !== 8} loading={busy} />
       </Card>
@@ -64,7 +67,7 @@ export function ParentHome() {
   );
 }
 
-function ChildCard({ s, exams }: { s: ChildSummary; exams: MockExamRow[] }) {
+function ChildCard({ s, exams, wishes, onChanged }: { s: ChildSummary; exams: MockExamRow[]; wishes: Wish[]; onChanged: () => void }) {
   const practiced = s.days.filter((d) => d.answered > 0).length;
   const frozen = s.days.filter((d) => d.froze && d.answered === 0).length;
   const total = s.days.reduce((a, d) => a + d.answered, 0);
@@ -95,9 +98,15 @@ function ChildCard({ s, exams }: { s: ChildSummary; exams: MockExamRow[] }) {
         </View>
       </Card>
 
+      <WishPool nickname={s.nickname} wishes={wishes} onChanged={onChanged} />
+
       {s.by_subject?.length ? (
         <Card style={{ gap: 10 }}>
-          <H2>各科答對率（7 天）</H2>
+          <H2>五大科目防禦力（7 天答對率）</H2>
+          <Radar items={(isElementary(s.grade) ? ['chinese', 'math', 'science', 'social'] : ['chinese', 'english', 'math', 'science', 'social']).map((k) => {
+            const b = s.by_subject?.find((x) => x.subject === k);
+            return { label: k === 'chinese' && isElementary(s.grade) ? '國語' : SUBJECT_LABEL[k], value: b && b.answered ? b.correct / b.answered : null };
+          })} />
           {s.by_subject.map((b) => {
             const pct = b.answered ? b.correct / b.answered : 0;
             return (
@@ -164,6 +173,45 @@ function MockExams({ nickname, exams }: { nickname: string; exams: MockExamRow[]
         );
       })}
       <ScoreChart rows={exams.filter((e) => e.subject === current)} height={90} />
+    </Card>
+  );
+}
+
+/** 許願池（家長端）：核准孩子的願望、達成後兌現 */
+function WishPool({ nickname, wishes, onChanged }: { nickname: string; wishes: Wish[]; onChanged: () => void }) {
+  const [busy, setBusy] = useState<string | null>(null);
+  async function run(id: string, fn: () => Promise<unknown>, done: string) {
+    setBusy(id);
+    try { await fn(); Alert.alert(done); onChanged(); } catch (e) { Alert.alert('操作失敗', errorText(e)); } finally { setBusy(null); }
+  }
+  const open = wishes.filter((w) => w.status !== 'rejected');
+  return (
+    <Card style={{ gap: 10, borderColor: C.gold }}>
+      <H2>許願池與補給</H2>
+      {open.length === 0 ? (
+        <T size={13} color={C.muted}>{nickname} 還沒有許願。孩子可以在 App 首頁的「許願池」許願並設定目標，送來給你核准。</T>
+      ) : open.map((w) => (
+        <View key={w.id} style={{ gap: 6, borderTopWidth: 1, borderTopColor: C.line, paddingTop: 10 }}>
+          <T weight="700">{w.title}</T>
+          <T size={13} color={C.muted}>目標：{WISH_GOAL[w.goal_type].label} {w.goal} {WISH_GOAL[w.goal_type].unit}</T>
+          {w.status === 'pending' ? (
+            <View style={{ flexDirection: 'row', gap: 8 }}>
+              <Button title="不核准" kind="secondary" style={{ flex: 1 }} disabled={busy === w.id}
+                onPress={() => run(w.id, () => api.reviewWish(w.id, false), '已婉拒這個願望')} />
+              <Button title="核准" style={{ flex: 1 }} loading={busy === w.id}
+                onPress={() => run(w.id, () => api.reviewWish(w.id, true), '已核准，從現在開始計算進度')} />
+            </View>
+          ) : w.status === 'approved' ? (
+            <>
+              <ProgressBar value={w.progress / w.goal} color={w.reached ? C.gold : C.accent} />
+              <T size={12} color={w.reached ? C.gold : C.muted}>{w.reached ? '達成了！記得兌現獎勵' : `進度 ${w.progress} / ${w.goal} ${WISH_GOAL[w.goal_type].unit}`}</T>
+              {w.reached ? <Button title="已兌現獎勵" loading={busy === w.id} onPress={() => run(w.id, () => api.fulfillWish(w.id), '已兌現！孩子會看到願望完成')} /> : null}
+            </>
+          ) : (
+            <T size={12} color={C.green}>已兌現 {w.fulfilled_at?.slice(0, 10)}</T>
+          )}
+        </View>
+      ))}
     </Card>
   );
 }

@@ -51,6 +51,7 @@ function RootNavigator() {
         <Stack.Screen name="garden" />
         <Stack.Screen name="leaderboard" />
         <Stack.Screen name="badges" />
+        <Stack.Screen name="wishes" />
       </Stack.Protected>
     </Stack>
   );
@@ -104,7 +105,7 @@ function RootLayout() {
   return (
     <SafeAreaProvider>
       <AuthProvider>
-        <StatusBar style="dark" />
+        <StatusBar style="light" />
         <DemoBanner />
         <RootNavigator />
         <WebDialogHost />

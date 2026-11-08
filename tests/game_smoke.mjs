@@ -71,7 +71,7 @@ await step('本週排行：自己有代號、名次，沒有出現暱稱；可�
   await page.getByRole('button', { name: '返回' }).click();
 });
 await step('段考魔王戰：血條、愛心，答錯掉愛心，結算有星星', async () => {
-  await tab('練習');
+  await tab('副本');
   const btn = page.getByRole('button', { name: /^開始第一次段考/ });
   await btn.first().click();
   await t('段考小魔王').waitFor({ timeout: 15000 });
@@ -79,7 +79,17 @@ await step('段考魔王戰：血條、愛心，答錯掉愛心，結算有星�
   await page.getByText('HP 14 / 15', { exact: false }).waitFor({ timeout: 5000 });
   await page.getByRole('button', { name: '下一題' }).click();
   await answerCurrent(false);
+  await page.getByText('心眼發動！勇者，先別急', { exact: true }).waitFor({ timeout: 5000 });
   await page.getByLabel(/你的愛心 2 顆/).waitFor({ timeout: 5000 });
+  // 心眼：再挑戰一次，選正確答案 → +3 XP
+  await page.getByRole('button', { name: '再挑戰一次' }).click();
+  const ans2 = await page.evaluate(() => {
+    const body = document.body.innerText;
+    return window.CAP_DEMO_DATA.questions.find((x) => body.includes(x.stem.slice(0, 30))).answer;
+  });
+  await page.getByLabel(new RegExp(`^選項 ${ans2}：`)).click();
+  await page.getByRole('button', { name: '發動心眼・再答一次' }).click();
+  await page.getByText('心眼成功！', { exact: false }).waitFor({ timeout: 5000 });
   await shot('05-boss');
   for (let i = 2; i < 15; i++) {
     await page.getByRole('button', { name: /下一題|先做下一題/ }).click();
@@ -94,17 +104,35 @@ await step('段考魔王戰：血條、愛心，答錯掉愛心，結算有星�
 });
 await step('階段卡顯示魔王最佳星數', async () => {
   await page.getByRole('button', { name: '回首頁' }).click();
-  await tab('練習');
+  await tab('副本');
   await page.getByText('魔王已三星通關', { exact: true }).first().waitFor({ timeout: 10000 });
   await shot('07-stage-stars');
 });
+await step('許願池：許願、送給爸媽核准', async () => {
+  await tab('大廳');
+  await page.getByRole('button', { name: /^許願池/ }).click();
+  await page.getByText('許新的願望', { exact: true }).waitFor({ timeout: 10000 });
+  await page.getByRole('button', { name: '吃一次鹹酥雞' }).click();
+  await page.getByRole('button', { name: '送給爸媽核准' }).click();
+  await page.getByText('願望送出了！', { exact: true }).waitFor({ timeout: 10000 });
+  await page.getByRole('button', { name: '好' }).click();
+  await page.getByText('等爸媽核准', { exact: true }).waitFor({ timeout: 10000 });
+  await shot('08-wishes');
+  await page.getByRole('button', { name: '返回' }).click();
+});
+await step('魔物圖鑑：魔王戰答錯的題目變成狂暴中的魔物', async () => {
+  await tab('魔物圖鑑');
+  await page.getByLabel(/^狂暴中 [1-9]\d* 隻$/).waitFor({ timeout: 10000 });
+  await page.getByText(/・.*捕獲|捕獲/).first().waitFor({ timeout: 10000 });
+  await shot('09-monsters');
+});
 await step('成就徽章：初次討伐已點亮，其他顯示進度', async () => {
-  await tab('首頁');
+  await tab('大廳');
   await page.getByRole('button', { name: '成就徽章' }).click();
   await page.getByText('已點亮', { exact: true }).waitFor({ timeout: 10000 });
   await page.getByLabel(/^初次討伐，.*已達成$/).waitFor({ timeout: 10000 });
   await page.getByLabel(/^百題斬，.*進度 \d+ \/ 100$/).waitFor();
-  await shot('08-badges');
+  await shot('10-badges');
   await page.getByRole('button', { name: '返回' }).click();
 });
 

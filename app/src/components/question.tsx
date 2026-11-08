@@ -7,8 +7,10 @@ import { Loading, T, Tag } from '@/components/ui';
 import { api, errorText, type AnswerResult, type PublicQuestion, type Solution } from '@/lib/api';
 import { C, isElementarySemester, semesterLabel, subjectLabel } from '@/lib/theme';
 
-export function QuestionView({ q, picked, result, onPick }: {
+export function QuestionView({ q, picked, result, onPick, struck }: {
   q: PublicQuestion; picked: string | null; result: AnswerResult | null; onPick: (key: string) => void;
+  /** 心眼重答時：第一次選錯的選項（劃掉、不能再選） */
+  struck?: string | null;
 }) {
   const sem = semesterLabel(q.semester);
   return (
@@ -19,31 +21,37 @@ export function QuestionView({ q, picked, result, onPick }: {
         {q.source.startsWith('cap-') ? <Tag label={`${q.source.slice(4)} 年會考`} tone="green" /> : null}
       </View>
       {q.listen_script ? <ListenPlayer key={q.id} script={q.listen_script} revealed={!!result} /> : null}
-      <T size={18} weight="500" style={{ lineHeight: 30 }}>{q.stem}</T>
+      {/* 題目放在半透明玻璃面板上 */}
+      <View style={{ padding: 16, borderRadius: 16, backgroundColor: 'rgba(30, 44, 78, 0.55)', borderWidth: 1, borderColor: C.nightLine }}>
+        <T size={18} weight="500" style={{ lineHeight: 30 }}>{q.stem}</T>
+      </View>
       <View accessibilityRole="radiogroup" style={{ gap: 10 }}>
         {q.options.map((o) => {
           const isPicked = picked === o.key;
+          const isStruck = !result && struck === o.key;
           const isAnswer = result && o.key === result.answer;
           const isWrongPick = result && isPicked && !result.correct;
           const border = isAnswer ? C.green : isWrongPick ? C.red : isPicked ? C.accent : C.lineStrong;
-          const bg = isAnswer ? C.greenSoft : isWrongPick ? C.redSoft : isPicked ? C.accentSoft : '#FFFFFF';
-          const keyBg = isAnswer ? C.green : isWrongPick ? C.red : isPicked ? C.accent : '#EFEBE2';
+          const bg = isAnswer ? C.greenSoft : isWrongPick ? C.redSoft : isPicked ? C.accentSoft : C.card;
+          const keyBg = isAnswer ? C.green : isWrongPick ? C.red : isPicked ? C.accent : C.surfaceAlt;
           const thick = isAnswer || isWrongPick || isPicked;
+          const locked = !!result || isStruck;
           return (
             <Pressable
               key={o.key}
               accessibilityRole="radio"
-              accessibilityState={{ checked: isPicked, disabled: !!result }} aria-checked={isPicked} aria-disabled={!!result}
-              accessibilityLabel={`選項 ${o.key}：${o.text}`}
-              onPress={result ? undefined : () => onPick(o.key)}
-              style={{
+              accessibilityState={{ checked: isPicked, disabled: locked }} aria-checked={isPicked} aria-disabled={locked}
+              accessibilityLabel={`選項 ${o.key}：${o.text}${isStruck ? '（剛剛選錯了）' : ''}`}
+              onPress={locked ? undefined : () => onPick(o.key)}
+              style={{ opacity: isStruck ? 0.45 : 1,
                 minHeight: 56, flexDirection: 'row', alignItems: 'center', gap: 14, paddingHorizontal: 14,
                 paddingVertical: 12, borderRadius: 14, borderWidth: thick ? 2 : 1, borderColor: border, backgroundColor: bg,
               }}>
               <View style={{ width: 30, height: 30, borderRadius: 8, backgroundColor: keyBg, alignItems: 'center', justifyContent: 'center' }}>
-                <T size={14} weight="700" color={keyBg === '#EFEBE2' ? C.ink : '#FFFFFF'}>{o.key}</T>
+                <T size={14} weight="700" color={keyBg === C.surfaceAlt ? C.ink : C.onAccent}>{o.key}</T>
               </View>
-              <T size={17} style={{ flex: 1 }}>{o.text}</T>
+              <T size={17} style={{ flex: 1, textDecorationLine: isStruck ? 'line-through' : 'none' }}>{o.text}</T>
+              {isStruck ? <Ionicons name="close-circle-outline" size={22} color={C.red} /> : null}
               {isAnswer ? <Ionicons name="checkmark-circle" size={22} color={C.green} /> : null}
               {isWrongPick ? <Ionicons name="close-circle" size={22} color={C.red} /> : null}
             </Pressable>
@@ -60,10 +68,10 @@ export function Feedback({ result, wrongTitle, compact }: { result: AnswerResult
     <View style={{ gap: 6 }}>
       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
         <View style={{ width: 40, height: 40, borderRadius: 20, backgroundColor: ok ? C.green : C.red, alignItems: 'center', justifyContent: 'center' }}>
-          <Ionicons name={ok ? 'checkmark' : 'close'} size={24} color="#FFFFFF" />
+          <Ionicons name={ok ? 'checkmark' : 'close'} size={24} color={C.onAccent} />
         </View>
         <T size={19} weight="700" color={ok ? C.greenDark : C.redDark}>
-          {ok ? `答對了！${result.xp_gained ? `+${result.xp_gained} XP` : ''}` : (wrongTitle ?? '差一點！已收進錯題本')}
+          {ok ? `答對了！${result.xp_gained ? `+${result.xp_gained} XP` : ''}` : (wrongTitle ?? '差一點！這題變成魔物收進魔物圖鑑')}
         </T>
       </View>
       {!ok && result.wrong_reason ? <T size={14} color={C.redDark}>常見原因：{result.wrong_reason}</T> : null}
@@ -98,7 +106,7 @@ export function SolutionCard({ q, picked, title = '完整詳解' }: { q: PublicQ
   const others = q.options.filter((o) => o.key !== sol.answer && o.key !== picked && sol.wrong_reasons?.[o.key]);
   const steps = (sol.hints ?? []).filter(Boolean);
   return (
-    <View accessibilityLabel={title} style={{ gap: 12, padding: 16, borderRadius: 16, backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: C.line }}>
+    <View accessibilityLabel={title} style={{ gap: 12, padding: 16, borderRadius: 16, backgroundColor: C.card, borderWidth: 1, borderColor: C.line }}>
       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
         <Ionicons name="book-outline" size={20} color={C.accent} />
         <T size={17} weight="700">{title}</T>

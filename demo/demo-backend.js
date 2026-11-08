@@ -130,6 +130,24 @@
   }
 
   // ---------- 資料庫函式 ----------
+  function linked(uid, kid) { if (!db.links.some(function (l) { return l.parent === uid && l.student === kid; })) throw 'not_linked'; }
+  function wishProgress(w) {
+    if (!w.approved_at) return 0;
+    var since = Date.parse(w.approved_at), day0 = w.approved_at.slice(0, 10);
+    if (w.goal_type === 'correct') return db.attempts.filter(function (x) { return x.u === w.student && x.c && x.at >= since; }).length;
+    if (w.goal_type === 'days') return Object.keys(db.daily).filter(function (k) { var p = k.split('|'); return p[0] === w.student && p[1] >= day0 && db.daily[k].answered >= CFG.daily_goal; }).length;
+    var ms = mistakesOf(w.student);
+    return Object.keys(ms).filter(function (k) { return ms[k].status === 'graduated' && (ms[k].grad_at || 0) >= since; }).length;
+  }
+  function wishJson(w) {
+    var pr = wishProgress(w);
+    return { id: w.id, title: w.title, goal_type: w.goal_type, goal: w.goal, status: w.status, progress: Math.min(pr, w.goal), reached: pr >= w.goal,
+      approved_at: w.approved_at, fulfilled_at: w.fulfilled_at, created_at: w.created_at };
+  }
+  function wishList(kid) {
+    return (db.wishes || []).filter(function (w) { return w.student === kid; })
+      .sort(function (x, y) { return ((x.status === 'fulfilled') - (y.status === 'fulfilled')) || (x.created_at < y.created_at ? 1 : -1); }).map(wishJson);
+  }
   var RPC = {
     get_home: function (uid) {
       var p = db.profiles[uid], t = today(), dr = dayRow(uid, t);
@@ -238,6 +256,45 @@
         ['level-5', '等級', '小樹苗', '升到 Lv 5', lv, 5], ['level-10', '等級', '勤學綠葉', '升到 Lv 10', lv, 10], ['level-20', '等級', '學習大樹', '升到 Lv 20', lv, 20],
       ].map(function (r) { return { id: r[0], group: r[1], title: r[2], desc: r[3], progress: Math.min(r[4], r[5]), goal: r[5], done: r[4] >= r[5] }; });
     },
+    retry_bonus: function (uid, a) {
+      var since = Date.now() - 15 * 60000, last = null;
+      db.attempts.forEach(function (x) { if (x.u === uid && x.q === a.p_question_id && x.at > since) last = x; });
+      if (!last || last.c) throw 'no_retry';
+      if (last.retried) throw 'already_retried';
+      if (a.p_choice === last.ch) throw 'same_choice';
+      var q = Q[a.p_question_id], ok = !!q && a.p_choice === q.answer, p = db.profiles[uid];
+      last.retried = true;
+      if (ok) { p.xp += 3; db.xpd = db.xpd || {}; var xd = db.xpd[uid] = db.xpd[uid] || {}; xd[today()] = (xd[today()] || 0) + 3; }
+      save();
+      return { correct: ok, xp_gained: ok ? 3 : 0, xp_total: p.xp };
+    },
+    make_wish: function (uid, a) {
+      if (db.profiles[uid].role !== 'student') throw 'not_student';
+      db.wishes = db.wishes || [];
+      if (db.wishes.filter(function (w) { return w.student === uid && (w.status === 'pending' || w.status === 'approved'); }).length >= 3) throw 'too_many_wishes';
+      var w = { id: 'w' + Date.now() + Math.floor(Math.random() * 1000), student: uid, title: String(a.p_title || '').trim().slice(0, 40),
+        goal_type: a.p_goal_type, goal: Number(a.p_goal), status: 'pending', approved_at: null, fulfilled_at: null, created_at: new Date().toISOString() };
+      db.wishes.push(w); save();
+      return wishJson(w);
+    },
+    my_wishes: function (uid) { return wishList(uid); },
+    cancel_wish: function (uid, a) { db.wishes = (db.wishes || []).filter(function (w) { return !(w.id === a.p_id && w.student === uid && w.status !== 'fulfilled'); }); save(); return null; },
+    child_wishes: function (uid, a) { linked(uid, a.p_student); return wishList(a.p_student); },
+    review_wish: function (uid, a) {
+      var w = (db.wishes || []).filter(function (x) { return x.id === a.p_id; })[0];
+      if (!w) throw 'not_linked'; linked(uid, w.student);
+      if (w.status !== 'pending') throw 'wish_not_pending';
+      w.status = a.p_approve ? 'approved' : 'rejected'; w.approved_at = a.p_approve ? new Date().toISOString() : null; save();
+      return wishJson(w);
+    },
+    fulfill_wish: function (uid, a) {
+      var w = (db.wishes || []).filter(function (x) { return x.id === a.p_id; })[0];
+      if (!w) throw 'not_linked'; linked(uid, w.student);
+      if (w.status !== 'approved') throw 'wish_not_approved';
+      if (wishProgress(w) < w.goal) throw 'wish_not_reached';
+      w.status = 'fulfilled'; w.fulfilled_at = new Date().toISOString(); save();
+      return wishJson(w);
+    },
     weekly_leaderboard: function (uid) {
       var me = db.profiles[uid], elem = (me.grade || 7) <= 6, t = today();
       var d = new Date(t + 'T00:00:00Z'), dow = (d.getUTCDay() + 6) % 7;
@@ -299,7 +356,7 @@
       var dr = dayRow(uid, t);
       if (!premium(p) && dr.answered >= CFG.free_daily_questions) throw 'daily_limit_reached';
       var correct = a.p_choice === q.answer, ms = mistakesOf(uid), status = null, xp = 0;
-      db.attempts.push({ u: uid, q: q.id, c: correct, ctx: a.p_context || 'practice', at: Date.now(), day: t });
+      db.attempts.push({ u: uid, q: q.id, c: correct, ch: a.p_choice, ctx: a.p_context || 'practice', at: Date.now(), day: t });
       dr.answered++; if (correct) { dr.correct++; xp += CFG.xp_correct; }
       // 和正式後端 submit_answer 相同的錯題規則
       var target = a.p_for_mistake ? ms[a.p_for_mistake] : ms[q.id];
@@ -314,7 +371,7 @@
       } else if (correct && target && target.status !== 'graduated' && (target.next_review <= t || target.status === 'pending')) {
         var adv = { pending: ['learning', 1], learning: ['consolidating', 3], consolidating: ['almost', 7], almost: ['graduated', 14] };
         var n = adv[target.status]; target.status = n[0]; target.next_review = addDays(t, n[1]); status = n[0];
-        if (n[0] === 'graduated') xp += CFG.xp_grad;
+        if (n[0] === 'graduated') { xp += CFG.xp_grad; target.grad_at = Date.now(); }
       } else if (target) {
         status = target.status;
       }
@@ -541,7 +598,7 @@
     // ---- 伺服器函式 ----
     if (path === '/functions/v1/tutor') return tutor(uid, b);
     if (path === '/functions/v1/delete-account') {
-      delete db.users[uid]; delete db.profiles[uid]; delete db.mistakes[uid]; if (db.boss) delete db.boss[uid];
+      delete db.users[uid]; delete db.profiles[uid]; delete db.mistakes[uid]; if (db.boss) delete db.boss[uid]; if (db.wishes) db.wishes = db.wishes.filter(function (w) { return w.student !== uid; });
       db.attempts = db.attempts.filter(function (a) { return a.u !== uid; });
       db.links = db.links.filter(function (l) { return l.parent !== uid && l.student !== uid; });
       db.mocks = db.mocks.filter(function (m) { return m.user_id !== uid; });

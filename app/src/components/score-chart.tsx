@@ -38,7 +38,7 @@ export function ScoreChart({ rows, height = 120 }: { rows: MockExamRow[]; height
               <T size={11} weight="700" color={r.id === last.id ? C.accent : C.muted}>{r.score}</T>
               <View style={{
                 width: '70%', maxWidth: 28, minHeight: 4, height: Math.max((r.score / 100) * height, 4), borderRadius: 6,
-                backgroundColor: r.id === last.id ? C.accent : r.full_length ? C.green : '#B9D4CC',
+                backgroundColor: r.id === last.id ? C.accent : r.full_length ? C.green : C.nightSoft,
               }} />
               <T size={10} color={C.faint}>{d.getMonth() + 1}/{d.getDate()}</T>
             </View>

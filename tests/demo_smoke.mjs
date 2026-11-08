@@ -45,6 +45,9 @@ await step('每日練習：答 5 題（第 1 題故意答錯）', async () => {
     await page.getByLabel(new RegExp(`^選項 ${key}：`)).click();
     await page.getByRole('button', { name: '檢查答案' }).click();
     if (i === 0) {
+      await page.getByText('心眼發動！勇者，先別急', { exact: true }).waitFor({ timeout: 10000 });
+      await shot('02a-eye');
+      await page.getByRole('button', { name: '直接看解析' }).click();
       await shot('02-wrong');
       await page.getByRole('button', { name: '找小老師' }).click();
       await page.getByRole('button', { name: '我同意，開始使用' }).click();
@@ -62,13 +65,14 @@ await step('每日練習：答 5 題（第 1 題故意答錯）', async () => {
   await t('這一輪完成了！').waitFor();
   await page.getByText('連勝 1 天', { exact: false }).first().waitFor();
 });
-await step('錯題本有 1 題待講解', async () => {
+await step('魔物圖鑑有 1 隻狂暴中的魔物', async () => {
   await page.getByRole('button', { name: '回首頁' }).click();
-  await tab('錯題本');
-  await page.getByText('待講解', { exact: true }).nth(1).waitFor({ timeout: 15000 });
+  await tab('魔物圖鑑');
+  await page.getByLabel('狂暴中 1 隻').waitFor({ timeout: 15000 });
+  await shot('03b-monsters');
 });
 await step('模擬考：英語閱讀迷你 10 題 → 交卷 → 成績記錄', async () => {
-  await tab('練習');
+  await tab('副本');
   await page.getByText('會考模擬考', { exact: true }).first().click();
   await page.getByText('英語閱讀', { exact: true }).last().click();
   await page.getByRole('button', { name: '開始作答' }).click();
@@ -94,9 +98,18 @@ await step('英語聽力單元有播放鍵', async () => {
   await page.getByRole('button', { name: '播放', exact: true }).waitFor({ timeout: 15000 });
   await shot('05-listening');
 });
-await step('家長帳號綁定 → 看到練習與模擬考', async () => {
+await step('家長帳號綁定 → 看到練習、模擬考、防禦力雷達圖，核准孩子的願望', async () => {
   await page.getByRole('button', { name: '離開練習' }).click();
   await page.getByText('要離開練習嗎？', { exact: true }).waitFor({ timeout: 3000 }).then(() => page.getByRole('button', { name: '離開', exact: true }).click()).catch(() => {});
+  // 先許一個願，等一下家長核准
+  await tab('大廳');
+  await page.getByRole('button', { name: /^許願池/ }).click();
+  await page.getByRole('button', { name: '週末看一部電影' }).click();
+  await page.getByRole('button', { name: '送給爸媽核准' }).click();
+  await page.getByText('願望送出了！', { exact: true }).waitFor({ timeout: 10000 });
+  await page.getByRole('button', { name: '好' }).click();
+  await page.getByText('等爸媽核准', { exact: true }).waitFor({ timeout: 10000 });
+  await page.getByRole('button', { name: '返回' }).click();
   await tab('我的');
   const code = (await page.getByText(/^[A-HJ-NP-Z2-9]{8}$/).first().innerText()).trim();
   const p2 = await (await browser.newContext({ viewport: { width: 390, height: 844 } })).newPage();
@@ -113,11 +126,18 @@ await step('家長帳號綁定 → 看到練習與模擬考', async () => {
   await page.getByLabel('密碼（至少 8 個字元）').fill('password123');
   await page.getByRole('checkbox').click();
   await page.getByRole('button', { name: '建立帳號' }).click();
-  await t('孩子的學習狀況').waitFor({ timeout: 15000 });
+  await t('勇者戰報').waitFor({ timeout: 15000 });
   await page.getByLabel('孩子的邀請碼').fill(code);
   await page.getByRole('button', { name: '綁定' }).click();
   await page.getByText('天有練習', { exact: false }).waitFor({ timeout: 15000 });
   await page.getByText('會考模擬考', { exact: true }).waitFor();
+  await page.getByLabel(/^各科防禦力：/).waitFor();
+  await page.getByText('週末看一部電影', { exact: true }).waitFor();
+  await page.getByRole('button', { name: '好' }).click().catch(() => {});   // 關掉「綁定成功」
+  await page.getByRole('button', { name: /^核准$/ }).click();
+  await page.getByText('已核准，從現在開始計算進度', { exact: true }).waitFor({ timeout: 10000 });
+  await page.getByRole('button', { name: '好' }).click();
+  await page.getByText(/^進度 0 \/ 50 題$/).waitFor({ timeout: 10000 });
   await shot('06-parent');
   await p2.close(); await p3.close();
 });

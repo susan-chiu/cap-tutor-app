@@ -201,7 +201,7 @@ export default function MockExam() {
         {stage === 'exam' ? (
           <View accessibilityLabel={`剩下 ${mm} 分 ${ss} 秒`}
             style={{ flexDirection: 'row', alignItems: 'center', gap: 4, paddingHorizontal: 10, minHeight: 36, borderRadius: 999,
-              backgroundColor: remaining < 300 ? C.redSoft : '#EFEBE2' }}>
+              backgroundColor: remaining < 300 ? C.redSoft : C.surfaceAlt }}>
             <Ionicons name="time-outline" size={16} color={remaining < 300 ? C.red : C.ink} />
             <T weight="700" color={remaining < 300 ? C.red : C.ink}>{mm}:{ss}</T>
           </View>
@@ -274,9 +274,9 @@ export default function MockExam() {
                   <Pressable key={x.id} accessibilityRole="button" accessibilityLabel={`第 ${i + 1} 題${answers[x.id] ? '，已作答' : '，未作答'}`}
                     onPress={() => { setIdx(i); setOverview(false); }}
                     style={{ width: 48, height: 48, borderRadius: 10, alignItems: 'center', justifyContent: 'center',
-                      backgroundColor: answers[x.id] ? C.green : '#FFFFFF', borderWidth: i === idx ? 2 : 1,
+                      backgroundColor: answers[x.id] ? C.green : C.card, borderWidth: i === idx ? 2 : 1,
                       borderColor: i === idx ? C.accent : C.lineStrong }}>
-                    <T weight="700" color={answers[x.id] ? '#FFFFFF' : C.ink}>{i + 1}</T>
+                    <T weight="700" color={answers[x.id] ? C.onAccent : C.ink}>{i + 1}</T>
                   </Pressable>
                 ))}
               </ScrollView>
@@ -364,7 +364,7 @@ function Result({ questions, answers, results, usedSec, stopped, saved, onAgain 
       {wrong.length ? (
         <Card style={{ gap: 4 }}>
           <H2>錯題與解析（{wrong.length} 題）</H2>
-          <T size={13} color={C.muted}>作答錯的題目已收進錯題本；點題目看完整詳解（錯在哪、解題步驟），或找小老師講解。</T>
+          <T size={13} color={C.muted}>作答錯的題目已收進魔物圖鑑；點題目看完整詳解（錯在哪、解題步驟），或找小老師講解。</T>
           {wrong.map((q) => {
             const r = results[q.id];
             const mine = answers[q.id];

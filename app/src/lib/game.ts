@@ -65,6 +65,26 @@ export const SUBJECT_FLOWER: Record<string, string> = {
   chinese: '#D9485F', english: '#3D7DD8', math: '#E8A317', science: '#2E9E6A', social: '#8A5CC7',
 };
 
+/** 魔物圖鑑：每科的考點魔物（圖示用 Ionicons 名稱） */
+export const MONSTER: Record<string, { name: string; icon: string; color: string }> = {
+  math: { name: '函數魔獸', icon: 'calculator', color: '#FFB020' },
+  chinese: { name: '文言妖', icon: 'book', color: '#FF4D7A' },
+  english: { name: '文法怪', icon: 'language', color: '#4DA3FF' },
+  science: { name: '實驗異獸', icon: 'flask', color: '#2EE6A6' },
+  social: { name: '時空幽靈', icon: 'earth', color: '#B266FF' },
+};
+
+/** 錯題狀態 → 魔物狀態：待講解＝狂暴中、複習中＝已削弱、畢業＝已討伐 */
+export type MonsterState = 'raging' | 'weakened' | 'defeated';
+export function monsterState(status: string): MonsterState {
+  return status === 'graduated' ? 'defeated' : status === 'pending' ? 'raging' : 'weakened';
+}
+export const MONSTER_STATE: Record<MonsterState, { label: string; color: string }> = {
+  raging: { label: '狂暴中', color: '#FF0055' },
+  weakened: { label: '已削弱', color: '#FFD700' },
+  defeated: { label: '已討伐', color: '#2EE6A6' },
+};
+
 /** 段考 Boss：答對扣 Boss 血、答錯扣自己的愛心；結算時依答對率給星星 */
 export const BOSS_HEARTS = 3;
 export const BOSS_NAMES: Record<string, string> = {
@@ -86,3 +106,11 @@ export function comboMessage(combo: number): string | null {
   if (combo === 3) return '3 連擊！';
   return null;
 }
+
+/** 許願池的目標種類 */
+export const WISH_GOAL: Record<'correct' | 'days' | 'graduated', { label: string; unit: string; presets: number[] }> = {
+  correct: { label: '答對題數', unit: '題', presets: [30, 50, 100] },
+  days: { label: '完成每日目標的天數', unit: '天', presets: [3, 5, 7] },
+  graduated: { label: '討伐魔物（錯題畢業）', unit: '隻', presets: [3, 5, 10] },
+};
+export const WISH_STATUS: Record<string, string> = { pending: '等爸媽核准', approved: '挑戰中', rejected: '沒有通過', fulfilled: '已兌現' };

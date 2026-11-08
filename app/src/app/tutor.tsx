@@ -167,7 +167,7 @@ export default function Tutor() {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top', 'bottom']}>
-      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, paddingHorizontal: 12, minHeight: 56, backgroundColor: '#FFFFFF', borderBottomWidth: 1, borderBottomColor: C.line }}>
+      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, paddingHorizontal: 12, minHeight: 56, backgroundColor: C.card, borderBottomWidth: 1, borderBottomColor: C.line }}>
         <Pressable accessibilityRole="button" accessibilityLabel="返回" onPress={() => goBack()}
           style={{ width: 44, height: 44, alignItems: 'center', justifyContent: 'center' }}>
           <Ionicons name="chevron-back" size={24} color={C.ink} />
@@ -215,7 +215,7 @@ export default function Tutor() {
             <T size={12} weight="700" color={C.green}>提示 {hintLevel} / 3</T>
             <View style={{ flex: 1, flexDirection: 'row', gap: 4 }}>
               {[1, 2, 3].map((n) => (
-                <View key={n} style={{ flex: 1, height: 6, borderRadius: 999, backgroundColor: n <= hintLevel ? C.green : '#D8E6E1' }} />
+                <View key={n} style={{ flex: 1, height: 6, borderRadius: 999, backgroundColor: n <= hintLevel ? C.green : C.surfaceAlt }} />
               ))}
             </View>
           </View>}
@@ -244,14 +244,14 @@ export default function Tutor() {
               style={{ flexDirection: 'row', justifyContent: m.from === 'me' ? 'flex-end' : 'flex-start', gap: 8 }}>
               {m.from === 'tutor' ? (
                 <View style={{ width: 32, height: 32, borderRadius: 16, backgroundColor: C.green, alignItems: 'center', justifyContent: 'center' }}>
-                  <Ionicons name="school-outline" size={16} color="#FFFFFF" />
+                  <Ionicons name="school-outline" size={16} color={C.onAccent} />
                 </View>
               ) : null}
               <View style={{
                 maxWidth: '80%', paddingHorizontal: 12, paddingVertical: 10, borderRadius: 14,
-                backgroundColor: m.from === 'me' ? C.night : '#FFFFFF', borderWidth: m.from === 'me' ? 0 : 1, borderColor: C.line,
+                backgroundColor: m.from === 'me' ? C.accentSoft : C.card, borderWidth: m.from === 'me' ? 0 : 1, borderColor: C.line,
               }}>
-                <T size={15} color={m.from === 'me' ? '#FFFFFF' : C.ink}>{m.text}</T>
+                <T size={15} color={C.ink}>{m.text}</T>
                 {m.failed ? <T size={12} color="#FFB4A8">沒有送出，請再試一次</T> : null}
               </View>
             </View>
@@ -262,7 +262,7 @@ export default function Tutor() {
             <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8, paddingLeft: 40 }}>
               {(QUICK_REPLIES[q?.subject ?? 'math'] ?? QUICK_REPLIES.math).map((t) => (
                 <Pressable key={t} accessibilityRole="button" onPress={() => send('reply', t)}
-                  style={{ minHeight: 44, paddingHorizontal: 12, borderRadius: 999, borderWidth: 1, borderColor: C.lineStrong, backgroundColor: '#FFFFFF', justifyContent: 'center' }}>
+                  style={{ minHeight: 44, paddingHorizontal: 12, borderRadius: 999, borderWidth: 1, borderColor: C.lineStrong, backgroundColor: C.card, justifyContent: 'center' }}>
                   <T size={13}>{t}</T>
                 </Pressable>
               ))}
@@ -298,7 +298,7 @@ export default function Tutor() {
         </ScrollView>
 
         {!needsConsent && !blocked && !limitHit && !safety && !check ? (
-          <View style={{ padding: 12, gap: 10, backgroundColor: '#FFFFFF', borderTopWidth: 1, borderTopColor: C.line }}>
+          <View style={{ padding: 12, gap: 10, backgroundColor: C.card, borderTopWidth: 1, borderTopColor: C.line }}>
             <View style={{ flexDirection: 'row', gap: 8 }}>
               <Button title={hintLevel >= 2 ? '看完整解法' : '給我提示'} kind="secondary" style={{ flex: 1, minHeight: 44, borderColor: C.green }}
                 disabled={!sessionId || thinking || hintLevel >= 3} onPress={() => send('hint')} />
@@ -313,7 +313,7 @@ export default function Tutor() {
               <Pressable accessibilityRole="button" accessibilityLabel="送出" disabled={!input.trim() || thinking}
                 onPress={() => send('reply', input.trim())}
                 style={{ width: 44, height: 44, borderRadius: 12, backgroundColor: input.trim() ? C.accent : C.lineStrong, alignItems: 'center', justifyContent: 'center' }}>
-                <Ionicons name="arrow-forward" size={20} color="#FFFFFF" />
+                <Ionicons name="arrow-forward" size={20} color={C.onAccent} />
               </Pressable>
             </View>
           </View>

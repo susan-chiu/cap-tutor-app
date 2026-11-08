@@ -11,7 +11,7 @@ import { C } from '@/lib/theme';
 const GROUP_ICON: Record<string, keyof typeof Ionicons.glyphMap> = {
   連勝: 'flame', 答題: 'checkmark-done', 錯題: 'school', 花園: 'flower', 魔王: 'skull', 等級: 'star',
 };
-const GOLD = '#E8B923';
+const GOLD = C.gold;
 
 /** 成就徽章：全部由作答紀錄算出，達成就點亮 */
 export default function Badges() {
@@ -63,15 +63,15 @@ function BadgeTile({ b, icon }: { b: Badge; icon: keyof typeof Ionicons.glyphMap
     <View accessible accessibilityLabel={`${b.title}，${b.desc}，${b.done ? '已達成' : `進度 ${b.progress} / ${b.goal}`}`}
       style={{
         width: '31%', minWidth: 100, flexGrow: 1, maxWidth: 160, padding: 10, gap: 4, alignItems: 'center', borderRadius: 14,
-        borderWidth: b.done ? 2 : 1, borderColor: b.done ? GOLD : C.line, backgroundColor: b.done ? '#FFF6D5' : C.card,
+        borderWidth: b.done ? 2 : 1, borderColor: b.done ? GOLD : C.line, backgroundColor: b.done ? C.goldSoft : C.card,
       }}>
       <View style={{ width: 48, height: 48, borderRadius: 24, alignItems: 'center', justifyContent: 'center',
         backgroundColor: b.done ? GOLD : C.line }}>
-        <Ionicons name={b.done ? icon : 'lock-closed'} size={24} color={b.done ? '#FFFFFF' : C.faint} />
+        <Ionicons name={b.done ? icon : 'lock-closed'} size={24} color={b.done ? C.onAccent : C.faint} />
       </View>
       <T size={13} weight="700" style={{ textAlign: 'center' }}>{b.title}</T>
       <T size={11} color={C.muted} numberOfLines={3} style={{ textAlign: 'center', minHeight: 30 }}>{b.desc}</T>
-      {b.done ? <T size={11} weight="700" color="#9A6B00">已達成 ✦</T> : (
+      {b.done ? <T size={11} weight="700" color={C.gold}>已達成 ✦</T> : (
         <View style={{ alignSelf: 'stretch', gap: 2 }}>
           <ProgressBar value={b.goal ? b.progress / b.goal : 0} color={GOLD} height={5} />
           <T size={11} color={C.muted} style={{ textAlign: 'center' }}>{b.progress} / {b.goal}</T>

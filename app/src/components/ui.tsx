@@ -64,21 +64,21 @@ export function Button({ title, onPress, kind = 'primary', disabled, loading, st
       onPress={off ? undefined : onPress}
       style={({ pressed }) => [
         styles.button,
-        { backgroundColor: off ? '#E6E0D4' : k.bg, borderColor: off ? '#E6E0D4' : k.border },
+        { backgroundColor: off ? C.surfaceAlt : k.bg, borderColor: off ? C.surfaceAlt : k.border },
         pressed && !off && { opacity: 0.85 },
         style,
       ]}>
       {loading ? <ActivityIndicator color={k.fg} /> : (
-        <Text style={[styles.buttonText, { color: off ? '#6B7370' : k.fg }]}>{title}</Text>
+        <Text style={[styles.buttonText, { color: off ? C.faint : k.fg }]}>{title}</Text>
       )}
     </Pressable>
   );
 }
 
 const BUTTON_KINDS: Record<ButtonKind, { bg: string; fg: string; border: string }> = {
-  primary: { bg: C.accent, fg: '#FFFFFF', border: C.accent },
-  secondary: { bg: '#FFFFFF', fg: C.accent, border: C.accent },
-  green: { bg: C.green, fg: '#FFFFFF', border: C.green },
+  primary: { bg: C.accent, fg: C.onAccent, border: C.accent },
+  secondary: { bg: 'transparent', fg: C.accent, border: C.accent },
+  green: { bg: C.green, fg: C.onAccent, border: C.green },
   danger: { bg: C.red, fg: '#FFFFFF', border: C.red },
   ghost: { bg: 'transparent', fg: C.muted, border: 'transparent' },
 };
@@ -92,14 +92,14 @@ export function Chip({ label, selected, onPress, style }: {
       accessibilityState={{ selected: !!selected }} aria-selected={!!selected}
       onPress={onPress}
       style={[styles.chip, selected ? styles.chipOn : styles.chipOff, style]}>
-      <Text style={{ fontSize: 14, fontWeight: selected ? '700' : '400', color: selected ? '#FFFFFF' : C.ink }}>{label}</Text>
+      <Text style={{ fontSize: 14, fontWeight: selected ? '700' : '400', color: selected ? C.onAccent : C.ink }}>{label}</Text>
     </Pressable>
   );
 }
 
 export function Tag({ label, tone = 'neutral' }: { label: string; tone?: 'neutral' | 'accent' | 'green' | 'red' }) {
   const t = {
-    neutral: { bg: '#EFEBE2', fg: C.muted },
+    neutral: { bg: C.surfaceAlt, fg: C.muted },
     accent: { bg: C.accentSoft, fg: C.accentDark },
     green: { bg: C.greenSoft, fg: C.greenDark },
     red: { bg: C.redSoft, fg: C.redDark },
@@ -117,7 +117,7 @@ export function ProgressBar({ value, color = C.green, height = 8 }: { value: num
     <View
       accessibilityRole="progressbar"
       accessibilityValue={{ min: 0, max: 100, now: Math.round(pct * 100) }}
-      style={{ height, backgroundColor: '#EFEBE2', borderRadius: 999, overflow: 'hidden' }}>
+      style={{ height, backgroundColor: C.surfaceAlt, borderRadius: 999, overflow: 'hidden' }}>
       <View style={{ width: `${pct * 100}%`, height, backgroundColor: color, borderRadius: 999 }} />
     </View>
   );
@@ -145,10 +145,10 @@ const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: C.bg },
   padded: { paddingHorizontal: 16, paddingTop: 12 },
   card: { backgroundColor: C.card, borderColor: C.line, borderWidth: 1, borderRadius: radius.lg, padding: 16 },
-  cardDark: { backgroundColor: C.night, borderColor: C.night },
+  cardDark: { backgroundColor: C.night, borderColor: C.nightLine },
   button: { minHeight: 50, borderRadius: radius.md, borderWidth: 1.5, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 16 },
   buttonText: { fontSize: 16, fontWeight: '700' },
   chip: { minHeight: 40, paddingHorizontal: 14, borderRadius: 999, alignItems: 'center', justifyContent: 'center', borderWidth: 1 },
   chipOn: { backgroundColor: C.accent, borderColor: C.accent },
-  chipOff: { backgroundColor: '#FFFFFF', borderColor: C.lineStrong },
+  chipOff: { backgroundColor: C.card, borderColor: C.lineStrong },
 });

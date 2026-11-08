@@ -675,6 +675,59 @@ if (hasSeed) {
     assert.equal(ach2['bloom-1'].done, true); assert.equal(ach2['gold-1'].done, true);
   });
 
+  await test('心眼重答：只能重答剛答錯的題、一次限一次、答對 +3 XP；許願池：孩子許願、家長核准、達成後兌現', async () => {
+    const kid = await newUser({ nickname: '許願的孩子' });
+    await db.query(`select public.set_subscription($1, now() + interval '30 days')`, [kid]);
+    const qs = (await db.query(`select id, answer from public.questions where unit_id = 'M-7A-1' and active order by id desc limit 8`)).rows;
+    const wrong = (q) => (q.answer === 'A' ? 'B' : 'A');
+    const other = (q) => ['A', 'B', 'C', 'D'].find((k) => k !== q.answer && k !== wrong(q));
+    // 沒答錯不能重答
+    await expectError(as(kid, () => db.query(`select public.retry_bonus($1, $2)`, [qs[0].id, qs[0].answer])), 'no_retry');
+    await answer(kid, qs[0].id, wrong(qs[0]));
+    const xp0 = (await db.query(`select xp from public.profiles where id = $1`, [kid])).rows[0].xp;
+    await expectError(as(kid, () => db.query(`select public.retry_bonus($1, $2)`, [qs[0].id, wrong(qs[0])])), 'same_choice');
+    const r1 = (await as(kid, () => db.query(`select public.retry_bonus($1, $2) r`, [qs[0].id, qs[0].answer]))).rows[0].r;
+    assert.deepEqual([r1.correct, r1.xp_gained, r1.xp_total], [true, 3, xp0 + 3]);
+    await expectError(as(kid, () => db.query(`select public.retry_bonus($1, $2)`, [qs[0].id, qs[0].answer])), 'already_retried');
+    const m = (await db.query(`select status from public.mistakes where user_id = $1 and question_id = $2`, [kid, qs[0].id])).rows[0];
+    assert.equal(m.status, 'pending', '心眼答對不會讓錯題消失');
+    await answer(kid, qs[1].id, wrong(qs[1]));
+    const r2 = (await as(kid, () => db.query(`select public.retry_bonus($1, $2) r`, [qs[1].id, other(qs[1])]))).rows[0].r;
+    assert.deepEqual([r2.correct, r2.xp_gained], [false, 0]);
+
+    // 許願池
+    const par = await newUser({ nickname: '爸爸', role: 'parent' });
+    const stranger = await newUser({ nickname: '路人家長', role: 'parent' });
+    const code = (await db.query(`select invite_code from public.profiles where id = $1`, [kid])).rows[0].invite_code;
+    await as(par, () => db.query(`select public.link_child($1)`, [code]));
+    await expectError(as(par, () => db.query(`select public.make_wish('x', 'correct', 3)`)), 'not_student');
+    const w = (await as(kid, () => db.query(`select public.make_wish('週末多玩 1 小時手機', 'correct', 3) r`))).rows[0].r;
+    assert.deepEqual([w.status, w.progress, w.reached], ['pending', 0, false]);
+    await as(kid, () => db.query(`select public.make_wish('鹹酥雞', 'days', 3)`));
+    await as(kid, () => db.query(`select public.make_wish('看電影', 'graduated', 5)`));
+    await expectError(as(kid, () => db.query(`select public.make_wish('太多了', 'correct', 1)`)), 'too_many_wishes');
+    await expectError(as(stranger, () => db.query(`select public.child_wishes($1)`, [kid])), 'not_linked');
+    await expectError(as(stranger, () => db.query(`select public.review_wish($1, true)`, [w.id])), 'not_linked');
+    await expectError(as(par, () => db.query(`select public.fulfill_wish($1)`, [w.id])), 'wish_not_approved');
+    // 核准前答對的不算
+    const ok = (await as(par, () => db.query(`select public.review_wish($1, true) r`, [w.id]))).rows[0].r;
+    assert.equal(ok.status, 'approved'); assert.equal(ok.progress, 0);
+    await expectError(as(par, () => db.query(`select public.fulfill_wish($1)`, [w.id])), 'wish_not_reached');
+    for (const q of qs.slice(2, 6)) await answer(kid, q.id, q.answer);
+    const mine = (await as(kid, () => db.query(`select public.my_wishes() r`))).rows[0].r;
+    const got = mine.find((x) => x.id === w.id);
+    assert.deepEqual([got.progress, got.reached], [3, true], '進度最多顯示到目標');
+    const done = (await as(par, () => db.query(`select public.fulfill_wish($1) r`, [w.id]))).rows[0].r;
+    assert.equal(done.status, 'fulfilled');
+    await expectError(as(par, () => db.query(`select public.review_wish($1, false)`, [w.id])), 'wish_not_pending');
+    const list = (await as(par, () => db.query(`select public.child_wishes($1) r`, [kid]))).rows[0].r;
+    assert.equal(list.length, 3); assert.equal(list[list.length - 1].status, 'fulfilled', '已兌現排最後');
+    assert.equal((await as(kid, () => db.query(`select count(*)::int n from public.wishes`))).rows[0].n, 0, '不能直接讀表');
+    const pend = list.find((x) => x.title === '鹹酥雞');
+    await as(kid, () => db.query(`select public.cancel_wish($1)`, [pend.id]));
+    assert.equal((await as(kid, () => db.query(`select public.my_wishes() r`))).rows[0].r.length, 2);
+  });
+
   await test('正式題庫：每題答案都在選項內、都有解析與提示', async () => {
     const r = await db.query(`
       select id from public.questions q

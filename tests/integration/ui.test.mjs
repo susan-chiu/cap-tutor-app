@@ -115,7 +115,9 @@ await step('每日練習第 1 題故意答錯 → 顯示錯誤原因與解析、
   const wrong = 'ABCD'.split('').find((k) => k !== q.answer);
   await page.getByLabel(new RegExp(`^選項 ${wrong}：`)).click();
   await byText(page, '檢查答案').click();
-  await byText(page, '差一點！已收進錯題本').waitFor({ timeout: 10000 });
+  await byText(page, '心眼發動！勇者，先別急').waitFor({ timeout: 10000 });
+  await page.getByRole('button', { name: '直接看解析' }).click();
+  await byText(page, '差一點！這題變成魔物收進魔物圖鑑').waitFor({ timeout: 10000 });
   await shot(page, '03-wrong');
   const m = await db.query(`select status from mistakes where user_id = $1 and question_id = $2`, [studentId, q.id]);
   assert.equal(m.rows[0].status, 'pending');
@@ -172,10 +174,10 @@ await step('回到練習完成剩下 4 題 → 看結果、今天目標完成、
 
 await step('首頁更新：1 天連勝、每日任務勾選；錯題本顯示「學習中」', async () => {
   await page.getByRole('button', { name: '回首頁' }).click();
-  await byText(page, '今天的目標完成了！').waitFor({ timeout: 10000 });
+  await byText(page, '今天的修煉完成了！').waitFor({ timeout: 10000 });
   await shot(page, '07-home-after');
   await page.goto(`${APP}/mistakes`);
-  await byText(page, '學習中').first().waitFor({ timeout: 10000 });
+  await byText(page, '已削弱').first().waitFor({ timeout: 10000 });
   await shot(page, '08-mistakes');
 });
 
@@ -240,6 +242,7 @@ await step('多科目：切換到英語（康軒課次）→ 練習英語單元 
   const wrongKey = 'ABCD'.split('').find((k) => k !== cur.answer);
   await page.getByLabel(new RegExp(`^選項 ${wrongKey}：`)).click();
   await page.getByRole('button', { name: '檢查答案' }).click();
+  await page.getByRole('button', { name: '直接看解析' }).click();
   await shot(page, '09c-english-wrong');
   await page.getByRole('button', { name: '找小老師' }).click();
   await page.getByText('差一點點', { exact: false }).first().waitFor({ timeout: 20000 });
@@ -444,7 +447,7 @@ await step('家長：註冊家長帳號、輸入孩子邀請碼綁定 → 看到
   await parent.getByLabel('密碼（至少 8 個字元）').fill('password123');
   await parent.getByRole('checkbox').click();
   await parent.getByRole('button', { name: '建立帳號' }).click();
-  await byText(parent, '孩子的學習狀況').waitFor({ timeout: 15000 });
+  await byText(parent, '勇者戰報').waitFor({ timeout: 15000 });
   await parent.getByLabel('孩子的邀請碼').fill(code);
   await parent.getByRole('button', { name: '綁定' }).click();
   await parent.getByText('天有練習', { exact: false }).waitFor({ timeout: 15000 });

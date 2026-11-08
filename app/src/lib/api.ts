@@ -60,6 +60,12 @@ export interface BossResult {
   stars: number; correct: number; total: number; best: number;
   first_three: boolean; freeze_reward: boolean; freeze_cards: number;
 }
+export type WishGoal = 'correct' | 'days' | 'graduated';
+export interface Wish {
+  id: string; title: string; goal_type: WishGoal; goal: number;
+  status: 'pending' | 'approved' | 'rejected' | 'fulfilled';
+  progress: number; reached: boolean; approved_at: string | null; fulfilled_at: string | null; created_at: string;
+}
 export interface Badge {
   id: string; group: string; title: string; desc: string; progress: number; goal: number; done: boolean;
 }
@@ -192,6 +198,11 @@ const ERROR_TEXT: Record<string, string> = {
   question_not_found: '這題已經下架了。',
   not_answered: '作答之後才能看詳解。',
   not_authenticated: '請重新登入。',
+  too_many_wishes: '最多同時許 3 個願望，先完成或取消一個吧！',
+  wish_not_reached: '孩子還沒達成目標喔。',
+  wish_not_pending: '這個願望已經處理過了。',
+  already_retried: '這題已經用過心眼了。',
+  no_retry: '這題已經不能重答了。',
 };
 
 export function errorText(e: unknown): string {
@@ -222,6 +233,16 @@ export const api = {
   bossBests: () => rpc<{ boss_key: string; best_stars: number; clears: number }[]>('boss_bests'),
   /** 成就徽章（全部由作答紀錄算出） */
   achievements: () => rpc<Badge[]>('achievements'),
+  /** 許願池 */
+  makeWish: (title: string, goalType: WishGoal, goal: number) => rpc<Wish>('make_wish', { p_title: title, p_goal_type: goalType, p_goal: goal }),
+  myWishes: () => rpc<Wish[]>('my_wishes'),
+  cancelWish: (id: string) => rpc<null>('cancel_wish', { p_id: id }),
+  childWishes: (studentId: string) => rpc<Wish[]>('child_wishes', { p_student: studentId }),
+  reviewWish: (id: string, approve: boolean) => rpc<Wish>('review_wish', { p_id: id, p_approve: approve }),
+  fulfillWish: (id: string) => rpc<Wish>('fulfill_wish', { p_id: id }),
+  /** 心眼重答：剛答錯的題目再選一次，答對加 3 XP（不改變錯題紀錄） */
+  retryBonus: (questionId: string, choice: string) =>
+    rpc<{ correct: boolean; xp_gained: number; xp_total: number }>('retry_bonus', { p_question_id: questionId, p_choice: choice }),
   /** 匿名週排行 */
   leaderboard: () => rpc<Leaderboard>('weekly_leaderboard', { p_limit: 20 }),
   setLeaderboardHidden: (hidden: boolean) => rpc<null>('set_leaderboard_hidden', { p_hidden: hidden }),

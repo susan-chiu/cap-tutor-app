@@ -14,27 +14,27 @@ export default function TabLayout() {
         headerShown: false,
         tabBarActiveTintColor: C.accent,
         tabBarInactiveTintColor: C.muted,
-        tabBarStyle: { backgroundColor: '#FFFFFF', borderTopColor: C.line },
+        tabBarStyle: { backgroundColor: C.card, borderTopColor: C.line },
         sceneStyle: { backgroundColor: C.bg },
       }}>
       <Tabs.Screen
         name="index"
-        options={{ title: '首頁', tabBarIcon: ({ color, size }) => <Ionicons name="home-outline" size={size} color={color} /> }}
+        options={{ title: '大廳', tabBarIcon: ({ color, size }) => <Ionicons name="home-outline" size={size} color={color} /> }}
       />
       <Tabs.Screen
         name="learn"
         options={{
-          title: '練習',
+          title: '副本',
           href: isParent ? null : undefined,
-          tabBarIcon: ({ color, size }) => <Ionicons name="book-outline" size={size} color={color} />,
+          tabBarIcon: ({ color, size }) => <Ionicons name="map-outline" size={size} color={color} />,
         }}
       />
       <Tabs.Screen
         name="mistakes"
         options={{
-          title: '錯題本',
+          title: '魔物圖鑑',
           href: isParent ? null : undefined,
-          tabBarIcon: ({ color, size }) => <Ionicons name="create-outline" size={size} color={color} />,
+          tabBarIcon: ({ color, size }) => <Ionicons name="skull-outline" size={size} color={color} />,
         }}
       />
       <Tabs.Screen

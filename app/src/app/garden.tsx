@@ -52,7 +52,7 @@ export default function Garden() {
                 <T size={28} weight="700">{bloomed} <T size={15} color={C.muted}>/ {shown.length} 株</T></T>
               </View>
               <View style={{ alignItems: 'flex-end' }}>
-                <T size={13} color="#B8860B" weight="700">金色花 {gold} 朵</T>
+                <T size={13} color={C.gold} weight="700">金色花 {gold} 朵</T>
                 <T size={13} color={C.muted}>成長中 {growing} 株</T>
               </View>
             </View>
@@ -90,13 +90,13 @@ function PlantTile({ u }: { u: GardenUnit }) {
       onPress={() => router.push({ pathname: '/quiz', params: { mode: 'unit', units: u.unit_id, title: u.title } })}
       style={({ pressed }) => ({
         width: '31%', minWidth: 100, flexGrow: 1, maxWidth: 160, padding: 8, gap: 4, alignItems: 'center',
-        backgroundColor: gold ? '#FFF6D5' : stage === 4 ? C.greenSoft : C.card, borderRadius: 14, borderWidth: gold ? 2 : 1,
-        borderColor: gold ? '#E8B923' : stage === 4 ? C.mint : C.line, opacity: pressed ? 0.7 : 1,
+        backgroundColor: gold ? C.goldSoft : stage === 4 ? C.greenSoft : C.card, borderRadius: 14, borderWidth: gold ? 2 : 1,
+        borderColor: gold ? C.gold : stage === 4 ? C.mint : C.line, opacity: pressed ? 0.7 : 1,
       })}>
       <Plant stage={stage} color={SUBJECT_FLOWER[u.subject] ?? C.accent} size={80} gold={gold} />
       <T size={11} color={SUBJECT_FLOWER[u.subject] ?? C.muted} weight="700">{subjectLabel(u.subject, u.semester)}</T>
       <T size={12} weight="700" numberOfLines={2} style={{ textAlign: 'center', minHeight: 32 }}>{name}</T>
-      <T size={11} color={gold ? '#B8860B' : C.muted} weight={gold ? '700' : undefined}>
+      <T size={11} color={gold ? C.gold : C.muted} weight={gold ? '700' : undefined}>
         {gold ? '金色稀有花 ✦' : stage < 4 ? `${PLANT_STAGE_LABEL[stage]} · 再 ${need} 題` : hard ? `開花 · 困難題再 ${hard} 題` : '開花 ✿'}
       </T>
     </Pressable>

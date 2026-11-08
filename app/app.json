@@ -6,7 +6,7 @@
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "capapp",
-    "userInterfaceStyle": "light",
+    "userInterfaceStyle": "dark",
     "ios": {
       "bundleIdentifier": "com.susanchiu.captutor",
       "supportsTablet": false,
@@ -61,7 +61,7 @@
       [
         "expo-splash-screen",
         {
-          "backgroundColor": "#F6F3EC",
+          "backgroundColor": "#0B0F19",
           "image": "./assets/images/splash-icon.png",
           "imageWidth": 120
         }
@@ -88,7 +88,7 @@
         "expo-notifications",
         {
           "icon": "./assets/images/android-icon-monochrome.png",
-          "color": "#C2511B"
+          "color": "#00F0FF"
         }
       ]
     ],

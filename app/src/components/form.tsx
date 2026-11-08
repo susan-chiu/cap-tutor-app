@@ -20,7 +20,7 @@ export function Check({ checked, onToggle, label }: { checked: boolean; onToggle
     <Pressable accessibilityRole="checkbox" accessibilityState={{ checked }} aria-checked={checked} onPress={onToggle}
       style={{ flexDirection: 'row', gap: 10, alignItems: 'flex-start', minHeight: 44 }}>
       <View style={[styles.box, checked && { backgroundColor: C.accent, borderColor: C.accent }]}>
-        {checked ? <T size={14} color="#FFFFFF" weight="700">✓</T> : null}
+        {checked ? <T size={14} color={C.onAccent} weight="700">✓</T> : null}
       </View>
       <T size={14} style={{ flex: 1 }}>{label}</T>
     </Pressable>
@@ -28,7 +28,7 @@ export function Check({ checked, onToggle, label }: { checked: boolean; onToggle
 }
 
 const styles = StyleSheet.create({
-  input: { minHeight: 48, borderWidth: 1, borderColor: C.lineStrong, borderRadius: 10, paddingHorizontal: 12, fontSize: 16, backgroundColor: '#FFFFFF', color: C.ink },
+  input: { minHeight: 48, borderWidth: 1, borderColor: C.lineStrong, borderRadius: 10, paddingHorizontal: 12, fontSize: 16, backgroundColor: C.card, color: C.ink },
   box: { width: 24, height: 24, borderRadius: 6, borderWidth: 2, borderColor: C.lineStrong, alignItems: 'center', justifyContent: 'center', marginTop: 1 },
 });
 
