@@ -526,7 +526,7 @@
   function newProfile(user, meta) {
     return { id: user.id, role: meta.role === 'parent' ? 'parent' : 'student', nickname: String(meta.nickname || '同學').slice(0, 20),
       grade: null, textbook_version: null, tutor_persona: 'gentle', xp: 0, current_streak: 0, longest_streak: 0, last_goal_date: null,
-      freeze_cards: 2, premium_until: null, subscription_until: null, invite_code: code8(), ai_consent_at: null,
+      freeze_cards: 2, hero: 'yelin', premium_until: null, subscription_until: null, invite_code: code8(), ai_consent_at: null,
       daily_subjects: SUBJECTS.slice(), textbook_versions: {}, grade_confirmed_at: null,
       parent_consent_at: meta.parent_consent === 'true' ? new Date().toISOString() : null,
       terms_accepted_at: meta.terms_accepted === 'true' ? new Date().toISOString() : null, created_at: new Date().toISOString() };
@@ -572,7 +572,7 @@
     // ---- 資料表 ----
     if (path === '/rest/v1/profiles') {
       if (method === 'PATCH') {
-        var allowed = ['nickname', 'grade', 'textbook_version', 'tutor_persona', 'daily_subjects', 'textbook_versions'];
+        var allowed = ['nickname', 'grade', 'textbook_version', 'tutor_persona', 'daily_subjects', 'textbook_versions', 'hero'];
         Object.keys(b).forEach(function (k) { if (allowed.indexOf(k) >= 0) db.profiles[uid][k] = b[k]; });
         if ('grade' in b) db.profiles[uid].grade_confirmed_at = new Date().toISOString();
         save(); return json(undefined, 204);

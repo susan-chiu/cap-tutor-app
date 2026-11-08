@@ -5,9 +5,8 @@ import { Animated, Image, Platform, Pressable, View } from 'react-native';
 
 import { T } from '@/components/ui';
 import { BOSS_HEARTS, titleFor } from '@/lib/game';
+import type { Hero } from '@/lib/heroes';
 import { C } from '@/lib/theme';
-
-const HERO_FACE = require('@/assets/images/hero-face.jpg');
 
 /** 震動回饋（網頁版沒有震動，直接略過） */
 export function buzz(kind: 'correct' | 'wrong' | 'levelup') {
@@ -109,17 +108,18 @@ export function Stars({ n, size = 34 }: { n: number; size?: number }) {
 }
 
 /** 心眼提示：答錯時主角跳出來給提示，可以再答一次 */
-export function EyeHint({ hint, onRetry, onGiveUp }: { hint: string | null; onRetry: () => void; onGiveUp: () => void }) {
+export function EyeHint({ hero, hint, onRetry, onGiveUp }: { hero: Hero; hint: string | null; onRetry: () => void; onGiveUp: () => void }) {
   const v = useState(() => new Animated.Value(0))[0];
   useEffect(() => { Animated.spring(v, { toValue: 1, useNativeDriver: true, friction: 6 }).start(); }, [v]);
   return (
     <Animated.View accessibilityLiveRegion="polite" style={{ gap: 10, opacity: v, transform: [{ translateY: v.interpolate({ inputRange: [0, 1], outputRange: [16, 0] }) }] }}>
       <View style={{ flexDirection: 'row', gap: 10, alignItems: 'flex-start' }}>
-        <Image source={HERO_FACE} accessibilityIgnoresInvertColors
-          style={{ width: 52, height: 52, borderRadius: 26, borderWidth: 2, borderColor: C.accent }} />
-        <View style={{ flex: 1, padding: 12, borderRadius: 14, backgroundColor: C.accentSoft, borderWidth: 1, borderColor: C.accent, gap: 4 }}>
-          <T weight="700" color={C.accentDark}>心眼發動！勇者，先別急</T>
-          <T size={14} color={C.ink}>{hint ?? '再讀一次題目，注意關鍵字和條件。'}</T>
+        <Image source={hero.face} accessibilityIgnoresInvertColors
+          style={{ width: 52, height: 52, borderRadius: 26, borderWidth: 2, borderColor: hero.color }} />
+        <View style={{ flex: 1, padding: 12, borderRadius: 14, backgroundColor: C.night, borderWidth: 1, borderColor: hero.color, gap: 4 }}>
+          <T weight="700" color={hero.color}>心眼發動！{hero.name}・{hero.eyeFx}</T>
+          <T size={14} weight="700" color={C.ink}>「{hero.eye}」</T>
+          <T size={14} color={C.inkSoft}>{hint ?? '再讀一次題目，注意關鍵字和條件。'}</T>
         </View>
       </View>
       <View style={{ flexDirection: 'row', gap: 10 }}>

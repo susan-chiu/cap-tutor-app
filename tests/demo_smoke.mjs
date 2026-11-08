@@ -45,7 +45,7 @@ await step('每日練習：答 5 題（第 1 題故意答錯）', async () => {
     await page.getByLabel(new RegExp(`^選項 ${key}：`)).click();
     await page.getByRole('button', { name: '檢查答案' }).click();
     if (i === 0) {
-      await page.getByText('心眼發動！勇者，先別急', { exact: true }).waitFor({ timeout: 10000 });
+      await page.getByText(/^心眼發動！/).waitFor({ timeout: 10000 });
       await shot('02a-eye');
       await page.getByRole('button', { name: '直接看解析' }).click();
       await shot('02-wrong');

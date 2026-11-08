@@ -115,7 +115,7 @@ await step('每日練習第 1 題故意答錯 → 顯示錯誤原因與解析、
   const wrong = 'ABCD'.split('').find((k) => k !== q.answer);
   await page.getByLabel(new RegExp(`^選項 ${wrong}：`)).click();
   await byText(page, '檢查答案').click();
-  await byText(page, '心眼發動！勇者，先別急').waitFor({ timeout: 10000 });
+  await page.getByText(/^心眼發動！/).first().waitFor({ timeout: 10000 });
   await page.getByRole('button', { name: '直接看解析' }).click();
   await byText(page, '差一點！這題變成魔物收進魔物圖鑑').waitFor({ timeout: 10000 });
   await shot(page, '03-wrong');
@@ -174,7 +174,7 @@ await step('回到練習完成剩下 4 題 → 看結果、今天目標完成、
 
 await step('首頁更新：1 天連勝、每日任務勾選；錯題本顯示「學習中」', async () => {
   await page.getByRole('button', { name: '回首頁' }).click();
-  await byText(page, '今天的修煉完成了！').waitFor({ timeout: 10000 });
+  await byText(page, '今天的修煉完成了！明天見！').waitFor({ timeout: 10000 });
   await shot(page, '07-home-after');
   await page.goto(`${APP}/mistakes`);
   await byText(page, '已削弱').first().waitFor({ timeout: 10000 });
@@ -202,6 +202,7 @@ await step('答錯看完整詳解：你錯在哪、正確答案、解題步驟',
   const wrong = 'ABCD'.split('').find((k) => k !== q.answer);
   await page.getByLabel(new RegExp(`^選項 ${wrong}：`)).first().click();
   await page.getByRole('button', { name: '檢查答案' }).click();
+  await page.getByRole('button', { name: '直接看解析' }).click();
   await byText(page, '完整詳解').waitFor({ timeout: 10000 });
   await page.getByText(`你的答案（${wrong}）`, { exact: false }).first().waitFor();
   await page.getByText(`正確答案（${q.answer}）`, { exact: false }).first().waitFor();

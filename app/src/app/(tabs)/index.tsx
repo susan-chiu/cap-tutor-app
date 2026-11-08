@@ -1,7 +1,7 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { router, useFocusEffect } from 'expo-router';
 import { useCallback, useState } from 'react';
-import { Alert, ImageBackground, Pressable, View } from 'react-native';
+import { Alert, Image, Pressable, View } from 'react-native';
 
 import { ParentHome } from '@/components/parent-home';
 import { Button, Card, ErrorBox, H2, Loading, ProgressBar, Screen, T } from '@/components/ui';
@@ -9,9 +9,9 @@ import { api, errorText, type HomeData, type Limits } from '@/lib/api';
 import { rescheduleReminders } from '@/lib/reminders';
 import { useAuth } from '@/lib/auth';
 import { levelInfo } from '@/lib/game';
+import { heroOf } from '@/lib/heroes';
 import { C, gradeCheckNeeded, gradeLabel } from '@/lib/theme';
 
-const HERO = require('@/assets/images/hero.jpg');
 
 const WEEKDAY = ['日', '一', '二', '三', '四', '五', '六'];
 
@@ -54,34 +54,112 @@ function StudentHome() {
   const todayDone = data.today_answered >= data.daily_goal;
 
   const lv = levelInfo(data.xp);
-  const energyLeft = data.premium || !limits ? null : Math.max(limits.free_daily_questions - data.today_answered, 0);
+  const hero = heroOf(profile?.hero);
+  const energyMax = limits?.free_daily_questions ?? 0;
+  const energyLeft = data.premium || !limits ? null : Math.max(energyMax - data.today_answered, 0);
   const monsters = data.pending_mistakes + data.due_reviews;
+  const doneToday = Math.min(data.today_answered, data.daily_goal);
 
   return (
     <Screen>
-      {/* 勇者大廳：主角視覺＋等級、體力、保護卡 */}
-      <ImageBackground source={HERO} resizeMode="cover" accessibilityLabel="勇者大廳"
-        style={{ borderRadius: 20, overflow: 'hidden', borderWidth: 1, borderColor: C.nightLine, minHeight: 250, justifyContent: 'space-between' }}>
-        <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 6, padding: 10 }}>
-          <StatPill icon="star" color={C.gold} label={`Lv.${lv.level} ${lv.title}`} a11y={`等級 ${lv.level}，${lv.title}`} />
-          <StatPill icon="flask" color={C.accent} label={energyLeft === null ? '體力 ∞' : `體力 ${energyLeft}`}
-            a11y={energyLeft === null ? '體力無限' : `今天還能練 ${energyLeft} 題`}
-            onPress={() => Alert.alert('體力', energyLeft === null ? '完整版沒有體力限制，想練多少就練多少！' : `免費版每天可以練 ${limits?.free_daily_questions} 題，今天還剩 ${energyLeft} 題，明天會補滿。`)} />
-          <StatPill icon="shield-checkmark" color={C.green} label={`保護卡 ×${data.freeze_cards}`} a11y={`保護卡 ${data.freeze_cards} 張，點一下看說明`}
+      {/* 標題列 */}
+      <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', minHeight: 44 }}>
+        <Ionicons name="diamond-outline" size={14} color={C.gold} />
+        <T size={22} weight="700" style={{ marginHorizontal: 10, letterSpacing: 4 }}>勇者大廳</T>
+        <Ionicons name="diamond-outline" size={14} color={C.gold} />
+        <Pressable accessibilityRole="button" accessibilityLabel="設定" onPress={() => router.push('/me')}
+          style={{ position: 'absolute', right: 0, width: 44, height: 44, borderRadius: 12, borderWidth: 1, borderColor: C.gold, alignItems: 'center', justifyContent: 'center' }}>
+          <Ionicons name="settings-outline" size={22} color={C.gold} />
+        </Pressable>
+      </View>
+
+      {/* 頭像、等級、體力、保護卡 */}
+      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+        <Image source={hero.face} accessibilityIgnoresInvertColors
+          style={{ width: 56, height: 56, borderRadius: 28, borderWidth: 2, borderColor: C.gold }} />
+        <View style={{ flex: 1, gap: 4 }}>
+          <T weight="700" size={16}>Lv.{lv.level} {lv.title}</T>
+          <ProgressBar value={lv.progress} color={C.accent} height={8} />
+        </View>
+        <View style={{ gap: 6 }}>
+          <StatPill icon="flask" color={C.accent} label={energyLeft === null ? '∞' : `${energyLeft}/${energyMax}`}
+            a11y={energyLeft === null ? '體力無限' : `體力：今天還能練 ${energyLeft} 題`}
+            onPress={() => Alert.alert('體力', energyLeft === null ? '完整版沒有體力限制，想練多少就練多少！' : `免費版每天可以練 ${energyMax} 題，今天還剩 ${energyLeft} 題，明天會補滿。`)} />
+          <StatPill icon="shield-checkmark" color={C.green} label={`×${data.freeze_cards}`} a11y={`保護卡 ${data.freeze_cards} 張，點一下看說明`}
             onPress={() => Alert.alert('保護卡', `某一天忘了練習時，會自動用 1 張保護卡保住連勝。\n\n註冊送 2 張，每連勝 7 天再送 1 張，第一次三星打敗魔王也送 1 張，最多存 5 張。你現在有 ${data.freeze_cards} 張。`)} />
         </View>
-        <View style={{ padding: 14, backgroundColor: 'rgba(5, 10, 24, 0.72)' }}>
-          <T size={13} color={C.accentDark}>勇者 {data.nickname}，歡迎回到大廳</T>
-          <T size={21} weight="700" color="#FFFFFF">{todayDone ? '今天的修煉完成了！' : `今天也來討伐 ${data.daily_goal} 題吧`}</T>
-        </View>
-      </ImageBackground>
-
-      <View style={{ flexDirection: 'row', gap: 10 }}>
-        <BigAction icon="flash" title="3 分鐘突擊副本" sub={`隨機 ${data.daily_goal} 題`} color={C.accent}
-          onPress={() => router.push({ pathname: '/quiz', params: { mode: 'daily' } })} />
-        <BigAction icon="skull" title="魔物圖鑑" sub={monsters ? `${monsters} 隻待討伐` : '目前沒有魔物'} color={C.red}
-          onPress={() => router.push('/mistakes')} />
       </View>
+
+      {/* 主角舞台 */}
+      <View style={{ borderRadius: 20, overflow: 'hidden', borderWidth: 1, borderColor: hero.color, backgroundColor: C.night }}>
+        <Image source={hero.image} accessibilityLabel={`你的戰鬥夥伴 ${hero.name}`} accessibilityIgnoresInvertColors
+          style={{ width: '100%', aspectRatio: 348 / 378 }} resizeMode="cover" />
+        <View style={{ position: 'absolute', top: 10, left: 10, flexDirection: 'row', alignItems: 'center', gap: 8, paddingVertical: 6, paddingHorizontal: 10,
+          borderRadius: 10, borderWidth: 1, borderColor: C.gold, backgroundColor: 'rgba(5, 10, 24, 0.8)' }}>
+          <Ionicons name="shield-half" size={22} color={C.gold} />
+          <View>
+            <T size={18} weight="700" color="#FFFFFF" style={{ lineHeight: 22 }}>{hero.name}</T>
+            <T size={11} color={C.gold}>◆ {hero.job}</T>
+          </View>
+        </View>
+        <Pressable accessibilityRole="button" accessibilityLabel="更換角色" onPress={() => router.push('/heroes')}
+          style={{ position: 'absolute', top: 10, right: 10, flexDirection: 'row', alignItems: 'center', gap: 4, minHeight: 36, paddingHorizontal: 12,
+            borderRadius: 999, borderWidth: 1, borderColor: C.gold, backgroundColor: 'rgba(5, 10, 24, 0.8)' }}>
+          <Ionicons name="shirt-outline" size={14} color={C.gold} />
+          <T size={12} weight="700" color="#FFFFFF">更換角色</T>
+        </Pressable>
+        <View style={{ position: 'absolute', left: 16, right: 16, bottom: 14, paddingVertical: 8, paddingHorizontal: 12, borderRadius: 10,
+          borderWidth: 1, borderColor: C.gold, backgroundColor: 'rgba(5, 10, 24, 0.85)', alignItems: 'center' }}>
+          <T size={14} weight="700" color="#FFFFFF" style={{ textAlign: 'center' }}>
+            {todayDone ? '今天的修煉完成了！明天見！' : hero.greet}
+          </T>
+        </View>
+      </View>
+
+      {/* 今日討伐 */}
+      <Card style={{ gap: 12, borderColor: C.gold }}>
+        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+            <Ionicons name="flash" size={18} color={C.accent} />
+            <T weight="700" size={17}>今日討伐</T>
+          </View>
+          <T weight="700">{doneToday}/{data.daily_goal} 題</T>
+        </View>
+        <View accessibilityLabel={`今日討伐 ${doneToday} / ${data.daily_goal} 題`} style={{ flexDirection: 'row', alignItems: 'center' }}>
+          {Array.from({ length: data.daily_goal }, (_, i) => (
+            <View key={i} style={{ flex: i === 0 ? 0 : 1, flexDirection: 'row', alignItems: 'center' }}>
+              {i > 0 ? <View style={{ flex: 1, height: 2, backgroundColor: i < doneToday ? C.accent : C.lineStrong }} /> : null}
+              <View style={{ width: 26, height: 26, transform: [{ rotate: '45deg' }], borderWidth: 2, borderRadius: 4,
+                borderColor: i < doneToday ? C.accent : C.lineStrong, backgroundColor: i < doneToday ? C.accentSoft : 'transparent', alignItems: 'center', justifyContent: 'center' }}>
+                {i < doneToday ? <View style={{ transform: [{ rotate: '-45deg' }] }}><Ionicons name="checkmark" size={16} color={C.accent} /></View> : null}
+              </View>
+            </View>
+          ))}
+        </View>
+      </Card>
+
+      {/* 主要按鈕 */}
+      <Pressable accessibilityRole="button" accessibilityLabel={`開始突擊，3 分鐘，隨機 ${data.daily_goal} 題`}
+        onPress={() => router.push({ pathname: '/quiz', params: { mode: 'daily' } })}
+        style={({ pressed }) => ({ minHeight: 68, borderRadius: 18, backgroundColor: C.accent, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 12,
+          opacity: pressed ? 0.85 : 1, shadowColor: C.accent, shadowOpacity: 0.8, shadowRadius: 18, shadowOffset: { width: 0, height: 0 }, borderWidth: 2, borderColor: '#B8FBFF' })}>
+        <Ionicons name="flash" size={28} color={C.onAccent} />
+        <T size={22} weight="700" color={C.onAccent}>開始突擊・3 分鐘</T>
+      </Pressable>
+      <T size={13} color={C.muted} style={{ textAlign: 'center', marginTop: -4 }}>◆ 隨機 {data.daily_goal} 題，隨時可以休息 ◆</T>
+
+      <Pressable accessibilityRole="button" accessibilityLabel={`魔物圖鑑，${monsters ? `${monsters} 隻等待再挑戰` : '目前沒有魔物'}`} onPress={() => router.push('/mistakes')}
+        style={({ pressed }) => ({ flexDirection: 'row', alignItems: 'center', gap: 14, padding: 14, borderRadius: 18, borderWidth: 1.5, borderColor: C.purple,
+          backgroundColor: '#1A1033', opacity: pressed ? 0.85 : 1 })}>
+        <View style={{ width: 56, height: 56, borderRadius: 14, backgroundColor: '#2A1650', alignItems: 'center', justifyContent: 'center' }}>
+          <Ionicons name="skull" size={32} color={C.purple} />
+        </View>
+        <View style={{ flex: 1 }}>
+          <T size={19} weight="700">魔物圖鑑</T>
+          <T size={13} color={C.inkSoft}>{monsters ? `${monsters} 隻等待再挑戰` : '目前沒有魔物，太強了！'}</T>
+        </View>
+        <Ionicons name="chevron-forward" size={24} color={C.ink} />
+      </Pressable>
 
       {nextGrade ? (
         <Card style={{ backgroundColor: C.accentSoft, borderColor: C.accentSoft, gap: 10 }}>
@@ -244,21 +322,6 @@ function StatPill({ icon, color, label, a11y, onPress }: {
         backgroundColor: 'rgba(5, 10, 24, 0.78)', borderWidth: 1, borderColor: color }}>
       <Ionicons name={icon} size={14} color={color} />
       <T size={12} weight="700" color="#FFFFFF">{label}</T>
-    </Pressable>
-  );
-}
-
-/** 大廳的兩個主要入口 */
-function BigAction({ icon, title, sub, color, onPress }: {
-  icon: keyof typeof Ionicons.glyphMap; title: string; sub: string; color: string; onPress: () => void;
-}) {
-  return (
-    <Pressable accessibilityRole="button" accessibilityLabel={`${title}，${sub}`} onPress={onPress}
-      style={({ pressed }) => ({ flex: 1, minHeight: 96, padding: 14, gap: 4, borderRadius: 18, borderWidth: 1.5, borderColor: color,
-        backgroundColor: C.card, opacity: pressed ? 0.8 : 1, shadowColor: color, shadowOpacity: 0.5, shadowRadius: 12, shadowOffset: { width: 0, height: 0 } })}>
-      <Ionicons name={icon} size={26} color={color} />
-      <T weight="700" size={16}>{title}</T>
-      <T size={12} color={C.muted}>{sub}</T>
     </Pressable>
   );
 }

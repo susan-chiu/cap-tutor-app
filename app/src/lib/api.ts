@@ -151,6 +151,8 @@ export interface Profile {
   daily_subjects: string[] | null;
   textbook_versions: Record<string, string> | null;
   grade_confirmed_at: string | null;
+  /** 戰鬥夥伴（舊版資料庫沒有這個欄位時是 undefined） */
+  hero?: string | null;
 }
 
 export interface TutorResponse {
@@ -298,13 +300,15 @@ export const api = {
   childSummary: (studentId: string) => rpc<ChildSummary>('get_child_summary', { p_student: studentId }),
 
   profile: async (userId: string): Promise<Profile | null> => {
-    const { data, error } = await supabase.from('profiles')
-      .select('id, role, nickname, grade, textbook_version, tutor_persona, premium_until, subscription_until, invite_code, ai_consent_at, daily_subjects, textbook_versions, grade_confirmed_at')
-      .eq('id', userId).single();
-    if (error) throw new Error(error.message);
-    return data as Profile;
+    const cols = 'id, role, nickname, grade, textbook_version, tutor_persona, premium_until, subscription_until, invite_code, ai_consent_at, daily_subjects, textbook_versions, grade_confirmed_at';
+    const first = await supabase.from('profiles').select(`${cols}, hero`).eq('id', userId).single();
+    // 資料庫還沒跑第 15 個 migration（沒有 hero 欄位）時，先不讀戰鬥夥伴，App 照常運作
+    const r = first.error && /hero/.test(first.error.message)
+      ? await supabase.from('profiles').select(cols).eq('id', userId).single() : first;
+    if (r.error) throw new Error(r.error.message);
+    return r.data as unknown as Profile;
   },
-  updateProfile: async (patch: Partial<Pick<Profile, 'nickname' | 'grade' | 'textbook_version' | 'tutor_persona' | 'daily_subjects' | 'textbook_versions'>>) => {
+  updateProfile: async (patch: Partial<Pick<Profile, 'nickname' | 'grade' | 'textbook_version' | 'tutor_persona' | 'daily_subjects' | 'textbook_versions' | 'hero'>>) => {
     const { data: s } = await supabase.auth.getSession();
     if (!s.session) throw new Error('not_authenticated');
     const { error } = await supabase.from('profiles').update(patch).eq('id', s.session.user.id);

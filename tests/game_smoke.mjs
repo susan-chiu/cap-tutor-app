@@ -79,7 +79,7 @@ await step('段考魔王戰：血條、愛心，答錯掉愛心，結算有星�
   await page.getByText('HP 14 / 15', { exact: false }).waitFor({ timeout: 5000 });
   await page.getByRole('button', { name: '下一題' }).click();
   await answerCurrent(false);
-  await page.getByText('心眼發動！勇者，先別急', { exact: true }).waitFor({ timeout: 5000 });
+  await page.getByText(/^心眼發動！/).waitFor({ timeout: 5000 });
   await page.getByLabel(/你的愛心 2 顆/).waitFor({ timeout: 5000 });
   // 心眼：再挑戰一次，選正確答案 → +3 XP
   await page.getByRole('button', { name: '再挑戰一次' }).click();
@@ -125,6 +125,17 @@ await step('魔物圖鑑：魔王戰答錯的題目變成狂暴中的魔物', as
   await page.getByLabel(/^狂暴中 [1-9]\d* 隻$/).waitFor({ timeout: 10000 });
   await page.getByText(/・.*捕獲|捕獲/).first().waitFor({ timeout: 10000 });
   await shot('09-monsters');
+});
+await step('更換戰鬥夥伴：選緋音 → 大廳換成緋音，心眼也由她發動', async () => {
+  await tab('大廳');
+  await page.getByText('夜凜', { exact: true }).first().waitFor({ timeout: 10000 });
+  await shot('11-hall');
+  await page.getByRole('button', { name: '更換角色' }).click();
+  await page.getByText('選擇你的戰鬥夥伴', { exact: true }).waitFor({ timeout: 10000 });
+  await page.getByRole('button', { name: /^緋音，/ }).click();
+  await shot('12-heroes');
+  await page.getByRole('button', { name: '選擇緋音當夥伴' }).click();
+  await page.getByLabel('你的戰鬥夥伴 緋音').waitFor({ timeout: 10000 });
 });
 await step('成就徽章：初次討伐已點亮，其他顯示進度', async () => {
   await tab('大廳');

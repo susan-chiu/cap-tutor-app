@@ -1,4 +1,9 @@
--- 勇者風改版：心眼重答獎勵、許願池（孩子許願、家長核准與兌現）
+-- 勇者風改版：戰鬥夥伴角色、心眼重答獎勵、許願池（孩子許願、家長核准與兌現）
+
+-- 0. 戰鬥夥伴：8 位勇者選一位（大廳主角、心眼提示的角色）
+alter table public.profiles add column if not exists hero text not null default 'yelin'
+  check (hero in ('yelin', 'liyue', 'leiyao', 'feiyin', 'shiyan', 'shuangli', 'yuekai', 'senya'));
+grant update (hero) on public.profiles to authenticated;
 
 -- 1. 心眼重答：剛答錯的題目可以再選一次，答對加 3 XP（錯題紀錄不變）
 create table if not exists public.retry_bonuses (

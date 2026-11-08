@@ -10,6 +10,7 @@ import { Button, Card, ErrorBox, H1, Loading, ProgressBar, T } from '@/component
 import { api, errorText, type AnswerResult, type BossResult } from '@/lib/api';
 import { useAuth } from '@/lib/auth';
 import { BOSS_HEARTS, bossStars, comboMessage, levelFor } from '@/lib/game';
+import { heroOf } from '@/lib/heroes';
 import { shareText } from '@/lib/share';
 import { ALL_SUBJECTS, C, currentSemester } from '@/lib/theme';
 import { goBack } from '@/lib/nav';
@@ -203,9 +204,9 @@ export default function Quiz() {
               ) : null}
             </ScrollView>
             <View style={{ padding: 16, gap: 12, borderTopWidth: 1, borderTopColor: C.line, maxHeight: '60%',
-              backgroundColor: eyeHidden ? C.bg : result ? (result.correct ? C.greenSoft : C.redSoft) : C.bg }}>
+              backgroundColor: eyeHidden ? C.bg : result ? (result.correct || eye?.ok ? C.greenSoft : C.redSoft) : C.bg }}>
               {eye?.phase === 'hint' ? (
-                <EyeHint hint={eye.hint} onRetry={() => setEye({ ...eye, phase: 'retry' })}
+                <EyeHint hero={heroOf(profile?.hero)} hint={eye.hint} onRetry={() => setEye({ ...eye, phase: 'retry' })}
                   onGiveUp={() => { setEye({ ...eye, phase: 'done', ok: false, bonus: 0 }); setPicked(eye.first); }} />
               ) : eye?.phase === 'retry' ? (
                 <View style={{ gap: 8 }}>
@@ -220,7 +221,7 @@ export default function Quiz() {
                     {eye?.phase === 'done' && eye.ok ? (
                       <T weight="700" color={C.accentDark}>心眼成功！第二次答對了{eye.bonus ? ` +${eye.bonus} XP` : ''}。這隻魔物還在圖鑑裡，複習時再徹底打倒牠！</T>
                     ) : null}
-                    <Feedback result={result} compact />
+                    <Feedback result={result} compact wrongTitle={eye?.ok ? '第一次答錯，已收進魔物圖鑑' : undefined} />
                   </ScrollView>
                   {result.correct ? (
                     <Button title={idx + 1 >= questions.length ? '看結果' : '下一題'} kind="green" onPress={next} />
