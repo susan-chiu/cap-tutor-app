@@ -7,7 +7,7 @@ import { Plant } from '@/components/plant';
 import { Card, Chip, ErrorBox, H1, Loading, ProgressBar, Screen, T } from '@/components/ui';
 import { api, errorText, type GardenUnit } from '@/lib/api';
 import { useAuth } from '@/lib/auth';
-import { PLANT_STAGE_LABEL, plantStage, SUBJECT_FLOWER, toNextStage } from '@/lib/game';
+import { hardLeft, isGold, PLANT_STAGE_LABEL, plantStage, SUBJECT_FLOWER, toNextStage } from '@/lib/game';
 import { goBack } from '@/lib/nav';
 import { C, semesterLabel, subjectLabel, subjectsFor } from '@/lib/theme';
 
@@ -32,6 +32,7 @@ export default function Garden() {
   }, [shown]);
   const bloomed = shown.filter((u) => plantStage(u) === 4).length;
   const growing = shown.filter((u) => { const s = plantStage(u); return s > 0 && s < 4; }).length;
+  const gold = shown.filter(isGold).length;
 
   return (
     <Screen edges={['top', 'bottom']}>
@@ -40,7 +41,7 @@ export default function Garden() {
         <Ionicons name="chevron-back" size={26} color={C.ink} />
       </Pressable>
       <H1>學習花園</H1>
-      <T color={C.muted}>每個單元是一株植物：開始練習就發芽，熟練越多長得越大，熟練 85% 就開花。把整座花園種滿吧！</T>
+      <T color={C.muted}>每個單元是一株植物：開始練習就發芽，熟練越多長得越大，熟練 85% 就開花；開花後再把困難題全部弄懂，會變成金色稀有花。把整座花園種滿吧！</T>
 
       {error ? <ErrorBox message={error} onRetry={load} /> : !units ? <Loading /> : (
         <>
@@ -50,7 +51,10 @@ export default function Garden() {
                 <T size={13} color={C.muted}>已開花</T>
                 <T size={28} weight="700">{bloomed} <T size={15} color={C.muted}>/ {shown.length} 株</T></T>
               </View>
-              <T size={13} color={C.muted}>成長中 {growing} 株</T>
+              <View style={{ alignItems: 'flex-end' }}>
+                <T size={13} color="#B8860B" weight="700">金色花 {gold} 朵</T>
+                <T size={13} color={C.muted}>成長中 {growing} 株</T>
+              </View>
             </View>
             <ProgressBar value={shown.length ? bloomed / shown.length : 0} color={C.green} />
           </Card>
@@ -77,20 +81,24 @@ export default function Garden() {
 function PlantTile({ u }: { u: GardenUnit }) {
   const stage = plantStage(u);
   const need = toNextStage(u);
+  const gold = isGold(u);
+  const hard = hardLeft(u);
   const name = u.title.includes('：') ? u.title.split('：').slice(1).join('：') : u.title;
-  const label = `${subjectLabel(u.subject, u.semester)}・${u.title}，${PLANT_STAGE_LABEL[stage]}，熟練 ${u.mastered} / ${u.total} 題${stage < 4 ? `，再熟練 ${need} 題升級` : ''}`;
+  const label = `${subjectLabel(u.subject, u.semester)}・${u.title}，${PLANT_STAGE_LABEL[stage]}，熟練 ${u.mastered} / ${u.total} 題${stage < 4 ? `，再熟練 ${need} 題升級` : gold ? '，金色稀有花' : hard ? `，再弄懂 ${hard} 題困難題變金色花` : ''}`;
   return (
     <Pressable accessibilityRole="button" accessibilityLabel={label}
       onPress={() => router.push({ pathname: '/quiz', params: { mode: 'unit', units: u.unit_id, title: u.title } })}
       style={({ pressed }) => ({
         width: '31%', minWidth: 100, flexGrow: 1, maxWidth: 160, padding: 8, gap: 4, alignItems: 'center',
-        backgroundColor: stage === 4 ? C.greenSoft : C.card, borderRadius: 14, borderWidth: 1,
-        borderColor: stage === 4 ? C.mint : C.line, opacity: pressed ? 0.7 : 1,
+        backgroundColor: gold ? '#FFF6D5' : stage === 4 ? C.greenSoft : C.card, borderRadius: 14, borderWidth: gold ? 2 : 1,
+        borderColor: gold ? '#E8B923' : stage === 4 ? C.mint : C.line, opacity: pressed ? 0.7 : 1,
       })}>
-      <Plant stage={stage} color={SUBJECT_FLOWER[u.subject] ?? C.accent} size={80} />
+      <Plant stage={stage} color={SUBJECT_FLOWER[u.subject] ?? C.accent} size={80} gold={gold} />
       <T size={11} color={SUBJECT_FLOWER[u.subject] ?? C.muted} weight="700">{subjectLabel(u.subject, u.semester)}</T>
       <T size={12} weight="700" numberOfLines={2} style={{ textAlign: 'center', minHeight: 32 }}>{name}</T>
-      <T size={11} color={C.muted}>{PLANT_STAGE_LABEL[stage]}{stage < 4 ? ` · 再 ${need} 題` : ' ✿'}</T>
+      <T size={11} color={gold ? '#B8860B' : C.muted} weight={gold ? '700' : undefined}>
+        {gold ? '金色稀有花 ✦' : stage < 4 ? `${PLANT_STAGE_LABEL[stage]} · 再 ${need} 題` : hard ? `開花 · 困難題再 ${hard} 題` : '開花 ✿'}
+      </T>
     </Pressable>
   );
 }

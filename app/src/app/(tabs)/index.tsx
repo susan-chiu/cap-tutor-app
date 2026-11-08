@@ -222,7 +222,7 @@ function LevelCard({ xp }: { xp: number }) {
           <T size={12} color={C.muted}>再 {lv.next - lv.current} XP 升到 Lv {lv.level + 1}（答對 1 題 +10）</T>
         </View>
       </View>
-      <View style={{ flexDirection: 'row', gap: 10 }}>
+      <View style={{ flexDirection: 'row', gap: 8 }}>
         <Pressable accessibilityRole="button" onPress={() => router.push('/garden')}
           style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 6, justifyContent: 'center', minHeight: 44, borderRadius: 12, backgroundColor: C.greenSoft }}>
           <Ionicons name="flower-outline" size={18} color={C.green} />
@@ -232,6 +232,11 @@ function LevelCard({ xp }: { xp: number }) {
           style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 6, justifyContent: 'center', minHeight: 44, borderRadius: 12, backgroundColor: C.accentSoft }}>
           <Ionicons name="trophy-outline" size={18} color={C.accentDark} />
           <T weight="700" color={C.accentDark}>本週排行</T>
+        </Pressable>
+        <Pressable accessibilityRole="button" onPress={() => router.push('/badges')}
+          style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 6, justifyContent: 'center', minHeight: 44, borderRadius: 12, backgroundColor: '#FFF4D6' }}>
+          <Ionicons name="ribbon-outline" size={18} color="#9A6B00" />
+          <T weight="700" color="#9A6B00">成就徽章</T>
         </Pressable>
       </View>
     </Card>

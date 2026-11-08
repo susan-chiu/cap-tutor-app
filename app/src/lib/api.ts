@@ -53,6 +53,15 @@ export interface AnswerResult {
 export interface GardenUnit {
   unit_id: string; subject: string; semester: string; seq: number; title: string;
   total: number; mastered: number; attempted: number;
+  /** 困難題數與熟練數：開花＋困難題全部熟練＝金色稀有花 */
+  hard_total?: number; hard_mastered?: number;
+}
+export interface BossResult {
+  stars: number; correct: number; total: number; best: number;
+  first_three: boolean; freeze_reward: boolean; freeze_cards: number;
+}
+export interface Badge {
+  id: string; group: string; title: string; desc: string; progress: number; goal: number; done: boolean;
 }
 export interface LeaderRow { rank: number; alias: string; level: number; xp: number; me: boolean }
 export interface Leaderboard {
@@ -207,6 +216,12 @@ export const api = {
   /** 社會科：每個單元在第一～三次段考範圍的題數與進度 */
   /** 學習花園：這個學段每個單元的熟練進度 */
   garden: () => rpc<GardenUnit[]>('garden'),
+  /** 魔王戰結算：星數由伺服器依剛剛的作答計算；第一次三星送保護卡 */
+  recordBoss: (bossKey: string, questionIds: string[]) =>
+    rpc<BossResult>('record_boss', { p_boss_key: bossKey, p_question_ids: questionIds }),
+  bossBests: () => rpc<{ boss_key: string; best_stars: number; clears: number }[]>('boss_bests'),
+  /** 成就徽章（全部由作答紀錄算出） */
+  achievements: () => rpc<Badge[]>('achievements'),
   /** 匿名週排行 */
   leaderboard: () => rpc<Leaderboard>('weekly_leaderboard', { p_limit: 20 }),
   setLeaderboardHidden: (hidden: boolean) => rpc<null>('set_leaderboard_hidden', { p_hidden: hidden }),

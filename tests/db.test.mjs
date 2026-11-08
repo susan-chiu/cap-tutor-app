@@ -636,6 +636,45 @@ if (hasSeed) {
     assert.ok(!lb.top.some((r) => r.xp === 0), '沒得分的人（例如家長）不列');
   });
 
+  await test('遊戲獎勵：魔王星數由伺服器依作答算、首次三星送保護卡（每天最多 1 張、上限 5）、徽章、金色花', async () => {
+    const u = await newUser({ nickname: '打魔王' });
+    await db.query(`select public.set_subscription($1, now() + interval '30 days')`, [u]);
+    const qs = (await db.query(`select id, answer from public.questions where unit_id = 'M-7A-2' and active order by id limit 15`)).rows;
+    const ids = qs.map((q) => q.id);
+    for (const [i, q] of qs.entries()) await answer(u, q.id, i < 11 ? q.answer : (q.answer === 'A' ? 'B' : 'A'));   // 11/15 → 2 星
+    const card0 = (await db.query(`select freeze_cards n from public.profiles where id = $1`, [u])).rows[0].n;
+    const r1 = (await as(u, () => db.query(`select public.record_boss('7A-math-1', $1) r`, [ids]))).rows[0].r;
+    assert.deepEqual([r1.stars, r1.correct, r1.total, r1.freeze_reward], [2, 11, 15, false]);
+    for (const q of qs.slice(11)) await answer(u, q.id, q.answer);                        // 補答對 → 15/15
+    const r2 = (await as(u, () => db.query(`select public.record_boss('7A-math-1', $1) r`, [ids]))).rows[0].r;
+    assert.deepEqual([r2.stars, r2.first_three, r2.freeze_reward, r2.freeze_cards], [3, true, true, Math.min(card0 + 1, 5)]);
+    const r3 = (await as(u, () => db.query(`select public.record_boss('7A-math-1', $1) r`, [ids]))).rows[0].r;
+    assert.equal(r3.freeze_reward, false, '同一個魔王再打三星不再送');
+    const r4 = (await as(u, () => db.query(`select public.record_boss('7A-math-2', $1) r`, [ids]))).rows[0].r;
+    assert.equal(r4.stars, 3); assert.equal(r4.freeze_reward, false, '同一天最多送 1 張');
+    await assert.rejects(as(u, () => db.query(`select public.record_boss('x', array['a','b'])`)), /bad_boss/);
+    const other = await newUser({ nickname: '沒作答' });
+    const r5 = (await as(other, () => db.query(`select public.record_boss('7A-math-1', $1) r`, [ids]))).rows[0].r;
+    assert.equal(r5.stars, 0, '沒作答就沒有星星（不能只傳題號）');
+    const bests = (await as(u, () => db.query(`select * from public.boss_bests() order by boss_key`))).rows;
+    assert.deepEqual(bests.map((b) => [b.boss_key, b.best_stars]), [['7A-math-1', 3], ['7A-math-2', 3]]);
+    assert.equal((await as(u, () => db.query(`select * from public.boss_results`))).rows.length, 0, '不能直接讀表');
+
+    const ach = (await as(u, () => db.query(`select public.achievements() r`))).rows[0].r;
+    const by = Object.fromEntries(ach.map((a) => [a.id, a]));
+    assert.equal(ach.length, 18);
+    assert.equal(by['boss-1'].done, true); assert.deepEqual([by['boss-5'].progress, by['boss-5'].goal], [2, 5]);
+    assert.equal(by['correct-100'].progress, 15); assert.equal(by['bloom-1'].done, false);
+
+    // 把整個單元答對 → 開花；困難題全對 → 金色花
+    const all = (await db.query(`select id, answer from public.questions where unit_id = 'M-7A-3' and active`)).rows;
+    for (const q of all) await answer(u, q.id, q.answer);
+    const g = (await as(u, () => db.query(`select * from public.garden() where unit_id = 'M-7A-3'`))).rows[0];
+    assert.ok(g.hard_total > 0, '單元裡有困難題'); assert.equal(g.hard_mastered, g.hard_total); assert.equal(g.mastered, g.total);
+    const ach2 = Object.fromEntries((await as(u, () => db.query(`select public.achievements() r`))).rows[0].r.map((a) => [a.id, a]));
+    assert.equal(ach2['bloom-1'].done, true); assert.equal(ach2['gold-1'].done, true);
+  });
+
   await test('正式題庫：每題答案都在選項內、都有解析與提示', async () => {
     const r = await db.query(`
       select id from public.questions q

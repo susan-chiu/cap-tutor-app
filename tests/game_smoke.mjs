@@ -89,7 +89,23 @@ await step('段考魔王戰：血條、愛心，答錯掉愛心，結算有星�
   await page.getByRole('button', { name: '看結果' }).click();
   await page.getByText('打敗段考小魔王了！', { exact: true }).waitFor({ timeout: 10000 });
   await page.getByLabel('3 顆星').waitFor();
+  await page.getByText('獲得 1 張保護卡（現在 3 張）', { exact: false }).waitFor({ timeout: 10000 });
   await shot('06-boss-win');
+});
+await step('階段卡顯示魔王最佳星數', async () => {
+  await page.getByRole('button', { name: '回首頁' }).click();
+  await tab('練習');
+  await page.getByText('魔王已三星通關', { exact: true }).first().waitFor({ timeout: 10000 });
+  await shot('07-stage-stars');
+});
+await step('成就徽章：初次討伐已點亮，其他顯示進度', async () => {
+  await tab('首頁');
+  await page.getByRole('button', { name: '成就徽章' }).click();
+  await page.getByText('已點亮', { exact: true }).waitFor({ timeout: 10000 });
+  await page.getByLabel(/^初次討伐，.*已達成$/).waitFor({ timeout: 10000 });
+  await page.getByLabel(/^百題斬，.*進度 \d+ \/ 100$/).waitFor();
+  await shot('08-badges');
+  await page.getByRole('button', { name: '返回' }).click();
 });
 
 console.log(errors.length ? '頁面錯誤：\n' + errors.join('\n') : '沒有頁面錯誤');

@@ -7,7 +7,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { BossBar, buzz, LevelUpBanner, Stars, XpPop } from '@/components/game-fx';
 import { Feedback, QuestionView, SolutionCard } from '@/components/question';
 import { Button, Card, ErrorBox, H1, Loading, ProgressBar, T } from '@/components/ui';
-import { api, errorText, type AnswerResult } from '@/lib/api';
+import { api, errorText, type AnswerResult, type BossResult } from '@/lib/api';
 import { useAuth } from '@/lib/auth';
 import { BOSS_HEARTS, bossStars, comboMessage, levelFor } from '@/lib/game';
 import { shareText } from '@/lib/share';
@@ -18,7 +18,7 @@ type Mode = 'daily' | 'unit' | 'exam' | 'review';
 const DIFF_LABEL: Record<string, string> = { '1': '簡單', '2': '中等', '3': '困難' };
 
 export default function Quiz() {
-  const params = useLocalSearchParams<{ mode?: string; units?: string; count?: string; difficulty?: string; title?: string; part?: string; boss?: string }>();
+  const params = useLocalSearchParams<{ mode?: string; units?: string; count?: string; difficulty?: string; title?: string; part?: string; boss?: string; bosskey?: string }>();
   const mode = (params.mode ?? 'daily') as Mode;
   const { profile } = useAuth();
 
@@ -152,6 +152,7 @@ export default function Quiz() {
           </View>
         ) : finished ? (
           <Summary stats={stats} total={questions.length} allSeen={mode !== 'review' && questions.every((x) => x.seen)} mode={mode} boss={boss}
+            bossKey={boss ? params.bosskey ?? null : null} questionIds={questions.map((x) => x.id)}
             onAgain={() => { setIdx(0); setCombo(0); setStats({ answered: 0, correct: 0, xp: 0, streak: 0, streakUp: false }); load(); }} />
         ) : q ? (
           <>
@@ -223,11 +224,22 @@ function reportQuestion(questionId: string) {
   ]);
 }
 
-function Summary({ stats, total, allSeen, mode, boss, onAgain }: {
+function Summary({ stats, total, allSeen, mode, boss, bossKey, questionIds, onAgain }: {
   stats: { answered: number; correct: number; xp: number; streak: number; streakUp: boolean };
-  total: number; allSeen: boolean; mode: Mode; boss: string | null; onAgain: () => void;
+  total: number; allSeen: boolean; mode: Mode; boss: string | null; bossKey: string | null; questionIds: string[]; onAgain: () => void;
 }) {
   const stars = bossStars(stats.correct, total);
+  // 魔王戰結算交給伺服器（依實際作答算星數、第一次三星送保護卡）
+  const [reward, setReward] = useState<BossResult | null>(null);
+  const idsKey = questionIds.join(',');
+  useEffect(() => {
+    if (!bossKey || !idsKey) return;
+    let cancelled = false;
+    api.recordBoss(bossKey, idsKey.split(','))
+      .then((r) => { if (!cancelled) { setReward(r); if (r.freeze_reward) buzz('levelup'); } })
+      .catch(() => {});
+    return () => { cancelled = true; };
+  }, [bossKey, idsKey]);
   const won = stars >= 1;
   function share() {
     const streak = stats.streak > 0 ? `，連勝 ${stats.streak} 天` : '';
@@ -242,6 +254,18 @@ function Summary({ stats, total, allSeen, mode, boss, onAgain }: {
           <T color={C.muted} style={{ textAlign: 'center' }}>
             {stars === 3 ? '完美通關！答對 9 成以上' : stars === 2 ? '答對 7 成以上，再拚一次拿三顆星！' : stars === 1 ? '答對 5 成以上，過關了！' : '答對不到 5 成，把錯題弄懂再來挑戰！'}
           </T>
+          {reward?.freeze_reward ? (
+            <View accessibilityLiveRegion="polite" style={{ flexDirection: 'row', alignItems: 'center', gap: 8, backgroundColor: '#E6F4FF', borderRadius: 12, padding: 10 }}>
+              <Ionicons name="snow" size={24} color="#2F80C9" />
+              <T weight="700" color="#1F5F99" style={{ flex: 1 }}>第一次三星通關！獲得 1 張保護卡（現在 {reward.freeze_cards} 張）</T>
+            </View>
+          ) : reward?.first_three ? (
+            <T size={13} color={C.muted} style={{ textAlign: 'center' }}>第一次三星通關！（保護卡已滿 5 張或今天已經領過，就不再加）</T>
+          ) : reward && reward.best === 3 ? (
+            <T size={13} color={C.muted}>這個魔王你已經拿過三顆星了</T>
+          ) : boss && !bossKey ? (
+            <T size={12} color={C.muted} style={{ textAlign: 'center' }}>選了難度的魔王戰不列入星星紀錄</T>
+          ) : null}
         </Card>
       ) : null}
       <Card dark style={{ gap: 6 }}>

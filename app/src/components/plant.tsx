@@ -9,7 +9,7 @@ const POT_RIM = '#A85E2F';
 const SOIL = '#6B4A32';
 
 /** 學習花園的一株植物（用方塊與圓角畫成，不需要圖片）：種子 → 發芽 → 長葉 → 花苞 → 開花 */
-export function Plant({ stage, color, size = 64 }: { stage: PlantStage; color: string; size?: number }) {
+export function Plant({ stage, color, size = 64, gold = false }: { stage: PlantStage; color: string; size?: number; gold?: boolean }) {
   const u = size / 64; // 以 64 為基準等比例縮放
   const stem = [0, 10, 20, 24, 26][stage] * u;
   return (
@@ -18,13 +18,15 @@ export function Plant({ stage, color, size = 64 }: { stage: PlantStage; color: s
       {/* 花或花苞 */}
       {stage === 4 ? (
         <View style={{ width: 26 * u, height: 26 * u, marginBottom: -3 * u, alignItems: 'center', justifyContent: 'center' }}>
-          {[0, 72, 144, 216, 288].map((deg) => (
+          {gold ? <View style={{ position: 'absolute', width: 34 * u, height: 34 * u, borderRadius: 17 * u, backgroundColor: '#FFE9A8', opacity: 0.8 }} /> : null}
+          {(gold ? [0, 45, 90, 135, 180, 225, 270, 315] : [0, 72, 144, 216, 288]).map((deg) => (
             <View key={deg} style={{
-              position: 'absolute', width: 11 * u, height: 11 * u, borderRadius: 6 * u, backgroundColor: color,
+              position: 'absolute', width: 11 * u, height: 11 * u, borderRadius: 6 * u, backgroundColor: gold ? '#E8B923' : color,
+              borderWidth: gold ? 1 * u : 0, borderColor: '#B8860B',
               transform: [{ rotate: `${deg}deg` }, { translateY: -7 * u }],
             }} />
           ))}
-          <View style={{ width: 9 * u, height: 9 * u, borderRadius: 5 * u, backgroundColor: '#F7D154' }} />
+          <View style={{ width: 9 * u, height: 9 * u, borderRadius: 5 * u, backgroundColor: gold ? '#FFF6D5' : '#F7D154' }} />
         </View>
       ) : stage === 3 ? (
         <View style={{ width: 10 * u, height: 14 * u, borderRadius: 6 * u, backgroundColor: color, marginBottom: -2 * u }} />

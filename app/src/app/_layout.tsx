@@ -50,6 +50,7 @@ function RootNavigator() {
         <Stack.Screen name="mock-exam" options={{ gestureEnabled: false }} />
         <Stack.Screen name="garden" />
         <Stack.Screen name="leaderboard" />
+        <Stack.Screen name="badges" />
       </Stack.Protected>
     </Stack>
   );

@@ -180,14 +180,63 @@
     garden: function (uid) {
       var elem = (db.profiles[uid].grade || 7) <= 6;
       return D.units.filter(function (u) { return /^[56]/.test(u.semester) === elem; }).map(function (u) {
-        var qs = D.questions.filter(function (q) { return q.unit === u.id; }), att = 0, ok = 0;
+        var qs = D.questions.filter(function (q) { return q.unit === u.id; }), att = 0, ok = 0, ht = 0, hm = 0;
         qs.forEach(function (q) {
           var mine = db.attempts.filter(function (x) { return x.u === uid && x.q === q.id; });
           if (mine.length) att++;
-          if (mine.some(function (x) { return x.c; }) && !openMistake(uid, q.id)) ok++;
+          var m = mine.some(function (x) { return x.c; }) && !openMistake(uid, q.id);
+          if (m) ok++;
+          if (q.difficulty === 3) { ht++; if (m) hm++; }
         });
-        return { unit_id: u.id, subject: u.subject, semester: u.semester, seq: u.seq, title: u.title, total: qs.length, mastered: ok, attempted: att };
+        return { unit_id: u.id, subject: u.subject, semester: u.semester, seq: u.seq, title: u.title, total: qs.length, mastered: ok, attempted: att,
+          hard_total: ht, hard_mastered: hm };
       }).sort(function (x, y) { return x.semester < y.semester ? -1 : x.semester > y.semester ? 1 : x.subject < y.subject ? -1 : x.subject > y.subject ? 1 : x.seq - y.seq; });
+    },
+    record_boss: function (uid, a) {
+      var ids = a.p_question_ids || [], total = ids.length, since = Date.now() - 3 * 3600000, last = {};
+      if (total < 5 || total > 60) throw 'bad_boss';
+      db.attempts.forEach(function (x) { if (x.u === uid && x.at > since && ids.indexOf(x.q) >= 0) last[x.q] = x.c; });
+      var correct = Object.keys(last).filter(function (k) { return last[k]; }).length;
+      var stars = correct >= Math.ceil(total * 0.9) ? 3 : correct >= Math.ceil(total * 0.7) ? 2 : correct >= Math.ceil(total * 0.5) ? 1 : 0;
+      db.boss = db.boss || {}; var mine = db.boss[uid] = db.boss[uid] || {};
+      var prev = mine[a.p_boss_key] ? mine[a.p_boss_key].best : 0, t = today(), p = db.profiles[uid], reward = false;
+      var r = mine[a.p_boss_key] = mine[a.p_boss_key] || { best: 0, clears: 0, rewarded: null };
+      r.best = Math.max(r.best, stars); r.clears++;
+      if (stars === 3 && prev < 3 && !Object.keys(mine).some(function (k) { return mine[k].rewarded === t; }) && p.freeze_cards < 5) {
+        p.freeze_cards++; r.rewarded = t; reward = true;
+      }
+      save();
+      return { stars: stars, correct: correct, total: total, best: Math.max(prev, stars), first_three: stars === 3 && prev < 3,
+        freeze_reward: reward, freeze_cards: p.freeze_cards };
+    },
+    boss_bests: function (uid) {
+      var mine = (db.boss || {})[uid] || {};
+      return Object.keys(mine).map(function (k) { return { boss_key: k, best_stars: mine[k].best, clears: mine[k].clears }; });
+    },
+    achievements: function (uid) {
+      var p = db.profiles[uid], g = RPC.garden(uid);
+      var correct = db.attempts.filter(function (x) { return x.u === uid && x.c; }).length;
+      var ms = mistakesOf(uid), grad = Object.keys(ms).filter(function (k) { return ms[k].status === 'graduated'; }).length;
+      var bloomed = function (u) { return u.total > 0 && u.mastered >= Math.ceil(u.total * 0.85); };
+      var bloom = g.filter(bloomed).length;
+      var gold = g.filter(function (u) { return bloomed(u) && u.hard_total > 0 && u.hard_mastered === u.hard_total; }).length;
+      var subs = {}; g.forEach(function (u) { subs[u.subject] = (subs[u.subject] !== false) && bloomed(u); });
+      var full = Object.keys(subs).filter(function (k) { return subs[k]; }).length;
+      var mine = (db.boss || {})[uid] || {}, boss3 = Object.keys(mine).filter(function (k) { return mine[k].best === 3; }).length;
+      var lv = level(p.xp), st = p.longest_streak || 0;
+      return [
+        ['streak-3', '連勝', '起步三天', '連續 3 天完成每日目標', st, 3], ['streak-7', '連勝', '一週不間斷', '連續 7 天完成每日目標', st, 7],
+        ['streak-30', '連勝', '月月如一', '連續 30 天完成每日目標', st, 30],
+        ['correct-100', '答題', '百題斬', '累積答對 100 題', correct, 100], ['correct-500', '答題', '五百勇士', '累積答對 500 題', correct, 500],
+        ['correct-2000', '答題', '題海霸主', '累積答對 2000 題', correct, 2000],
+        ['grad-1', '錯題', '知錯能改', '第一題錯題畢業', grad, 1], ['grad-20', '錯題', '錯題剋星', '20 題錯題畢業', grad, 20],
+        ['grad-100', '錯題', '錯題終結者', '100 題錯題畢業', grad, 100],
+        ['bloom-1', '花園', '第一朵花', '花園開出第一朵花（單元熟練 85%）', bloom, 1], ['bloom-10', '花園', '小花圃', '花園開出 10 朵花', bloom, 10],
+        ['gold-1', '花園', '金色奇蹟', '種出第一朵金色稀有花（開花＋困難題全部熟練）', gold, 1],
+        ['subject-full', '花園', '一科滿開', '某一科所有單元都開花', full, 1],
+        ['boss-1', '魔王', '初次討伐', '第一次用三顆星打敗魔王', boss3, 1], ['boss-5', '魔王', '魔王剋星', '5 個魔王拿到三顆星', boss3, 5],
+        ['level-5', '等級', '小樹苗', '升到 Lv 5', lv, 5], ['level-10', '等級', '勤學綠葉', '升到 Lv 10', lv, 10], ['level-20', '等級', '學習大樹', '升到 Lv 20', lv, 20],
+      ].map(function (r) { return { id: r[0], group: r[1], title: r[2], desc: r[3], progress: Math.min(r[4], r[5]), goal: r[5], done: r[4] >= r[5] }; });
     },
     weekly_leaderboard: function (uid) {
       var me = db.profiles[uid], elem = (me.grade || 7) <= 6, t = today();
@@ -492,7 +541,7 @@
     // ---- 伺服器函式 ----
     if (path === '/functions/v1/tutor') return tutor(uid, b);
     if (path === '/functions/v1/delete-account') {
-      delete db.users[uid]; delete db.profiles[uid]; delete db.mistakes[uid];
+      delete db.users[uid]; delete db.profiles[uid]; delete db.mistakes[uid]; if (db.boss) delete db.boss[uid];
       db.attempts = db.attempts.filter(function (a) { return a.u !== uid; });
       db.links = db.links.filter(function (l) { return l.parent !== uid && l.student !== uid; });
       db.mocks = db.mocks.filter(function (m) { return m.user_id !== uid; });

@@ -1,7 +1,7 @@
 // 遊戲化規則：等級、稱號、植物成長、Boss 星星、連擊提示
 import assert from 'node:assert/strict';
 
-import { bossStars, comboMessage, levelFor, levelInfo, plantStage, titleFor, toNextStage, xpForLevel } from '../app/src/lib/game.ts';
+import { bossStars, comboMessage, hardLeft, isGold, levelFor, levelInfo, plantStage, titleFor, toNextStage, xpForLevel } from '../app/src/lib/game.ts';
 
 let passed = 0;
 function test(name, fn) {
@@ -32,6 +32,13 @@ test('學習花園：種子 → 發芽 → 長葉 → 花苞 → 開花，還差
   assert.equal(toNextStage(u(8)), 9);     // 55% → 17
   assert.equal(toNextStage(u(30)), 0);
   assert.equal(plantStage({ total: 0, mastered: 0, attempted: 0 }), 0);
+});
+
+test('金色稀有花：開花＋困難題全部熟練才算', () => {
+  const u = (mastered, ht, hm) => ({ total: 30, mastered, attempted: mastered, hard_total: ht, hard_mastered: hm });
+  assert.deepEqual([u(30, 8, 8), u(26, 8, 8), u(30, 8, 7), u(25, 8, 8), u(30, 0, 0)].map(isGold), [true, true, false, false, false]);
+  assert.equal(hardLeft(u(30, 8, 5)), 3);
+  assert.equal(isGold({ total: 30, mastered: 30, attempted: 30 }), false, '舊版伺服器沒有困難題欄位時不顯示金色');
 });
 
 test('Boss 星星：9 成三顆、7 成兩顆、5 成一顆', () => {

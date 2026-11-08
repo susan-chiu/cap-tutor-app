@@ -7,6 +7,7 @@ import { Button, Card, Chip, ErrorBox, H1, H2, Loading, ProgressBar, Screen, T, 
 import { api, errorText, type UnitPartRow, type UnitRow } from '@/lib/api';
 import { useAuth } from '@/lib/auth';
 import { BOSS_NAMES } from '@/lib/game';
+import { Stars } from '@/components/game-fx';
 import { currentStage, DIFFICULTIES, splitElementaryStages, splitStages, splitStagesByPart, stageStats, type Difficulty, type Stage } from '@/lib/stages';
 import {
   C, currentSemester, isElementary, semestersFor, subjectsFor, validSemester, validSubject, TEXTBOOK_VERSIONS, VERSIONED_SUBJECTS, type SemesterId, type SubjectId,
@@ -35,6 +36,7 @@ export default function Learn() {
   const [units, setUnits] = useState<UnitRow[] | null>(null);
   const [parts, setParts] = useState<UnitPartRow[] | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [bests, setBests] = useState<Record<string, number>>({});
   const [difficulty, setDifficulty] = useState<Difficulty>(null);
   const [open, setOpen] = useState<string | null>(null);
   const [customMode, setCustomMode] = useState(false);
@@ -58,12 +60,16 @@ export default function Learn() {
     const id = ++reqId.current;
     try {
       setError(null);
-      const [rows, partRows] = await Promise.all([
+      const [rows, partRows, bb] = await Promise.all([
         api.units(subject, version),
         // 社會科分段考範圍只用在國中（國小只有期中、期末，照單元前後分）
         !elementary && PART_SUBJECTS.includes(subject) ? api.unitParts(subject) : Promise.resolve(null),
+        api.bossBests().catch(() => []),
       ]);
-      if (id === reqId.current) { setUnits(rows); setParts(partRows); }
+      if (id === reqId.current) {
+        setUnits(rows); setParts(partRows);
+        setBests(Object.fromEntries(bb.map((b) => [b.boss_key, b.best_stars])));
+      }
     } catch (e) { if (id === reqId.current) setError(errorText(e)); }
   }, [subject, version, elementary]);
 
@@ -89,10 +95,13 @@ export default function Learn() {
   const now = useMemo(() => currentStage(stages), [stages]);
   const diffLabel = DIFFICULTIES.find((d) => d.id === difficulty)?.label ?? '混合';
 
-  function practice(unitIds: string[], n: number, title: string, part?: number, boss?: string) {
+  /** 魔王的代號：學期＋科目＋階段（同一個魔王記最好的星數） */
+  const bossKey = (stageKey: string) => `${sem}-${subject}-${stageKey}`;
+  function practice(unitIds: string[], n: number, title: string, part?: number, boss?: string, key?: string) {
     router.push({ pathname: '/quiz', params: {
       mode: 'exam', units: unitIds.join(','), count: String(n), title,
       ...(boss ? { boss } : {}),
+      ...(boss && key && !difficulty ? { bosskey: key } : {}),
       ...(difficulty ? { difficulty: String(difficulty) } : {}),
       ...(part ? { part: String(part) } : {}),
     } });
@@ -189,7 +198,8 @@ export default function Learn() {
             <StageCard key={st.key} stage={st} current={now?.key === st.key} expanded={open === st.key}
               onToggle={() => setOpen(open === st.key ? null : st.key)}
               onPractice={() => practice(st.units.map((u) => u.id), st.key === 'final' ? 25 : 15, `${semLabel}${st.label}`, st.units[0]?.part,
-                elementary ? `${st.label}魔王` : BOSS_NAMES[st.key])}
+                elementary ? `${st.label}魔王` : BOSS_NAMES[st.key], bossKey(st.key))}
+              best={bests[bossKey(st.key)]}
               onUnit={practiceUnit} diffLabel={diffLabel} version={version} />
           ))}
 
@@ -232,8 +242,9 @@ export default function Learn() {
   );
 }
 
-function StageCard({ stage, current, expanded, onToggle, onPractice, onUnit, diffLabel, version }: {
+function StageCard({ stage, current, expanded, onToggle, onPractice, onUnit, diffLabel, version, best }: {
   stage: Stage<UnitRow & { part?: number }>; current: boolean; expanded: boolean; onToggle: () => void; onPractice: () => void;
+  best?: number;
   onUnit: (u: UnitRow & { part?: number }) => void; diffLabel: string; version: string | null;
 }) {
   const s = stageStats(stage.units);
@@ -253,6 +264,14 @@ function StageCard({ stage, current, expanded, onToggle, onPractice, onUnit, dif
       {stage.note ? <T size={12} color={C.muted}>{stage.note}</T> : null}
       <ProgressBar value={s.progress} color={s.progress >= 0.8 ? C.green : C.accent} height={8} />
       <T size={12} color={C.muted}>熟練 {s.mastered} / {s.total} 題 · 作答 {s.answered} 次 · 答對率 {pctText(s.accuracy)}</T>
+      {best !== undefined ? (
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+          <Stars n={best} size={16} />
+          <T size={12} color={C.muted}>{best === 3 ? '魔王已三星通關' : '最佳紀錄，拿到三顆星送 1 張保護卡'}</T>
+        </View>
+      ) : (
+        <T size={12} color={C.muted}>第一次三星打敗這個魔王，送 1 張保護卡</T>
+      )}
       {s.weakest ? (
         <T size={13} weight="700" color={C.redDark}>需要加強：{s.weakest.title}（答對 {pctText(s.weakest.accuracy)}）</T>
       ) : null}

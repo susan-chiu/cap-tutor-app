@@ -41,6 +41,16 @@ export function plantStage(u: { total: number; mastered: number; attempted: numb
   return 1;
 }
 
+/** 金色稀有花：已開花，而且單元裡的困難題全部熟練 */
+export function isGold(u: { total: number; mastered: number; attempted: number; hard_total?: number; hard_mastered?: number }): boolean {
+  return plantStage(u) === 4 && (u.hard_total ?? 0) > 0 && u.hard_mastered === u.hard_total;
+}
+
+/** 開花後還差幾題困難題變金色花 */
+export function hardLeft(u: { hard_total?: number; hard_mastered?: number }): number {
+  return Math.max((u.hard_total ?? 0) - (u.hard_mastered ?? 0), 0);
+}
+
 /** 下一個階段還要熟練幾題（已開花回傳 0） */
 export function toNextStage(u: { total: number; mastered: number; attempted: number }): number {
   const s = plantStage(u);
