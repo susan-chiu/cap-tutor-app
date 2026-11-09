@@ -1,7 +1,7 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import * as Haptics from 'expo-haptics';
 import { useEffect, useState } from 'react';
-import { Animated, Image, Platform, Pressable, View } from 'react-native';
+import { Animated, Image, type ImageSourcePropType, Platform, Pressable, View } from 'react-native';
 
 import { T } from '@/components/ui';
 import { BOSS_HEARTS, titleFor } from '@/lib/game';
@@ -18,7 +18,9 @@ export function buzz(kind: 'correct' | 'wrong' | 'levelup') {
 }
 
 /** 段考 Boss 戰：魔王血條＋自己的愛心 */
-export function BossBar({ name, hp, maxHp, hearts, hit }: { name: string; hp: number; maxHp: number; hearts?: number | null; hit: number }) {
+export function BossBar({ name, hp, maxHp, hearts, hit, image }: {
+  name: string; hp: number; maxHp: number; hearts?: number | null; hit: number; image?: ImageSourcePropType;
+}) {
   const shake = useState(() => new Animated.Value(0))[0];
   useEffect(() => {
     if (!hit) return;
@@ -33,7 +35,9 @@ export function BossBar({ name, hp, maxHp, hearts, hit }: { name: string; hp: nu
     <View accessibilityLabel={`${name} 血量 ${hp} / ${maxHp}${hearts != null ? `，你的愛心 ${hearts} 顆` : ''}`}
       style={{ marginHorizontal: 16, marginBottom: 6, padding: 10, borderRadius: 14, backgroundColor: C.night, borderWidth: 1, borderColor: C.nightLine, flexDirection: 'row', alignItems: 'center', gap: 10 }}>
       <Animated.View style={{ transform: [{ translateX: shake }] }}>
-        <Ionicons name={defeated ? 'skull-outline' : 'skull'} size={30} color={defeated ? C.faint : C.red} />
+        {image ? (
+          <Image source={image} accessibilityIgnoresInvertColors style={{ width: 48, height: 48, opacity: defeated ? 0.4 : 1 }} />
+        ) : <Ionicons name={defeated ? 'skull-outline' : 'skull'} size={30} color={defeated ? C.faint : C.red} />}
       </Animated.View>
       <View style={{ flex: 1, gap: 4 }}>
         <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
@@ -80,7 +84,7 @@ export function XpPop({ text, sub, seq }: { text: string; sub?: string | null; s
 }
 
 /** 升級提示 */
-export function LevelUpBanner({ level }: { level: number }) {
+export function LevelUpBanner({ level, hero }: { level: number; hero?: Hero }) {
   const v = useState(() => new Animated.Value(0))[0];
   useEffect(() => { Animated.spring(v, { toValue: 1, useNativeDriver: true, friction: 5 }).start(); }, [v]);
   return (
@@ -89,7 +93,8 @@ export function LevelUpBanner({ level }: { level: number }) {
       backgroundColor: C.goldSoft, borderColor: C.gold, borderWidth: 2, borderRadius: 14, padding: 12,
       flexDirection: 'row', alignItems: 'center', gap: 10,
     }}>
-      <Ionicons name="star" size={28} color={C.gold} />
+      {hero ? <Image source={hero.happy} accessibilityIgnoresInvertColors style={{ width: 64, height: 64 }} />
+        : <Ionicons name="star" size={28} color={C.gold} />}
       <View style={{ flex: 1 }}>
         <T weight="700" size={16}>升級了！Lv {level}</T>
         <T size={13} color={C.inkSoft}>新稱號：{titleFor(level)}</T>
@@ -114,8 +119,7 @@ export function EyeHint({ hero, hint, onRetry, onGiveUp }: { hero: Hero; hint: s
   return (
     <Animated.View accessibilityLiveRegion="polite" style={{ gap: 10, opacity: v, transform: [{ translateY: v.interpolate({ inputRange: [0, 1], outputRange: [16, 0] }) }] }}>
       <View style={{ flexDirection: 'row', gap: 10, alignItems: 'flex-start' }}>
-        <Image source={hero.face} accessibilityIgnoresInvertColors
-          style={{ width: 52, height: 52, borderRadius: 26, borderWidth: 2, borderColor: hero.color }} />
+        <Image source={hero.cheer} accessibilityIgnoresInvertColors style={{ width: 84, height: 84 }} />
         <View style={{ flex: 1, padding: 12, borderRadius: 14, backgroundColor: C.night, borderWidth: 1, borderColor: hero.color, gap: 4 }}>
           <T weight="700" color={hero.color}>心眼發動！{hero.name}・{hero.eyeFx}</T>
           <T size={14} weight="700" color={C.ink}>「{hero.eye}」</T>

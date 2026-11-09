@@ -1,7 +1,7 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { router, useLocalSearchParams } from 'expo-router';
 import { useEffect, useRef, useState } from 'react';
-import { Alert, BackHandler, Pressable, ScrollView, View } from 'react-native';
+import { Alert, BackHandler, Image, Pressable, ScrollView, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { BossBar, buzz, EyeHint, LevelUpBanner, Stars, XpPop } from '@/components/game-fx';
@@ -10,7 +10,8 @@ import { Button, Card, ErrorBox, H1, Loading, ProgressBar, T } from '@/component
 import { api, errorText, type AnswerResult, type BossResult } from '@/lib/api';
 import { useAuth } from '@/lib/auth';
 import { BOSS_HEARTS, bossStars, comboMessage, levelFor } from '@/lib/game';
-import { heroOf } from '@/lib/heroes';
+import { bossImg, monsterImg } from '@/lib/art';
+import { heroOf, type Hero } from '@/lib/heroes';
 import { shareText } from '@/lib/share';
 import { ALL_SUBJECTS, C, currentSemester } from '@/lib/theme';
 import { goBack } from '@/lib/nav';
@@ -183,13 +184,14 @@ export default function Quiz() {
           </View>
         ) : finished ? (
           <Summary stats={stats} total={questions.length} allSeen={mode !== 'review' && questions.every((x) => x.seen)} mode={mode} boss={boss}
-            bossKey={boss ? params.bosskey ?? null : null} questionIds={questions.map((x) => x.id)}
+            bossKey={boss ? params.bosskey ?? null : null} questionIds={questions.map((x) => x.id)} hero={heroOf(profile?.hero)}
             onAgain={() => { setIdx(0); setCombo(0); setStats({ answered: 0, correct: 0, xp: 0, streak: 0, streakUp: false }); load(); }} />
         ) : q ? (
           <>
             <BossBar name={boss ?? (mode === 'daily' ? '突擊副本・小怪群' : mode === 'review' ? '魔物圖鑑・復仇魔物' : `${params.title ?? '單元'}守衛`)}
               hp={questions.length - stats.correct} maxHp={questions.length}
-              hearts={boss ? Math.max(BOSS_HEARTS - (stats.answered - stats.correct), 0) : null} hit={bossHit} />
+              hearts={boss ? Math.max(BOSS_HEARTS - (stats.answered - stats.correct), 0) : null} hit={bossHit}
+              image={boss ? bossImg(boss) : monsterImg(q?.subject)} />
             <XpPop seq={pop.seq} text={pop.text} sub={pop.sub} />
             <ScrollView ref={scrollRef} contentContainerStyle={{ padding: 20, gap: 16 }}>
               <T size={13} color={C.muted}>第 {idx + 1} 題 / 共 {questions.length} 題{mode === 'review' ? ' · 錯題複習' : mode === 'exam' ? ` · ${params.title || '段考複習卷'}` : ''}{DIFF_LABEL[params.difficulty ?? ''] ? ` · ${DIFF_LABEL[params.difficulty ?? '']}` : ''}</T>
@@ -217,7 +219,7 @@ export default function Quiz() {
                 <>
                   {/* 解析很長或字體放大時可以捲動，不會把題目整個擠掉 */}
                   <ScrollView style={{ flexShrink: 1 }} contentContainerStyle={{ gap: 8 }}>
-                    {levelUp ? <LevelUpBanner level={levelUp} /> : null}
+                    {levelUp ? <LevelUpBanner level={levelUp} hero={heroOf(profile?.hero)} /> : null}
                     {eye?.phase === 'done' && eye.ok ? (
                       <T weight="700" color={C.accentDark}>心眼成功！第二次答對了{eye.bonus ? ` +${eye.bonus} XP` : ''}。這隻魔物還在圖鑑裡，複習時再徹底打倒牠！</T>
                     ) : null}
@@ -269,9 +271,9 @@ function reportQuestion(questionId: string) {
   ]);
 }
 
-function Summary({ stats, total, allSeen, mode, boss, bossKey, questionIds, onAgain }: {
+function Summary({ stats, total, allSeen, mode, boss, bossKey, questionIds, hero, onAgain }: {
   stats: { answered: number; correct: number; xp: number; streak: number; streakUp: boolean };
-  total: number; allSeen: boolean; mode: Mode; boss: string | null; bossKey: string | null; questionIds: string[]; onAgain: () => void;
+  total: number; allSeen: boolean; mode: Mode; boss: string | null; bossKey: string | null; questionIds: string[]; hero: Hero; onAgain: () => void;
 }) {
   const stars = bossStars(stats.correct, total);
   // 魔王戰結算交給伺服器（依實際作答算星數、第一次三星送保護卡）
@@ -293,8 +295,21 @@ function Summary({ stats, total, allSeen, mode, boss, bossKey, questionIds, onAg
   return (
     <ScrollView contentContainerStyle={{ padding: 20, gap: 14 }}>
       <H1>{boss ? (won ? `打敗${boss}了！` : `${boss}還沒倒下…`) : '這一輪完成了！'}</H1>
+      {/* 夥伴的反應：表現好開心、沒過關就鼓勵 */}
+      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+        <Image source={(boss ? won : stats.correct * 2 >= Math.max(stats.answered, 1)) ? hero.happy : hero.cheer}
+          accessibilityIgnoresInvertColors style={{ width: 120, height: 120 }} />
+        <View style={{ flex: 1, padding: 12, borderRadius: 14, backgroundColor: C.night, borderWidth: 1, borderColor: hero.color }}>
+          <T size={12} weight="700" color={hero.color}>{hero.name}</T>
+          <T weight="700">{(boss ? won : stats.correct * 2 >= Math.max(stats.answered, 1))
+            ? (boss ? '幹得好！魔王被我們打倒了！' : '做得好！今天又變強了！')
+            : (boss ? '別灰心，把錯題弄懂再一起挑戰！' : '沒關係，錯的題目我們一起弄懂！')}</T>
+        </View>
+      </View>
       {boss ? (
         <Card style={{ alignItems: 'center', gap: 8 }}>
+          <Image source={bossImg(boss)} accessibilityLabel={boss} accessibilityIgnoresInvertColors
+            style={{ width: 150, height: 150, opacity: won ? 0.55 : 1 }} />
           <Stars n={stars} />
           <T color={C.muted} style={{ textAlign: 'center' }}>
             {stars === 3 ? '完美通關！答對 9 成以上' : stars === 2 ? '答對 7 成以上，再拚一次拿三顆星！' : stars === 1 ? '答對 5 成以上，過關了！' : '答對不到 5 成，把錯題弄懂再來挑戰！'}

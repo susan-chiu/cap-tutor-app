@@ -1,10 +1,11 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { router, useFocusEffect } from 'expo-router';
 import { useCallback, useState } from 'react';
-import { Pressable, View } from 'react-native';
+import { Image, Pressable, View } from 'react-native';
 
 import { Button, Card, Chip, ErrorBox, H1, Loading, Screen, T, Tag } from '@/components/ui';
 import { api, errorText, type MistakeRow } from '@/lib/api';
+import { monsterImg } from '@/lib/art';
 import { MONSTER, monsterState, MONSTER_STATE } from '@/lib/game';
 import { C, ERROR_TYPE_LABEL, localToday, semesterLabel, SUBJECTS, subjectLabel } from '@/lib/theme';
 
@@ -97,7 +98,9 @@ function MonsterCard({ r, today }: { r: MistakeRow; today: string }) {
       <Card style={{ gap: 8, borderColor: s.color, borderWidth: st === 'raging' ? 1.5 : 1, opacity: st === 'defeated' ? 0.75 : 1 }}>
         <View style={{ flexDirection: 'row', gap: 12, alignItems: 'center' }}>
           <View style={{ width: 50, height: 50, borderRadius: 14, backgroundColor: C.night, borderWidth: 2, borderColor: m.color, alignItems: 'center', justifyContent: 'center' }}>
-            <Ionicons name={st === 'defeated' ? 'ribbon' : (m.icon as keyof typeof Ionicons.glyphMap)} size={26} color={m.color} />
+            <Image source={monsterImg(r.question.subject)} accessibilityIgnoresInvertColors
+              style={{ width: 46, height: 46, opacity: st === 'defeated' ? 0.45 : 1 }} />
+            {st === 'defeated' ? <Ionicons name="checkmark-circle" size={20} color={C.green} style={{ position: 'absolute', right: -6, bottom: -6 }} /> : null}
           </View>
           <View style={{ flex: 1, gap: 2 }}>
             <T weight="700" numberOfLines={1}>{m.name}・{r.question.unit_title}</T>

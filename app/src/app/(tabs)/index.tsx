@@ -1,13 +1,14 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { router, useFocusEffect } from 'expo-router';
 import { useCallback, useState } from 'react';
-import { Alert, Image, Pressable, View } from 'react-native';
+import { Alert, Image, type ImageSourcePropType, Pressable, View } from 'react-native';
 
 import { ParentHome } from '@/components/parent-home';
 import { Button, Card, ErrorBox, H2, Loading, ProgressBar, Screen, T } from '@/components/ui';
 import { api, errorText, type HomeData, type Limits } from '@/lib/api';
 import { rescheduleReminders } from '@/lib/reminders';
 import { useAuth } from '@/lib/auth';
+import { HALL_BG, ITEM_IMG, monsterImg } from '@/lib/art';
 import { levelInfo } from '@/lib/game';
 import { heroOf } from '@/lib/heroes';
 import { C, gradeCheckNeeded, gradeLabel } from '@/lib/theme';
@@ -83,10 +84,10 @@ function StudentHome() {
           <ProgressBar value={lv.progress} color={C.accent} height={8} />
         </View>
         <View style={{ gap: 6 }}>
-          <StatPill icon="flask" color={C.accent} label={energyLeft === null ? '∞' : `${energyLeft}/${energyMax}`}
+          <StatPill img={ITEM_IMG.potion} color={C.accent} label={energyLeft === null ? '∞' : `${energyLeft}/${energyMax}`}
             a11y={energyLeft === null ? '體力無限' : `體力：今天還能練 ${energyLeft} 題`}
             onPress={() => Alert.alert('體力', energyLeft === null ? '完整版沒有體力限制，想練多少就練多少！' : `免費版每天可以練 ${energyMax} 題，今天還剩 ${energyLeft} 題，明天會補滿。`)} />
-          <StatPill icon="shield-checkmark" color={C.green} label={`×${data.freeze_cards}`} a11y={`保護卡 ${data.freeze_cards} 張，點一下看說明`}
+          <StatPill img={ITEM_IMG.shield} color={C.green} label={`×${data.freeze_cards}`} a11y={`保護卡 ${data.freeze_cards} 張，點一下看說明`}
             onPress={() => Alert.alert('保護卡', `某一天忘了練習時，會自動用 1 張保護卡保住連勝。\n\n註冊送 2 張，每連勝 7 天再送 1 張，第一次三星打敗魔王也送 1 張，最多存 5 張。你現在有 ${data.freeze_cards} 張。`)} />
         </View>
       </View>
@@ -94,8 +95,12 @@ function StudentHome() {
       {/* 主角舞台 */}
       <View onLayout={(e) => setStageW(e.nativeEvent.layout.width)}
         style={{ borderRadius: 20, overflow: 'hidden', borderWidth: 1, borderColor: hero.color, backgroundColor: C.night }}>
-        <Image source={hero.image} accessibilityLabel={`你的戰鬥夥伴 ${hero.name}`} accessibilityIgnoresInvertColors
-          style={{ width: '100%', height: stageW ? stageW / 0.72 : 480 }} resizeMode="cover" />
+        <Image source={HALL_BG} accessibilityIgnoresInvertColors resizeMode="cover"
+          style={{ width: '100%', height: stageW ? stageW / 0.72 : 480 }} />
+        {/* 去背的主角站在石台上 */}
+        <Image source={hero.full} accessibilityLabel={`你的戰鬥夥伴 ${hero.name}`} accessibilityIgnoresInvertColors resizeMode="contain"
+          style={{ position: 'absolute', alignSelf: 'center', bottom: (stageW ? stageW / 0.72 : 480) * 0.11,
+            height: (stageW ? stageW / 0.72 : 480) * 0.8, width: (stageW ? stageW / 0.72 : 480) * 0.8 * (2 / 3) }} />
         <View style={{ position: 'absolute', top: 10, left: 10, flexDirection: 'row', alignItems: 'center', gap: 8, paddingVertical: 6, paddingHorizontal: 10,
           borderRadius: 10, borderWidth: 1, borderColor: C.gold, backgroundColor: 'rgba(5, 10, 24, 0.8)' }}>
           <Ionicons name="shield-half" size={22} color={C.gold} />
@@ -154,7 +159,7 @@ function StudentHome() {
         style={({ pressed }) => ({ flexDirection: 'row', alignItems: 'center', gap: 14, padding: 14, borderRadius: 18, borderWidth: 1.5, borderColor: C.purple,
           backgroundColor: '#1A1033', opacity: pressed ? 0.85 : 1 })}>
         <View style={{ width: 56, height: 56, borderRadius: 14, backgroundColor: '#2A1650', alignItems: 'center', justifyContent: 'center' }}>
-          <Ionicons name="skull" size={32} color={C.purple} />
+          <Image source={monsterImg(DAILY_MONSTER[new Date().getDay() % 5])} accessibilityIgnoresInvertColors style={{ width: 52, height: 52 }} />
         </View>
         <View style={{ flex: 1 }}>
           <T size={19} weight="700">魔物圖鑑</T>
@@ -315,14 +320,16 @@ function Task({ done, title, detail, progress, action, onPress }: {
 }
 
 /** 大廳頂部的小狀態（等級、體力、保護卡） */
-function StatPill({ icon, color, label, a11y, onPress }: {
-  icon: keyof typeof Ionicons.glyphMap; color: string; label: string; a11y: string; onPress?: () => void;
+const DAILY_MONSTER = ['math', 'chinese', 'english', 'science', 'social'];
+
+function StatPill({ img, color, label, a11y, onPress }: {
+  img: ImageSourcePropType; color: string; label: string; a11y: string; onPress?: () => void;
 }) {
   return (
     <Pressable accessibilityRole={onPress ? 'button' : 'text'} accessibilityLabel={a11y} onPress={onPress} disabled={!onPress}
       style={{ flexDirection: 'row', alignItems: 'center', gap: 4, minHeight: 32, paddingHorizontal: 10, borderRadius: 999,
         backgroundColor: 'rgba(5, 10, 24, 0.78)', borderWidth: 1, borderColor: color }}>
-      <Ionicons name={icon} size={14} color={color} />
+      <Image source={img} accessibilityIgnoresInvertColors style={{ width: 20, height: 20 }} />
       <T size={12} weight="700" color="#FFFFFF">{label}</T>
     </Pressable>
   );

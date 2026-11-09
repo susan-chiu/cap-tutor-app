@@ -1,0 +1,47 @@
+勇敢學吧 全套素材交檔說明 v1
+
+本批已完成六類共28個PNG，沿用需求文件的交檔名稱。大廳背景為1080×1920，其餘27張均為1024×1024，已檢查檔名、數量、圖片解碼及精確尺寸。App圖示與大廳背景為不透明圖片，其餘26張保留透明通道，方便疊放於介面。
+
+items.png是一張四合一道具圖。四格按四件道具計算時，整批共有31件素材；實際交付仍為28個PNG。
+
+一 六類素材與檔名
+
+1 App圖示
+icon.png：新版無角夜凜半身，搭配青色光劍、魔法陣及開書。置中構圖，接入手機圖示時仍須確認圓形與圓角遮罩的裁切效果。
+
+2 大廳背景
+hall-bg.png：無人物的夜間學院庭院，中央留白，下方圓形石台供角色疊放。此圖由原生成941×1672統一輸出為1080×1920。
+
+3 五科魔物
+monster-math.png：數學函數魔獸。
+monster-chinese.png：國文文言妖。
+monster-english.png：英文文法怪。
+monster-science.png：自然實驗異獸。
+monster-social.png：社會時空幽靈。
+四隻非數學魔物已移除跨科加減乘裝飾，保留各科專屬道具。
+
+4 段考魔王
+boss-1.png：第一次段考小魔王。
+boss-2.png：第二次段考大魔王，亦供國小期中考使用。
+boss-3.png：第三次段考魔王之王。
+boss-final.png：學期總複習終極魔王，亦供國小期末考使用。
+
+5 八位角色表情
+yelin-happy.png、yelin-cheer.png
+liyue-happy.png、liyue-cheer.png
+leiyao-happy.png、leiyao-cheer.png
+feiyin-happy.png、feiyin-cheer.png
+shiyan-happy.png、shiyan-cheer.png
+shuangli-happy.png、shuangli-cheer.png
+yuekai-happy.png、yuekai-cheer.png
+senya-happy.png、senya-cheer.png
+共16張腰部以上立繪，以既有characters-solo-v2角色作參考。happy用於答對及升級；cheer用於心眼提示，呈現溫和鼓勵與線索光點。角色外觀不改變學習權益。
+
+6 四合一道具
+items.png採2欄2列：左上精力藥水、右上綠晶保護卡、左下八瓣金花、右下空白成就盾框。四格已目視核對，尚未拆成單檔，接入前須依格位裁切。
+
+二 檢查與接入
+
+已逐張核對生成構圖、科目與角色對應及表情分類，並抽看統一尺寸後的背景、道具與夜凜鼓勵圖。透明通道採規律網格取樣檢查，詳見asset-validation.json；尚未在App內測試顯示與互動。
+
+工作資料夾originals/保留28張原始生成檔。完整下載包收錄統一尺寸PNG、生成與修訂提示詞、指南及檢查紀錄。全批為靜態美術素材，尚未接入App，不含動畫或音效。

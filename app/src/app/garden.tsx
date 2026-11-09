@@ -1,11 +1,12 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { router, useFocusEffect } from 'expo-router';
 import { useCallback, useMemo, useState } from 'react';
-import { Pressable, View } from 'react-native';
+import { Image, Pressable, View } from 'react-native';
 
 import { Plant } from '@/components/plant';
 import { Card, Chip, ErrorBox, H1, Loading, ProgressBar, Screen, T } from '@/components/ui';
 import { api, errorText, type GardenUnit } from '@/lib/api';
+import { ITEM_IMG } from '@/lib/art';
 import { useAuth } from '@/lib/auth';
 import { hardLeft, isGold, PLANT_STAGE_LABEL, plantStage, SUBJECT_FLOWER, toNextStage } from '@/lib/game';
 import { goBack } from '@/lib/nav';
@@ -52,7 +53,10 @@ export default function Garden() {
                 <T size={28} weight="700">{bloomed} <T size={15} color={C.muted}>/ {shown.length} 株</T></T>
               </View>
               <View style={{ alignItems: 'flex-end' }}>
-                <T size={13} color={C.gold} weight="700">金色花 {gold} 朵</T>
+                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4 }}>
+                  <Image source={ITEM_IMG.goldFlower} accessibilityIgnoresInvertColors style={{ width: 22, height: 22 }} />
+                  <T size={13} color={C.gold} weight="700">金色花 {gold} 朵</T>
+                </View>
                 <T size={13} color={C.muted}>成長中 {growing} 株</T>
               </View>
             </View>

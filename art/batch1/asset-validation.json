@@ -1,0 +1,1413 @@
+{
+  "generatedAt": "2026-11-09T08:15:01.5379924Z",
+  "root": "C:\\Users\\susan_chiu\\Documents\\ChatGPT\\HyperFrame\\output\\app-assets-complete-v1",
+  "manifestFile": "prompts.json",
+  "fileCount": 28,
+  "counts": {
+    "manifestAssets": 28,
+    "rootPngsAfter": 28,
+    "originals": 28,
+    "normalized": 28
+  },
+  "method": "System.Drawing high-quality bicubic resampling from originals into normalized, then per-file Copy-Item to root",
+  "validationScope": [
+    "Decoded each source and final PNG with System.Drawing validation",
+    "Checked exact filename set and count",
+    "Checked exact final pixel dimensions against prompts.json",
+    "Checked expected opaque alpha by full alpha scan for icon/hall-bg",
+    "Checked expected transparent alpha by a reported regular grid sample for the other assets"
+  ],
+  "notTested": [
+    "尚未接入APP，未進行動畫、音效或互動測試。",
+    "透明背景以規律網格取樣檢查；人工構圖檢查範圍見manualVisualReview。"
+  ],
+  "assets": [
+    {
+      "id": "hall-bg",
+      "filename": "hall-bg.png",
+      "batch": 1,
+      "expectedTransparent": false,
+      "original": {
+        "width": 941,
+        "height": 1672,
+        "recordedWidth": 941,
+        "recordedHeight": 1672,
+        "sha256": "839a20ce7a031915516efe23e96027b1e8b26ffc781dfc64701e0eef508e0848",
+        "backgroundState": "fully-opaque-alpha-scan",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 0,
+          "partialAlphaSamples": 0,
+          "opaqueSamples": 289,
+          "minAlpha": 255,
+          "maxAlpha": 255,
+          "transparentSampleDetected": false,
+          "limitation": "規律網格取樣只代表取樣點；透明背景的完整視覺邊界未以人工目視或 APP 顯示測試判定。"
+        }
+      },
+      "final": {
+        "width": 1080,
+        "height": 1920,
+        "sha256": "3bf29578ee9b9d38610bd583fa91437c957ad704614ecbe4dd2f10bee9431d82",
+        "backgroundState": "fully-opaque-alpha-scan",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 0,
+          "partialAlphaSamples": 0,
+          "opaqueSamples": 289,
+          "minAlpha": 255,
+          "maxAlpha": 255,
+          "transparentSampleDetected": false,
+          "limitation": "規律網格取樣只代表取樣點；透明背景的完整視覺邊界未以人工目視或 APP 顯示測試判定。"
+        }
+      },
+      "target": {
+        "width": 1080,
+        "height": 1920
+      },
+      "upscaled": true
+    },
+    {
+      "id": "monster-math",
+      "filename": "monster-math.png",
+      "batch": 1,
+      "expectedTransparent": true,
+      "original": {
+        "width": 1254,
+        "height": 1254,
+        "recordedWidth": 1254,
+        "recordedHeight": 1254,
+        "sha256": "ef9ec0c58956a94158f20622f95945fc0c265c632e4eebd494bf5c2c768a1ccc",
+        "backgroundState": "transparent-sample-detected",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 158,
+          "partialAlphaSamples": 131,
+          "opaqueSamples": 0,
+          "minAlpha": 0,
+          "maxAlpha": 253,
+          "transparentSampleDetected": true,
+          "limitation": "規律網格取樣只代表取樣點；透明背景的完整視覺邊界未以人工目視或 APP 顯示測試判定。"
+        }
+      },
+      "final": {
+        "width": 1024,
+        "height": 1024,
+        "sha256": "5a1f925f9ebff1aab576afbd92ffbaefc017678d297875d108c92e5e9127a808",
+        "backgroundState": "transparent-sample-detected",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 159,
+          "partialAlphaSamples": 130,
+          "opaqueSamples": 0,
+          "minAlpha": 0,
+          "maxAlpha": 254,
+          "transparentSampleDetected": true,
+          "limitation": "規律網格取樣只代表取樣點；透明背景的完整視覺邊界未以人工目視或 APP 顯示測試判定。"
+        }
+      },
+      "target": {
+        "width": 1024,
+        "height": 1024
+      },
+      "upscaled": false
+    },
+    {
+      "id": "monster-chinese",
+      "filename": "monster-chinese.png",
+      "batch": 1,
+      "expectedTransparent": true,
+      "original": {
+        "width": 1254,
+        "height": 1254,
+        "recordedWidth": 1254,
+        "recordedHeight": 1254,
+        "sha256": "2cc7109dcbc9a24d62e2a94d86827e9f73ae654f3181cea45ebff67fd3f48299",
+        "backgroundState": "transparent-sample-detected",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 146,
+          "partialAlphaSamples": 143,
+          "opaqueSamples": 0,
+          "minAlpha": 0,
+          "maxAlpha": 254,
+          "transparentSampleDetected": true,
+          "limitation": "規律網格取樣只代表取樣點；透明背景的完整視覺邊界未以人工目視或 APP 顯示測試判定。"
+        }
+      },
+      "final": {
+        "width": 1024,
+        "height": 1024,
+        "sha256": "2d502a537a587b22d5b6e64273d6181b88f4fd2abf5b978b3d83b3beb30c33c2",
+        "backgroundState": "transparent-sample-detected",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 145,
+          "partialAlphaSamples": 144,
+          "opaqueSamples": 0,
+          "minAlpha": 0,
+          "maxAlpha": 254,
+          "transparentSampleDetected": true,
+          "limitation": "規律網格取樣只代表取樣點；透明背景的完整視覺邊界未以人工目視或 APP 顯示測試判定。"
+        }
+      },
+      "target": {
+        "width": 1024,
+        "height": 1024
+      },
+      "upscaled": false
+    },
+    {
+      "id": "monster-english",
+      "filename": "monster-english.png",
+      "batch": 1,
+      "expectedTransparent": true,
+      "original": {
+        "width": 1254,
+        "height": 1254,
+        "recordedWidth": 1254,
+        "recordedHeight": 1254,
+        "sha256": "087f8c42f082b7e2ac68f1b978f98755d4cc6fde6b12ba89c4febc04a35af383",
+        "backgroundState": "transparent-sample-detected",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 160,
+          "partialAlphaSamples": 129,
+          "opaqueSamples": 0,
+          "minAlpha": 0,
+          "maxAlpha": 254,
+          "transparentSampleDetected": true,
+          "limitation": "規律網格取樣只代表取樣點；透明背景的完整視覺邊界未以人工目視或 APP 顯示測試判定。"
+        }
+      },
+      "final": {
+        "width": 1024,
+        "height": 1024,
+        "sha256": "f98b4afba383ac3a7a13a8525dcd2049e6672039fb375307cc95d6d228d593fd",
+        "backgroundState": "transparent-sample-detected",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 163,
+          "partialAlphaSamples": 126,
+          "opaqueSamples": 0,
+          "minAlpha": 0,
+          "maxAlpha": 254,
+          "transparentSampleDetected": true,
+          "limitation": "規律網格取樣只代表取樣點；透明背景的完整視覺邊界未以人工目視或 APP 顯示測試判定。"
+        }
+      },
+      "target": {
+        "width": 1024,
+        "height": 1024
+      },
+      "upscaled": false
+    },
+    {
+      "id": "monster-science",
+      "filename": "monster-science.png",
+      "batch": 1,
+      "expectedTransparent": true,
+      "original": {
+        "width": 1254,
+        "height": 1254,
+        "recordedWidth": 1254,
+        "recordedHeight": 1254,
+        "sha256": "8b276a933c2412eab6b9fee16792bde8a9a7f53f78a0dd8e76e0080e29bed77c",
+        "backgroundState": "transparent-sample-detected",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 188,
+          "partialAlphaSamples": 101,
+          "opaqueSamples": 0,
+          "minAlpha": 0,
+          "maxAlpha": 254,
+          "transparentSampleDetected": true,
+          "limitation": "規律網格取樣只代表取樣點；透明背景的完整視覺邊界未以人工目視或 APP 顯示測試判定。"
+        }
+      },
+      "final": {
+        "width": 1024,
+        "height": 1024,
+        "sha256": "1069ecd996795c8c99fdfa059cab250565237ccdfea204c949040849eea83050",
+        "backgroundState": "transparent-sample-detected",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 189,
+          "partialAlphaSamples": 99,
+          "opaqueSamples": 1,
+          "minAlpha": 0,
+          "maxAlpha": 255,
+          "transparentSampleDetected": true,
+          "limitation": "規律網格取樣只代表取樣點；透明背景的完整視覺邊界未以人工目視或 APP 顯示測試判定。"
+        }
+      },
+      "target": {
+        "width": 1024,
+        "height": 1024
+      },
+      "upscaled": false
+    },
+    {
+      "id": "monster-social",
+      "filename": "monster-social.png",
+      "batch": 1,
+      "expectedTransparent": true,
+      "original": {
+        "width": 1254,
+        "height": 1254,
+        "recordedWidth": 1254,
+        "recordedHeight": 1254,
+        "sha256": "a6b1fcfbd89993ffdf3869f2aec4a1f1f12eeb9d665a05179856be27dd84e52a",
+        "backgroundState": "transparent-sample-detected",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 162,
+          "partialAlphaSamples": 127,
+          "opaqueSamples": 0,
+          "minAlpha": 0,
+          "maxAlpha": 254,
+          "transparentSampleDetected": true,
+          "limitation": "規律網格取樣只代表取樣點；透明背景的完整視覺邊界未以人工目視或 APP 顯示測試判定。"
+        }
+      },
+      "final": {
+        "width": 1024,
+        "height": 1024,
+        "sha256": "06e8daa6a064cda5a83af364abc8a3d20557140d8a04d9dbb1cf52269577c186",
+        "backgroundState": "transparent-sample-detected",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 165,
+          "partialAlphaSamples": 123,
+          "opaqueSamples": 1,
+          "minAlpha": 0,
+          "maxAlpha": 255,
+          "transparentSampleDetected": true,
+          "limitation": "規律網格取樣只代表取樣點；透明背景的完整視覺邊界未以人工目視或 APP 顯示測試判定。"
+        }
+      },
+      "target": {
+        "width": 1024,
+        "height": 1024
+      },
+      "upscaled": false
+    },
+    {
+      "id": "boss-1",
+      "filename": "boss-1.png",
+      "batch": 2,
+      "expectedTransparent": true,
+      "original": {
+        "width": 1254,
+        "height": 1254,
+        "recordedWidth": 1254,
+        "recordedHeight": 1254,
+        "sha256": "d84c3908c0f3dd18441db71e860e1cfc5caa69595d3a04dc010a404bb60c359f",
+        "backgroundState": "transparent-sample-detected",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 112,
+          "partialAlphaSamples": 177,
+          "opaqueSamples": 0,
+          "minAlpha": 0,
+          "maxAlpha": 253,
+          "transparentSampleDetected": true,
+          "limitation": "規律網格取樣只代表取樣點；透明背景的完整視覺邊界未以人工目視或 APP 顯示測試判定。"
+        }
+      },
+      "final": {
+        "width": 1024,
+        "height": 1024,
+        "sha256": "5a09ffd40833f2b2b51c5e8de2d0212df5030e5a875703a1eb3abd5de3a85ef2",
+        "backgroundState": "transparent-sample-detected",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 113,
+          "partialAlphaSamples": 176,
+          "opaqueSamples": 0,
+          "minAlpha": 0,
+          "maxAlpha": 253,
+          "transparentSampleDetected": true,
+          "limitation": "規律網格取樣只代表取樣點；透明背景的完整視覺邊界未以人工目視或 APP 顯示測試判定。"
+        }
+      },
+      "target": {
+        "width": 1024,
+        "height": 1024
+      },
+      "upscaled": false
+    },
+    {
+      "id": "boss-2",
+      "filename": "boss-2.png",
+      "batch": 2,
+      "expectedTransparent": true,
+      "original": {
+        "width": 1254,
+        "height": 1254,
+        "recordedWidth": 1254,
+        "recordedHeight": 1254,
+        "sha256": "576f1bd94a062b92055d7c5a47121449a0bf4fa802b64abdac737b40df4e23e4",
+        "backgroundState": "transparent-sample-detected",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 115,
+          "partialAlphaSamples": 174,
+          "opaqueSamples": 0,
+          "minAlpha": 0,
+          "maxAlpha": 253,
+          "transparentSampleDetected": true,
+          "limitation": "規律網格取樣只代表取樣點；透明背景的完整視覺邊界未以人工目視或 APP 顯示測試判定。"
+        }
+      },
+      "final": {
+        "width": 1024,
+        "height": 1024,
+        "sha256": "3fc73d15b76bc1cc345ccdefc6e4ea5b4b7b28830667e262b0d2adbc8bdcae69",
+        "backgroundState": "transparent-sample-detected",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 114,
+          "partialAlphaSamples": 175,
+          "opaqueSamples": 0,
+          "minAlpha": 0,
+          "maxAlpha": 253,
+          "transparentSampleDetected": true,
+          "limitation": "規律網格取樣只代表取樣點；透明背景的完整視覺邊界未以人工目視或 APP 顯示測試判定。"
+        }
+      },
+      "target": {
+        "width": 1024,
+        "height": 1024
+      },
+      "upscaled": false
+    },
+    {
+      "id": "boss-3",
+      "filename": "boss-3.png",
+      "batch": 2,
+      "expectedTransparent": true,
+      "original": {
+        "width": 1254,
+        "height": 1254,
+        "recordedWidth": 1254,
+        "recordedHeight": 1254,
+        "sha256": "8495faf46cf22cd42bcead9723a72e427380c983dd878388fde1e5638db43df8",
+        "backgroundState": "transparent-sample-detected",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 101,
+          "partialAlphaSamples": 187,
+          "opaqueSamples": 1,
+          "minAlpha": 0,
+          "maxAlpha": 255,
+          "transparentSampleDetected": true,
+          "limitation": "規律網格取樣只代表取樣點；透明背景的完整視覺邊界未以人工目視或 APP 顯示測試判定。"
+        }
+      },
+      "final": {
+        "width": 1024,
+        "height": 1024,
+        "sha256": "3ef8e5fd51c5c85c6a9f8d77125a5012ea379d4bbb1caa227255a200c77e88f6",
+        "backgroundState": "transparent-sample-detected",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 102,
+          "partialAlphaSamples": 187,
+          "opaqueSamples": 0,
+          "minAlpha": 0,
+          "maxAlpha": 253,
+          "transparentSampleDetected": true,
+          "limitation": "規律網格取樣只代表取樣點；透明背景的完整視覺邊界未以人工目視或 APP 顯示測試判定。"
+        }
+      },
+      "target": {
+        "width": 1024,
+        "height": 1024
+      },
+      "upscaled": false
+    },
+    {
+      "id": "boss-final",
+      "filename": "boss-final.png",
+      "batch": 2,
+      "expectedTransparent": true,
+      "original": {
+        "width": 1254,
+        "height": 1254,
+        "recordedWidth": 1254,
+        "recordedHeight": 1254,
+        "sha256": "9bab0528c90f1ced5e2fbf33375060e9854116c00cee01e087f9196cca98d9b0",
+        "backgroundState": "transparent-sample-detected",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 100,
+          "partialAlphaSamples": 189,
+          "opaqueSamples": 0,
+          "minAlpha": 0,
+          "maxAlpha": 254,
+          "transparentSampleDetected": true,
+          "limitation": "規律網格取樣只代表取樣點；透明背景的完整視覺邊界未以人工目視或 APP 顯示測試判定。"
+        }
+      },
+      "final": {
+        "width": 1024,
+        "height": 1024,
+        "sha256": "931e9059816c9467370b8666f18162a0ea1f07e37c29856b23053decd9df4ca1",
+        "backgroundState": "transparent-sample-detected",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 99,
+          "partialAlphaSamples": 190,
+          "opaqueSamples": 0,
+          "minAlpha": 0,
+          "maxAlpha": 253,
+          "transparentSampleDetected": true,
+          "limitation": "規律網格取樣只代表取樣點；透明背景的完整視覺邊界未以人工目視或 APP 顯示測試判定。"
+        }
+      },
+      "target": {
+        "width": 1024,
+        "height": 1024
+      },
+      "upscaled": false
+    },
+    {
+      "id": "icon",
+      "filename": "icon.png",
+      "batch": 2,
+      "expectedTransparent": false,
+      "original": {
+        "width": 1254,
+        "height": 1254,
+        "recordedWidth": 1254,
+        "recordedHeight": 1254,
+        "sha256": "aa6575af048fa510425fc11d644795b5f1c914938e238c2d30ed18871e363249",
+        "backgroundState": "fully-opaque-alpha-scan",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 0,
+          "partialAlphaSamples": 0,
+          "opaqueSamples": 289,
+          "minAlpha": 255,
+          "maxAlpha": 255,
+          "transparentSampleDetected": false,
+          "limitation": "規律網格取樣只代表取樣點；透明背景的完整視覺邊界未以人工目視或 APP 顯示測試判定。"
+        }
+      },
+      "final": {
+        "width": 1024,
+        "height": 1024,
+        "sha256": "15fbb7909d6cdf80af9c0fb2f1ab5471c229dab33e0220e9b5399f46e23b37e3",
+        "backgroundState": "fully-opaque-alpha-scan",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 0,
+          "partialAlphaSamples": 0,
+          "opaqueSamples": 289,
+          "minAlpha": 255,
+          "maxAlpha": 255,
+          "transparentSampleDetected": false,
+          "limitation": "規律網格取樣只代表取樣點；透明背景的完整視覺邊界未以人工目視或 APP 顯示測試判定。"
+        }
+      },
+      "target": {
+        "width": 1024,
+        "height": 1024
+      },
+      "upscaled": false
+    },
+    {
+      "id": "yelin-happy",
+      "filename": "yelin-happy.png",
+      "batch": 3,
+      "expectedTransparent": true,
+      "original": {
+        "width": 1254,
+        "height": 1254,
+        "recordedWidth": 1254,
+        "recordedHeight": 1254,
+        "sha256": "6e15bc9659db9dbb4084d614b11739fcf785e31ad8ea1ef26bf8e14dd12ff61b",
+        "backgroundState": "transparent-sample-detected",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 155,
+          "partialAlphaSamples": 134,
+          "opaqueSamples": 0,
+          "minAlpha": 0,
+          "maxAlpha": 254,
+          "transparentSampleDetected": true,
+          "limitation": "規律網格取樣只代表取樣點；透明背景的完整視覺邊界未以人工目視或 APP 顯示測試判定。"
+        }
+      },
+      "final": {
+        "width": 1024,
+        "height": 1024,
+        "sha256": "629a75b2da1118452dd6ee77ec328f989988df5d5649a4a88dec020e106f38e8",
+        "backgroundState": "transparent-sample-detected",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 157,
+          "partialAlphaSamples": 132,
+          "opaqueSamples": 0,
+          "minAlpha": 0,
+          "maxAlpha": 254,
+          "transparentSampleDetected": true,
+          "limitation": "規律網格取樣只代表取樣點；透明背景的完整視覺邊界未以人工目視或 APP 顯示測試判定。"
+        }
+      },
+      "target": {
+        "width": 1024,
+        "height": 1024
+      },
+      "upscaled": false
+    },
+    {
+      "id": "yelin-cheer",
+      "filename": "yelin-cheer.png",
+      "batch": 3,
+      "expectedTransparent": true,
+      "original": {
+        "width": 1254,
+        "height": 1254,
+        "recordedWidth": 1254,
+        "recordedHeight": 1254,
+        "sha256": "99370fac45e2e71cc72b4f59424890363f042e67dec4fd792b11cc2697b84a33",
+        "backgroundState": "transparent-sample-detected",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 171,
+          "partialAlphaSamples": 118,
+          "opaqueSamples": 0,
+          "minAlpha": 0,
+          "maxAlpha": 253,
+          "transparentSampleDetected": true,
+          "limitation": "規律網格取樣只代表取樣點；透明背景的完整視覺邊界未以人工目視或 APP 顯示測試判定。"
+        }
+      },
+      "final": {
+        "width": 1024,
+        "height": 1024,
+        "sha256": "9008d98675cceacab7f9ec7e599cc9023bc1b10e56d91b830ad61ab5f5deddc5",
+        "backgroundState": "transparent-sample-detected",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 171,
+          "partialAlphaSamples": 118,
+          "opaqueSamples": 0,
+          "minAlpha": 0,
+          "maxAlpha": 253,
+          "transparentSampleDetected": true,
+          "limitation": "規律網格取樣只代表取樣點；透明背景的完整視覺邊界未以人工目視或 APP 顯示測試判定。"
+        }
+      },
+      "target": {
+        "width": 1024,
+        "height": 1024
+      },
+      "upscaled": false
+    },
+    {
+      "id": "liyue-happy",
+      "filename": "liyue-happy.png",
+      "batch": 3,
+      "expectedTransparent": true,
+      "original": {
+        "width": 1254,
+        "height": 1254,
+        "recordedWidth": 1254,
+        "recordedHeight": 1254,
+        "sha256": "45646e3cf757875a5e244305b4cf8f4a5ddf50ddd69e17b7768c2e43c033a9c0",
+        "backgroundState": "transparent-sample-detected",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 128,
+          "partialAlphaSamples": 161,
+          "opaqueSamples": 0,
+          "minAlpha": 0,
+          "maxAlpha": 253,
+          "transparentSampleDetected": true,
+          "limitation": "規律網格取樣只代表取樣點；透明背景的完整視覺邊界未以人工目視或 APP 顯示測試判定。"
+        }
+      },
+      "final": {
+        "width": 1024,
+        "height": 1024,
+        "sha256": "71f036709a3782fc6a4ae9a329704eeae6a5ed5b52824cc791776af1e41ec03e",
+        "backgroundState": "transparent-sample-detected",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 129,
+          "partialAlphaSamples": 159,
+          "opaqueSamples": 1,
+          "minAlpha": 0,
+          "maxAlpha": 255,
+          "transparentSampleDetected": true,
+          "limitation": "規律網格取樣只代表取樣點；透明背景的完整視覺邊界未以人工目視或 APP 顯示測試判定。"
+        }
+      },
+      "target": {
+        "width": 1024,
+        "height": 1024
+      },
+      "upscaled": false
+    },
+    {
+      "id": "liyue-cheer",
+      "filename": "liyue-cheer.png",
+      "batch": 3,
+      "expectedTransparent": true,
+      "original": {
+        "width": 1254,
+        "height": 1254,
+        "recordedWidth": 1254,
+        "recordedHeight": 1254,
+        "sha256": "cd8b6e4aa276b26663e7efc6eabc489aff29227fd8c91472ef3638310c863fef",
+        "backgroundState": "transparent-sample-detected",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 89,
+          "partialAlphaSamples": 200,
+          "opaqueSamples": 0,
+          "minAlpha": 0,
+          "maxAlpha": 253,
+          "transparentSampleDetected": true,
+          "limitation": "規律網格取樣只代表取樣點；透明背景的完整視覺邊界未以人工目視或 APP 顯示測試判定。"
+        }
+      },
+      "final": {
+        "width": 1024,
+        "height": 1024,
+        "sha256": "11fd69e8ae6c39a324c3f0840c47f368e442d2abf2a8ba7486955dd53cc5e85a",
+        "backgroundState": "transparent-sample-detected",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 89,
+          "partialAlphaSamples": 200,
+          "opaqueSamples": 0,
+          "minAlpha": 0,
+          "maxAlpha": 253,
+          "transparentSampleDetected": true,
+          "limitation": "規律網格取樣只代表取樣點；透明背景的完整視覺邊界未以人工目視或 APP 顯示測試判定。"
+        }
+      },
+      "target": {
+        "width": 1024,
+        "height": 1024
+      },
+      "upscaled": false
+    },
+    {
+      "id": "leiyao-happy",
+      "filename": "leiyao-happy.png",
+      "batch": 4,
+      "expectedTransparent": true,
+      "original": {
+        "width": 1254,
+        "height": 1254,
+        "recordedWidth": 1254,
+        "recordedHeight": 1254,
+        "sha256": "d7252cec6ba4faea34e28b3dde631dbbe3e41041b12b6887857a47a0d1325e87",
+        "backgroundState": "transparent-sample-detected",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 137,
+          "partialAlphaSamples": 152,
+          "opaqueSamples": 0,
+          "minAlpha": 0,
+          "maxAlpha": 253,
+          "transparentSampleDetected": true,
+          "limitation": "規律網格取樣只代表取樣點；透明背景的完整視覺邊界未以人工目視或 APP 顯示測試判定。"
+        }
+      },
+      "final": {
+        "width": 1024,
+        "height": 1024,
+        "sha256": "331536b562a2ebb355b19e3729e73c343c0f9e30582a8428c8b7d8803a89c9c0",
+        "backgroundState": "transparent-sample-detected",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 138,
+          "partialAlphaSamples": 149,
+          "opaqueSamples": 2,
+          "minAlpha": 0,
+          "maxAlpha": 255,
+          "transparentSampleDetected": true,
+          "limitation": "規律網格取樣只代表取樣點；透明背景的完整視覺邊界未以人工目視或 APP 顯示測試判定。"
+        }
+      },
+      "target": {
+        "width": 1024,
+        "height": 1024
+      },
+      "upscaled": false
+    },
+    {
+      "id": "leiyao-cheer",
+      "filename": "leiyao-cheer.png",
+      "batch": 4,
+      "expectedTransparent": true,
+      "original": {
+        "width": 1254,
+        "height": 1254,
+        "recordedWidth": 1254,
+        "recordedHeight": 1254,
+        "sha256": "876a4358f1f728b98fa0e56959f471cec8f68008e29a6240454ade9714e46418",
+        "backgroundState": "transparent-sample-detected",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 144,
+          "partialAlphaSamples": 145,
+          "opaqueSamples": 0,
+          "minAlpha": 0,
+          "maxAlpha": 254,
+          "transparentSampleDetected": true,
+          "limitation": "規律網格取樣只代表取樣點；透明背景的完整視覺邊界未以人工目視或 APP 顯示測試判定。"
+        }
+      },
+      "final": {
+        "width": 1024,
+        "height": 1024,
+        "sha256": "5754ca0cca1a93a3c623ba631c2307943751d40b91bc935a41ca1c08e89d5f5d",
+        "backgroundState": "transparent-sample-detected",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 144,
+          "partialAlphaSamples": 145,
+          "opaqueSamples": 0,
+          "minAlpha": 0,
+          "maxAlpha": 253,
+          "transparentSampleDetected": true,
+          "limitation": "規律網格取樣只代表取樣點；透明背景的完整視覺邊界未以人工目視或 APP 顯示測試判定。"
+        }
+      },
+      "target": {
+        "width": 1024,
+        "height": 1024
+      },
+      "upscaled": false
+    },
+    {
+      "id": "feiyin-happy",
+      "filename": "feiyin-happy.png",
+      "batch": 4,
+      "expectedTransparent": true,
+      "original": {
+        "width": 1254,
+        "height": 1254,
+        "recordedWidth": 1254,
+        "recordedHeight": 1254,
+        "sha256": "b4c7a3aae5a5ae37d11a544f00bdcf59feedafb0b86c1b85dd95d8da6964ff35",
+        "backgroundState": "transparent-sample-detected",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 148,
+          "partialAlphaSamples": 141,
+          "opaqueSamples": 0,
+          "minAlpha": 0,
+          "maxAlpha": 254,
+          "transparentSampleDetected": true,
+          "limitation": "規律網格取樣只代表取樣點；透明背景的完整視覺邊界未以人工目視或 APP 顯示測試判定。"
+        }
+      },
+      "final": {
+        "width": 1024,
+        "height": 1024,
+        "sha256": "beb1f5df8a796a5c36c1591edde76014249feebc84873a88c07d70584a987605",
+        "backgroundState": "transparent-sample-detected",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 149,
+          "partialAlphaSamples": 140,
+          "opaqueSamples": 0,
+          "minAlpha": 0,
+          "maxAlpha": 254,
+          "transparentSampleDetected": true,
+          "limitation": "規律網格取樣只代表取樣點；透明背景的完整視覺邊界未以人工目視或 APP 顯示測試判定。"
+        }
+      },
+      "target": {
+        "width": 1024,
+        "height": 1024
+      },
+      "upscaled": false
+    },
+    {
+      "id": "feiyin-cheer",
+      "filename": "feiyin-cheer.png",
+      "batch": 4,
+      "expectedTransparent": true,
+      "original": {
+        "width": 1254,
+        "height": 1254,
+        "recordedWidth": 1254,
+        "recordedHeight": 1254,
+        "sha256": "64b6c8706ed428856e2bd6a3ea4cf14bac1e8854f809f2a3c3c1e13b8821fb92",
+        "backgroundState": "transparent-sample-detected",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 141,
+          "partialAlphaSamples": 148,
+          "opaqueSamples": 0,
+          "minAlpha": 0,
+          "maxAlpha": 253,
+          "transparentSampleDetected": true,
+          "limitation": "規律網格取樣只代表取樣點；透明背景的完整視覺邊界未以人工目視或 APP 顯示測試判定。"
+        }
+      },
+      "final": {
+        "width": 1024,
+        "height": 1024,
+        "sha256": "9aa40bd0ad53d8191962b85c8a82e2eb4afeed2abf0ef7fc57bb38d382117ca3",
+        "backgroundState": "transparent-sample-detected",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 142,
+          "partialAlphaSamples": 147,
+          "opaqueSamples": 0,
+          "minAlpha": 0,
+          "maxAlpha": 253,
+          "transparentSampleDetected": true,
+          "limitation": "規律網格取樣只代表取樣點；透明背景的完整視覺邊界未以人工目視或 APP 顯示測試判定。"
+        }
+      },
+      "target": {
+        "width": 1024,
+        "height": 1024
+      },
+      "upscaled": false
+    },
+    {
+      "id": "shiyan-happy",
+      "filename": "shiyan-happy.png",
+      "batch": 5,
+      "expectedTransparent": true,
+      "original": {
+        "width": 1254,
+        "height": 1254,
+        "recordedWidth": 1254,
+        "recordedHeight": 1254,
+        "sha256": "317d15f41498a3b94fccad4fc5fed6338d056f8557aed13f64037ebf77ba2fa3",
+        "backgroundState": "transparent-sample-detected",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 144,
+          "partialAlphaSamples": 145,
+          "opaqueSamples": 0,
+          "minAlpha": 0,
+          "maxAlpha": 253,
+          "transparentSampleDetected": true,
+          "limitation": "規律網格取樣只代表取樣點；透明背景的完整視覺邊界未以人工目視或 APP 顯示測試判定。"
+        }
+      },
+      "final": {
+        "width": 1024,
+        "height": 1024,
+        "sha256": "f3dd9023505e80efec1dcea9a24cc6030ef63252995873f4155308e527c0274e",
+        "backgroundState": "transparent-sample-detected",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 145,
+          "partialAlphaSamples": 144,
+          "opaqueSamples": 0,
+          "minAlpha": 0,
+          "maxAlpha": 253,
+          "transparentSampleDetected": true,
+          "limitation": "規律網格取樣只代表取樣點；透明背景的完整視覺邊界未以人工目視或 APP 顯示測試判定。"
+        }
+      },
+      "target": {
+        "width": 1024,
+        "height": 1024
+      },
+      "upscaled": false
+    },
+    {
+      "id": "shiyan-cheer",
+      "filename": "shiyan-cheer.png",
+      "batch": 5,
+      "expectedTransparent": true,
+      "original": {
+        "width": 1254,
+        "height": 1254,
+        "recordedWidth": 1254,
+        "recordedHeight": 1254,
+        "sha256": "7ab32d93dc4cd2a99f1ba91557dded00c06f4e0bd7fc4dc5d89a72f68a6e9b3e",
+        "backgroundState": "transparent-sample-detected",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 143,
+          "partialAlphaSamples": 146,
+          "opaqueSamples": 0,
+          "minAlpha": 0,
+          "maxAlpha": 253,
+          "transparentSampleDetected": true,
+          "limitation": "規律網格取樣只代表取樣點；透明背景的完整視覺邊界未以人工目視或 APP 顯示測試判定。"
+        }
+      },
+      "final": {
+        "width": 1024,
+        "height": 1024,
+        "sha256": "2608aee4ee7e749baf08d92495bf38cd766577e2a6c247a33742019ff63f5ad2",
+        "backgroundState": "transparent-sample-detected",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 144,
+          "partialAlphaSamples": 144,
+          "opaqueSamples": 1,
+          "minAlpha": 0,
+          "maxAlpha": 255,
+          "transparentSampleDetected": true,
+          "limitation": "規律網格取樣只代表取樣點；透明背景的完整視覺邊界未以人工目視或 APP 顯示測試判定。"
+        }
+      },
+      "target": {
+        "width": 1024,
+        "height": 1024
+      },
+      "upscaled": false
+    },
+    {
+      "id": "shuangli-happy",
+      "filename": "shuangli-happy.png",
+      "batch": 5,
+      "expectedTransparent": true,
+      "original": {
+        "width": 1254,
+        "height": 1254,
+        "recordedWidth": 1254,
+        "recordedHeight": 1254,
+        "sha256": "c81be9e8b18d78f90091867522140979aa4d093f12d3ae4d0d4a3c589ec2bd78",
+        "backgroundState": "transparent-sample-detected",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 116,
+          "partialAlphaSamples": 173,
+          "opaqueSamples": 0,
+          "minAlpha": 0,
+          "maxAlpha": 253,
+          "transparentSampleDetected": true,
+          "limitation": "規律網格取樣只代表取樣點；透明背景的完整視覺邊界未以人工目視或 APP 顯示測試判定。"
+        }
+      },
+      "final": {
+        "width": 1024,
+        "height": 1024,
+        "sha256": "3f85cec221614d534d0fcbbc5eafa0bfb3faded5a3c885915a2a2bb0474706b3",
+        "backgroundState": "transparent-sample-detected",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 115,
+          "partialAlphaSamples": 174,
+          "opaqueSamples": 0,
+          "minAlpha": 0,
+          "maxAlpha": 253,
+          "transparentSampleDetected": true,
+          "limitation": "規律網格取樣只代表取樣點；透明背景的完整視覺邊界未以人工目視或 APP 顯示測試判定。"
+        }
+      },
+      "target": {
+        "width": 1024,
+        "height": 1024
+      },
+      "upscaled": false
+    },
+    {
+      "id": "shuangli-cheer",
+      "filename": "shuangli-cheer.png",
+      "batch": 5,
+      "expectedTransparent": true,
+      "original": {
+        "width": 1254,
+        "height": 1254,
+        "recordedWidth": 1254,
+        "recordedHeight": 1254,
+        "sha256": "8136d6cb435d84c06c60943d7bbf593e2c16ff398772478ad88da42de8304ee1",
+        "backgroundState": "transparent-sample-detected",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 130,
+          "partialAlphaSamples": 159,
+          "opaqueSamples": 0,
+          "minAlpha": 0,
+          "maxAlpha": 253,
+          "transparentSampleDetected": true,
+          "limitation": "規律網格取樣只代表取樣點；透明背景的完整視覺邊界未以人工目視或 APP 顯示測試判定。"
+        }
+      },
+      "final": {
+        "width": 1024,
+        "height": 1024,
+        "sha256": "5af24c133a6eec49d3add2f0c9600dc83d29f1bb57b1ad96854df3cd2e8a9519",
+        "backgroundState": "transparent-sample-detected",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 132,
+          "partialAlphaSamples": 157,
+          "opaqueSamples": 0,
+          "minAlpha": 0,
+          "maxAlpha": 253,
+          "transparentSampleDetected": true,
+          "limitation": "規律網格取樣只代表取樣點；透明背景的完整視覺邊界未以人工目視或 APP 顯示測試判定。"
+        }
+      },
+      "target": {
+        "width": 1024,
+        "height": 1024
+      },
+      "upscaled": false
+    },
+    {
+      "id": "yuekai-happy",
+      "filename": "yuekai-happy.png",
+      "batch": 6,
+      "expectedTransparent": true,
+      "original": {
+        "width": 1254,
+        "height": 1254,
+        "recordedWidth": 1254,
+        "recordedHeight": 1254,
+        "sha256": "29bad6f6bf40330a9eea18383332a6675d566eacdde9a0044dd6d5a7d9802a78",
+        "backgroundState": "transparent-sample-detected",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 143,
+          "partialAlphaSamples": 146,
+          "opaqueSamples": 0,
+          "minAlpha": 0,
+          "maxAlpha": 253,
+          "transparentSampleDetected": true,
+          "limitation": "規律網格取樣只代表取樣點；透明背景的完整視覺邊界未以人工目視或 APP 顯示測試判定。"
+        }
+      },
+      "final": {
+        "width": 1024,
+        "height": 1024,
+        "sha256": "cbd246fe21753c19ee7fa1f8d1700484dfc1b763e98f0fcb925bbc1de31a59ba",
+        "backgroundState": "transparent-sample-detected",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 144,
+          "partialAlphaSamples": 145,
+          "opaqueSamples": 0,
+          "minAlpha": 0,
+          "maxAlpha": 253,
+          "transparentSampleDetected": true,
+          "limitation": "規律網格取樣只代表取樣點；透明背景的完整視覺邊界未以人工目視或 APP 顯示測試判定。"
+        }
+      },
+      "target": {
+        "width": 1024,
+        "height": 1024
+      },
+      "upscaled": false
+    },
+    {
+      "id": "yuekai-cheer",
+      "filename": "yuekai-cheer.png",
+      "batch": 6,
+      "expectedTransparent": true,
+      "original": {
+        "width": 1254,
+        "height": 1254,
+        "recordedWidth": 1254,
+        "recordedHeight": 1254,
+        "sha256": "5d224bc9943d12db82df29f89f6027d86268b282a8fbc4a784eed9558e3a8420",
+        "backgroundState": "transparent-sample-detected",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 145,
+          "partialAlphaSamples": 144,
+          "opaqueSamples": 0,
+          "minAlpha": 0,
+          "maxAlpha": 253,
+          "transparentSampleDetected": true,
+          "limitation": "規律網格取樣只代表取樣點；透明背景的完整視覺邊界未以人工目視或 APP 顯示測試判定。"
+        }
+      },
+      "final": {
+        "width": 1024,
+        "height": 1024,
+        "sha256": "823d9a0976b77a64f56878a629b3a721c2e0116bf0c0b618aec7d9be064ead80",
+        "backgroundState": "transparent-sample-detected",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 145,
+          "partialAlphaSamples": 144,
+          "opaqueSamples": 0,
+          "minAlpha": 0,
+          "maxAlpha": 254,
+          "transparentSampleDetected": true,
+          "limitation": "規律網格取樣只代表取樣點；透明背景的完整視覺邊界未以人工目視或 APP 顯示測試判定。"
+        }
+      },
+      "target": {
+        "width": 1024,
+        "height": 1024
+      },
+      "upscaled": false
+    },
+    {
+      "id": "senya-happy",
+      "filename": "senya-happy.png",
+      "batch": 6,
+      "expectedTransparent": true,
+      "original": {
+        "width": 1254,
+        "height": 1254,
+        "recordedWidth": 1254,
+        "recordedHeight": 1254,
+        "sha256": "5a7d8a19e49bea47f2206e4066067eece4980fe785a932e5316dcd12d74505eb",
+        "backgroundState": "transparent-sample-detected",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 144,
+          "partialAlphaSamples": 145,
+          "opaqueSamples": 0,
+          "minAlpha": 0,
+          "maxAlpha": 253,
+          "transparentSampleDetected": true,
+          "limitation": "規律網格取樣只代表取樣點；透明背景的完整視覺邊界未以人工目視或 APP 顯示測試判定。"
+        }
+      },
+      "final": {
+        "width": 1024,
+        "height": 1024,
+        "sha256": "ac307ff8cad48a834924355e16d7fb6beed5c1ec3f1dc919f0cc00bef5c16073",
+        "backgroundState": "transparent-sample-detected",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 144,
+          "partialAlphaSamples": 145,
+          "opaqueSamples": 0,
+          "minAlpha": 0,
+          "maxAlpha": 253,
+          "transparentSampleDetected": true,
+          "limitation": "規律網格取樣只代表取樣點；透明背景的完整視覺邊界未以人工目視或 APP 顯示測試判定。"
+        }
+      },
+      "target": {
+        "width": 1024,
+        "height": 1024
+      },
+      "upscaled": false
+    },
+    {
+      "id": "senya-cheer",
+      "filename": "senya-cheer.png",
+      "batch": 6,
+      "expectedTransparent": true,
+      "original": {
+        "width": 1254,
+        "height": 1254,
+        "recordedWidth": 1254,
+        "recordedHeight": 1254,
+        "sha256": "a5ac4acaab00d525641fe119174aa681b7d700f252c452051f9a1bd33020c776",
+        "backgroundState": "transparent-sample-detected",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 151,
+          "partialAlphaSamples": 138,
+          "opaqueSamples": 0,
+          "minAlpha": 0,
+          "maxAlpha": 253,
+          "transparentSampleDetected": true,
+          "limitation": "規律網格取樣只代表取樣點；透明背景的完整視覺邊界未以人工目視或 APP 顯示測試判定。"
+        }
+      },
+      "final": {
+        "width": 1024,
+        "height": 1024,
+        "sha256": "490d76b69b46ea43e6bca14df26ebdf7af30b8e21620740c50a10115d39033d5",
+        "backgroundState": "transparent-sample-detected",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 150,
+          "partialAlphaSamples": 139,
+          "opaqueSamples": 0,
+          "minAlpha": 0,
+          "maxAlpha": 253,
+          "transparentSampleDetected": true,
+          "limitation": "規律網格取樣只代表取樣點；透明背景的完整視覺邊界未以人工目視或 APP 顯示測試判定。"
+        }
+      },
+      "target": {
+        "width": 1024,
+        "height": 1024
+      },
+      "upscaled": false
+    },
+    {
+      "id": "items",
+      "filename": "items.png",
+      "batch": 7,
+      "expectedTransparent": true,
+      "original": {
+        "width": 1254,
+        "height": 1254,
+        "recordedWidth": 1254,
+        "recordedHeight": 1254,
+        "sha256": "76f65918abab3e6da82b6abd01ab31585cc3e3343f0c412633d668bcbe4b6cad",
+        "backgroundState": "transparent-sample-detected",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 151,
+          "partialAlphaSamples": 138,
+          "opaqueSamples": 0,
+          "minAlpha": 0,
+          "maxAlpha": 253,
+          "transparentSampleDetected": true,
+          "limitation": "規律網格取樣只代表取樣點；透明背景的完整視覺邊界未以人工目視或 APP 顯示測試判定。"
+        }
+      },
+      "final": {
+        "width": 1024,
+        "height": 1024,
+        "sha256": "2ae1dcf79098ea4150a2f97da71d216ef5a19bc983da4ba33960ef7f7ff43fb2",
+        "backgroundState": "transparent-sample-detected",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 152,
+          "partialAlphaSamples": 137,
+          "opaqueSamples": 0,
+          "minAlpha": 0,
+          "maxAlpha": 253,
+          "transparentSampleDetected": true,
+          "limitation": "規律網格取樣只代表取樣點；透明背景的完整視覺邊界未以人工目視或 APP 顯示測試判定。"
+        }
+      },
+      "target": {
+        "width": 1024,
+        "height": 1024
+      },
+      "upscaled": false
+    }
+  ],
+  "manualVisualReview": {
+    "generatedAssetsReviewed": 28,
+    "normalizedSamples": [
+      "hall-bg.png",
+      "items.png",
+      "yelin-cheer.png"
+    ],
+    "checks": [
+      "逐張核對主體、科目與角色對應及happy/cheer表情分類。",
+      "非數學四魔物已清除加減乘符號。",
+      "items四格依序為藥水、綠晶保護卡、八瓣金花、空白盾框。",
+      "抽看統一尺寸後的大廳背景、道具圖及夜凜鼓勵半身像，構圖保留。"
+    ],
+    "appIntegrationTested": false
+  }
+}

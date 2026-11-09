@@ -1,10 +1,11 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useFocusEffect } from 'expo-router';
 import { useCallback, useMemo, useState } from 'react';
-import { Pressable, View } from 'react-native';
+import { Image, Pressable, View } from 'react-native';
 
 import { Card, ErrorBox, H1, Loading, ProgressBar, Screen, T } from '@/components/ui';
 import { api, errorText, type Badge } from '@/lib/api';
+import { ITEM_IMG } from '@/lib/art';
 import { goBack } from '@/lib/nav';
 import { C } from '@/lib/theme';
 
@@ -65,9 +66,9 @@ function BadgeTile({ b, icon }: { b: Badge; icon: keyof typeof Ionicons.glyphMap
         width: '31%', minWidth: 100, flexGrow: 1, maxWidth: 160, padding: 10, gap: 4, alignItems: 'center', borderRadius: 14,
         borderWidth: b.done ? 2 : 1, borderColor: b.done ? GOLD : C.line, backgroundColor: b.done ? C.goldSoft : C.card,
       }}>
-      <View style={{ width: 48, height: 48, borderRadius: 24, alignItems: 'center', justifyContent: 'center',
-        backgroundColor: b.done ? GOLD : C.line }}>
-        <Ionicons name={b.done ? icon : 'lock-closed'} size={24} color={b.done ? C.onAccent : C.faint} />
+      <View style={{ width: 64, height: 64, alignItems: 'center', justifyContent: 'center', opacity: b.done ? 1 : 0.35 }}>
+        <Image source={ITEM_IMG.badgeFrame} accessibilityIgnoresInvertColors style={{ position: 'absolute', width: 64, height: 64 }} />
+        <Ionicons name={b.done ? icon : 'lock-closed'} size={22} color={b.done ? GOLD : C.inkSoft} style={{ marginTop: -6 }} />
       </View>
       <T size={13} weight="700" style={{ textAlign: 'center' }}>{b.title}</T>
       <T size={11} color={C.muted} numberOfLines={3} style={{ textAlign: 'center', minHeight: 30 }}>{b.desc}</T>

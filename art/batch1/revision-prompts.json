@@ -1,0 +1,26 @@
+{
+  "reason": "清除非數學魔物的跨科加減乘符號，保留各科專屬造型與道具。",
+  "mode": "內建圖像編輯工具",
+  "assets": [
+    {
+      "id": "monster-chinese",
+      "reference": "C:\\Users\\susan_chiu\\Documents\\ChatGPT\\HyperFrame\\output\\app-assets-complete-v1\\monster-chinese.png",
+      "prompt": "Use case: precise-object-edit. Input image is the EDIT TARGET, one original school-subject monster illustration. Make ONE targeted cleanup: REMOVE the three floating arithmetic-symbol decorations (the plus sign, minus sign and multiplication X), including their diamond-shaped tile frames if present. Turn the removed external areas into genuine transparent alpha. Keep all other visible parts unchanged: same monster identity, same face, expression, body shape, clothes, hat, colors, lighting, existing important props, rendering quality, position and scale. Do not add substitute symbols, letters or numbers.\nPreserve the pink ink spirit, brush, scholar hat, long scroll and its abstract ink swirls. This is a language/literature monster; no arithmetic runes.\nKeep the square canvas, full-body composition, all main props, existing safe margins and transparent background. One edited PNG only, no text, no border, no dark/white painted background, no panels, no UI."
+    },
+    {
+      "id": "monster-english",
+      "reference": "C:\\Users\\susan_chiu\\Documents\\ChatGPT\\HyperFrame\\output\\app-assets-complete-v1\\monster-english.png",
+      "prompt": "Use case: precise-object-edit. Input image is the EDIT TARGET, one original school-subject monster illustration. Make ONE targeted cleanup: REMOVE the three floating arithmetic-symbol decorations (the plus sign, minus sign and multiplication X), including their diamond-shaped tile frames if present. Turn the removed external areas into genuine transparent alpha. Keep all other visible parts unchanged: same monster identity, same face, expression, body shape, clothes, hat, colors, lighting, existing important props, rendering quality, position and scale. Do not add substitute symbols, letters or numbers.\nPreserve the blue speech-bubble slime, winking expression, all existing colored puzzle pieces and tiny bubble shapes. This is a grammar/puzzle monster; no arithmetic runes.\nKeep the square canvas, full-body composition, all main props, existing safe margins and transparent background. One edited PNG only, no text, no border, no dark/white painted background, no panels, no UI."
+    },
+    {
+      "id": "monster-science",
+      "reference": "C:\\Users\\susan_chiu\\Documents\\ChatGPT\\HyperFrame\\output\\app-assets-complete-v1\\monster-science.png",
+      "prompt": "Use case: precise-object-edit. Input image is the EDIT TARGET, one original school-subject monster illustration. Make ONE targeted cleanup: REMOVE the three floating arithmetic-symbol decorations (the plus sign, minus sign and multiplication X), including their diamond-shaped tile frames if present. Turn the removed external areas into genuine transparent alpha. Keep all other visible parts unchanged: same monster identity, same face, expression, body shape, clothes, hat, colors, lighting, existing important props, rendering quality, position and scale. Do not add substitute symbols, letters or numbers.\nPreserve the green glass-flask creature, leaves, bubbles and atom-orbit ring above its head. This is a natural-science monster; no arithmetic runes.\nKeep the square canvas, full-body composition, all main props, existing safe margins and transparent background. One edited PNG only, no text, no border, no dark/white painted background, no panels, no UI."
+    },
+    {
+      "id": "monster-social",
+      "reference": "C:\\Users\\susan_chiu\\Documents\\ChatGPT\\HyperFrame\\output\\app-assets-complete-v1\\monster-social.png",
+      "prompt": "Use case: precise-object-edit. Input image is the EDIT TARGET, one original school-subject monster illustration. Make ONE targeted cleanup: REMOVE the three floating arithmetic-symbol decorations (the plus sign, minus sign and multiplication X), including their diamond-shaped tile frames if present. Turn the removed external areas into genuine transparent alpha. Keep all other visible parts unchanged: same monster identity, same face, expression, body shape, clothes, hat, colors, lighting, existing important props, rendering quality, position and scale. Do not add substitute symbols, letters or numbers.\nPreserve the violet explorer ghost, hat, globe, map and pocket watch. Remove any tiny readable numerals on the watch face and use simple blank tick marks instead. This is a social-studies/history/geography monster; no arithmetic runes.\nKeep the square canvas, full-body composition, all main props, existing safe margins and transparent background. One edited PNG only, no text, no border, no dark/white painted background, no panels, no UI."
+    }
+  ]
+}
