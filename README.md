@@ -266,7 +266,7 @@ Expo Go 裡**購買會是模擬模式、不會顯示廣告**，每日提醒也�
 
 - `name`：App 顯示名稱（目前是「勇敢學吧」，上架前先查商標與同名 App；`slug`、`android.package` 不要跟著改）。
 - `ios.bundleIdentifier`、`android.package`：改成你自己的，例如 `tw.susan.capapp`，**上架後就不能改**。
-- 圖示：目前用勇者插圖（原圖在 `art/icon-original.png`），已切好 `icon.png`、Android 自適應圖示、啟動畫面、`favicon.png`，以及 Play 商店用的 `store/android/icon-512.png`。
+- 圖示：目前用發光魔法書圖示（原圖在 `art/icon-original.png`），已切好 `icon.png`、Android 自適應圖示、啟動畫面、`favicon.png`，以及 Play 商店用的 `store/android/icon-512.png`。
   `android-icon-monochrome.png` 只用在通知小圖示（必須是白色剪影）。舊的 `scripts/make_icons.mjs` 會產生舊版對話框圖示，不要再執行。
 - `ios.supportsTablet` 設為 `false`：只支援 iPhone，就不需要準備 iPad 截圖（iPad 仍可用相容模式執行）。
 
