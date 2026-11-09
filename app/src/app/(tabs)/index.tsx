@@ -27,6 +27,7 @@ function StudentHome() {
   const [limits, setLimits] = useState<Limits | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [gradeBusy, setGradeBusy] = useState(false);
+  const [stageW, setStageW] = useState(0);
   const nextGrade = gradeCheckNeeded(profile?.grade, profile?.grade_confirmed_at);
 
   async function confirmGrade(g: number) {
@@ -91,9 +92,10 @@ function StudentHome() {
       </View>
 
       {/* 主角舞台 */}
-      <View style={{ borderRadius: 20, overflow: 'hidden', borderWidth: 1, borderColor: hero.color, backgroundColor: C.night }}>
+      <View onLayout={(e) => setStageW(e.nativeEvent.layout.width)}
+        style={{ borderRadius: 20, overflow: 'hidden', borderWidth: 1, borderColor: hero.color, backgroundColor: C.night }}>
         <Image source={hero.image} accessibilityLabel={`你的戰鬥夥伴 ${hero.name}`} accessibilityIgnoresInvertColors
-          style={{ width: '100%', aspectRatio: 348 / 378 }} resizeMode="cover" />
+          style={{ width: '100%', height: stageW ? stageW / 0.72 : 480 }} resizeMode="cover" />
         <View style={{ position: 'absolute', top: 10, left: 10, flexDirection: 'row', alignItems: 'center', gap: 8, paddingVertical: 6, paddingHorizontal: 10,
           borderRadius: 10, borderWidth: 1, borderColor: C.gold, backgroundColor: 'rgba(5, 10, 24, 0.8)' }}>
           <Ionicons name="shield-half" size={22} color={C.gold} />

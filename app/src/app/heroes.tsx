@@ -36,7 +36,7 @@ export default function Heroes() {
       <Card style={{ gap: 10, borderColor: h.color, borderWidth: 1.5 }}>
         <View style={{ flexDirection: 'row', gap: 12 }}>
           <Image source={h.image} accessibilityIgnoresInvertColors
-            style={{ width: 120, height: 130, borderRadius: 12, borderWidth: 1, borderColor: h.color }} />
+            style={{ width: 120, height: 180, borderRadius: 12, borderWidth: 1, borderColor: h.color }} resizeMode="cover" />
           <View style={{ flex: 1, gap: 4 }}>
             <T size={12} color={h.color} weight="700">{h.no} · {h.job}</T>
             <T size={22} weight="700">{h.name}</T>
@@ -60,7 +60,7 @@ export default function Heroes() {
               accessibilityLabel={`${x.name}，${x.job}${x.id === current.id ? '（目前的夥伴）' : ''}`} onPress={() => setSel(x.id)}
               style={{ width: '23%', flexGrow: 1, minWidth: 76, borderRadius: 12, overflow: 'hidden', borderWidth: on ? 2 : 1,
                 borderColor: on ? x.color : C.line, backgroundColor: C.card }}>
-              <Image source={x.image} accessibilityIgnoresInvertColors resizeMode="cover" style={{ width: '100%', height: 104 }} />
+              <Image source={x.image} accessibilityIgnoresInvertColors resizeMode="cover" style={{ width: '100%', height: 132 }} />
               <View style={{ padding: 6, alignItems: 'center' }}>
                 <T size={13} weight="700" color={on ? x.color : C.ink}>{x.name}</T>
                 <T size={10} color={C.muted} numberOfLines={1}>{x.job}</T>
