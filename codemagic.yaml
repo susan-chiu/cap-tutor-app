@@ -1,0 +1,53 @@
+# iOS 雲端打包：Codemagic → TestFlight（不需要 Mac）
+# 事前設定（只要做一次）：
+# 1. Codemagic 連上 GitHub 的 cap-tutor-app 專案。
+# 2. Codemagic → Teams → Integrations → Developer Portal：加入 App Store Connect API 金鑰，名稱取「勇敢學吧 ASC」。
+# 3. Codemagic → 這個 App → Environment variables：建立群組 app_env，填入和 GitHub Actions 相同的 EXPO_PUBLIC_* 值
+#    （EXPO_PUBLIC_SUPABASE_URL、EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY 必填；
+#      iOS 另外有 EXPO_PUBLIC_REVENUECAT_IOS_KEY、EXPO_PUBLIC_ADMOB_REWARDED_IOS，沒有就先空著）。
+#    這些都是可以公開的金鑰；service_role、RevenueCat Secret key 絕對不要放進來。
+workflows:
+  ios-release:
+    name: iOS → TestFlight
+    max_build_duration: 60
+    instance_type: mac_mini_m2
+    integrations:
+      app_store_connect: 勇敢學吧 ASC
+    environment:
+      groups:
+        - app_env
+      ios_signing:
+        distribution_type: app_store
+        bundle_identifier: com.susanchiu.captutor
+      node: 22
+      xcode: latest
+      cocoapods: default
+      vars:
+        SENTRY_DISABLE_AUTO_UPLOAD: "true"
+    triggering:
+      events:
+        - tag
+      tag_patterns:
+        - pattern: 'ios-*'
+    scripts:
+      - name: 安裝套件
+        script: cd app && npm ci
+      - name: 產生 iOS 專案
+        script: |
+          cd app
+          export IOS_BUILD_NUMBER=$BUILD_NUMBER
+          npx expo prebuild --platform ios --no-install
+          cd ios && pod install
+      - name: 套用簽署
+        script: xcode-project use-profiles --project app/ios/app.xcodeproj
+      - name: 打包 IPA
+        script: |
+          cd app/ios
+          xcode-project build-ipa --workspace app.xcworkspace --scheme app \
+            || (grep -h -B2 -A6 "error:" /tmp/xcodebuild_logs/*.log | head -80; tail -25 /tmp/xcodebuild_logs/*.log; exit 1)
+    artifacts:
+      - app/ios/build/ios/ipa/*.ipa
+    publishing:
+      app_store_connect:
+        auth: integration
+        submit_to_testflight: true

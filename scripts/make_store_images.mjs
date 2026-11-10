@@ -1,5 +1,5 @@
 // 產生商店截圖：node scripts/make_store_images.mjs <App 截圖資料夾（3 倍解析度）>
-// 輸出到 store/ios（1290×2796）、store/android（1080×1920）與 store/android/feature-graphic.png（1024×500）
+// 輸出到 store/ios（1290×2796）、store/ios-63（1206×2622）、store/android（1080×1920）與 store/android/feature-graphic.png（1024×500）
 import { createRequire } from 'node:module';
 import { existsSync, mkdirSync, readFileSync } from 'node:fs';
 const require = createRequire(new URL('../tests/package.json', import.meta.url));
@@ -9,6 +9,7 @@ const SRC = process.argv[2] ?? '/tmp/e2e3';
 const OUT = new URL('../store/', import.meta.url).pathname;
 mkdirSync(OUT + 'ios', { recursive: true });
 mkdirSync(OUT + 'android', { recursive: true });
+mkdirSync(OUT + 'ios-63', { recursive: true });
 
 const SLIDES = [
   { file: '01-hall.png', title: '選一位夥伴，一起打怪升級', sub: '8 位勇者陪你，每天 3 分鐘刷題', alt: false },
@@ -59,6 +60,8 @@ const render = async (html, w, h, path) => {
 for (const [i, s] of (existsSync(SRC) ? SLIDES : []).entries()) {
   const n = String(i + 1).padStart(2, '0');
   await render(slideHtml(s, 1290, 2796), 1290, 2796, `${OUT}ios/${n}.png`);
+  // App Store Connect 的 6.3 吋欄位只收 1206×2622（1290×2796 會被拒）
+  await render(slideHtml(s, 1206, 2622), 1206, 2622, `${OUT}ios-63/${n}.png`);
   await render(slideHtml(s, 1080, 1920), 1080, 1920, `${OUT}android/${n}.png`);
   console.log('產生', n, s.title);
 }
