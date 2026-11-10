@@ -1,7 +1,7 @@
 # iOS 雲端打包：Codemagic → TestFlight（不需要 Mac）
 # 事前設定（只要做一次）：
 # 1. Codemagic 連上 GitHub 的 cap-tutor-app 專案。
-# 2. Codemagic → Teams → Integrations → Developer Portal：加入 App Store Connect API 金鑰，名稱取「勇敢學吧 ASC」。
+# 2. Codemagic → Teams → Integrations → Developer Portal：加入 App Store Connect API 金鑰，目前沿用潛境的「subverse_asc」（同一個 Apple 帳號共用）。
 # 3. Codemagic → 這個 App → Environment variables：建立群組 app_env，填入和 GitHub Actions 相同的 EXPO_PUBLIC_* 值
 #    （EXPO_PUBLIC_SUPABASE_URL、EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY 必填；
 #      iOS 另外有 EXPO_PUBLIC_REVENUECAT_IOS_KEY、EXPO_PUBLIC_ADMOB_REWARDED_IOS，沒有就先空著）。
@@ -12,7 +12,7 @@ workflows:
     max_build_duration: 60
     instance_type: mac_mini_m2
     integrations:
-      app_store_connect: 勇敢學吧 ASC
+      app_store_connect: subverse_asc
     environment:
       groups:
         - app_env
