@@ -50,7 +50,10 @@
         "backgroundImage": "./assets/images/android-icon-background.png"
       },
       "predictiveBackGestureEnabled": false,
-      "package": "com.susanchiu.captutor"
+      "package": "com.susanchiu.captutor",
+      "blockedPermissions": [
+        "android.permission.RECORD_AUDIO"
+      ]
     },
     "web": {
       "output": "single",
@@ -89,6 +92,14 @@
         {
           "icon": "./assets/images/android-icon-monochrome.png",
           "color": "#00F0FF"
+        }
+      ],
+      [
+        "expo-audio",
+        {
+          "microphonePermission": false,
+          "recordAudioAndroid": false,
+          "enableBackgroundPlayback": false
         }
       ]
     ],

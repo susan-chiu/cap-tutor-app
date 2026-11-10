@@ -1,11 +1,13 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import * as Haptics from 'expo-haptics';
 import { useEffect, useState } from 'react';
-import { Animated, Image, type ImageSourcePropType, Platform, Pressable, View } from 'react-native';
+import { Animated, Easing, Image, type ImageSourcePropType, Platform, Pressable, View } from 'react-native';
 
 import { T } from '@/components/ui';
 import { BOSS_HEARTS, titleFor } from '@/lib/game';
+import { BTN_IMG, CHEST_IMG, CORNER_IMG, FX_IMG } from '@/lib/art';
 import type { Hero } from '@/lib/heroes';
+import { play } from '@/lib/sound';
 import { C } from '@/lib/theme';
 
 /** 震動回饋（網頁版沒有震動，直接略過） */
@@ -93,8 +95,11 @@ export function LevelUpBanner({ level, hero }: { level: number; hero?: Hero }) {
       backgroundColor: C.goldSoft, borderColor: C.gold, borderWidth: 2, borderRadius: 14, padding: 12,
       flexDirection: 'row', alignItems: 'center', gap: 10,
     }}>
-      {hero ? <Image source={hero.happy} accessibilityIgnoresInvertColors style={{ width: 64, height: 64 }} />
-        : <Ionicons name="star" size={28} color={C.gold} />}
+      <View style={{ width: 72, height: 72, alignItems: 'center', justifyContent: 'center' }}>
+        <Image source={FX_IMG.levelup} accessibilityIgnoresInvertColors style={{ position: 'absolute', width: 96, height: 96, top: -20 }} />
+        {hero ? <Image source={hero.happy} accessibilityIgnoresInvertColors style={{ width: 64, height: 64 }} />
+          : <Ionicons name="star" size={28} color={C.gold} />}
+      </View>
       <View style={{ flex: 1 }}>
         <T weight="700" size={16}>升級了！Lv {level}</T>
         <T size={13} color={C.inkSoft}>新稱號：{titleFor(level)}</T>
@@ -137,5 +142,83 @@ export function EyeHint({ hero, hint, onRetry, onGiveUp }: { hero: Hero; hint: s
         </Pressable>
       </View>
     </Animated.View>
+  );
+}
+
+/** 寶箱獎勵：先顯示關著的寶箱，點一下打開 */
+export function ChestReward({ title, detail }: { title: string; detail: string }) {
+  const [open, setOpen] = useState(false);
+  const pulse = useState(() => new Animated.Value(0))[0];
+  useEffect(() => {
+    const loop = Animated.loop(Animated.sequence([
+      Animated.timing(pulse, { toValue: 1, duration: 600, useNativeDriver: true }),
+      Animated.timing(pulse, { toValue: 0, duration: 600, useNativeDriver: true }),
+    ]));
+    loop.start();
+    return () => loop.stop();
+  }, [pulse]);
+  return (
+    <Pressable accessibilityRole="button" accessibilityLabel={open ? `${title}，${detail}` : '打開寶箱'} disabled={open}
+      onPress={() => { setOpen(true); play('chest'); buzz('levelup'); }}
+      style={{ alignItems: 'center', gap: 6, padding: 10, borderRadius: 16, backgroundColor: C.goldSoft, borderWidth: 1, borderColor: C.gold }}>
+      <Animated.View style={{ transform: [{ scale: open ? 1 : pulse.interpolate({ inputRange: [0, 1], outputRange: [1, 1.07] }) }] }}>
+        <Image source={open ? CHEST_IMG.open : CHEST_IMG.closed} accessibilityIgnoresInvertColors style={{ width: 130, height: 130 }} />
+      </Animated.View>
+      {open ? (
+        <>
+          <T weight="700" color={C.gold} style={{ textAlign: 'center' }}>{title}</T>
+          <T size={13} color={C.inkSoft} style={{ textAlign: 'center' }}>{detail}</T>
+        </>
+      ) : <T weight="700" color={C.gold}>獲得寶箱！點一下打開</T>}
+    </Pressable>
+  );
+}
+
+/** 金邊大按鈕：左右兩端是裝飾，中段可拉長 */
+export function GoldButton({ title, onPress, accessibilityLabel, height = 72 }: {
+  title: string; onPress: () => void; accessibilityLabel?: string; height?: number;
+}) {
+  const cap = height * 0.9;
+  return (
+    <Pressable accessibilityRole="button" accessibilityLabel={accessibilityLabel ?? title} onPress={() => { play('tap', 0.5); onPress(); }}
+      style={({ pressed }) => ({ height, flexDirection: 'row', opacity: pressed ? 0.85 : 1, transform: [{ scale: pressed ? 0.98 : 1 }] })}>
+      <Image source={BTN_IMG.left} accessibilityIgnoresInvertColors style={{ width: cap, height }} />
+      <Image source={BTN_IMG.mid} accessibilityIgnoresInvertColors resizeMode="stretch" style={{ flex: 1, height }} />
+      <Image source={BTN_IMG.right} accessibilityIgnoresInvertColors style={{ width: cap, height }} />
+      <View style={{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0, alignItems: 'center', justifyContent: 'center' }}>
+        <T size={21} weight="700" color="#FFFFFF" style={{ textShadowColor: 'rgba(0, 40, 60, 0.9)', textShadowRadius: 6, textShadowOffset: { width: 0, height: 1 } }}>{title}</T>
+      </View>
+    </Pressable>
+  );
+}
+
+/** 卡片四角的金色角飾（放在 Card 裡面最後） */
+export function FrameCorners({ size = 26 }: { size?: number }) {
+  const base = { position: 'absolute' as const, width: size, height: size };
+  return (
+    <>
+      <Image source={CORNER_IMG} accessibilityIgnoresInvertColors style={{ ...base, top: -2, left: -2 }} />
+      <Image source={CORNER_IMG} accessibilityIgnoresInvertColors style={{ ...base, top: -2, right: -2, transform: [{ scaleX: -1 }] }} />
+      <Image source={CORNER_IMG} accessibilityIgnoresInvertColors style={{ ...base, bottom: -2, left: -2, transform: [{ scaleY: -1 }] }} />
+      <Image source={CORNER_IMG} accessibilityIgnoresInvertColors style={{ ...base, bottom: -2, right: -2, transform: [{ scaleX: -1 }, { scaleY: -1 }] }} />
+    </>
+  );
+}
+
+/** 慢慢旋轉的法陣（壓扁成橢圓，像鋪在地上） */
+export function MagicCircle({ size }: { size: number }) {
+  const spin = useState(() => new Animated.Value(0))[0];
+  useEffect(() => {
+    const loop = Animated.loop(Animated.timing(spin, { toValue: 1, duration: 16000, easing: Easing.linear, useNativeDriver: true }));
+    loop.start();
+    return () => loop.stop();
+  }, [spin]);
+  return (
+    <View style={{ width: size, height: size * 0.32, alignItems: 'center', justifyContent: 'center', overflow: 'visible' }}>
+      <View style={{ transform: [{ scaleY: 0.32 }] }}>
+        <Animated.Image source={FX_IMG.magicCircle} accessibilityIgnoresInvertColors
+          style={{ width: size, height: size, opacity: 0.85, transform: [{ rotate: spin.interpolate({ inputRange: [0, 1], outputRange: ['0deg', '360deg'] }) }] }} />
+      </View>
+    </View>
   );
 }

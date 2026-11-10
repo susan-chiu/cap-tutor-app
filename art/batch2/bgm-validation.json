@@ -1,0 +1,105 @@
+{
+  "asset": "bgm-hall.mp3",
+  "purpose": "勇敢學吧國中生學習RPG｜大廳低音量循環背景音樂",
+  "source": "本機原創振盪器合成；無第三方錄音、取樣或下載；固定 seed 可重製",
+  "seed": 20261109,
+  "arrangement": {
+    "tempo_bpm": 80.0,
+    "meter": "4/4",
+    "bars": 32,
+    "intended_loop_seconds": 96.0,
+    "key_colour": "D minor / Dorian colour"
+  },
+  "wav": {
+    "path": "raw-bgm\\bgm-hall-master.wav",
+    "sample_rate": 44100,
+    "channels": 2,
+    "duration_s": 96.0,
+    "container": "WAV PCM16",
+    "levels": {
+      "peak_linear": 0.30322265625,
+      "peak_dbfs": -10.364767042544258,
+      "rms_linear": 0.06309381081362207,
+      "rms_dbfs": -24.00026481553674,
+      "lufs_estimate_db": -24.00026481553674,
+      "lufs_itu_bs1770": -22.1
+    },
+    "silence_check": {
+      "frame_seconds": 1.0,
+      "minimum_1s_rms_dbfs": -26.019963122993573,
+      "maximum_1s_rms_dbfs": -22.6461222991106,
+      "frames_below_minus60dbfs": 0,
+      "has_long_silence": false
+    },
+    "sha256": "7b042b3a52c1f5ab0abb6d479646af977bc838b6089d70566295819b8a3d1249"
+  },
+  "mp3": {
+    "path": "bgm-hall.mp3",
+    "container": "mp3",
+    "container_duration_s": 96.0,
+    "bit_rate": 192123,
+    "codec": "mp3",
+    "sha256": "638e35fe5a6b10984ffbe9239b93fd5c1921765dda04a1294798eabff65d5c31"
+  },
+  "decoded_mp3": {
+    "path": "raw-bgm\\bgm-hall-decoded.wav",
+    "sample_rate": 44100,
+    "channels": 2,
+    "duration_s": 96.0,
+    "container_duration_s": 96.0,
+    "levels": {
+      "peak_linear": 0.294189453125,
+      "peak_dbfs": -10.627458021137743,
+      "rms_linear": 0.061201789225686046,
+      "rms_dbfs": -24.264717622616967,
+      "lufs_estimate_db": -24.264717622616967,
+      "lufs_itu_bs1770": -22.4
+    },
+    "silence_check": {
+      "frame_seconds": 1.0,
+      "minimum_1s_rms_dbfs": -26.28484393527058,
+      "maximum_1s_rms_dbfs": -22.910304134285553,
+      "frames_below_minus60dbfs": 0,
+      "has_long_silence": false
+    },
+    "pcm_sha256": "f9861c5f0383d982975acddd215da4b3d55b5ee1cd78f1350c286b3ef5681d7c"
+  },
+  "loop_check": {
+    "wav": {
+      "label": "PCM16 master WAV, first vs last 50 ms",
+      "window_ms": 50.0,
+      "sample_count": 4233600,
+      "seam_adjacent_sample_delta_peak": 0.002593994140625,
+      "seam_adjacent_sample_delta_dbfs": -51.7206201849085,
+      "internal_sample_step_p99": 0.00628662109375,
+      "internal_sample_step_p99_dbfs": -44.03165429181129,
+      "seam_to_internal_p99_ratio": 0.41262135922330095,
+      "window_start_rms_dbfs": -25.40141991550385,
+      "window_end_rms_dbfs": -24.904083607254197,
+      "window_rms_delta_db": 0.497336308249654,
+      "start_window_pcm16_sha256": "b2d5dc242fe465eec87da558ab0696521c5050278180daffac58cf242c9fc2fa",
+      "end_window_pcm16_sha256": "b689bda9a6ae58d3a70cbe0e9b6649f44814e1547de5e1f292b1b6ff0fd967fd"
+    },
+    "decoded_mp3": {
+      "label": "FFmpeg-decoded MP3 WAV, raw first vs last 50 ms",
+      "window_ms": 50.0,
+      "sample_count": 4233600,
+      "seam_adjacent_sample_delta_peak": 0.003753662109375,
+      "seam_adjacent_sample_delta_dbfs": -48.510896470406394,
+      "internal_sample_step_p99": 0.006103515625,
+      "internal_sample_step_p99_dbfs": -44.28839878591474,
+      "seam_to_internal_p99_ratio": 0.615,
+      "window_start_rms_dbfs": -25.665861508633398,
+      "window_end_rms_dbfs": -25.16810757601209,
+      "window_rms_delta_db": 0.4977539326213076,
+      "start_window_pcm16_sha256": "2bfa569948db63618bc6aec763e5ad7649d206e6f83c9a09cdf063f46dc812ce",
+      "end_window_pcm16_sha256": "cccb437e8aef81bd00694582f7f3fb89f284983dc150d0828b070b6e6c579854"
+    },
+    "comparison_note": "MP3 首尾短窗包含實際 decoder delay/padding 影響；不得視為所有播放器的完全無縫保證。"
+  },
+  "encoder": {
+    "ffmpeg": "C:\\Users\\susan_chiu\\Developer\\ffmpeg\\ffmpeg-9.0.2-essentials_build\\bin\\ffmpeg.exe",
+    "ffprobe": "C:\\Users\\susan_chiu\\Developer\\ffmpeg\\ffmpeg-9.0.2-essentials_build\\bin\\ffprobe.exe",
+    "codec_settings": "libmp3lame 192k, 44.1 kHz, stereo"
+  }
+}

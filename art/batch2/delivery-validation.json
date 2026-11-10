@@ -1,0 +1,402 @@
+{
+  "asset_count": 36,
+  "png_count": 23,
+  "mp3_count": 13,
+  "images": {
+    "RGB": 12,
+    "RGBA": 11,
+    "same_as_document_dimensions": true
+  },
+  "audio": {
+    "sfx_count": 12,
+    "bgm_count": 1,
+    "max_sfx_duration_s": 1.82,
+    "bgm_duration_s": 96.0
+  },
+  "manual_visual_review": {
+    "passed": true,
+    "reviewer": "root",
+    "reviewed_final_files": [
+      "fx-slash.png",
+      "fx-hit.png",
+      "fx-crit.png",
+      "fx-dissolve.png",
+      "fx-levelup.png",
+      "fx-magic-circle.png",
+      "arena.png",
+      "arena-math.png",
+      "arena-chinese.png",
+      "arena-english.png",
+      "arena-science.png",
+      "arena-social.png",
+      "tabs.png",
+      "button-gold.png",
+      "panel-frame.png",
+      "subjects.png",
+      "medals.png",
+      "chest.png",
+      "plant-math.png",
+      "plant-chinese.png",
+      "plant-english.png",
+      "plant-science.png",
+      "plant-social.png"
+    ],
+    "method": "Final output contact boards viewed directly; plants viewed again after isolated neighbouring glow cleanup. Newly generated originals were also reviewed during generation.",
+    "boards": [
+      "review/fx-final.png",
+      "review/arenas-final.png",
+      "review/ui-final.png",
+      "review/plants-final.png"
+    ],
+    "observations": [
+      "Six FX have black backgrounds, complete light silhouettes and no text or actors.",
+      "Six portrait battle scenes have distinct subject motifs and a dark clear lower area for question cards.",
+      "Tabs have four active and four inactive icons in the intended order.",
+      "Subject badges retain circular proportions; button, panel, medals and chest artwork remain intact.",
+      "Five plant atlases show seed, sprout, juvenile, closed bud and open flower in order; pots share baseline and heights increase by stage.",
+      "Detached neighbouring glow in the fourth plant slot was removed from four atlases; re-reviewed with no visible residual fragment."
+    ],
+    "scope_limits": [
+      "Visual review does not verify App layout, interaction, animation or player rendering.",
+      "Audio subjective listening was not performed."
+    ]
+  },
+  "delegation": {
+    "sfx": "luna-worker/gameplay_sfx",
+    "bgm": "luna-worker/gameplay_bgm",
+    "image_normalization_script": "luna-worker/gameplay_image_formatter",
+    "integration_and_final_validation": "root"
+  },
+  "limitations": [
+    "素材尚未接入 App，未驗證實際互動或播放器。",
+    "未進行音訊主觀試聽；已完成獨立解碼、時長、音量與雜湊驗證。",
+    "部分圖片已按授權縮放或重排；指定輸出尺寸不代表原生生成解析度。",
+    "靜態光效素材仍須由 App 實作播放動畫與混合方式。"
+  ],
+  "files": [
+    {
+      "filename": "fx-slash.png",
+      "type": "PNG",
+      "width": 1024,
+      "height": 1024,
+      "mode": "RGB",
+      "sha256": "f4b2990a654b57a0df7ebb7c27929f060b370ba0d3e29415bf90ac54845854d0",
+      "bytes": 153815
+    },
+    {
+      "filename": "fx-hit.png",
+      "type": "PNG",
+      "width": 1024,
+      "height": 1024,
+      "mode": "RGB",
+      "sha256": "414f079104ab547ae0e4ba7d3afbf9d6015002f317622b0993522a49cf730afe",
+      "bytes": 597211
+    },
+    {
+      "filename": "fx-crit.png",
+      "type": "PNG",
+      "width": 1024,
+      "height": 1024,
+      "mode": "RGB",
+      "sha256": "7dafbb8d19bfa6cb28468766d8ad1a8e3c01324aa9c6b5c704a804c457f8559a",
+      "bytes": 709687
+    },
+    {
+      "filename": "fx-dissolve.png",
+      "type": "PNG",
+      "width": 1024,
+      "height": 1024,
+      "mode": "RGB",
+      "sha256": "87d6da4fd74eb40a543c791aec5d7bd4ad8ad1ee26dd4672e7203328dd364d7d",
+      "bytes": 546143
+    },
+    {
+      "filename": "fx-levelup.png",
+      "type": "PNG",
+      "width": 1024,
+      "height": 1024,
+      "mode": "RGB",
+      "sha256": "35ffa03261d06f43138acb5af13b3f2c8b72bf1c10ebe20193af950923010a57",
+      "bytes": 562669
+    },
+    {
+      "filename": "fx-magic-circle.png",
+      "type": "PNG",
+      "width": 1024,
+      "height": 1024,
+      "mode": "RGB",
+      "sha256": "30bbf31cd7f7b1e95e11ec63212d08ddd25a697d1b1f1a2284310f95e16f5d56",
+      "bytes": 851325
+    },
+    {
+      "filename": "arena.png",
+      "type": "PNG",
+      "width": 1080,
+      "height": 1920,
+      "mode": "RGB",
+      "sha256": "7b652f1a80e716a96bd6cd992968ab1830d9f2149756fb1152a8121410d0610e",
+      "bytes": 1843751
+    },
+    {
+      "filename": "arena-math.png",
+      "type": "PNG",
+      "width": 1080,
+      "height": 1920,
+      "mode": "RGB",
+      "sha256": "bf45fd421076d7a2e0eea94fedd8f06ab23e942bbc0302b2d409d7c631eb87c7",
+      "bytes": 1789472
+    },
+    {
+      "filename": "arena-chinese.png",
+      "type": "PNG",
+      "width": 1080,
+      "height": 1920,
+      "mode": "RGB",
+      "sha256": "498219e951a6b7ebd73e229df64264c1bfb9de166cf2f9c174904778cc5efb32",
+      "bytes": 1820419
+    },
+    {
+      "filename": "arena-english.png",
+      "type": "PNG",
+      "width": 1080,
+      "height": 1920,
+      "mode": "RGB",
+      "sha256": "779782a9c28d0f0dcc0cb81633e7c91fd45e5379411955f624a0661b11decf92",
+      "bytes": 1780715
+    },
+    {
+      "filename": "arena-science.png",
+      "type": "PNG",
+      "width": 1080,
+      "height": 1920,
+      "mode": "RGB",
+      "sha256": "4b513da1716c1771fbfbfb3ad42d7d75096c61a864aa957628a15fa9a3cee4f5",
+      "bytes": 1985879
+    },
+    {
+      "filename": "arena-social.png",
+      "type": "PNG",
+      "width": 1080,
+      "height": 1920,
+      "mode": "RGB",
+      "sha256": "a8789a9db35bd2638b1c69871f4d8440434ac383dc0bf57648dd46a43293744b",
+      "bytes": 1946721
+    },
+    {
+      "filename": "tabs.png",
+      "type": "PNG",
+      "width": 1024,
+      "height": 512,
+      "mode": "RGBA",
+      "sha256": "aab8c8edea62ad3967095a0016bac0b380897b415d2fbc181475e0cd577f5c69",
+      "bytes": 695247
+    },
+    {
+      "filename": "button-gold.png",
+      "type": "PNG",
+      "width": 1024,
+      "height": 256,
+      "mode": "RGBA",
+      "sha256": "432b48b7251f45ffd77dd56762b7f74727e2bdcfd6da1418532134e2370e7545",
+      "bytes": 199477
+    },
+    {
+      "filename": "panel-frame.png",
+      "type": "PNG",
+      "width": 1024,
+      "height": 1024,
+      "mode": "RGBA",
+      "sha256": "c3c26871e92fd24a75b8ab1b2d041624e05230e390048cd08b66ea49d1be1689",
+      "bytes": 717561
+    },
+    {
+      "filename": "subjects.png",
+      "type": "PNG",
+      "width": 1280,
+      "height": 256,
+      "mode": "RGBA",
+      "sha256": "36c9d3232a687a3c1a5cb9972be5842d9098cc26f089ad170320c1f070d423c8",
+      "bytes": 465378
+    },
+    {
+      "filename": "medals.png",
+      "type": "PNG",
+      "width": 1024,
+      "height": 384,
+      "mode": "RGBA",
+      "sha256": "a88c5d3388e925e2769c02ff76aa30b54c2e8208d0bc0003142b92b85f8cb4f8",
+      "bytes": 504965
+    },
+    {
+      "filename": "chest.png",
+      "type": "PNG",
+      "width": 1024,
+      "height": 512,
+      "mode": "RGBA",
+      "sha256": "fa604dc956e2f64ceb33d1f924a6026fc65d18a2d98b646056adba7d145ab486",
+      "bytes": 646767
+    },
+    {
+      "filename": "plant-math.png",
+      "type": "PNG",
+      "width": 1280,
+      "height": 256,
+      "mode": "RGBA",
+      "sha256": "730a1f8896181774b451c4f5aa0926dbf0a216237f780c7ae34117e64179808b",
+      "bytes": 197411
+    },
+    {
+      "filename": "plant-chinese.png",
+      "type": "PNG",
+      "width": 1280,
+      "height": 256,
+      "mode": "RGBA",
+      "sha256": "fae4660439cd472a64523b1250f540549632edcd16341a5596bebba8c720511b",
+      "bytes": 205805
+    },
+    {
+      "filename": "plant-english.png",
+      "type": "PNG",
+      "width": 1280,
+      "height": 256,
+      "mode": "RGBA",
+      "sha256": "eb0791fce113a9610d8b4327065055d0e8aabc031ffb357179abcc078c6e0a39",
+      "bytes": 196147
+    },
+    {
+      "filename": "plant-science.png",
+      "type": "PNG",
+      "width": 1280,
+      "height": 256,
+      "mode": "RGBA",
+      "sha256": "c132b991ab2b95d67e9926a31539db523bdb6242b29d48364e6f6210d2f85aa0",
+      "bytes": 203987
+    },
+    {
+      "filename": "plant-social.png",
+      "type": "PNG",
+      "width": 1280,
+      "height": 256,
+      "mode": "RGBA",
+      "sha256": "b5da85d74b65e9844ce6cba58a11fd280b19bdce92707560e04c83cb70c852c4",
+      "bytes": 200222
+    },
+    {
+      "filename": "sfx-correct.mp3",
+      "type": "MP3",
+      "duration_s": 0.47,
+      "sample_rate": 44100,
+      "channels": 1,
+      "sha256": "a1c26462161fbd3bb2f0bc2fca2093dad26617f9c989dfb012040815aa41807f",
+      "bytes": 12581
+    },
+    {
+      "filename": "sfx-wrong.mp3",
+      "type": "MP3",
+      "duration_s": 0.47,
+      "sample_rate": 44100,
+      "channels": 1,
+      "sha256": "cf37001400d801ac399563496bfd831e7972ff737488b7298e3bd28951ccfc68",
+      "bytes": 12581
+    },
+    {
+      "filename": "sfx-slash.mp3",
+      "type": "MP3",
+      "duration_s": 0.37,
+      "sample_rate": 44100,
+      "channels": 1,
+      "sha256": "6f16dc77cfa208abaab53f92266583366704bfea53af19aa174f031785313e05",
+      "bytes": 10701
+    },
+    {
+      "filename": "sfx-hit.mp3",
+      "type": "MP3",
+      "duration_s": 0.37,
+      "sample_rate": 44100,
+      "channels": 1,
+      "sha256": "1618c0272b6eb24fa9e8299671b0c8abea3767d7f5f1bdfb0e0518652e7c7839",
+      "bytes": 10701
+    },
+    {
+      "filename": "sfx-combo.mp3",
+      "type": "MP3",
+      "duration_s": 0.92,
+      "sample_rate": 44100,
+      "channels": 1,
+      "sha256": "6a345db1ed9c074e79a625666da7f5f20f03bb918468b24ef8ffc714daa691e0",
+      "bytes": 23866
+    },
+    {
+      "filename": "sfx-eye.mp3",
+      "type": "MP3",
+      "duration_s": 0.92,
+      "sample_rate": 44100,
+      "channels": 1,
+      "sha256": "733b73eb01d5479ad7f53bfc53f5cb7d6ff67cc4f18b454a01aa534a6e243a6e",
+      "bytes": 23866
+    },
+    {
+      "filename": "sfx-boss-appear.mp3",
+      "type": "MP3",
+      "duration_s": 1.42,
+      "sample_rate": 44100,
+      "channels": 1,
+      "sha256": "1b0c5efc665715aed90cd247fc1add3613a1e94625629d02bcec0e3622cdba21",
+      "bytes": 35778
+    },
+    {
+      "filename": "sfx-boss-down.mp3",
+      "type": "MP3",
+      "duration_s": 1.82,
+      "sample_rate": 44100,
+      "channels": 1,
+      "sha256": "e847202c2b6d470db1daca0d64f07fbd0b14c14c6c94976477f3b291653d76fa",
+      "bytes": 45182
+    },
+    {
+      "filename": "sfx-levelup.mp3",
+      "type": "MP3",
+      "duration_s": 1.82,
+      "sample_rate": 44100,
+      "channels": 1,
+      "sha256": "e0d5938c6c5e820b5cb5e662a17170d8f835f23ceac5f001eb84d22982d81397",
+      "bytes": 45182
+    },
+    {
+      "filename": "sfx-chest.mp3",
+      "type": "MP3",
+      "duration_s": 1.42,
+      "sample_rate": 44100,
+      "channels": 1,
+      "sha256": "d279c89fd466249ba99363cb75346f2a4de9ec5e85a58ae9a1cba0b9c454335d",
+      "bytes": 35778
+    },
+    {
+      "filename": "sfx-tap.mp3",
+      "type": "MP3",
+      "duration_s": 0.08,
+      "sample_rate": 44100,
+      "channels": 1,
+      "sha256": "45b6108319505f06ef51d803f1d134985e7d84b132d745eb1329392440fb1607",
+      "bytes": 3804
+    },
+    {
+      "filename": "sfx-star.mp3",
+      "type": "MP3",
+      "duration_s": 0.46,
+      "sample_rate": 44100,
+      "channels": 1,
+      "sha256": "4b211c6c653ce11bdb12f63bb1cf78934984783d4dcd8fbc1327e7ba9f1eff8c",
+      "bytes": 12581
+    },
+    {
+      "filename": "bgm-hall.mp3",
+      "type": "MP3",
+      "duration_s": 96.0,
+      "sample_rate": 44100,
+      "channels": 2,
+      "sha256": "638e35fe5a6b10984ffbe9239b93fd5c1921765dda04a1294798eabff65d5c31",
+      "bytes": 2305478
+    }
+  ]
+}

@@ -1,15 +1,15 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useFocusEffect } from 'expo-router';
 import { useCallback, useState } from 'react';
-import { Alert, Pressable, Switch, View } from 'react-native';
+import { Alert, Image, Pressable, Switch, View } from 'react-native';
 
 import { Card, ErrorBox, H1, Loading, Screen, T } from '@/components/ui';
 import { api, errorText, type Leaderboard } from '@/lib/api';
+import { MEDAL_IMG } from '@/lib/art';
 import { titleFor } from '@/lib/game';
 import { goBack } from '@/lib/nav';
 import { C } from '@/lib/theme';
 
-const MEDAL = ['#E8B923', '#A8B0B5', '#C9803F'];
 
 /** 匿名週排行：只顯示植物代號與等級（不顯示暱稱），每週一重新開始；國中、國小分開排 */
 export default function LeaderboardScreen() {
@@ -60,7 +60,7 @@ export default function LeaderboardScreen() {
                   borderTopWidth: i ? 1 : 0, borderTopColor: C.line,
                   backgroundColor: r.me ? C.accentSoft : undefined, marginHorizontal: -16, paddingHorizontal: 16 }}>
                 <View style={{ width: 30, alignItems: 'center' }}>
-                  {r.rank <= 3 ? <Ionicons name="medal" size={24} color={MEDAL[r.rank - 1]} />
+                  {r.rank <= 3 ? <Image source={MEDAL_IMG[r.rank - 1]} accessibilityLabel={`第 ${r.rank} 名`} style={{ width: 30, height: 34 }} />
                     : <T weight="700" color={C.muted}>{r.rank}</T>}
                 </View>
                 <View style={{ flex: 1 }}>

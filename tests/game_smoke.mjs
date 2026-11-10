@@ -99,6 +99,9 @@ await step('段考魔王戰：血條、愛心，答錯掉愛心，結算有星�
   await page.getByRole('button', { name: '看結果' }).click();
   await page.getByText('打敗段考小魔王了！', { exact: true }).waitFor({ timeout: 10000 });
   await page.getByLabel('3 顆星').waitFor();
+  await page.getByText('獲得寶箱！點一下打開', { exact: true }).waitFor({ timeout: 10000 });
+  await shot('06a-chest');
+  await page.getByRole('button', { name: '打開寶箱' }).click();
   await page.getByText('獲得 1 張保護卡（現在 3 張）', { exact: false }).waitFor({ timeout: 10000 });
   await shot('06-boss-win');
 });

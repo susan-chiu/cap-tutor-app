@@ -4,13 +4,15 @@ import { useEffect, useRef, useState } from 'react';
 import { Alert, BackHandler, Image, Pressable, ScrollView, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { BossBar, buzz, EyeHint, LevelUpBanner, Stars, XpPop } from '@/components/game-fx';
+import { BattleStage } from '@/components/battle';
+import { buzz, ChestReward, EyeHint, FrameCorners, LevelUpBanner, Stars, XpPop } from '@/components/game-fx';
 import { Feedback, QuestionView, SolutionCard } from '@/components/question';
 import { Button, Card, ErrorBox, H1, Loading, ProgressBar, T } from '@/components/ui';
 import { api, errorText, type AnswerResult, type BossResult } from '@/lib/api';
 import { useAuth } from '@/lib/auth';
 import { BOSS_HEARTS, bossStars, comboMessage, levelFor } from '@/lib/game';
-import { bossImg, monsterImg } from '@/lib/art';
+import { arenaImg, bossImg, monsterImg } from '@/lib/art';
+import { play } from '@/lib/sound';
 import { heroOf, type Hero } from '@/lib/heroes';
 import { shareText } from '@/lib/share';
 import { ALL_SUBJECTS, C, currentSemester } from '@/lib/theme';
@@ -35,6 +37,7 @@ export default function Quiz() {
   const [pop, setPop] = useState<{ seq: number; text: string; sub: string | null }>({ seq: 0, text: '', sub: null });
   const [levelUp, setLevelUp] = useState<number | null>(null);
   const [bossHit, setBossHit] = useState(0);
+  const [crit, setCrit] = useState(false);
   const boss = mode === 'exam' && params.boss ? params.boss : null;
   // 心眼：答錯後先給提示、可以再答一次（第二次答對 +3 XP）
   const [eye, setEye] = useState<{ first: string; hint: string | null; phase: 'hint' | 'retry' | 'done'; ok?: boolean; bonus?: number } | null>(null);
@@ -52,10 +55,10 @@ export default function Quiz() {
   useEffect(() => {
     let cancelled = false;
     fetchQuestions(mode, params.units, params.count, grade, subjectsKey, params.difficulty, params.part)
-      .then((qs) => { if (!cancelled) { setQuestions(qs); setError(null); } })
+      .then((qs) => { if (!cancelled) { setQuestions(qs); setError(null); if (qs.length && mode === 'exam' && params.boss) play('bossAppear', 0.7); } })
       .catch((e) => { if (!cancelled) setError(errorText(e)); });
     return () => { cancelled = true; };
-  }, [mode, params.units, params.count, grade, subjectsKey, params.difficulty, params.part, reloadKey]);
+  }, [mode, params.units, params.count, grade, subjectsKey, params.difficulty, params.part, params.boss, reloadKey]);
 
   function load() {
     setError(null);
@@ -88,12 +91,16 @@ export default function Quiz() {
       const nextCombo = r.correct ? combo + 1 : 0;
       setCombo(nextCombo);
       buzz(r.correct ? 'correct' : 'wrong');
+      play(r.correct ? 'correct' : 'wrong');
       if (r.correct) {
-        setPop((p) => ({ seq: p.seq + 1, text: `+${r.xp_gained} XP`, sub: comboMessage(nextCombo) }));
+        const cm = comboMessage(nextCombo);
+        if (cm) setTimeout(() => play('combo'), 350);
+        setCrit(nextCombo >= 5);
+        setPop((p) => ({ seq: p.seq + 1, text: `+${r.xp_gained} XP`, sub: cm }));
         setBossHit((h) => h + 1);
-      }
+      } else setTimeout(() => play('eye', 0.5), 400);
       const before = levelFor(r.xp_total - r.xp_gained), after = levelFor(r.xp_total);
-      if (after > before) { setLevelUp(after); buzz('levelup'); } else setLevelUp(null);
+      if (after > before) { setLevelUp(after); buzz('levelup'); setTimeout(() => play('levelup'), 600); } else setLevelUp(null);
       setStats((s) => ({
         answered: s.answered + 1, correct: s.correct + (r.correct ? 1 : 0), xp: s.xp + r.xp_gained,
         streak: r.streak, streakUp: s.streakUp || r.streak_up,
@@ -118,6 +125,7 @@ export default function Quiz() {
       const r = await api.retryBonus(q.id, picked);
       setEye({ ...eye, phase: 'done', ok: r.correct, bonus: r.xp_gained });
       buzz(r.correct ? 'correct' : 'wrong');
+      play(r.correct ? 'correct' : 'wrong');
       if (r.correct && r.xp_gained) {
         setPop((p) => ({ seq: p.seq + 1, text: `心眼 +${r.xp_gained} XP`, sub: null }));
         setStats((s) => ({ ...s, xp: s.xp + r.xp_gained }));
@@ -188,10 +196,10 @@ export default function Quiz() {
             onAgain={() => { setIdx(0); setCombo(0); setStats({ answered: 0, correct: 0, xp: 0, streak: 0, streakUp: false }); load(); }} />
         ) : q ? (
           <>
-            <BossBar name={boss ?? (mode === 'daily' ? '突擊副本・小怪群' : mode === 'review' ? '魔物圖鑑・復仇魔物' : `${params.title ?? '單元'}守衛`)}
+            <BattleStage name={boss ?? (mode === 'daily' ? '突擊副本・小怪群' : mode === 'review' ? '魔物圖鑑・復仇魔物' : `${params.title ?? '單元'}守衛`)}
               hp={questions.length - stats.correct} maxHp={questions.length}
-              hearts={boss ? Math.max(BOSS_HEARTS - (stats.answered - stats.correct), 0) : null} hit={bossHit}
-              image={boss ? bossImg(boss) : monsterImg(q?.subject)} />
+              hearts={boss ? Math.max(BOSS_HEARTS - (stats.answered - stats.correct), 0) : null} hit={bossHit} crit={crit}
+              image={boss ? bossImg(boss) : monsterImg(q?.subject)} arena={arenaImg(mode === 'daily' ? null : q?.subject)} />
             <XpPop seq={pop.seq} text={pop.text} sub={pop.sub} />
             <ScrollView ref={scrollRef} contentContainerStyle={{ padding: 20, gap: 16 }}>
               <T size={13} color={C.muted}>第 {idx + 1} 題 / 共 {questions.length} 題{mode === 'review' ? ' · 錯題複習' : mode === 'exam' ? ` · ${params.title || '段考複習卷'}` : ''}{DIFF_LABEL[params.difficulty ?? ''] ? ` · ${DIFF_LABEL[params.difficulty ?? '']}` : ''}</T>
@@ -288,6 +296,12 @@ function Summary({ stats, total, allSeen, mode, boss, bossKey, questionIds, hero
     return () => { cancelled = true; };
   }, [bossKey, idsKey]);
   const won = stars >= 1;
+  // 結算時星星一顆一顆亮起
+  useEffect(() => {
+    if (!boss) return;
+    const ts = Array.from({ length: stars }, (_, i) => setTimeout(() => play('star'), 500 + i * 300));
+    return () => ts.forEach(clearTimeout);
+  }, [boss, stars]);
   function share() {
     const streak = stats.streak > 0 ? `，連勝 ${stats.streak} 天` : '';
     shareText(`我在「勇敢學吧」答對 ${stats.correct} / ${total} 題${streak}！一起來勇敢學 💪`);
@@ -307,7 +321,8 @@ function Summary({ stats, total, allSeen, mode, boss, bossKey, questionIds, hero
         </View>
       </View>
       {boss ? (
-        <Card style={{ alignItems: 'center', gap: 8 }}>
+        <Card style={{ alignItems: 'center', gap: 8, borderColor: C.gold, backgroundColor: '#0E1530' }}>
+          <FrameCorners />
           <Image source={bossImg(boss)} accessibilityLabel={boss} accessibilityIgnoresInvertColors
             style={{ width: 150, height: 150, opacity: won ? 0.55 : 1 }} />
           <Stars n={stars} />
@@ -315,10 +330,7 @@ function Summary({ stats, total, allSeen, mode, boss, bossKey, questionIds, hero
             {stars === 3 ? '完美通關！答對 9 成以上' : stars === 2 ? '答對 7 成以上，再拚一次拿三顆星！' : stars === 1 ? '答對 5 成以上，過關了！' : '答對不到 5 成，把錯題弄懂再來挑戰！'}
           </T>
           {reward?.freeze_reward ? (
-            <View accessibilityLiveRegion="polite" style={{ flexDirection: 'row', alignItems: 'center', gap: 8, backgroundColor: C.accentSoft, borderRadius: 12, padding: 10 }}>
-              <Ionicons name="snow" size={24} color={C.accent} />
-              <T weight="700" color={C.accentDark} style={{ flex: 1 }}>第一次三星通關！獲得 1 張保護卡（現在 {reward.freeze_cards} 張）</T>
-            </View>
+            <ChestReward title={`獲得 1 張保護卡（現在 ${reward.freeze_cards} 張）`} detail="第一次三星通關的獎勵！忘記練習的那天，保護卡會幫你保住連勝。" />
           ) : reward?.first_three ? (
             <T size={13} color={C.muted} style={{ textAlign: 'center' }}>第一次三星通關！（保護卡已滿 5 張或今天已經領過，就不再加）</T>
           ) : reward && reward.best === 3 ? (

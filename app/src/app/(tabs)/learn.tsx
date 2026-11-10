@@ -5,6 +5,7 @@ import { Pressable, View } from 'react-native';
 
 import { Button, Card, Chip, ErrorBox, H1, H2, Loading, ProgressBar, Screen, T, Tag } from '@/components/ui';
 import { api, errorText, type UnitPartRow, type UnitRow } from '@/lib/api';
+import { SUBJECT_IMG } from '@/lib/art';
 import { useAuth } from '@/lib/auth';
 import { BOSS_NAMES } from '@/lib/game';
 import { Stars } from '@/components/game-fx';
@@ -137,7 +138,7 @@ export default function Learn() {
 
       <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 6 }}>
         {SUBJECTS.map((s) => (
-          <Chip key={s.id} label={s.label} selected={subject === s.id}
+          <Chip key={s.id} label={s.label} selected={subject === s.id} image={SUBJECT_IMG[s.id]}
             onPress={() => { if (s.id !== subject) { setSubject(s.id); setUnits(null); setPicked([]); setCustomMode(false); setOpen(null); } }} />
         ))}
       </View>

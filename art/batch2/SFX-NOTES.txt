@@ -1,0 +1,25 @@
+勇敢學吧｜App Gameplay SFX 原創合成備註
+
+來源與範圍
+- 12 個音效均由 tools/make_sfx.py 以固定 seed、NumPy 振盪器／雜訊／包絡／簡單延遲混響於本機合成。
+- 未使用外部錄音、音樂、聲音樣本、音效庫或既有旋律；MP3 僅由本機 FFmpeg 將本次生成 WAV 編碼。
+- raw-sfx/ 保留本次生成的無損 WAV；交付檔為根目錄 12 個 sfx-*.mp3。
+
+音效用途
+- sfx-correct.mp3（master 約 0.47s）：明亮魔法成功鈴：短促上行大三和弦與高光尾音。
+- sfx-wrong.mp3（master 約 0.47s）：低柔悶擊：短低頻下滑與柔和低通雜訊，避免尖銳蜂鳴。
+- sfx-slash.mp3（master 約 0.37s）：快速能量劍風：高通風噪、斜向頻率掃掠與短尾巴。
+- sfx-hit.mp3（master 約 0.37s）：晶體魔法命中：兩層玻璃感泛音、微小衝擊與短延遲回聲。
+- sfx-combo.mp3（master 約 0.92s）：上升琶音加成：五階上行音型，最後以魔法閃光收束。
+- sfx-eye.mp3（master 約 0.92s）：柔和閃爍提示：慢速脈動與兩次小星點，作為注意力提示。
+- sfx-boss-appear.mp3（master 約 1.42s）：短低頻魔王登場：低沉下壓、暗色泛音與微弱氣流。
+- sfx-boss-down.mp3（master 約 1.82s）：魔物化光消散：下行能量滑音、逐步變亮的粒子尾音。
+- sfx-levelup.mp3（master 約 1.82s）：短勝利升級號角：原創上行號角式和弦與終點閃光。
+- sfx-chest.mp3（master 約 1.42s）：開箱與獎勵閃光：低柔開啟聲、上行獎勵音與金色亮點。
+- sfx-tap.mp3（master 約 0.08s）：輕柔晶體點擊：極短、低音量的高頻晶體脈衝。
+- sfx-star.mp3（master 約 0.46s）：可愛星星亮起：高音三點閃爍，和成功鈴保持可區分。
+
+技術驗證
+- sfx-validation.json 記錄 FFprobe 容器時長、FFmpeg 解碼時長、取樣率、聲道、峰值、RMS、起始靜音／onset 估計與 SHA-256。
+- 驗證內容為檔案存在、MP3 可由 FFmpeg 解碼、容器與解碼時長上限、音量與格式數值；本次未進行主觀播放試聽。
+- 生成 seed：44721；取樣率：44.1 kHz；MP3：mono、192 kbps；峰值上限設為 -5.0 dBFS。

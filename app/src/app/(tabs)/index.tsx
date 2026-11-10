@@ -9,7 +9,9 @@ import { api, errorText, type HomeData, type Limits } from '@/lib/api';
 import { rescheduleReminders } from '@/lib/reminders';
 import { useAuth } from '@/lib/auth';
 import { HALL_BG, ITEM_IMG, monsterImg } from '@/lib/art';
+import { FrameCorners, GoldButton, MagicCircle } from '@/components/game-fx';
 import { levelInfo } from '@/lib/game';
+import { startBgm, stopBgm } from '@/lib/sound';
 import { heroOf } from '@/lib/heroes';
 import { C, gradeCheckNeeded, gradeLabel } from '@/lib/theme';
 
@@ -48,7 +50,7 @@ function StudentHome() {
     } catch (e) { setError(errorText(e)); }
   }, []);
 
-  useFocusEffect(useCallback(() => { load(); }, [load]));
+  useFocusEffect(useCallback(() => { load(); startBgm(); return () => stopBgm(); }, [load]));
 
   if (error) return <Screen><ErrorBox message={error} onRetry={load} /></Screen>;
   if (!data) return <Screen><Loading /></Screen>;
@@ -97,6 +99,10 @@ function StudentHome() {
         style={{ borderRadius: 20, overflow: 'hidden', borderWidth: 1, borderColor: hero.color, backgroundColor: C.night }}>
         <Image source={HALL_BG} accessibilityIgnoresInvertColors resizeMode="cover"
           style={{ width: '100%', height: stageW ? stageW / 0.72 : 480 }} />
+        {/* 石台上旋轉的法陣 */}
+        <View style={{ position: 'absolute', alignSelf: 'center', bottom: (stageW ? stageW / 0.72 : 480) * 0.11 - (stageW || 340) * 0.62 * 0.16 }}>
+          <MagicCircle size={(stageW || 340) * 0.62} />
+        </View>
         {/* 去背的主角站在石台上 */}
         <Image source={hero.full} accessibilityLabel={`你的戰鬥夥伴 ${hero.name}`} accessibilityIgnoresInvertColors resizeMode="contain"
           style={{ position: 'absolute', alignSelf: 'center', bottom: (stageW ? stageW / 0.72 : 480) * 0.11,
@@ -124,7 +130,7 @@ function StudentHome() {
       </View>
 
       {/* 今日討伐 */}
-      <Card style={{ gap: 12, borderColor: C.gold }}>
+      <Card style={{ gap: 12, borderColor: C.gold, backgroundColor: '#0E1530' }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
             <Ionicons name="flash" size={18} color={C.accent} />
@@ -143,16 +149,12 @@ function StudentHome() {
             </View>
           ))}
         </View>
+        <FrameCorners />
       </Card>
 
       {/* 主要按鈕 */}
-      <Pressable accessibilityRole="button" accessibilityLabel={`開始突擊，3 分鐘，隨機 ${data.daily_goal} 題`}
-        onPress={() => router.push({ pathname: '/quiz', params: { mode: 'daily' } })}
-        style={({ pressed }) => ({ minHeight: 68, borderRadius: 18, backgroundColor: C.accent, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 12,
-          opacity: pressed ? 0.85 : 1, shadowColor: C.accent, shadowOpacity: 0.8, shadowRadius: 18, shadowOffset: { width: 0, height: 0 }, borderWidth: 2, borderColor: '#B8FBFF' })}>
-        <Ionicons name="flash" size={28} color={C.onAccent} />
-        <T size={22} weight="700" color={C.onAccent}>開始突擊・3 分鐘</T>
-      </Pressable>
+      <GoldButton title="開始突擊・3 分鐘" accessibilityLabel={`開始突擊，3 分鐘，隨機 ${data.daily_goal} 題`}
+        onPress={() => router.push({ pathname: '/quiz', params: { mode: 'daily' } })} />
       <T size={13} color={C.muted} style={{ textAlign: 'center', marginTop: -4 }}>◆ 隨機 {data.daily_goal} 題，隨時可以休息 ◆</T>
 
       <Pressable accessibilityRole="button" accessibilityLabel={`魔物圖鑑，${monsters ? `${monsters} 隻等待再挑戰` : '目前沒有魔物'}`} onPress={() => router.push('/mistakes')}

@@ -5,7 +5,7 @@ import { Image, Pressable, View } from 'react-native';
 
 import { Button, Card, Chip, ErrorBox, H1, Loading, Screen, T, Tag } from '@/components/ui';
 import { api, errorText, type MistakeRow } from '@/lib/api';
-import { monsterImg } from '@/lib/art';
+import { monsterImg, SUBJECT_IMG } from '@/lib/art';
 import { MONSTER, monsterState, MONSTER_STATE } from '@/lib/game';
 import { C, ERROR_TYPE_LABEL, localToday, semesterLabel, SUBJECTS, subjectLabel } from '@/lib/theme';
 
@@ -66,7 +66,7 @@ export default function Mistakes() {
         <View style={{ flexDirection: 'row', gap: 8, flexWrap: 'wrap' }}>
           <Chip label="全部科目" selected={subject === null} onPress={() => setSubject(null)} />
           {subjectsWithRows.map((s) => (
-            <Chip key={s.id} label={`${s.label} ${all.filter((r) => r.question.subject === s.id && r.status !== 'graduated').length}`}
+            <Chip key={s.id} image={SUBJECT_IMG[s.id]} label={`${s.label} ${all.filter((r) => r.question.subject === s.id && r.status !== 'graduated').length}`}
               selected={subject === s.id} onPress={() => setSubject(s.id)} />
           ))}
         </View>

@@ -1,7 +1,7 @@
 import { type ReactNode } from 'react';
 import {
   KeyboardAvoidingView,
-  ActivityIndicator, Pressable, ScrollView, StyleSheet, Text, View,
+  ActivityIndicator, Image, type ImageSourcePropType, Pressable, ScrollView, StyleSheet, Text, View,
   type StyleProp, type TextStyle, type ViewStyle,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -83,15 +83,18 @@ const BUTTON_KINDS: Record<ButtonKind, { bg: string; fg: string; border: string 
   ghost: { bg: 'transparent', fg: C.muted, border: 'transparent' },
 };
 
-export function Chip({ label, selected, onPress, style }: {
+export function Chip({ label, selected, onPress, style, image }: {
   label: string; selected?: boolean; onPress?: () => void; style?: StyleProp<ViewStyle>;
+  /** 標籤左邊的小圖（例如科目徽章） */
+  image?: ImageSourcePropType;
 }) {
   return (
     <Pressable
       accessibilityRole="button"
       accessibilityState={{ selected: !!selected }} aria-selected={!!selected}
       onPress={onPress}
-      style={[styles.chip, selected ? styles.chipOn : styles.chipOff, style]}>
+      style={[styles.chip, selected ? styles.chipOn : styles.chipOff, image ? { flexDirection: 'row', gap: 6, paddingLeft: 6 } : null, style]}>
+      {image ? <Image source={image} accessibilityIgnoresInvertColors style={{ width: 28, height: 28 }} /> : null}
       <Text style={{ fontSize: 14, fontWeight: selected ? '700' : '400', color: selected ? C.onAccent : C.ink }}>{label}</Text>
     </Pressable>
   );

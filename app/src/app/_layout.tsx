@@ -9,6 +9,7 @@ import { Button, Card, H1, Loading, Screen, T } from '@/components/ui';
 import { WebDialogHost } from '@/components/web-dialog';
 import { AuthProvider, useAuth } from '@/lib/auth';
 import { Sentry } from '@/lib/sentry';
+import { initSound } from '@/lib/sound';
 import { isConfigured } from '@/lib/supabase';
 import { C } from '@/lib/theme';
 
@@ -20,6 +21,7 @@ function RootNavigator() {
   useEffect(() => {
     if (!loading) SplashScreen.hideAsync();
   }, [loading]);
+  useEffect(() => { initSound(); }, []);
 
   if (!isConfigured) return <SetupNeeded />;
   if (!loading && session && !profile && profileError) {

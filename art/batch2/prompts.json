@@ -1,0 +1,428 @@
+{
+  "generation_mode": "內建圖像工具；依已授權的本機影像處理統一尺寸與圖集排列",
+  "source_document": "C:/Users/susan_chiu/Downloads/勇敢學吧 第二批素材：讓畫面更像遊戲.docx",
+  "image_count": 23,
+  "assets": [
+    {
+      "id": "fx-slash",
+      "filename": "fx-slash.png",
+      "label": "青色斬擊",
+      "batch": 1,
+      "target_width": 1024,
+      "target_height": 1024,
+      "transparent": false,
+      "layout": {},
+      "refs": [],
+      "reuse": "C:\\Users\\susan_chiu\\Documents\\ChatGPT\\HyperFrame\\output\\game-assets-v2\\07-correct-slash.png",
+      "prompt": "沿用既有07-correct-slash.png；僅統一尺寸並將透明底合成純黑，保留原光效。"
+    },
+    {
+      "id": "fx-hit",
+      "filename": "fx-hit.png",
+      "label": "命中閃光",
+      "batch": 1,
+      "target_width": 1024,
+      "target_height": 1024,
+      "transparent": false,
+      "layout": {},
+      "refs": [],
+      "reuse": null,
+      "prompt": "Use case: stylized-concept. A single static VFX sprite for the original learning RPG 勇敢學吧. EXACTLY 1024x1024 square canvas, only luminous magic on a FULLY OPAQUE PURE BLACK #000000 background, additive-blend friendly.\nanime mobile game VFX sprite, single isolated visual effect, centered, plain pure black background, additive glow style, high detail, no characters, no objects, no text, no watermark. \nA starburst impact flash, white center with cyan and violet radiating spikes, small crystal shards flying outward.\nNo opaque objects, no actors, no humanoid silhouette, no weapons themselves, no landscape, no UI, no lettering or numbers. The entire effect fits within 84 percent of the square with generous black padding; do not clip spark tips or the base ring. Black stays pure black outside the close light. Strong clean silhouette, controlled bloom and large readable shapes, a refined hand-painted 2.5D anime game effect. Static single frame, not a multi-frame animation sheet."
+    },
+    {
+      "id": "fx-crit",
+      "filename": "fx-crit.png",
+      "label": "暴擊閃光",
+      "batch": 1,
+      "target_width": 1024,
+      "target_height": 1024,
+      "transparent": false,
+      "layout": {},
+      "refs": [],
+      "reuse": null,
+      "prompt": "Use case: stylized-concept. A single static VFX sprite for the original learning RPG 勇敢學吧. EXACTLY 1024x1024 square canvas, only luminous magic on a FULLY OPAQUE PURE BLACK #000000 background, additive-blend friendly.\nanime mobile game VFX sprite, single isolated visual effect, centered, plain pure black background, additive glow style, high detail, no characters, no objects, no text, no watermark. \nA large golden (#FFD700) cross-shaped critical hit flash with lightning crackles and a ring shockwave.\nNo opaque objects, no actors, no humanoid silhouette, no weapons themselves, no landscape, no UI, no lettering or numbers. The entire effect fits within 84 percent of the square with generous black padding; do not clip spark tips or the base ring. Black stays pure black outside the close light. Strong clean silhouette, controlled bloom and large readable shapes, a refined hand-painted 2.5D anime game effect. Static single frame, not a multi-frame animation sheet."
+    },
+    {
+      "id": "fx-dissolve",
+      "filename": "fx-dissolve.png",
+      "label": "光點消散",
+      "batch": 1,
+      "target_width": 1024,
+      "target_height": 1024,
+      "transparent": false,
+      "layout": {},
+      "refs": [],
+      "reuse": null,
+      "prompt": "Use case: stylized-concept. A single static VFX sprite for the original learning RPG 勇敢學吧. EXACTLY 1024x1024 square canvas, only luminous magic on a FULLY OPAQUE PURE BLACK #000000 background, additive-blend friendly.\nanime mobile game VFX sprite, single isolated visual effect, centered, plain pure black background, additive glow style, high detail, no characters, no objects, no text, no watermark. \nA cloud of hundreds of tiny glowing cyan and violet light particles drifting upward, scattered like dust.\nNo opaque objects, no actors, no humanoid silhouette, no weapons themselves, no landscape, no UI, no lettering or numbers. The entire effect fits within 84 percent of the square with generous black padding; do not clip spark tips or the base ring. Black stays pure black outside the close light. Strong clean silhouette, controlled bloom and large readable shapes, a refined hand-painted 2.5D anime game effect. Static single frame, not a multi-frame animation sheet."
+    },
+    {
+      "id": "fx-levelup",
+      "filename": "fx-levelup.png",
+      "label": "金色升級光柱",
+      "batch": 1,
+      "target_width": 1024,
+      "target_height": 1024,
+      "transparent": false,
+      "layout": {},
+      "refs": [],
+      "reuse": null,
+      "prompt": "Use case: stylized-concept. A single static VFX sprite for the original learning RPG 勇敢學吧. EXACTLY 1024x1024 square canvas, only luminous magic on a FULLY OPAQUE PURE BLACK #000000 background, additive-blend friendly.\nanime mobile game VFX sprite, single isolated visual effect, centered, plain pure black background, additive glow style, high detail, no characters, no objects, no text, no watermark. \nA vertical pillar of golden light beaming upward from a glowing magic circle, sparkles rising, tall composition.\nNo opaque objects, no actors, no humanoid silhouette, no weapons themselves, no landscape, no UI, no lettering or numbers. The entire effect fits within 84 percent of the square with generous black padding; do not clip spark tips or the base ring. Black stays pure black outside the close light. Strong clean silhouette, controlled bloom and large readable shapes, a refined hand-painted 2.5D anime game effect. Static single frame, not a multi-frame animation sheet."
+    },
+    {
+      "id": "fx-magic-circle",
+      "filename": "fx-magic-circle.png",
+      "label": "青色旋轉法陣素材",
+      "batch": 1,
+      "target_width": 1024,
+      "target_height": 1024,
+      "transparent": false,
+      "layout": {},
+      "refs": [],
+      "reuse": "C:\\Users\\susan_chiu\\Documents\\ChatGPT\\HyperFrame\\output\\game-assets\\06-magic-circle.png",
+      "prompt": "沿用既有06-magic-circle.png；正面圓形圖樣作為俯視平面法陣，僅統一尺寸並將透明底合成純黑，保留原光效。"
+    },
+    {
+      "id": "arena",
+      "filename": "arena.png",
+      "label": "通用戰場",
+      "batch": 2,
+      "target_width": 1080,
+      "target_height": 1920,
+      "transparent": false,
+      "layout": {},
+      "refs": [],
+      "reuse": null,
+      "prompt": "Use case: stylized-concept. Original art assets for 勇敢學吧, a Taiwanese junior-high fantasy academy learning RPG. Follow the supplied brief's clean line art, soft cel shading, dark navy, neon cyan #00F0FF and violet light, fine gold trim. Original independent designs, no existing franchise characters or logos. NO TEXT, NO NUMBERS, NO LABELS, NO WATERMARK, no UI screenshots or phone mockups. \nAsset type: one mobile quiz battle BACKGROUND, not a whole interface. Exactly 1080x1920 pixels, portrait 9:16, fully opaque full-bleed scene.\nanime mobile game art, clean line art, soft cel shading, dark fantasy magic academy theme, deep navy background tones, neon cyan (#00F0FF) and violet magic glow, gold trim accents, high detail, no text, no letters, no watermark, no logo. Vertical 9:16 battle arena background, no characters, no monsters. An ancient magic arena inside the academy at night, broken stone pillars with glowing runes on both sides, a floating cracked crystal in the sky, the upper third has an open dramatic space where a boss will stand, the lower half fades smoothly into very dark navy almost black for UI panels, subtle mist, cinematic lighting.\nCritical UI composition: keep the CENTRAL AREA of the UPPER THIRD open and uncluttered for a separately composited boss. The LOWER HALF must be an uninterrupted very dark navy-to-near-black low-detail gradient for readable question and answer cards. Place subject-specific architectural props and glow at upper corners or far left/right only. The small floating cracked crystal stays high and small, not occupying the boss location. No cards or fake panels drawn into the image. No people, no statues, no monsters, no human silhouettes, no lettering or readable runes. Rich atmospheric depth in the top area, quiet lower reading zone."
+    },
+    {
+      "id": "arena-math",
+      "filename": "arena-math.png",
+      "label": "數學戰場",
+      "batch": 2,
+      "target_width": 1080,
+      "target_height": 1920,
+      "transparent": false,
+      "layout": {},
+      "refs": [],
+      "reuse": null,
+      "prompt": "Use case: stylized-concept. Original art assets for 勇敢學吧, a Taiwanese junior-high fantasy academy learning RPG. Follow the supplied brief's clean line art, soft cel shading, dark navy, neon cyan #00F0FF and violet light, fine gold trim. Original independent designs, no existing franchise characters or logos. NO TEXT, NO NUMBERS, NO LABELS, NO WATERMARK, no UI screenshots or phone mockups. \nAsset type: one mobile quiz battle BACKGROUND, not a whole interface. Exactly 1080x1920 pixels, portrait 9:16, fully opaque full-bleed scene.\nanime mobile game art, clean line art, soft cel shading, dark fantasy magic academy theme, deep navy background tones, neon cyan (#00F0FF) and violet magic glow, gold trim accents, high detail, no text, no letters, no watermark, no logo. Vertical 9:16 battle arena background, no characters, no monsters. A geometric crystal canyon at night, floating glowing polyhedra and orange light grids on the cliffs, a floating cracked crystal in the sky, the upper third has an open dramatic space where a boss will stand, the lower half fades smoothly into very dark navy almost black for UI panels, subtle mist, cinematic lighting.\nCritical UI composition: keep the CENTRAL AREA of the UPPER THIRD open and uncluttered for a separately composited boss. The LOWER HALF must be an uninterrupted very dark navy-to-near-black low-detail gradient for readable question and answer cards. Place subject-specific architectural props and glow at upper corners or far left/right only. The small floating cracked crystal stays high and small, not occupying the boss location. No cards or fake panels drawn into the image. No people, no statues, no monsters, no human silhouettes, no lettering or readable runes. Rich atmospheric depth in the top area, quiet lower reading zone."
+    },
+    {
+      "id": "arena-chinese",
+      "filename": "arena-chinese.png",
+      "label": "國文戰場",
+      "batch": 2,
+      "target_width": 1080,
+      "target_height": 1920,
+      "transparent": false,
+      "layout": {},
+      "refs": [],
+      "reuse": null,
+      "prompt": "Use case: stylized-concept. Original art assets for 勇敢學吧, a Taiwanese junior-high fantasy academy learning RPG. Follow the supplied brief's clean line art, soft cel shading, dark navy, neon cyan #00F0FF and violet light, fine gold trim. Original independent designs, no existing franchise characters or logos. NO TEXT, NO NUMBERS, NO LABELS, NO WATERMARK, no UI screenshots or phone mockups. \nAsset type: one mobile quiz battle BACKGROUND, not a whole interface. Exactly 1080x1920 pixels, portrait 9:16, fully opaque full-bleed scene.\nanime mobile game art, clean line art, soft cel shading, dark fantasy magic academy theme, deep navy background tones, neon cyan (#00F0FF) and violet magic glow, gold trim accents, high detail, no text, no letters, no watermark, no logo. Vertical 9:16 battle arena background, no characters, no monsters. An ancient misty library courtyard at night, giant floating scrolls and pink ink brush strokes glowing in the air, a floating cracked crystal in the sky, the upper third has an open dramatic space where a boss will stand, the lower half fades smoothly into very dark navy almost black for UI panels, subtle mist, cinematic lighting.\nCritical UI composition: keep the CENTRAL AREA of the UPPER THIRD open and uncluttered for a separately composited boss. The LOWER HALF must be an uninterrupted very dark navy-to-near-black low-detail gradient for readable question and answer cards. Place subject-specific architectural props and glow at upper corners or far left/right only. The small floating cracked crystal stays high and small, not occupying the boss location. No cards or fake panels drawn into the image. No people, no statues, no monsters, no human silhouettes, no lettering or readable runes. Rich atmospheric depth in the top area, quiet lower reading zone."
+    },
+    {
+      "id": "arena-english",
+      "filename": "arena-english.png",
+      "label": "英語戰場",
+      "batch": 2,
+      "target_width": 1080,
+      "target_height": 1920,
+      "transparent": false,
+      "layout": {},
+      "refs": [],
+      "reuse": null,
+      "prompt": "Use case: stylized-concept. Original art assets for 勇敢學吧, a Taiwanese junior-high fantasy academy learning RPG. Follow the supplied brief's clean line art, soft cel shading, dark navy, neon cyan #00F0FF and violet light, fine gold trim. Original independent designs, no existing franchise characters or logos. NO TEXT, NO NUMBERS, NO LABELS, NO WATERMARK, no UI screenshots or phone mockups. \nAsset type: one mobile quiz battle BACKGROUND, not a whole interface. Exactly 1080x1920 pixels, portrait 9:16, fully opaque full-bleed scene.\nanime mobile game art, clean line art, soft cel shading, dark fantasy magic academy theme, deep navy background tones, neon cyan (#00F0FF) and violet magic glow, gold trim accents, high detail, no text, no letters, no watermark, no logo. Vertical 9:16 battle arena background, no characters, no monsters. A night sky tower bridge with floating blue puzzle-piece platforms and glowing speech-bubble lanterns, a floating cracked crystal in the sky, the upper third has an open dramatic space where a boss will stand, the lower half fades smoothly into very dark navy almost black for UI panels, subtle mist, cinematic lighting.\nCritical UI composition: keep the CENTRAL AREA of the UPPER THIRD open and uncluttered for a separately composited boss. The LOWER HALF must be an uninterrupted very dark navy-to-near-black low-detail gradient for readable question and answer cards. Place subject-specific architectural props and glow at upper corners or far left/right only. The small floating cracked crystal stays high and small, not occupying the boss location. No cards or fake panels drawn into the image. No people, no statues, no monsters, no human silhouettes, no lettering or readable runes. Rich atmospheric depth in the top area, quiet lower reading zone."
+    },
+    {
+      "id": "arena-science",
+      "filename": "arena-science.png",
+      "label": "自然戰場",
+      "batch": 2,
+      "target_width": 1080,
+      "target_height": 1920,
+      "transparent": false,
+      "layout": {},
+      "refs": [],
+      "reuse": null,
+      "prompt": "Use case: stylized-concept. Original art assets for 勇敢學吧, a Taiwanese junior-high fantasy academy learning RPG. Follow the supplied brief's clean line art, soft cel shading, dark navy, neon cyan #00F0FF and violet light, fine gold trim. Original independent designs, no existing franchise characters or logos. NO TEXT, NO NUMBERS, NO LABELS, NO WATERMARK, no UI screenshots or phone mockups. \nAsset type: one mobile quiz battle BACKGROUND, not a whole interface. Exactly 1080x1920 pixels, portrait 9:16, fully opaque full-bleed scene.\nanime mobile game art, clean line art, soft cel shading, dark fantasy magic academy theme, deep navy background tones, neon cyan (#00F0FF) and violet magic glow, gold trim accents, high detail, no text, no letters, no watermark, no logo. Vertical 9:16 battle arena background, no characters, no monsters. A glowing green alchemy laboratory ruin at night, giant glass flasks and orbiting atom rings, vines on the walls, a floating cracked crystal in the sky, the upper third has an open dramatic space where a boss will stand, the lower half fades smoothly into very dark navy almost black for UI panels, subtle mist, cinematic lighting.\nCritical UI composition: keep the CENTRAL AREA of the UPPER THIRD open and uncluttered for a separately composited boss. The LOWER HALF must be an uninterrupted very dark navy-to-near-black low-detail gradient for readable question and answer cards. Place subject-specific architectural props and glow at upper corners or far left/right only. The small floating cracked crystal stays high and small, not occupying the boss location. No cards or fake panels drawn into the image. No people, no statues, no monsters, no human silhouettes, no lettering or readable runes. Rich atmospheric depth in the top area, quiet lower reading zone."
+    },
+    {
+      "id": "arena-social",
+      "filename": "arena-social.png",
+      "label": "社會戰場",
+      "batch": 2,
+      "target_width": 1080,
+      "target_height": 1920,
+      "transparent": false,
+      "layout": {},
+      "refs": [],
+      "reuse": null,
+      "prompt": "Use case: stylized-concept. Original art assets for 勇敢學吧, a Taiwanese junior-high fantasy academy learning RPG. Follow the supplied brief's clean line art, soft cel shading, dark navy, neon cyan #00F0FF and violet light, fine gold trim. Original independent designs, no existing franchise characters or logos. NO TEXT, NO NUMBERS, NO LABELS, NO WATERMARK, no UI screenshots or phone mockups. \nAsset type: one mobile quiz battle BACKGROUND, not a whole interface. Exactly 1080x1920 pixels, portrait 9:16, fully opaque full-bleed scene.\nanime mobile game art, clean line art, soft cel shading, dark fantasy magic academy theme, deep navy background tones, neon cyan (#00F0FF) and violet magic glow, gold trim accents, high detail, no text, no letters, no watermark, no logo. Vertical 9:16 battle arena background, no characters, no monsters. A violet time-rift plaza at night, a huge broken clock tower, ancient map fragments and a floating globe, a floating cracked crystal in the sky, the upper third has an open dramatic space where a boss will stand, the lower half fades smoothly into very dark navy almost black for UI panels, subtle mist, cinematic lighting.\nCritical UI composition: keep the CENTRAL AREA of the UPPER THIRD open and uncluttered for a separately composited boss. The LOWER HALF must be an uninterrupted very dark navy-to-near-black low-detail gradient for readable question and answer cards. Place subject-specific architectural props and glow at upper corners or far left/right only. The small floating cracked crystal stays high and small, not occupying the boss location. No cards or fake panels drawn into the image. No people, no statues, no monsters, no human silhouettes, no lettering or readable runes. Rich atmospheric depth in the top area, quiet lower reading zone."
+    },
+    {
+      "id": "tabs",
+      "filename": "tabs.png",
+      "label": "四分頁選中與未選中圖集",
+      "batch": 3,
+      "target_width": 1024,
+      "target_height": 512,
+      "transparent": true,
+      "layout": {
+        "columns": 4,
+        "rows": 2,
+        "align": "center"
+      },
+      "refs": [],
+      "reuse": null,
+      "prompt": "Use case: stylized-concept. Original art assets for 勇敢學吧, a Taiwanese junior-high fantasy academy learning RPG. Follow the supplied brief's clean line art, soft cel shading, dark navy, neon cyan #00F0FF and violet light, fine gold trim. Original independent designs, no existing franchise characters or logos. NO TEXT, NO NUMBERS, NO LABELS, NO WATERMARK, no UI screenshots or phone mockups. \nAsset type: one NAVIGATION TAB ATLAS, exactly1024x512, landscape2:1. EXACTLY FOUR COLUMNS by TWO ROWS, eight icons total. No cell borders or labels.\nanime mobile game UI icon set, flat-ish fantasy style with clean outlines, transparent background, no text, no watermark. A 4 columns by 2 rows grid of navigation tab icons, evenly spaced, each icon centered in its cell. Columns from left to right: a castle with towers (lobby), a folded treasure map (quests), an open book with a small skull emblem on the cover (monster encyclopedia), a shield crest with crossed sword and wings (hero profile). Top row: active state, glowing neon cyan (#00F0FF) with gold edges and soft glow. Bottom row: the same four icons in inactive state, flat muted grey-blue, no glow.\nPrecise order is crucial: four columns castle / folded map / open book with a tiny friendly abstract skull cover emblem / winged shield with crossed sword. Top row all active CYAN+GOLD, bottom row the SAME four designs and SAME underlying scale in muted gray-blue with no glow. Do not invent extra icons or different bottom-row symbols. Each complete icon within its 256x256 cell with 15 percent padding. Consistent front camera, large readable forms, no tiny pattern noise.\nUse a genuine transparent-alpha PNG instead of a black removal placeholder. Keep every separated asset and its local glow inside its own slot. No painted checkerboard, no opaque backdrop, no scene, no ground shadow."
+    },
+    {
+      "id": "button-gold",
+      "filename": "button-gold.png",
+      "label": "金邊可延展大按鈕",
+      "batch": 3,
+      "target_width": 1024,
+      "target_height": 256,
+      "transparent": true,
+      "layout": {
+        "columns": 1,
+        "rows": 1,
+        "align": "center",
+        "fit": "contain"
+      },
+      "refs": [],
+      "reuse": null,
+      "prompt": "Use case: stylized-concept. Original art assets for 勇敢學吧, a Taiwanese junior-high fantasy academy learning RPG. Follow the supplied brief's clean line art, soft cel shading, dark navy, neon cyan #00F0FF and violet light, fine gold trim. Original independent designs, no existing franchise characters or logos. NO TEXT, NO NUMBERS, NO LABELS, NO WATERMARK, no UI screenshots or phone mockups. \nAsset type: one horizontal BUTTON PLATE ONLY. Exactly1024x256, landscape4:1. A very wide slim front-facing reusable UI texture.\nanime mobile game UI asset, transparent background, no text, no watermark. A single wide horizontal game button, hexagonal pointed ends on left and right, glowing neon cyan (#00F0FF) translucent glass fill, thin gold metallic border, ornate gold diamond decorations only at the two ends, the middle section plain and uniform so it can be stretched, centered, front view.\nThe button's long CENTRAL 60 percent must be completely plain uniform translucent dark-cyan glass and straight thin gold top/bottom edge strips, so horizontal stretching does not distort any motif. All ornaments stay at the pointed left/right ends. One button only, no text, no icon or arrow in center. Keep 5 percent transparent padding around the complete button including end tips, no glow clipping.\nUse a genuine transparent-alpha PNG instead of a black removal placeholder. Keep every separated asset and its local glow inside its own slot. No painted checkerboard, no opaque backdrop, no scene, no ground shadow."
+    },
+    {
+      "id": "panel-frame",
+      "filename": "panel-frame.png",
+      "label": "九宮格面板框",
+      "batch": 3,
+      "target_width": 1024,
+      "target_height": 1024,
+      "transparent": true,
+      "layout": {
+        "columns": 1,
+        "rows": 1,
+        "align": "center"
+      },
+      "refs": [],
+      "reuse": null,
+      "prompt": "Use case: stylized-concept. Original art assets for 勇敢學吧, a Taiwanese junior-high fantasy academy learning RPG. Follow the supplied brief's clean line art, soft cel shading, dark navy, neon cyan #00F0FF and violet light, fine gold trim. Original independent designs, no existing franchise characters or logos. NO TEXT, NO NUMBERS, NO LABELS, NO WATERMARK, no UI screenshots or phone mockups. \nAsset type: one square NINE-SLICE-FRIENDLY UI PANEL FRAME texture, exactly1024x1024.\nanime mobile game UI asset, transparent background, no text, no watermark. A single square ornamental UI panel frame, dark navy translucent inner fill, thin gold metallic border lines, ornate gold filigree corner pieces with small cyan gems at all four corners, the straight edges between corners kept simple and uniform, perfectly symmetrical, front view, the frame touches the image edges with a small margin.\nCorner ornament details must be contained in four small corner zones; the middle segments of all four borders are plain straight even-width lines. Central 70 percent is uniform very dark NAVY with low alpha, without patterns, gradients, symbols or decorations. Four corner gems match. Outer background is transparent; one whole square frame with a small 4 percent margin, no shadows, no title tab, no duplicate frame.\nUse a genuine transparent-alpha PNG instead of a black removal placeholder. Keep every separated asset and its local glow inside its own slot. No painted checkerboard, no opaque backdrop, no scene, no ground shadow."
+    },
+    {
+      "id": "subjects",
+      "filename": "subjects.png",
+      "label": "五科科目圖示圖集",
+      "batch": 3,
+      "target_width": 1280,
+      "target_height": 256,
+      "transparent": true,
+      "layout": {
+        "columns": 5,
+        "rows": 1,
+        "align": "center"
+      },
+      "refs": [],
+      "reuse": null,
+      "prompt": "Use case: stylized-concept. Original art assets for 勇敢學吧, a Taiwanese junior-high fantasy academy learning RPG. Follow the supplied brief's clean line art, soft cel shading, dark navy, neon cyan #00F0FF and violet light, fine gold trim. Original independent designs, no existing franchise characters or logos. NO TEXT, NO NUMBERS, NO LABELS, NO WATERMARK, no UI screenshots or phone mockups. \nAsset type: one FIVE-COLUMN SINGLE-ROW subject icon atlas. Exactly1280x256, extremely wide5:1. Five equal256-square cells, no dividers.\nanime mobile game UI icon set, transparent background, no text, no letters, no watermark. A single row of five round emblem icons, evenly spaced, same size and style, gold rim. From left to right: orange emblem with a compass and ruler (math), pink emblem with a calligraphy brush and scroll (Chinese literature), blue emblem with a speech bubble and quill (English), green emblem with a flask and atom (science), violet emblem with a globe and hourglass (social studies). Abstract symbols only, no readable letters.\nOrder must be math ORANGE compass/ruler; Chinese PINK brush/scroll; English BLUE speech bubble/quill; science GREEN flask/atom; social VIOLET globe/hourglass. Exactly five complete ROUND medallions, equal diameter, aligned on one baseline, each within its cell with at least10 percent padding. Use the two specified props only inside each emblem, no arithmetic symbols in non-math icons, no extra mixed-subject props, no crowns or letters. Keep all five circles geometrically round and cohesive.\nUse a genuine transparent-alpha PNG instead of a black removal placeholder. Keep every separated asset and its local glow inside its own slot. No painted checkerboard, no opaque backdrop, no scene, no ground shadow."
+    },
+    {
+      "id": "medals",
+      "filename": "medals.png",
+      "label": "前三名獎牌圖集",
+      "batch": 3,
+      "target_width": 1024,
+      "target_height": 384,
+      "transparent": true,
+      "layout": {
+        "columns": 3,
+        "rows": 1,
+        "align": "center"
+      },
+      "refs": [],
+      "reuse": null,
+      "prompt": "Use case: stylized-concept. Original art assets for 勇敢學吧, a Taiwanese junior-high fantasy academy learning RPG. Follow the supplied brief's clean line art, soft cel shading, dark navy, neon cyan #00F0FF and violet light, fine gold trim. Original independent designs, no existing franchise characters or logos. NO TEXT, NO NUMBERS, NO LABELS, NO WATERMARK, no UI screenshots or phone mockups. \nAsset type: one THREE-COLUMN SINGLE-ROW medal atlas. Exactly1024x384, landscape8:3.\nanime mobile game UI icon set, transparent background, no text, no numbers, no watermark. A single row of three medal icons with ribbons, evenly spaced, same size: gold medal with a small crown emblem, silver medal with a star emblem, bronze medal with a laurel emblem. Shiny metallic, soft glow.\nExactly three different metal colors: left GOLD crown medallion, center SILVER star medallion, right BRONZE laurel medallion. Same circular badge diameter, same ribbon shape and length, same front-facing angle, all aligned on one baseline. Each within its own equal-width cell with generous clear gutters. No podium, no background disc, no ranking numbers, no lettering, no fourth medal.\nUse a genuine transparent-alpha PNG instead of a black removal placeholder. Keep every separated asset and its local glow inside its own slot. No painted checkerboard, no opaque backdrop, no scene, no ground shadow."
+    },
+    {
+      "id": "chest",
+      "filename": "chest.png",
+      "label": "寶箱開關狀態圖集",
+      "batch": 4,
+      "target_width": 1024,
+      "target_height": 512,
+      "transparent": true,
+      "layout": {
+        "columns": 2,
+        "rows": 1,
+        "align": "bottom"
+      },
+      "refs": [],
+      "reuse": null,
+      "prompt": "Use case: stylized-concept. Original art assets for 勇敢學吧, a Taiwanese junior-high fantasy academy learning RPG. Follow the supplied brief's clean line art, soft cel shading, dark navy, neon cyan #00F0FF and violet light, fine gold trim. Original independent designs, no existing franchise characters or logos. NO TEXT, NO NUMBERS, NO LABELS, NO WATERMARK, no UI screenshots or phone mockups. \nAsset type: one TWO-COLUMN SINGLE-ROW chest state atlas, exactly1024x512. Two equal512-square cells.\nanime mobile game art, clean line art, soft cel shading, neon glow, high detail, no text, no watermark. Two treasure chest icons side by side on a transparent background, same chest, same size and angle, three-quarter view. Left: closed ornate treasure chest, dark navy wood with gold metal trim and a glowing cyan crystal lock. Right: the same chest opened, bright golden light and sparkles bursting out, small glowing gems and a green shield card floating above.\nKeep the SAME physical chest body dimensions, lid construction, navy/gold woodwork, cyan lock and three-quarter camera angle across both states. Chest bases align at the same baseline. Left state completely closed; right lid open with a gold burst, a few tiny glowing gems and one small GREEN SHIELD CARD above it. Each full chest and its contained effects fit inside its own cell with12 percent margin. Do not add a third chest, coins on a shared floor, letters or numerals.\nUse a genuine transparent-alpha PNG instead of a black removal placeholder. Keep every separated asset and its local glow inside its own slot. No painted checkerboard, no opaque backdrop, no scene, no ground shadow."
+    },
+    {
+      "id": "plant-math",
+      "filename": "plant-math.png",
+      "label": "數學植物五階段",
+      "batch": 4,
+      "target_width": 1280,
+      "target_height": 256,
+      "transparent": true,
+      "layout": {
+        "columns": 5,
+        "rows": 1,
+        "align": "bottom"
+      },
+      "refs": [],
+      "reuse": null,
+      "prompt": "Use case: stylized-concept. Original art assets for 勇敢學吧, a Taiwanese junior-high fantasy academy learning RPG. Follow the supplied brief's clean line art, soft cel shading, dark navy, neon cyan #00F0FF and violet light, fine gold trim. Original independent designs, no existing franchise characters or logos. NO TEXT, NO NUMBERS, NO LABELS, NO WATERMARK, no UI screenshots or phone mockups. \nAsset type: one FIVE-COLUMN SINGLE-ROW growth atlas, exactly1280x256, extremely wide5:1. Exactly five equally spaced256-square slots, no dividers.\nanime mobile game art, clean line art, soft cel shading, soft glow, high detail, no text, no watermark. A single row of five growth stages of the same magical potted plant, evenly spaced, same small round dark navy pot with gold rim, transparent background. From left to right: 1 a pot of soil with a tiny glowing seed, 2 a small sprout with two leaves, 3 a young plant with several leaves, 4 a taller plant with a closed flower bud, 5 the plant in full bloom with one large glowing flower. Flower and glow color: warm orange (#FFB020).\nExactly FIVE successive stages in left-to-right order: soil+tiny seed / tiny two-leaf sprout / young leafy plant / tall plant with CLOSED bud / mature plant with ONE large fully OPEN flower. Keep the SAME POT SIZE and same ground baseline in all five cells; actual plant HEIGHT MUST INCREASE across stages, do not enlarge the seed pot to match the bloom height. Pot is dark navy with a simple gold rim, visible green leaves, all complete inside their cells. Each cell has10 percent internal padding, no shared soil plane, no floating extra badges, no letters or numbers.\nUse a genuine transparent-alpha PNG instead of a black removal placeholder. Keep every separated asset and its local glow inside its own slot. No painted checkerboard, no opaque backdrop, no scene, no ground shadow."
+    },
+    {
+      "id": "plant-chinese",
+      "filename": "plant-chinese.png",
+      "label": "國文植物五階段",
+      "batch": 5,
+      "target_width": 1280,
+      "target_height": 256,
+      "transparent": true,
+      "layout": {
+        "columns": 5,
+        "rows": 1,
+        "align": "bottom"
+      },
+      "refs": [
+        "C:\\Users\\susan_chiu\\Documents\\ChatGPT\\HyperFrame\\output\\app-assets-gameplay-v2\\plant-math.png"
+      ],
+      "reuse": null,
+      "prompt": "Use case: precise-object-edit. Input image is the original math plant GROWTH ATLAS and the identity/layout reference. Produce a matching five-stage subject variant by changing ONLY the flower/bud/seed-light and glow accent color. Flower and glow color: soft pink-magenta (#FF4D7A).\nPreserve the exact same FIVE stages in the same left-to-right order, identical dark navy/gold pots and pot size, green leaf shapes and colors, camera, stage proportions, positions, margins, painting style and transparent background. Keep stage1 soil with tiny seed, stage2 two-leaf sprout, stage3 young plant, stage4 closed bud, stage5 fully open flower. Do not add a sixth stage, change plant anatomy, add scenery or put text/numbers in image.\nCanvas intent: exactly1280x256, five equal columns on one row. Only the subject-specific magical flower and glow accent changes. Use a genuine transparent-alpha PNG instead of a black removal placeholder. Keep every separated asset and its local glow inside its own slot. No painted checkerboard, no opaque backdrop, no scene, no ground shadow."
+    },
+    {
+      "id": "plant-english",
+      "filename": "plant-english.png",
+      "label": "英語植物五階段",
+      "batch": 5,
+      "target_width": 1280,
+      "target_height": 256,
+      "transparent": true,
+      "layout": {
+        "columns": 5,
+        "rows": 1,
+        "align": "bottom"
+      },
+      "refs": [
+        "C:\\Users\\susan_chiu\\Documents\\ChatGPT\\HyperFrame\\output\\app-assets-gameplay-v2\\plant-math.png"
+      ],
+      "reuse": null,
+      "prompt": "Use case: precise-object-edit. Input image is the original math plant GROWTH ATLAS and the identity/layout reference. Produce a matching five-stage subject variant by changing ONLY the flower/bud/seed-light and glow accent color. Flower and glow color: bright sky blue (#4DA3FF).\nPreserve the exact same FIVE stages in the same left-to-right order, identical dark navy/gold pots and pot size, green leaf shapes and colors, camera, stage proportions, positions, margins, painting style and transparent background. Keep stage1 soil with tiny seed, stage2 two-leaf sprout, stage3 young plant, stage4 closed bud, stage5 fully open flower. Do not add a sixth stage, change plant anatomy, add scenery or put text/numbers in image.\nCanvas intent: exactly1280x256, five equal columns on one row. Only the subject-specific magical flower and glow accent changes. Use a genuine transparent-alpha PNG instead of a black removal placeholder. Keep every separated asset and its local glow inside its own slot. No painted checkerboard, no opaque backdrop, no scene, no ground shadow."
+    },
+    {
+      "id": "plant-science",
+      "filename": "plant-science.png",
+      "label": "自然植物五階段",
+      "batch": 5,
+      "target_width": 1280,
+      "target_height": 256,
+      "transparent": true,
+      "layout": {
+        "columns": 5,
+        "rows": 1,
+        "align": "bottom"
+      },
+      "refs": [
+        "C:\\Users\\susan_chiu\\Documents\\ChatGPT\\HyperFrame\\output\\app-assets-gameplay-v2\\plant-math.png"
+      ],
+      "reuse": null,
+      "prompt": "Use case: precise-object-edit. Input image is the original math plant GROWTH ATLAS and the identity/layout reference. Produce a matching five-stage subject variant by changing ONLY the flower/bud/seed-light and glow accent color. Flower and glow color: mint green (#2EE6A6).\nPreserve the exact same FIVE stages in the same left-to-right order, identical dark navy/gold pots and pot size, green leaf shapes and colors, camera, stage proportions, positions, margins, painting style and transparent background. Keep stage1 soil with tiny seed, stage2 two-leaf sprout, stage3 young plant, stage4 closed bud, stage5 fully open flower. Do not add a sixth stage, change plant anatomy, add scenery or put text/numbers in image.\nCanvas intent: exactly1280x256, five equal columns on one row. Only the subject-specific magical flower and glow accent changes. Use a genuine transparent-alpha PNG instead of a black removal placeholder. Keep every separated asset and its local glow inside its own slot. No painted checkerboard, no opaque backdrop, no scene, no ground shadow."
+    },
+    {
+      "id": "plant-social",
+      "filename": "plant-social.png",
+      "label": "社會植物五階段",
+      "batch": 5,
+      "target_width": 1280,
+      "target_height": 256,
+      "transparent": true,
+      "layout": {
+        "columns": 5,
+        "rows": 1,
+        "align": "bottom"
+      },
+      "refs": [
+        "C:\\Users\\susan_chiu\\Documents\\ChatGPT\\HyperFrame\\output\\app-assets-gameplay-v2\\plant-math.png"
+      ],
+      "reuse": null,
+      "prompt": "Use case: precise-object-edit. Input image is the original math plant GROWTH ATLAS and the identity/layout reference. Produce a matching five-stage subject variant by changing ONLY the flower/bud/seed-light and glow accent color. Flower and glow color: violet (#B266FF).\nPreserve the exact same FIVE stages in the same left-to-right order, identical dark navy/gold pots and pot size, green leaf shapes and colors, camera, stage proportions, positions, margins, painting style and transparent background. Keep stage1 soil with tiny seed, stage2 two-leaf sprout, stage3 young plant, stage4 closed bud, stage5 fully open flower. Do not add a sixth stage, change plant anatomy, add scenery or put text/numbers in image.\nCanvas intent: exactly1280x256, five equal columns on one row. Only the subject-specific magical flower and glow accent changes. Use a genuine transparent-alpha PNG instead of a black removal placeholder. Keep every separated asset and its local glow inside its own slot. No painted checkerboard, no opaque backdrop, no scene, no ground shadow."
+    }
+  ],
+  "audio_count": 13,
+  "audio": [
+    {
+      "filename": "sfx-correct.mp3",
+      "target_duration": 0.5,
+      "label": "答對：明亮魔法鈴"
+    },
+    {
+      "filename": "sfx-wrong.mp3",
+      "target_duration": 0.5,
+      "label": "答錯：柔和低悶擊"
+    },
+    {
+      "filename": "sfx-slash.mp3",
+      "target_duration": 0.4,
+      "label": "青光劍風"
+    },
+    {
+      "filename": "sfx-hit.mp3",
+      "target_duration": 0.4,
+      "label": "晶體命中"
+    },
+    {
+      "filename": "sfx-combo.mp3",
+      "target_duration": 1,
+      "label": "連擊上升琶音"
+    },
+    {
+      "filename": "sfx-eye.mp3",
+      "target_duration": 1,
+      "label": "心眼閃爍"
+    },
+    {
+      "filename": "sfx-boss-appear.mp3",
+      "target_duration": 1.5,
+      "label": "魔王登場"
+    },
+    {
+      "filename": "sfx-boss-down.mp3",
+      "target_duration": 2,
+      "label": "魔王化光消散"
+    },
+    {
+      "filename": "sfx-levelup.mp3",
+      "target_duration": 2,
+      "label": "升級短號角"
+    },
+    {
+      "filename": "sfx-chest.mp3",
+      "target_duration": 1.5,
+      "label": "開箱獎勵"
+    },
+    {
+      "filename": "sfx-tap.mp3",
+      "target_duration": 0.1,
+      "label": "晶體點擊"
+    },
+    {
+      "filename": "sfx-star.mp3",
+      "target_duration": 0.5,
+      "label": "結算亮星"
+    },
+    {
+      "filename": "bgm-hall.mp3",
+      "target_duration": 96,
+      "label": "大廳原創豎琴與柔弦循環"
+    }
+  ],
+  "background_policy": "六張VFX採純黑背景供additive混合，六張戰場不透明，其餘十一張圖集/介面元件採透明PNG。兩張現有光效沿用，其餘依清單生成。"
+}

@@ -1,0 +1,2411 @@
+{
+  "generatedAt": "2026-11-10T00:58:06.088986+00:00",
+  "root": "C:\\Users\\susan_chiu\\Documents\\ChatGPT\\HyperFrame\\output\\app-assets-gameplay-v2",
+  "manifestFile": "prompts.json",
+  "fileCount": 23,
+  "counts": {
+    "manifestAssets": 23,
+    "rootPngsForManifest": 23,
+    "originals": 23,
+    "normalized": 23
+  },
+  "method": "Pillow LANCZOS；先備份 originals，再寫 normalized；全部解碼、尺寸、mode、alpha 規律取樣與 hash 驗證後逐檔 copy 回 root",
+  "validationScope": [
+    "執行前先核對 23 個 manifest PNG 全部存在且可解碼",
+    "透明素材要求實際 alpha 通道；不透明素材輸出 RGB",
+    "圖集 native 比例差異超過 1% 時依 layout 分格，以共同 scale 等比 repack",
+    "align=bottom 圖集各列共用 baseline",
+    "輸出 PNG 使用固定 17x17 alpha 規律取樣、模式與 SHA-256 驗證"
+  ],
+  "notTested": [
+    "本腳本未進行人工目視；主代理目視紀錄另見 visual-review.json／delivery-validation.json。",
+    "尚未進行 App 整合、動畫、音效主觀試聽或互動測試。"
+  ],
+  "assets": [
+    {
+      "id": "fx-slash",
+      "filename": "fx-slash.png",
+      "batch": 1,
+      "expectedTransparent": false,
+      "original": {
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGBA",
+        "sha256": "cd215ca7626025e435d44af28a2c67e1c783fc2e2111b704e097aa15eac9c730",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 256,
+          "partialAlphaSamples": 33,
+          "opaqueSamples": 0,
+          "minAlpha": 0,
+          "maxAlpha": 254,
+          "transparentSampleDetected": true,
+          "channel": "decoded alpha channel",
+          "limitation": "規律網格取樣只代表取樣點；完整透明邊界仍以解碼後 alpha 極值與模式驗證，未進行人工目視或 APP 顯示測試。"
+        }
+      },
+      "final": {
+        "width": 1024,
+        "height": 1024,
+        "mode": "RGB",
+        "sha256": "f4b2990a654b57a0df7ebb7c27929f060b370ba0d3e29415bf90ac54845854d0",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 0,
+          "partialAlphaSamples": 0,
+          "opaqueSamples": 289,
+          "minAlpha": 255,
+          "maxAlpha": 255,
+          "transparentSampleDetected": false,
+          "channel": "RGB-as-opaque",
+          "limitation": "規律網格取樣只代表取樣點；完整透明邊界仍以解碼後 alpha 極值與模式驗證，未進行人工目視或 APP 顯示測試。"
+        }
+      },
+      "target": {
+        "width": 1024,
+        "height": 1024
+      },
+      "layoutMode": "direct",
+      "layout": {
+        "columns": 1,
+        "rows": 1,
+        "align": "center",
+        "sourceAspectRatio": 1.0,
+        "targetAspectRatio": 1.0,
+        "aspectRatioDelta": 0.0,
+        "reason": "不透明滿版/黑底 VFX 精確輸出尺寸",
+        "mode": "direct",
+        "upscaled": false,
+        "blackBackgroundCleanup": {
+          "method": "Remap max-RGB black point 10 to 0 and white point 255 to 255, scaling all channels by the same factor to retain hue",
+          "all_outer_border_pixels_pure_black": true,
+          "geometry_unchanged": true,
+          "changed_pixels": 111257
+        }
+      },
+      "upscaled": false
+    },
+    {
+      "id": "fx-hit",
+      "filename": "fx-hit.png",
+      "batch": 1,
+      "expectedTransparent": false,
+      "original": {
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGB",
+        "sha256": "3c50b64b47526c8497bbc7956fe8114742155fef78fbae8c5785293948cc2ec7",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 0,
+          "partialAlphaSamples": 0,
+          "opaqueSamples": 289,
+          "minAlpha": 255,
+          "maxAlpha": 255,
+          "transparentSampleDetected": false,
+          "channel": "RGB-as-opaque",
+          "limitation": "規律網格取樣只代表取樣點；完整透明邊界仍以解碼後 alpha 極值與模式驗證，未進行人工目視或 APP 顯示測試。"
+        }
+      },
+      "final": {
+        "width": 1024,
+        "height": 1024,
+        "mode": "RGB",
+        "sha256": "414f079104ab547ae0e4ba7d3afbf9d6015002f317622b0993522a49cf730afe",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 0,
+          "partialAlphaSamples": 0,
+          "opaqueSamples": 289,
+          "minAlpha": 255,
+          "maxAlpha": 255,
+          "transparentSampleDetected": false,
+          "channel": "RGB-as-opaque",
+          "limitation": "規律網格取樣只代表取樣點；完整透明邊界仍以解碼後 alpha 極值與模式驗證，未進行人工目視或 APP 顯示測試。"
+        }
+      },
+      "target": {
+        "width": 1024,
+        "height": 1024
+      },
+      "layoutMode": "direct",
+      "layout": {
+        "columns": 1,
+        "rows": 1,
+        "align": "center",
+        "sourceAspectRatio": 1.0,
+        "targetAspectRatio": 1.0,
+        "aspectRatioDelta": 0.0,
+        "reason": "不透明滿版/黑底 VFX 精確輸出尺寸",
+        "mode": "direct",
+        "upscaled": false,
+        "blackBackgroundCleanup": {
+          "method": "Remap max-RGB black point 10 to 0 and white point 255 to 255, scaling all channels by the same factor to retain hue",
+          "all_outer_border_pixels_pure_black": true,
+          "geometry_unchanged": true,
+          "changed_pixels": 477746
+        }
+      },
+      "upscaled": false
+    },
+    {
+      "id": "fx-crit",
+      "filename": "fx-crit.png",
+      "batch": 1,
+      "expectedTransparent": false,
+      "original": {
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGB",
+        "sha256": "3c62fffcccb79aa57ffeb88c11977bc92c81363d4a1b944f6558153d95bd4e20",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 0,
+          "partialAlphaSamples": 0,
+          "opaqueSamples": 289,
+          "minAlpha": 255,
+          "maxAlpha": 255,
+          "transparentSampleDetected": false,
+          "channel": "RGB-as-opaque",
+          "limitation": "規律網格取樣只代表取樣點；完整透明邊界仍以解碼後 alpha 極值與模式驗證，未進行人工目視或 APP 顯示測試。"
+        }
+      },
+      "final": {
+        "width": 1024,
+        "height": 1024,
+        "mode": "RGB",
+        "sha256": "7dafbb8d19bfa6cb28468766d8ad1a8e3c01324aa9c6b5c704a804c457f8559a",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 0,
+          "partialAlphaSamples": 0,
+          "opaqueSamples": 289,
+          "minAlpha": 255,
+          "maxAlpha": 255,
+          "transparentSampleDetected": false,
+          "channel": "RGB-as-opaque",
+          "limitation": "規律網格取樣只代表取樣點；完整透明邊界仍以解碼後 alpha 極值與模式驗證，未進行人工目視或 APP 顯示測試。"
+        }
+      },
+      "target": {
+        "width": 1024,
+        "height": 1024
+      },
+      "layoutMode": "direct",
+      "layout": {
+        "columns": 1,
+        "rows": 1,
+        "align": "center",
+        "sourceAspectRatio": 1.0,
+        "targetAspectRatio": 1.0,
+        "aspectRatioDelta": 0.0,
+        "reason": "不透明滿版/黑底 VFX 精確輸出尺寸",
+        "mode": "direct",
+        "upscaled": false,
+        "blackBackgroundCleanup": {
+          "method": "Remap max-RGB black point 10 to 0 and white point 255 to 255, scaling all channels by the same factor to retain hue",
+          "all_outer_border_pixels_pure_black": true,
+          "geometry_unchanged": true,
+          "changed_pixels": 539590
+        }
+      },
+      "upscaled": false
+    },
+    {
+      "id": "fx-dissolve",
+      "filename": "fx-dissolve.png",
+      "batch": 1,
+      "expectedTransparent": false,
+      "original": {
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGB",
+        "sha256": "656fc69bc4f34015efcee71aa8d8eb77ceccd363dd07e459520bfc732f9c93f1",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 0,
+          "partialAlphaSamples": 0,
+          "opaqueSamples": 289,
+          "minAlpha": 255,
+          "maxAlpha": 255,
+          "transparentSampleDetected": false,
+          "channel": "RGB-as-opaque",
+          "limitation": "規律網格取樣只代表取樣點；完整透明邊界仍以解碼後 alpha 極值與模式驗證，未進行人工目視或 APP 顯示測試。"
+        }
+      },
+      "final": {
+        "width": 1024,
+        "height": 1024,
+        "mode": "RGB",
+        "sha256": "87d6da4fd74eb40a543c791aec5d7bd4ad8ad1ee26dd4672e7203328dd364d7d",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 0,
+          "partialAlphaSamples": 0,
+          "opaqueSamples": 289,
+          "minAlpha": 255,
+          "maxAlpha": 255,
+          "transparentSampleDetected": false,
+          "channel": "RGB-as-opaque",
+          "limitation": "規律網格取樣只代表取樣點；完整透明邊界仍以解碼後 alpha 極值與模式驗證，未進行人工目視或 APP 顯示測試。"
+        }
+      },
+      "target": {
+        "width": 1024,
+        "height": 1024
+      },
+      "layoutMode": "direct",
+      "layout": {
+        "columns": 1,
+        "rows": 1,
+        "align": "center",
+        "sourceAspectRatio": 1.0,
+        "targetAspectRatio": 1.0,
+        "aspectRatioDelta": 0.0,
+        "reason": "不透明滿版/黑底 VFX 精確輸出尺寸",
+        "mode": "direct",
+        "upscaled": false,
+        "blackBackgroundCleanup": {
+          "method": "Remap max-RGB black point 10 to 0 and white point 255 to 255, scaling all channels by the same factor to retain hue",
+          "all_outer_border_pixels_pure_black": true,
+          "geometry_unchanged": true,
+          "changed_pixels": 505487
+        }
+      },
+      "upscaled": false
+    },
+    {
+      "id": "fx-levelup",
+      "filename": "fx-levelup.png",
+      "batch": 1,
+      "expectedTransparent": false,
+      "original": {
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGB",
+        "sha256": "c6736396cf9cfa4ab6921bd440bddf094713541b7d7ea3d7e0f11629c424aa59",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 0,
+          "partialAlphaSamples": 0,
+          "opaqueSamples": 289,
+          "minAlpha": 255,
+          "maxAlpha": 255,
+          "transparentSampleDetected": false,
+          "channel": "RGB-as-opaque",
+          "limitation": "規律網格取樣只代表取樣點；完整透明邊界仍以解碼後 alpha 極值與模式驗證，未進行人工目視或 APP 顯示測試。"
+        }
+      },
+      "final": {
+        "width": 1024,
+        "height": 1024,
+        "mode": "RGB",
+        "sha256": "35ffa03261d06f43138acb5af13b3f2c8b72bf1c10ebe20193af950923010a57",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 0,
+          "partialAlphaSamples": 0,
+          "opaqueSamples": 289,
+          "minAlpha": 255,
+          "maxAlpha": 255,
+          "transparentSampleDetected": false,
+          "channel": "RGB-as-opaque",
+          "limitation": "規律網格取樣只代表取樣點；完整透明邊界仍以解碼後 alpha 極值與模式驗證，未進行人工目視或 APP 顯示測試。"
+        }
+      },
+      "target": {
+        "width": 1024,
+        "height": 1024
+      },
+      "layoutMode": "direct",
+      "layout": {
+        "columns": 1,
+        "rows": 1,
+        "align": "center",
+        "sourceAspectRatio": 1.0,
+        "targetAspectRatio": 1.0,
+        "aspectRatioDelta": 0.0,
+        "reason": "不透明滿版/黑底 VFX 精確輸出尺寸",
+        "mode": "direct",
+        "upscaled": false,
+        "blackBackgroundCleanup": {
+          "method": "Remap max-RGB black point 10 to 0 and white point 255 to 255, scaling all channels by the same factor to retain hue",
+          "all_outer_border_pixels_pure_black": true,
+          "geometry_unchanged": true,
+          "changed_pixels": 460891
+        }
+      },
+      "upscaled": false
+    },
+    {
+      "id": "fx-magic-circle",
+      "filename": "fx-magic-circle.png",
+      "batch": 1,
+      "expectedTransparent": false,
+      "original": {
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGBA",
+        "sha256": "6dd083b7ed06655f731cb7205a98565682950f7815848f3ebb17aba494392b81",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 6,
+          "partialAlphaSamples": 283,
+          "opaqueSamples": 0,
+          "minAlpha": 0,
+          "maxAlpha": 253,
+          "transparentSampleDetected": true,
+          "channel": "decoded alpha channel",
+          "limitation": "規律網格取樣只代表取樣點；完整透明邊界仍以解碼後 alpha 極值與模式驗證，未進行人工目視或 APP 顯示測試。"
+        }
+      },
+      "final": {
+        "width": 1024,
+        "height": 1024,
+        "mode": "RGB",
+        "sha256": "30bbf31cd7f7b1e95e11ec63212d08ddd25a697d1b1f1a2284310f95e16f5d56",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 0,
+          "partialAlphaSamples": 0,
+          "opaqueSamples": 289,
+          "minAlpha": 255,
+          "maxAlpha": 255,
+          "transparentSampleDetected": false,
+          "channel": "RGB-as-opaque",
+          "limitation": "規律網格取樣只代表取樣點；完整透明邊界仍以解碼後 alpha 極值與模式驗證，未進行人工目視或 APP 顯示測試。"
+        }
+      },
+      "target": {
+        "width": 1024,
+        "height": 1024
+      },
+      "layoutMode": "direct",
+      "layout": {
+        "columns": 1,
+        "rows": 1,
+        "align": "center",
+        "sourceAspectRatio": 1.0,
+        "targetAspectRatio": 1.0,
+        "aspectRatioDelta": 0.0,
+        "reason": "不透明滿版/黑底 VFX 精確輸出尺寸",
+        "mode": "direct",
+        "upscaled": false,
+        "blackBackgroundCleanup": {
+          "method": "Remap max-RGB black point 10 to 0 and white point 255 to 255, scaling all channels by the same factor to retain hue",
+          "all_outer_border_pixels_pure_black": true,
+          "geometry_unchanged": true,
+          "changed_pixels": 831658
+        }
+      },
+      "upscaled": false
+    },
+    {
+      "id": "arena",
+      "filename": "arena.png",
+      "batch": 2,
+      "expectedTransparent": false,
+      "original": {
+        "width": 916,
+        "height": 1717,
+        "mode": "RGB",
+        "sha256": "6776662ff25b21d469be044709c971e8b1051f338966cfcaf7ed0f930cdb2b52",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 0,
+          "partialAlphaSamples": 0,
+          "opaqueSamples": 289,
+          "minAlpha": 255,
+          "maxAlpha": 255,
+          "transparentSampleDetected": false,
+          "channel": "RGB-as-opaque",
+          "limitation": "規律網格取樣只代表取樣點；完整透明邊界仍以解碼後 alpha 極值與模式驗證，未進行人工目視或 APP 顯示測試。"
+        }
+      },
+      "final": {
+        "width": 1080,
+        "height": 1920,
+        "mode": "RGB",
+        "sha256": "7b652f1a80e716a96bd6cd992968ab1830d9f2149756fb1152a8121410d0610e",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 0,
+          "partialAlphaSamples": 0,
+          "opaqueSamples": 289,
+          "minAlpha": 255,
+          "maxAlpha": 255,
+          "transparentSampleDetected": false,
+          "channel": "RGB-as-opaque",
+          "limitation": "規律網格取樣只代表取樣點；完整透明邊界仍以解碼後 alpha 極值與模式驗證，未進行人工目視或 APP 顯示測試。"
+        }
+      },
+      "target": {
+        "width": 1080,
+        "height": 1920
+      },
+      "layoutMode": "direct",
+      "layout": {
+        "columns": 1,
+        "rows": 1,
+        "align": "center",
+        "sourceAspectRatio": 0.5334886429819452,
+        "targetAspectRatio": 0.5625,
+        "aspectRatioDelta": 0.051575745809875194,
+        "reason": "不透明滿版/黑底 VFX 精確輸出尺寸",
+        "mode": "direct",
+        "upscaled": true
+      },
+      "upscaled": true
+    },
+    {
+      "id": "arena-math",
+      "filename": "arena-math.png",
+      "batch": 2,
+      "expectedTransparent": false,
+      "original": {
+        "width": 941,
+        "height": 1672,
+        "mode": "RGB",
+        "sha256": "9a4b2854acc1c75a968bb4e8d7fa62ece3dd25ef96b0a5f9fc05567c0807e940",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 0,
+          "partialAlphaSamples": 0,
+          "opaqueSamples": 289,
+          "minAlpha": 255,
+          "maxAlpha": 255,
+          "transparentSampleDetected": false,
+          "channel": "RGB-as-opaque",
+          "limitation": "規律網格取樣只代表取樣點；完整透明邊界仍以解碼後 alpha 極值與模式驗證，未進行人工目視或 APP 顯示測試。"
+        }
+      },
+      "final": {
+        "width": 1080,
+        "height": 1920,
+        "mode": "RGB",
+        "sha256": "bf45fd421076d7a2e0eea94fedd8f06ab23e942bbc0302b2d409d7c631eb87c7",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 0,
+          "partialAlphaSamples": 0,
+          "opaqueSamples": 289,
+          "minAlpha": 255,
+          "maxAlpha": 255,
+          "transparentSampleDetected": false,
+          "channel": "RGB-as-opaque",
+          "limitation": "規律網格取樣只代表取樣點；完整透明邊界仍以解碼後 alpha 極值與模式驗證，未進行人工目視或 APP 顯示測試。"
+        }
+      },
+      "target": {
+        "width": 1080,
+        "height": 1920
+      },
+      "layoutMode": "direct",
+      "layout": {
+        "columns": 1,
+        "rows": 1,
+        "align": "center",
+        "sourceAspectRatio": 0.562799043062201,
+        "targetAspectRatio": 0.5625,
+        "aspectRatioDelta": 0.0005316321105794941,
+        "reason": "不透明滿版/黑底 VFX 精確輸出尺寸",
+        "mode": "direct",
+        "upscaled": true
+      },
+      "upscaled": true
+    },
+    {
+      "id": "arena-chinese",
+      "filename": "arena-chinese.png",
+      "batch": 2,
+      "expectedTransparent": false,
+      "original": {
+        "width": 941,
+        "height": 1672,
+        "mode": "RGB",
+        "sha256": "6f9339b2e9a7c394e46364ce1ccdb26bb8fa627164bbbea7b6731110f8050177",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 0,
+          "partialAlphaSamples": 0,
+          "opaqueSamples": 289,
+          "minAlpha": 255,
+          "maxAlpha": 255,
+          "transparentSampleDetected": false,
+          "channel": "RGB-as-opaque",
+          "limitation": "規律網格取樣只代表取樣點；完整透明邊界仍以解碼後 alpha 極值與模式驗證，未進行人工目視或 APP 顯示測試。"
+        }
+      },
+      "final": {
+        "width": 1080,
+        "height": 1920,
+        "mode": "RGB",
+        "sha256": "498219e951a6b7ebd73e229df64264c1bfb9de166cf2f9c174904778cc5efb32",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 0,
+          "partialAlphaSamples": 0,
+          "opaqueSamples": 289,
+          "minAlpha": 255,
+          "maxAlpha": 255,
+          "transparentSampleDetected": false,
+          "channel": "RGB-as-opaque",
+          "limitation": "規律網格取樣只代表取樣點；完整透明邊界仍以解碼後 alpha 極值與模式驗證，未進行人工目視或 APP 顯示測試。"
+        }
+      },
+      "target": {
+        "width": 1080,
+        "height": 1920
+      },
+      "layoutMode": "direct",
+      "layout": {
+        "columns": 1,
+        "rows": 1,
+        "align": "center",
+        "sourceAspectRatio": 0.562799043062201,
+        "targetAspectRatio": 0.5625,
+        "aspectRatioDelta": 0.0005316321105794941,
+        "reason": "不透明滿版/黑底 VFX 精確輸出尺寸",
+        "mode": "direct",
+        "upscaled": true
+      },
+      "upscaled": true
+    },
+    {
+      "id": "arena-english",
+      "filename": "arena-english.png",
+      "batch": 2,
+      "expectedTransparent": false,
+      "original": {
+        "width": 941,
+        "height": 1672,
+        "mode": "RGB",
+        "sha256": "cc4a76ffdd41cebbd6cce7e71ecf3d12c1fcc0824d7461e29d490feb8900d7bb",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 0,
+          "partialAlphaSamples": 0,
+          "opaqueSamples": 289,
+          "minAlpha": 255,
+          "maxAlpha": 255,
+          "transparentSampleDetected": false,
+          "channel": "RGB-as-opaque",
+          "limitation": "規律網格取樣只代表取樣點；完整透明邊界仍以解碼後 alpha 極值與模式驗證，未進行人工目視或 APP 顯示測試。"
+        }
+      },
+      "final": {
+        "width": 1080,
+        "height": 1920,
+        "mode": "RGB",
+        "sha256": "779782a9c28d0f0dcc0cb81633e7c91fd45e5379411955f624a0661b11decf92",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 0,
+          "partialAlphaSamples": 0,
+          "opaqueSamples": 289,
+          "minAlpha": 255,
+          "maxAlpha": 255,
+          "transparentSampleDetected": false,
+          "channel": "RGB-as-opaque",
+          "limitation": "規律網格取樣只代表取樣點；完整透明邊界仍以解碼後 alpha 極值與模式驗證，未進行人工目視或 APP 顯示測試。"
+        }
+      },
+      "target": {
+        "width": 1080,
+        "height": 1920
+      },
+      "layoutMode": "direct",
+      "layout": {
+        "columns": 1,
+        "rows": 1,
+        "align": "center",
+        "sourceAspectRatio": 0.562799043062201,
+        "targetAspectRatio": 0.5625,
+        "aspectRatioDelta": 0.0005316321105794941,
+        "reason": "不透明滿版/黑底 VFX 精確輸出尺寸",
+        "mode": "direct",
+        "upscaled": true
+      },
+      "upscaled": true
+    },
+    {
+      "id": "arena-science",
+      "filename": "arena-science.png",
+      "batch": 2,
+      "expectedTransparent": false,
+      "original": {
+        "width": 941,
+        "height": 1672,
+        "mode": "RGB",
+        "sha256": "1e65efa13c77b588e42d154ec9abb8b81a964cbfa24e06a2808d10215f298918",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 0,
+          "partialAlphaSamples": 0,
+          "opaqueSamples": 289,
+          "minAlpha": 255,
+          "maxAlpha": 255,
+          "transparentSampleDetected": false,
+          "channel": "RGB-as-opaque",
+          "limitation": "規律網格取樣只代表取樣點；完整透明邊界仍以解碼後 alpha 極值與模式驗證，未進行人工目視或 APP 顯示測試。"
+        }
+      },
+      "final": {
+        "width": 1080,
+        "height": 1920,
+        "mode": "RGB",
+        "sha256": "4b513da1716c1771fbfbfb3ad42d7d75096c61a864aa957628a15fa9a3cee4f5",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 0,
+          "partialAlphaSamples": 0,
+          "opaqueSamples": 289,
+          "minAlpha": 255,
+          "maxAlpha": 255,
+          "transparentSampleDetected": false,
+          "channel": "RGB-as-opaque",
+          "limitation": "規律網格取樣只代表取樣點；完整透明邊界仍以解碼後 alpha 極值與模式驗證，未進行人工目視或 APP 顯示測試。"
+        }
+      },
+      "target": {
+        "width": 1080,
+        "height": 1920
+      },
+      "layoutMode": "direct",
+      "layout": {
+        "columns": 1,
+        "rows": 1,
+        "align": "center",
+        "sourceAspectRatio": 0.562799043062201,
+        "targetAspectRatio": 0.5625,
+        "aspectRatioDelta": 0.0005316321105794941,
+        "reason": "不透明滿版/黑底 VFX 精確輸出尺寸",
+        "mode": "direct",
+        "upscaled": true
+      },
+      "upscaled": true
+    },
+    {
+      "id": "arena-social",
+      "filename": "arena-social.png",
+      "batch": 2,
+      "expectedTransparent": false,
+      "original": {
+        "width": 941,
+        "height": 1672,
+        "mode": "RGB",
+        "sha256": "87dab9bf63f6377880424bacc9b8b119fe22791467065ed94fa5a7addba3a4f4",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 0,
+          "partialAlphaSamples": 0,
+          "opaqueSamples": 289,
+          "minAlpha": 255,
+          "maxAlpha": 255,
+          "transparentSampleDetected": false,
+          "channel": "RGB-as-opaque",
+          "limitation": "規律網格取樣只代表取樣點；完整透明邊界仍以解碼後 alpha 極值與模式驗證，未進行人工目視或 APP 顯示測試。"
+        }
+      },
+      "final": {
+        "width": 1080,
+        "height": 1920,
+        "mode": "RGB",
+        "sha256": "a8789a9db35bd2638b1c69871f4d8440434ac383dc0bf57648dd46a43293744b",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 0,
+          "partialAlphaSamples": 0,
+          "opaqueSamples": 289,
+          "minAlpha": 255,
+          "maxAlpha": 255,
+          "transparentSampleDetected": false,
+          "channel": "RGB-as-opaque",
+          "limitation": "規律網格取樣只代表取樣點；完整透明邊界仍以解碼後 alpha 極值與模式驗證，未進行人工目視或 APP 顯示測試。"
+        }
+      },
+      "target": {
+        "width": 1080,
+        "height": 1920
+      },
+      "layoutMode": "direct",
+      "layout": {
+        "columns": 1,
+        "rows": 1,
+        "align": "center",
+        "sourceAspectRatio": 0.562799043062201,
+        "targetAspectRatio": 0.5625,
+        "aspectRatioDelta": 0.0005316321105794941,
+        "reason": "不透明滿版/黑底 VFX 精確輸出尺寸",
+        "mode": "direct",
+        "upscaled": true
+      },
+      "upscaled": true
+    },
+    {
+      "id": "tabs",
+      "filename": "tabs.png",
+      "batch": 3,
+      "expectedTransparent": true,
+      "original": {
+        "width": 1774,
+        "height": 887,
+        "mode": "RGBA",
+        "sha256": "fd022d26b1960030ab798661ac0f47ad7042d3cbf626fc657935f2deb8466689",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 114,
+          "partialAlphaSamples": 175,
+          "opaqueSamples": 0,
+          "minAlpha": 0,
+          "maxAlpha": 255,
+          "transparentSampleDetected": true,
+          "channel": "decoded alpha channel",
+          "limitation": "規律網格取樣只代表取樣點；完整透明邊界仍以解碼後 alpha 極值與模式驗證，未進行人工目視或 APP 顯示測試。"
+        }
+      },
+      "final": {
+        "width": 1024,
+        "height": 512,
+        "mode": "RGBA",
+        "sha256": "aab8c8edea62ad3967095a0016bac0b380897b415d2fbc181475e0cd577f5c69",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 114,
+          "partialAlphaSamples": 175,
+          "opaqueSamples": 0,
+          "minAlpha": 0,
+          "maxAlpha": 255,
+          "transparentSampleDetected": true,
+          "channel": "decoded alpha channel",
+          "limitation": "規律網格取樣只代表取樣點；完整透明邊界仍以解碼後 alpha 極值與模式驗證，未進行人工目視或 APP 顯示測試。"
+        }
+      },
+      "target": {
+        "width": 1024,
+        "height": 512
+      },
+      "layoutMode": "direct",
+      "layout": {
+        "columns": 4,
+        "rows": 2,
+        "align": "center",
+        "sourceAspectRatio": 2.0,
+        "targetAspectRatio": 2.0,
+        "aspectRatioDelta": 0.0,
+        "reason": "圖集 native 比例與目標差小於 1%",
+        "mode": "direct",
+        "upscaled": false
+      },
+      "upscaled": false
+    },
+    {
+      "id": "button-gold",
+      "filename": "button-gold.png",
+      "batch": 3,
+      "expectedTransparent": true,
+      "original": {
+        "width": 2172,
+        "height": 724,
+        "mode": "RGBA",
+        "sha256": "a187d89600e0b45fcc955abb9088ad65306fe7586eaf8823ea220b46094461e3",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 176,
+          "partialAlphaSamples": 113,
+          "opaqueSamples": 0,
+          "minAlpha": 0,
+          "maxAlpha": 254,
+          "transparentSampleDetected": true,
+          "channel": "decoded alpha channel",
+          "limitation": "規律網格取樣只代表取樣點；完整透明邊界仍以解碼後 alpha 極值與模式驗證，未進行人工目視或 APP 顯示測試。"
+        }
+      },
+      "final": {
+        "width": 1024,
+        "height": 256,
+        "mode": "RGBA",
+        "sha256": "432b48b7251f45ffd77dd56762b7f74727e2bdcfd6da1418532134e2370e7545",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 160,
+          "partialAlphaSamples": 129,
+          "opaqueSamples": 0,
+          "minAlpha": 0,
+          "maxAlpha": 255,
+          "transparentSampleDetected": true,
+          "channel": "decoded alpha channel",
+          "limitation": "規律網格取樣只代表取樣點；完整透明邊界仍以解碼後 alpha 極值與模式驗證，未進行人工目視或 APP 顯示測試。"
+        }
+      },
+      "target": {
+        "width": 1024,
+        "height": 256
+      },
+      "layoutMode": "contain",
+      "layout": {
+        "columns": 1,
+        "rows": 1,
+        "align": "center",
+        "sourceAspectRatio": 3.0,
+        "targetAspectRatio": 4.0,
+        "aspectRatioDelta": 0.25,
+        "scale": 0.43552196504487484,
+        "sourceContentBox": [
+          27,
+          175,
+          2144,
+          541
+        ],
+        "outputContentSize": [
+          922,
+          159
+        ],
+        "outputPlacement": [
+          51,
+          48
+        ],
+        "mode": "contain",
+        "upscaled": false
+      },
+      "upscaled": false
+    },
+    {
+      "id": "panel-frame",
+      "filename": "panel-frame.png",
+      "batch": 3,
+      "expectedTransparent": true,
+      "original": {
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGBA",
+        "sha256": "36f153aceac9edf37d9bb10266dab24efdd44d18245b4f612310d84c34c6e7cd",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 92,
+          "partialAlphaSamples": 197,
+          "opaqueSamples": 0,
+          "minAlpha": 0,
+          "maxAlpha": 255,
+          "transparentSampleDetected": true,
+          "channel": "decoded alpha channel",
+          "limitation": "規律網格取樣只代表取樣點；完整透明邊界仍以解碼後 alpha 極值與模式驗證，未進行人工目視或 APP 顯示測試。"
+        }
+      },
+      "final": {
+        "width": 1024,
+        "height": 1024,
+        "mode": "RGBA",
+        "sha256": "c3c26871e92fd24a75b8ab1b2d041624e05230e390048cd08b66ea49d1be1689",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 91,
+          "partialAlphaSamples": 195,
+          "opaqueSamples": 3,
+          "minAlpha": 0,
+          "maxAlpha": 255,
+          "transparentSampleDetected": true,
+          "channel": "decoded alpha channel",
+          "limitation": "規律網格取樣只代表取樣點；完整透明邊界仍以解碼後 alpha 極值與模式驗證，未進行人工目視或 APP 顯示測試。"
+        }
+      },
+      "target": {
+        "width": 1024,
+        "height": 1024
+      },
+      "layoutMode": "direct",
+      "layout": {
+        "columns": 1,
+        "rows": 1,
+        "align": "center",
+        "sourceAspectRatio": 1.0,
+        "targetAspectRatio": 1.0,
+        "aspectRatioDelta": 0.0,
+        "reason": "single-object native 比例與目標差小於 1%",
+        "mode": "direct",
+        "upscaled": false
+      },
+      "upscaled": false
+    },
+    {
+      "id": "subjects",
+      "filename": "subjects.png",
+      "batch": 3,
+      "expectedTransparent": true,
+      "original": {
+        "width": 2172,
+        "height": 724,
+        "mode": "RGBA",
+        "sha256": "9967291ac7b0876b632f0b362d23d9cf05a21397429ddee53a5f39e5a84b9d81",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 172,
+          "partialAlphaSamples": 117,
+          "opaqueSamples": 0,
+          "minAlpha": 0,
+          "maxAlpha": 255,
+          "transparentSampleDetected": true,
+          "channel": "decoded alpha channel",
+          "limitation": "規律網格取樣只代表取樣點；完整透明邊界仍以解碼後 alpha 極值與模式驗證，未進行人工目視或 APP 顯示測試。"
+        }
+      },
+      "final": {
+        "width": 1280,
+        "height": 256,
+        "mode": "RGBA",
+        "sha256": "36c9d3232a687a3c1a5cb9972be5842d9098cc26f089ad170320c1f070d423c8",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 145,
+          "partialAlphaSamples": 144,
+          "opaqueSamples": 0,
+          "minAlpha": 0,
+          "maxAlpha": 255,
+          "transparentSampleDetected": true,
+          "channel": "decoded alpha channel",
+          "limitation": "規律網格取樣只代表取樣點；完整透明邊界仍以解碼後 alpha 極值與模式驗證，未進行人工目視或 APP 顯示測試。"
+        }
+      },
+      "target": {
+        "width": 1280,
+        "height": 256
+      },
+      "layoutMode": "repack",
+      "layout": {
+        "columns": 5,
+        "rows": 1,
+        "align": "center",
+        "sourceAspectRatio": 3.0,
+        "targetAspectRatio": 5.0,
+        "aspectRatioDelta": 0.4,
+        "commonScale": 0.5097345132743363,
+        "sourceContentBoxes": [
+          [
+            12,
+            126,
+            434,
+            578
+          ],
+          [
+            434,
+            126,
+            869,
+            578
+          ],
+          [
+            872,
+            126,
+            1301,
+            578
+          ],
+          [
+            1303,
+            126,
+            1738,
+            578
+          ],
+          [
+            1738,
+            126,
+            2161,
+            578
+          ]
+        ],
+        "placements": [
+          {
+            "cell": [
+              0,
+              0
+            ],
+            "sourceContentBox": [
+              12,
+              126,
+              434,
+              578
+            ],
+            "outputPlacement": [
+              20,
+              13
+            ],
+            "outputContentSize": [
+              215,
+              230
+            ],
+            "outputBottom": 243
+          },
+          {
+            "cell": [
+              1,
+              0
+            ],
+            "sourceContentBox": [
+              434,
+              126,
+              869,
+              578
+            ],
+            "outputPlacement": [
+              273,
+              13
+            ],
+            "outputContentSize": [
+              222,
+              230
+            ],
+            "outputBottom": 243
+          },
+          {
+            "cell": [
+              2,
+              0
+            ],
+            "sourceContentBox": [
+              872,
+              126,
+              1301,
+              578
+            ],
+            "outputPlacement": [
+              530,
+              13
+            ],
+            "outputContentSize": [
+              219,
+              230
+            ],
+            "outputBottom": 243
+          },
+          {
+            "cell": [
+              3,
+              0
+            ],
+            "sourceContentBox": [
+              1303,
+              126,
+              1738,
+              578
+            ],
+            "outputPlacement": [
+              785,
+              13
+            ],
+            "outputContentSize": [
+              222,
+              230
+            ],
+            "outputBottom": 243
+          },
+          {
+            "cell": [
+              4,
+              0
+            ],
+            "sourceContentBox": [
+              1738,
+              126,
+              2161,
+              578
+            ],
+            "outputPlacement": [
+              1044,
+              13
+            ],
+            "outputContentSize": [
+              216,
+              230
+            ],
+            "outputBottom": 243
+          }
+        ],
+        "mode": "repack",
+        "upscaled": false
+      },
+      "upscaled": false
+    },
+    {
+      "id": "medals",
+      "filename": "medals.png",
+      "batch": 3,
+      "expectedTransparent": true,
+      "original": {
+        "width": 2048,
+        "height": 768,
+        "mode": "RGBA",
+        "sha256": "bf598d8af8542f1d0f0afc59a08c71f57920965f1e85a6ce50da667b6c2c47b7",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 172,
+          "partialAlphaSamples": 117,
+          "opaqueSamples": 0,
+          "minAlpha": 0,
+          "maxAlpha": 254,
+          "transparentSampleDetected": true,
+          "channel": "decoded alpha channel",
+          "limitation": "規律網格取樣只代表取樣點；完整透明邊界仍以解碼後 alpha 極值與模式驗證，未進行人工目視或 APP 顯示測試。"
+        }
+      },
+      "final": {
+        "width": 1024,
+        "height": 384,
+        "mode": "RGBA",
+        "sha256": "a88c5d3388e925e2769c02ff76aa30b54c2e8208d0bc0003142b92b85f8cb4f8",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 172,
+          "partialAlphaSamples": 117,
+          "opaqueSamples": 0,
+          "minAlpha": 0,
+          "maxAlpha": 255,
+          "transparentSampleDetected": true,
+          "channel": "decoded alpha channel",
+          "limitation": "規律網格取樣只代表取樣點；完整透明邊界仍以解碼後 alpha 極值與模式驗證，未進行人工目視或 APP 顯示測試。"
+        }
+      },
+      "target": {
+        "width": 1024,
+        "height": 384
+      },
+      "layoutMode": "direct",
+      "layout": {
+        "columns": 3,
+        "rows": 1,
+        "align": "center",
+        "sourceAspectRatio": 2.6666666666666665,
+        "targetAspectRatio": 2.6666666666666665,
+        "aspectRatioDelta": 0.0,
+        "reason": "圖集 native 比例與目標差小於 1%",
+        "mode": "direct",
+        "upscaled": false
+      },
+      "upscaled": false
+    },
+    {
+      "id": "chest",
+      "filename": "chest.png",
+      "batch": 4,
+      "expectedTransparent": true,
+      "original": {
+        "width": 1774,
+        "height": 887,
+        "mode": "RGBA",
+        "sha256": "2a245d888e45b92935bca00b7896cd97ef7ba24f513bead4a69974e92fcb8752",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 149,
+          "partialAlphaSamples": 140,
+          "opaqueSamples": 0,
+          "minAlpha": 0,
+          "maxAlpha": 255,
+          "transparentSampleDetected": true,
+          "channel": "decoded alpha channel",
+          "limitation": "規律網格取樣只代表取樣點；完整透明邊界仍以解碼後 alpha 極值與模式驗證，未進行人工目視或 APP 顯示測試。"
+        }
+      },
+      "final": {
+        "width": 1024,
+        "height": 512,
+        "mode": "RGBA",
+        "sha256": "fa604dc956e2f64ceb33d1f924a6026fc65d18a2d98b646056adba7d145ab486",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 148,
+          "partialAlphaSamples": 140,
+          "opaqueSamples": 1,
+          "minAlpha": 0,
+          "maxAlpha": 255,
+          "transparentSampleDetected": true,
+          "channel": "decoded alpha channel",
+          "limitation": "規律網格取樣只代表取樣點；完整透明邊界仍以解碼後 alpha 極值與模式驗證，未進行人工目視或 APP 顯示測試。"
+        }
+      },
+      "target": {
+        "width": 1024,
+        "height": 512
+      },
+      "layoutMode": "direct",
+      "layout": {
+        "columns": 2,
+        "rows": 1,
+        "align": "bottom",
+        "sourceAspectRatio": 2.0,
+        "targetAspectRatio": 2.0,
+        "aspectRatioDelta": 0.0,
+        "reason": "圖集 native 比例與目標差小於 1%",
+        "mode": "direct",
+        "upscaled": false
+      },
+      "upscaled": false
+    },
+    {
+      "id": "plant-math",
+      "filename": "plant-math.png",
+      "batch": 4,
+      "expectedTransparent": true,
+      "original": {
+        "width": 2172,
+        "height": 724,
+        "mode": "RGBA",
+        "sha256": "0e99dfb80d6d58b09b4df784b1afaae546b0bdf9c9c9fe073cb7163594d54baf",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 174,
+          "partialAlphaSamples": 115,
+          "opaqueSamples": 0,
+          "minAlpha": 0,
+          "maxAlpha": 255,
+          "transparentSampleDetected": true,
+          "channel": "decoded alpha channel",
+          "limitation": "規律網格取樣只代表取樣點；完整透明邊界仍以解碼後 alpha 極值與模式驗證，未進行人工目視或 APP 顯示測試。"
+        }
+      },
+      "final": {
+        "width": 1280,
+        "height": 256,
+        "mode": "RGBA",
+        "sha256": "730a1f8896181774b451c4f5aa0926dbf0a216237f780c7ae34117e64179808b",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 231,
+          "partialAlphaSamples": 58,
+          "opaqueSamples": 0,
+          "minAlpha": 0,
+          "maxAlpha": 255,
+          "transparentSampleDetected": true,
+          "channel": "decoded alpha channel",
+          "limitation": "規律網格取樣只代表取樣點；完整透明邊界仍以解碼後 alpha 極值與模式驗證，未進行人工目視或 APP 顯示測試。"
+        }
+      },
+      "target": {
+        "width": 1280,
+        "height": 256
+      },
+      "layoutMode": "repack",
+      "layout": {
+        "columns": 5,
+        "rows": 1,
+        "align": "bottom",
+        "sourceAspectRatio": 3.0,
+        "targetAspectRatio": 5.0,
+        "aspectRatioDelta": 0.4,
+        "commonScale": 0.34336810730253353,
+        "sourceContentBoxes": [
+          [
+            97,
+            416,
+            349,
+            673
+          ],
+          [
+            528,
+            362,
+            777,
+            673
+          ],
+          [
+            911,
+            257,
+            1259,
+            674
+          ],
+          [
+            1328,
+            109,
+            1738,
+            675
+          ],
+          [
+            1738,
+            4,
+            2155,
+            675
+          ]
+        ],
+        "placements": [
+          {
+            "cell": [
+              0,
+              0
+            ],
+            "sourceContentBox": [
+              97,
+              416,
+              349,
+              673
+            ],
+            "outputPlacement": [
+              84,
+              155
+            ],
+            "outputContentSize": [
+              87,
+              88
+            ],
+            "outputBottom": 243
+          },
+          {
+            "cell": [
+              1,
+              0
+            ],
+            "sourceContentBox": [
+              528,
+              362,
+              777,
+              673
+            ],
+            "outputPlacement": [
+              341,
+              136
+            ],
+            "outputContentSize": [
+              85,
+              107
+            ],
+            "outputBottom": 243
+          },
+          {
+            "cell": [
+              2,
+              0
+            ],
+            "sourceContentBox": [
+              911,
+              257,
+              1259,
+              674
+            ],
+            "outputPlacement": [
+              580,
+              100
+            ],
+            "outputContentSize": [
+              119,
+              143
+            ],
+            "outputBottom": 243
+          },
+          {
+            "cell": [
+              3,
+              0
+            ],
+            "sourceContentBox": [
+              1328,
+              109,
+              1738,
+              675
+            ],
+            "outputPlacement": [
+              825,
+              49
+            ],
+            "outputContentSize": [
+              141,
+              194
+            ],
+            "outputBottom": 243
+          },
+          {
+            "cell": [
+              4,
+              0
+            ],
+            "sourceContentBox": [
+              1738,
+              4,
+              2155,
+              675
+            ],
+            "outputPlacement": [
+              1080,
+              13
+            ],
+            "outputContentSize": [
+              143,
+              230
+            ],
+            "outputBottom": 243
+          }
+        ],
+        "mode": "repack",
+        "upscaled": false,
+        "integrationCleanup": {
+          "slot": 4,
+          "method": "Keep largest alpha>8 connected component and its <=8 alpha edge fringe; remove only detached neighbouring glow",
+          "main_component_pixels_unchanged": 15264,
+          "removed_nonzero_alpha_pixels": 4935,
+          "detached_component_sizes": [
+            211
+          ],
+          "other_slots_unchanged": true,
+          "placement_scale_baseline_unchanged": true
+        }
+      },
+      "upscaled": false
+    },
+    {
+      "id": "plant-chinese",
+      "filename": "plant-chinese.png",
+      "batch": 5,
+      "expectedTransparent": true,
+      "original": {
+        "width": 2172,
+        "height": 724,
+        "mode": "RGBA",
+        "sha256": "e04c9b1d4fb2e26e568534d95318452850588b92f253c7cc3bf8aa8be6c22e2e",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 166,
+          "partialAlphaSamples": 123,
+          "opaqueSamples": 0,
+          "minAlpha": 0,
+          "maxAlpha": 255,
+          "transparentSampleDetected": true,
+          "channel": "decoded alpha channel",
+          "limitation": "規律網格取樣只代表取樣點；完整透明邊界仍以解碼後 alpha 極值與模式驗證，未進行人工目視或 APP 顯示測試。"
+        }
+      },
+      "final": {
+        "width": 1280,
+        "height": 256,
+        "mode": "RGBA",
+        "sha256": "fae4660439cd472a64523b1250f540549632edcd16341a5596bebba8c720511b",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 227,
+          "partialAlphaSamples": 61,
+          "opaqueSamples": 1,
+          "minAlpha": 0,
+          "maxAlpha": 255,
+          "transparentSampleDetected": true,
+          "channel": "decoded alpha channel",
+          "limitation": "規律網格取樣只代表取樣點；完整透明邊界仍以解碼後 alpha 極值與模式驗證，未進行人工目視或 APP 顯示測試。"
+        }
+      },
+      "target": {
+        "width": 1280,
+        "height": 256
+      },
+      "layoutMode": "repack",
+      "layout": {
+        "columns": 5,
+        "rows": 1,
+        "align": "bottom",
+        "sourceAspectRatio": 3.0,
+        "targetAspectRatio": 5.0,
+        "aspectRatioDelta": 0.4,
+        "commonScale": 0.34032496307237814,
+        "sourceContentBoxes": [
+          [
+            97,
+            399,
+            349,
+            676
+          ],
+          [
+            519,
+            338,
+            788,
+            676
+          ],
+          [
+            898,
+            238,
+            1272,
+            677
+          ],
+          [
+            1304,
+            92,
+            1738,
+            677
+          ],
+          [
+            1738,
+            0,
+            2170,
+            677
+          ]
+        ],
+        "placements": [
+          {
+            "cell": [
+              0,
+              0
+            ],
+            "sourceContentBox": [
+              97,
+              399,
+              349,
+              676
+            ],
+            "outputPlacement": [
+              85,
+              149
+            ],
+            "outputContentSize": [
+              86,
+              94
+            ],
+            "outputBottom": 243
+          },
+          {
+            "cell": [
+              1,
+              0
+            ],
+            "sourceContentBox": [
+              519,
+              338,
+              788,
+              676
+            ],
+            "outputPlacement": [
+              338,
+              128
+            ],
+            "outputContentSize": [
+              92,
+              115
+            ],
+            "outputBottom": 243
+          },
+          {
+            "cell": [
+              2,
+              0
+            ],
+            "sourceContentBox": [
+              898,
+              238,
+              1272,
+              677
+            ],
+            "outputPlacement": [
+              576,
+              94
+            ],
+            "outputContentSize": [
+              127,
+              149
+            ],
+            "outputBottom": 243
+          },
+          {
+            "cell": [
+              3,
+              0
+            ],
+            "sourceContentBox": [
+              1304,
+              92,
+              1738,
+              677
+            ],
+            "outputPlacement": [
+              822,
+              44
+            ],
+            "outputContentSize": [
+              148,
+              199
+            ],
+            "outputBottom": 243
+          },
+          {
+            "cell": [
+              4,
+              0
+            ],
+            "sourceContentBox": [
+              1738,
+              0,
+              2170,
+              677
+            ],
+            "outputPlacement": [
+              1078,
+              13
+            ],
+            "outputContentSize": [
+              147,
+              230
+            ],
+            "outputBottom": 243
+          }
+        ],
+        "mode": "repack",
+        "upscaled": false,
+        "integrationCleanup": {
+          "slot": 4,
+          "method": "Keep largest alpha>8 connected component and its <=8 alpha edge fringe; remove only detached neighbouring glow",
+          "main_component_pixels_unchanged": 17617,
+          "removed_nonzero_alpha_pixels": 3668,
+          "detached_component_sizes": [
+            487,
+            21
+          ],
+          "other_slots_unchanged": true,
+          "placement_scale_baseline_unchanged": true
+        }
+      },
+      "upscaled": false
+    },
+    {
+      "id": "plant-english",
+      "filename": "plant-english.png",
+      "batch": 5,
+      "expectedTransparent": true,
+      "original": {
+        "width": 2172,
+        "height": 724,
+        "mode": "RGBA",
+        "sha256": "a70f28e8d263ebb1a4cdf1c17e0f3a968648c080ec21af8729aab33a8121c417",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 183,
+          "partialAlphaSamples": 106,
+          "opaqueSamples": 0,
+          "minAlpha": 0,
+          "maxAlpha": 255,
+          "transparentSampleDetected": true,
+          "channel": "decoded alpha channel",
+          "limitation": "規律網格取樣只代表取樣點；完整透明邊界仍以解碼後 alpha 極值與模式驗證，未進行人工目視或 APP 顯示測試。"
+        }
+      },
+      "final": {
+        "width": 1280,
+        "height": 256,
+        "mode": "RGBA",
+        "sha256": "eb0791fce113a9610d8b4327065055d0e8aabc031ffb357179abcc078c6e0a39",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 231,
+          "partialAlphaSamples": 58,
+          "opaqueSamples": 0,
+          "minAlpha": 0,
+          "maxAlpha": 255,
+          "transparentSampleDetected": true,
+          "channel": "decoded alpha channel",
+          "limitation": "規律網格取樣只代表取樣點；完整透明邊界仍以解碼後 alpha 極值與模式驗證，未進行人工目視或 APP 顯示測試。"
+        }
+      },
+      "target": {
+        "width": 1280,
+        "height": 256
+      },
+      "layoutMode": "repack",
+      "layout": {
+        "columns": 5,
+        "rows": 1,
+        "align": "bottom",
+        "sourceAspectRatio": 3.0,
+        "targetAspectRatio": 5.0,
+        "aspectRatioDelta": 0.4,
+        "commonScale": 0.34032496307237814,
+        "sourceContentBoxes": [
+          [
+            94,
+            396,
+            353,
+            675
+          ],
+          [
+            524,
+            356,
+            781,
+            675
+          ],
+          [
+            910,
+            257,
+            1250,
+            676
+          ],
+          [
+            1317,
+            96,
+            1706,
+            677
+          ],
+          [
+            1738,
+            0,
+            2172,
+            677
+          ]
+        ],
+        "placements": [
+          {
+            "cell": [
+              0,
+              0
+            ],
+            "sourceContentBox": [
+              94,
+              396,
+              353,
+              675
+            ],
+            "outputPlacement": [
+              84,
+              148
+            ],
+            "outputContentSize": [
+              88,
+              95
+            ],
+            "outputBottom": 243
+          },
+          {
+            "cell": [
+              1,
+              0
+            ],
+            "sourceContentBox": [
+              524,
+              356,
+              781,
+              675
+            ],
+            "outputPlacement": [
+              340,
+              134
+            ],
+            "outputContentSize": [
+              87,
+              109
+            ],
+            "outputBottom": 243
+          },
+          {
+            "cell": [
+              2,
+              0
+            ],
+            "sourceContentBox": [
+              910,
+              257,
+              1250,
+              676
+            ],
+            "outputPlacement": [
+              582,
+              100
+            ],
+            "outputContentSize": [
+              116,
+              143
+            ],
+            "outputBottom": 243
+          },
+          {
+            "cell": [
+              3,
+              0
+            ],
+            "sourceContentBox": [
+              1317,
+              96,
+              1706,
+              677
+            ],
+            "outputPlacement": [
+              830,
+              45
+            ],
+            "outputContentSize": [
+              132,
+              198
+            ],
+            "outputBottom": 243
+          },
+          {
+            "cell": [
+              4,
+              0
+            ],
+            "sourceContentBox": [
+              1738,
+              0,
+              2172,
+              677
+            ],
+            "outputPlacement": [
+              1078,
+              13
+            ],
+            "outputContentSize": [
+              148,
+              230
+            ],
+            "outputBottom": 243
+          }
+        ],
+        "mode": "repack",
+        "upscaled": false
+      },
+      "upscaled": false
+    },
+    {
+      "id": "plant-science",
+      "filename": "plant-science.png",
+      "batch": 5,
+      "expectedTransparent": true,
+      "original": {
+        "width": 2172,
+        "height": 724,
+        "mode": "RGBA",
+        "sha256": "2f55bc50a3bba6e0af85a8e56090083c7e13ed205176541e42e28daf30c17bc5",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 177,
+          "partialAlphaSamples": 112,
+          "opaqueSamples": 0,
+          "minAlpha": 0,
+          "maxAlpha": 255,
+          "transparentSampleDetected": true,
+          "channel": "decoded alpha channel",
+          "limitation": "規律網格取樣只代表取樣點；完整透明邊界仍以解碼後 alpha 極值與模式驗證，未進行人工目視或 APP 顯示測試。"
+        }
+      },
+      "final": {
+        "width": 1280,
+        "height": 256,
+        "mode": "RGBA",
+        "sha256": "c132b991ab2b95d67e9926a31539db523bdb6242b29d48364e6f6210d2f85aa0",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 231,
+          "partialAlphaSamples": 58,
+          "opaqueSamples": 0,
+          "minAlpha": 0,
+          "maxAlpha": 255,
+          "transparentSampleDetected": true,
+          "channel": "decoded alpha channel",
+          "limitation": "規律網格取樣只代表取樣點；完整透明邊界仍以解碼後 alpha 極值與模式驗證，未進行人工目視或 APP 顯示測試。"
+        }
+      },
+      "target": {
+        "width": 1280,
+        "height": 256
+      },
+      "layoutMode": "repack",
+      "layout": {
+        "columns": 5,
+        "rows": 1,
+        "align": "bottom",
+        "sourceAspectRatio": 3.0,
+        "targetAspectRatio": 5.0,
+        "aspectRatioDelta": 0.4,
+        "commonScale": 0.34032496307237814,
+        "sourceContentBoxes": [
+          [
+            90,
+            396,
+            341,
+            675
+          ],
+          [
+            510,
+            351,
+            777,
+            676
+          ],
+          [
+            898,
+            249,
+            1261,
+            677
+          ],
+          [
+            1316,
+            92,
+            1738,
+            677
+          ],
+          [
+            1738,
+            0,
+            2172,
+            677
+          ]
+        ],
+        "placements": [
+          {
+            "cell": [
+              0,
+              0
+            ],
+            "sourceContentBox": [
+              90,
+              396,
+              341,
+              675
+            ],
+            "outputPlacement": [
+              85,
+              148
+            ],
+            "outputContentSize": [
+              85,
+              95
+            ],
+            "outputBottom": 243
+          },
+          {
+            "cell": [
+              1,
+              0
+            ],
+            "sourceContentBox": [
+              510,
+              351,
+              777,
+              676
+            ],
+            "outputPlacement": [
+              338,
+              132
+            ],
+            "outputContentSize": [
+              91,
+              111
+            ],
+            "outputBottom": 243
+          },
+          {
+            "cell": [
+              2,
+              0
+            ],
+            "sourceContentBox": [
+              898,
+              249,
+              1261,
+              677
+            ],
+            "outputPlacement": [
+              578,
+              97
+            ],
+            "outputContentSize": [
+              124,
+              146
+            ],
+            "outputBottom": 243
+          },
+          {
+            "cell": [
+              3,
+              0
+            ],
+            "sourceContentBox": [
+              1316,
+              92,
+              1738,
+              677
+            ],
+            "outputPlacement": [
+              824,
+              44
+            ],
+            "outputContentSize": [
+              144,
+              199
+            ],
+            "outputBottom": 243
+          },
+          {
+            "cell": [
+              4,
+              0
+            ],
+            "sourceContentBox": [
+              1738,
+              0,
+              2172,
+              677
+            ],
+            "outputPlacement": [
+              1078,
+              13
+            ],
+            "outputContentSize": [
+              148,
+              230
+            ],
+            "outputBottom": 243
+          }
+        ],
+        "mode": "repack",
+        "upscaled": false,
+        "integrationCleanup": {
+          "slot": 4,
+          "method": "Keep largest alpha>8 connected component and its <=8 alpha edge fringe; remove only detached neighbouring glow",
+          "main_component_pixels_unchanged": 17247,
+          "removed_nonzero_alpha_pixels": 1029,
+          "detached_component_sizes": [
+            74
+          ],
+          "other_slots_unchanged": true,
+          "placement_scale_baseline_unchanged": true
+        }
+      },
+      "upscaled": false
+    },
+    {
+      "id": "plant-social",
+      "filename": "plant-social.png",
+      "batch": 5,
+      "expectedTransparent": true,
+      "original": {
+        "width": 2172,
+        "height": 724,
+        "mode": "RGBA",
+        "sha256": "6acdad70842b6a48e2525b45693c5700b8e96edfcfda0fb68b93c4848892c51f",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 169,
+          "partialAlphaSamples": 120,
+          "opaqueSamples": 0,
+          "minAlpha": 0,
+          "maxAlpha": 255,
+          "transparentSampleDetected": true,
+          "channel": "decoded alpha channel",
+          "limitation": "規律網格取樣只代表取樣點；完整透明邊界仍以解碼後 alpha 極值與模式驗證，未進行人工目視或 APP 顯示測試。"
+        }
+      },
+      "final": {
+        "width": 1280,
+        "height": 256,
+        "mode": "RGBA",
+        "sha256": "b5da85d74b65e9844ce6cba58a11fd280b19bdce92707560e04c83cb70c852c4",
+        "alpha": {
+          "method": "regular-grid-alpha-sampling",
+          "grid": "17 x 17",
+          "sampleCount": 289,
+          "transparentSamples": 231,
+          "partialAlphaSamples": 58,
+          "opaqueSamples": 0,
+          "minAlpha": 0,
+          "maxAlpha": 255,
+          "transparentSampleDetected": true,
+          "channel": "decoded alpha channel",
+          "limitation": "規律網格取樣只代表取樣點；完整透明邊界仍以解碼後 alpha 極值與模式驗證，未進行人工目視或 APP 顯示測試。"
+        }
+      },
+      "target": {
+        "width": 1280,
+        "height": 256
+      },
+      "layoutMode": "repack",
+      "layout": {
+        "columns": 5,
+        "rows": 1,
+        "align": "bottom",
+        "sourceAspectRatio": 3.0,
+        "targetAspectRatio": 5.0,
+        "aspectRatioDelta": 0.4,
+        "commonScale": 0.3398230088495575,
+        "sourceContentBoxes": [
+          [
+            97,
+            400,
+            351,
+            676
+          ],
+          [
+            521,
+            351,
+            780,
+            677
+          ],
+          [
+            900,
+            255,
+            1252,
+            677
+          ],
+          [
+            1303,
+            99,
+            1738,
+            678
+          ],
+          [
+            1738,
+            0,
+            2170,
+            678
+          ]
+        ],
+        "placements": [
+          {
+            "cell": [
+              0,
+              0
+            ],
+            "sourceContentBox": [
+              97,
+              400,
+              351,
+              676
+            ],
+            "outputPlacement": [
+              85,
+              149
+            ],
+            "outputContentSize": [
+              86,
+              94
+            ],
+            "outputBottom": 243
+          },
+          {
+            "cell": [
+              1,
+              0
+            ],
+            "sourceContentBox": [
+              521,
+              351,
+              780,
+              677
+            ],
+            "outputPlacement": [
+              340,
+              132
+            ],
+            "outputContentSize": [
+              88,
+              111
+            ],
+            "outputBottom": 243
+          },
+          {
+            "cell": [
+              2,
+              0
+            ],
+            "sourceContentBox": [
+              900,
+              255,
+              1252,
+              677
+            ],
+            "outputPlacement": [
+              580,
+              100
+            ],
+            "outputContentSize": [
+              120,
+              143
+            ],
+            "outputBottom": 243
+          },
+          {
+            "cell": [
+              3,
+              0
+            ],
+            "sourceContentBox": [
+              1303,
+              99,
+              1738,
+              678
+            ],
+            "outputPlacement": [
+              822,
+              46
+            ],
+            "outputContentSize": [
+              148,
+              197
+            ],
+            "outputBottom": 243
+          },
+          {
+            "cell": [
+              4,
+              0
+            ],
+            "sourceContentBox": [
+              1738,
+              0,
+              2170,
+              678
+            ],
+            "outputPlacement": [
+              1078,
+              13
+            ],
+            "outputContentSize": [
+              147,
+              230
+            ],
+            "outputBottom": 243
+          }
+        ],
+        "mode": "repack",
+        "upscaled": false,
+        "integrationCleanup": {
+          "slot": 4,
+          "method": "Keep largest alpha>8 connected component and its <=8 alpha edge fringe; remove only detached neighbouring glow",
+          "main_component_pixels_unchanged": 16735,
+          "removed_nonzero_alpha_pixels": 4559,
+          "detached_component_sizes": [
+            207,
+            1
+          ],
+          "other_slots_unchanged": true,
+          "placement_scale_baseline_unchanged": true
+        }
+      },
+      "upscaled": false
+    }
+  ],
+  "integrationCleanup": [
+    {
+      "filename": "plant-math.png",
+      "slot": 4,
+      "method": "Keep largest alpha>8 connected component and its <=8 alpha edge fringe; remove only detached neighbouring glow",
+      "main_component_pixels_unchanged": 15264,
+      "removed_nonzero_alpha_pixels": 4935,
+      "detached_component_sizes": [
+        211
+      ],
+      "other_slots_unchanged": true,
+      "placement_scale_baseline_unchanged": true
+    },
+    {
+      "filename": "plant-chinese.png",
+      "slot": 4,
+      "method": "Keep largest alpha>8 connected component and its <=8 alpha edge fringe; remove only detached neighbouring glow",
+      "main_component_pixels_unchanged": 17617,
+      "removed_nonzero_alpha_pixels": 3668,
+      "detached_component_sizes": [
+        487,
+        21
+      ],
+      "other_slots_unchanged": true,
+      "placement_scale_baseline_unchanged": true
+    },
+    {
+      "filename": "plant-science.png",
+      "slot": 4,
+      "method": "Keep largest alpha>8 connected component and its <=8 alpha edge fringe; remove only detached neighbouring glow",
+      "main_component_pixels_unchanged": 17247,
+      "removed_nonzero_alpha_pixels": 1029,
+      "detached_component_sizes": [
+        74
+      ],
+      "other_slots_unchanged": true,
+      "placement_scale_baseline_unchanged": true
+    },
+    {
+      "filename": "plant-social.png",
+      "slot": 4,
+      "method": "Keep largest alpha>8 connected component and its <=8 alpha edge fringe; remove only detached neighbouring glow",
+      "main_component_pixels_unchanged": 16735,
+      "removed_nonzero_alpha_pixels": 4559,
+      "detached_component_sizes": [
+        207,
+        1
+      ],
+      "other_slots_unchanged": true,
+      "placement_scale_baseline_unchanged": true
+    }
+  ]
+}

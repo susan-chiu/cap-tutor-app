@@ -6,7 +6,7 @@ import { Image, Pressable, View } from 'react-native';
 import { Plant } from '@/components/plant';
 import { Card, Chip, ErrorBox, H1, Loading, ProgressBar, Screen, T } from '@/components/ui';
 import { api, errorText, type GardenUnit } from '@/lib/api';
-import { ITEM_IMG } from '@/lib/art';
+import { ITEM_IMG, SUBJECT_IMG } from '@/lib/art';
 import { useAuth } from '@/lib/auth';
 import { hardLeft, isGold, PLANT_STAGE_LABEL, plantStage, SUBJECT_FLOWER, toNextStage } from '@/lib/game';
 import { goBack } from '@/lib/nav';
@@ -65,7 +65,7 @@ export default function Garden() {
 
           <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
             <Chip label="全部" selected={subject === 'all'} onPress={() => setSubject('all')} />
-            {subjects.map((s) => <Chip key={s.id} label={s.label} selected={subject === s.id} onPress={() => setSubject(s.id)} />)}
+            {subjects.map((s) => <Chip key={s.id} image={SUBJECT_IMG[s.id]} label={s.label} selected={subject === s.id} onPress={() => setSubject(s.id)} />)}
           </View>
 
           {bySemester.map(([sem, list]) => (
@@ -97,7 +97,7 @@ function PlantTile({ u }: { u: GardenUnit }) {
         backgroundColor: gold ? C.goldSoft : stage === 4 ? C.greenSoft : C.card, borderRadius: 14, borderWidth: gold ? 2 : 1,
         borderColor: gold ? C.gold : stage === 4 ? C.mint : C.line, opacity: pressed ? 0.7 : 1,
       })}>
-      <Plant stage={stage} color={SUBJECT_FLOWER[u.subject] ?? C.accent} size={80} gold={gold} />
+      <Plant stage={stage} subject={u.subject} size={100} gold={gold} />
       <T size={11} color={SUBJECT_FLOWER[u.subject] ?? C.muted} weight="700">{subjectLabel(u.subject, u.semester)}</T>
       <T size={12} weight="700" numberOfLines={2} style={{ textAlign: 'center', minHeight: 32 }}>{name}</T>
       <T size={11} color={gold ? C.gold : C.muted} weight={gold ? '700' : undefined}>

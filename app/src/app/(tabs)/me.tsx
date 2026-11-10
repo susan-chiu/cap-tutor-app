@@ -5,6 +5,7 @@ import { Alert, Pressable, View } from 'react-native';
 import { Field, LegalLinks } from '@/components/form';
 import { APP_VERSION, contactSupport, supportAvailable } from '@/lib/support';
 import { Button, Card, Chip, H1, H2, Screen, T } from '@/components/ui';
+import { play, setSoundPrefs, useSoundPrefs } from '@/lib/sound';
 import { api, errorText, isPremiumProfile } from '@/lib/api';
 import { useAuth } from '@/lib/auth';
 import { shareText } from '@/lib/share';
@@ -170,6 +171,8 @@ export default function Me() {
             </Card>
           ) : null}
 
+          <SoundCard />
+
           <Card style={{ gap: 8 }}>
             <H2>方案</H2>
             {premium ? (
@@ -256,5 +259,20 @@ export default function Me() {
       </Card>
       <T size={12} color={C.faint} style={{ textAlign: 'center' }}>勇敢學吧 v{APP_VERSION}</T>
     </Screen>
+  );
+}
+
+/** 音效與音樂開關 */
+function SoundCard() {
+  const p = useSoundPrefs();
+  return (
+    <Card style={{ gap: 10 }}>
+      <H2>音效與音樂</H2>
+      <T size={13} color={C.muted}>答題、連擊、打魔王的音效，和大廳的背景音樂。上課或安靜的地方可以關掉。</T>
+      <View style={{ flexDirection: 'row', gap: 8, flexWrap: 'wrap' }}>
+        <Chip label={p.sfx ? '音效：開' : '音效：關'} selected={p.sfx} onPress={() => { setSoundPrefs({ sfx: !p.sfx }); if (!p.sfx) play('tap'); }} />
+        <Chip label={p.bgm ? '大廳音樂：開' : '大廳音樂：關'} selected={p.bgm} onPress={() => setSoundPrefs({ bgm: !p.bgm })} />
+      </View>
+    </Card>
   );
 }
