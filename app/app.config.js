@@ -9,6 +9,8 @@ module.exports = ({ config }) => {
     android: { ...config.android, versionCode },
     // iOS 的 build number 每次上傳 TestFlight 都要變大，由 Codemagic 的打包次數帶入
     ios: { ...config.ios, buildNumber: String(Number(process.env.IOS_BUILD_NUMBER) || 1) },
-    plugins: [...(config.plugins ?? []), './plugins/withReleaseSigning', './plugins/withAdsBackend'],
+    // 拿掉推播權限的外掛要放第一個：外掛的修改是由後往前執行，放第一個才會最後執行
+    // 拿掉推播權限的外掛放第一個：外掛的修改由後往前執行，放第一個才會最後套用
+    plugins: ['./plugins/withoutPushEntitlement', ...(config.plugins ?? []), './plugins/withReleaseSigning', './plugins/withAdsBackend'],
   };
 };
