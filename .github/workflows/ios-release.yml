@@ -1,0 +1,137 @@
+# 打包 iOS 正式版並上傳到 TestFlight（用 GitHub 的 Mac 雲端主機，不需要自己的 Mac）
+# 觸發方式：推送 ios-* 標籤（例如 ios-1.0.0-1），或到 Actions →「iOS 正式版（TestFlight）」→ Run workflow。
+#
+# 執行前必須先在 Settings → Secrets and variables → Actions → Secrets 設定：
+#   ASC_KEY_ID      App Store Connect API 金鑰 ID
+#   ASC_ISSUER_ID   Issuer ID
+#   ASC_KEY_P8      .p8 檔的完整內容（含 BEGIN / END 兩行）
+#   APPLE_TEAM_ID   Apple 開發者團隊 ID（10 碼英數字）
+# 金鑰的存取權限要選「Admin（管理）」，Xcode 才能在雲端自動建立簽署憑證。
+# 建置號（CFBundleVersion）自動用這個流程的執行次數，每次都會比上一次大。
+name: iOS 正式版（TestFlight）
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - 'ios-*'
+
+concurrency:
+  group: ios-release
+  cancel-in-progress: false
+
+jobs:
+  ios:
+    name: 打包並上傳 TestFlight
+    runs-on: macos-15
+    timeout-minutes: 75
+    env:
+      IOS_BUILD_NUMBER: ${{ github.run_number }}
+      SENTRY_DISABLE_AUTO_UPLOAD: 'true'
+      EXPO_PUBLIC_SUPABASE_URL: ${{ vars.EXPO_PUBLIC_SUPABASE_URL }}
+      EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY: ${{ vars.EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY }}
+      EXPO_PUBLIC_PRIVACY_URL: ${{ vars.EXPO_PUBLIC_PRIVACY_URL || 'https://susan-chiu.github.io/brave-study/privacy.html' }}
+      EXPO_PUBLIC_TERMS_URL: ${{ vars.EXPO_PUBLIC_TERMS_URL || 'https://susan-chiu.github.io/brave-study/terms.html' }}
+      EXPO_PUBLIC_SUPPORT_EMAIL: ${{ vars.EXPO_PUBLIC_SUPPORT_EMAIL || 'yskyskygirl19830613@gmail.com' }}
+      EXPO_PUBLIC_SENTRY_DSN: ${{ vars.EXPO_PUBLIC_SENTRY_DSN }}
+      # 第一版免費上架：RevenueCat 與 AdMob 的 iOS 金鑰先不設定
+      EXPO_PUBLIC_REVENUECAT_IOS_KEY: ${{ vars.EXPO_PUBLIC_REVENUECAT_IOS_KEY }}
+      EXPO_PUBLIC_ADMOB_REWARDED_IOS: ${{ vars.EXPO_PUBLIC_ADMOB_REWARDED_IOS }}
+    steps:
+      - name: 檢查必要設定
+        env:
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+          ASC_KEY_P8: ${{ secrets.ASC_KEY_P8 }}
+          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+        run: |
+          missing=""
+          for v in ASC_KEY_ID ASC_ISSUER_ID ASC_KEY_P8 APPLE_TEAM_ID; do
+            [ -n "${!v}" ] || missing="$missing $v"
+          done
+          for v in EXPO_PUBLIC_SUPABASE_URL EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY; do
+            [ -n "${!v}" ] || missing="$missing $v(variable)"
+          done
+          if [ -n "$missing" ]; then echo "::error::缺少設定：$missing"; exit 1; fi
+
+      - uses: actions/checkout@v4
+      - uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: latest-stable
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: app/package-lock.json
+
+      - name: 安裝 App 套件
+        working-directory: app
+        run: npm ci
+
+      - name: 產生 iOS 專案
+        working-directory: app
+        run: |
+          npx expo prebuild --platform ios --no-install --clean
+          cd ios && pod install
+
+      - name: 放置 API 金鑰
+        env:
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_KEY_P8: ${{ secrets.ASC_KEY_P8 }}
+        run: |
+          mkdir -p "$RUNNER_TEMP/keys"
+          printf '%s\n' "$ASC_KEY_P8" > "$RUNNER_TEMP/keys/AuthKey_${ASC_KEY_ID}.p8"
+          echo "ASC_KEY_PATH=$RUNNER_TEMP/keys/AuthKey_${ASC_KEY_ID}.p8" >> "$GITHUB_ENV"
+
+      - name: 封存（Archive）
+        working-directory: app/ios
+        env:
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+        run: |
+          set -o pipefail
+          xcodebuild archive \
+            -workspace app.xcworkspace -scheme app -configuration Release \
+            -destination 'generic/platform=iOS' \
+            -archivePath "$RUNNER_TEMP/app.xcarchive" \
+            -allowProvisioningUpdates \
+            -authenticationKeyPath "$ASC_KEY_PATH" \
+            -authenticationKeyID "$ASC_KEY_ID" \
+            -authenticationKeyIssuerID "$ASC_ISSUER_ID" \
+            DEVELOPMENT_TEAM="$APPLE_TEAM_ID" CODE_SIGN_STYLE=Automatic \
+            | tee "$RUNNER_TEMP/archive.log" | grep -E "error:|warning: .*sign|\*\* ARCHIVE" || true
+          grep -q "ARCHIVE SUCCEEDED" "$RUNNER_TEMP/archive.log" || {
+            grep -B2 -A8 "error:" "$RUNNER_TEMP/archive.log" | head -80; tail -40 "$RUNNER_TEMP/archive.log"; exit 1; }
+
+      - name: 匯出並上傳到 App Store Connect
+        env:
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+        run: |
+          cat > "$RUNNER_TEMP/export.plist" <<EOF
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <plist version="1.0"><dict>
+            <key>method</key><string>app-store-connect</string>
+            <key>destination</key><string>upload</string>
+            <key>teamID</key><string>${APPLE_TEAM_ID}</string>
+            <key>signingStyle</key><string>automatic</string>
+            <key>uploadSymbols</key><true/>
+            <key>manageAppVersionAndBuildNumber</key><false/>
+          </dict></plist>
+          EOF
+          xcodebuild -exportArchive \
+            -archivePath "$RUNNER_TEMP/app.xcarchive" \
+            -exportOptionsPlist "$RUNNER_TEMP/export.plist" \
+            -exportPath "$RUNNER_TEMP/export" \
+            -allowProvisioningUpdates \
+            -authenticationKeyPath "$ASC_KEY_PATH" \
+            -authenticationKeyID "$ASC_KEY_ID" \
+            -authenticationKeyIssuerID "$ASC_ISSUER_ID"
+          echo "已上傳建置號 $IOS_BUILD_NUMBER，Apple 處理完（約 10～30 分鐘）會出現在 TestFlight。"
+
+      - name: 清除金鑰
+        if: always()
+        run: rm -rf "$RUNNER_TEMP/keys"
