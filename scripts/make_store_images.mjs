@@ -11,32 +11,28 @@ mkdirSync(OUT + 'ios', { recursive: true });
 mkdirSync(OUT + 'android', { recursive: true });
 
 const SLIDES = [
-  { file: '01-home.png', title: '每天 5 題，連勝不中斷', sub: '像玩遊戲一樣養成讀書習慣', dark: true },
-  { file: '04-quiz-wrong.png', title: '答錯馬上知道錯在哪', sub: '每個錯誤選項都有常見原因與解析', dark: false },
-  { file: '06-tutor-hint.png', title: 'AI 小老師一步步帶你想', sub: '不直接給答案，陪你自己想出來', dark: true },
-  { file: '07-tutor-check-correct.png', title: '換一題驗收，真的學會', sub: '錯題隔天、3 天、7 天再複習', dark: false },
-  { file: '02-learn.png', title: '七上到九下，照學期複習', sub: '依 108 課綱單元，段考前組複習卷', dark: true },
-  { file: 'p1-parent-home.png', title: '家長也能看見進步', sub: '綁定孩子帳號，看練習天數與弱點單元', dark: false },
+  { file: '01-hall.png', title: '選一位夥伴，一起打怪升級', sub: '8 位勇者陪你，每天 3 分鐘刷題', alt: false },
+  { file: '02-battle.png', title: '答對一題，砍魔王一刀', sub: '段考魔王戰・連擊暴擊・三星通關', alt: true },
+  { file: '03-eye.png', title: '答錯不怕，夥伴發動心眼', sub: '先給提示再挑戰一次，答對還有獎勵', alt: false, bottom: true },
+  { file: '04-tutor.png', title: 'AI 小老師一步步帶你想', sub: '不直接給答案，陪你自己想出來', alt: true },
+  { file: '05-monsters.png', title: '錯題變魔物，複習就討伐', sub: '隔 1、3、7 天再複習，真正學會', alt: false },
+  { file: '06-parent.png', title: '家長看得見孩子的進步', sub: '五科防禦力雷達圖・許願池獎勵', alt: true },
 ];
-
-const CLAY = '#C2511B';
-const CREAM = '#F6F3EC';
-const INK = '#1C2528';
-
 function slideHtml(s, w, h) {
   const img = readFileSync(`${SRC}/${s.file}`).toString('base64');
   const scale = w / 1290;
-  const phoneW = Math.round(w * 0.78);
+  const phoneW = Math.round(w * 0.76);
+  const bg = s.alt ? 'linear-gradient(180deg,#160F36 0%,#2A1650 100%)' : 'linear-gradient(180deg,#0B0F19 0%,#16224A 100%)';
   return `<html><body style="margin:0">
-  <div style="width:${w}px;height:${h}px;overflow:hidden;background:${s.dark ? CLAY : CREAM};
+  <div style="width:${w}px;height:${h}px;overflow:hidden;background:${bg};
     font-family:'Noto Sans CJK TC','Noto Sans TC','PingFang TC',sans-serif;display:flex;flex-direction:column;align-items:center">
-    <div style="padding:${Math.round(150 * scale)}px ${Math.round(80 * scale)}px ${Math.round(70 * scale)}px;text-align:center">
-      <div style="font-size:${Math.round(96 * scale)}px;font-weight:900;line-height:1.25;color:${s.dark ? '#FFFFFF' : INK}">${s.title}</div>
-      <div style="margin-top:${Math.round(28 * scale)}px;font-size:${Math.round(48 * scale)}px;font-weight:500;color:${s.dark ? '#FBE9DF' : '#5C6663'}">${s.sub}</div>
+    <div style="padding:${Math.round(150 * scale)}px ${Math.round(70 * scale)}px ${Math.round(70 * scale)}px;text-align:center">
+      <div style="font-size:${Math.round(92 * scale)}px;font-weight:900;line-height:1.25;color:#FFFFFF;text-shadow:0 0 ${Math.round(30 * scale)}px rgba(0,240,255,.45)">${s.title}</div>
+      <div style="margin-top:${Math.round(28 * scale)}px;font-size:${Math.round(46 * scale)}px;font-weight:500;color:#7CF7FF">${s.sub}</div>
     </div>
-    <div style="width:${phoneW}px;border-radius:${Math.round(64 * scale)}px;overflow:hidden;
-      border:${Math.round(14 * scale)}px solid ${INK};box-shadow:0 ${Math.round(30 * scale)}px ${Math.round(80 * scale)}px rgba(0,0,0,.25);background:${CREAM}">
-      <img src="data:image/png;base64,${img}" style="display:block;width:100%">
+    <div style="width:${phoneW}px;flex:1;margin-bottom:-${Math.round(40 * scale)}px;border-radius:${Math.round(64 * scale)}px;overflow:hidden;
+      border:${Math.round(12 * scale)}px solid #E8C26A;box-shadow:0 0 ${Math.round(70 * scale)}px rgba(0,240,255,.35);background:#0B0F19">
+      <img src="data:image/png;base64,${img}" style="display:block;width:100%;height:100%;object-fit:cover;object-position:${s.bottom ? 'bottom' : 'top'}">
     </div>
   </div></body></html>`;
 }
