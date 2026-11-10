@@ -17,6 +17,7 @@ import { heroOf, type Hero } from '@/lib/heroes';
 import { shareText } from '@/lib/share';
 import { ALL_SUBJECTS, C, currentSemester } from '@/lib/theme';
 import { goBack } from '@/lib/nav';
+import { canBuy } from '@/lib/store';
 
 type Mode = 'daily' | 'unit' | 'exam' | 'review';
 const DIFF_LABEL: Record<string, string> = { '1': '簡單', '2': '中等', '3': '困難' };
@@ -108,9 +109,9 @@ export default function Quiz() {
     } catch (e) {
       const msg = errorText(e);
       if (msg.includes('免費題數')) {
-        Alert.alert('今天的免費題數用完了', '明天再來，或升級完整版無限練習。', [
+        Alert.alert('今天的免費題數用完了', canBuy ? '明天再來，或升級完整版無限練習。' : '明天再來繼續修煉吧！', [
           { text: '明天再來', onPress: () => goBack() },
-          { text: '看看完整版', onPress: () => router.replace('/paywall') },
+          ...(canBuy ? [{ text: '看看完整版', onPress: () => router.replace('/paywall') }] : []),
         ]);
       } else {
         Alert.alert('無法作答', msg);

@@ -13,6 +13,8 @@ import {
   disableReminders, enableReminders, loadReminderSettings, REMINDER_TIMES, remindersSupported, rescheduleReminders, parentWeeklyEnabled, setParentWeekly,
 } from '@/lib/reminders';
 import { ALL_SUBJECTS, C, ELEM_SUBJECT_IDS, GRADES, gradeLabel, isElementary, PERSONAS, subjectsFor, localToday } from '@/lib/theme';
+import { canBuy } from '@/lib/store';
+import { adsAvailable } from '@/lib/ads';
 
 export default function Me() {
   const { profile, refreshProfile, signOut } = useAuth();
@@ -182,8 +184,8 @@ export default function Me() {
               </>
             ) : (
               <>
-                <T>免費版：每天 30 題、小老師 3 次（看廣告可再多 2 次）。</T>
-                <Button title="升級完整版" onPress={() => router.push('/paywall')} />
+                <T>免費版：每天 30 題、小老師 3 次{adsAvailable() ? '（看廣告可再多 2 次）' : ''}。</T>
+                {canBuy ? <Button title="升級完整版" onPress={() => router.push('/paywall')} /> : null}
                 <Button title="全校前三名免費申請" kind="secondary" onPress={() => router.push('/top-three')} />
               </>
             )}

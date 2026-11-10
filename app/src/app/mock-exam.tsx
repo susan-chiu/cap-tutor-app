@@ -12,6 +12,7 @@ import { api, errorText, isPremiumProfile, type AnswerResult, type MockExamRow, 
 import { useAuth } from '@/lib/auth';
 import { C, currentSemester, localToday, isElementarySemester } from '@/lib/theme';
 import { goBack } from '@/lib/nav';
+import { canBuy } from '@/lib/store';
 
 // 會考各科選擇題的題數與作答時間（數學另有 2 題非選擇題、英語另有聽力，本 App 不含）
 type ExamKey = 'chinese' | 'english' | 'english_listening' | 'math' | 'social' | 'science';
@@ -220,8 +221,10 @@ export default function MockExam() {
             <H2>長度</H2>
             <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
               <Chip label={`迷你 ${MINI} 題`} selected={!full} onPress={() => setFull(false)} />
+              {premium || canBuy ? (
               <Chip label={`完整 ${spec.n} 題${premium ? '' : '（完整版）'}`} selected={full}
                 onPress={() => { if (premium) setFull(true); else router.push('/paywall'); }} />
+              ) : null}
             </View>
             <H2>範圍</H2>
             <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>

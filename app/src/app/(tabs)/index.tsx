@@ -14,6 +14,7 @@ import { levelInfo } from '@/lib/game';
 import { startBgm, stopBgm } from '@/lib/sound';
 import { heroOf } from '@/lib/heroes';
 import { C, gradeCheckNeeded, gradeLabel } from '@/lib/theme';
+import { canBuy } from '@/lib/store';
 
 
 const WEEKDAY = ['日', '一', '二', '三', '四', '五', '六'];
@@ -280,6 +281,7 @@ function StudentHome() {
         </Card>
       ) : (
         <View style={{ flexDirection: 'row', gap: 12 }}>
+          {canBuy ? (
           <Pressable accessibilityRole="button" onPress={() => router.push('/paywall')} style={{ flex: 1 }}>
             <Card style={{ gap: 2, height: '100%' }}>
               <T size={12} color={C.muted}>小老師今天 {data.tutor_used_today} / {data.tutor_limit_today} 次</T>
@@ -287,6 +289,7 @@ function StudentHome() {
               <T size={12} color={C.accent}>無限練習 ›</T>
             </Card>
           </Pressable>
+          ) : null}
           <Pressable accessibilityRole="button" onPress={() => router.push('/top-three')} style={{ flex: 1 }}>
             <Card style={{ backgroundColor: C.accentSoft, borderColor: C.accentSoft, gap: 2, height: '100%' }}>
               <T size={12} weight="700" color={C.accentDark}>段考全校前三名</T>

@@ -12,6 +12,7 @@ import { api, errorText, isPremiumProfile, type AnswerResult, type PublicQuestio
 import { useAuth } from '@/lib/auth';
 import { C, localToday, PERSONAS } from '@/lib/theme';
 import { goBack } from '@/lib/nav';
+import { canBuy } from '@/lib/store';
 
 interface Msg { from: 'tutor' | 'me'; text: string; failed?: boolean }
 
@@ -227,7 +228,7 @@ export default function Tutor() {
               {!premium && adsAvailable() ? (
                 <Button title="看一段廣告，多一次小老師" kind="green" onPress={watchAd} loading={adBusy} />
               ) : null}
-              <Button title="升級完整版（每天 50 次）" onPress={() => router.push('/paywall')} />
+              {canBuy ? <Button title="升級完整版（每天 50 次）" onPress={() => router.push('/paywall')} /> : null}
               <Button title="明天再來" kind="ghost" onPress={() => goBack()} />
             </Card>
           ) : null}
