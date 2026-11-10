@@ -13,7 +13,7 @@
 | 目標年齡 | Google Play：勾選「9–12 歲」與「13–15 歲」（七年級有 12 歲學生，只勾 13+ 會被認定申報不實），因此適用「家庭政策」；Apple：不要選「兒童」類別 |
 | 客服網址 | https://susan-chiu.github.io/brave-study/ |
 | 隱私權政策網址 | https://susan-chiu.github.io/brave-study/privacy.html |
-| 行銷網址（選填） | [你的網站] |
+| 行銷網址（選填） | https://susan-chiu.github.io/brave-study/ |
 | 版權 | © 2026 [營運者名稱] |
 
 ## App Store
@@ -55,7 +55,7 @@
 ・自動續訂方案會在到期前 24 小時內自動續約扣款，除非你在到期前至少 24 小時到「設定 → Apple ID → 訂閱項目」取消。
 ・學期方案為 183 天，不會自動續訂。
 ・未滿 18 歲請先取得家長同意再購買。
-服務條款：[你的網站]/terms
+服務條款：https://susan-chiu.github.io/brave-study/terms.html
 隱私權政策：https://susan-chiu.github.io/brave-study/privacy.html
 
 【關於題目】
