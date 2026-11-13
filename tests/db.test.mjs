@@ -260,9 +260,10 @@ await test('看廣告換小老師：每次 +1、20 秒內不能連續領、每�
   const r1 = await grant();
   assert.equal(r1.bonus_left, 1);
   await expectError(grant(), 'ad_bonus_too_fast');
-  await db.query(`update public.tutor_usage set last_bonus_at = now() - interval '1 minute' where user_id = $1`, [s5]);
+  const cool = (u) => db.query(`update public.ad_rewards set created_at = now() - interval '1 minute' where user_id = $1`, [u]);
+  await cool(s5);
   await grant();
-  await db.query(`update public.tutor_usage set last_bonus_at = now() - interval '1 minute' where user_id = $1`, [s5]);
+  await cool(s5);
   await expectError(grant(), 'ad_bonus_limit');
   assert.equal((await home(s5)).tutor_limit_today, 5);
   await db.query(`select public.set_subscription($1, now() + interval '30 days')`, [s5]);
@@ -271,6 +272,39 @@ await test('看廣告換小老師：每次 +1、20 秒內不能連續領、每�
   const s6 = await newUser();
   await expectError(as(s6, () => db.query(`select public.grant_ad_bonus()`)), 'ads_disabled');
   await db.query(`update public.app_config set value = 'true' where key = 'ads_enabled'`);
+});
+
+await test('廣告獎勵：體力多 10 題、XP 加倍、每天總共最多 5 次', async () => {
+  const u = await newUser();
+  await setToday('2026-10-04');
+  const grant = (pl) => as(u, async () => (await db.query(`select public.grant_ad_reward($1) r`, [pl])).rows[0].r);
+  const cool = () => db.query(`update public.ad_rewards set created_at = now() - interval '1 minute' where user_id = $1`, [u]);
+  const status = () => as(u, async () => (await db.query(`select public.ad_status() r`)).rows[0].r);
+  let st = await status();
+  assert.equal(st.enabled, true); assert.equal(st.total_left, 5); assert.equal(st.energy_left, 2);
+  await expectError(grant('xp2x'), 'ad_nothing_to_double');
+  // 用完 30 題後看廣告多 10 題
+  await db.query(`update public.app_config set value = '2' where key = 'free_daily_questions'`);
+  const qs = (await db.query(`select id, answer from public.questions where active limit 3`)).rows;
+  const ans = (q) => as(u, () => db.query(`select public.submit_answer($1, $2)`, [q.id, q.answer]));
+  await ans(qs[0]); await ans(qs[1]);
+  await expectError(ans(qs[2]), 'daily_limit_reached');
+  const e = await grant('energy');
+  assert.equal(e.amount, 10); assert.equal(e.energy_left, 1); assert.equal(e.total_left, 4);
+  await ans(qs[2]);
+  await db.query(`update public.app_config set value = '30' where key = 'free_daily_questions'`);
+  // XP 加倍：把剛剛答對的 XP 再給一次（最多 60）
+  const before = (await db.query(`select xp from public.profiles where id = $1`, [u])).rows[0].xp;
+  await cool();
+  const x = await grant('xp2x');
+  assert.ok(x.amount > 0 && x.amount <= 60);
+  const after = (await db.query(`select xp from public.profiles where id = $1`, [u])).rows[0].xp;
+  assert.equal(after - before, x.amount);
+  // 每天總上限 5 次
+  await cool(); await grant('energy'); await cool(); await expectError(grant('energy'), 'ad_bonus_limit');
+  await cool(); await grant('tutor'); await cool(); await grant('tutor');
+  await cool(); await expectError(grant('xp2x'), 'ad_daily_limit');
+  st = await status(); assert.equal(st.total_left, 0);
 });
 
 await test('管理後台：一般使用者全部被擋；管理員可以看總覽、審核（開通完整版）、處理回報、下架題目、刪證明照片', async () => {

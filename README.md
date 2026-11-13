@@ -178,7 +178,7 @@ cd ../tests/integration && DATABASE_URL=... DENO_BIN=deno node ui.test.mjs
 ### 步驟 2：建立資料庫
 
 1. Supabase 後台 → **New project**，區域選 **Northeast Asia (Tokyo)** 或 **Southeast Asia (Singapore)**，設定一組資料庫密碼並記下來。
-2. 左側 **SQL Editor** → 依照檔名順序，一次開一個 New query，把 `supabase/migrations/` 裡的 15 個檔案**整份**貼上 → **Run**：
+2. 左側 **SQL Editor** → 依照檔名順序，一次開一個 New query，把 `supabase/migrations/` 裡的 16 個檔案**整份**貼上 → **Run**：
    1. `20260926000001_init.sql`（主要資料表）
    2. `20260926000002_monetization.sql`（收費與廣告）
    3. `20260926000003_admin.sql`（管理後台）
@@ -194,7 +194,8 @@ cd ../tests/integration && DATABASE_URL=... DENO_BIN=deno node ui.test.mjs
    13. `20261107000013_game.sql`（遊戲化：每週經驗值、匿名週排行、學習花園）
    14. `20261108000014_game_rewards.sql`（魔王戰紀錄與保護卡獎勵、成就徽章、金色稀有花）
    15. `20261109000015_eye_wishes.sql`（戰鬥夥伴角色、心眼重答獎勵、許願池）
-3. **15 個都跑完後**，再匯入題庫 `supabase/seed.sql`（國中五科 3,870 題（含英語聽力 135 題）＋國小國語、數學、自然、社會 1,800 題＋版本章節對照，約 6 MB）。檔案較大，建議用指令匯入：
+   16. `20261113000016_ad_rewards.sql`（獎勵式廣告：體力、XP 加倍、小老師，每日上限）
+3. **16 個都跑完後**，再匯入題庫 `supabase/seed.sql`（國中五科 3,870 題（含英語聽力 135 題）＋國小國語、數學、自然、社會 1,800 題＋版本章節對照，約 6 MB）。檔案較大，建議用指令匯入：
    Supabase 後台 **Connect** → 複製「Session pooler」連線字串，然後執行
    `psql "連線字串" -f supabase/seed.sql`（沒有 psql 也可以貼到 SQL Editor 執行，只是要等比較久）。
    以後題目有修改，只要重新匯入 seed.sql（同樣題號會更新、不會重複；管理後台下架的題目會維持下架）。

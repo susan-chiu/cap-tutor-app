@@ -56,6 +56,10 @@ export interface GardenUnit {
   /** 困難題數與熟練數：開花＋困難題全部熟練＝金色稀有花 */
   hard_total?: number; hard_mastered?: number;
 }
+export type AdPlacement = 'energy' | 'xp2x' | 'tutor';
+export type AdStatus = { enabled: boolean; total_left: number; energy_left: number; xp2x_left: number; tutor_left: number; energy_questions: number };
+export type AdReward = AdStatus & { placement: AdPlacement; amount: number; xp_total: number | null; bonus: number | null; bonus_left: number | null };
+
 export interface BossResult {
   stars: number; correct: number; total: number; best: number;
   first_three: boolean; freeze_reward: boolean; freeze_cards: number;
@@ -183,7 +187,9 @@ export interface ChildSummary {
 const ERROR_TEXT: Record<string, string> = {
   daily_limit_reached: '今天的免費題數用完了，明天再來！全校前三名可以申請免費無限練習。',
   daily_tutor_limit: '今天的免費小老師次數用完了。',
-  ad_bonus_limit: '今天看廣告換的次數也用完了，明天再來！',
+  ad_bonus_limit: '這個獎勵今天看廣告換的次數用完了，明天再來！',
+  ad_daily_limit: '今天看廣告的次數用完了（每天最多 5 次），明天再來！',
+  ad_nothing_to_double: '這一輪還沒有賺到 XP，先答對幾題再來加倍。',
   ad_bonus_too_fast: '請稍等一下再試。',
   session_too_long: '這題聊很久了，先做驗收題看看有沒有學會吧！',
   tutor_unavailable: '小老師暫時連不上，請稍後再試。',
@@ -286,6 +292,8 @@ export const api = {
       p_proof_path: a.proofPath, p_parent_consent: a.parentConsent,
     }),
   grantAdBonus: () => rpc<{ bonus: number; bonus_left: number }>('grant_ad_bonus'),
+  adStatus: () => rpc<AdStatus>('ad_status'),
+  grantAdReward: (placement: AdPlacement) => rpc<AdReward>('grant_ad_reward', { p_placement: placement }),
   linkChild: async (code: string) => {
     const r = await rpc<{ student_id?: string; nickname?: string; error?: string }>('link_child', { p_code: code });
     if (r.error) throw new Error(r.error);

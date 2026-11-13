@@ -8,14 +8,16 @@ import { BattleStage } from '@/components/battle';
 import { buzz, ChestReward, EyeHint, FrameCorners, LevelUpBanner, Stars, XpPop } from '@/components/game-fx';
 import { Feedback, QuestionView, SolutionCard } from '@/components/question';
 import { Button, Card, ErrorBox, H1, Loading, ProgressBar, T } from '@/components/ui';
-import { api, errorText, type AnswerResult, type BossResult } from '@/lib/api';
+import { watchAdFor } from '@/lib/ad-reward';
+import { adsAvailable } from '@/lib/ads';
+import { api, errorText, isPremiumProfile, type AnswerResult, type BossResult } from '@/lib/api';
 import { useAuth } from '@/lib/auth';
 import { BOSS_HEARTS, bossStars, comboMessage, levelFor } from '@/lib/game';
 import { arenaImg, bossImg, monsterImg } from '@/lib/art';
 import { play } from '@/lib/sound';
 import { heroOf, type Hero } from '@/lib/heroes';
 import { shareText } from '@/lib/share';
-import { ALL_SUBJECTS, C, currentSemester } from '@/lib/theme';
+import { ALL_SUBJECTS, C, currentSemester, localToday } from '@/lib/theme';
 import { goBack } from '@/lib/nav';
 import { canBuy } from '@/lib/store';
 
@@ -25,7 +27,10 @@ const DIFF_LABEL: Record<string, string> = { '1': '簡單', '2': '中等', '3': 
 export default function Quiz() {
   const params = useLocalSearchParams<{ mode?: string; units?: string; count?: string; difficulty?: string; title?: string; part?: string; boss?: string; bosskey?: string }>();
   const mode = (params.mode ?? 'daily') as Mode;
-  const { profile } = useAuth();
+  const { profile, session } = useAuth();
+  const premium = isPremiumProfile(profile, localToday());
+  // 免費版可以看廣告換獎勵（體力、XP 加倍）
+  const canWatchAd = !premium && adsAvailable() && !!session;
 
   const [questions, setQuestions] = useState<Awaited<ReturnType<typeof fetchQuestions>> | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -109,14 +114,24 @@ export default function Quiz() {
     } catch (e) {
       const msg = errorText(e);
       if (msg.includes('免費題數')) {
-        Alert.alert('今天的免費題數用完了', canBuy ? '明天再來，或升級完整版無限練習。' : '明天再來繼續修煉吧！', [
+        Alert.alert('今天的免費題數用完了', canWatchAd ? '看一段廣告，今天可以多練 10 題。' : canBuy ? '明天再來，或升級完整版無限練習。' : '明天再來繼續修煉吧！', [
           { text: '明天再來', onPress: () => goBack() },
+          ...(canWatchAd ? [{ text: '看廣告多 10 題', onPress: () => { watchAdEnergy(); } }] : []),
           ...(canBuy ? [{ text: '看看完整版', onPress: () => router.replace('/paywall') }] : []),
         ]);
       } else {
         Alert.alert('無法作答', msg);
       }
     } finally { busyRef.current = false; setBusy(false); }
+  }
+
+  // 體力：看廣告讓今天多幾題，看完直接幫學生送出剛才的答案
+  async function watchAdEnergy() {
+    if (!session) return;
+    const r = await watchAdFor('energy', session.user.id);
+    if (!r) return;
+    play('chest', 0.6);
+    Alert.alert('體力補充！', `今天可以再多練 ${r.amount} 題。`, [{ text: '繼續', onPress: () => { check(); } }]);
   }
 
   async function eyeRetry() {
@@ -194,6 +209,7 @@ export default function Quiz() {
         ) : finished ? (
           <Summary stats={stats} total={questions.length} allSeen={mode !== 'review' && questions.every((x) => x.seen)} mode={mode} boss={boss}
             bossKey={boss ? params.bosskey ?? null : null} questionIds={questions.map((x) => x.id)} hero={heroOf(profile?.hero)}
+            adUserId={canWatchAd && session ? session.user.id : null}
             onAgain={() => { setIdx(0); setCombo(0); setStats({ answered: 0, correct: 0, xp: 0, streak: 0, streakUp: false }); load(); }} />
         ) : q ? (
           <>
@@ -280,11 +296,24 @@ function reportQuestion(questionId: string) {
   ]);
 }
 
-function Summary({ stats, total, allSeen, mode, boss, bossKey, questionIds, hero, onAgain }: {
+function Summary({ stats, total, allSeen, mode, boss, bossKey, questionIds, hero, adUserId, onAgain }: {
   stats: { answered: number; correct: number; xp: number; streak: number; streakUp: boolean };
-  total: number; allSeen: boolean; mode: Mode; boss: string | null; bossKey: string | null; questionIds: string[]; hero: Hero; onAgain: () => void;
+  total: number; allSeen: boolean; mode: Mode; boss: string | null; bossKey: string | null; questionIds: string[]; hero: Hero;
+  /** 免費版可以看廣告把這一輪的 XP 加倍；null 代表不顯示 */
+  adUserId: string | null; onAgain: () => void;
 }) {
   const stars = bossStars(stats.correct, total);
+  // 看廣告 XP 加倍：伺服器把最近 15 分鐘賺到的 XP 再給一次
+  const [doubled, setDoubled] = useState<number | null>(null);
+  const [adBusy, setAdBusy] = useState(false);
+  async function doubleXp() {
+    if (!adUserId) return;
+    setAdBusy(true);
+    try {
+      const r = await watchAdFor('xp2x', adUserId);
+      if (r) { setDoubled(r.amount); buzz('levelup'); play('chest', 0.7); }
+    } finally { setAdBusy(false); }
+  }
   // 魔王戰結算交給伺服器（依實際作答算星數、第一次三星送保護卡）
   const [reward, setReward] = useState<BossResult | null>(null);
   const idsKey = questionIds.join(',');
@@ -343,9 +372,12 @@ function Summary({ stats, total, allSeen, mode, boss, bossKey, questionIds, hero
       ) : null}
       <Card dark style={{ gap: 6 }}>
         <T size={40} weight="700" color="#FFFFFF" style={{ lineHeight: 48 }}>{stats.correct} / {total}</T>
-        <T color="#C9D1CF">答對題數 · 獲得 {stats.xp} XP</T>
+        <T color="#C9D1CF">答對題數 · 獲得 {stats.xp + (doubled ?? 0)} XP{doubled ? `（廣告加倍 +${doubled}）` : ''}</T>
         {stats.streakUp ? <T weight="700" color={C.flame}>今天的目標完成，連勝 {stats.streak} 天！</T> : null}
       </Card>
+      {adUserId && stats.xp > 0 && doubled === null ? (
+        <Button title={`看一段廣告，這一輪的 XP 加倍（+${Math.min(stats.xp, 60)}）`} kind="secondary" onPress={doubleXp} loading={adBusy} />
+      ) : null}
       {stats.correct < stats.answered ? (
         <Card><T>答錯的 {stats.answered - stats.correct} 題變成魔物收進魔物圖鑑，找小老師弄懂它們，就能讓錯題畢業。</T></Card>
       ) : null}

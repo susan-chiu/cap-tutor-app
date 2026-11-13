@@ -7,7 +7,8 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { ListenPlayer } from '@/components/listen';
 import { Feedback, QuestionView } from '@/components/question';
 import { Button, Card, Loading, T, Tag } from '@/components/ui';
-import { adsAvailable, showRewardedAd } from '@/lib/ads';
+import { adsAvailable } from '@/lib/ads';
+import { watchAdFor } from '@/lib/ad-reward';
 import { api, errorText, isPremiumProfile, type AnswerResult, type PublicQuestion } from '@/lib/api';
 import { useAuth } from '@/lib/auth';
 import { C, localToday, PERSONAS } from '@/lib/theme';
@@ -100,12 +101,8 @@ export default function Tutor() {
     if (!session) return;
     setAdBusy(true);
     try {
-      const earned = await showRewardedAd(session.user.id);
-      if (!earned) { Alert.alert('廣告沒有看完', '看完整支廣告才能多一次小老師喔。'); return; }
-      await api.grantAdBonus();
-      await begin();
-    } catch (e) {
-      Alert.alert('無法播放廣告', e instanceof Error && e.message.startsWith('ad_') ? errorText(e) : '目前沒有可播放的廣告，請稍後再試。');
+      const r = await watchAdFor('tutor', session.user.id);
+      if (r) await begin();
     } finally { setAdBusy(false); }
   }
 

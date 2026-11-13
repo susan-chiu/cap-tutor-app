@@ -184,7 +184,7 @@ export default function Me() {
               </>
             ) : (
               <>
-                <T>免費版：每天 30 題、小老師 3 次{adsAvailable() ? '（看廣告可再多 2 次）' : ''}。</T>
+                <T>免費版：每天 30 題、小老師 3 次{adsAvailable() ? '（看廣告可以多題數、多小老師、XP 加倍，每天最多 5 次）' : ''}。</T>
                 {canBuy ? <Button title="升級完整版" onPress={() => router.push('/paywall')} /> : null}
                 <Button title="全校前三名免費申請" kind="secondary" onPress={() => router.push('/top-three')} />
               </>
