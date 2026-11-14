@@ -8,7 +8,7 @@ import { BattleStage } from '@/components/battle';
 import { buzz, ChestReward, EyeHint, FrameCorners, LevelUpBanner, Stars, XpPop } from '@/components/game-fx';
 import { Feedback, QuestionView, SolutionCard } from '@/components/question';
 import { Button, Card, ErrorBox, H1, Loading, ProgressBar, T } from '@/components/ui';
-import { watchAdFor } from '@/lib/ad-reward';
+import { preloadAds, watchAdFor } from '@/lib/ad-reward';
 import { adsAvailable } from '@/lib/ads';
 import { api, errorText, isPremiumProfile, type AnswerResult, type BossResult } from '@/lib/api';
 import { useAuth } from '@/lib/auth';
@@ -31,6 +31,8 @@ export default function Quiz() {
   const premium = isPremiumProfile(profile, localToday());
   // 免費版可以看廣告換獎勵（體力、XP 加倍）
   const canWatchAd = !premium && adsAvailable() && !!session;
+  // 一進副本就把廣告載好，結算或題數用完時按下去立刻播
+  useEffect(() => { if (canWatchAd) preloadAds(session?.user.id, ['energy', 'xp2x']); }, [canWatchAd, session?.user.id]);
 
   const [questions, setQuestions] = useState<Awaited<ReturnType<typeof fetchQuestions>> | null>(null);
   const [error, setError] = useState<string | null>(null);

@@ -8,7 +8,7 @@ import { ListenPlayer } from '@/components/listen';
 import { Feedback, QuestionView } from '@/components/question';
 import { Button, Card, Loading, T, Tag } from '@/components/ui';
 import { adsAvailable } from '@/lib/ads';
-import { watchAdFor } from '@/lib/ad-reward';
+import { preloadAds, watchAdFor } from '@/lib/ad-reward';
 import { api, errorText, isPremiumProfile, type AnswerResult, type PublicQuestion } from '@/lib/api';
 import { useAuth } from '@/lib/auth';
 import { C, localToday, PERSONAS } from '@/lib/theme';
@@ -30,6 +30,7 @@ export default function Tutor() {
   const { questionId, choice } = useLocalSearchParams<{ questionId: string; choice?: string }>();
   const { profile, session, refreshProfile } = useAuth();
   const premium = isPremiumProfile(profile, localToday());
+  useEffect(() => { if (!premium && adsAvailable()) preloadAds(session?.user.id, ['tutor']); }, [premium, session?.user.id]);
   const persona = PERSONAS.find((p) => p.id === profile?.tutor_persona) ?? PERSONAS[0];
 
   const [q, setQ] = useState<PublicQuestion | null>(null);

@@ -307,6 +307,23 @@ await test('廣告獎勵：體力多 10 題、XP 加倍、每天總共最多 5 �
   st = await status(); assert.equal(st.total_left, 0);
 });
 
+await test('廣告伺服器驗證：開啟後沒有 AdMob 回呼就不發、有回呼才發、一筆只能用一次', async () => {
+  const u = await newUser();
+  await setToday('2026-10-05');
+  const grant = (pl) => as(u, async () => (await db.query(`select public.grant_ad_reward($1) r`, [pl])).rows[0].r);
+  await db.query(`update public.app_config set value = 'true' where key = 'ad_ssv_required'`);
+  await expectError(grant('tutor'), 'ad_not_verified');
+  await db.query(`insert into public.ad_views (transaction_id, user_id, placement) values ('tx-1', $1, 'tutor')`, [u]);
+  const r = await grant('tutor');
+  assert.equal(r.amount, 1);
+  await db.query(`update public.ad_rewards set created_at = now() - interval '1 minute' where user_id = $1`, [u]);
+  await expectError(grant('tutor'), 'ad_not_verified');
+  // 別的位置的回呼不能拿來用
+  await db.query(`insert into public.ad_views (transaction_id, user_id, placement) values ('tx-2', $1, 'energy')`, [u]);
+  await expectError(grant('tutor'), 'ad_not_verified');
+  await db.query(`update public.app_config set value = 'false' where key = 'ad_ssv_required'`);
+});
+
 await test('管理後台：一般使用者全部被擋；管理員可以看總覽、審核（開通完整版）、處理回報、下架題目、刪證明照片', async () => {
   const student = await newUser();
   const admin = await newUser();

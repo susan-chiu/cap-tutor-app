@@ -190,6 +190,8 @@ const ERROR_TEXT: Record<string, string> = {
   ad_bonus_limit: '這個獎勵今天看廣告換的次數用完了，明天再來！',
   ad_daily_limit: '今天看廣告的次數用完了（每天最多 5 次），明天再來！',
   ad_nothing_to_double: '這一輪還沒有賺到 XP，先答對幾題再來加倍。',
+  ad_not_verified: '還沒收到廣告平台的確認，請稍後再試一次。',
+  ad_load_failed: '目前沒有可播放的廣告，請稍後再試。',
   ad_bonus_too_fast: '請稍等一下再試。',
   session_too_long: '這題聊很久了，先做驗收題看看有沒有學會吧！',
   tutor_unavailable: '小老師暫時連不上，請稍後再試。',
