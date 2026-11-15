@@ -55,6 +55,8 @@ function RootNavigator() {
         <Stack.Screen name="badges" />
         <Stack.Screen name="wishes" />
         <Stack.Screen name="heroes" />
+        <Stack.Screen name="pals" />
+        <Stack.Screen name="shop" />
       </Stack.Protected>
     </Stack>
   );

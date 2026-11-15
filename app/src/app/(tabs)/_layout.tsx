@@ -1,7 +1,7 @@
 import { Tabs } from 'expo-router';
 import { Image } from 'react-native';
 
-import { TAB_IMG } from '@/lib/art';
+import { TAB_IMG, WORLD_IMG } from '@/lib/art';
 import { useAuth } from '@/lib/auth';
 import { C } from '@/lib/theme';
 
@@ -26,6 +26,9 @@ export default function TabLayout() {
         sceneStyle: { backgroundColor: C.bg },
       }}>
       <Tabs.Screen name="index" options={{ title: '大廳', tabBarIcon: icon('hall') }} />
+      <Tabs.Screen name="map" options={{ title: '地圖', href: isParent ? null : undefined,
+        tabBarIcon: ({ focused }) => <Image source={WORLD_IMG.flag} accessibilityIgnoresInvertColors
+          style={{ width: 30, height: 30, marginTop: 2, opacity: focused ? 1 : 0.45 }} /> }} />
       <Tabs.Screen name="learn" options={{ title: '副本', href: isParent ? null : undefined, tabBarIcon: icon('quest') }} />
       <Tabs.Screen name="mistakes" options={{ title: '魔物圖鑑', href: isParent ? null : undefined, tabBarIcon: icon('monster') }} />
       <Tabs.Screen name="me" options={{ title: '我的', tabBarIcon: icon('me') }} />

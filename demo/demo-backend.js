@@ -10,7 +10,7 @@
   // 2. App 的頁面網址都放在這個資料夾底下（例如 /_f/me），每個頁面都有一份同樣的 HTML，
   //    所以在任何頁面按重新整理都能正常打開
   // 3. 一開始的網址如果不是 App 的頁面（例如 /_f/版本號），先換成首頁
-  var ROUTES = ['learn', 'mistakes', 'me', 'quiz', 'tutor', 'top-three', 'paywall', 'help', 'mock-exam', 'onboarding', 'login', 'forgot'];
+  var ROUTES = ['learn', 'mistakes', 'me', 'quiz', 'tutor', 'top-three', 'paywall', 'help', 'mock-exam', 'onboarding', 'login', 'forgot', 'map', 'pals', 'shop'];
   try {
     var cur = document.currentScript;
     var me = cur && cur.src;
@@ -29,7 +29,9 @@
   var U = {}; D.units.forEach(function (u) { U[u.id] = u; });
   var KEYS = ['A', 'B', 'C', 'D'];
   var SUBJECTS = ['math', 'chinese', 'english', 'science', 'social'];
-  var CFG = { daily_goal: 5, free_daily_questions: 30, free_daily_tutor: 3, premium_daily_tutor: 50, xp_correct: 10, xp_grad: 30 };
+  var CFG = { daily_goal: 5, free_daily_questions: 30, free_daily_tutor: 3, premium_daily_tutor: 50, xp_correct: 10, xp_grad: 30,
+    gold_correct: 5, gold_conquer: 30, gold_reclaim: 20, gold_daily_max: 300, conquer_need: 3, evolve: [3, 6],
+    soup_questions: 3, soup_daily_max: 2, bed_questions: 5 };
 
   // ---------- 儲存（localStorage 不能用時改存記憶體） ----------
   var memStore = {};
@@ -148,7 +150,91 @@
     return (db.wishes || []).filter(function (w) { return w.student === kid; })
       .sort(function (x, y) { return ((x.status === 'fulfilled') - (y.status === 'fulfilled')) || (x.created_at < y.created_at ? 1 : -1); }).map(wishJson);
   }
+
+  // ---------- 世界地圖、金幣、魔物夥伴、大廳商店（規則和正式後端 20261115000018_world.sql 相同） ----------
+  var SHOP = [['soup', 'consumable', 20, 0, 0], ['plant', 'furniture', 120, 0, 0], ['rug', 'furniture', 150, 0, 0], ['desk', 'furniture', 200, 0, 0],
+    ['window', 'furniture', 250, 0, 0], ['bed', 'furniture', 300, 0, 0], ['chest', 'furniture', 350, 50, 0], ['picture', 'furniture', 400, 100, 0],
+    ['mirror', 'furniture', 450, 150, 0], ['lamp', 'furniture', 500, 0, 3], ['shelf', 'furniture', 600, 300, 0], ['nest', 'furniture', 700, 0, 5],
+    ['weapon', 'furniture', 800, 0, 8]].map(function (r) { return { id: r[0], kind: r[1], price: r[2], need_correct: r[3], need_pals: r[4] }; });
+  function world(uid) { db.world = db.world || {}; return db.world[uid] || (db.world[uid] = { gold: 0, team: null, terr: {}, pals: {}, order: [], owned: [] }); }
+  function energyMax(uid, dr) { return CFG.free_daily_questions + (dr.bonus || 0) + (world(uid).owned.indexOf('bed') >= 0 ? CFG.bed_questions : 0); }
+  function addGold(uid, n) {
+    var dr = dayRow(uid, today()), add = Math.min(n, Math.max(CFG.gold_daily_max - (dr.gold || 0), 0));
+    if (add > 0) { dr.gold = (dr.gold || 0) + add; world(uid).gold += add; }
+    return add;
+  }
+  function species(u) { return u.subject + '-' + (1 + ((u.seq - 1) % 4)); }
+  function palStage(c) { return c >= CFG.evolve[1] ? 3 : c >= CFG.evolve[0] ? 2 : c >= 1 ? 1 : 0; }
+  function totalCorrect(uid) { return Object.keys(db.daily).reduce(function (n, k) { return k.split('|')[0] === uid ? n + (db.daily[k].correct || 0) : n; }, 0); }
+  function dueIn(uid, unitId) {
+    var t = today(), ms = mistakesOf(uid);
+    return Object.keys(ms).filter(function (k) { var m = ms[k]; return Q[k] && Q[k].unit === unitId && m.status !== 'graduated' && (m.status === 'pending' || m.next_review <= t); }).length;
+  }
+  function worldState(uid) {
+    var w = world(uid), p = db.profiles[uid], dr = dayRow(uid, today());
+    return { gold: w.gold, gold_today: dr.gold || 0, gold_daily_max: CFG.gold_daily_max, gold_correct: CFG.gold_correct, team_pal: w.team,
+      total_correct: totalCorrect(uid), territories: Object.keys(w.terr).length,
+      pals: w.order.map(function (s) { return { species: s, caught: w.pals[s], stage: palStage(w.pals[s]) }; }),
+      evolve: CFG.evolve, owned: w.owned.slice(), shop: SHOP, premium: premium(p), energy_max: energyMax(uid, dr), today_answered: dr.answered,
+      soups_left: Math.max(CFG.soup_daily_max - (dr.soups || 0), 0), soup_questions: CFG.soup_questions, bed_questions: CFG.bed_questions };
+  }
+  var hasQ = {}; D.questions.forEach(function (q) { hasQ[q.unit] = true; });
   var RPC = {
+    world_state: function (uid) { return worldState(uid); },
+    world_map: function (uid, a) {
+      var w = world(uid), t = today();
+      return D.units.filter(function (u) { return u.semester === a.p_semester && hasQ[u.id]; })
+        .sort(function (x, y) { return (x.seq - y.seq) || (x.subject < y.subject ? -1 : 1); })
+        .map(function (u) { var tr = w.terr[u.id]; return { unit_id: u.id, subject: u.subject, seq: u.seq, title: u.title, species: species(u),
+          won: !!tr, wins: tr ? tr.wins : 0, due: dueIn(uid, u.id), rewarded_today: !!tr && tr.day === t }; });
+    },
+    world_progress: function (uid) {
+      var w = world(uid), m = {};
+      D.units.forEach(function (u) { if (!hasQ[u.id]) return; var r = m[u.semester] || (m[u.semester] = { semester: u.semester, total: 0, won: 0 }); r.total++; if (w.terr[u.id]) r.won++; });
+      return Object.keys(m).sort().map(function (k) { return m[k]; });
+    },
+    battle_questions: function (uid, a) {
+      var t = today(), ms = mistakesOf(uid);
+      var due = function (q) { var m = ms[q.id]; return !!m && m.status !== 'graduated' && (m.status === 'pending' || m.next_review <= t); };
+      var qs = shuffle(D.questions.filter(function (q) { return q.unit === a.p_unit_id; }));
+      qs.sort(function (x, y) { return (due(y) - due(x)) || (seen(uid, x.id) - seen(uid, y.id)); });
+      return qs.slice(0, Math.min(Math.max(a.p_limit || 5, 3), 5)).map(function (q) { return publicQ(q, uid); });
+    },
+    conquer: function (uid, a) {
+      var u = U[a.p_unit_id], ids = a.p_question_ids || [], w = world(uid), t = today();
+      if (!u) throw 'unit_not_found';
+      if (ids.length < CFG.conquer_need || ids.length > 5 || ids.some(function (id) { return !Q[id] || Q[id].unit !== u.id; })) throw 'bad_battle';
+      var since = Date.now() - 3600e3, correct = 0;
+      ids.forEach(function (id) { var last = null; db.attempts.forEach(function (x) { if (x.u === uid && x.q === id && x.at > since) last = x; }); if (last && last.c) correct++; });
+      var sp = species(u), before = w.pals[sp] || 0, won = correct >= CFG.conquer_need, first = false, reward = false, gold = 0;
+      if (won) {
+        var tr = w.terr[u.id];
+        if (!tr) { first = reward = true; w.terr[u.id] = { wins: 1, day: t }; }
+        else { reward = tr.day < t; tr.wins++; if (reward) tr.day = t; }
+        if (reward) {
+          if (!before) w.order.push(sp);
+          w.pals[sp] = before + 1;
+          gold = addGold(uid, first ? CFG.gold_conquer : CFG.gold_reclaim);
+          if (!w.team) w.team = sp;
+        }
+      }
+      save();
+      var caught = w.pals[sp] || 0;
+      return { won: won, correct: correct, total: ids.length, need: CFG.conquer_need, first: first, rewarded: reward, gold_gained: gold, gold: w.gold,
+        species: sp, caught: caught, new_pal: reward && !before, stage_before: palStage(before), stage: palStage(caught) };
+    },
+    buy_item: function (uid, a) {
+      var w = world(uid), i = SHOP.filter(function (x) { return x.id === a.p_item; })[0], dr = dayRow(uid, today());
+      if (!i) throw 'item_not_found';
+      if (i.kind === 'furniture' && w.owned.indexOf(i.id) >= 0) throw 'item_owned';
+      if (i.need_correct > totalCorrect(uid) || i.need_pals > w.order.length) throw 'item_locked';
+      if (i.id === 'soup') { if (premium(db.profiles[uid])) throw 'soup_not_needed'; if ((dr.soups || 0) >= CFG.soup_daily_max) throw 'soup_limit'; }
+      if (w.gold < i.price) throw 'not_enough_gold';
+      w.gold -= i.price;
+      if (i.id === 'soup') { dr.soups = (dr.soups || 0) + 1; dr.bonus = (dr.bonus || 0) + CFG.soup_questions; } else w.owned.push(i.id);
+      save(); return worldState(uid);
+    },
+    set_team_pal: function (uid, a) { var w = world(uid); if (!w.pals[a.p_species]) throw 'pal_not_owned'; w.team = a.p_species; save(); return null; },
     get_home: function (uid) {
       var p = db.profiles[uid], t = today(), dr = dayRow(uid, t);
       var used = (db.tutor[uid + '|' + t] || { count: 0, bonus: 0 });
@@ -354,10 +440,10 @@
       if (!q) throw 'question_not_found';
       if (KEYS.indexOf(a.p_choice) < 0) throw 'bad_choice';
       var dr = dayRow(uid, t);
-      if (!premium(p) && dr.answered >= CFG.free_daily_questions) throw 'daily_limit_reached';
+      if (!premium(p) && dr.answered >= energyMax(uid, dr)) throw 'daily_limit_reached';
       var correct = a.p_choice === q.answer, ms = mistakesOf(uid), status = null, xp = 0;
       db.attempts.push({ u: uid, q: q.id, c: correct, ch: a.p_choice, ctx: a.p_context || 'practice', at: Date.now(), day: t });
-      dr.answered++; if (correct) { dr.correct++; xp += CFG.xp_correct; }
+      dr.answered++; if (correct) { dr.correct++; xp += CFG.xp_correct; if (a.p_context !== 'tutor_check') addGold(uid, CFG.gold_correct); }
       // 和正式後端 submit_answer 相同的錯題規則
       var target = a.p_for_mistake ? ms[a.p_for_mistake] : ms[q.id];
       if (!correct && !a.p_for_mistake) {

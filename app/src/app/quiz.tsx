@@ -5,12 +5,13 @@ import { Alert, BackHandler, Image, Pressable, ScrollView, View } from 'react-na
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { BattleStage } from '@/components/battle';
+import { ConquerCard } from '@/components/world-fx';
 import { buzz, ChestReward, EyeHint, FrameCorners, LevelUpBanner, Stars, XpPop } from '@/components/game-fx';
 import { Feedback, QuestionView, SolutionCard } from '@/components/question';
 import { Button, Card, ErrorBox, H1, Loading, ProgressBar, T } from '@/components/ui';
 import { preloadAds, watchAdFor } from '@/lib/ad-reward';
 import { adsAvailable } from '@/lib/ads';
-import { api, errorText, isPremiumProfile, type AnswerResult, type BossResult } from '@/lib/api';
+import { api, errorText, isPremiumProfile, type AnswerResult, type BossResult, type ConquerResult } from '@/lib/api';
 import { useAuth } from '@/lib/auth';
 import { BOSS_HEARTS, bossStars, comboMessage, levelFor } from '@/lib/game';
 import { arenaImg, bossImg, monsterImg } from '@/lib/art';
@@ -21,7 +22,9 @@ import { ALL_SUBJECTS, C, currentSemester, localToday } from '@/lib/theme';
 import { goBack } from '@/lib/nav';
 import { canBuy } from '@/lib/store';
 
-type Mode = 'daily' | 'unit' | 'exam' | 'review';
+type Mode = 'daily' | 'unit' | 'exam' | 'review' | 'conquer';
+/** 領地戰：最多 5 題，答對 3 題就贏 */
+const CONQUER_NEED = 3;
 const DIFF_LABEL: Record<string, string> = { '1': '簡單', '2': '中等', '3': '困難' };
 
 export default function Quiz() {
@@ -159,6 +162,9 @@ export default function Quiz() {
     setLevelUp(null);
     setPicked(null);
     setResult(null);
+    // 領地戰：答對 3 題就贏，或剩下的題目全對也贏不了時，直接結算
+    const left = (questions?.length ?? 0) - idx - 1;
+    if (mode === 'conquer' && (stats.correct >= CONQUER_NEED || stats.correct + left < CONQUER_NEED)) { setIdx(questions?.length ?? 0); return; }
     setIdx((i) => i + 1);
   }
 
@@ -210,18 +216,18 @@ export default function Quiz() {
           </View>
         ) : finished ? (
           <Summary stats={stats} total={questions.length} allSeen={mode !== 'review' && questions.every((x) => x.seen)} mode={mode} boss={boss}
-            bossKey={boss ? params.bosskey ?? null : null} questionIds={questions.map((x) => x.id)} hero={heroOf(profile?.hero)}
+            bossKey={boss ? params.bosskey ?? null : null} conquerUnit={mode === 'conquer' ? params.units ?? null : null} questionIds={questions.map((x) => x.id)} hero={heroOf(profile?.hero)}
             adUserId={canWatchAd && session ? session.user.id : null}
             onAgain={() => { setIdx(0); setCombo(0); setStats({ answered: 0, correct: 0, xp: 0, streak: 0, streakUp: false }); load(); }} />
         ) : q ? (
           <>
-            <BattleStage name={boss ?? (mode === 'daily' ? '突擊副本・小怪群' : mode === 'review' ? '魔物圖鑑・復仇魔物' : `${params.title ?? '單元'}守衛`)}
-              hp={questions.length - stats.correct} maxHp={questions.length}
+            <BattleStage name={boss ?? (mode === 'daily' ? '突擊副本・小怪群' : mode === 'review' ? '魔物圖鑑・復仇魔物' : mode === 'conquer' ? `${params.title ?? '領地'}的魔物` : `${params.title ?? '單元'}守衛`)}
+              hp={mode === 'conquer' ? CONQUER_NEED - stats.correct : questions.length - stats.correct} maxHp={mode === 'conquer' ? CONQUER_NEED : questions.length}
               hearts={boss ? Math.max(BOSS_HEARTS - (stats.answered - stats.correct), 0) : null} hit={bossHit} crit={crit}
               image={boss ? bossImg(boss) : monsterImg(q?.subject)} arena={arenaImg(mode === 'daily' ? null : q?.subject)} />
             <XpPop seq={pop.seq} text={pop.text} sub={pop.sub} />
             <ScrollView ref={scrollRef} contentContainerStyle={{ padding: 20, gap: 16 }}>
-              <T size={13} color={C.muted}>第 {idx + 1} 題 / 共 {questions.length} 題{mode === 'review' ? ' · 錯題複習' : mode === 'exam' ? ` · ${params.title || '段考複習卷'}` : ''}{DIFF_LABEL[params.difficulty ?? ''] ? ` · ${DIFF_LABEL[params.difficulty ?? '']}` : ''}</T>
+              <T size={13} color={C.muted}>第 {idx + 1} 題 / 共 {questions.length} 題{mode === 'review' ? ' · 錯題複習' : mode === 'conquer' ? ` · 領地戰（答對 ${CONQUER_NEED} 題就贏）` : mode === 'exam' ? ` · ${params.title || '段考複習卷'}` : ''}{DIFF_LABEL[params.difficulty ?? ''] ? ` · ${DIFF_LABEL[params.difficulty ?? '']}` : ''}</T>
               <QuestionView q={q} picked={eye?.phase === 'hint' ? null : picked} result={eyeHidden ? null : result}
                 struck={eyeHidden ? eye?.first : null}
                 onPick={(k) => { if (eye?.phase === 'hint') setEye({ ...eye, phase: 'retry' }); setPicked(k); }} />
@@ -253,7 +259,7 @@ export default function Quiz() {
                     <Feedback result={result} compact wrongTitle={eye?.ok ? '第一次答錯，已收進魔物圖鑑' : undefined} />
                   </ScrollView>
                   {result.correct ? (
-                    <Button title={idx + 1 >= questions.length ? '看結果' : '下一題'} kind="green" onPress={next} />
+                    <Button title={idx + 1 >= questions.length || (mode === 'conquer' && stats.correct >= CONQUER_NEED) ? '看結果' : '下一題'} kind="green" onPress={next} />
                   ) : (
                     <View style={{ flexDirection: 'row', gap: 10 }}>
                       <Button title="找小老師" kind="secondary" style={{ flex: 1, borderColor: C.red }}
@@ -275,6 +281,7 @@ export default function Quiz() {
 async function fetchQuestions(mode: Mode, units: string | undefined, count: string | undefined,
   grade: number | null, subjectsKey: string, difficulty?: string, part?: string) {
   if (mode === 'review') return (await api.dueReviews(10)).map((r) => ({ ...r.question, seen: true }));
+  if (mode === 'conquer') return api.battleQuestions(units ?? '', 5);
   if (mode === 'daily') {
     // 每日 5 題：伺服器依學生選的科目平均輪流出題，只出各科版本已經教到的學期；題數不夠會自動補滿
     const subjects = subjectsKey ? subjectsKey.split(',') : ALL_SUBJECTS;
@@ -298,9 +305,11 @@ function reportQuestion(questionId: string) {
   ]);
 }
 
-function Summary({ stats, total, allSeen, mode, boss, bossKey, questionIds, hero, adUserId, onAgain }: {
+function Summary({ stats, total, allSeen, mode, boss, bossKey, conquerUnit, questionIds, hero, adUserId, onAgain }: {
   stats: { answered: number; correct: number; xp: number; streak: number; streakUp: boolean };
-  total: number; allSeen: boolean; mode: Mode; boss: string | null; bossKey: string | null; questionIds: string[]; hero: Hero;
+  total: number; allSeen: boolean; mode: Mode; boss: string | null; bossKey: string | null;
+  /** 領地戰的單元（不是領地戰就是 null） */
+  conquerUnit: string | null; questionIds: string[]; hero: Hero;
   /** 免費版可以看廣告把這一輪的 XP 加倍；null 代表不顯示 */
   adUserId: string | null; onAgain: () => void;
 }) {
@@ -327,7 +336,19 @@ function Summary({ stats, total, allSeen, mode, boss, bossKey, questionIds, hero
       .catch(() => {});
     return () => { cancelled = true; };
   }, [bossKey, idsKey]);
-  const won = stars >= 1;
+  // 領地戰結算也交給伺服器：贏了就佔領、收服夥伴、給金幣
+  const [conquest, setConquest] = useState<ConquerResult | null>(null);
+  const [conquestError, setConquestError] = useState<string | null>(null);
+  useEffect(() => {
+    if (!conquerUnit || !idsKey) return;
+    let cancelled = false;
+    api.conquer(conquerUnit, idsKey.split(','))
+      .then((r) => { if (!cancelled) { setConquest(r); if (r.rewarded) buzz('levelup'); } })
+      .catch((e) => { if (!cancelled) setConquestError(errorText(e)); });
+    return () => { cancelled = true; };
+  }, [conquerUnit, idsKey]);
+  const conquerWon = conquerUnit ? stats.correct >= CONQUER_NEED : false;
+  const won = conquerUnit ? conquerWon : stars >= 1;
   // 結算時星星一顆一顆亮起
   useEffect(() => {
     if (!boss) return;
@@ -340,16 +361,16 @@ function Summary({ stats, total, allSeen, mode, boss, bossKey, questionIds, hero
   }
   return (
     <ScrollView contentContainerStyle={{ padding: 20, gap: 14 }}>
-      <H1>{boss ? (won ? `打敗${boss}了！` : `${boss}還沒倒下…`) : '這一輪完成了！'}</H1>
+      <H1>{boss ? (won ? `打敗${boss}了！` : `${boss}還沒倒下…`) : conquerUnit ? (won ? '領地戰勝利！' : '這次沒有打下來…') : '這一輪完成了！'}</H1>
       {/* 夥伴的反應：表現好開心、沒過關就鼓勵 */}
       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
-        <Image source={(boss ? won : stats.correct * 2 >= Math.max(stats.answered, 1)) ? hero.happy : hero.cheer}
+        <Image source={(boss || conquerUnit ? won : stats.correct * 2 >= Math.max(stats.answered, 1)) ? hero.happy : hero.cheer}
           accessibilityIgnoresInvertColors style={{ width: 120, height: 120 }} />
         <View style={{ flex: 1, padding: 12, borderRadius: 14, backgroundColor: C.night, borderWidth: 1, borderColor: hero.color }}>
           <T size={12} weight="700" color={hero.color}>{hero.name}</T>
-          <T weight="700">{(boss ? won : stats.correct * 2 >= Math.max(stats.answered, 1))
-            ? (boss ? '幹得好！魔王被我們打倒了！' : '做得好！今天又變強了！')
-            : (boss ? '別灰心，把錯題弄懂再一起挑戰！' : '沒關係，錯的題目我們一起弄懂！')}</T>
+          <T weight="700">{(boss || conquerUnit ? won : stats.correct * 2 >= Math.max(stats.answered, 1))
+            ? (boss ? '幹得好！魔王被我們打倒了！' : conquerUnit ? '這塊領地是我們的了！' : '做得好！今天又變強了！')
+            : (boss ? '別灰心，把錯題弄懂再一起挑戰！' : conquerUnit ? `答對 ${CONQUER_NEED} 題才能佔領，弄懂錯題再來一次！` : '沒關係，錯的題目我們一起弄懂！')}</T>
         </View>
       </View>
       {boss ? (
@@ -372,8 +393,13 @@ function Summary({ stats, total, allSeen, mode, boss, bossKey, questionIds, hero
           ) : null}
         </Card>
       ) : null}
+      {conquerUnit && conquerWon ? (
+        conquest?.won ? <ConquerCard result={conquest} />
+          : conquestError ? <Card><T color={C.redDark}>{conquestError}</T></Card>
+          : conquest ? null : <Card><T color={C.muted}>結算中…</T></Card>
+      ) : null}
       <Card dark style={{ gap: 6 }}>
-        <T size={40} weight="700" color="#FFFFFF" style={{ lineHeight: 48 }}>{stats.correct} / {total}</T>
+        <T size={40} weight="700" color="#FFFFFF" style={{ lineHeight: 48 }}>{stats.correct} / {conquerUnit ? stats.answered : total}</T>
         <T color="#C9D1CF">答對題數 · 獲得 {stats.xp + (doubled ?? 0)} XP{doubled ? `（廣告加倍 +${doubled}）` : ''}</T>
         {stats.streakUp ? <T weight="700" color={C.flame}>今天的目標完成，連勝 {stats.streak} 天！</T> : null}
       </Card>
@@ -389,8 +415,8 @@ function Summary({ stats, total, allSeen, mode, boss, bossKey, questionIds, hero
           <T size={14} color={C.accentDark}>接下來會重複出現做過的題目。可以去「魔物圖鑑」把錯題弄懂，或到「學期複習」預習下學期、練其他科目。</T>
         </Card>
       ) : null}
-      <Button title={boss ? (stars === 3 ? '再挑戰一次' : '再挑戰，拿更多星星') : '再來一輪'} kind="green" onPress={onAgain} />
-      <Button title="回首頁" kind="secondary" onPress={() => goBack()} />
+      <Button title={boss ? (stars === 3 ? '再挑戰一次' : '再挑戰，拿更多星星') : conquerUnit ? (won ? '再打一場練功' : '再挑戰一次') : '再來一輪'} kind="green" onPress={onAgain} />
+      <Button title={conquerUnit ? '回世界地圖' : '回首頁'} kind="secondary" onPress={() => goBack()} />
       <Button title="分享成績" kind="ghost" onPress={share} />
     </ScrollView>
   );

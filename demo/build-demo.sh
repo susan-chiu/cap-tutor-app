@@ -76,7 +76,7 @@ PY
 python3 - <<'PY'
 from pathlib import Path
 src = Path('demo/dist/index.html').read_text(encoding='utf-8')
-routes = ['learn', 'mistakes', 'me', 'quiz', 'tutor', 'top-three', 'paywall', 'help', 'mock-exam', 'onboarding', 'login', 'forgot']
+routes = ['learn', 'mistakes', 'me', 'quiz', 'tutor', 'top-three', 'paywall', 'help', 'mock-exam', 'onboarding', 'login', 'forgot', 'map', 'pals', 'shop']
 for r in routes: (Path('demo/dist') / r).write_text(src, encoding='utf-8')
 print('頁面副本：' + '、'.join(routes))
 PY

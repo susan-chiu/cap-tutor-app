@@ -17,6 +17,13 @@ const SFX = {
   chest: require('@/assets/audio/sfx-chest.mp3'),
   tap: require('@/assets/audio/sfx-tap.mp3'),
   star: require('@/assets/audio/sfx-star.mp3'),
+  coin: require('@/assets/audio/sfx-coin.mp3'),
+  buy: require('@/assets/audio/sfx-buy.mp3'),
+  capture: require('@/assets/audio/sfx-capture.mp3'),
+  evolve: require('@/assets/audio/sfx-evolve.mp3'),
+  soup: require('@/assets/audio/sfx-soup.mp3'),
+  unlock: require('@/assets/audio/sfx-unlock.mp3'),
+  invade: require('@/assets/audio/sfx-invade.mp3'),
 } as const;
 const BGM = require('@/assets/audio/bgm-hall.mp3');
 export type Sfx = keyof typeof SFX;

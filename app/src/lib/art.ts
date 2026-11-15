@@ -86,3 +86,62 @@ const PLANT: Record<string, ImageSourcePropType[]> = {
   social: [require('@/assets/plants/social-0.webp'), require('@/assets/plants/social-1.webp'), require('@/assets/plants/social-2.webp'), require('@/assets/plants/social-3.webp'), require('@/assets/plants/social-4.webp')],
 };
 export const plantImg = (subject: string, stage: number) => (PLANT[subject] ?? PLANT.math)[Math.max(0, Math.min(4, stage))];
+
+/** 魔物夥伴（幼體）：五科各 4 種 */
+export const PAL_IMG: Record<string, ImageSourcePropType> = {
+  'math-1': require('@/assets/pals/pal-math-1.webp'),
+  'math-2': require('@/assets/pals/pal-math-2.webp'),
+  'math-3': require('@/assets/pals/pal-math-3.webp'),
+  'math-4': require('@/assets/pals/pal-math-4.webp'),
+  'chinese-1': require('@/assets/pals/pal-chinese-1.webp'),
+  'chinese-2': require('@/assets/pals/pal-chinese-2.webp'),
+  'chinese-3': require('@/assets/pals/pal-chinese-3.webp'),
+  'chinese-4': require('@/assets/pals/pal-chinese-4.webp'),
+  'english-1': require('@/assets/pals/pal-english-1.webp'),
+  'english-2': require('@/assets/pals/pal-english-2.webp'),
+  'english-3': require('@/assets/pals/pal-english-3.webp'),
+  'english-4': require('@/assets/pals/pal-english-4.webp'),
+  'science-1': require('@/assets/pals/pal-science-1.webp'),
+  'science-2': require('@/assets/pals/pal-science-2.webp'),
+  'science-3': require('@/assets/pals/pal-science-3.webp'),
+  'science-4': require('@/assets/pals/pal-science-4.webp'),
+  'social-1': require('@/assets/pals/pal-social-1.webp'),
+  'social-2': require('@/assets/pals/pal-social-2.webp'),
+  'social-3': require('@/assets/pals/pal-social-3.webp'),
+  'social-4': require('@/assets/pals/pal-social-4.webp'),
+};
+export const palImg = (species: string | null | undefined) => PAL_IMG[species ?? ''] ?? PAL_IMG['math-1'];
+
+/** 大廳家具 */
+export const FURNITURE_IMG: Record<string, ImageSourcePropType> = {
+  plant: require('@/assets/furniture/fur-plant.webp'),
+  rug: require('@/assets/furniture/fur-rug.webp'),
+  desk: require('@/assets/furniture/fur-desk.webp'),
+  window: require('@/assets/furniture/fur-window.webp'),
+  bed: require('@/assets/furniture/fur-bed.webp'),
+  chest: require('@/assets/furniture/fur-chest.webp'),
+  picture: require('@/assets/furniture/fur-picture.webp'),
+  mirror: require('@/assets/furniture/fur-mirror.webp'),
+  lamp: require('@/assets/furniture/fur-lamp.webp'),
+  shelf: require('@/assets/furniture/fur-shelf.webp'),
+  nest: require('@/assets/furniture/fur-nest.webp'),
+  weapon: require('@/assets/furniture/fur-weapon.webp'),
+};
+
+/** 世界地圖：六塊大陸（國小四個學期沿用前四張）、領地標記、金幣與熱湯 */
+const MAP: Record<string, ImageSourcePropType> = {
+  '7A': require('@/assets/maps/map-7a.jpg'), '7B': require('@/assets/maps/map-7b.jpg'),
+  '8A': require('@/assets/maps/map-8a.jpg'), '8B': require('@/assets/maps/map-8b.jpg'),
+  '9A': require('@/assets/maps/map-9a.jpg'), '9B': require('@/assets/maps/map-9b.jpg'),
+};
+const ELEM_MAP: Record<string, string> = { '5A': '7A', '5B': '7B', '6A': '8A', '6B': '8B' };
+export const mapImg = (semester: string) => MAP[ELEM_MAP[semester] ?? semester] ?? MAP['7A'];
+export const WORLD_IMG = {
+  coin: require('@/assets/world/coin.webp') as ImageSourcePropType,
+  soup: require('@/assets/world/soup.webp') as ImageSourcePropType,
+  flag: require('@/assets/world/mk-flag.webp') as ImageSourcePropType,
+  invade: require('@/assets/world/mk-invade.webp') as ImageSourcePropType,
+  next: require('@/assets/world/mk-next.webp') as ImageSourcePropType,
+  lock: require('@/assets/world/mk-lock.webp') as ImageSourcePropType,
+  master: require('@/assets/world/mk-master.webp') as ImageSourcePropType,
+};

@@ -79,6 +79,30 @@ export interface Leaderboard {
   me: { alias: string; level: number; xp: number; rank: number | null; hidden: boolean };
 }
 
+/** 世界地圖上的一塊領地（一個單元） */
+export interface MapUnit {
+  unit_id: string; subject: string; seq: number; title: string; species: string;
+  won: boolean; wins: number;
+  /** 這個單元裡該複習的錯題數；已佔領又大於 0 就是「魔物入侵」 */
+  due: number;
+  /** 今天已經在這塊領地拿過獎勵（再打贏不會再收服） */
+  rewarded_today: boolean;
+}
+export interface Pal { species: string; caught: number; stage: number }
+export interface ShopItem { id: string; kind: 'furniture' | 'consumable'; price: number; need_correct: number; need_pals: number }
+export interface WorldState {
+  gold: number; gold_today: number; gold_daily_max: number; gold_correct: number;
+  team_pal: string | null; total_correct: number; territories: number;
+  pals: Pal[]; evolve: number[]; owned: string[]; shop: ShopItem[];
+  premium: boolean; energy_max: number; today_answered: number;
+  soups_left: number; soup_questions: number; bed_questions: number;
+}
+export interface ConquerResult {
+  won: boolean; correct: number; total: number; need: number;
+  first: boolean; rewarded: boolean; gold_gained: number; gold: number;
+  species: string; caught: number; new_pal: boolean; stage_before: number; stage: number;
+}
+
 export interface HomeData {
   nickname: string;
   grade: number | null;
@@ -186,6 +210,13 @@ export interface ChildSummary {
 // 伺服器錯誤代碼 → 給學生看的中文
 const ERROR_TEXT: Record<string, string> = {
   daily_limit_reached: '今天的免費題數用完了，明天再來！全校前三名可以申請免費無限練習。',
+  not_enough_gold: '金幣不夠，去地圖出征多賺一點吧！',
+  item_owned: '這個已經買過了。',
+  item_locked: '還沒達到解鎖條件。',
+  soup_limit: '今天的熱湯喝完了，明天再來！',
+  soup_not_needed: '完整版沒有題數限制，不用喝熱湯。',
+  pal_not_owned: '還沒收服這個夥伴。',
+  bad_battle: '這場戰鬥的紀錄不完整，請再出征一次。',
   daily_tutor_limit: '今天的免費小老師次數用完了。',
   ad_bonus_limit: '這個獎勵今天看廣告換的次數用完了，明天再來！',
   ad_daily_limit: '今天看廣告的次數用完了（每天最多 5 次），明天再來！',
@@ -264,6 +295,17 @@ export const api = {
   dailyQuestions: (subjects: string[], maxSemester: string | null, limit = 5) =>
     rpc<PublicQuestion[]>('daily_questions', { p_subjects: subjects, p_max_sem: maxSemester, p_limit: limit }),
   limits: () => rpc<Limits>('get_limits'),
+  /** 世界地圖、魔物夥伴、大廳商店 */
+  worldState: () => rpc<WorldState>('world_state'),
+  worldMap: (semester: string) => rpc<MapUnit[]>('world_map', { p_semester: semester }),
+  worldProgress: () => rpc<{ semester: string; total: number; won: number }[]>('world_progress'),
+  battleQuestions: (unitId: string, limit = 5) =>
+    rpc<PublicQuestion[]>('battle_questions', { p_unit_id: unitId, p_limit: limit }),
+  /** 領地戰結算：伺服器依剛剛的作答判定輸贏、收服夥伴、給金幣 */
+  conquer: (unitId: string, questionIds: string[]) =>
+    rpc<ConquerResult>('conquer', { p_unit_id: unitId, p_question_ids: questionIds }),
+  buyItem: (itemId: string) => rpc<WorldState>('buy_item', { p_item: itemId }),
+  setTeamPal: (species: string) => rpc<null>('set_team_pal', { p_species: species }),
   /** 交卷後存成績：伺服器依剛剛送出的作答計分 */
   saveMockExam: (subject: string, full: boolean, questionIds: string[], durationSec: number) =>
     rpc<{ id: string; score: number; correct: number; total: number; previous_score: number | null; duplicate?: boolean }>(

@@ -5,10 +5,12 @@ import { Alert, Image, type ImageSourcePropType, Pressable, View } from 'react-n
 
 import { ParentHome } from '@/components/parent-home';
 import { Button, Card, ErrorBox, H2, Loading, ProgressBar, Screen, T } from '@/components/ui';
-import { api, errorText, type HomeData, type Limits } from '@/lib/api';
+import { api, errorText, type HomeData, type Limits, type WorldState } from '@/lib/api';
 import { rescheduleReminders } from '@/lib/reminders';
 import { useAuth } from '@/lib/auth';
-import { HALL_BG, ITEM_IMG, monsterImg } from '@/lib/art';
+import { FURNITURE_IMG, HALL_BG, ITEM_IMG, monsterImg, WORLD_IMG } from '@/lib/art';
+import { GoldPill, PalImage } from '@/components/world-fx';
+import { FURNITURE, palName } from '@/lib/world';
 import { FrameCorners, GoldButton, MagicCircle } from '@/components/game-fx';
 import { levelInfo } from '@/lib/game';
 import { startBgm, stopBgm } from '@/lib/sound';
@@ -29,6 +31,8 @@ function StudentHome() {
   const { profile, refreshProfile } = useAuth();
   const [data, setData] = useState<HomeData | null>(null);
   const [limits, setLimits] = useState<Limits | null>(null);
+  // 金幣、夥伴、家具（資料庫還沒更新到這一版時是 null，大廳照常顯示）
+  const [world, setWorld] = useState<WorldState | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [gradeBusy, setGradeBusy] = useState(false);
   const [stageW, setStageW] = useState(0);
@@ -44,9 +48,10 @@ function StudentHome() {
   const load = useCallback(async () => {
     try {
       setError(null);
-      const [h, l] = await Promise.all([api.home(), api.limits().catch(() => null)]);
+      const [h, l, w] = await Promise.all([api.home(), api.limits().catch(() => null), api.worldState().catch(() => null)]);
       setData(h);
       if (l) setLimits(l);
+      setWorld(w);
       rescheduleReminders({ todayMet: h.today_answered >= h.daily_goal, streak: h.streak }).catch(() => {});
     } catch (e) { setError(errorText(e)); }
   }, []);
@@ -60,7 +65,10 @@ function StudentHome() {
 
   const lv = levelInfo(data.xp);
   const hero = heroOf(profile?.hero);
-  const energyMax = limits?.free_daily_questions ?? 0;
+  // 體力上限含看廣告、熱湯、床多出來的題數
+  const energyMax = world?.energy_max ?? limits?.free_daily_questions ?? 0;
+  const stageH = stageW ? stageW / 0.72 : 480;
+  const teamPal = world?.pals.find((p) => p.species === world.team_pal) ?? null;
   const energyLeft = data.premium || !limits ? null : Math.max(energyMax - data.today_answered, 0);
   const monsters = data.pending_mistakes + data.due_reviews;
   const doneToday = Math.min(data.today_answered, data.daily_goal);
@@ -86,10 +94,11 @@ function StudentHome() {
           <T weight="700" size={16}>Lv.{lv.level} {lv.title}</T>
           <ProgressBar value={lv.progress} color={C.accent} height={8} />
         </View>
-        <View style={{ gap: 6 }}>
+        <View style={{ gap: 6, alignItems: 'flex-end' }}>
+          {world ? <GoldPill gold={world.gold} onPress={() => router.push('/shop')} /> : null}
           <StatPill img={ITEM_IMG.potion} color={C.accent} label={energyLeft === null ? '∞' : `${energyLeft}/${energyMax}`}
             a11y={energyLeft === null ? '體力無限' : `體力：今天還能練 ${energyLeft} 題`}
-            onPress={() => Alert.alert('體力', energyLeft === null ? '完整版沒有體力限制，想練多少就練多少！' : `免費版每天可以練 ${energyMax} 題，今天還剩 ${energyLeft} 題，明天會補滿。`)} />
+            onPress={() => Alert.alert('體力', energyLeft === null ? '完整版沒有體力限制，想練多少就練多少！' : `免費版每天可以練 ${energyMax} 題，今天還剩 ${energyLeft} 題，明天會補滿。${world && world.soups_left > 0 ? '\n\n到商店喝熱湯可以再多練幾題。' : ''}`)} />
           <StatPill img={ITEM_IMG.shield} color={C.green} label={`×${data.freeze_cards}`} a11y={`保護卡 ${data.freeze_cards} 張，點一下看說明`}
             onPress={() => Alert.alert('保護卡', `某一天忘了練習時，會自動用 1 張保護卡保住連勝。\n\n註冊送 2 張，每連勝 7 天再送 1 張，第一次三星打敗魔王也送 1 張，最多存 5 張。你現在有 ${data.freeze_cards} 張。`)} />
         </View>
@@ -99,7 +108,7 @@ function StudentHome() {
       <View onLayout={(e) => setStageW(e.nativeEvent.layout.width)}
         style={{ borderRadius: 20, overflow: 'hidden', borderWidth: 1, borderColor: hero.color, backgroundColor: C.night }}>
         <Image source={HALL_BG} accessibilityIgnoresInvertColors resizeMode="cover"
-          style={{ width: '100%', height: stageW ? stageW / 0.72 : 480 }} />
+          style={{ width: '100%', height: stageH }} />
         {/* 石台上旋轉的法陣 */}
         <View style={{ position: 'absolute', alignSelf: 'center', bottom: (stageW ? stageW / 0.72 : 480) * 0.11 - (stageW || 340) * 0.62 * 0.16 }}>
           <MagicCircle size={(stageW || 340) * 0.62} />
@@ -108,6 +117,21 @@ function StudentHome() {
         <Image source={hero.full} accessibilityLabel={`你的戰鬥夥伴 ${hero.name}`} accessibilityIgnoresInvertColors resizeMode="contain"
           style={{ position: 'absolute', alignSelf: 'center', bottom: (stageW ? stageW / 0.72 : 480) * 0.11,
             height: (stageW ? stageW / 0.72 : 480) * 0.8, width: (stageW ? stageW / 0.72 : 480) * 0.8 * (2 / 3) }} />
+        {/* 買來的家具擺在大廳裡 */}
+        {(world?.owned ?? []).map((id) => {
+          const f = FURNITURE[id];
+          if (!f || !FURNITURE_IMG[id] || !stageW) return null;
+          const size = stageW * f.size;
+          return <Image key={id} source={FURNITURE_IMG[id]} accessibilityLabel={f.name} accessibilityIgnoresInvertColors resizeMode="contain"
+            style={{ position: 'absolute', left: stageW * f.x - size / 2, top: stageH * f.y - size / 2, width: size, height: size }} />;
+        })}
+        {/* 出戰夥伴站在勇者腳邊 */}
+        {teamPal ? (
+          <Pressable accessibilityRole="button" accessibilityLabel={`出戰夥伴 ${palName(teamPal.species)}，點一下看全部夥伴`} onPress={() => router.push('/pals')}
+            style={{ position: 'absolute', left: (stageW || 340) * 0.62, bottom: stageH * 0.12 }}>
+            <PalImage species={teamPal.species} stage={teamPal.stage} size={(stageW || 340) * 0.26} />
+          </Pressable>
+        ) : null}
         <View style={{ position: 'absolute', top: 10, left: 10, flexDirection: 'row', alignItems: 'center', gap: 8, paddingVertical: 6, paddingHorizontal: 10,
           borderRadius: 10, borderWidth: 1, borderColor: C.gold, backgroundColor: 'rgba(5, 10, 24, 0.8)' }}>
           <Ionicons name="shield-half" size={22} color={C.gold} />
@@ -157,6 +181,14 @@ function StudentHome() {
       <GoldButton title="開始突擊・3 分鐘" accessibilityLabel={`開始突擊，3 分鐘，隨機 ${data.daily_goal} 題`}
         onPress={() => router.push({ pathname: '/quiz', params: { mode: 'daily' } })} />
       <T size={13} color={C.muted} style={{ textAlign: 'center', marginTop: -4 }}>◆ 隨機 {data.daily_goal} 題，隨時可以休息 ◆</T>
+
+      {world ? (
+        <View style={{ flexDirection: 'row', gap: 10 }}>
+          <HallLink img={WORLD_IMG.flag} title="世界地圖" detail={`已佔領 ${world.territories} 塊`} color={C.accent} onPress={() => router.push('/map')} />
+          <HallLink img={monsterImg(world.team_pal?.split('-')[0])} title="魔物夥伴" detail={`已收服 ${world.pals.length} 種`} color={C.green} onPress={() => router.push('/pals')} />
+          <HallLink img={WORLD_IMG.coin} title="商店" detail={`${world.gold} 金幣`} color={C.gold} onPress={() => router.push('/shop')} />
+        </View>
+      ) : null}
 
       <Pressable accessibilityRole="button" accessibilityLabel={`魔物圖鑑，${monsters ? `${monsters} 隻等待再挑戰` : '目前沒有魔物'}`} onPress={() => router.push('/mistakes')}
         style={({ pressed }) => ({ flexDirection: 'row', alignItems: 'center', gap: 14, padding: 14, borderRadius: 18, borderWidth: 1.5, borderColor: C.purple,
@@ -321,6 +353,21 @@ function Task({ done, title, detail, progress, action, onPress }: {
       </View>
       {action ? <Button title={action} onPress={onPress} style={{ minHeight: 44, paddingHorizontal: 14 }} /> : null}
     </View>
+  );
+}
+
+/** 大廳的三個入口：世界地圖、魔物夥伴、商店 */
+function HallLink({ img, title, detail, color, onPress }: {
+  img: ImageSourcePropType; title: string; detail: string; color: string; onPress: () => void;
+}) {
+  return (
+    <Pressable accessibilityRole="button" accessibilityLabel={`${title}，${detail}`} onPress={onPress}
+      style={({ pressed }) => ({ flex: 1, alignItems: 'center', gap: 2, paddingVertical: 10, borderRadius: 16, borderWidth: 1.5, borderColor: color,
+        backgroundColor: C.card, opacity: pressed ? 0.85 : 1 })}>
+      <Image source={img} accessibilityIgnoresInvertColors style={{ width: 40, height: 40 }} />
+      <T size={14} weight="700">{title}</T>
+      <T size={11} color={C.muted}>{detail}</T>
+    </Pressable>
   );
 }
 
