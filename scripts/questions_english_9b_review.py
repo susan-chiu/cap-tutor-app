@@ -45,25 +45,25 @@ Q(U, "tense-review", 2, "When I got home yesterday, my sister ＿＿＿ a cake i
   ["got home 是什麼時態？整句話發生在什麼時候？", "過去某個時間點「正在進行」的動作，用哪一種時態？"],
   {"B": "makes 是現在式，和 yesterday 不合。", "C": "is making 是現在進行式，但這是昨天的事。", "D": "現在完成式不能和 yesterday 這種明確的過去時間一起用。"})
 Q(U, "tense-review", 2, "If it ＿＿＿ tomorrow, we will stay home and watch a movie.",
-  ["rains", "will rain", "rained", "is going to rain"], "A",
+  ["rains", "will rain", "rained", "raining"], "A",
   "if 引導的條件子句用現在簡單式代替未來式，主要子句才用 will；主詞 it 是第三人稱單數，所以用 rains。",
   ["if 的那一半句子可以用 will 嗎？", "條件子句要用哪一種時態來代替未來式？"],
-  {"B": "if 子句裡不用 will，要用現在式代替未來。", "C": "rained 是過去式，和 tomorrow 不合。", "D": "be going to 也是未來式，if 條件子句裡同樣要用現在式代替。"})
+  {"B": "if 子句裡不用 will，要用現在式代替未來。", "C": "rained 是過去式，和 tomorrow 不合。", "D": "raining 前面沒有 be 動詞，不能單獨當句子的動詞。"})
 Q(U, "tense-review", 2, "Amy ＿＿＿ her homework yet, so she can't go out to play.",
-  ["hasn't finished", "didn't finish", "doesn't finish", "isn't finishing"], "A",
+  ["hasn't finished", "hadn't finished", "doesn't finish", "isn't finishing"], "A",
   "yet（還沒）常和現在完成式的否定句一起用，表示到現在為止還沒完成：hasn't finished。",
   ["句尾的 yet 是什麼意思？", "「到現在還沒做完」要用哪一種時態的否定？"],
-  {"B": "過去式否定只說過去某個時間沒做，和 yet、後半句的現在式不搭。", "C": "現在簡單式否定是說「習慣上不做」，不是「還沒做完」。", "D": "現在進行式不和 yet 這樣搭配，意思也不對。"})
+  {"B": "過去完成式是以過去某個時間為基準，但後半句 can't 是現在，要用現在完成式。", "C": "現在簡單式否定是說「習慣上不做」，不是「還沒做完」。", "D": "現在進行式不和 yet 這樣搭配，意思也不對。"})
 Q(U, "tense-review", 3, "By the time we arrived at the theater, the movie ＿＿＿ for twenty minutes.",
   ["had been on", "has been on", "was on", "is on"], "A",
   "「我們到電影院」是過去的事，電影在那之前已經演了二十分鐘，比過去更早並持續到那時，用過去完成式 had been on。",
   ["arrived 是過去式；電影開演是在那之前還是之後？", "比「過去某一點」更早開始並持續到那時的事，用哪一種時態？"],
   {"B": "has been 是現在完成式，以「現在」為基準，但這句的基準是過去的 arrived。", "C": "was on 只說當時在演，無法和 for twenty minutes 一起表達「已經演了多久」。", "D": "is on 是現在式，和 arrived 的過去時間不合。"})
 Q(U, "tense-review", 3, "I ＿＿＿ this novel three times, and I am still moved by the ending every time.",
-  ["have read", "read", "am reading", "was reading"], "A",
+  ["have read", "will read", "am reading", "was reading"], "A",
   "three times 說的是到現在為止的經驗次數，沒有指出明確的過去時間，用現在完成式 have read。",
   ["three times 是在說某一天的事，還是到目前為止的經驗？", "表達「到現在為止做過幾次」用哪一種時態？"],
-  {"B": "過去式要有明確的過去時間；這裡是說累積到現在的經驗，後半句也用現在式。", "C": "現在進行式是說此刻正在讀，不能表達讀過三次。", "D": "過去進行式是說過去某時正在讀，不能表達次數。"})
+  {"B": "will read 是未來式，但後半句說每次都被結局感動，表示已經讀過了。", "C": "現在進行式是說此刻正在讀，不能表達讀過三次。", "D": "過去進行式是說過去某時正在讀，不能表達次數。"})
 
 # ---------------- 被動語態 5 題 ----------------
 Q(U, "passive-review", 1, "English ＿＿＿ in many countries around the world.",
@@ -202,11 +202,11 @@ Q(U, "conjunction-review", 3, "Neither the teacher nor the students ＿＿＿ ab
   {"B": "knows 是單數，是跟著較遠的 the teacher 走，但要看最靠近的 the students。", "C": "know 是狀態動詞，不用進行式，而且 is 也是單數。", "D": "has 是單數，和最靠近的複數主詞不一致。"})
 
 # ---------------- 比較、不定詞與動名詞 6 題 ----------------
-Q(U, "comparison-review", 1, "Taipei 101 is ＿＿＿ than any other building in our city.",
+Q(U, "comparison-review", 1, "Taipei 101 is ＿＿＿ than any other building in Taiwan.",
   ["taller", "tall", "tallest", "the tallest"], "A",
   "句中有 than，用比較級；tall 是單音節，比較級是 taller。「比其他任何一棟都高」其實就是最高的意思。",
   ["看到 than 要用原級、比較級還是最高級？", "tall 的比較級怎麼變？"],
-  {"B": "tall 是原級，不能和 than 一起用。", "C": "tallest 是最高級，不接 than。", "D": "the tallest 後面要接範圍（in our city），不接 than。"})
+  {"B": "tall 是原級，不能和 than 一起用。", "C": "tallest 是最高級，不接 than。", "D": "the tallest 後面直接接範圍（in Taiwan），不接 than。"})
 Q(U, "comparison-review", 2, "This math problem is not as ＿＿＿ as the one we did yesterday.",
   ["difficult", "more difficult", "most difficult", "difficulty"], "A",
   "as + 形容詞原級 + as 表示「和……一樣」；否定是「不像……那麼」。中間要用原級 difficult。",
@@ -244,7 +244,7 @@ Q(U, "pronoun-quantifier", 2, "I have two brothers. One is a doctor, and ＿＿�
   "只有兩個時，一個用 one，剩下的那一個用 the other。",
   ["總共有幾個兄弟？", "只剩下「特定的最後一個」時，前面要不要加 the？"],
   {"B": "another 是「另一個（不特定）」，用在三個以上還有剩的情況。", "C": "other 後面要接名詞（other brothers），不能單獨當主詞。", "D": "others 是複數，但剩下的只有一個人，動詞也是 is。"})
-Q(U, "pronoun-quantifier", 2, "Each of the students ＿＿＿ a dictionary on the desk.",
+Q(U, "pronoun-quantifier", 2, "Each of the students ＿＿＿ a dictionary on his or her desk.",
   ["has", "have", "are having", "having"], "A",
   "each of + 複數名詞當主詞時，強調「每一個」，動詞用單數：has。",
   ["主詞的重點是 Each 還是 students？", "each 當主詞時，動詞用單數還是複數？"],

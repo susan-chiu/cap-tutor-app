@@ -17258,7 +17258,7 @@
     "stem": "If it ＿＿＿ tomorrow, we will stay home and watch a movie.",
     "options": [
       "rains",
-      "is going to rain",
+      "raining",
       "will rain",
       "rained"
     ],
@@ -17271,7 +17271,7 @@
     "wrong": {
       "C": "if 子句裡不用 will，要用現在式代替未來。",
       "D": "rained 是過去式，和 tomorrow 不合。",
-      "B": "be going to 也是未來式，if 條件子句裡同樣要用現在式代替。"
+      "B": "raining 前面沒有 be 動詞，不能單獨當句子的動詞。"
     }
   },
   {
@@ -17284,7 +17284,7 @@
     "options": [
       "hasn't finished",
       "doesn't finish",
-      "didn't finish",
+      "hadn't finished",
       "isn't finishing"
     ],
     "answer": "A",
@@ -17294,7 +17294,7 @@
       "「到現在還沒做完」要用哪一種時態的否定？"
     ],
     "wrong": {
-      "C": "過去式否定只說過去某個時間沒做，和 yet、後半句的現在式不搭。",
+      "C": "過去完成式是以過去某個時間為基準，但後半句 can't 是現在，要用現在完成式。",
       "B": "現在簡單式否定是說「習慣上不做」，不是「還沒做完」。",
       "D": "現在進行式不和 yet 這樣搭配，意思也不對。"
     }
@@ -17335,7 +17335,7 @@
       "was reading",
       "have read",
       "am reading",
-      "read"
+      "will read"
     ],
     "answer": "B",
     "explanation": "three times 說的是到現在為止的經驗次數，沒有指出明確的過去時間，用現在完成式 have read。",
@@ -17344,7 +17344,7 @@
       "表達「到現在為止做過幾次」用哪一種時態？"
     ],
     "wrong": {
-      "D": "過去式要有明確的過去時間；這裡是說累積到現在的經驗，後半句也用現在式。",
+      "D": "will read 是未來式，但後半句說每次都被結局感動，表示已經讀過了。",
       "C": "現在進行式是說此刻正在讀，不能表達讀過三次。",
       "A": "過去進行式是說過去某時正在讀，不能表達次數。"
     }
@@ -17980,7 +17980,7 @@
     "unit": "EN-9B-3",
     "concept": "comparison-review",
     "difficulty": 1,
-    "stem": "Taipei 101 is ＿＿＿ than any other building in our city.",
+    "stem": "Taipei 101 is ＿＿＿ than any other building in Taiwan.",
     "options": [
       "tallest",
       "taller",
@@ -17996,7 +17996,7 @@
     "wrong": {
       "C": "tall 是原級，不能和 than 一起用。",
       "A": "tallest 是最高級，不接 than。",
-      "D": "the tallest 後面要接範圍（in our city），不接 than。"
+      "D": "the tallest 後面直接接範圍（in Taiwan），不接 than。"
     }
   },
   {
@@ -18180,7 +18180,7 @@
     "unit": "EN-9B-3",
     "concept": "pronoun-quantifier",
     "difficulty": 2,
-    "stem": "Each of the students ＿＿＿ a dictionary on the desk.",
+    "stem": "Each of the students ＿＿＿ a dictionary on his or her desk.",
     "options": [
       "are having",
       "have",
