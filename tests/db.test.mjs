@@ -678,7 +678,7 @@ if (hasSeed) {
     assert.equal(me2.hidden, true); assert.equal(me2.rank, null);
     assert.equal((await db.query(`select public.xp_level(0) a, public.xp_level(99) b, public.xp_level(100) c, public.xp_level(1000) d`)).rows[0].d, 5);
     const g = (await as(a, () => db.query(`select * from public.garden()`))).rows.filter((u) => !u.unit_id.startsWith('T-'));
-    assert.ok(g.length === 86 && g.every((u) => !/-[56][AB]-/.test(u.unit_id)), '國中花園 86 個單元');
+    assert.ok(g.length === 87 && g.every((u) => !/-[56][AB]-/.test(u.unit_id)), '國中花園 87 個單元');
     const m1 = g.find((u) => u.unit_id === 'M-7A-1');
     assert.deepEqual([m1.total, m1.mastered, m1.attempted], [45, 3, 3]);
     const kg = (await as(kid, () => db.query(`select * from public.garden()`))).rows;

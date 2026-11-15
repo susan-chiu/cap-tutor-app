@@ -87,11 +87,13 @@ await test('題目不屬於這個單元、或題數不對：拒絕', async () =>
 await test('錯題到期：已佔領的領地顯示魔物入侵（due > 0），複習答對後解除', async () => {
   let m = (await map(u)).find((x) => x.unit_id === 'W-7A-1');
   assert.equal(m.won, true); assert.equal(m.due, 1);   // 一開始答錯的 W-7A-1-2
+  assert.equal((await state(u)).invaded, 1);
   const qs = await as(u, async () => (await db.query(`select id from public.battle_questions('W-7A-1', 5)`)).rows);
   assert.equal(qs[0].id, 'W-7A-1-2', '領地戰先出該複習的錯題');
   await answer(u, 'W-7A-1-2', 'A');
   m = (await map(u)).find((x) => x.unit_id === 'W-7A-1');
   assert.equal(m.due, 0);
+  assert.equal((await state(u)).invaded, 0);
 });
 
 await test('隔天再打贏同一塊：+20 金幣、夥伴 +1；同種夥伴收服 3 次進化', async () => {

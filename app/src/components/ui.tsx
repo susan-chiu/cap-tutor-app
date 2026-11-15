@@ -11,7 +11,8 @@ import { C, radius } from '@/lib/theme';
 export function Screen({ children, scroll = true, padded = true, edges = ['top'] }: {
   children: ReactNode; scroll?: boolean; padded?: boolean; edges?: ('top' | 'bottom')[];
 }) {
-  const inner = <View style={[padded && styles.padded, { gap: 12 }]}>{children}</View>;
+  // 平板等寬螢幕：內容置中、最寬 600，不會被拉得很散
+  const inner = <View style={[padded && styles.padded, { gap: 12, width: '100%', maxWidth: 600, alignSelf: 'center' }]}>{children}</View>;
   return (
     <SafeAreaView style={styles.screen} edges={edges}>
       {scroll ? (

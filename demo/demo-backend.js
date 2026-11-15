@@ -174,6 +174,7 @@
     var w = world(uid), p = db.profiles[uid], dr = dayRow(uid, today());
     return { gold: w.gold, gold_today: dr.gold || 0, gold_daily_max: CFG.gold_daily_max, gold_correct: CFG.gold_correct, team_pal: w.team,
       total_correct: totalCorrect(uid), territories: Object.keys(w.terr).length,
+      invaded: Object.keys(w.terr).filter(function (u) { return dueIn(uid, u) > 0; }).length,
       pals: w.order.map(function (s) { return { species: s, caught: w.pals[s], stage: palStage(w.pals[s]) }; }),
       evolve: CFG.evolve, owned: w.owned.slice(), shop: SHOP, premium: premium(p), energy_max: energyMax(uid, dr), today_answered: dr.answered,
       soups_left: Math.max(CFG.soup_daily_max - (dr.soups || 0), 0), soup_questions: CFG.soup_questions, bed_questions: CFG.bed_questions };

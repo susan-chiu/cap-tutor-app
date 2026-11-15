@@ -49,10 +49,10 @@ await step('每日 5 題全對：飄出 +10 XP、3 連擊、升到 Lv 1 進度',
   await page.getByText('再 50 XP 升到 Lv 2', { exact: false }).waitFor();
   await shot('02-home-level');
 });
-await step('學習花園：國中 86 株，有一些已經發芽', async () => {
+await step('學習花園：國中 87 株，有一些已經發芽', async () => {
   await page.getByRole('button', { name: '學習花園' }).click();
   await page.getByText('把整座花園種滿吧', { exact: false }).waitFor({ timeout: 10000 });
-  await page.getByText('/ 86 株', { exact: false }).waitFor({ timeout: 10000 });
+  await page.getByText('/ 87 株', { exact: false }).waitFor({ timeout: 10000 });
   const sprouted = await page.getByText(/^發芽 · 再/).count();
   if (sprouted < 1) throw new Error('應該有單元發芽');
   await shot('03-garden');

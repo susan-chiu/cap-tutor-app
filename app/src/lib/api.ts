@@ -93,6 +93,8 @@ export interface ShopItem { id: string; kind: 'furniture' | 'consumable'; price:
 export interface WorldState {
   gold: number; gold_today: number; gold_daily_max: number; gold_correct: number;
   team_pal: string | null; total_correct: number; territories: number;
+  /** 已佔領但有錯題該複習的領地數（魔物入侵） */
+  invaded: number;
   pals: Pal[]; evolve: number[]; owned: string[]; shop: ShopItem[];
   premium: boolean; energy_max: number; today_answered: number;
   soups_left: number; soup_questions: number; bed_questions: number;

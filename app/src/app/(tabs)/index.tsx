@@ -1,7 +1,7 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { router, useFocusEffect } from 'expo-router';
 import { useCallback, useState } from 'react';
-import { Alert, Image, type ImageSourcePropType, Pressable, View } from 'react-native';
+import { Alert, Image, type ImageSourcePropType, Pressable, View, useWindowDimensions } from 'react-native';
 
 import { ParentHome } from '@/components/parent-home';
 import { Button, Card, ErrorBox, H2, Loading, ProgressBar, Screen, T } from '@/components/ui';
@@ -36,6 +36,7 @@ function StudentHome() {
   const [error, setError] = useState<string | null>(null);
   const [gradeBusy, setGradeBusy] = useState(false);
   const [stageW, setStageW] = useState(0);
+  const { height: winH } = useWindowDimensions();
   const nextGrade = gradeCheckNeeded(profile?.grade, profile?.grade_confirmed_at);
 
   async function confirmGrade(g: number) {
@@ -67,7 +68,8 @@ function StudentHome() {
   const hero = heroOf(profile?.hero);
   // 體力上限含看廣告、熱湯、床多出來的題數
   const energyMax = world?.energy_max ?? limits?.free_daily_questions ?? 0;
-  const stageH = stageW ? stageW / 0.72 : 480;
+  // 舞台高度不超過螢幕剩下的空間，「開始突擊」按鈕才會在第一個畫面就看得到
+  const stageH = Math.min(stageW ? stageW / 0.72 : 480, Math.max(winH - 430, 300));
   const teamPal = world?.pals.find((p) => p.species === world.team_pal) ?? null;
   const energyLeft = data.premium || !limits ? null : Math.max(energyMax - data.today_answered, 0);
   const monsters = data.pending_mistakes + data.due_reviews;
@@ -109,15 +111,7 @@ function StudentHome() {
         style={{ borderRadius: 20, overflow: 'hidden', borderWidth: 1, borderColor: hero.color, backgroundColor: C.night }}>
         <Image source={HALL_BG} accessibilityIgnoresInvertColors resizeMode="cover"
           style={{ width: '100%', height: stageH }} />
-        {/* 石台上旋轉的法陣 */}
-        <View style={{ position: 'absolute', alignSelf: 'center', bottom: (stageW ? stageW / 0.72 : 480) * 0.11 - (stageW || 340) * 0.62 * 0.16 }}>
-          <MagicCircle size={(stageW || 340) * 0.62} />
-        </View>
-        {/* 去背的主角站在石台上 */}
-        <Image source={hero.full} accessibilityLabel={`你的戰鬥夥伴 ${hero.name}`} accessibilityIgnoresInvertColors resizeMode="contain"
-          style={{ position: 'absolute', alignSelf: 'center', bottom: (stageW ? stageW / 0.72 : 480) * 0.11,
-            height: (stageW ? stageW / 0.72 : 480) * 0.8, width: (stageW ? stageW / 0.72 : 480) * 0.8 * (2 / 3) }} />
-        {/* 買來的家具擺在大廳裡 */}
+        {/* 買來的家具擺在大廳裡（在勇者後面） */}
         {(world?.owned ?? []).map((id) => {
           const f = FURNITURE[id];
           if (!f || !FURNITURE_IMG[id] || !stageW) return null;
@@ -125,6 +119,14 @@ function StudentHome() {
           return <Image key={id} source={FURNITURE_IMG[id]} accessibilityLabel={f.name} accessibilityIgnoresInvertColors resizeMode="contain"
             style={{ position: 'absolute', left: stageW * f.x - size / 2, top: stageH * f.y - size / 2, width: size, height: size }} />;
         })}
+        {/* 石台上旋轉的法陣 */}
+        <View style={{ position: 'absolute', alignSelf: 'center', bottom: stageH * 0.11 - (stageW || 340) * 0.62 * 0.16 }}>
+          <MagicCircle size={(stageW || 340) * 0.62} />
+        </View>
+        {/* 去背的主角站在石台上 */}
+        <Image source={hero.full} accessibilityLabel={`你的戰鬥夥伴 ${hero.name}`} accessibilityIgnoresInvertColors resizeMode="contain"
+          style={{ position: 'absolute', alignSelf: 'center', bottom: stageH * 0.11,
+            height: stageH * 0.8, width: stageH * 0.8 * (2 / 3) }} />
         {/* 出戰夥伴站在勇者腳邊 */}
         {teamPal ? (
           <Pressable accessibilityRole="button" accessibilityLabel={`出戰夥伴 ${palName(teamPal.species)}，點一下看全部夥伴`} onPress={() => router.push('/pals')}
@@ -154,6 +156,11 @@ function StudentHome() {
         </View>
       </View>
 
+      {/* 主要按鈕 */}
+      <GoldButton title="開始突擊・3 分鐘" accessibilityLabel={`開始突擊，3 分鐘，隨機 ${data.daily_goal} 題`}
+        onPress={() => router.push({ pathname: '/quiz', params: { mode: 'daily' } })} />
+      <T size={13} color={C.muted} style={{ textAlign: 'center', marginTop: -4 }}>◆ 隨機 {data.daily_goal} 題，隨時可以休息 ◆</T>
+
       {/* 今日討伐 */}
       <Card style={{ gap: 12, borderColor: C.gold, backgroundColor: '#0E1530' }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
@@ -177,10 +184,18 @@ function StudentHome() {
         <FrameCorners />
       </Card>
 
-      {/* 主要按鈕 */}
-      <GoldButton title="開始突擊・3 分鐘" accessibilityLabel={`開始突擊，3 分鐘，隨機 ${data.daily_goal} 題`}
-        onPress={() => router.push({ pathname: '/quiz', params: { mode: 'daily' } })} />
-      <T size={13} color={C.muted} style={{ textAlign: 'center', marginTop: -4 }}>◆ 隨機 {data.daily_goal} 題，隨時可以休息 ◆</T>
+      {world?.invaded ? (
+        <Pressable accessibilityRole="button" accessibilityLabel={`${world.invaded} 塊領地被魔物入侵，去世界地圖收回`} onPress={() => router.push('/map')}
+          style={({ pressed }) => ({ flexDirection: 'row', alignItems: 'center', gap: 12, padding: 12, borderRadius: 16, borderWidth: 1.5, borderColor: C.red,
+            backgroundColor: C.redSoft, opacity: pressed ? 0.85 : 1 })}>
+          <Image source={WORLD_IMG.invade} accessibilityIgnoresInvertColors style={{ width: 40, height: 40 }} />
+          <View style={{ flex: 1 }}>
+            <T weight="700" color={C.redDark}>{world.invaded} 塊領地被魔物入侵！</T>
+            <T size={13} color={C.inkSoft}>那裡有錯題該複習了，打贏就能收回來。</T>
+          </View>
+          <Ionicons name="chevron-forward" size={22} color={C.redDark} />
+        </Pressable>
+      ) : null}
 
       {world ? (
         <View style={{ flexDirection: 'row', gap: 10 }}>

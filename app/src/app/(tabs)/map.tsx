@@ -28,6 +28,7 @@ export default function WorldMap() {
   const sem = validSemester(profile?.grade, pick, currentSemester(profile?.grade));
   const [units, setUnits] = useState<MapUnit[] | null>(null);
   const [world, setWorld] = useState<WorldState | null>(null);
+  const [progress, setProgress] = useState<Record<string, { total: number; won: number }>>({});
   const [error, setError] = useState<string | null>(null);
   const [open, setOpen] = useState<MapUnit | null>(null);
   const scrollRef = useRef<ScrollView>(null);
@@ -36,9 +37,10 @@ export default function WorldMap() {
   const load = useCallback(async () => {
     try {
       setError(null);
-      const [m, s] = await Promise.all([api.worldMap(sem), api.worldState().catch(() => null)]);
+      const [m, s, pr] = await Promise.all([api.worldMap(sem), api.worldState().catch(() => null), api.worldProgress().catch(() => [])]);
       setUnits(m);
       setWorld(s);
+      setProgress(Object.fromEntries(pr.map((r) => [r.semester, r])));
     } catch (e) { setError(errorText(e)); }
   }, [sem]);
   useFocusEffect(useCallback(() => { load(); }, [load]));
@@ -85,7 +87,7 @@ export default function WorldMap() {
         </View>
         <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: 8, paddingBottom: 8 }}>
           {semesters.map((s) => (
-            <Chip key={s.id} label={`${s.label}大陸`} selected={s.id === sem}
+            <Chip key={s.id} label={progress[s.id] ? `${s.label} ${progress[s.id].won}/${progress[s.id].total}` : `${s.label}大陸`} selected={s.id === sem}
               onPress={() => { if (s.id !== sem) { setUnits(null); setSem(s.id); } }} />
           ))}
         </ScrollView>

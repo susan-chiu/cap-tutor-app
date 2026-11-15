@@ -8,7 +8,8 @@ import { BOSS_HEARTS } from '@/lib/game';
 import { play } from '@/lib/sound';
 import { C } from '@/lib/theme';
 
-const STAGE_H = 176;
+/** 舞台高度：矮螢幕（小手機）縮小，題目才不會被擠到畫面外 */
+const stageSize = (height: number) => (height < 700 ? { h: 124, monster: 88 } : { h: 176, monster: 132 });
 
 /**
  * 戰鬥舞台：戰場背景上站著魔物（或魔王），答對時劍光劃過、命中閃光、魔物搖晃；
@@ -22,8 +23,9 @@ export function BattleStage({ name, image, arena, hp, maxHp, hearts, hit, crit }
   /** 這一擊是不是暴擊（連擊） */
   crit: boolean;
 }) {
-  const { width } = useWindowDimensions();
-  const w = Math.min(width, 640);
+  const { width: w, height } = useWindowDimensions();
+  const { h: STAGE_H, monster } = stageSize(height);
+  const k = monster / 132;
   const shake = useState(() => new Animated.Value(0))[0];
   const slash = useState(() => new Animated.Value(0))[0];
   const flash = useState(() => new Animated.Value(0))[0];
@@ -70,20 +72,19 @@ export function BattleStage({ name, image, arena, hp, maxHp, hearts, hit, crit }
     if (!defeated) { wasDefeated.current = false; fade.setValue(1); dust.setValue(0); }
   }, [defeated, fade, dust]);
 
-  const monster = 132;
   return (
     <View accessibilityLabel={`${name} 血量 ${Math.max(hp, 0)} / ${maxHp}${hearts != null ? `，你的愛心 ${hearts} 顆` : ''}`}
       style={{ height: STAGE_H, overflow: 'hidden', backgroundColor: C.night }}>
       {/* 戰場只取上半部的場景 */}
       <Image source={arena} accessibilityIgnoresInvertColors resizeMode="cover"
-        style={{ position: 'absolute', top: -w * 0.12, left: 0, width: w, height: w * 16 / 9 }} />
+        style={{ position: 'absolute', top: -Math.min(w, 640) * 0.12, left: 0, width: w, height: w * 16 / 9 }} />
       <Animated.View style={{ position: 'absolute', alignSelf: 'center', top: 6, width: monster, height: monster,
         opacity: fade, transform: [{ translateX: shake }] }}>
         <Image source={image} accessibilityIgnoresInvertColors style={{ width: monster, height: monster }} />
       </Animated.View>
       {/* 劍光 */}
       <Animated.Image source={crit ? FX_IMG.crit : FX_IMG.slash} style={{
-        position: 'absolute', alignSelf: 'center', top: -10, width: 170, height: 170,
+        position: 'absolute', alignSelf: 'center', top: -10 * k, width: 170 * k, height: 170 * k,
         opacity: slash.interpolate({ inputRange: [0, 0.15, 0.7, 1], outputRange: [0, 1, 1, 0] }),
         transform: [
           { translateX: crit ? 0 : slash.interpolate({ inputRange: [0, 1], outputRange: [-40, 30] }) },
@@ -92,12 +93,12 @@ export function BattleStage({ name, image, arena, hp, maxHp, hearts, hit, crit }
       }} />
       {/* 命中閃光 */}
       <Animated.Image source={FX_IMG.hit} style={{
-        position: 'absolute', alignSelf: 'center', top: 10, width: 130, height: 130, opacity: flash,
+        position: 'absolute', alignSelf: 'center', top: 10 * k, width: 130 * k, height: 130 * k, opacity: flash,
         transform: [{ scale: flash.interpolate({ inputRange: [0, 1], outputRange: [0.6, 1.2] }) }],
       }} />
       {/* 打倒後化成光點 */}
       <Animated.Image source={FX_IMG.dissolve} style={{
-        position: 'absolute', alignSelf: 'center', top: -6, width: 170, height: 170,
+        position: 'absolute', alignSelf: 'center', top: -6, width: 170 * k, height: 170 * k,
         opacity: dust.interpolate({ inputRange: [0, 0.2, 0.8, 1], outputRange: [0, 1, 1, 0] }),
         transform: [{ translateY: dust.interpolate({ inputRange: [0, 1], outputRange: [20, -30] }) }],
       }} />

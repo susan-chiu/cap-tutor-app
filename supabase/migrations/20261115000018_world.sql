@@ -278,6 +278,10 @@ begin
     'team_pal', v_prof.team_pal,
     'total_correct', v_correct,
     'territories', (select count(*)::int from public.territories where user_id = v_uid),
+    'invaded', (select count(*)::int from public.territories t where t.user_id = v_uid and exists (
+                  select 1 from public.mistakes m join public.questions q on q.id = m.question_id
+                  where m.user_id = v_uid and q.unit_id = t.unit_id and m.status <> 'graduated'
+                    and (m.status = 'pending' or m.next_review <= v_today))),
     'pals', coalesce((select jsonb_agg(jsonb_build_object('species', c.species, 'caught', c.caught,
                         'stage', public.pal_stage(c.caught)) order by c.first_at)
                       from public.companions c where c.user_id = v_uid), '[]'::jsonb),
