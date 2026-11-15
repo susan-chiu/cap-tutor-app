@@ -11,7 +11,7 @@ import { SUBJECT_FLOWER } from '@/lib/game';
 import { goBack } from '@/lib/nav';
 import { play } from '@/lib/sound';
 import { C, subjectLabel, subjectsFor } from '@/lib/theme';
-import { ALL_SPECIES, PAL_STAGE, PAL_STAGE_COLOR, palName, palSubject, toEvolve } from '@/lib/world';
+import { ALL_SPECIES, PAL_STAGE, PAL_STAGE_COLOR, palName, palSkill, palSubject, toEvolve } from '@/lib/world';
 
 /** 魔物夥伴：在世界地圖打贏領地戰就能收服；同一種收服越多次就進化 */
 export default function Pals() {
@@ -83,7 +83,7 @@ export default function Pals() {
               );
             })}
           </View>
-          <T size={12} color={C.muted} style={{ textAlign: 'center' }}>點已收服的夥伴，可以換成出戰夥伴。成體與覺醒的新造型製作中，目前先以光環表示。</T>
+          <T size={12} color={C.muted} style={{ textAlign: 'center' }}>點已收服的夥伴，可以換成出戰夥伴。每一科的夥伴技能不同，會影響戰鬥中絕招能量的累積。成體與覺醒的新造型製作中，目前先以光環表示。</T>
         </>
       )}
     </Screen>
@@ -99,6 +99,7 @@ function TeamRow({ pal, evolve }: { pal: Pal; evolve: number[] }) {
       <View style={{ flex: 1, gap: 4 }}>
         <T size={18} weight="700">{palName(pal.species)}</T>
         <T size={13} color={PAL_STAGE_COLOR[pal.stage]}>{subjectLabel(palSubject(pal.species))}系・{PAL_STAGE[pal.stage]}</T>
+        {palSkill(pal.species) ? <T size={13} color={C.inkSoft}><T size={13} weight="700" color={C.accentDark}>技能「{palSkill(pal.species)!.name}」</T>：{palSkill(pal.species)!.desc}</T> : null}
         <ProgressBar value={left ? pal.caught / goal : 1} color={C.gold} />
         <T size={12} color={C.muted}>{left ? `已收服 ${pal.caught} 次，再 ${left} 次就進化` : `已收服 ${pal.caught} 次，已經覺醒`}</T>
       </View>

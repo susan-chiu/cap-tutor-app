@@ -6,6 +6,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { BattleStage } from '@/components/battle';
 import { ConquerCard } from '@/components/world-fx';
+import { nextEnergy, startEnergy, ultNeed } from '@/lib/world';
 import { buzz, ChestReward, EyeHint, FrameCorners, LevelUpBanner, Stars, XpPop } from '@/components/game-fx';
 import { Feedback, QuestionView, SolutionCard } from '@/components/question';
 import { Button, Card, ErrorBox, H1, Loading, ProgressBar, T } from '@/components/ui';
@@ -51,7 +52,12 @@ export default function Quiz() {
   const [crit, setCrit] = useState(false);
   // 出戰夥伴（站在勇者旁邊一起打）
   const [teamPal, setTeamPal] = useState<string | null>(null);
-  useEffect(() => { api.worldState().then((w) => setTeamPal(w.team_pal)).catch(() => {}); }, []);
+  // 絕招能量：答對集氣，集滿後按絕招鈕，下一次答對就放絕招（夥伴技能會改變集氣規則）
+  const need = ultNeed(mode, teamPal);
+  const [ult, setUlt] = useState({ energy: 0, armed: false, shieldUsed: false });
+  useEffect(() => {
+    api.worldState().then((w) => { setTeamPal(w.team_pal); setUlt((u) => ({ ...u, energy: Math.max(u.energy, startEnergy(w.team_pal, ultNeed(mode, w.team_pal))) })); }).catch(() => {});
+  }, [mode]);
   const boss = mode === 'exam' && params.boss ? params.boss : null;
   // 心眼：答錯後先給提示、可以再答一次（第二次答對 +3 XP）
   const [eye, setEye] = useState<{ first: string; hint: string | null; phase: 'hint' | 'retry' | 'done'; ok?: boolean; bonus?: number } | null>(null);
@@ -104,12 +110,14 @@ export default function Quiz() {
       if (!r.correct) setTimeout(() => scrollRef.current?.scrollToEnd({ animated: true }), 150);
       const nextCombo = r.correct ? combo + 1 : 0;
       setCombo(nextCombo);
+      const ne = nextEnergy({ energy: ult.energy, need, correct: r.correct, usedUlt: r.correct && ult.armed, pal: teamPal, shieldUsed: ult.shieldUsed });
+      setUlt({ energy: ne.energy, shieldUsed: ne.shieldUsed, armed: r.correct ? false : ult.armed && ne.energy >= need });
       buzz(r.correct ? 'correct' : 'wrong');
       play(r.correct ? 'correct' : 'wrong');
       if (r.correct) {
         const cm = comboMessage(nextCombo);
         if (cm) setTimeout(() => play('combo'), 350);
-        setCrit(nextCombo >= 3);
+        setCrit(ult.armed);
         setPop((p) => ({ seq: p.seq + 1, text: `+${r.xp_gained} XP`, sub: cm }));
         setBossHit((h) => h + 1);
       } else setTimeout(() => play('eye', 0.5), 400);
@@ -221,13 +229,14 @@ export default function Quiz() {
           <Summary stats={stats} total={questions.length} allSeen={mode !== 'review' && questions.every((x) => x.seen)} mode={mode} boss={boss}
             bossKey={boss ? params.bosskey ?? null : null} conquerUnit={mode === 'conquer' ? params.units ?? null : null} questionIds={questions.map((x) => x.id)} hero={heroOf(profile?.hero)}
             adUserId={canWatchAd && session ? session.user.id : null}
-            onAgain={() => { setIdx(0); setCombo(0); setStats({ answered: 0, correct: 0, xp: 0, streak: 0, streakUp: false }); load(); }} />
+            onAgain={() => { setIdx(0); setCombo(0); setUlt({ energy: startEnergy(teamPal, need), armed: false, shieldUsed: false }); setStats({ answered: 0, correct: 0, xp: 0, streak: 0, streakUp: false }); load(); }} />
         ) : q ? (
           <>
             <BattleStage name={boss ?? (mode === 'daily' ? '突擊副本・小怪群' : mode === 'review' ? '魔物圖鑑・復仇魔物' : mode === 'conquer' ? `${params.title ?? '領地'}的魔物` : `${params.title ?? '單元'}守衛`)}
               hp={mode === 'conquer' ? CONQUER_NEED - stats.correct : questions.length - stats.correct} maxHp={mode === 'conquer' ? CONQUER_NEED : questions.length}
               hearts={boss ? Math.max(BOSS_HEARTS - (stats.answered - stats.correct), 0) : null} hit={bossHit} crit={crit} miss={stats.answered - stats.correct} combo={combo}
               hero={heroOf(profile?.hero)} pal={teamPal}
+              energy={ult.energy} energyNeed={need} ultArmed={ult.armed} onUlt={() => setUlt((u) => (u.energy >= need ? { ...u, armed: true } : u))}
               image={boss ? bossImg(boss) : monsterImg(q?.subject)} arena={arenaImg(mode === 'daily' ? null : q?.subject)} />
             <XpPop seq={pop.seq} text={pop.text} sub={pop.sub} />
             <ScrollView ref={scrollRef} contentContainerStyle={{ padding: 20, gap: 16 }}>

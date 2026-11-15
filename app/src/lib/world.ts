@@ -49,14 +49,43 @@ export const FURNITURE: Record<string, Furniture> = {
   desk:    { name: '修煉書桌', desc: '勇者寫作業的地方', x: 0.14, y: 0.75, size: 0.26 },
   window:  { name: '月光窗', desc: '看得到外面的星空', x: 0.15, y: 0.22, size: 0.24 },
   bed:     { name: '勇者之床', desc: '每天免費題數 +5', x: 0.85, y: 0.75, size: 0.28 },
-  chest:   { name: '冒險寶箱', desc: '放戰利品的箱子', x: 0.33, y: 0.82, size: 0.17 },
+  chest:   { name: '冒險寶箱', desc: '放戰利品的箱子', x: 0.72, y: 0.86, size: 0.16 },
   picture: { name: '討伐紀念畫', desc: '紀念打倒的魔物', x: 0.85, y: 0.24, size: 0.22 },
   mirror:  { name: '魔鏡', desc: '照出勇者的英姿', x: 0.89, y: 0.41, size: 0.17 },
   lamp:    { name: '星光吊燈', desc: '點亮整個大廳', x: 0.5, y: 0.07, size: 0.26 },
   shelf:   { name: '魔導書櫃', desc: '收藏學過的知識', x: 0.12, y: 0.46, size: 0.22 },
-  nest:    { name: '夥伴小窩', desc: '夥伴睡覺的地方', x: 0.7, y: 0.83, size: 0.18 },
+  nest:    { name: '夥伴小窩', desc: '夥伴睡覺的地方', x: 0.33, y: 0.84, size: 0.18 },
   weapon:  { name: '武器架', desc: '展示勇者的武器', x: 0.13, y: 0.6, size: 0.18 },
 };
 export const SOUP = { name: '熱湯', desc: '今天可以多練幾題' };
 
 export type ImgMap = Record<string, ImageSourcePropType>;
+
+/** 夥伴技能：依科目不同，出戰時影響「絕招能量」怎麼累積（只影響戰鬥演出，不影響對錯與獎勵） */
+export interface PalSkill { name: string; desc: string }
+export const PAL_SKILL: Record<string, PalSkill> = {
+  math: { name: '計算暴擊', desc: '絕招少連對 1 題就集滿' },
+  chinese: { name: '墨之護符', desc: '每場第一次答錯，絕招能量不會歸零' },
+  english: { name: '先聲奪人', desc: '每場一開始就有 1 格絕招能量' },
+  science: { name: '回復藥水', desc: '放完絕招後留下 1 格能量' },
+  social: { name: '時光倒流', desc: '答錯只掉 1 格能量，不會全部歸零' },
+};
+export const palSkill = (species: string | null | undefined): PalSkill | null => (species ? PAL_SKILL[palSubject(species)] ?? null : null);
+
+/** 絕招能量規則：一般連對 3 題集滿，領地戰（題數少）2 題；數學系夥伴再少 1 題 */
+export function ultNeed(mode: string, pal: string | null): number {
+  const base = mode === 'conquer' ? 2 : 3;
+  return Math.max(base - (pal && palSubject(pal) === 'math' ? 1 : 0), 1);
+}
+/** 作答後的絕招能量。shieldUsed＝國文系夥伴的護符這場用過了沒 */
+export function nextEnergy(o: { energy: number; need: number; correct: boolean; usedUlt: boolean; pal: string | null; shieldUsed: boolean }): { energy: number; shieldUsed: boolean } {
+  const subject = o.pal ? palSubject(o.pal) : null;
+  if (o.correct) {
+    if (o.usedUlt) return { energy: subject === 'science' ? 1 : 0, shieldUsed: o.shieldUsed };
+    return { energy: Math.min(o.energy + 1, o.need), shieldUsed: o.shieldUsed };
+  }
+  if (subject === 'chinese' && !o.shieldUsed) return { energy: o.energy, shieldUsed: true };
+  if (subject === 'social') return { energy: Math.max(o.energy - 1, 0), shieldUsed: o.shieldUsed };
+  return { energy: 0, shieldUsed: o.shieldUsed };
+}
+export const startEnergy = (pal: string | null, need: number) => (pal && palSubject(pal) === 'english' ? Math.min(1, need) : 0);

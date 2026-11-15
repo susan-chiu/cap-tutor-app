@@ -38,7 +38,10 @@ async function answerCorrect(wrong = false) {
 async function winBattle() {
   for (let i = 0; i < 3; i++) {
     await page.getByText(`第 ${i + 1} 題 / 共 5 題`, { exact: false }).waitFor({ timeout: 15000 });
+    // 連對 2 題後絕招集滿：按下絕招鈕，下一題答對就放絕招
+    if (i === 2) { await page.getByRole('button', { name: '絕招集滿了，按一下準備發動' }).click(); await page.getByLabel('絕招已就緒，下一題答對就會發動').waitFor(); await pause(900); }
     await answerCorrect();
+    if (i === 2) await t('絕招擊敗！').waitFor({ timeout: 5000 });
     await pause(1300);
     await page.getByRole('button', { name: i === 2 ? '看結果' : '下一題' }).click();
   }
@@ -59,12 +62,15 @@ await step('註冊、首次設定', async () => {
   await t('七年級').click(); await t('康軒').click();
   await page.getByRole('button', { name: '開始練習' }).click();
   await page.getByText('勇者大廳', { exact: true }).first().waitFor({ timeout: 15000 });
+  await t('新手任務：收服你的第一隻夥伴').waitFor();
+  await t('今日任務').waitFor();
   await pause(2500);
   await shot('01-hall-empty');
 });
 await step('世界地圖：七上大陸，第一塊領地可以出征', async () => {
   await tab('地圖');
   await page.getByText(/七上大陸・已佔領 0 \/ \d+ 塊/).waitFor({ timeout: 15000 });
+  await t('點這塊發亮的領地，打第一場！').waitFor();
   await pause(2500);
   await shot('02-map');
   await page.getByRole('button', { name: /可以出征$/ }).first().click();
@@ -143,8 +149,13 @@ await step('商店：金幣不夠會提示；補金幣後買盆栽和床', async
   await pause(1500);
   await shot('09-shop-bought');
 });
-await step('大廳：看得到家具、出戰夥伴，體力上限多 5 題', async () => {
+await step('大廳：看得到家具、出戰夥伴，體力上限多 5 題；領每日任務的金幣', async () => {
   await page.getByRole('button', { name: '返回' }).click();
+  await page.getByRole('button', { name: '領取 20 金幣' }).click();
+  await page.getByRole('button', { name: '領取 40 金幣' }).click();
+  await t('已領 2 / 3').waitFor({ timeout: 10000 });
+  await page.getByLabel('金幣 140，去商店').waitFor();
+  if (await t('新手任務：收服你的第一隻夥伴').isVisible()) throw new Error('新手任務應該已經消失');
   await page.getByLabel('魔法盆栽').waitFor({ timeout: 15000 });
   await page.getByLabel('勇者之床').waitFor();
   await page.getByLabel(/^出戰夥伴 /).waitFor();

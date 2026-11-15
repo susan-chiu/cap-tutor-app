@@ -179,9 +179,29 @@
       evolve: CFG.evolve, owned: w.owned.slice(), shop: SHOP, premium: premium(p), energy_max: energyMax(uid, dr), today_answered: dr.answered,
       soups_left: Math.max(CFG.soup_daily_max - (dr.soups || 0), 0), soup_questions: CFG.soup_questions, bed_questions: CFG.bed_questions };
   }
+  var QUESTS = { answer: { goal: 5, gold: 20 }, correct: { goal: 10, gold: 30 }, conquer: { goal: 1, gold: 40 } };
+  function questProgress(uid, id) {
+    var dr = dayRow(uid, today()), w = world(uid), t = today();
+    return id === 'answer' ? dr.answered : id === 'correct' ? dr.correct : Object.keys(w.terr).filter(function (u) { return w.terr[u].day === t; }).length;
+  }
+  function quests(uid) {
+    var dr = dayRow(uid, today());
+    return ['answer', 'correct', 'conquer'].map(function (id) { var q = QUESTS[id];
+      return { id: id, goal: q.goal, gold: q.gold, progress: Math.min(questProgress(uid, id), q.goal), claimed: !!(dr.claims && dr.claims[id]) }; });
+  }
   var hasQ = {}; D.questions.forEach(function (q) { hasQ[q.unit] = true; });
   var RPC = {
     world_state: function (uid) { return worldState(uid); },
+    daily_quests: function (uid) { return quests(uid); },
+    claim_quest: function (uid, a) {
+      var q = QUESTS[a.p_quest], dr = dayRow(uid, today());
+      if (!q) throw 'quest_not_found';
+      if (questProgress(uid, a.p_quest) < q.goal) throw 'quest_not_done';
+      dr.claims = dr.claims || {};
+      if (dr.claims[a.p_quest]) throw 'quest_claimed';
+      dr.claims[a.p_quest] = 1; world(uid).gold += q.gold; save();
+      return { gold_gained: q.gold, gold: world(uid).gold, quests: quests(uid) };
+    },
     world_map: function (uid, a) {
       var w = world(uid), t = today();
       return D.units.filter(function (u) { return u.semester === a.p_semester && hasQ[u.id]; })

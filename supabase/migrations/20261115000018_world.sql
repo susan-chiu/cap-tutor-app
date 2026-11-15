@@ -363,10 +363,64 @@ begin
   update public.profiles set team_pal = p_species where id = auth.uid();
 end $$;
 
--- 14. 權限：只開放 App 需要的函式
+-- 14. 每日任務：三個小任務，進度由當天的作答紀錄算出來，完成後領金幣（不受每日金幣上限限制，一天最多就這三筆）
+insert into public.app_config (key, value) values
+  ('quest_answer_goal',  '5'),  ('quest_answer_gold',  '20'),   -- 今天作答幾題
+  ('quest_correct_goal', '10'), ('quest_correct_gold', '30'),   -- 今天答對幾題
+  ('quest_conquer_goal', '1'),  ('quest_conquer_gold', '40')    -- 今天打贏幾塊領地（新佔領或收回都算）
+on conflict (key) do nothing;
+
+create table if not exists public.quest_claims (
+  user_id    uuid not null references auth.users (id) on delete cascade,
+  day        date not null,
+  quest      text not null check (quest in ('answer', 'correct', 'conquer')),
+  gold       int  not null,
+  claimed_at timestamptz not null default now(),
+  primary key (user_id, day, quest)
+);
+alter table public.quest_claims enable row level security;
+
+create or replace function public.quest_progress(p_uid uuid, p_quest text)
+returns int language sql stable security definer set search_path = public as $$
+  select case p_quest
+    when 'answer'  then coalesce((select answered from public.daily_activity where user_id = p_uid and day = public.app_today()), 0)
+    when 'correct' then coalesce((select correct  from public.daily_activity where user_id = p_uid and day = public.app_today()), 0)
+    when 'conquer' then (select count(*) from public.territories where user_id = p_uid and reward_day = public.app_today())
+  end::int
+$$;
+
+create or replace function public.daily_quests()
+returns jsonb language sql stable security definer set search_path = public as $$
+  select jsonb_agg(jsonb_build_object(
+    'id', q, 'goal', public.cfg_int('quest_' || q || '_goal'), 'gold', public.cfg_int('quest_' || q || '_gold'),
+    'progress', least(public.quest_progress(auth.uid(), q), public.cfg_int('quest_' || q || '_goal')),
+    'claimed', exists (select 1 from public.quest_claims c where c.user_id = auth.uid() and c.day = public.app_today() and c.quest = q))
+    order by ord)
+  from unnest(array['answer', 'correct', 'conquer']) with ordinality as t(q, ord)
+$$;
+
+create or replace function public.claim_quest(p_quest text)
+returns jsonb language plpgsql security definer set search_path = public as $$
+declare
+  v_uid  uuid := auth.uid();
+  v_gold int;
+begin
+  if v_uid is null then raise exception 'not_authenticated'; end if;
+  if p_quest not in ('answer', 'correct', 'conquer') then raise exception 'quest_not_found'; end if;
+  if public.quest_progress(v_uid, p_quest) < public.cfg_int('quest_' || p_quest || '_goal') then raise exception 'quest_not_done'; end if;
+  v_gold := public.cfg_int('quest_' || p_quest || '_gold');
+  begin
+    insert into public.quest_claims (user_id, day, quest, gold) values (v_uid, public.app_today(), p_quest, v_gold);
+  exception when unique_violation then raise exception 'quest_claimed';
+  end;
+  update public.profiles set gold = gold + v_gold where id = v_uid;
+  return jsonb_build_object('gold_gained', v_gold, 'gold', (select gold from public.profiles where id = v_uid), 'quests', public.daily_quests());
+end $$;
+
+-- 15. 權限：只開放 App 需要的函式
 revoke execute on function public.add_gold(uuid, int), public.gold_on_attempt(), public.bed_bonus_on_day(),
   public.unit_species(public.units), public.pal_stage(int), public.world_map(text), public.world_progress(),
   public.battle_questions(text, int), public.conquer(text, text[]), public.world_state(), public.buy_item(text),
-  public.set_team_pal(text) from public, anon;
+  public.set_team_pal(text), public.quest_progress(uuid, text), public.daily_quests(), public.claim_quest(text) from public, anon;
 grant execute on function public.world_map(text), public.world_progress(), public.battle_questions(text, int),
-  public.conquer(text, text[]), public.world_state(), public.buy_item(text), public.set_team_pal(text) to authenticated;
+  public.conquer(text, text[]), public.world_state(), public.buy_item(text), public.set_team_pal(text), public.daily_quests(), public.claim_quest(text) to authenticated;

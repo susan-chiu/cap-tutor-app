@@ -5,12 +5,13 @@ import { Alert, Image, type ImageSourcePropType, Pressable, View, useWindowDimen
 
 import { ParentHome } from '@/components/parent-home';
 import { Button, Card, ErrorBox, H2, Loading, ProgressBar, Screen, T } from '@/components/ui';
-import { api, errorText, type HomeData, type Limits, type WorldState } from '@/lib/api';
+import { api, errorText, type HomeData, type Limits, type Quest, type WorldState } from '@/lib/api';
 import { rescheduleReminders } from '@/lib/reminders';
 import { useAuth } from '@/lib/auth';
 import { FURNITURE_IMG, HALL_BG, ITEM_IMG, monsterImg, WORLD_IMG } from '@/lib/art';
 import { GoldPill, PalImage } from '@/components/world-fx';
 import { FURNITURE, palName } from '@/lib/world';
+import { DailyQuests, StarterGuide } from '@/components/quests';
 import { FrameCorners, GoldButton, MagicCircle } from '@/components/game-fx';
 import { levelInfo } from '@/lib/game';
 import { startBgm, stopBgm } from '@/lib/sound';
@@ -33,6 +34,7 @@ function StudentHome() {
   const [limits, setLimits] = useState<Limits | null>(null);
   // 金幣、夥伴、家具（資料庫還沒更新到這一版時是 null，大廳照常顯示）
   const [world, setWorld] = useState<WorldState | null>(null);
+  const [quests, setQuests] = useState<Quest[] | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [gradeBusy, setGradeBusy] = useState(false);
   const [stageW, setStageW] = useState(0);
@@ -49,7 +51,8 @@ function StudentHome() {
   const load = useCallback(async () => {
     try {
       setError(null);
-      const [h, l, w] = await Promise.all([api.home(), api.limits().catch(() => null), api.worldState().catch(() => null)]);
+      const [h, l, w, qs] = await Promise.all([api.home(), api.limits().catch(() => null), api.worldState().catch(() => null), api.dailyQuests().catch(() => null)]);
+      setQuests(qs);
       setData(h);
       if (l) setLimits(l);
       setWorld(w);
@@ -107,6 +110,9 @@ function StudentHome() {
       </View>
 
       {/* 主角舞台 */}
+      {/* 新手任務：還沒佔領過領地時帶去打第一場 */}
+      {world && world.territories === 0 ? <StarterGuide heroName={hero.name} /> : null}
+
       <View onLayout={(e) => setStageW(e.nativeEvent.layout.width)}
         style={{ borderRadius: 20, overflow: 'hidden', borderWidth: 1, borderColor: hero.color, backgroundColor: C.night }}>
         <Image source={HALL_BG} accessibilityIgnoresInvertColors resizeMode="cover"
@@ -130,7 +136,7 @@ function StudentHome() {
         {/* 出戰夥伴站在勇者腳邊 */}
         {teamPal ? (
           <Pressable accessibilityRole="button" accessibilityLabel={`出戰夥伴 ${palName(teamPal.species)}，點一下看全部夥伴`} onPress={() => router.push('/pals')}
-            style={{ position: 'absolute', left: (stageW || 340) * 0.62, bottom: stageH * 0.12 }}>
+            style={{ position: 'absolute', left: (stageW || 340) * 0.2, bottom: stageH * 0.13 }}>
             <PalImage species={teamPal.species} stage={teamPal.stage} size={(stageW || 340) * 0.26} />
           </Pressable>
         ) : null}
@@ -161,28 +167,32 @@ function StudentHome() {
         onPress={() => router.push({ pathname: '/quiz', params: { mode: 'daily' } })} />
       <T size={13} color={C.muted} style={{ textAlign: 'center', marginTop: -4 }}>◆ 隨機 {data.daily_goal} 題，隨時可以休息 ◆</T>
 
-      {/* 今日討伐 */}
-      <Card style={{ gap: 12, borderColor: C.gold, backgroundColor: '#0E1530' }}>
-        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
-            <Ionicons name="flash" size={18} color={C.accent} />
-            <T weight="700" size={17}>今日討伐</T>
-          </View>
-          <T weight="700">{doneToday}/{data.daily_goal} 題</T>
-        </View>
-        <View accessibilityLabel={`今日討伐 ${doneToday} / ${data.daily_goal} 題`} style={{ flexDirection: 'row', alignItems: 'center' }}>
-          {Array.from({ length: data.daily_goal }, (_, i) => (
-            <View key={i} style={{ flex: i === 0 ? 0 : 1, flexDirection: 'row', alignItems: 'center' }}>
-              {i > 0 ? <View style={{ flex: 1, height: 2, backgroundColor: i < doneToday ? C.accent : C.lineStrong }} /> : null}
-              <View style={{ width: 26, height: 26, transform: [{ rotate: '45deg' }], borderWidth: 2, borderRadius: 4,
-                borderColor: i < doneToday ? C.accent : C.lineStrong, backgroundColor: i < doneToday ? C.accentSoft : 'transparent', alignItems: 'center', justifyContent: 'center' }}>
-                {i < doneToday ? <View style={{ transform: [{ rotate: '-45deg' }] }}><Ionicons name="checkmark" size={16} color={C.accent} /></View> : null}
-              </View>
+      {/* 今日任務（資料庫還沒更新時顯示原本的今日討伐） */}
+      {quests ? (
+        <DailyQuests quests={quests} onClaimed={(qs, gold) => { setQuests(qs); setWorld((w) => (w ? { ...w, gold } : w)); }} />
+      ) : (
+        <Card style={{ gap: 12, borderColor: C.gold, backgroundColor: '#0E1530' }}>
+          <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+              <Ionicons name="flash" size={18} color={C.accent} />
+              <T weight="700" size={17}>今日討伐</T>
             </View>
-          ))}
-        </View>
-        <FrameCorners />
-      </Card>
+            <T weight="700">{doneToday}/{data.daily_goal} 題</T>
+          </View>
+          <View accessibilityLabel={`今日討伐 ${doneToday} / ${data.daily_goal} 題`} style={{ flexDirection: 'row', alignItems: 'center' }}>
+            {Array.from({ length: data.daily_goal }, (_, i) => (
+              <View key={i} style={{ flex: i === 0 ? 0 : 1, flexDirection: 'row', alignItems: 'center' }}>
+                {i > 0 ? <View style={{ flex: 1, height: 2, backgroundColor: i < doneToday ? C.accent : C.lineStrong }} /> : null}
+                <View style={{ width: 26, height: 26, transform: [{ rotate: '45deg' }], borderWidth: 2, borderRadius: 4,
+                  borderColor: i < doneToday ? C.accent : C.lineStrong, backgroundColor: i < doneToday ? C.accentSoft : 'transparent', alignItems: 'center', justifyContent: 'center' }}>
+                  {i < doneToday ? <View style={{ transform: [{ rotate: '-45deg' }] }}><Ionicons name="checkmark" size={16} color={C.accent} /></View> : null}
+                </View>
+              </View>
+            ))}
+          </View>
+          <FrameCorners />
+        </Card>
+      )}
 
       {world?.invaded ? (
         <Pressable accessibilityRole="button" accessibilityLabel={`${world.invaded} 塊領地被魔物入侵，去世界地圖收回`} onPress={() => router.push('/map')}

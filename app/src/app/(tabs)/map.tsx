@@ -109,6 +109,13 @@ export default function WorldMap() {
                 <MapNode key={u.unit_id} unit={u} state={states[i]} left={points[i].x * w} top={points[i].y * h}
                   onPress={() => { play('tap', 0.4); setOpen(u); }} />
               ))}
+              {/* 新手提示：第一次來地圖，指出要點哪裡 */}
+              {world && world.territories === 0 && states.indexOf('next') >= 0 ? (
+                <View pointerEvents="none" style={{ position: 'absolute', left: Math.min(Math.max(points[states.indexOf('next')].x * w - 95, 8), w - 198),
+                  top: points[states.indexOf('next')].y * h - 96, width: 190, padding: 8, borderRadius: 12, backgroundColor: C.accent }}>
+                  <T size={13} weight="700" color="#04121F" style={{ textAlign: 'center' }}>點這塊發亮的領地，打第一場！</T>
+                </View>
+              ) : null}
             </View>
             <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 12, padding: 16, justifyContent: 'center' }}>
               <Legend img={WORLD_IMG.flag} label="已佔領" />

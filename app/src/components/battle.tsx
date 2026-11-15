@@ -1,6 +1,6 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useEffect, useRef, useState } from 'react';
-import { Animated, Easing, Image, type ImageSourcePropType, useWindowDimensions, View } from 'react-native';
+import { Animated, Easing, Image, type ImageSourcePropType, useWindowDimensions, View, Pressable } from 'react-native';
 
 import { T } from '@/components/ui';
 import { FX_IMG, palImg } from '@/lib/art';
@@ -14,12 +14,35 @@ const stageSize = (height: number) => (height < 700 ? { h: 150, monster: 96 } : 
 
 /** 每答對一題打掉的血量（畫面上的數字；魔物總血量＝題數 × 這個值） */
 const HIT_DAMAGE = 100;
-/** 連對幾題集滿絕招 */
-const ULT_NEED = 3;
 const DMG_SHADOW = { textShadowColor: 'rgba(0, 0, 0, 0.95)', textShadowRadius: 6, textShadowOffset: { width: 0, height: 2 } } as const;
 /** 連擊播報的字與顏色 */
 const streakCall = (combo: number) => (combo >= 5 ? '勢不可擋！' : combo === 4 ? '四連擊！' : combo === 3 ? '三連擊！' : combo === 2 ? '雙連擊！' : '命中！');
 const streakColor = (combo: number) => (combo >= 4 ? '#FF7AF0' : combo === 3 ? C.gold : combo === 2 ? C.accent : '#FFFFFF');
+
+/** 絕招鈕：顯示能量格；集滿會跳動發光，可以按；按下後變成「就緒」等下一次答對 */
+function UltButton({ energy, need, armed, onPress }: { energy: number; need: number; armed: boolean; onPress?: () => void }) {
+  const ready = energy >= need && !armed;
+  const pulse = useBob(450);
+  const label = armed ? '絕招已就緒，下一題答對就會發動' : ready ? '絕招集滿了，按一下準備發動' : `絕招能量 ${energy} / ${need}`;
+  return (
+    <Pressable accessibilityRole="button" accessibilityLabel={label} disabled={!ready || !onPress}
+      onPress={() => { play('levelup', 0.5); onPress?.(); }} hitSlop={8}
+      style={{ position: 'absolute', right: 8, bottom: 6, alignItems: 'center' }}>
+      <Animated.View style={{ width: 54, height: 54, borderRadius: 27, alignItems: 'center', justifyContent: 'center',
+        backgroundColor: armed ? '#4A3A00' : ready ? '#3A2E00' : 'rgba(5, 10, 24, 0.82)', borderWidth: armed || ready ? 3 : 2,
+        borderColor: armed || ready ? C.gold : C.nightLine,
+        transform: [{ scale: ready ? pulse.interpolate({ inputRange: [0, 1], outputRange: [1, 1.14] }) : 1 }] }}>
+        <Ionicons name="flash" size={22} color={armed || ready ? C.gold : energy > 0 ? C.accent : C.faint} />
+        <View style={{ flexDirection: 'row', gap: 2, marginTop: 1 }}>
+          {Array.from({ length: need }, (_, i) => (
+            <View key={i} style={{ width: 7, height: 4, borderRadius: 2, backgroundColor: i < energy || armed ? (armed || ready ? C.gold : C.accent) : C.nightSoft }} />
+          ))}
+        </View>
+      </Animated.View>
+      {armed || ready ? <T size={10} weight="700" color={C.gold} style={DMG_SHADOW}>{armed ? '就緒' : '放絕招'}</T> : null}
+    </Pressable>
+  );
+}
 
 /** 角色頭上的血條（分格） */
 function HeadBar({ value, color, segments }: { value: number; color: string; segments: number }) {
@@ -52,12 +75,12 @@ function useBob(duration: number) {
  * 答對：勇者衝上前揮劍，劍光劃過、魔物被擊退閃白、跳出傷害字；連擊變成金色暴擊、整個畫面震動。
  * 答錯：魔物撲過來反擊，畫面閃紅、勇者被震退。血量歸零時魔物化成光點消散。
  */
-export function BattleStage({ name, image, arena, hp, maxHp, hearts, hit, crit, miss = 0, combo = 0, hero, pal }: {
+export function BattleStage({ name, image, arena, hp, maxHp, hearts, hit, crit, miss = 0, combo = 0, hero, pal, energy = 0, energyNeed = 3, ultArmed = false, onUlt }: {
   name: string; image: ImageSourcePropType; arena: ImageSourcePropType;
   hp: number; maxHp: number; hearts?: number | null;
   /** 每答對一題加 1，觸發攻擊特效 */
   hit: number;
-  /** 這一擊是不是暴擊（連擊） */
+  /** 這一擊是不是絕招 */
   crit: boolean;
   /** 每答錯一次加 1，觸發魔物反擊 */
   miss?: number;
@@ -65,6 +88,8 @@ export function BattleStage({ name, image, arena, hp, maxHp, hearts, hit, crit, 
   hero?: Hero;
   /** 出戰夥伴的種類（沒有就不顯示） */
   pal?: string | null;
+  /** 絕招能量：集滿後按下絕招鈕，下一次答對就放絕招 */
+  energy?: number; energyNeed?: number; ultArmed?: boolean; onUlt?: () => void;
 }) {
   const { width: w, height } = useWindowDimensions();
   const { h: STAGE_H, monster } = stageSize(height);
@@ -269,8 +294,8 @@ export function BattleStage({ name, image, arena, hp, maxHp, hearts, hit, crit, 
             opacity: dmg.interpolate({ inputRange: [0, 0.1, 0.75, 1], outputRange: [0, 1, 1, 0] }),
             transform: [{ translateY: dmg.interpolate({ inputRange: [0, 1], outputRange: [10, -34] }) },
               { scale: dmg.interpolate({ inputRange: [0, 0.15, 1], outputRange: [0.6, 1.3, 1] }) }] }}>
-            <T size={crit ? 30 : 24} weight="700" color={crit ? C.gold : '#FFFFFF'} style={DMG_SHADOW}>-{crit ? HIT_DAMAGE * 2 : HIT_DAMAGE}</T>
-            {crit ? <T size={13} weight="700" color={C.gold} style={DMG_SHADOW}>暴擊</T> : null}
+            <T size={crit ? 30 : 24} weight="700" color={crit ? C.gold : '#FFFFFF'} style={DMG_SHADOW}>-{crit ? HIT_DAMAGE * 3 : HIT_DAMAGE}</T>
+            {crit ? <T size={13} weight="700" color={C.gold} style={DMG_SHADOW}>絕招</T> : null}
           </Animated.View>
           <Animated.View pointerEvents="none" style={{ position: 'absolute', top: STAGE_H * 0.3, left: 0, width: heroW, alignItems: 'center',
             opacity: dmgBad.interpolate({ inputRange: [0, 0.1, 0.75, 1], outputRange: [0, 1, 1, 0] }),
@@ -292,17 +317,6 @@ export function BattleStage({ name, image, arena, hp, maxHp, hearts, hit, crit, 
             </View>
           ) : null}
 
-          {/* 絕招能量：連續答對會集氣，集滿就是暴擊 */}
-          <View accessibilityLabel={`絕招能量 ${Math.min(combo, ULT_NEED)} / ${ULT_NEED}`}
-            style={{ position: 'absolute', right: 8, bottom: 6, width: 46, height: 46, borderRadius: 23, alignItems: 'center', justifyContent: 'center',
-              backgroundColor: 'rgba(5, 10, 24, 0.8)', borderWidth: 2, borderColor: combo >= ULT_NEED ? C.gold : C.nightLine }}>
-            <Ionicons name="flash" size={18} color={combo >= ULT_NEED ? C.gold : combo > 0 ? C.accent : C.faint} />
-            <View style={{ flexDirection: 'row', gap: 2, marginTop: 1 }}>
-              {Array.from({ length: ULT_NEED }, (_, i) => (
-                <View key={i} style={{ width: 7, height: 4, borderRadius: 2, backgroundColor: i < combo ? (combo >= ULT_NEED ? C.gold : C.accent) : C.nightSoft }} />
-              ))}
-            </View>
-          </View>
         </View>
 
         {/* 被反擊時畫面閃紅 */}
@@ -310,14 +324,16 @@ export function BattleStage({ name, image, arena, hp, maxHp, hearts, hit, crit, 
           opacity: red.interpolate({ inputRange: [0, 1], outputRange: [0, 0.32] }) }} />
       </Animated.View>
 
+      {/* 絕招鈕：答對會集氣，集滿後按下去，下一次答對就放絕招 */}
+      <UltButton energy={energy} need={energyNeed} armed={ultArmed} onPress={onUlt} />
       {/* 連擊播報：像對戰遊戲的擊殺播報，大字從中央彈出 */}
       <Animated.View pointerEvents="none" style={{ position: 'absolute', left: 0, right: 0, top: STAGE_H * 0.3, alignItems: 'center',
         opacity: banner.interpolate({ inputRange: [0, 0.08, 0.8, 1], outputRange: [0, 1, 1, 0] }),
         transform: [{ scale: banner.interpolate({ inputRange: [0, 0.12, 0.2, 1], outputRange: [2.2, 0.95, 1, 1] }) }] }}>
         <View style={{ paddingHorizontal: 22, paddingVertical: 4, backgroundColor: 'rgba(5, 8, 20, 0.6)', borderTopWidth: 2, borderBottomWidth: 2,
-          borderColor: defeated ? C.gold : streakColor(combo) }}>
-          <T size={26} weight="700" color={defeated ? C.gold : streakColor(combo)}
-            style={[DMG_SHADOW, { letterSpacing: 4, fontStyle: 'italic' }]}>{defeated ? '擊敗！' : streakCall(combo)}</T>
+          borderColor: defeated || crit ? C.gold : streakColor(combo) }}>
+          <T size={26} weight="700" color={defeated || crit ? C.gold : streakColor(combo)}
+            style={[DMG_SHADOW, { letterSpacing: 4, fontStyle: 'italic' }]}>{defeated ? (crit ? '絕招擊敗！' : '擊敗！') : crit ? '絕招！' : streakCall(combo)}</T>
         </View>
       </Animated.View>
     </View>

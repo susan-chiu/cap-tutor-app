@@ -99,6 +99,8 @@ export interface WorldState {
   premium: boolean; energy_max: number; today_answered: number;
   soups_left: number; soup_questions: number; bed_questions: number;
 }
+/** 每日任務：answer 今天作答、correct 今天答對、conquer 今天打贏領地 */
+export interface Quest { id: 'answer' | 'correct' | 'conquer'; goal: number; gold: number; progress: number; claimed: boolean }
 export interface ConquerResult {
   won: boolean; correct: number; total: number; need: number;
   first: boolean; rewarded: boolean; gold_gained: number; gold: number;
@@ -212,6 +214,8 @@ export interface ChildSummary {
 // 伺服器錯誤代碼 → 給學生看的中文
 const ERROR_TEXT: Record<string, string> = {
   daily_limit_reached: '今天的免費題數用完了，明天再來！全校前三名可以申請免費無限練習。',
+  quest_not_done: '任務還沒完成。',
+  quest_claimed: '這個任務的獎勵今天已經領過了。',
   not_enough_gold: '金幣不夠，去地圖出征多賺一點吧！',
   item_owned: '這個已經買過了。',
   item_locked: '還沒達到解鎖條件。',
@@ -308,6 +312,8 @@ export const api = {
     rpc<ConquerResult>('conquer', { p_unit_id: unitId, p_question_ids: questionIds }),
   buyItem: (itemId: string) => rpc<WorldState>('buy_item', { p_item: itemId }),
   setTeamPal: (species: string) => rpc<null>('set_team_pal', { p_species: species }),
+  dailyQuests: () => rpc<Quest[]>('daily_quests'),
+  claimQuest: (id: string) => rpc<{ gold_gained: number; gold: number; quests: Quest[] }>('claim_quest', { p_quest: id }),
   /** 交卷後存成績：伺服器依剛剛送出的作答計分 */
   saveMockExam: (subject: string, full: boolean, questionIds: string[], durationSec: number) =>
     rpc<{ id: string; score: number; correct: number; total: number; previous_score: number | null; duplicate?: boolean }>(

@@ -150,6 +150,24 @@ await test('出戰夥伴只能選已收服的', async () => {
   assert.equal((await state(u)).team_pal, 'chinese-1');
 });
 
+await test('每日任務：進度照今天的作答算，完成才能領，領過不能再領', async () => {
+  const q0 = await rpc(u, `public.daily_quests()`);
+  assert.deepEqual(q0.map((x) => x.id), ['answer', 'correct', 'conquer']);
+  const conquerQ = q0.find((x) => x.id === 'conquer');
+  assert.equal(conquerQ.progress, 1); assert.equal(conquerQ.claimed, false);   // 今天打贏過 WC-7A-1
+  assert.equal(q0.find((x) => x.id === 'correct').progress < 10, true);
+  await expectError(rpc(u, `public.claim_quest('correct')`), 'quest_not_done');
+  const g0 = (await state(u)).gold;
+  const r = await rpc(u, `public.claim_quest('conquer')`);
+  assert.equal(r.gold_gained, 40); assert.equal(r.gold, g0 + 40);   // 不受每日金幣上限限制
+  assert.equal(r.quests.find((x) => x.id === 'conquer').claimed, true);
+  await expectError(rpc(u, `public.claim_quest('conquer')`), 'quest_claimed');
+  await expectError(rpc(u, `public.claim_quest('nope')`), 'quest_not_found');
+  await setToday('2026-11-19');
+  assert.equal((await rpc(u, `public.daily_quests()`)).find((x) => x.id === 'conquer').claimed, false);
+  await setToday('2026-11-18');
+});
+
 await test('學生不能直接改金幣、不能呼叫內部函式、看不到別人的領地', async () => {
   await expectError(as(u, () => db.query(`update public.profiles set gold = 99999 where id = '${u}'`)), 'permission denied');
   await expectError(as(u, () => db.query(`select public.add_gold('${u}', 100)`)), 'permission denied');
