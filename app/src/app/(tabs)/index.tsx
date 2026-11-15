@@ -60,7 +60,7 @@ function StudentHome() {
     } catch (e) { setError(errorText(e)); }
   }, []);
 
-  useFocusEffect(useCallback(() => { load(); startBgm(); return () => stopBgm(); }, [load]));
+  useFocusEffect(useCallback(() => { load(); startBgm('hall'); return () => stopBgm(); }, [load]));
 
   if (error) return <Screen><ErrorBox message={error} onRetry={load} /></Screen>;
   if (!data) return <Screen><Loading /></Screen>;
@@ -72,7 +72,7 @@ function StudentHome() {
   // 體力上限含看廣告、熱湯、床多出來的題數
   const energyMax = world?.energy_max ?? limits?.free_daily_questions ?? 0;
   // 舞台高度不超過螢幕剩下的空間，「開始突擊」按鈕才會在第一個畫面就看得到
-  const stageH = Math.min(stageW ? stageW / 0.72 : 480, Math.max(winH - 430, 300));
+  const stageH = Math.min(stageW ? stageW / 0.72 : 480, Math.max(winH - 430, 200));
   const teamPal = world?.pals.find((p) => p.species === world.team_pal) ?? null;
   const energyLeft = data.premium || !limits ? null : Math.max(energyMax - data.today_answered, 0);
   const monsters = data.pending_mistakes + data.due_reviews;

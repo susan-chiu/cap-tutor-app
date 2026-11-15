@@ -5,14 +5,14 @@ import { Alert, Pressable, TextInput, View } from 'react-native';
 import { Radar } from '@/components/radar';
 import { EXAM_SUBJECT_LABEL, ScoreChart } from '@/components/score-chart';
 import { Button, Card, ErrorBox, H1, H2, Loading, ProgressBar, Screen, T } from '@/components/ui';
-import { api, errorText, type ChildSummary, type MockExamRow, type Wish } from '@/lib/api';
+import { api, errorText, type ChildSummary, type ChildWorld, type MockExamRow, type Wish } from '@/lib/api';
 import { WISH_GOAL } from '@/lib/game';
 import { C, ERROR_TYPE_LABEL, isElementary, semesterLabel } from '@/lib/theme';
 
 const SUBJECT_LABEL: Record<string, string> = { math: '數學', chinese: '國文', english: '英語', science: '自然', social: '社會' };
 
 export function ParentHome() {
-  const [children, setChildren] = useState<{ id: string; summary: ChildSummary; exams: MockExamRow[]; wishes: Wish[] }[] | null>(null);
+  const [children, setChildren] = useState<{ id: string; summary: ChildSummary; exams: MockExamRow[]; wishes: Wish[]; world: ChildWorld | null }[] | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [code, setCode] = useState('');
   const [busy, setBusy] = useState(false);
@@ -22,9 +22,9 @@ export function ParentHome() {
       setError(null);
       const ids = await api.children();
       const list = await Promise.all(ids.map(async (id) => {
-        const [summary, exams, wishes] = await Promise.all([api.childSummary(id), api.childMockExams(id, 60).catch(() => []),
-          api.childWishes(id).catch(() => [])]);
-        return { id, summary, exams, wishes };
+        const [summary, exams, wishes, world] = await Promise.all([api.childSummary(id), api.childMockExams(id, 60).catch(() => []),
+          api.childWishes(id).catch(() => []), api.childWorld(id).catch(() => null)]);
+        return { id, summary, exams, wishes, world };
       }));
       setChildren(list);
     } catch (e) { setError(errorText(e)); }
@@ -51,7 +51,7 @@ export function ParentHome() {
       <T size={13} color={C.muted}>騎士團長（家長端）</T>
       <H1>勇者戰報</H1>
 
-      {children.map(({ id, summary, exams, wishes }) => <ChildCard key={id} s={summary} exams={exams} wishes={wishes} onChanged={load} />)}
+      {children.map(({ id, summary, exams, wishes, world }) => <ChildCard key={id} s={summary} exams={exams} wishes={wishes} world={world} onChanged={load} />)}
 
       <Card style={{ gap: 10 }}>
         <H2>{children.length ? '再綁定一位孩子' : '綁定孩子的帳號'}</H2>
@@ -67,7 +67,7 @@ export function ParentHome() {
   );
 }
 
-function ChildCard({ s, exams, wishes, onChanged }: { s: ChildSummary; exams: MockExamRow[]; wishes: Wish[]; onChanged: () => void }) {
+function ChildCard({ s, exams, wishes, world, onChanged }: { s: ChildSummary; exams: MockExamRow[]; wishes: Wish[]; world: ChildWorld | null; onChanged: () => void }) {
   const practiced = s.days.filter((d) => d.answered > 0).length;
   const frozen = s.days.filter((d) => d.froze && d.answered === 0).length;
   const total = s.days.reduce((a, d) => a + d.answered, 0);
@@ -97,6 +97,22 @@ function ChildCard({ s, exams, wishes, onChanged }: { s: ChildSummary; exams: Mo
           ))}
         </View>
       </Card>
+
+      {world ? (
+        <Card style={{ gap: 8 }}>
+          <H2>世界地圖進度</H2>
+          <T color={C.inkSoft}>已佔領 {world.territories} 塊領地（其中 {world.mastered} 塊熟練），收服 {world.pals} 種夥伴，最近 7 天打贏 {world.won_this_week} 塊。</T>
+          {world.invaded.length ? (
+            <>
+              <T size={13} weight="700" color={C.redDark}>有 {world.invaded.length} 塊領地被入侵（學過的單元有錯題該複習了）：</T>
+              {world.invaded.map((x) => (
+                <T key={x.title} size={13} color={C.inkSoft}>・{SUBJECT_LABEL[x.subject] ?? x.subject}「{x.title}」— {x.due} 題待複習</T>
+              ))}
+              <T size={12} color={C.muted}>可以提醒孩子到「地圖」把這幾塊收回來，就是在複習錯題。</T>
+            </>
+          ) : world.territories ? <T size={13} color={C.green}>目前沒有被入侵的領地，學過的單元都有顧好。</T> : null}
+        </Card>
+      ) : null}
 
       <WishPool nickname={s.nickname} wishes={wishes} onChanged={onChanged} />
 

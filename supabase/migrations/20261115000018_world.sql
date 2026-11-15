@@ -12,7 +12,12 @@ insert into public.app_config (key, value) values
   ('pal_evolve_3',     '6'),    -- 收服幾次覺醒
   ('soup_questions',   '3'),    -- 一碗熱湯今天多練幾題
   ('soup_daily_max',   '2'),    -- 每天最多喝幾碗
-  ('bed_questions',    '5')     -- 買了床，每天免費題數多幾題
+  ('bed_questions',    '5'),    -- 買了床，每天免費題數多幾題
+  ('master_days',      '3'),    -- 同一塊領地在幾個不同的日子打贏，就算「熟練」（金旗）
+  ('gold_master',      '50'),   -- 領地熟練的獎勵
+  ('gold_guard',       '10'),   -- 有守護者的領地，收回時多給的金幣
+  ('gem_daily_max',    '5'),    -- 每天最多掉幾顆星晶（答對困難題掉 1 顆）
+  ('gem_feed_cost',    '3')     -- 用幾顆星晶培養夥伴一次（收服次數 +1）
 on conflict (key) do nothing;
 
 -- 2. 欄位
@@ -20,6 +25,8 @@ alter table public.profiles add column if not exists gold int not null default 0
 alter table public.profiles add column if not exists team_pal text;
 alter table public.daily_activity add column if not exists gold int not null default 0;
 alter table public.daily_activity add column if not exists soups smallint not null default 0;
+alter table public.profiles add column if not exists gems int not null default 0 check (gems >= 0);
+alter table public.daily_activity add column if not exists gems smallint not null default 0;
 -- gold、team_pal 不開放 App 直接改（profiles 只開放指定欄位的 update），只能透過下面的函式
 
 -- 3. 領地：每個單元一塊，打贏一場領地戰就佔領
@@ -27,6 +34,8 @@ create table if not exists public.territories (
   user_id     uuid not null references auth.users (id) on delete cascade,
   unit_id     text not null references public.units (id) on delete cascade,
   wins        int  not null default 1,
+  days        int  not null default 1,          -- 在幾個不同的日子打贏過（熟練度）
+  guard       text,                             -- 駐守的夥伴種類
   won_at      timestamptz not null default now(),
   reward_day  date not null,
   primary key (user_id, unit_id)
@@ -103,6 +112,12 @@ returns trigger language plpgsql security definer set search_path = public as $$
 begin
   if new.correct and new.context <> 'tutor_check' then
     perform public.add_gold(new.user_id, public.cfg_int('gold_correct'));
+    -- 答對困難題掉 1 顆星晶（每天有上限）
+    if (select difficulty from public.questions where id = new.question_id) >= 3 then
+      update public.daily_activity set gems = gems + 1
+        where user_id = new.user_id and day = public.app_today() and gems < public.cfg_int('gem_daily_max');
+      if found then update public.profiles set gems = gems + 1 where id = new.user_id; end if;
+    end if;
   end if;
   return new;
 end $$;
@@ -141,14 +156,16 @@ $$;
 -- 8. 世界地圖：某個學期所有單元的領地狀態
 --    due＝這個單元裡到期該複習、或還沒弄懂的錯題數；已佔領又有 due 就是「魔物入侵」
 create or replace function public.world_map(p_semester text)
-returns table (unit_id text, subject text, seq int, title text, species text, won boolean, wins int, due int, rewarded_today boolean)
+returns table (unit_id text, subject text, seq int, title text, species text, won boolean, wins int, due int, rewarded_today boolean,
+               mastery int, guard text)
 language sql stable security definer set search_path = public as $$
   select u.id, u.subject, u.seq::int, u.title, public.unit_species(u),
     t.unit_id is not null, coalesce(t.wins, 0),
     (select count(*)::int from public.mistakes m join public.questions q on q.id = m.question_id
        where m.user_id = auth.uid() and q.unit_id = u.id and m.status <> 'graduated'
          and (m.status = 'pending' or m.next_review <= public.app_today())),
-    coalesce(t.reward_day = public.app_today(), false)
+    coalesce(t.reward_day = public.app_today(), false),
+    coalesce(t.days, 0), t.guard
   from public.units u
   left join public.territories t on t.unit_id = u.id and t.user_id = auth.uid()
   where u.semester = p_semester
@@ -203,6 +220,9 @@ declare
   v_before  int := 0;
   v_caught  int := 0;
   v_gold    int := 0;
+  v_days    int := 0;
+  v_master  boolean := false;
+  v_guard   int := 0;
 begin
   if v_uid is null then raise exception 'not_authenticated'; end if;
   select * into v_unit from public.units where id = p_unit_id;
@@ -228,18 +248,26 @@ begin
   if v_correct >= v_need then
     select * into v_t from public.territories where user_id = v_uid and unit_id = p_unit_id for update;
     if not found then
-      v_first := true; v_reward := true;
+      v_first := true; v_reward := true; v_days := 1;
       insert into public.territories (user_id, unit_id, reward_day) values (v_uid, p_unit_id, v_today);
     else
       v_reward := v_t.reward_day < v_today;
-      update public.territories set wins = wins + 1, reward_day = greatest(reward_day, v_today)
+      v_days := v_t.days + case when v_reward then 1 else 0 end;
+      update public.territories set wins = wins + 1, days = v_days, reward_day = greatest(reward_day, v_today)
         where user_id = v_uid and unit_id = p_unit_id;
+      -- 第 N 個不同的日子打贏：領地熟練（金旗），只給一次
+      v_master := v_reward and v_days = public.cfg_int('master_days');
     end if;
     if v_reward then
       insert into public.companions as c (user_id, species) values (v_uid, v_species)
       on conflict (user_id, species) do update set caught = c.caught + 1
       returning caught into v_caught;
       v_gold := public.add_gold(v_uid, public.cfg_int(case when v_first then 'gold_conquer' else 'gold_reclaim' end));
+      if v_master then v_gold := v_gold + public.add_gold(v_uid, public.cfg_int('gold_master')); end if;
+      -- 有守護者駐守的領地，收回時多一點金幣
+      if not v_first and v_t.guard is not null then
+        v_guard := public.add_gold(v_uid, public.cfg_int('gold_guard')); v_gold := v_gold + v_guard;
+      end if;
       -- 第一隻夥伴自動成為出戰夥伴
       update public.profiles set team_pal = v_species where id = v_uid and team_pal is null;
     end if;
@@ -248,6 +276,7 @@ begin
   return jsonb_build_object(
     'won', v_correct >= v_need, 'correct', v_correct, 'total', v_n, 'need', v_need,
     'first', v_first, 'rewarded', v_reward, 'gold_gained', v_gold,
+    'days', v_days, 'master_days', public.cfg_int('master_days'), 'mastered', v_master, 'guard_bonus', v_guard,
     'gold', (select gold from public.profiles where id = v_uid),
     'species', v_species, 'caught', v_caught,
     'new_pal', v_reward and v_before = 0,
@@ -275,6 +304,9 @@ begin
     'gold_today', coalesce(v_day.gold, 0),
     'gold_daily_max', public.cfg_int('gold_daily_max'),
     'gold_correct', public.cfg_int('gold_correct'),
+    'gems', v_prof.gems, 'gems_today', coalesce(v_day.gems, 0), 'gem_daily_max', public.cfg_int('gem_daily_max'),
+    'gem_feed_cost', public.cfg_int('gem_feed_cost'), 'master_days', public.cfg_int('master_days'),
+    'mastered', (select count(*)::int from public.territories where user_id = v_uid and days >= public.cfg_int('master_days')),
     'team_pal', v_prof.team_pal,
     'total_correct', v_correct,
     'territories', (select count(*)::int from public.territories where user_id = v_uid),
@@ -363,6 +395,57 @@ begin
   update public.profiles set team_pal = p_species where id = auth.uid();
 end $$;
 
+-- 13b. 守護者：派一隻已收服的夥伴駐守已佔領的領地（一隻夥伴只能守一塊；傳 null 撤回）
+create or replace function public.set_guard(p_unit_id text, p_species text)
+returns void language plpgsql security definer set search_path = public as $$
+declare v_uid uuid := auth.uid();
+begin
+  if v_uid is null then raise exception 'not_authenticated'; end if;
+  if not exists (select 1 from public.territories where user_id = v_uid and unit_id = p_unit_id) then raise exception 'territory_not_owned'; end if;
+  if p_species is not null then
+    if not exists (select 1 from public.companions where user_id = v_uid and species = p_species) then raise exception 'pal_not_owned'; end if;
+    update public.territories set guard = null where user_id = v_uid and guard = p_species;
+  end if;
+  update public.territories set guard = p_species where user_id = v_uid and unit_id = p_unit_id;
+end $$;
+
+-- 13c. 用星晶培養夥伴：收服次數 +1（可能因此進化）
+create or replace function public.feed_pal(p_species text)
+returns jsonb language plpgsql security definer set search_path = public as $$
+declare
+  v_uid  uuid := auth.uid();
+  v_cost int := public.cfg_int('gem_feed_cost');
+begin
+  if v_uid is null then raise exception 'not_authenticated'; end if;
+  if not exists (select 1 from public.companions where user_id = v_uid and species = p_species) then raise exception 'pal_not_owned'; end if;
+  update public.profiles set gems = gems - v_cost where id = v_uid and gems >= v_cost;
+  if not found then raise exception 'not_enough_gems'; end if;
+  update public.companions set caught = caught + 1 where user_id = v_uid and species = p_species;
+  return public.world_state();
+end $$;
+
+-- 13d. 家長戰報用：孩子的領地、夥伴，以及哪些領地被入侵還沒收回
+create or replace function public.child_world(p_student uuid)
+returns jsonb language plpgsql stable security definer set search_path = public as $$
+begin
+  if not exists (select 1 from public.parent_links where parent_id = auth.uid() and student_id = p_student) then
+    raise exception 'not_linked';
+  end if;
+  return jsonb_build_object(
+    'territories', (select count(*)::int from public.territories where user_id = p_student),
+    'mastered', (select count(*)::int from public.territories where user_id = p_student and days >= public.cfg_int('master_days')),
+    'pals', (select count(*)::int from public.companions where user_id = p_student),
+    'won_this_week', (select count(*)::int from public.territories where user_id = p_student and reward_day > public.app_today() - 7),
+    'invaded', coalesce((select jsonb_agg(jsonb_build_object('title', x.title, 'subject', x.subject, 'due', x.due) order by x.due desc)
+      from (select u.title, u.subject, count(*)::int as due
+            from public.territories t
+            join public.units u on u.id = t.unit_id
+            join public.questions q on q.unit_id = u.id
+            join public.mistakes m on m.question_id = q.id and m.user_id = p_student
+            where t.user_id = p_student and m.status <> 'graduated' and (m.status = 'pending' or m.next_review <= public.app_today())
+            group by u.id, u.title, u.subject order by count(*) desc limit 8) x), '[]'::jsonb));
+end $$;
+
 -- 14. 每日任務：三個小任務，進度由當天的作答紀錄算出來，完成後領金幣（不受每日金幣上限限制，一天最多就這三筆）
 insert into public.app_config (key, value) values
   ('quest_answer_goal',  '5'),  ('quest_answer_gold',  '20'),   -- 今天作答幾題
@@ -421,6 +504,8 @@ end $$;
 revoke execute on function public.add_gold(uuid, int), public.gold_on_attempt(), public.bed_bonus_on_day(),
   public.unit_species(public.units), public.pal_stage(int), public.world_map(text), public.world_progress(),
   public.battle_questions(text, int), public.conquer(text, text[]), public.world_state(), public.buy_item(text),
-  public.set_team_pal(text), public.quest_progress(uuid, text), public.daily_quests(), public.claim_quest(text) from public, anon;
+  public.set_team_pal(text), public.quest_progress(uuid, text), public.daily_quests(), public.claim_quest(text),
+  public.set_guard(text, text), public.feed_pal(text), public.child_world(uuid) from public, anon;
 grant execute on function public.world_map(text), public.world_progress(), public.battle_questions(text, int),
-  public.conquer(text, text[]), public.world_state(), public.buy_item(text), public.set_team_pal(text), public.daily_quests(), public.claim_quest(text) to authenticated;
+  public.conquer(text, text[]), public.world_state(), public.buy_item(text), public.set_team_pal(text), public.daily_quests(), public.claim_quest(text),
+  public.set_guard(text, text), public.feed_pal(text), public.child_world(uuid) to authenticated;

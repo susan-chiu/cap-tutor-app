@@ -115,10 +115,20 @@ await step('第二塊領地：先答錯 1 題再贏（錯題會讓這塊領地�
   await pause(2000);
   await shot('06-map-invaded');
 });
+await step('守護者與熟練度：在已佔領的領地派夥伴駐守', async () => {
+  await page.getByRole('button', { name: /，已佔領$/ }).first().click();
+  await page.getByLabel('熟練度 1 / 3').waitFor();
+  await page.getByRole('button', { name: /^派 .+ 駐守$/ }).first().click();
+  await page.getByRole('button', { name: /^派 .+ 駐守，駐守中$/ }).waitFor({ timeout: 10000 });
+  await pause(1500);
+  await shot('06b-guard');
+  await page.getByRole('button', { name: '關閉', exact: true }).click();
+});
 await step('魔物夥伴頁：已收服 2 種，第一隻是出戰夥伴', async () => {
   await page.getByRole('button', { name: '我的魔物夥伴' }).click();
   await page.getByText(/已收服 2 \/ 20 種/).waitFor({ timeout: 15000 });
   await page.getByText('出戰中').first().waitFor();
+  await page.getByLabel(/^星晶 \d+ 顆$/).waitFor();
   await pause(2500);
   await shot('07-pals');
   await page.getByRole('button', { name: '返回' }).click();

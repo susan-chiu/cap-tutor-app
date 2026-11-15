@@ -17,6 +17,7 @@ await db.exec(`
   select u || '-' || g, u, 'c', u || ' 第' || g || '題',
          jsonb_build_array(jsonb_build_object('key','A','text','x'), jsonb_build_object('key','B','text','y')), 'A', '解析', '{"B":"錯"}'
   from unnest(array['W-7A-1','W-7A-5','WC-7A-1']) u, generate_series(1, 12) g;
+  update public.questions set difficulty = 3 where unit_id = 'W-7A-5' and id in ('W-7A-5-10', 'W-7A-5-11', 'W-7A-5-12');
 `);
 
 let passed = 0;
@@ -166,6 +167,60 @@ await test('每日任務：進度照今天的作答算，完成才能領，領�
   await setToday('2026-11-19');
   assert.equal((await rpc(u, `public.daily_quests()`)).find((x) => x.id === 'conquer').claimed, false);
   await setToday('2026-11-18');
+});
+
+await test('熟練度：同一塊領地在 3 個不同日子打贏就熟練，+50 金幣只給一次', async () => {
+  // W-7A-1 已經在 11-16、11-17 打贏過
+  let m = (await map(u)).find((x) => x.unit_id === 'W-7A-1');
+  assert.equal(m.mastery, 2);
+  await db.exec(`update public.daily_activity set gold = 0 where user_id = '${u}' and day = '2026-11-18'`);
+  const r = await battle(u, 'W-7A-1', 1);
+  assert.equal(r.days, 3); assert.equal(r.mastered, true); assert.equal(r.gold_gained, 20 + 50);
+  assert.equal((await state(u)).mastered, 1);
+  const r2 = await battle(u, 'W-7A-1', 4);
+  assert.equal(r2.mastered, false); assert.equal(r2.days, 3);
+});
+
+await test('守護者：只能派已收服的夥伴守已佔領的領地，一隻只守一塊；隔天收回多 10 金幣', async () => {
+  await expectError(rpc(u, `public.set_guard('W-7A-1', 'social-2')`), 'pal_not_owned');
+  const other = await newUser({ nickname: '沒領地', parent_consent: 'true' });
+  await expectError(rpc(other, `public.set_guard('W-7A-1', 'math-1')`), 'territory_not_owned');
+  await rpc(u, `public.set_guard('W-7A-1', 'math-1')`);
+  await rpc(u, `public.set_guard('W-7A-5', 'math-1')`);
+  const m = await map(u);
+  assert.equal(m.find((x) => x.unit_id === 'W-7A-1').guard, null);
+  assert.equal(m.find((x) => x.unit_id === 'W-7A-5').guard, 'math-1');
+  await setToday('2026-11-19');
+  const r = await battle(u, 'W-7A-5', 4);
+  assert.equal(r.guard_bonus, 10); assert.equal(r.gold_gained, 30);
+  await rpc(u, `public.set_guard('W-7A-5', null)`);
+  assert.equal((await map(u)).find((x) => x.unit_id === 'W-7A-5').guard, null);
+});
+
+await test('星晶：答對困難題掉 1 顆（每天上限 5），3 顆可以培養夥伴一次', async () => {
+  assert.equal((await state(u)).gems, 0);
+  await expectError(rpc(u, `public.feed_pal('math-1')`), 'not_enough_gems');
+  for (const n of [10, 11, 12]) await answer(u, `W-7A-5-${n}`, 'A');
+  await answer(u, 'W-7A-5-7', 'A');   // 不是困難題，不掉
+  let s = await state(u);
+  assert.equal(s.gems, 3); assert.equal(s.gems_today, 3);
+  const before = s.pals.find((p) => p.species === 'math-1').caught;
+  s = await rpc(u, `public.feed_pal('math-1')`);
+  assert.equal(s.gems, 0); assert.equal(s.pals.find((p) => p.species === 'math-1').caught, before + 1);
+  await db.exec(`update public.daily_activity set gems = 5 where user_id = '${u}' and day = '2026-11-19'`);
+  await answer(u, 'W-7A-5-10', 'A');
+  assert.equal((await state(u)).gems, 0);
+  await setToday('2026-11-18');
+});
+
+await test('家長戰報：只有綁定的家長看得到孩子的領地與被入侵的單元', async () => {
+  const parent = await newUser({ nickname: '家長', role: 'parent' });
+  await expectError(rpc(parent, `public.child_world('${u}')`), 'not_linked');
+  await db.exec(`insert into public.parent_links (parent_id, student_id) values ('${parent}', '${u}')`);
+  await answer(u, 'W-7A-1-9', 'B');
+  const r = await rpc(parent, `public.child_world('${u}')`);
+  assert.equal(r.territories, 3); assert.equal(r.mastered, 1); assert.equal(r.pals >= 2, true);
+  assert.deepEqual(r.invaded.map((x) => x.title), ['整數']);
 });
 
 await test('學生不能直接改金幣、不能呼叫內部函式、看不到別人的領地', async () => {

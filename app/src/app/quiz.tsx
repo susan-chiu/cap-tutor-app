@@ -16,7 +16,7 @@ import { api, errorText, isPremiumProfile, type AnswerResult, type BossResult, t
 import { useAuth } from '@/lib/auth';
 import { BOSS_HEARTS, bossStars, comboMessage, levelFor } from '@/lib/game';
 import { arenaImg, bossImg, monsterImg } from '@/lib/art';
-import { play } from '@/lib/sound';
+import { play, startBgm, stopBgm } from '@/lib/sound';
 import { heroOf, type Hero } from '@/lib/heroes';
 import { shareText } from '@/lib/share';
 import { ALL_SUBJECTS, C, currentSemester, localToday } from '@/lib/theme';
@@ -53,6 +53,7 @@ export default function Quiz() {
   // 出戰夥伴（站在勇者旁邊一起打）
   const [teamPal, setTeamPal] = useState<string | null>(null);
   // 絕招能量：答對集氣，集滿後按絕招鈕，下一次答對就放絕招（夥伴技能會改變集氣規則）
+  useEffect(() => { startBgm('battle'); return () => stopBgm(); }, []);
   const need = ultNeed(mode, teamPal);
   const [ult, setUlt] = useState({ energy: 0, armed: false, shieldUsed: false });
   useEffect(() => {
@@ -118,6 +119,7 @@ export default function Quiz() {
         const cm = comboMessage(nextCombo);
         if (cm) setTimeout(() => play('combo'), 350);
         setCrit(ult.armed);
+        if (ult.armed) setTimeout(() => buzz('levelup'), 260);
         setPop((p) => ({ seq: p.seq + 1, text: `+${r.xp_gained} XP`, sub: cm }));
         setBossHit((h) => h + 1);
       } else setTimeout(() => play('eye', 0.5), 400);

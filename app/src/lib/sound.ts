@@ -25,14 +25,16 @@ const SFX = {
   unlock: require('@/assets/audio/sfx-unlock.mp3'),
   invade: require('@/assets/audio/sfx-invade.mp3'),
 } as const;
-const BGM = require('@/assets/audio/bgm-hall.mp3');
+const BGM = { hall: require('@/assets/audio/bgm-hall.mp3'), battle: require('@/assets/audio/bgm-battle.mp3') } as const;
+export type Bgm = keyof typeof BGM;
 export type Sfx = keyof typeof SFX;
 
 const KEY = 'sound-prefs-v1';
 let prefs = { sfx: true, bgm: true };
 const listeners = new Set<() => void>();
 const players: Partial<Record<Sfx, AudioPlayer>> = {};
-let bgm: AudioPlayer | null = null;
+const bgms: Partial<Record<Bgm, AudioPlayer>> = {};
+let bgmTrack: Bgm = 'hall';
 let bgmWanted = false;
 let ready = false;
 
@@ -65,24 +67,28 @@ export function play(name: Sfx, volume = 0.7) {
   } catch { /* 沒有聲音也不影響練習 */ }
 }
 
-export function startBgm() {
+/** 背景音樂：hall 大廳、battle 世界地圖與戰鬥。換曲時會先停掉另一首 */
+export function startBgm(track: Bgm = bgmTrack) {
+  if (track !== bgmTrack) { try { bgms[bgmTrack]?.pause(); } catch { /* 忽略 */ } }
+  bgmTrack = track;
   bgmWanted = true;
   if (!prefs.bgm || !ready) return;
   try {
-    if (!bgm) { bgm = createAudioPlayer(BGM); bgm.loop = true; bgm.volume = 0.3; }
-    start(bgm);
+    let p = bgms[track];
+    if (!p) { p = bgms[track] = createAudioPlayer(BGM[track]); p.loop = true; p.volume = track === 'battle' ? 0.22 : 0.3; }
+    start(p);
   } catch { /* 忽略 */ }
 }
 
 export function stopBgm() {
   bgmWanted = false;
-  try { bgm?.pause(); } catch { /* 忽略 */ }
+  try { bgms[bgmTrack]?.pause(); } catch { /* 忽略 */ }
 }
 
 export function setSoundPrefs(next: Partial<typeof prefs>) {
   prefs = { ...prefs, ...next };
   AsyncStorage.setItem(KEY, JSON.stringify(prefs)).catch(() => {});
-  if (!prefs.bgm) { try { bgm?.pause(); } catch { /* 忽略 */ } }
+  if (!prefs.bgm) { try { bgms[bgmTrack]?.pause(); } catch { /* 忽略 */ } }
   else if (bgmWanted) startBgm();
   listeners.forEach((l) => l());
 }

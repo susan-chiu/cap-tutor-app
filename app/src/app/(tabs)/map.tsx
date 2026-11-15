@@ -11,7 +11,7 @@ import { api, errorText, type MapUnit, type WorldState } from '@/lib/api';
 import { mapImg, monsterImg, palImg, SUBJECT_IMG, WORLD_IMG } from '@/lib/art';
 import { useAuth } from '@/lib/auth';
 import { SUBJECT_FLOWER } from '@/lib/game';
-import { play } from '@/lib/sound';
+import { play, startBgm, stopBgm } from '@/lib/sound';
 import { C, currentSemester, semesterLabel, semestersFor, subjectLabel, validSemester, type SemesterId } from '@/lib/theme';
 import { mapHeight, nodePosition, nodeStates, palName, type NodeState } from '@/lib/world';
 
@@ -43,7 +43,7 @@ export default function WorldMap() {
       setProgress(Object.fromEntries(pr.map((r) => [r.semester, r])));
     } catch (e) { setError(errorText(e)); }
   }, [sem]);
-  useFocusEffect(useCallback(() => { load(); }, [load]));
+  useFocusEffect(useCallback(() => { load(); startBgm('battle'); return () => stopBgm(); }, [load]));
 
   const h = mapHeight(w, units?.length ?? 0);
   const states = useMemo(() => nodeStates(units ?? []), [units]);
@@ -106,7 +106,7 @@ export default function WorldMap() {
                   stroke="rgba(255,255,255,0.55)" strokeWidth={4} strokeDasharray="10 8" />
               </Svg>
               {units.map((u, i) => (
-                <MapNode key={u.unit_id} unit={u} state={states[i]} left={points[i].x * w} top={points[i].y * h}
+                <MapNode key={u.unit_id} unit={u} state={states[i]} masterDays={world?.master_days ?? 3} left={points[i].x * w} top={points[i].y * h}
                   onPress={() => { play('tap', 0.4); setOpen(u); }} />
               ))}
               {/* 新手提示：第一次來地圖，指出要點哪裡 */}
@@ -125,7 +125,15 @@ export default function WorldMap() {
           </ScrollView>
         )}
 
-      <NodeSheet unit={open} state={open ? states[units?.indexOf(open) ?? 0] : 'open'} onClose={() => setOpen(null)} onGo={go} />
+      <NodeSheet unit={open} state={open ? states[units?.findIndex((x) => x.unit_id === open.unit_id) ?? 0] ?? 'won' : 'open'} world={world} onClose={() => setOpen(null)} onGo={go}
+        onGuard={async (u, species) => {
+          try {
+            await api.setGuard(u.unit_id, species);
+            play('tap', 0.5);
+            setOpen({ ...u, guard: species });
+            await load();
+          } catch (e) { setError(errorText(e)); }
+        }} />
     </SafeAreaView>
   );
 }
@@ -139,8 +147,8 @@ function Legend({ img, label, color = C.muted }: { img: number | { uri: string }
   );
 }
 
-function MapNode({ unit, state, left, top, onPress }: {
-  unit: MapUnit; state: NodeState; left: number; top: number; onPress: () => void;
+function MapNode({ unit, state, masterDays, left, top, onPress }: {
+  unit: MapUnit; state: NodeState; masterDays: number; left: number; top: number; onPress: () => void;
 }) {
   const color = SUBJECT_FLOWER[unit.subject] ?? C.accent;
   const pulse = useState(() => new Animated.Value(0))[0];
@@ -155,7 +163,7 @@ function MapNode({ unit, state, left, top, onPress }: {
     return () => loop.stop();
   }, [lively, pulse]);
   const ring = state === 'invaded' ? C.red : state === 'open' ? '#5A6785' : color;
-  const marker = state === 'invaded' ? WORLD_IMG.invade : state === 'won' ? (unit.wins >= 3 ? WORLD_IMG.master : WORLD_IMG.flag)
+  const marker = state === 'invaded' ? WORLD_IMG.invade : state === 'won' ? (unit.mastery >= masterDays ? WORLD_IMG.master : WORLD_IMG.flag)
     : state === 'next' ? WORLD_IMG.next : null;
   return (
     <Pressable accessibilityRole="button" onPress={onPress}
@@ -169,6 +177,9 @@ function MapNode({ unit, state, left, top, onPress }: {
           style={state === 'invaded' ? { width: 54, height: 54 } : { width: 36, height: 36, opacity: state === 'open' ? 0.7 : 1 }} />
         {marker ? <Image source={marker} accessibilityIgnoresInvertColors
           style={{ position: 'absolute', top: -18, right: -16, width: 36, height: 36 }} /> : null}
+        {unit.guard ? <View style={{ position: 'absolute', bottom: -10, left: -14, width: 34, height: 34, borderRadius: 17, backgroundColor: '#0B1426',
+          borderWidth: 2, borderColor: C.gold, alignItems: 'center', justifyContent: 'center' }}>
+          <Image source={palImg(unit.guard)} accessibilityIgnoresInvertColors style={{ width: 26, height: 26 }} /></View> : null}
       </Animated.View>
       <View style={{ paddingHorizontal: 6, paddingVertical: 2, borderRadius: 8, backgroundColor: 'rgba(5, 10, 24, 0.88)', maxWidth: 104 }}>
         <T size={11} numberOfLines={2} weight={lively ? '700' : '400'} style={{ textAlign: 'center', lineHeight: 14 }}
@@ -181,11 +192,14 @@ function MapNode({ unit, state, left, top, onPress }: {
 }
 
 /** 點領地後從下方滑出的說明：這塊領地的狀態、會遇到的魔物、出征按鈕 */
-function NodeSheet({ unit, state, onClose, onGo }: {
-  unit: MapUnit | null; state: NodeState; onClose: () => void; onGo: (u: MapUnit) => void;
+function NodeSheet({ unit, state, world, onClose, onGo, onGuard }: {
+  unit: MapUnit | null; state: NodeState; world: WorldState | null; onClose: () => void; onGo: (u: MapUnit) => void;
+  onGuard: (u: MapUnit, species: string | null) => void;
 }) {
   if (!unit) return null;
   const color = SUBJECT_FLOWER[unit.subject] ?? C.accent;
+  const masterDays = world?.master_days ?? 3;
+  const mastered = unit.mastery >= masterDays;
   const reward = !unit.won ? '打贏就佔領這塊領地，還能收服這隻魔物當夥伴。'
     : unit.rewarded_today ? '今天已經在這裡收服過了，再打可以練功、賺答題金幣。'
     : state === 'invaded' ? `有 ${unit.due} 題錯題該複習了。打贏就把領地收回來，還能再收服一次。`
@@ -213,6 +227,39 @@ function NodeSheet({ unit, state, onClose, onGo }: {
               <T size={13} color={C.inkSoft}>{reward}</T>
             </View>
           </View>
+          {unit.won ? (
+            <>
+              {/* 熟練度：在不同的日子打贏幾次；滿了就變金旗 */}
+              <View accessibilityLabel={`熟練度 ${Math.min(unit.mastery, masterDays)} / ${masterDays}`} style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+                <T size={13} weight="700" color={mastered ? C.gold : C.inkSoft}>熟練度</T>
+                {Array.from({ length: masterDays }, (_, i) => (
+                  <Ionicons key={i} name={i < unit.mastery ? 'star' : 'star-outline'} size={18} color={i < unit.mastery ? C.gold : C.faint} />
+                ))}
+                <T size={12} color={C.muted} style={{ flex: 1 }}>{mastered ? '已熟練，金旗領地' : `在 ${masterDays} 個不同的日子打贏就熟練（+50 金幣）`}</T>
+              </View>
+              {/* 守護者：派一隻夥伴駐守，收回這塊領地時多 10 金幣 */}
+              {world?.pals.length ? (
+                <View style={{ gap: 6 }}>
+                  <T size={13} weight="700" color={C.inkSoft}>守護者 <T size={12} color={C.muted}>（收回這塊領地時多 10 金幣；一隻夥伴只能守一塊）</T></T>
+                  <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: 8 }}>
+                    <Pressable accessibilityRole="button" accessibilityLabel="不派守護者" onPress={() => onGuard(unit, null)}
+                      style={{ width: 64, height: 64, borderRadius: 12, alignItems: 'center', justifyContent: 'center', borderWidth: unit.guard ? 1 : 2,
+                        borderColor: unit.guard ? C.line : C.gold, backgroundColor: C.bg }}>
+                      <T size={12} color={C.muted}>不派</T>
+                    </Pressable>
+                    {world.pals.map((p) => (
+                      <Pressable key={p.species} accessibilityRole="button" accessibilityLabel={`派 ${palName(p.species)} 駐守${unit.guard === p.species ? '，駐守中' : ''}`}
+                        onPress={() => onGuard(unit, p.species)}
+                        style={{ width: 64, height: 64, borderRadius: 12, alignItems: 'center', justifyContent: 'center', borderWidth: unit.guard === p.species ? 2 : 1,
+                          borderColor: unit.guard === p.species ? C.gold : C.line, backgroundColor: C.bg }}>
+                        <Image source={palImg(p.species)} accessibilityIgnoresInvertColors style={{ width: 48, height: 48 }} />
+                      </Pressable>
+                    ))}
+                  </ScrollView>
+                </View>
+              ) : null}
+            </>
+          ) : null}
           <T size={12} color={C.muted} style={{ textAlign: 'center' }}>領地戰最多 5 題，答對 3 題就贏</T>
           <View style={{ flexDirection: 'row', gap: 10 }}>
             <Button title="關閉" kind="secondary" style={{ flex: 1 }} onPress={onClose} />

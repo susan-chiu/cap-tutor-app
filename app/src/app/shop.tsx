@@ -1,12 +1,15 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useFocusEffect } from 'expo-router';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Alert, Image, Pressable, View } from 'react-native';
 
 import { Card, ErrorBox, H1, Loading, Screen, T } from '@/components/ui';
 import { GoldPill } from '@/components/world-fx';
 import { api, errorText, type ShopItem, type WorldState } from '@/lib/api';
 import { FURNITURE_IMG, WORLD_IMG } from '@/lib/art';
+import { preloadAds, watchAdFor } from '@/lib/ad-reward';
+import { adsAvailable } from '@/lib/ads';
+import { useAuth } from '@/lib/auth';
 import { goBack } from '@/lib/nav';
 import { play } from '@/lib/sound';
 import { C } from '@/lib/theme';
@@ -17,6 +20,17 @@ export default function Shop() {
   const [world, setWorld] = useState<WorldState | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState<string | null>(null);
+  const { session } = useAuth();
+  const canAd = adsAvailable() && !!session && !!world && !world.premium;
+  useEffect(() => { preloadAds(session?.user.id, ['energy']); }, [session?.user.id]);
+
+  async function watchAd() {
+    if (!session || busy) return;
+    setBusy('ad');
+    const r = await watchAdFor('energy', session.user.id);
+    setBusy(null);
+    if (r) { await load(); Alert.alert('體力補充了！', '今天可以再多練 10 題。'); }
+  }
 
   const load = useCallback(async () => {
     try { setError(null); setWorld(await api.worldState()); } catch (e) { setError(errorText(e)); }
@@ -74,6 +88,18 @@ export default function Shop() {
             <T size={13} color={C.muted}>今天賺了 {world.gold_today} / {world.gold_daily_max} 金幣</T>
             <T size={13} color={C.muted}>家具 {world.owned.length} / {world.shop.filter((i) => i.kind === 'furniture').length}</T>
           </Card>
+          {canAd ? (
+            <Pressable accessibilityRole="button" accessibilityLabel="看一段廣告，今天多練 10 題" disabled={!!busy} onPress={watchAd}
+              style={({ pressed }) => ({ flexDirection: 'row', alignItems: 'center', gap: 12, padding: 12, borderRadius: 16, borderWidth: 1.5, borderColor: C.green,
+                backgroundColor: C.card, opacity: busy === 'ad' || pressed ? 0.7 : 1 })}>
+              <Ionicons name="play-circle" size={36} color={C.green} />
+              <View style={{ flex: 1 }}>
+                <T weight="700">看廣告補體力</T>
+                <T size={12} color={C.muted}>看完一段廣告，今天多練 10 題（不用花金幣）</T>
+              </View>
+              <T size={13} weight="700" color={C.green}>免費</T>
+            </Pressable>
+          ) : null}
           <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 10 }}>
             {world.shop.map((i) => {
               const f = i.id === 'soup' ? { name: SOUP.name, desc: `今天多練 ${world.soup_questions} 題（剩 ${world.soups_left} 碗）` }

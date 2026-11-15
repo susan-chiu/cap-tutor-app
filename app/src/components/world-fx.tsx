@@ -72,10 +72,12 @@ export function ConquerCard({ result }: { result: ConquerResult }) {
       <T size={13} color={C.inkSoft} style={{ textAlign: 'center' }}>
         {result.rewarded ? `${PAL_STAGE[Math.max(result.stage, 1)]}・已收服 ${result.caught} 次` : '今天已經在這塊領地收服過了，明天再來可以再收服一次。'}
       </T>
+      {result.mastered ? <T weight="700" color={C.gold}>★ 領地熟練！升級成金旗領地</T>
+        : result.rewarded && result.days < result.master_days ? <T size={12} color={C.muted}>熟練度 {result.days} / {result.master_days}（改天再打贏一次 +1）</T> : null}
       {result.gold_gained ? (
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
           <Image source={WORLD_IMG.coin} accessibilityIgnoresInvertColors style={{ width: 24, height: 24 }} />
-          <T weight="700" color={C.gold}>{result.first ? '佔領獎勵' : '收回獎勵'} +{result.gold_gained} 金幣</T>
+          <T weight="700" color={C.gold}>{result.first ? '佔領獎勵' : result.mastered ? '收回＋熟練獎勵' : result.guard_bonus ? '收回＋守護者獎勵' : '收回獎勵'} +{result.gold_gained} 金幣</T>
         </View>
       ) : null}
     </View>

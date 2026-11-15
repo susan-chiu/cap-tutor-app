@@ -33,6 +33,20 @@ export default function Pals() {
     finally { setBusy(null); }
   }
 
+  async function feed(species: string) {
+    if (busy) return;
+    setBusy(species);
+    try {
+      const before = world?.pals.find((p) => p.species === species)?.stage ?? 1;
+      const w = await api.feedPal(species);
+      setWorld(w);
+      const after = w.pals.find((p) => p.species === species)?.stage ?? before;
+      play(after > before ? 'evolve' : 'capture', 0.7);
+      if (after > before) Alert.alert('進化了！', `${palName(species)}變成${PAL_STAGE[after]}了！`);
+    } catch (e) { Alert.alert('培養不了', errorText(e)); }
+    finally { setBusy(null); }
+  }
+
   const subjects = subjectsFor(profile?.grade).map((s) => s.id as string);
   const species = ALL_SPECIES.filter((s) => subjects.includes(palSubject(s)));
   const mine = new Map((world?.pals ?? []).map((p) => [p.species, p]));
@@ -51,7 +65,20 @@ export default function Pals() {
         <>
           <Card style={{ borderColor: C.gold, backgroundColor: '#0E1530', gap: 10 }}>
             <T size={13} weight="700" color={C.gold}>◆ 出戰夥伴（會跟在勇者旁邊）</T>
-            {team ? <TeamRow pal={team} evolve={world.evolve} /> : (
+            {team ? (
+              <>
+                <TeamRow pal={team} evolve={world.evolve} />
+                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+                  <View accessibilityLabel={`星晶 ${world.gems} 顆`} style={{ flexDirection: 'row', alignItems: 'center', gap: 4 }}>
+                    <Ionicons name="diamond" size={18} color="#7CF7FF" />
+                    <T weight="700" color="#7CF7FF">{world.gems}</T>
+                  </View>
+                  <T size={12} color={C.muted} style={{ flex: 1 }}>答對困難題會掉星晶（今天 {world.gems_today}/{world.gem_daily_max}）</T>
+                  <Button title={`培養 −${world.gem_feed_cost}`} kind="secondary" disabled={world.gems < world.gem_feed_cost || !!busy}
+                    onPress={() => feed(team.species)} />
+                </View>
+              </>
+            ) : (
               <>
                 <T color={C.inkSoft}>還沒有夥伴。去世界地圖出征，打贏第一塊領地就會有第一隻夥伴！</T>
                 <Button title="去世界地圖" onPress={() => router.replace('/map')} />
