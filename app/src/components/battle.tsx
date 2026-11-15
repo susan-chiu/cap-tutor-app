@@ -280,9 +280,10 @@ export function BattleStage({ name, image, arena, hp, maxHp, hearts, hit, crit, 
           </Animated.View>
 
           {/* 頭上的血條：魔物紅色，勇者綠色（魔王戰顯示愛心） */}
-          <Animated.View style={{ position: 'absolute', left: monsterX - 6, top: Math.max(monsterTop - 26, 4), width: monster + 12, opacity: fade }}>
+          <Animated.View style={{ position: 'absolute', left: monsterX - 6, top: Math.max(monsterTop - 38, 2), width: monster + 12, opacity: fade }}>
             <T size={11} weight="700" color="#FFFFFF" numberOfLines={1} style={[DMG_SHADOW, { textAlign: 'center' }]}>{name}</T>
             <HeadBar value={maxHp ? Math.max(hp, 0) / maxHp : 0} color={C.red} segments={maxHp} />
+            <T size={10} weight="700" color="#E6ECF7" style={[DMG_SHADOW, { textAlign: 'right', lineHeight: 13 }]}>HP {Math.max(hp, 0)} / {maxHp}</T>
           </Animated.View>
           {hero ? (
             <View style={{ position: 'absolute', left: 6, top: 4, width: heroW }}>
