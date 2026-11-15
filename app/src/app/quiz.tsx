@@ -49,6 +49,9 @@ export default function Quiz() {
   const [levelUp, setLevelUp] = useState<number | null>(null);
   const [bossHit, setBossHit] = useState(0);
   const [crit, setCrit] = useState(false);
+  // 出戰夥伴（站在勇者旁邊一起打）
+  const [teamPal, setTeamPal] = useState<string | null>(null);
+  useEffect(() => { api.worldState().then((w) => setTeamPal(w.team_pal)).catch(() => {}); }, []);
   const boss = mode === 'exam' && params.boss ? params.boss : null;
   // 心眼：答錯後先給提示、可以再答一次（第二次答對 +3 XP）
   const [eye, setEye] = useState<{ first: string; hint: string | null; phase: 'hint' | 'retry' | 'done'; ok?: boolean; bonus?: number } | null>(null);
@@ -106,7 +109,7 @@ export default function Quiz() {
       if (r.correct) {
         const cm = comboMessage(nextCombo);
         if (cm) setTimeout(() => play('combo'), 350);
-        setCrit(nextCombo >= 5);
+        setCrit(nextCombo >= 3);
         setPop((p) => ({ seq: p.seq + 1, text: `+${r.xp_gained} XP`, sub: cm }));
         setBossHit((h) => h + 1);
       } else setTimeout(() => play('eye', 0.5), 400);
@@ -223,7 +226,8 @@ export default function Quiz() {
           <>
             <BattleStage name={boss ?? (mode === 'daily' ? '突擊副本・小怪群' : mode === 'review' ? '魔物圖鑑・復仇魔物' : mode === 'conquer' ? `${params.title ?? '領地'}的魔物` : `${params.title ?? '單元'}守衛`)}
               hp={mode === 'conquer' ? CONQUER_NEED - stats.correct : questions.length - stats.correct} maxHp={mode === 'conquer' ? CONQUER_NEED : questions.length}
-              hearts={boss ? Math.max(BOSS_HEARTS - (stats.answered - stats.correct), 0) : null} hit={bossHit} crit={crit}
+              hearts={boss ? Math.max(BOSS_HEARTS - (stats.answered - stats.correct), 0) : null} hit={bossHit} crit={crit} miss={stats.answered - stats.correct} combo={combo}
+              hero={heroOf(profile?.hero)} pal={teamPal}
               image={boss ? bossImg(boss) : monsterImg(q?.subject)} arena={arenaImg(mode === 'daily' ? null : q?.subject)} />
             <XpPop seq={pop.seq} text={pop.text} sub={pop.sub} />
             <ScrollView ref={scrollRef} contentContainerStyle={{ padding: 20, gap: 16 }}>
