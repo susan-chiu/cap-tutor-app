@@ -15,7 +15,7 @@ import { adsAvailable } from '@/lib/ads';
 import { api, errorText, isPremiumProfile, type AnswerResult, type BossResult, type ConquerResult } from '@/lib/api';
 import { useAuth } from '@/lib/auth';
 import { BOSS_HEARTS, bossStars, comboMessage, levelFor } from '@/lib/game';
-import { arenaImg, bossImg, monsterImg } from '@/lib/art';
+import { arenaImg, bossAttackImg, bossImg, monsterAttackImg, monsterImg } from '@/lib/art';
 import { play, startBgm, stopBgm } from '@/lib/sound';
 import { heroOf, type Hero } from '@/lib/heroes';
 import { shareText } from '@/lib/share';
@@ -239,7 +239,7 @@ export default function Quiz() {
               hearts={boss ? Math.max(BOSS_HEARTS - (stats.answered - stats.correct), 0) : null} hit={bossHit} crit={crit} miss={stats.answered - stats.correct} combo={combo}
               hero={heroOf(profile?.hero)} pal={teamPal}
               energy={ult.energy} energyNeed={need} ultArmed={ult.armed} onUlt={() => setUlt((u) => (u.energy >= need ? { ...u, armed: true } : u))}
-              image={boss ? bossImg(boss) : monsterImg(q?.subject)} arena={arenaImg(mode === 'daily' ? null : q?.subject)} />
+              image={boss ? bossImg(boss) : monsterImg(q?.subject)} attackImage={boss ? bossAttackImg(boss) : monsterAttackImg(q?.subject)} arena={arenaImg(mode === 'daily' ? null : q?.subject)} />
             <XpPop seq={pop.seq} text={pop.text} sub={pop.sub} />
             <ScrollView ref={scrollRef} contentContainerStyle={{ padding: 20, gap: 16 }}>
               <T size={13} color={C.muted}>第 {idx + 1} 題 / 共 {questions.length} 題{mode === 'review' ? ' · 錯題複習' : mode === 'conquer' ? ` · 領地戰（答對 ${CONQUER_NEED} 題就贏）` : mode === 'exam' ? ` · ${params.title || '段考複習卷'}` : ''}{DIFF_LABEL[params.difficulty ?? ''] ? ` · ${DIFF_LABEL[params.difficulty ?? '']}` : ''}</T>

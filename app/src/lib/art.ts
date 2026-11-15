@@ -11,6 +11,15 @@ export const MONSTER_IMG: Record<string, ImageSourcePropType> = {
   social: require('@/assets/monsters/social.webp'),
 };
 export const monsterImg = (subject: string | null | undefined) => MONSTER_IMG[subject ?? ''] ?? MONSTER_IMG.math;
+/** 魔物撲過來反擊的動作圖（面向左邊） */
+const MONSTER_ATTACK_IMG: Record<string, ImageSourcePropType> = {
+  math: require('@/assets/monsters/math-attack.webp'),
+  chinese: require('@/assets/monsters/chinese-attack.webp'),
+  english: require('@/assets/monsters/english-attack.webp'),
+  science: require('@/assets/monsters/science-attack.webp'),
+  social: require('@/assets/monsters/social-attack.webp'),
+};
+export const monsterAttackImg = (subject: string | null | undefined) => MONSTER_ATTACK_IMG[subject ?? ''] ?? MONSTER_ATTACK_IMG.math;
 
 const BOSS_IMG: Record<string, ImageSourcePropType> = {
   exam1: require('@/assets/bosses/boss-1.webp'),
@@ -18,13 +27,19 @@ const BOSS_IMG: Record<string, ImageSourcePropType> = {
   exam3: require('@/assets/bosses/boss-3.webp'),
   final: require('@/assets/bosses/boss-final.webp'),
 };
+const BOSS_ATTACK_IMG: Record<string, ImageSourcePropType> = {
+  exam1: require('@/assets/bosses/boss-1-attack.webp'),
+  exam2: require('@/assets/bosses/boss-2-attack.webp'),
+  exam3: require('@/assets/bosses/boss-3-attack.webp'),
+  final: require('@/assets/bosses/boss-final-attack.webp'),
+};
 /** 依魔王名稱找圖：國小期中考用第 2 隻、期末考用終極魔王 */
-export function bossImg(name: string | null | undefined): ImageSourcePropType {
+function bossKey(name: string | null | undefined): string {
   const key = Object.keys(BOSS_NAMES).find((k) => BOSS_NAMES[k] === name);
-  if (key === 'midterm') return BOSS_IMG.exam2;
-  if (key === 'finalterm') return BOSS_IMG.final;
-  return BOSS_IMG[key ?? ''] ?? BOSS_IMG.exam1;
+  return key === 'midterm' ? 'exam2' : key === 'finalterm' ? 'final' : key && BOSS_IMG[key] ? key : 'exam1';
 }
+export const bossImg = (name: string | null | undefined): ImageSourcePropType => BOSS_IMG[bossKey(name)];
+export const bossAttackImg = (name: string | null | undefined): ImageSourcePropType => BOSS_ATTACK_IMG[bossKey(name)];
 
 export const ITEM_IMG = {
   potion: require('@/assets/items/potion.webp') as ImageSourcePropType,
@@ -37,6 +52,8 @@ export const HALL_BG: ImageSourcePropType = require('@/assets/images/hall-bg.jpg
 
 /** 戰鬥特效（已轉成透明背景） */
 export const FX_IMG = {
+  ultBurst: require('@/assets/fx/ult-burst.webp') as ImageSourcePropType,
+  ultCharge: require('@/assets/fx/ult-charge.webp') as ImageSourcePropType,
   slash: require('@/assets/fx/slash.webp') as ImageSourcePropType,
   hit: require('@/assets/fx/hit.webp') as ImageSourcePropType,
   crit: require('@/assets/fx/crit.webp') as ImageSourcePropType,

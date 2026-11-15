@@ -75,8 +75,10 @@ function useBob(duration: number) {
  * 答對：勇者衝上前揮劍，劍光劃過、魔物被擊退閃白、跳出傷害字；連擊變成金色暴擊、整個畫面震動。
  * 答錯：魔物撲過來反擊，畫面閃紅、勇者被震退。血量歸零時魔物化成光點消散。
  */
-export function BattleStage({ name, image, arena, hp, maxHp, hearts, hit, crit, miss = 0, combo = 0, hero, pal, energy = 0, energyNeed = 3, ultArmed = false, onUlt }: {
+export function BattleStage({ name, image, attackImage, arena, hp, maxHp, hearts, hit, crit, miss = 0, combo = 0, hero, pal, energy = 0, energyNeed = 3, ultArmed = false, onUlt }: {
   name: string; image: ImageSourcePropType; arena: ImageSourcePropType;
+  /** 魔物反擊時的動作圖（沒有就用原圖撲過去） */
+  attackImage?: ImageSourcePropType;
   hp: number; maxHp: number; hearts?: number | null;
   /** 每答對一題加 1，觸發攻擊特效 */
   hit: number;
@@ -105,6 +107,7 @@ export function BattleStage({ name, image, arena, hp, maxHp, hearts, hit, crit, 
   const dmg = useState(() => new Animated.Value(0))[0];        // 傷害字
   const fade = useState(() => new Animated.Value(1))[0];
   const dust = useState(() => new Animated.Value(0))[0];
+  const hurt = useState(() => new Animated.Value(0))[0];       // 勇者受擊姿勢顯示的時間
   const dmgBad = useState(() => new Animated.Value(0))[0];     // 被反擊的字
   const banner = useState(() => new Animated.Value(0))[0];     // 連擊播報
   const idle = useBob(1100);
@@ -169,8 +172,14 @@ export function BattleStage({ name, image, arena, hp, maxHp, hearts, hit, crit, 
 
   useEffect(() => {
     if (!miss) return;
-    [bite, red, dmgBad, banner].forEach((v) => v.setValue(0));
+    [bite, red, dmgBad, banner, hurt].forEach((v) => v.setValue(0));
     Animated.parallel([
+      Animated.sequence([
+        Animated.delay(150),
+        Animated.timing(hurt, { toValue: 1, duration: 60, useNativeDriver: true }),
+        Animated.delay(520),
+        Animated.timing(hurt, { toValue: 0, duration: 160, useNativeDriver: true }),
+      ]),
       // 魔物撲向勇者再退回
       Animated.sequence([
         Animated.timing(bite, { toValue: 1, duration: 180, easing: Easing.in(Easing.quad), useNativeDriver: true }),
@@ -242,16 +251,31 @@ export function BattleStage({ name, image, arena, hp, maxHp, hearts, hit, crit, 
                   { translateX: lunge.interpolate({ inputRange: [0, 1], outputRange: [0, reach * 0.3] }) }] }} />
           ) : null}
 
-          {/* 勇者：答對時衝上前，被反擊時後退 */}
+          {/* 絕招集氣：能量集滿或就緒時，勇者腳下出現光環 */}
+          {hero && (ultArmed || energy >= energyNeed) ? (
+            <Animated.Image source={FX_IMG.ultCharge} accessibilityIgnoresInvertColors resizeMode="contain"
+              style={{ position: 'absolute', left: -heroW * 0.2, bottom: ground - heroW * 0.42, width: heroW * 1.25, height: heroW * 1.25,
+                opacity: idle.interpolate({ inputRange: [0, 1], outputRange: [0.65, 1] }),
+                transform: [{ scaleY: 0.45 }, { scale: idle.interpolate({ inputRange: [0, 1], outputRange: [0.94, 1.06] }) }] }} />
+          ) : null}
+
+          {/* 勇者：平常是站姿；答對換成攻擊動作衝上前，被反擊換成受擊動作後退 */}
           {hero ? (
-            <Animated.Image source={hero.full} accessibilityIgnoresInvertColors resizeMode="contain"
-              style={{ position: 'absolute', left: -heroW * 0.08, bottom: ground - 4, width: heroW, height: heroH,
-                transform: [
-                  { translateX: Animated.add(lunge.interpolate({ inputRange: [0, 1], outputRange: [0, reach] }),
-                      red.interpolate({ inputRange: [0, 1], outputRange: [0, -10] })) },
-                  { translateY: idleHero.interpolate({ inputRange: [0, 1], outputRange: [0, -3] }) },
-                  { rotate: lunge.interpolate({ inputRange: [0, 1], outputRange: ['0deg', '6deg'] }) },
-                ] }} />
+            <Animated.View style={{ position: 'absolute', left: -heroW * 0.08, bottom: ground - 4, width: heroW, height: heroH,
+              transform: [
+                { translateX: Animated.add(lunge.interpolate({ inputRange: [0, 1], outputRange: [0, reach] }),
+                    hurt.interpolate({ inputRange: [0, 1], outputRange: [0, -12] })) },
+                { translateY: idleHero.interpolate({ inputRange: [0, 1], outputRange: [0, -3] }) },
+              ] }}>
+              <Animated.Image source={hero.full} accessibilityIgnoresInvertColors resizeMode="contain"
+                style={{ position: 'absolute', width: heroW, height: heroH,
+                  opacity: Animated.subtract(1, Animated.add(lunge.interpolate({ inputRange: [0, 0.2, 1], outputRange: [0, 1, 1] }), hurt)).interpolate({ inputRange: [0, 1], outputRange: [0, 1], extrapolate: 'clamp' }) }} />
+              <Animated.Image source={hero.attack} accessibilityIgnoresInvertColors resizeMode="contain"
+                style={{ position: 'absolute', left: -heroW * 0.15, top: -heroH * 0.1, width: heroW * 1.3, height: heroH * 1.2,
+                  opacity: lunge.interpolate({ inputRange: [0, 0.2, 1], outputRange: [0, 1, 1] }) }} />
+              <Animated.Image source={hero.hurt} accessibilityIgnoresInvertColors resizeMode="contain"
+                style={{ position: 'absolute', width: heroW, height: heroH, opacity: hurt }} />
+            </Animated.View>
           ) : null}
 
           {/* 魔物：待機時上下浮動，被打到會後退，答錯時撲過來 */}
@@ -262,14 +286,18 @@ export function BattleStage({ name, image, arena, hp, maxHp, hearts, hit, crit, 
               { translateY: idle.interpolate({ inputRange: [0, 1], outputRange: [0, -8] }) },
               { scale: Animated.add(idle.interpolate({ inputRange: [0, 1], outputRange: [1, 1.03] }), bite.interpolate({ inputRange: [0, 1], outputRange: [0, 0.18] })) },
             ] }}>
-            <Image source={image} accessibilityIgnoresInvertColors style={{ width: monster, height: monster }} />
+            <Animated.Image source={image} accessibilityIgnoresInvertColors style={{ width: monster, height: monster,
+              opacity: attackImage ? bite.interpolate({ inputRange: [0, 0.25, 1], outputRange: [1, 0, 0] }) : 1 }} />
+            {attackImage ? <Animated.Image source={attackImage} accessibilityIgnoresInvertColors resizeMode="contain"
+              style={{ position: 'absolute', left: -monster * 0.1, top: -monster * 0.1, width: monster * 1.2, height: monster * 1.2,
+                opacity: bite.interpolate({ inputRange: [0, 0.25, 1], outputRange: [0, 1, 1] }) }} /> : null}
             {/* 受擊閃白 */}
             <Animated.Image source={image} accessibilityIgnoresInvertColors
               style={{ position: 'absolute', width: monster, height: monster, tintColor: '#FFFFFF', opacity: white }} />
           </Animated.View>
 
           {/* 劍光 */}
-          <Animated.Image source={crit ? FX_IMG.crit : FX_IMG.slash} style={{
+          <Animated.Image source={crit ? FX_IMG.ultBurst : FX_IMG.slash} style={{
             position: 'absolute', left: monsterX - 20 * k, top: monsterTop - 18 * k, width: 190 * k, height: 190 * k,
             opacity: slash.interpolate({ inputRange: [0, 0.15, 0.7, 1], outputRange: [0, 1, 1, 0] }),
             transform: [
