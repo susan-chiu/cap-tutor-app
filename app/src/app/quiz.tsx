@@ -6,16 +6,16 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { BattleStage } from '@/components/battle';
 import { ConquerCard } from '@/components/world-fx';
-import { nextEnergy, startEnergy, ultNeed } from '@/lib/world';
+import { nextEnergy, palName, PAL_STAGE, startEnergy, ultNeed, wildSpecies } from '@/lib/world';
 import { buzz, ChestReward, EyeHint, FrameCorners, LevelUpBanner, Stars, XpPop } from '@/components/game-fx';
 import { Feedback, QuestionView, SolutionCard } from '@/components/question';
 import { Button, Card, ErrorBox, H1, Loading, ProgressBar, T } from '@/components/ui';
 import { preloadAds, watchAdFor } from '@/lib/ad-reward';
 import { adsAvailable } from '@/lib/ads';
-import { api, errorText, isPremiumProfile, type AnswerResult, type BossResult, type ConquerResult } from '@/lib/api';
+import { api, errorText, isPremiumProfile, type AnswerResult, type BossResult, type ConquerResult, type PalGain } from '@/lib/api';
 import { useAuth } from '@/lib/auth';
 import { BOSS_HEARTS, bossStars, comboMessage, levelFor } from '@/lib/game';
-import { arenaImg, bossAttackImg, bossImg, monsterAttackImg, monsterImg } from '@/lib/art';
+import { arenaImg, bossAttackImg, bossImg, monsterAttackImg, monsterImg, palImg } from '@/lib/art';
 import { play, startBgm, stopBgm } from '@/lib/sound';
 import { heroOf, type Hero } from '@/lib/heroes';
 import { shareText } from '@/lib/share';
@@ -35,7 +35,7 @@ export default function Quiz() {
   const premium = isPremiumProfile(profile, localToday());
   // 免費版可以看廣告換獎勵（體力、XP 加倍）
   const canWatchAd = !premium && adsAvailable() && !!session;
-  // 一進副本就把廣告載好，結算或題數用完時按下去立刻播
+  // 一開戰就把廣告載好，結算或題數用完時按下去立刻播
   useEffect(() => { if (canWatchAd) preloadAds(session?.user.id, ['energy', 'xp2x']); }, [canWatchAd, session?.user.id]);
 
   const [questions, setQuestions] = useState<Awaited<ReturnType<typeof fetchQuestions>> | null>(null);
@@ -50,14 +50,23 @@ export default function Quiz() {
   const [levelUp, setLevelUp] = useState<number | null>(null);
   const [bossHit, setBossHit] = useState(0);
   const [crit, setCrit] = useState(false);
-  // 出戰夥伴（站在勇者旁邊一起打）
-  const [teamPal, setTeamPal] = useState<string | null>(null);
+  // 出戰隊伍（最多 3 隻夥伴，同科的會追擊）
+  const [team, setTeam] = useState<string[]>([]);
+  const [assist, setAssist] = useState<{ seq: number; species: string } | null>(null);
+  // 這題淨化（錯題畢業）或助攻進化的夥伴，答題後顯示
+  const [palNews, setPalNews] = useState<{ kind: 'purify' | 'evolve'; gain: PalGain } | null>(null);
+  // 錯題複習：每道錯題是哪一種野生魔物
+  const [wildOf, setWildOf] = useState<Record<string, string>>({});
+  useEffect(() => {
+    if (mode !== 'review') return;
+    api.mistakes(null).then((rows) => setWildOf(Object.fromEntries(rows.map((r) => [r.question.id, wildSpecies(r.species, r.question.subject)])))).catch(() => {});
+  }, [mode]);
   // 絕招能量：答對集氣，集滿後按絕招鈕，下一次答對就放絕招（夥伴技能會改變集氣規則）
   useEffect(() => { startBgm('battle'); return () => stopBgm(); }, []);
-  const need = ultNeed(mode, teamPal);
+  const need = ultNeed(mode, team);
   const [ult, setUlt] = useState({ energy: 0, armed: false, shieldUsed: false });
   useEffect(() => {
-    api.worldState().then((w) => { setTeamPal(w.team_pal); setUlt((u) => ({ ...u, energy: Math.max(u.energy, startEnergy(w.team_pal, ultNeed(mode, w.team_pal))) })); }).catch(() => {});
+    api.worldState().then((w) => { const t = w.team ?? []; setTeam(t); setUlt((u) => ({ ...u, energy: Math.max(u.energy, startEnergy(t, ultNeed(mode, t))) })); }).catch(() => {});
   }, [mode]);
   const boss = mode === 'exam' && params.boss ? params.boss : null;
   // 心眼：答錯後先給提示、可以再答一次（第二次答對 +3 XP）
@@ -111,7 +120,12 @@ export default function Quiz() {
       if (!r.correct) setTimeout(() => scrollRef.current?.scrollToEnd({ animated: true }), 150);
       const nextCombo = r.correct ? combo + 1 : 0;
       setCombo(nextCombo);
-      const ne = nextEnergy({ energy: ult.energy, need, correct: r.correct, usedUlt: r.correct && ult.armed, pal: teamPal, shieldUsed: ult.shieldUsed });
+      const ne = nextEnergy({ energy: ult.energy, need, correct: r.correct, usedUlt: r.correct && ult.armed, team, shieldUsed: ult.shieldUsed });
+      if (r.correct && r.assist_pal) setAssist((a) => ({ seq: (a?.seq ?? 0) + 1, species: r.assist_pal! }));
+      if (r.purified) { setPalNews({ kind: 'purify', gain: r.purified }); setTimeout(() => play(r.purified!.stage > r.purified!.stage_before && !r.purified!.new_pal ? 'evolve' : 'capture', 0.8), 700); }
+      else if (r.pal_xp && r.pal_xp.stage > r.pal_xp.stage_before) { setPalNews({ kind: 'evolve', gain: r.pal_xp }); setTimeout(() => play('evolve', 0.8), 700); }
+      else setPalNews(null);
+      if (r.purified?.new_pal) setTeam((t) => (t.length < 3 && !t.includes(r.purified!.species) ? [...t, r.purified!.species] : t));
       setUlt({ energy: ne.energy, shieldUsed: ne.shieldUsed, armed: r.correct ? false : ult.armed && ne.energy >= need });
       buzz(r.correct ? 'correct' : 'wrong');
       play(r.correct ? 'correct' : 'wrong');
@@ -120,7 +134,8 @@ export default function Quiz() {
         if (cm) setTimeout(() => play('combo'), 350);
         setCrit(ult.armed);
         if (ult.armed) setTimeout(() => buzz('levelup'), 260);
-        setPop((p) => ({ seq: p.seq + 1, text: `+${r.xp_gained} XP`, sub: cm }));
+        const palSub = r.pal_xp ? `${palName(r.pal_xp.species)} 經驗 +${r.pal_xp.xp_gained}` : null;
+        setPop((p) => ({ seq: p.seq + 1, text: `+${r.xp_gained} XP`, sub: [cm, palSub].filter(Boolean).join('　') || null }));
         setBossHit((h) => h + 1);
       } else setTimeout(() => play('eye', 0.5), 400);
       const before = levelFor(r.xp_total - r.xp_gained), after = levelFor(r.xp_total);
@@ -173,6 +188,7 @@ export default function Quiz() {
   function next() {
     setEye(null);
     setLevelUp(null);
+    setPalNews(null);
     setPicked(null);
     setResult(null);
     // 領地戰：答對 3 題就贏，或剩下的題目全對也贏不了時，直接結算
@@ -231,15 +247,16 @@ export default function Quiz() {
           <Summary stats={stats} total={questions.length} allSeen={mode !== 'review' && questions.every((x) => x.seen)} mode={mode} boss={boss}
             bossKey={boss ? params.bosskey ?? null : null} conquerUnit={mode === 'conquer' ? params.units ?? null : null} questionIds={questions.map((x) => x.id)} hero={heroOf(profile?.hero)}
             adUserId={canWatchAd && session ? session.user.id : null}
-            onAgain={() => { setIdx(0); setCombo(0); setUlt({ energy: startEnergy(teamPal, need), armed: false, shieldUsed: false }); setStats({ answered: 0, correct: 0, xp: 0, streak: 0, streakUp: false }); load(); }} />
+            onAgain={() => { setIdx(0); setCombo(0); setUlt({ energy: startEnergy(team, need), armed: false, shieldUsed: false }); setStats({ answered: 0, correct: 0, xp: 0, streak: 0, streakUp: false }); load(); }} />
         ) : q ? (
           <>
-            <BattleStage name={boss ?? (mode === 'daily' ? '突擊副本・小怪群' : mode === 'review' ? '魔物圖鑑・復仇魔物' : mode === 'conquer' ? `${params.title ?? '領地'}的魔物` : `${params.title ?? '單元'}守衛`)}
+            <BattleStage name={boss ?? (mode === 'daily' ? '突擊副本・小怪群' : mode === 'review' ? `野生${palName(wildOf[q.id] ?? `${q.subject}-1`)}` : mode === 'conquer' ? `${params.title ?? '領地'}的魔物` : `${params.title ?? '單元'}守衛`)}
               hp={mode === 'conquer' ? CONQUER_NEED - stats.correct : questions.length - stats.correct} maxHp={mode === 'conquer' ? CONQUER_NEED : questions.length}
               hearts={boss ? Math.max(BOSS_HEARTS - (stats.answered - stats.correct), 0) : null} hit={bossHit} crit={crit} miss={stats.answered - stats.correct} combo={combo}
-              hero={heroOf(profile?.hero)} pal={teamPal}
+              hero={heroOf(profile?.hero)} team={team} assist={assist} wild={mode === 'review'}
               energy={ult.energy} energyNeed={need} ultArmed={ult.armed} onUlt={() => setUlt((u) => (u.energy >= need ? { ...u, armed: true } : u))}
-              image={boss ? bossImg(boss) : monsterImg(q?.subject)} attackImage={boss ? bossAttackImg(boss) : monsterAttackImg(q?.subject)} arena={arenaImg(mode === 'daily' ? null : q?.subject)} />
+              image={boss ? bossImg(boss) : mode === 'review' ? palImg(wildOf[q.id] ?? `${q.subject}-1`) : monsterImg(q?.subject)}
+              attackImage={boss ? bossAttackImg(boss) : mode === 'review' ? undefined : monsterAttackImg(q?.subject)} arena={arenaImg(mode === 'daily' ? null : q?.subject)} />
             <XpPop seq={pop.seq} text={pop.text} sub={pop.sub} />
             <ScrollView ref={scrollRef} contentContainerStyle={{ padding: 20, gap: 16 }}>
               <T size={13} color={C.muted}>第 {idx + 1} 題 / 共 {questions.length} 題{mode === 'review' ? ' · 錯題複習' : mode === 'conquer' ? ` · 領地戰（答對 ${CONQUER_NEED} 題就贏）` : mode === 'exam' ? ` · ${params.title || '段考複習卷'}` : ''}{DIFF_LABEL[params.difficulty ?? ''] ? ` · ${DIFF_LABEL[params.difficulty ?? '']}` : ''}</T>
@@ -260,7 +277,7 @@ export default function Quiz() {
                   onGiveUp={() => { setEye({ ...eye, phase: 'done', ok: false, bonus: 0 }); setPicked(eye.first); }} />
               ) : eye?.phase === 'retry' ? (
                 <View style={{ gap: 8 }}>
-                  <T size={14} color={C.accentDark}>選一個新答案，答對可以拿 +3 XP（這題還是會收進魔物圖鑑）</T>
+                  <T size={14} color={C.accentDark}>選一個新答案，答對可以拿 +3 XP（這題還是會變成野生魔物收進圖鑑）</T>
                   <Button title="發動心眼・再答一次" onPress={eyeRetry} disabled={!picked || picked === eye.first} loading={eyeBusy} />
                 </View>
               ) : result ? (
@@ -271,7 +288,9 @@ export default function Quiz() {
                     {eye?.phase === 'done' && eye.ok ? (
                       <T weight="700" color={C.accentDark}>心眼成功！第二次答對了{eye.bonus ? ` +${eye.bonus} XP` : ''}。這隻魔物還在圖鑑裡，複習時再徹底打倒牠！</T>
                     ) : null}
-                    <Feedback result={result} compact wrongTitle={eye?.ok ? '第一次答錯，已收進魔物圖鑑' : undefined} />
+                    {palNews ? <PalNewsCard news={palNews} /> : null}
+                    <Feedback result={result} compact wrongTitle={eye?.ok ? '第一次答錯，已變成野生魔物收進圖鑑' : undefined} />
+                    {!result.correct && !eye?.ok ? <TutorNudge pal={result.assist_pal ?? team[0] ?? null} /> : null}
                   </ScrollView>
                   {result.correct ? (
                     <Button title={idx + 1 >= questions.length || (mode === 'conquer' && stats.correct >= CONQUER_NEED) ? '看結果' : '下一題'} kind="green" onPress={next} />
@@ -308,6 +327,38 @@ async function fetchQuestions(mode: Mode, units: string | undefined, count: stri
   // 單元練習一輪 10 題（每單元 30 題，3 輪可以做完一遍）
   const p = part && /^[123]$/.test(part) ? Number(part) : null;
   return api.nextQuestions(ids, mode === 'exam' ? Number(count ?? 15) : 10, d, p);
+}
+
+/** 淨化（錯題畢業）或夥伴進化的消息 */
+function PalNewsCard({ news }: { news: { kind: 'purify' | 'evolve'; gain: PalGain } }) {
+  const g = news.gain, name = palName(g.species), evolved = g.stage > g.stage_before && !g.new_pal;
+  const title = news.kind === 'purify'
+    ? (g.new_pal ? `淨化成功！收服了${name}` : evolved ? `淨化成功！${name}進化成${PAL_STAGE[g.stage]}` : `淨化成功！${name}經驗 +${g.xp_gained}`)
+    : `${name}進化成${PAL_STAGE[g.stage]}了！`;
+  const sub = news.kind === 'purify'
+    ? (g.new_pal ? '這道錯題你真的弄懂了，野生魔物變回夥伴，已經加入圖鑑。' : '這道錯題你真的弄懂了，野生魔物被淨化，力量回到夥伴身上。')
+    : '一起答對同科的題目，夥伴就會變強。';
+  return (
+    <View accessibilityLiveRegion="polite" style={{ flexDirection: 'row', alignItems: 'center', gap: 10, padding: 10, borderRadius: 14,
+      backgroundColor: '#1A1240', borderWidth: 2, borderColor: C.gold }}>
+      <Image source={palImg(g.species)} accessibilityIgnoresInvertColors style={{ width: 52, height: 52 }} />
+      <View style={{ flex: 1, gap: 2 }}>
+        <T weight="700" color={C.gold}>{title}</T>
+        <T size={12} color="#E6ECF7">{sub}</T>
+      </View>
+    </View>
+  );
+}
+
+/** 答錯時，同科（或隊長）夥伴提醒可以去問小老師 */
+function TutorNudge({ pal }: { pal: string | null }) {
+  if (!pal) return null;
+  return (
+    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+      <Image source={palImg(pal)} accessibilityIgnoresInvertColors style={{ width: 34, height: 34 }} />
+      <T size={13} color={C.inkSoft} style={{ flex: 1 }}>{palName(pal)}：「我知道這隻魔物的弱點！去問小老師，弄懂了就能把牠淨化。」</T>
+    </View>
+  );
 }
 
 function reportQuestion(questionId: string) {
@@ -422,16 +473,16 @@ function Summary({ stats, total, allSeen, mode, boss, bossKey, conquerUnit, ques
         <Button title={`看一段廣告，這一輪的 XP 加倍（+${Math.min(stats.xp, 60)}）`} kind="secondary" onPress={doubleXp} loading={adBusy} />
       ) : null}
       {stats.correct < stats.answered ? (
-        <Card><T>答錯的 {stats.answered - stats.correct} 題變成魔物收進魔物圖鑑，找小老師弄懂它們，就能讓錯題畢業。</T></Card>
+        <Card><T>答錯的 {stats.answered - stats.correct} 題變成野生魔物收進圖鑑。找小老師弄懂、之後複習答對，就能淨化牠們，讓夥伴變強。</T></Card>
       ) : null}
       {allSeen ? (
         <Card style={{ backgroundColor: C.accentSoft, borderColor: C.accentSoft, gap: 6 }}>
           <T weight="700" color={C.accentDark}>{mode === 'daily' ? '目前學期的題目你都做過一輪了' : '這個範圍的題目你都做過一輪了'}</T>
-          <T size={14} color={C.accentDark}>接下來會重複出現做過的題目。可以去「魔物圖鑑」把錯題弄懂，或到「學期複習」預習下學期、練其他科目。</T>
+          <T size={14} color={C.accentDark}>接下來會重複出現做過的題目。可以去「圖鑑 → 野生魔物」把錯題弄懂，或到地圖換一塊大陸預習下學期。</T>
         </Card>
       ) : null}
       <Button title={boss ? (stars === 3 ? '再挑戰一次' : '再挑戰，拿更多星星') : conquerUnit ? (won ? '再打一場練功' : '再挑戰一次') : '再來一輪'} kind="green" onPress={onAgain} />
-      <Button title={conquerUnit ? '回世界地圖' : '回首頁'} kind="secondary" onPress={() => goBack()} />
+      <Button title={conquerUnit ? '回世界地圖' : mode === 'exam' || mode === 'unit' ? '回魔王城' : '回大廳'} kind="secondary" onPress={() => goBack()} />
       <Button title="分享成績" kind="ghost" onPress={share} />
     </ScrollView>
   );

@@ -6,13 +6,13 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import Svg, { Polyline } from 'react-native-svg';
 
 import { Button, Chip, ErrorBox, Loading, T } from '@/components/ui';
-import { GoldPill } from '@/components/world-fx';
+import { GoldPill, WildImage } from '@/components/world-fx';
 import { api, errorText, type MapUnit, type WorldState } from '@/lib/api';
-import { mapImg, monsterImg, palImg, SUBJECT_IMG, WORLD_IMG } from '@/lib/art';
+import { bossImg, mapImg, palImg, SUBJECT_IMG, WORLD_IMG } from '@/lib/art';
 import { useAuth } from '@/lib/auth';
-import { SUBJECT_FLOWER } from '@/lib/game';
+import { BOSS_NAMES, SUBJECT_FLOWER } from '@/lib/game';
 import { play, startBgm, stopBgm } from '@/lib/sound';
-import { C, currentSemester, semesterLabel, semestersFor, subjectLabel, validSemester, type SemesterId } from '@/lib/theme';
+import { C, currentSemester, isElementarySemester, semesterLabel, semestersFor, subjectLabel, validSemester, type SemesterId } from '@/lib/theme';
 import { mapHeight, nodePosition, nodeStates, palName, type NodeState } from '@/lib/world';
 
 const STATE_LABEL: Record<NodeState, string> = { invaded: '魔物入侵中', won: '已佔領', next: '可以出征', open: '還沒探索' };
@@ -78,7 +78,7 @@ export default function WorldMap() {
             </T>
           </View>
           {world ? <GoldPill gold={world.gold} onPress={() => router.push('/shop')} /> : null}
-          <Pressable accessibilityRole="button" accessibilityLabel="我的魔物夥伴" onPress={() => router.push('/pals')}
+          <Pressable accessibilityRole="button" accessibilityLabel="我的魔物夥伴" onPress={() => router.navigate({ pathname: '/mistakes', params: { tab: 'pals' } })}
             style={{ minHeight: 36, paddingHorizontal: 12, borderRadius: 999, borderWidth: 1, borderColor: C.accent,
               backgroundColor: C.accentSoft, flexDirection: 'row', alignItems: 'center', gap: 4 }}>
             <Ionicons name="paw" size={14} color={C.accent} />
@@ -98,6 +98,18 @@ export default function WorldMap() {
         : units.length === 0 ? <View style={{ padding: 16 }}><T color={C.muted}>這塊大陸還沒有題目。</T></View>
         : (
           <ScrollView ref={scrollRef} contentContainerStyle={{ alignItems: 'center' }}>
+            {/* 大陸頂端的魔王城：段考魔王、自選範圍、模擬考 */}
+            <Pressable accessibilityRole="button" accessibilityLabel={`${semesterLabel(sem)}大陸的魔王城：挑戰段考魔王、自選範圍`}
+              onPress={() => router.push({ pathname: '/trials', params: { sem } })}
+              style={({ pressed }) => ({ width: w - 24, marginVertical: 10, flexDirection: 'row', alignItems: 'center', gap: 12, padding: 12, borderRadius: 18,
+                borderWidth: 2, borderColor: C.purple, backgroundColor: '#1A1033', opacity: pressed ? 0.85 : 1 })}>
+              <Image source={bossImg(isElementarySemester(sem) ? BOSS_NAMES.finalterm : BOSS_NAMES.final)} accessibilityIgnoresInvertColors style={{ width: 64, height: 64 }} />
+              <View style={{ flex: 1, gap: 2 }}>
+                <T size={17} weight="700">{semesterLabel(sem)}魔王城</T>
+                <T size={12} color={C.inkSoft}>段考魔王・自己選範圍{isElementarySemester(sem) ? '' : '・會考模擬考'}</T>
+              </View>
+              <Ionicons name="chevron-forward" size={22} color={C.ink} />
+            </Pressable>
             <View style={{ width: w, height: h }}>
               <Image source={mapImg(sem)} accessibilityIgnoresInvertColors resizeMode="cover"
                 style={{ position: 'absolute', width: w, height: h, opacity: 0.9 }} />
@@ -173,8 +185,8 @@ function MapNode({ unit, state, masterDays, left, top, onPress }: {
         backgroundColor: '#0C1430', borderWidth: state === 'open' ? 2 : 3, borderColor: ring,
         opacity: state === 'open' ? 0.85 : 1,
         transform: [{ scale: lively ? pulse.interpolate({ inputRange: [0, 1], outputRange: [1, 1.1] }) : 1 }] }}>
-        <Image source={state === 'invaded' ? monsterImg(unit.subject) : SUBJECT_IMG[unit.subject]} accessibilityIgnoresInvertColors
-          style={state === 'invaded' ? { width: 54, height: 54 } : { width: 36, height: 36, opacity: state === 'open' ? 0.7 : 1 }} />
+        {state === 'invaded' ? <WildImage species={unit.species} size={56} />
+          : <Image source={SUBJECT_IMG[unit.subject]} accessibilityIgnoresInvertColors style={{ width: 36, height: 36, opacity: state === 'open' ? 0.7 : 1 }} />}
         {marker ? <Image source={marker} accessibilityIgnoresInvertColors
           style={{ position: 'absolute', top: -18, right: -16, width: 36, height: 36 }} /> : null}
         {unit.guard ? <View style={{ position: 'absolute', bottom: -10, left: -14, width: 34, height: 34, borderRadius: 17, backgroundColor: '#0B1426',
@@ -184,7 +196,7 @@ function MapNode({ unit, state, masterDays, left, top, onPress }: {
       <View style={{ paddingHorizontal: 6, paddingVertical: 2, borderRadius: 8, backgroundColor: 'rgba(5, 10, 24, 0.88)', maxWidth: 104 }}>
         <T size={11} numberOfLines={2} weight={lively ? '700' : '400'} style={{ textAlign: 'center', lineHeight: 14 }}
           color={state === 'invaded' ? C.redDark : state === 'next' ? C.accentDark : state === 'open' ? C.muted : C.inkSoft}>
-          {state === 'invaded' ? '魔物入侵！' : unit.title}
+          {state === 'invaded' ? `野生${palName(unit.species)}入侵！` : unit.title}
         </T>
       </View>
     </Pressable>

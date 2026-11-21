@@ -1,5 +1,5 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { router, useFocusEffect } from 'expo-router';
+import { router, useFocusEffect, useLocalSearchParams } from 'expo-router';
 import { useCallback, useMemo, useRef, useState } from 'react';
 import { Pressable, View } from 'react-native';
 
@@ -9,6 +9,7 @@ import { SUBJECT_IMG } from '@/lib/art';
 import { useAuth } from '@/lib/auth';
 import { BOSS_NAMES } from '@/lib/game';
 import { Stars } from '@/components/game-fx';
+import { goBack } from '@/lib/nav';
 import { currentStage, DIFFICULTIES, splitElementaryStages, splitStages, splitStagesByPart, stageStats, type Difficulty, type Stage } from '@/lib/stages';
 import {
   C, currentSemester, isElementary, semestersFor, subjectsFor, validSemester, validSubject, TEXTBOOK_VERSIONS, VERSIONED_SUBJECTS, type SemesterId, type SubjectId,
@@ -24,14 +25,16 @@ const pctText = (v: number | null) => (v === null ? '—' : `${Math.round(v * 10
 const PART_LABEL: Record<number, string> = { 1: '前段課次', 2: '中段課次', 3: '後段課次' };
 const PART_SUBJECTS = ['social'];
 
-export default function Learn() {
+/** 魔王城（試煉之塔）：每塊大陸頂端的魔王城。選科目、段考範圍挑戰魔王，也可以自選範圍或考模擬考。 */
+export default function Trials() {
+  const params = useLocalSearchParams<{ sem?: string }>();
   const { profile, refreshProfile } = useAuth();
   const elementary = isElementary(profile?.grade);
   const SEMESTERS = semestersFor(profile?.grade);
   const SUBJECTS = subjectsFor(profile?.grade);
   const nowSem = currentSemester(profile?.grade);
   const nowIdx = SEMESTERS.findIndex((s) => s.id === nowSem);
-  const [semPick, setSem] = useState<SemesterId>(nowSem ?? SEMESTERS[0].id);
+  const [semPick, setSem] = useState<SemesterId>((SEMESTERS.find((s) => s.id === params.sem)?.id as SemesterId | undefined) ?? nowSem ?? SEMESTERS[0].id);
   // 在「我的」切換國小／國中後，原本選的學期可能不在清單裡，改用目前學期
   const sem = validSemester(profile?.grade, semPick, nowSem);
   const [units, setUnits] = useState<UnitRow[] | null>(null);
@@ -121,8 +124,13 @@ export default function Learn() {
   }
 
   return (
-    <Screen>
-      <H1>學期複習</H1>
+    <Screen edges={['top', 'bottom']}>
+      <Pressable accessibilityRole="button" accessibilityLabel="返回" onPress={() => goBack()}
+        style={{ width: 44, height: 44, justifyContent: 'center' }}>
+        <Ionicons name="chevron-back" size={26} color={C.ink} />
+      </Pressable>
+      <H1>魔王城</H1>
+      <T size={13} color={C.muted}>每塊大陸頂端的魔王城：選科目和段考，挑戰整份段考範圍的魔王。也可以自己選範圍練習。</T>
       {elementary ? null : (
         <Pressable accessibilityRole="button" onPress={() => router.push('/mock-exam')}>
           <Card dark style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>

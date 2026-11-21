@@ -24,7 +24,7 @@ export default function Onboarding() {
         ? { grade, textbook_version: null, tutor_persona: persona, textbook_versions: {}, daily_subjects: ELEM_SUBJECT_IDS }
         : {
           grade, textbook_version: version, tutor_persona: persona,
-          // 先把數學、英語、自然、社會都設成同一版本；各科不同可以在「學期複習」個別調整
+          // 先把數學、英語、自然、社會都設成同一版本；各科不同可以在「魔王城」個別調整
           textbook_versions: version ? { math: version, english: version, science: version, social: version } : {},
         });
       await refreshProfile();
@@ -67,7 +67,7 @@ export default function Onboarding() {
           {VERSIONS.map((v) => <Chip key={v} label={v} selected={version === v} onPress={() => setVersion(v)} />)}
           <Chip label="不確定" selected={version === null} onPress={() => setVersion(null)} />
         </View>
-        <T size={13} color={C.muted}>會考不分版本，題目都通用；選了之後，學期複習會照你課本的章節排，每日練習只出你的版本已經教到的學期。各科版本不同，之後可以在「學期複習」個別調整。</T>
+        <T size={13} color={C.muted}>會考不分版本，題目都通用；選了之後，魔王城的段考範圍會照你課本的章節排，每日練習只出你的版本已經教到的學期。各科版本不同，之後可以在「學期複習」個別調整。</T>
       </Card>}
 
       <Card style={{ gap: 10 }}>

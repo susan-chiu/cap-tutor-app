@@ -23,7 +23,7 @@ await db.exec(`
 let passed = 0;
 const test = async (name, fn) => {
   try { await fn(); passed++; console.log('  ✓ ' + name); }
-  catch (e) { console.error('  ✗ ' + name + '\n    ' + e.message); process.exitCode = 1; }
+  catch (e) { console.error('  ✗ ' + name + '\n    ' + e.message + '\n' + (e.stack || '').split('\n').find((l) => l.includes('world.test'))); process.exitCode = 1; }
 };
 async function newUser(meta = {}) {
   return (await db.query(`insert into auth.users (raw_user_meta_data) values ($1) returning id`, [meta])).rows[0].id;
@@ -72,7 +72,9 @@ await test('打贏：佔領領地、收服夥伴、+30 金幣、自動成為出�
   assert.equal(r.species, 'math-1'); assert.equal(r.caught, 1); assert.equal(r.gold_gained, 30);
   const s = await state(u);
   assert.equal(s.gold, 5 + 15 + 30); assert.equal(s.team_pal, 'math-1'); assert.equal(s.territories, 1);
-  assert.deepEqual(s.pals, [{ species: 'math-1', caught: 1, stage: 1 }]);
+  assert.deepEqual(s.pals, [{ species: 'math-1', caught: 1, xp: 20, stage: 1 }]);
+  assert.deepEqual(s.team, ['math-1']);
+  assert.equal(r.pal_xp, 20); assert.equal(r.pal_xp_gained, 20);
 });
 
 await test('同一塊領地同一天再打贏：不重複給獎勵', async () => {
@@ -97,13 +99,18 @@ await test('錯題到期：已佔領的領地顯示魔物入侵（due > 0），�
   assert.equal((await state(u)).invaded, 0);
 });
 
-await test('隔天再打贏同一塊：+20 金幣、夥伴 +1；同種夥伴收服 3 次進化', async () => {
+await test('隔天再打贏同一塊：+20 金幣、夥伴收服 +1、經驗 +20；經驗到 60 進化成體', async () => {
   await setToday('2026-11-17');
+  const xp0 = (await state(u)).pals.find((p) => p.species === 'math-1').xp;
   const r = await battle(u, 'W-7A-1', 10);
   assert.equal(r.rewarded, true); assert.equal(r.first, false); assert.equal(r.gold_gained, 20); assert.equal(r.caught, 2);
+  // 3 題答對：隊伍裡的 math-1 每題助攻 +5，打贏再 +20
+  assert.equal(r.pal_xp, xp0 + 15 + 20);
+  await db.exec(`update public.companions set xp = 45 where species = 'math-1' and user_id = '${u}'`);
   const r2 = await battle(u, 'W-7A-5', 1);   // seq 5 也是 math-1
   assert.equal(r2.species, 'math-1'); assert.equal(r2.caught, 3);
-  assert.equal(r2.stage_before, 1); assert.equal(r2.stage, 2);
+  assert.equal(r2.stage_before, 2); assert.equal(r2.stage, 2);   // 45 + 15 助攻 = 60，結算前就已經進化
+  assert.equal(r2.pal_xp, 80);
 });
 
 await test('商店：金幣不夠、條件沒到不能買；買了家具扣金幣、不能重複買', async () => {
@@ -153,7 +160,7 @@ await test('出戰夥伴只能選已收服的', async () => {
 
 await test('每日任務：進度照今天的作答算，完成才能領，領過不能再領', async () => {
   const q0 = await rpc(u, `public.daily_quests()`);
-  assert.deepEqual(q0.map((x) => x.id), ['answer', 'correct', 'conquer']);
+  assert.deepEqual(q0.map((x) => x.id), ['review', 'correct', 'conquer', 'answer']);
   const conquerQ = q0.find((x) => x.id === 'conquer');
   assert.equal(conquerQ.progress, 1); assert.equal(conquerQ.claimed, false);   // 今天打贏過 WC-7A-1
   assert.equal(q0.find((x) => x.id === 'correct').progress < 10, true);
@@ -204,9 +211,9 @@ await test('星晶：答對困難題掉 1 顆（每天上限 5），3 顆可以�
   await answer(u, 'W-7A-5-7', 'A');   // 不是困難題，不掉
   let s = await state(u);
   assert.equal(s.gems, 3); assert.equal(s.gems_today, 3);
-  const before = s.pals.find((p) => p.species === 'math-1').caught;
+  const before = s.pals.find((p) => p.species === 'math-1').xp;
   s = await rpc(u, `public.feed_pal('math-1')`);
-  assert.equal(s.gems, 0); assert.equal(s.pals.find((p) => p.species === 'math-1').caught, before + 1);
+  assert.equal(s.gems, 0); assert.equal(s.pals.find((p) => p.species === 'math-1').xp, before + 20);
   await db.exec(`update public.daily_activity set gems = 5 where user_id = '${u}' and day = '2026-11-19'`);
   await answer(u, 'W-7A-5-10', 'A');
   assert.equal((await state(u)).gems, 0);
@@ -223,9 +230,68 @@ await test('家長戰報：只有綁定的家長看得到孩子的領地與被�
   assert.deepEqual(r.invaded.map((x) => x.title), ['整數']);
 });
 
+const v = await newUser({ nickname: '夥伴測試', parent_consent: 'true' });
+await test('夥伴助攻：隊伍裡有同科夥伴才助攻、拿經驗；小老師驗收題不算', async () => {
+  await battle(v, 'W-7A-5', 4);
+  const xp0 = (await state(v)).pals.find((p) => p.species === 'math-1').xp;
+  const r = await answer(v, 'W-7A-1-2', 'A');
+  assert.equal(r.assist_pal, 'math-1'); assert.equal(r.pal_xp.xp_gained, 5); assert.equal(r.pal_xp.xp, xp0 + 5);
+  const c = await answer(v, 'WC-7A-1-12', 'A');            // 國文題，隊伍裡沒有國文夥伴
+  assert.equal(c.assist_pal, null); assert.equal(c.pal_xp, null);
+  const t = await rpc(v, `public.submit_answer('W-7A-1-3','A','tutor_check',null)`);
+  assert.equal(t.assist_pal, 'math-1'); assert.equal(t.pal_xp, null);
+  const w = await answer(v, 'W-7A-1-3', 'B');              // 答錯不給
+  assert.equal(w.pal_xp, null);
+});
+
+await test('淨化：錯題畢業＝淨化野生魔物，收服這個單元的夥伴並加入隊伍', async () => {
+  const before = await state(v);
+  assert.equal(before.pals.some((p) => p.species === 'chinese-1'), false);
+  await answer(v, 'WC-7A-1-11', 'B');                       // 答錯 → 野生魔物
+  const list = await as(v, async () => (await db.query(`select species, status from public.list_mistakes(null) where question->>'id' = 'WC-7A-1-11'`)).rows);
+  assert.deepEqual(list, [{ species: 'chinese-1', status: 'pending' }]);
+  assert.equal((await state(v)).wild, before.wild + 1);
+  // 直接把錯題推到最後一關（almost、今天到期），再答對就畢業
+  await db.exec(`update public.mistakes set status = 'almost', next_review = '2000-01-01' where user_id = '${v}' and question_id = 'WC-7A-1-11'`);
+  const r = await rpc(v, `public.submit_answer('WC-7A-1-11','A','review',null)`);
+  assert.equal(r.mistake_status, 'graduated');
+  assert.equal(r.purified.species, 'chinese-1'); assert.equal(r.purified.new_pal, true); assert.equal(r.purified.xp, 30);
+  const s = await state(v);
+  assert.equal(s.purified, before.purified + 1);
+  assert.ok(s.team.includes('chinese-1'), '新收服的夥伴自動加入隊伍');
+  assert.equal(s.pals.find((p) => p.species === 'chinese-1').caught, 1);
+  // 每日任務「削弱野生魔物」：今天複習答對的錯題
+  assert.equal((await rpc(v, `public.daily_quests()`)).find((x) => x.id === 'review').progress, 1);
+});
+
+await test('出戰隊伍：最多 3 隻、不能重複、都要收服過；隊長是第一隻', async () => {
+  await expectError(rpc(u, `public.set_team(array['math-1','math-1'])`), 'bad_team');
+  await expectError(rpc(u, `public.set_team(array['math-1','social-2'])`), 'pal_not_owned');
+  await expectError(rpc(u, `public.set_team(array['math-1','chinese-1','english-1','science-1'])`), 'team_too_big');
+  await rpc(u, `public.set_team(array['chinese-1','math-1'])`);
+  let s = await state(u);
+  assert.deepEqual(s.team, ['chinese-1', 'math-1']); assert.equal(s.team_pal, 'chinese-1');
+  await rpc(u, `public.set_team_pal('math-1')`);
+  s = await state(u);
+  assert.deepEqual(s.team, ['math-1', 'chinese-1']); assert.equal(s.team_pal, 'math-1');
+  await rpc(u, `public.set_team(array[]::text[])`);
+  assert.deepEqual((await state(u)).team, []);
+  await rpc(u, `public.set_team(array['math-1','chinese-1'])`);
+});
+
+await test('成就：錯題改叫淨化，新增夥伴系列', async () => {
+  const a = await rpc(v, `public.achievements()`);
+  const g = a.find((x) => x.id === 'grad-1');
+  assert.equal(g.group, '淨化'); assert.equal(g.done, true);
+  assert.equal(a.find((x) => x.id === 'pals-5').progress, 2);
+  assert.ok(a.some((x) => x.id === 'awaken-1'));
+});
+
 await test('學生不能直接改金幣、不能呼叫內部函式、看不到別人的領地', async () => {
   await expectError(as(u, () => db.query(`update public.profiles set gold = 99999 where id = '${u}'`)), 'permission denied');
   await expectError(as(u, () => db.query(`select public.add_gold('${u}', 100)`)), 'permission denied');
+  await expectError(as(u, () => db.query(`select public.grant_pal_xp('${u}', 'math-1', 999, true)`)), 'permission denied');
+  await expectError(as(u, () => db.query(`update public.profiles set team = array['social-4'] where id = '${u}'`)), 'permission denied');
   // 資料表開了 RLS 又沒有政策：直接查表拿不到任何資料，也寫不進去
   for (const t of ['territories', 'companions', 'hall_items'])
     assert.equal((await as(u, () => db.query(`select * from public.${t}`))).rows.length, 0, t);

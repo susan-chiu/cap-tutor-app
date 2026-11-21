@@ -71,7 +71,7 @@ export function Feedback({ result, wrongTitle, compact }: { result: AnswerResult
           <Ionicons name={ok ? 'checkmark' : 'close'} size={24} color={C.onAccent} />
         </View>
         <T size={19} weight="700" color={ok ? C.greenDark : C.redDark}>
-          {ok ? `答對了！${result.xp_gained ? `+${result.xp_gained} XP` : ''}` : (wrongTitle ?? '差一點！這題變成魔物收進魔物圖鑑')}
+          {ok ? `答對了！${result.xp_gained ? `+${result.xp_gained} XP` : ''}` : (wrongTitle ?? '差一點！這題變成野生魔物收進圖鑑')}
         </T>
       </View>
       {!ok && result.wrong_reason ? <T size={14} color={C.redDark}>常見原因：{result.wrong_reason}</T> : null}

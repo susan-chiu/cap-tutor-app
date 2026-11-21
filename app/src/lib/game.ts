@@ -74,7 +74,7 @@ export const MONSTER: Record<string, { name: string; icon: string; color: string
   social: { name: '時空幽靈', icon: 'earth', color: '#B266FF' },
 };
 
-/** 錯題狀態 → 魔物狀態：待講解＝狂暴中、複習中＝已削弱、畢業＝已討伐 */
+/** 錯題狀態 → 野生魔物狀態：待講解＝狂暴中、複習中＝已削弱、畢業＝已淨化 */
 export type MonsterState = 'raging' | 'weakened' | 'defeated';
 export function monsterState(status: string): MonsterState {
   return status === 'graduated' ? 'defeated' : status === 'pending' ? 'raging' : 'weakened';
@@ -82,7 +82,7 @@ export function monsterState(status: string): MonsterState {
 export const MONSTER_STATE: Record<MonsterState, { label: string; color: string }> = {
   raging: { label: '狂暴中', color: '#FF0055' },
   weakened: { label: '已削弱', color: '#FFD700' },
-  defeated: { label: '已討伐', color: '#2EE6A6' },
+  defeated: { label: '已淨化', color: '#2EE6A6' },
 };
 
 /** 段考 Boss：答對扣 Boss 血、答錯扣自己的愛心；結算時依答對率給星星 */
@@ -111,6 +111,6 @@ export function comboMessage(combo: number): string | null {
 export const WISH_GOAL: Record<'correct' | 'days' | 'graduated', { label: string; unit: string; presets: number[] }> = {
   correct: { label: '答對題數', unit: '題', presets: [30, 50, 100] },
   days: { label: '完成每日目標的天數', unit: '天', presets: [3, 5, 7] },
-  graduated: { label: '討伐魔物（錯題畢業）', unit: '隻', presets: [3, 5, 10] },
+  graduated: { label: '淨化野生魔物（錯題畢業）', unit: '隻', presets: [3, 5, 10] },
 };
 export const WISH_STATUS: Record<string, string> = { pending: '等爸媽核准', approved: '挑戰中', rejected: '沒有通過', fulfilled: '已兌現' };

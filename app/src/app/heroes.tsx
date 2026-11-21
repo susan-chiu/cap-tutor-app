@@ -9,7 +9,7 @@ import { HEROES, heroOf } from '@/lib/heroes';
 import { goBack } from '@/lib/nav';
 import { C } from '@/lib/theme';
 
-/** 選擇戰鬥夥伴：八位勇者，選中的會站在大廳、答錯時用「心眼」給提示 */
+/** 選擇勇者：八位勇者，選中的會站在大廳、答錯時用「心眼」給提示 */
 export default function Heroes() {
   const { profile, refreshProfile } = useAuth();
   const current = heroOf(profile?.hero);
@@ -30,8 +30,8 @@ export default function Heroes() {
         style={{ width: 44, height: 44, justifyContent: 'center' }}>
         <Ionicons name="chevron-back" size={26} color={C.ink} />
       </Pressable>
-      <H1>選擇你的戰鬥夥伴</H1>
-      <T color={C.muted}>夥伴會站在勇者大廳陪你修煉，答錯時用自己的方式發動「心眼」給你提示。隨時可以更換。</T>
+      <H1>選擇你的勇者</H1>
+      <T color={C.muted}>勇者會站在大廳陪你修煉，答錯時用自己的方式發動「心眼」給你提示。隨時可以更換。</T>
 
       <Card style={{ gap: 10, borderColor: h.color, borderWidth: 1.5 }}>
         <View style={{ flexDirection: 'row', gap: 12 }}>
@@ -48,7 +48,7 @@ export default function Heroes() {
         <View style={{ padding: 10, borderRadius: 12, backgroundColor: C.night, borderWidth: 1, borderColor: C.nightLine }}>
           <T color={C.accentDark}>「{h.eye}」</T>
         </View>
-        <Button title={h.id === current.id ? `目前的夥伴：${h.name}` : `選擇${h.name}當夥伴`} onPress={choose}
+        <Button title={h.id === current.id ? `目前的勇者：${h.name}` : `選擇${h.name}當勇者`} onPress={choose}
           disabled={h.id === current.id} loading={busy} />
       </Card>
 

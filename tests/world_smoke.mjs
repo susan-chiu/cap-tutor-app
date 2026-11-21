@@ -124,13 +124,59 @@ await step('守護者與熟練度：在已佔領的領地派夥伴駐守', async
   await shot('06b-guard');
   await page.getByRole('button', { name: '關閉', exact: true }).click();
 });
-await step('魔物夥伴頁：已收服 2 種，第一隻是出戰夥伴', async () => {
+await step('圖鑑・夥伴：已收服 2 種，兩隻都自動加入出戰隊伍；可以換下、再加入', async () => {
   await page.getByRole('button', { name: '我的魔物夥伴' }).click();
   await page.getByText(/已收服 2 \/ 20 種/).waitFor({ timeout: 15000 });
-  await page.getByText('出戰中').first().waitFor();
+  await t('◆ 出戰隊伍 2/3').waitFor();
   await page.getByLabel(/^星晶 \d+ 顆$/).waitFor();
-  await pause(2500);
+  await pause(2000);
   await shot('07-pals');
+  const second = await page.getByRole('button', { name: /^隊員.+，點一下換下來$/ }).first();
+  const name = (await second.getAttribute('aria-label')).replace(/^隊員/, '').replace(/，點一下換下來$/, '');
+  await second.click();
+  await t('◆ 出戰隊伍 1/3').waitFor({ timeout: 10000 });
+  await page.getByRole('button', { name: `${name}，幼體，經驗 ` , exact: false }).first().click();
+  await t('◆ 出戰隊伍 2/3').waitFor({ timeout: 10000 });
+});
+await step('圖鑑・野生魔物：答錯的題目是那個單元夥伴的野生版；魔王頁還沒遇過', async () => {
+  await page.getByRole('tab', { name: /^野生魔物/ }).click();
+  await page.getByText(/^野生.+・/).first().waitFor({ timeout: 10000 });
+  await t('狂暴中').first().waitFor();
+  await pause(1500);
+  await shot('07b-wild');
+  await page.getByRole('tab', { name: /^魔王/ }).click();
+  await t('段考小魔王').or(page.getByText('？？？').first()).first().waitFor({ timeout: 10000 });
+  await pause(800);
+  await shot('07c-boss');
+});
+await step('淨化：錯題複習到最後一次答對，野生魔物被淨化，夥伴拿經驗', async () => {
+  // 試用資料：把錯題直接推到最後一關（almost、已到期），模擬已經複習過 1、3、7 天
+  await page.evaluate(() => {
+    const db = JSON.parse(localStorage.getItem('cap-demo-db-v1'));
+    Object.values(db.mistakes).forEach((ms) => Object.values(ms).forEach((m) => { m.status = 'almost'; m.next_review = '2000-01-01'; }));
+    localStorage.setItem('cap-demo-db-v1', JSON.stringify(db));
+  });
+  await page.goto(APP);
+  await page.getByRole('button', { name: /^野生魔物，1 隻今天可複習/ }).click({ timeout: 20000 });
+  await page.getByText('第 1 題 / 共 1 題', { exact: false }).waitFor({ timeout: 15000 });
+  await page.getByLabel(/^野生.+血量/).waitFor();
+  await pause(1500);
+  await shot('07d-wild-battle');
+  await answerCorrect();
+  await page.getByText(/^淨化成功！/).waitFor({ timeout: 10000 });
+  await pause(2500);
+  await shot('07e-purified');
+  await page.getByRole('button', { name: '看結果' }).click();
+  await page.goto(APP);
+  await page.getByText('勇者大廳', { exact: true }).first().waitFor({ timeout: 20000 });
+});
+await step('魔王城：地圖最上面進去，選科目挑戰段考魔王', async () => {
+  await tab('地圖');
+  await page.getByRole('button', { name: /大陸的魔王城/ }).click({ timeout: 15000 });
+  await t('魔王城').waitFor({ timeout: 15000 });
+  await page.getByText(/挑戰/).first().waitFor();
+  await pause(1500);
+  await shot('07f-castle');
   await page.getByRole('button', { name: '返回' }).click();
 });
 await step('商店：金幣不夠會提示；補金幣後買盆栽和床', async () => {
@@ -163,12 +209,14 @@ await step('大廳：看得到家具、出戰夥伴，體力上限多 5 題；�
   await page.getByRole('button', { name: '返回' }).click();
   await page.getByRole('button', { name: '領取 20 金幣' }).click();
   await page.getByRole('button', { name: '領取 40 金幣' }).click();
-  await t('已領 2 / 3').waitFor({ timeout: 10000 });
+  await t('已領 2 / 4').waitFor({ timeout: 10000 });
   await page.getByLabel('金幣 140，去商店').waitFor();
+  await page.getByLabel(/削弱 2 隻野生魔物（複習答對錯題），進度 1 \/ 2/).waitFor();   // 淨化那一題是複習答對
   if (await t('新手任務：收服你的第一隻夥伴').isVisible()) throw new Error('新手任務應該已經消失');
   await page.getByLabel('魔法盆栽').waitFor({ timeout: 15000 });
   await page.getByLabel('勇者之床').waitFor();
-  await page.getByLabel(/^出戰夥伴 /).waitFor();
+  await page.getByLabel(/^隊長 /).waitFor();
+  await page.getByLabel(/^隊員 /).waitFor();
   await page.getByLabel(/體力：今天還能練 \d+ 題/).waitFor();
   await page.getByText(/\/35$/).first().waitFor();
   await page.getByText('勇者大廳', { exact: true }).first().scrollIntoViewIfNeeded();

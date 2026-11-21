@@ -19,11 +19,19 @@ export const palSubject = (species: string) => species.split('-')[0];
 export const PAL_STAGE = ['未收服', '幼體', '成體', '覺醒'] as const;
 export const PAL_STAGE_COLOR = ['#6B7792', '#7CF7FF', '#FFD700', '#FF7AF0'] as const;
 
-/** 再收服幾次會進化（已經覺醒回傳 null） */
-export function toEvolve(pal: Pick<Pal, 'caught' | 'stage'>, evolve: number[]): number | null {
+/** 還差多少經驗值進化（已經覺醒回傳 null）。evolve＝[成體, 覺醒] 需要的經驗值 */
+export function toEvolve(pal: Pick<Pal, 'xp' | 'stage'>, evolve: number[]): number | null {
   if (pal.stage >= 3) return null;
-  return Math.max((pal.stage <= 1 ? evolve[0] : evolve[1]) - pal.caught, 1);
+  return Math.max((pal.stage <= 1 ? evolve[0] : evolve[1]) - pal.xp, 1);
 }
+/** 這一階段的經驗值進度（0～1），覺醒後是 1 */
+export function evolveProgress(pal: Pick<Pal, 'xp' | 'stage'>, evolve: number[]): number {
+  if (pal.stage >= 3) return 1;
+  const from = pal.stage <= 1 ? 0 : evolve[0], to = pal.stage <= 1 ? evolve[0] : evolve[1];
+  return Math.max(0, Math.min(1, (pal.xp - from) / Math.max(to - from, 1)));
+}
+/** 錯題對應的野生魔物：單元的夥伴種類（後端沒給時用科目的第 1 種） */
+export const wildSpecies = (species: string | null | undefined, subject: string | null | undefined) => species ?? `${subject ?? 'math'}-1`;
 
 /** 領地狀態：入侵（已佔領但有錯題該複習）、已佔領、下一塊建議出征、還沒探索 */
 export type NodeState = 'invaded' | 'won' | 'next' | 'open';
@@ -61,7 +69,7 @@ export const SOUP = { name: '熱湯', desc: '今天可以多練幾題' };
 
 export type ImgMap = Record<string, ImageSourcePropType>;
 
-/** 夥伴技能：依科目不同，出戰時影響「絕招能量」怎麼累積（只影響戰鬥演出，不影響對錯與獎勵） */
+/** 夥伴技能：隊伍裡每一科的夥伴各帶一個技能，影響「絕招能量」怎麼累積（只影響戰鬥演出，不影響對錯與獎勵） */
 export interface PalSkill { name: string; desc: string }
 export const PAL_SKILL: Record<string, PalSkill> = {
   math: { name: '計算暴擊', desc: '絕招少連對 1 題就集滿' },
@@ -71,21 +79,21 @@ export const PAL_SKILL: Record<string, PalSkill> = {
   social: { name: '時光倒流', desc: '答錯只掉 1 格能量，不會全部歸零' },
 };
 export const palSkill = (species: string | null | undefined): PalSkill | null => (species ? PAL_SKILL[palSubject(species)] ?? null : null);
+const has = (team: readonly string[], subject: string) => team.some((s) => palSubject(s) === subject);
 
-/** 絕招能量規則：一般連對 3 題集滿，領地戰（題數少）2 題；數學系夥伴再少 1 題 */
-export function ultNeed(mode: string, pal: string | null): number {
+/** 絕招能量規則：一般連對 3 題集滿，領地戰（題數少）2 題；隊伍有數學夥伴再少 1 題 */
+export function ultNeed(mode: string, team: readonly string[]): number {
   const base = mode === 'conquer' ? 2 : 3;
-  return Math.max(base - (pal && palSubject(pal) === 'math' ? 1 : 0), 1);
+  return Math.max(base - (has(team, 'math') ? 1 : 0), 1);
 }
-/** 作答後的絕招能量。shieldUsed＝國文系夥伴的護符這場用過了沒 */
-export function nextEnergy(o: { energy: number; need: number; correct: boolean; usedUlt: boolean; pal: string | null; shieldUsed: boolean }): { energy: number; shieldUsed: boolean } {
-  const subject = o.pal ? palSubject(o.pal) : null;
+/** 作答後的絕招能量。shieldUsed＝國文夥伴的護符這場用過了沒 */
+export function nextEnergy(o: { energy: number; need: number; correct: boolean; usedUlt: boolean; team: readonly string[]; shieldUsed: boolean }): { energy: number; shieldUsed: boolean } {
   if (o.correct) {
-    if (o.usedUlt) return { energy: subject === 'science' ? 1 : 0, shieldUsed: o.shieldUsed };
+    if (o.usedUlt) return { energy: has(o.team, 'science') ? 1 : 0, shieldUsed: o.shieldUsed };
     return { energy: Math.min(o.energy + 1, o.need), shieldUsed: o.shieldUsed };
   }
-  if (subject === 'chinese' && !o.shieldUsed) return { energy: o.energy, shieldUsed: true };
-  if (subject === 'social') return { energy: Math.max(o.energy - 1, 0), shieldUsed: o.shieldUsed };
+  if (has(o.team, 'chinese') && !o.shieldUsed) return { energy: o.energy, shieldUsed: true };
+  if (has(o.team, 'social')) return { energy: Math.max(o.energy - 1, 0), shieldUsed: o.shieldUsed };
   return { energy: 0, shieldUsed: o.shieldUsed };
 }
-export const startEnergy = (pal: string | null, need: number) => (pal && palSubject(pal) === 'english' ? Math.min(1, need) : 0);
+export const startEnergy = (team: readonly string[], need: number) => (has(team, 'english') ? Math.min(1, need) : 0);

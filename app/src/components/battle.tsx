@@ -75,7 +75,7 @@ function useBob(duration: number) {
  * 答對：勇者衝上前揮劍，劍光劃過、魔物被擊退閃白、跳出傷害字；連擊變成金色暴擊、整個畫面震動。
  * 答錯：魔物撲過來反擊，畫面閃紅、勇者被震退。血量歸零時魔物化成光點消散。
  */
-export function BattleStage({ name, image, attackImage, arena, hp, maxHp, hearts, hit, crit, miss = 0, combo = 0, hero, pal, energy = 0, energyNeed = 3, ultArmed = false, onUlt }: {
+export function BattleStage({ name, image, attackImage, arena, hp, maxHp, hearts, hit, crit, miss = 0, combo = 0, hero, team = [], assist = null, wild = false, energy = 0, energyNeed = 3, ultArmed = false, onUlt }: {
   name: string; image: ImageSourcePropType; arena: ImageSourcePropType;
   /** 魔物反擊時的動作圖（沒有就用原圖撲過去） */
   attackImage?: ImageSourcePropType;
@@ -88,8 +88,12 @@ export function BattleStage({ name, image, attackImage, arena, hp, maxHp, hearts
   miss?: number;
   combo?: number;
   hero?: Hero;
-  /** 出戰夥伴的種類（沒有就不顯示） */
-  pal?: string | null;
+  /** 出戰隊伍（最多 3 隻夥伴，站在勇者前面） */
+  team?: readonly string[];
+  /** 夥伴追擊：每次答對、隊伍裡有同科夥伴時 seq 加 1，那隻夥伴接在勇者後面衝上去補一擊 */
+  assist?: { seq: number; species: string } | null;
+  /** 野生魔物（錯題）：用夥伴圖加上暗紫色，表示被淨化前的樣子 */
+  wild?: boolean;
   /** 絕招能量：集滿後按下絕招鈕，下一次答對就放絕招 */
   energy?: number; energyNeed?: number; ultArmed?: boolean; onUlt?: () => void;
 }) {
@@ -110,6 +114,8 @@ export function BattleStage({ name, image, attackImage, arena, hp, maxHp, hearts
   const hurt = useState(() => new Animated.Value(0))[0];       // 勇者受擊姿勢顯示的時間
   const dmgBad = useState(() => new Animated.Value(0))[0];     // 被反擊的字
   const banner = useState(() => new Animated.Value(0))[0];     // 連擊播報
+  const chase = useState(() => new Animated.Value(0))[0];      // 夥伴追擊
+  const chaseHit = useState(() => new Animated.Value(0))[0];   // 追擊打中的字
   const idle = useBob(1100);
   const idleHero = useBob(1500);
   const defeated = hp <= 0;
@@ -171,6 +177,25 @@ export function BattleStage({ name, image, attackImage, arena, hp, maxHp, hearts
   }, [hit]);
 
   useEffect(() => {
+    if (!assist?.seq) return;
+    [chase, chaseHit].forEach((v) => v.setValue(0));
+    setTimeout(() => play('hit', 0.45), 640);
+    Animated.parallel([
+      Animated.sequence([
+        Animated.delay(480),
+        Animated.timing(chase, { toValue: 1, duration: 170, easing: Easing.out(Easing.cubic), useNativeDriver: true }),
+        Animated.delay(90),
+        Animated.timing(chase, { toValue: 0, duration: 280, easing: Easing.inOut(Easing.quad), useNativeDriver: true }),
+      ]),
+      Animated.sequence([
+        Animated.delay(640),
+        Animated.timing(chaseHit, { toValue: 1, duration: 800, easing: Easing.out(Easing.quad), useNativeDriver: true }),
+      ]),
+    ]).start();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [assist?.seq]);
+
+  useEffect(() => {
     if (!miss) return;
     [bite, red, dmgBad, banner, hurt].forEach((v) => v.setValue(0));
     Animated.parallel([
@@ -228,7 +253,7 @@ export function BattleStage({ name, image, attackImage, arena, hp, maxHp, hearts
   const monsterTop = STAGE_H - ground - monster - 6;
   const reach = Math.max(monsterX - heroW * 0.75, 30);          // 勇者衝刺的距離
   return (
-    <View accessibilityLabel={`${name} 血量 ${Math.max(hp, 0)} / ${maxHp}${hearts != null ? `，你的愛心 ${hearts} 顆` : ''}`}
+    <View accessibilityLabel={`${wild ? '野生' : ''}${name} 血量 ${Math.max(hp, 0)} / ${maxHp}${hearts != null ? `，你的愛心 ${hearts} 顆` : ''}`}
       style={{ height: STAGE_H, overflow: 'hidden', backgroundColor: C.night, alignItems: 'center' }}>
       <Animated.View style={{ width: w, height: STAGE_H, alignItems: 'center',
         transform: [{ translateX: quake.interpolate({ inputRange: [-1, 1], outputRange: [-7, 7] }) }] }}>
@@ -243,13 +268,23 @@ export function BattleStage({ name, image, attackImage, arena, hp, maxHp, hearts
           <Animated.View style={{ position: 'absolute', left: monsterX + monster * 0.14, bottom: ground - 6, width: monster * 0.72, height: 16, borderRadius: 999, backgroundColor: 'rgba(0, 0, 0, 0.55)',
             opacity: fade, transform: [{ scaleX: idle.interpolate({ inputRange: [0, 1], outputRange: [1, 0.86] }) }] }} />
 
-          {/* 出戰夥伴：跟在勇者後面 */}
-          {pal ? (
-            <Animated.Image source={palImg(pal)} accessibilityIgnoresInvertColors
-              style={{ position: 'absolute', left: heroW * 0.62, bottom: ground - 2, width: monster * 0.42, height: monster * 0.42,
-                transform: [{ translateY: idle.interpolate({ inputRange: [0, 1], outputRange: [0, -5] }) },
-                  { translateX: lunge.interpolate({ inputRange: [0, 1], outputRange: [0, reach * 0.3] }) }] }} />
-          ) : null}
+          {/* 出戰隊伍：最多 3 隻夥伴站在勇者前面；同科夥伴會在勇者攻擊後追擊 */}
+          {team.slice(0, 3).map((sp, i) => {
+            const size = monster * (i === 0 ? 0.42 : 0.36);
+            const left = heroW * (0.5 + 0.2 * i);
+            const chasing = assist?.species === sp;
+            return (
+              <Animated.Image key={sp} source={palImg(sp)} accessibilityIgnoresInvertColors
+                style={{ position: 'absolute', left, bottom: ground - 2 + (i === 1 ? size * 0.28 : 0), width: size, height: size, zIndex: i === 1 ? 0 : 1,
+                  transform: [
+                    { translateY: (i % 2 ? idleHero : idle).interpolate({ inputRange: [0, 1], outputRange: [0, -5] }) },
+                    { translateX: chasing
+                        ? chase.interpolate({ inputRange: [0, 1], outputRange: [0, Math.max(monsterX - left - size * 0.4, 20)] })
+                        : lunge.interpolate({ inputRange: [0, 1], outputRange: [0, reach * 0.15] }) },
+                    { scale: chasing ? chase.interpolate({ inputRange: [0, 1], outputRange: [1, 1.25] }) : 1 },
+                  ] }} />
+            );
+          })}
 
           {/* 絕招集氣：能量集滿或就緒時，勇者腳下出現光環 */}
           {hero && (ultArmed || energy >= energyNeed) ? (
@@ -291,6 +326,10 @@ export function BattleStage({ name, image, attackImage, arena, hp, maxHp, hearts
             {attackImage ? <Animated.Image source={attackImage} accessibilityIgnoresInvertColors resizeMode="contain"
               style={{ position: 'absolute', left: -monster * 0.1, top: -monster * 0.1, width: monster * 1.2, height: monster * 1.2,
                 opacity: bite.interpolate({ inputRange: [0, 0.25, 1], outputRange: [0, 1, 1] }) }} /> : null}
+            {/* 野生魔物：同一張圖疊一層暗紫色 */}
+            {wild ? <Animated.Image source={image} accessibilityIgnoresInvertColors
+              style={{ position: 'absolute', width: monster, height: monster, tintColor: '#3A0F5C',
+                opacity: attackImage ? bite.interpolate({ inputRange: [0, 0.25, 1], outputRange: [0.5, 0, 0] }) : 0.5 }} /> : null}
             {/* 受擊閃白 */}
             <Animated.Image source={image} accessibilityIgnoresInvertColors
               style={{ position: 'absolute', width: monster, height: monster, tintColor: '#FFFFFF', opacity: white }} />
@@ -324,6 +363,11 @@ export function BattleStage({ name, image, attackImage, arena, hp, maxHp, hearts
               { scale: dmg.interpolate({ inputRange: [0, 0.15, 1], outputRange: [0.6, 1.3, 1] }) }] }}>
             <T size={crit ? 30 : 24} weight="700" color={crit ? C.gold : '#FFFFFF'} style={DMG_SHADOW}>-{crit ? HIT_DAMAGE * 3 : HIT_DAMAGE}</T>
             {crit ? <T size={13} weight="700" color={C.gold} style={DMG_SHADOW}>絕招</T> : null}
+          </Animated.View>
+          <Animated.View pointerEvents="none" style={{ position: 'absolute', top: monsterTop + monster * 0.45, left: monsterX - 20, width: monster + 40, alignItems: 'center',
+            opacity: chaseHit.interpolate({ inputRange: [0, 0.1, 0.75, 1], outputRange: [0, 1, 1, 0] }),
+            transform: [{ translateY: chaseHit.interpolate({ inputRange: [0, 1], outputRange: [10, -26] }) }] }}>
+            <T size={18} weight="700" color={C.accent} style={DMG_SHADOW}>夥伴追擊 -{Math.round(HIT_DAMAGE / 2)}</T>
           </Animated.View>
           <Animated.View pointerEvents="none" style={{ position: 'absolute', top: STAGE_H * 0.3, left: 0, width: heroW, alignItems: 'center',
             opacity: dmgBad.interpolate({ inputRange: [0, 0.1, 0.75, 1], outputRange: [0, 1, 1, 0] }),

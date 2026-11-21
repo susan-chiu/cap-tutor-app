@@ -10,7 +10,7 @@
   // 2. App 的頁面網址都放在這個資料夾底下（例如 /_f/me），每個頁面都有一份同樣的 HTML，
   //    所以在任何頁面按重新整理都能正常打開
   // 3. 一開始的網址如果不是 App 的頁面（例如 /_f/版本號），先換成首頁
-  var ROUTES = ['learn', 'mistakes', 'me', 'quiz', 'tutor', 'top-three', 'paywall', 'help', 'mock-exam', 'onboarding', 'login', 'forgot', 'map', 'pals', 'shop'];
+  var ROUTES = ['trials', 'mistakes', 'me', 'quiz', 'tutor', 'top-three', 'paywall', 'help', 'mock-exam', 'onboarding', 'login', 'forgot', 'map', 'shop', 'badges', 'leaderboard', 'wishes', 'heroes'];
   try {
     var cur = document.currentScript;
     var me = cur && cur.src;
@@ -30,7 +30,8 @@
   var KEYS = ['A', 'B', 'C', 'D'];
   var SUBJECTS = ['math', 'chinese', 'english', 'science', 'social'];
   var CFG = { daily_goal: 5, free_daily_questions: 30, free_daily_tutor: 3, premium_daily_tutor: 50, xp_correct: 10, xp_grad: 30,
-    gold_correct: 5, gold_conquer: 30, gold_reclaim: 20, gold_daily_max: 300, conquer_need: 3, evolve: [3, 6],
+    gold_correct: 5, gold_conquer: 30, gold_reclaim: 20, gold_daily_max: 300, conquer_need: 3, evolve: [60, 200],
+    pal_xp_correct: 5, pal_xp_purify: 30, pal_xp_conquer: 20, pal_xp_feed: 20, team_max: 3,
     soup_questions: 3, soup_daily_max: 2, bed_questions: 5,
     master_days: 3, gold_master: 50, gold_guard: 10, gem_daily_max: 5, gem_feed_cost: 3 };
 
@@ -157,7 +158,25 @@
     ['window', 'furniture', 250, 0, 0], ['bed', 'furniture', 300, 0, 0], ['chest', 'furniture', 350, 50, 0], ['picture', 'furniture', 400, 100, 0],
     ['mirror', 'furniture', 450, 150, 0], ['lamp', 'furniture', 500, 0, 3], ['shelf', 'furniture', 600, 300, 0], ['nest', 'furniture', 700, 0, 5],
     ['weapon', 'furniture', 800, 0, 8]].map(function (r) { return { id: r[0], kind: r[1], price: r[2], need_correct: r[3], need_pals: r[4] }; });
-  function world(uid) { db.world = db.world || {}; return db.world[uid] || (db.world[uid] = { gold: 0, team: null, terr: {}, pals: {}, order: [], owned: [] }); }
+  function world(uid) {
+    db.world = db.world || {};
+    var w = db.world[uid] || (db.world[uid] = { gold: 0, team: null, terr: {}, pals: {}, order: [], owned: [] });
+    // 夥伴經驗值與出戰隊伍（20261121000019_companion_core.sql）；舊資料照收服次數換算
+    if (!w.palxp) { w.palxp = {}; w.order.forEach(function (sp) { var c = w.pals[sp]; w.palxp[sp] = c >= 6 ? 200 : c >= 3 ? 60 : (c - 1) * 20; }); }
+    if (!w.squad) w.squad = w.team ? [w.team] : [];
+    return w;
+  }
+  /** 給夥伴經驗值；capture＝算一次收服（沒有就收服、收服次數 +1）。新夥伴隊伍沒滿就自動加入 */
+  function grantPalXp(uid, sp, amt, capture) {
+    var w = world(uid), had = !!w.pals[sp];
+    if (!sp || (!had && !capture)) return null;
+    var before = had ? (w.palxp[sp] || 0) : 0;
+    if (!had) { w.order.push(sp); w.pals[sp] = 0; if (w.squad.length < CFG.team_max) w.squad.push(sp); w.team = w.squad[0] || null; }
+    if (capture) w.pals[sp]++;
+    w.palxp[sp] = before + amt;
+    return { species: sp, xp_gained: amt, xp: w.palxp[sp], new_pal: !had, stage_before: had ? palStage(before) : 0, stage: palStage(w.palxp[sp]) };
+  }
+  function unitSpecies(qid) { return Q[qid] ? species(U[Q[qid].unit]) : null; }
   function energyMax(uid, dr) { return CFG.free_daily_questions + (dr.bonus || 0) + (world(uid).owned.indexOf('bed') >= 0 ? CFG.bed_questions : 0); }
   function addGold(uid, n) {
     var dr = dayRow(uid, today()), add = Math.min(n, Math.max(CFG.gold_daily_max - (dr.gold || 0), 0));
@@ -165,7 +184,7 @@
     return add;
   }
   function species(u) { return u.subject + '-' + (1 + ((u.seq - 1) % 4)); }
-  function palStage(c) { return c >= CFG.evolve[1] ? 3 : c >= CFG.evolve[0] ? 2 : c >= 1 ? 1 : 0; }
+  function palStage(xp) { return xp >= CFG.evolve[1] ? 3 : xp >= CFG.evolve[0] ? 2 : 1; }
   function totalCorrect(uid) { return Object.keys(db.daily).reduce(function (n, k) { return k.split('|')[0] === uid ? n + (db.daily[k].correct || 0) : n; }, 0); }
   function dueIn(uid, unitId) {
     var t = today(), ms = mistakesOf(uid);
@@ -178,18 +197,24 @@
       invaded: Object.keys(w.terr).filter(function (u) { return dueIn(uid, u) > 0; }).length,
       gems: w.gems || 0, gems_today: dr.gems || 0, gem_daily_max: CFG.gem_daily_max, gem_feed_cost: CFG.gem_feed_cost, master_days: CFG.master_days,
       mastered: Object.keys(w.terr).filter(function (u) { return (w.terr[u].days || 1) >= CFG.master_days; }).length,
-      pals: w.order.map(function (s) { return { species: s, caught: w.pals[s], stage: palStage(w.pals[s]) }; }),
+      pals: w.order.map(function (s) { return { species: s, caught: w.pals[s], xp: w.palxp[s] || 0, stage: palStage(w.palxp[s] || 0) }; }),
+      team: w.squad.slice(), team_max: CFG.team_max,
+      wild: Object.keys(mistakesOf(uid)).filter(function (k) { return mistakesOf(uid)[k].status !== 'graduated'; }).length,
+      wild_due: Object.keys(mistakesOf(uid)).filter(function (k) { var m = mistakesOf(uid)[k]; return ['learning', 'consolidating', 'almost'].indexOf(m.status) >= 0 && m.next_review <= today(); }).length,
+      purified: Object.keys(mistakesOf(uid)).filter(function (k) { return mistakesOf(uid)[k].status === 'graduated'; }).length,
+      pal_xp: { correct: CFG.pal_xp_correct, purify: CFG.pal_xp_purify, conquer: CFG.pal_xp_conquer, feed: CFG.pal_xp_feed },
       evolve: CFG.evolve, owned: w.owned.slice(), shop: SHOP, premium: premium(p), energy_max: energyMax(uid, dr), today_answered: dr.answered,
       soups_left: Math.max(CFG.soup_daily_max - (dr.soups || 0), 0), soup_questions: CFG.soup_questions, bed_questions: CFG.bed_questions };
   }
-  var QUESTS = { answer: { goal: 5, gold: 20 }, correct: { goal: 10, gold: 30 }, conquer: { goal: 1, gold: 40 } };
+  var QUESTS = { review: { goal: 2, gold: 30 }, correct: { goal: 10, gold: 30 }, conquer: { goal: 1, gold: 40 }, answer: { goal: 5, gold: 20 } };
   function questProgress(uid, id) {
     var dr = dayRow(uid, today()), w = world(uid), t = today();
+    if (id === 'review') return db.attempts.filter(function (x) { return x.u === uid && x.day === t && x.ctx === 'review' && x.c; }).length;
     return id === 'answer' ? dr.answered : id === 'correct' ? dr.correct : Object.keys(w.terr).filter(function (u) { return w.terr[u].day === t; }).length;
   }
   function quests(uid) {
     var dr = dayRow(uid, today());
-    return ['answer', 'correct', 'conquer'].map(function (id) { var q = QUESTS[id];
+    return ['review', 'correct', 'conquer', 'answer'].map(function (id) { var q = QUESTS[id];
       return { id: id, goal: q.goal, gold: q.gold, progress: Math.min(questProgress(uid, id), q.goal), claimed: !!(dr.claims && dr.claims[id]) }; });
   }
   var hasQ = {}; D.questions.forEach(function (q) { hasQ[q.unit] = true; });
@@ -205,12 +230,16 @@
       var w = world(uid);
       if (!w.pals[a.p_species]) throw 'pal_not_owned';
       if ((w.gems || 0) < CFG.gem_feed_cost) throw 'not_enough_gems';
-      w.gems -= CFG.gem_feed_cost; w.pals[a.p_species]++; save(); return worldState(uid);
+      w.gems -= CFG.gem_feed_cost; grantPalXp(uid, a.p_species, CFG.pal_xp_feed, false); save(); return worldState(uid);
     },
     child_world: function (uid, a) {
       if (!db.links.some(function (l) { return l.parent === uid && l.student === a.p_student; })) throw 'not_linked';
       var w = world(a.p_student), keys = Object.keys(w.terr);
+      var cm = mistakesOf(a.p_student), wk = Date.now() - 7 * 864e5;
       return { territories: keys.length, mastered: keys.filter(function (k) { return (w.terr[k].days || 1) >= CFG.master_days; }).length, pals: w.order.length,
+        awakened: w.order.filter(function (sp) { return palStage(w.palxp[sp] || 0) === 3; }).length,
+        wild: Object.keys(cm).filter(function (k) { return cm[k].status !== 'graduated'; }).length,
+        purified_this_week: Object.keys(cm).filter(function (k) { return cm[k].status === 'graduated' && (cm[k].grad_at || 0) > wk; }).length,
         won_this_week: keys.length,
         invaded: keys.map(function (k) { return { title: U[k].title, subject: U[k].subject, due: dueIn(a.p_student, k) }; }).filter(function (x) { return x.due > 0; })
           .sort(function (x, y) { return y.due - x.due; }).slice(0, 8) };
@@ -251,25 +280,24 @@
       if (ids.length < CFG.conquer_need || ids.length > 5 || ids.some(function (id) { return !Q[id] || Q[id].unit !== u.id; })) throw 'bad_battle';
       var since = Date.now() - 3600e3, correct = 0;
       ids.forEach(function (id) { var last = null; db.attempts.forEach(function (x) { if (x.u === uid && x.q === id && x.at > since) last = x; }); if (last && last.c) correct++; });
-      var sp = species(u), before = w.pals[sp] || 0, won = correct >= CFG.conquer_need, first = false, reward = false, gold = 0, mastered = false, guardBonus = 0;
+      var sp = species(u), before = w.pals[sp] || 0, xpBefore = w.palxp[sp] || 0, won = correct >= CFG.conquer_need, first = false, reward = false, gold = 0, mastered = false, guardBonus = 0, pal = null;
       if (won) {
         var tr = w.terr[u.id];
         if (!tr) { first = reward = true; tr = w.terr[u.id] = { wins: 1, days: 1, day: t }; }
         else { reward = tr.day < t; tr.wins++; if (reward) { tr.day = t; tr.days = (tr.days || 1) + 1; mastered = tr.days === CFG.master_days; } }
         if (reward) {
-          if (!before) w.order.push(sp);
-          w.pals[sp] = before + 1;
+          pal = grantPalXp(uid, sp, CFG.pal_xp_conquer, true);
           gold = addGold(uid, first ? CFG.gold_conquer : CFG.gold_reclaim);
           if (mastered) gold += addGold(uid, CFG.gold_master);
           if (!first && tr.guard) { guardBonus = addGold(uid, CFG.gold_guard); gold += guardBonus; }
-          if (!w.team) w.team = sp;
         }
       }
       save();
       var caught = w.pals[sp] || 0;
       return { won: won, correct: correct, total: ids.length, need: CFG.conquer_need, first: first, rewarded: reward, gold_gained: gold, gold: w.gold,
         days: w.terr[u.id] ? (w.terr[u.id].days || 1) : 0, master_days: CFG.master_days, mastered: mastered, guard_bonus: guardBonus,
-        species: sp, caught: caught, new_pal: reward && !before, stage_before: palStage(before), stage: palStage(caught) };
+        species: sp, caught: caught, new_pal: reward && !before, pal_xp: w.palxp[sp] || 0, pal_xp_gained: pal ? pal.xp_gained : 0,
+        stage_before: before ? palStage(xpBefore) : 0, stage: caught ? palStage(w.palxp[sp] || 0) : 0 };
     },
     buy_item: function (uid, a) {
       var w = world(uid), i = SHOP.filter(function (x) { return x.id === a.p_item; })[0], dr = dayRow(uid, today());
@@ -282,7 +310,17 @@
       if (i.id === 'soup') { dr.soups = (dr.soups || 0) + 1; dr.bonus = (dr.bonus || 0) + CFG.soup_questions; } else w.owned.push(i.id);
       save(); return worldState(uid);
     },
-    set_team_pal: function (uid, a) { var w = world(uid); if (!w.pals[a.p_species]) throw 'pal_not_owned'; w.team = a.p_species; save(); return null; },
+    set_team_pal: function (uid, a) {
+      var w = world(uid); if (!w.pals[a.p_species]) throw 'pal_not_owned';
+      w.squad = [a.p_species].concat(w.squad.filter(function (x) { return x !== a.p_species; })).slice(0, CFG.team_max); w.team = a.p_species; save(); return null;
+    },
+    set_team: function (uid, a) {
+      var w = world(uid), t = a.p_species || [];
+      if (t.length > CFG.team_max) throw 'team_too_big';
+      if (t.some(function (x, i) { return t.indexOf(x) !== i; })) throw 'bad_team';
+      if (t.some(function (x) { return !w.pals[x]; })) throw 'pal_not_owned';
+      w.squad = t.slice(); w.team = t[0] || null; save(); return null;
+    },
     get_home: function (uid) {
       var p = db.profiles[uid], t = today(), dr = dayRow(uid, t);
       var used = (db.tutor[uid + '|' + t] || { count: 0, bonus: 0 });
@@ -375,19 +413,22 @@
       var subs = {}; g.forEach(function (u) { subs[u.subject] = (subs[u.subject] !== false) && bloomed(u); });
       var full = Object.keys(subs).filter(function (k) { return subs[k]; }).length;
       var mine = (db.boss || {})[uid] || {}, boss3 = Object.keys(mine).filter(function (k) { return mine[k].best === 3; }).length;
-      var lv = level(p.xp), st = p.longest_streak || 0;
+      var lv = level(p.xp), st = p.longest_streak || 0, wo = world(uid);
+      var awake = wo.order.filter(function (sp) { return palStage(wo.palxp[sp] || 0) === 3; }).length;
       return [
         ['streak-3', '連勝', '起步三天', '連續 3 天完成每日目標', st, 3], ['streak-7', '連勝', '一週不間斷', '連續 7 天完成每日目標', st, 7],
         ['streak-30', '連勝', '月月如一', '連續 30 天完成每日目標', st, 30],
         ['correct-100', '答題', '百題斬', '累積答對 100 題', correct, 100], ['correct-500', '答題', '五百勇士', '累積答對 500 題', correct, 500],
         ['correct-2000', '答題', '題海霸主', '累積答對 2000 題', correct, 2000],
-        ['grad-1', '錯題', '知錯能改', '第一題錯題畢業', grad, 1], ['grad-20', '錯題', '錯題剋星', '20 題錯題畢業', grad, 20],
-        ['grad-100', '錯題', '錯題終結者', '100 題錯題畢業', grad, 100],
-        ['bloom-1', '花園', '第一朵花', '花園開出第一朵花（單元熟練 85%）', bloom, 1], ['bloom-10', '花園', '小花圃', '花園開出 10 朵花', bloom, 10],
-        ['gold-1', '花園', '金色奇蹟', '種出第一朵金色稀有花（開花＋困難題全部熟練）', gold, 1],
-        ['subject-full', '花園', '一科滿開', '某一科所有單元都開花', full, 1],
+        ['grad-1', '淨化', '第一次淨化', '淨化第一隻野生魔物（錯題畢業）', grad, 1], ['grad-20', '淨化', '淨化師', '淨化 20 隻野生魔物', grad, 20],
+        ['grad-100', '淨化', '淨化大師', '淨化 100 隻野生魔物', grad, 100],
+        ['bloom-1', '熟練', '第一個熟練單元', '一個單元熟練 85% 的題目', bloom, 1], ['bloom-10', '熟練', '十個熟練單元', '10 個單元熟練 85% 的題目', bloom, 10],
+        ['gold-1', '熟練', '金色奇蹟', '一個單元熟練，而且困難題全部答對', gold, 1],
+        ['subject-full', '熟練', '一科全通', '某一科這個學制的所有單元都熟練', full, 1],
         ['boss-1', '魔王', '初次討伐', '第一次用三顆星打敗魔王', boss3, 1], ['boss-5', '魔王', '魔王剋星', '5 個魔王拿到三顆星', boss3, 5],
         ['level-5', '等級', '小樹苗', '升到 Lv 5', lv, 5], ['level-10', '等級', '勤學綠葉', '升到 Lv 10', lv, 10], ['level-20', '等級', '學習大樹', '升到 Lv 20', lv, 20],
+        ['pals-5', '夥伴', '小隊成形', '收服 5 種夥伴', wo.order.length, 5], ['pals-10', '夥伴', '夥伴軍團', '收服 10 種夥伴', wo.order.length, 10],
+        ['pals-20', '夥伴', '圖鑑全收集', '收服全部 20 種夥伴', wo.order.length, 20], ['awaken-1', '夥伴', '第一次覺醒', '讓一隻夥伴覺醒', awake, 1],
       ].map(function (r) { return { id: r[0], group: r[1], title: r[2], desc: r[3], progress: Math.min(r[4], r[5]), goal: r[5], done: r[4] >= r[5] }; });
     },
     retry_bonus: function (uid, a) {
@@ -489,7 +530,9 @@
       if (KEYS.indexOf(a.p_choice) < 0) throw 'bad_choice';
       var dr = dayRow(uid, t);
       if (!premium(p) && dr.answered >= energyMax(uid, dr)) throw 'daily_limit_reached';
-      var correct = a.p_choice === q.answer, ms = mistakesOf(uid), status = null, xp = 0;
+      var correct = a.p_choice === q.answer, ms = mistakesOf(uid), status = null, xp = 0, purified = null, teamxp = null;
+      var subj = U[q.unit].subject, assist = world(uid).squad.filter(function (sp) { return sp.split('-')[0] === subj; })[0] || null;
+      if (correct && assist && a.p_context !== 'tutor_check') teamxp = grantPalXp(uid, assist, CFG.pal_xp_correct, false);
       db.attempts.push({ u: uid, q: q.id, c: correct, ch: a.p_choice, ctx: a.p_context || 'practice', at: Date.now(), day: t });
       dr.answered++; if (correct) { dr.correct++; xp += CFG.xp_correct; if (a.p_context !== 'tutor_check') { addGold(uid, CFG.gold_correct); if (q.difficulty >= 3 && (dr.gems || 0) < CFG.gem_daily_max) { dr.gems = (dr.gems || 0) + 1; world(uid).gems = (world(uid).gems || 0) + 1; } } }
       // 和正式後端 submit_answer 相同的錯題規則
@@ -505,7 +548,7 @@
       } else if (correct && target && target.status !== 'graduated' && (target.next_review <= t || target.status === 'pending')) {
         var adv = { pending: ['learning', 1], learning: ['consolidating', 3], consolidating: ['almost', 7], almost: ['graduated', 14] };
         var n = adv[target.status]; target.status = n[0]; target.next_review = addDays(t, n[1]); status = n[0];
-        if (n[0] === 'graduated') { xp += CFG.xp_grad; target.grad_at = Date.now(); }
+        if (n[0] === 'graduated') { xp += CFG.xp_grad; target.grad_at = Date.now(); purified = grantPalXp(uid, unitSpecies(target.q), CFG.pal_xp_purify, true); }
       } else if (target) {
         status = target.status;
       }
@@ -516,7 +559,7 @@
       save();
       return { correct: correct, answer: q.answer, explanation: q.explanation, wrong_reason: correct ? null : (q.wrong[a.p_choice] || null),
         xp_gained: xp, xp_total: p.xp, today_answered: dr.answered, daily_goal: CFG.daily_goal, streak: streakInfo(uid),
-        streak_up: up, freeze_cards: p.freeze_cards, mistake_status: status };
+        streak_up: up, freeze_cards: p.freeze_cards, mistake_status: status, assist_pal: assist, pal_xp: teamxp, purified: purified };
     },
     due_reviews: function (uid, a) {
       var t = today(), ms = mistakesOf(uid);
@@ -599,7 +642,7 @@
     },
   };
   function linked(parent, kid) { return db.links.some(function (l) { return l.parent === parent && l.student === kid; }); }
-  function mrow(m) { return { question: publicQ(Q[m.q]), status: m.status, error_type: m.error_type, next_review: m.next_review, wrong_count: m.wrong_count, created_at: m.created_at }; }
+  function mrow(m) { return { question: publicQ(Q[m.q]), status: m.status, error_type: m.error_type, next_review: m.next_review, wrong_count: m.wrong_count, created_at: m.created_at, species: unitSpecies(m.q) }; }
 
   // ---------- 示範小老師 ----------
   var DISTRESS = /自殺|想死|不想活|活不下去|自殘|割腕|傷害自己|被霸凌|霸凌我|被欺負/;

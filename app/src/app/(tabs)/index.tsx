@@ -4,20 +4,19 @@ import { useCallback, useState } from 'react';
 import { Alert, Image, type ImageSourcePropType, Pressable, View, useWindowDimensions } from 'react-native';
 
 import { ParentHome } from '@/components/parent-home';
-import { Button, Card, ErrorBox, H2, Loading, ProgressBar, Screen, T } from '@/components/ui';
+import { Button, Card, ErrorBox, Loading, ProgressBar, Screen, T } from '@/components/ui';
 import { api, errorText, type HomeData, type Limits, type Quest, type WorldState } from '@/lib/api';
 import { rescheduleReminders } from '@/lib/reminders';
 import { useAuth } from '@/lib/auth';
-import { FURNITURE_IMG, HALL_BG, ITEM_IMG, monsterImg, WORLD_IMG } from '@/lib/art';
-import { GoldPill, PalImage } from '@/components/world-fx';
+import { FURNITURE_IMG, HALL_BG, ITEM_IMG, WORLD_IMG } from '@/lib/art';
+import { GoldPill, PalImage, WildImage } from '@/components/world-fx';
 import { FURNITURE, palName } from '@/lib/world';
 import { DailyQuests, StarterGuide } from '@/components/quests';
-import { FrameCorners, GoldButton, MagicCircle } from '@/components/game-fx';
+import { GoldButton, MagicCircle } from '@/components/game-fx';
 import { levelInfo } from '@/lib/game';
 import { startBgm, stopBgm } from '@/lib/sound';
 import { heroOf } from '@/lib/heroes';
 import { C, gradeCheckNeeded, gradeLabel } from '@/lib/theme';
-import { canBuy } from '@/lib/store';
 
 
 const WEEKDAY = ['日', '一', '二', '三', '四', '五', '六'];
@@ -73,10 +72,10 @@ function StudentHome() {
   const energyMax = world?.energy_max ?? limits?.free_daily_questions ?? 0;
   // 舞台高度不超過螢幕剩下的空間，「開始突擊」按鈕才會在第一個畫面就看得到
   const stageH = Math.min(stageW ? stageW / 0.72 : 480, Math.max(winH - 430, 200));
-  const teamPal = world?.pals.find((p) => p.species === world.team_pal) ?? null;
+  const team = (world?.team ?? []).map((sp) => world?.pals.find((p) => p.species === sp)).filter((p): p is NonNullable<typeof p> => !!p);
+  // 野生魔物入口的圖：隊長那一科的野生版，沒有隊伍就用數學
+  const wildPal = team[0]?.species ?? 'math-1';
   const energyLeft = data.premium || !limits ? null : Math.max(energyMax - data.today_answered, 0);
-  const monsters = data.pending_mistakes + data.due_reviews;
-  const doneToday = Math.min(data.today_answered, data.daily_goal);
 
   return (
     <Screen>
@@ -98,6 +97,7 @@ function StudentHome() {
         <View style={{ flex: 1, gap: 4 }}>
           <T weight="700" size={16}>Lv.{lv.level} {lv.title}</T>
           <ProgressBar value={lv.progress} color={C.accent} height={8} />
+          <T size={11} color={C.muted}>再 {lv.next - lv.current} XP 升到 Lv {lv.level + 1}・{data.streak} 天連勝</T>
         </View>
         <View style={{ gap: 6, alignItems: 'flex-end' }}>
           {world ? <GoldPill gold={world.gold} onPress={() => router.push('/shop')} /> : null}
@@ -109,15 +109,27 @@ function StudentHome() {
         </View>
       </View>
 
-      {/* 主角舞台 */}
-      {/* 新手任務：還沒佔領過領地時帶去打第一場 */}
-      {world && world.territories === 0 ? <StarterGuide heroName={hero.name} /> : null}
+      {nextGrade ? (
+        <Card style={{ backgroundColor: C.accentSoft, borderColor: C.accentSoft, gap: 10 }}>
+          <T weight="700" color={C.accentDark}>新學年開始了！你升上{gradeLabel(nextGrade)}了嗎？</T>
+          <T size={13} color={C.accentDark}>確認年級後，每日練習和地圖會換成新學期的範圍。</T>
+          <View style={{ flexDirection: 'row', gap: 10 }}>
+            <Button title={`是，升${gradeLabel(nextGrade)}`} style={{ flex: 1 }} loading={gradeBusy}
+              onPress={() => confirmGrade(nextGrade)} />
+            <Button title="還沒" kind="secondary" style={{ flex: 1 }} disabled={gradeBusy}
+              onPress={() => confirmGrade(nextGrade - 1)} />
+          </View>
+        </Card>
+      ) : null}
 
+      {/* 新手任務：還沒佔領過領地、也還沒有夥伴時，帶去打第一場 */}
+      {world && world.territories === 0 && world.pals.length === 0 ? <StarterGuide heroName={hero.name} /> : null}
+
+      {/* 夥伴之家：勇者站在石台上，出戰隊伍圍在旁邊，買來的家具擺在大廳裡 */}
       <View onLayout={(e) => setStageW(e.nativeEvent.layout.width)}
         style={{ borderRadius: 20, overflow: 'hidden', borderWidth: 1, borderColor: hero.color, backgroundColor: C.night }}>
         <Image source={HALL_BG} accessibilityIgnoresInvertColors resizeMode="cover"
           style={{ width: '100%', height: stageH }} />
-        {/* 買來的家具擺在大廳裡（在勇者後面） */}
         {(world?.owned ?? []).map((id) => {
           const f = FURNITURE[id];
           if (!f || !FURNITURE_IMG[id] || !stageW) return null;
@@ -125,21 +137,24 @@ function StudentHome() {
           return <Image key={id} source={FURNITURE_IMG[id]} accessibilityLabel={f.name} accessibilityIgnoresInvertColors resizeMode="contain"
             style={{ position: 'absolute', left: stageW * f.x - size / 2, top: stageH * f.y - size / 2, width: size, height: size }} />;
         })}
-        {/* 石台上旋轉的法陣 */}
         <View style={{ position: 'absolute', alignSelf: 'center', bottom: stageH * 0.11 - (stageW || 340) * 0.62 * 0.16 }}>
           <MagicCircle size={(stageW || 340) * 0.62} />
         </View>
-        {/* 去背的主角站在石台上 */}
-        <Image source={hero.full} accessibilityLabel={`你的戰鬥夥伴 ${hero.name}`} accessibilityIgnoresInvertColors resizeMode="contain"
+        <Image source={hero.full} accessibilityLabel={`你的勇者 ${hero.name}`} accessibilityIgnoresInvertColors resizeMode="contain"
           style={{ position: 'absolute', alignSelf: 'center', bottom: stageH * 0.11,
             height: stageH * 0.8, width: stageH * 0.8 * (2 / 3) }} />
-        {/* 出戰夥伴站在勇者腳邊 */}
-        {teamPal ? (
-          <Pressable accessibilityRole="button" accessibilityLabel={`出戰夥伴 ${palName(teamPal.species)}，點一下看全部夥伴`} onPress={() => router.push('/pals')}
-            style={{ position: 'absolute', left: (stageW || 340) * 0.2, bottom: stageH * 0.13 }}>
-            <PalImage species={teamPal.species} stage={teamPal.stage} size={(stageW || 340) * 0.26} />
-          </Pressable>
-        ) : null}
+        {/* 出戰隊伍：隊長在勇者左邊，另外兩隻在右邊 */}
+        {team.map((p, i) => {
+          const size = (stageW || 340) * (i === 0 ? 0.26 : 0.21);
+          const left = (stageW || 340) * [0.2, 0.62, 0.78][i] - size / 2;
+          return (
+            <Pressable key={p.species} accessibilityRole="button" accessibilityLabel={`${i === 0 ? '隊長' : '隊員'} ${palName(p.species)}，點一下看夥伴與隊伍`}
+              onPress={() => router.push({ pathname: '/mistakes', params: { tab: 'pals' } })}
+              style={{ position: 'absolute', left, bottom: stageH * (i === 0 ? 0.13 : 0.12 + 0.06 * (i - 1)) }}>
+              <PalImage species={p.species} stage={p.stage} size={size} />
+            </Pressable>
+          );
+        })}
         <View style={{ position: 'absolute', top: 10, left: 10, flexDirection: 'row', alignItems: 'center', gap: 8, paddingVertical: 6, paddingHorizontal: 10,
           borderRadius: 10, borderWidth: 1, borderColor: C.gold, backgroundColor: 'rgba(5, 10, 24, 0.8)' }}>
           <Ionicons name="shield-half" size={22} color={C.gold} />
@@ -157,97 +172,30 @@ function StudentHome() {
         <View style={{ position: 'absolute', left: 16, right: 16, bottom: 14, paddingVertical: 8, paddingHorizontal: 12, borderRadius: 10,
           borderWidth: 1, borderColor: C.gold, backgroundColor: 'rgba(5, 10, 24, 0.85)', alignItems: 'center' }}>
           <T size={14} weight="700" color="#FFFFFF" style={{ textAlign: 'center' }}>
-            {todayDone ? '今天的修煉完成了！明天見！' : hero.greet}
+            {todayDone ? '今天的修煉完成了！明天見！' : team.length ? `${hero.name}和${palName(team[0].species)}準備好出征了！` : hero.greet}
           </T>
         </View>
       </View>
 
-      {/* 主要按鈕 */}
-      <GoldButton title="開始突擊・3 分鐘" accessibilityLabel={`開始突擊，3 分鐘，隨機 ${data.daily_goal} 題`}
+      {/* 主要按鈕：每天 5 題保住連勝 */}
+      <GoldButton title="出征・3 分鐘" accessibilityLabel={`出征，3 分鐘，隨機 ${data.daily_goal} 題`}
         onPress={() => router.push({ pathname: '/quiz', params: { mode: 'daily' } })} />
-      <T size={13} color={C.muted} style={{ textAlign: 'center', marginTop: -4 }}>◆ 隨機 {data.daily_goal} 題，隨時可以休息 ◆</T>
+      <T size={13} color={C.muted} style={{ textAlign: 'center', marginTop: -4 }}>◆ 隨機 {data.daily_goal} 題，同科的夥伴會一起追擊 ◆</T>
 
-      {/* 今日任務（資料庫還沒更新時顯示原本的今日討伐） */}
-      {quests ? (
-        <DailyQuests quests={quests} onClaimed={(qs, gold) => { setQuests(qs); setWorld((w) => (w ? { ...w, gold } : w)); }} />
-      ) : (
-        <Card style={{ gap: 12, borderColor: C.gold, backgroundColor: '#0E1530' }}>
-          <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
-              <Ionicons name="flash" size={18} color={C.accent} />
-              <T weight="700" size={17}>今日討伐</T>
-            </View>
-            <T weight="700">{doneToday}/{data.daily_goal} 題</T>
-          </View>
-          <View accessibilityLabel={`今日討伐 ${doneToday} / ${data.daily_goal} 題`} style={{ flexDirection: 'row', alignItems: 'center' }}>
-            {Array.from({ length: data.daily_goal }, (_, i) => (
-              <View key={i} style={{ flex: i === 0 ? 0 : 1, flexDirection: 'row', alignItems: 'center' }}>
-                {i > 0 ? <View style={{ flex: 1, height: 2, backgroundColor: i < doneToday ? C.accent : C.lineStrong }} /> : null}
-                <View style={{ width: 26, height: 26, transform: [{ rotate: '45deg' }], borderWidth: 2, borderRadius: 4,
-                  borderColor: i < doneToday ? C.accent : C.lineStrong, backgroundColor: i < doneToday ? C.accentSoft : 'transparent', alignItems: 'center', justifyContent: 'center' }}>
-                  {i < doneToday ? <View style={{ transform: [{ rotate: '-45deg' }] }}><Ionicons name="checkmark" size={16} color={C.accent} /></View> : null}
-                </View>
-              </View>
-            ))}
-          </View>
-          <FrameCorners />
-        </Card>
-      )}
-
-      {world?.invaded ? (
-        <Pressable accessibilityRole="button" accessibilityLabel={`${world.invaded} 塊領地被魔物入侵，去世界地圖收回`} onPress={() => router.push('/map')}
-          style={({ pressed }) => ({ flexDirection: 'row', alignItems: 'center', gap: 12, padding: 12, borderRadius: 16, borderWidth: 1.5, borderColor: C.red,
-            backgroundColor: C.redSoft, opacity: pressed ? 0.85 : 1 })}>
-          <Image source={WORLD_IMG.invade} accessibilityIgnoresInvertColors style={{ width: 40, height: 40 }} />
-          <View style={{ flex: 1 }}>
-            <T weight="700" color={C.redDark}>{world.invaded} 塊領地被魔物入侵！</T>
-            <T size={13} color={C.inkSoft}>那裡有錯題該複習了，打贏就能收回來。</T>
-          </View>
-          <Ionicons name="chevron-forward" size={22} color={C.redDark} />
-        </Pressable>
-      ) : null}
-
+      {/* 兩條主線：地圖佔領收服、淨化野生魔物 */}
       {world ? (
         <View style={{ flexDirection: 'row', gap: 10 }}>
-          <HallLink img={WORLD_IMG.flag} title="世界地圖" detail={`已佔領 ${world.territories} 塊`} color={C.accent} onPress={() => router.push('/map')} />
-          <HallLink img={monsterImg(world.team_pal?.split('-')[0])} title="魔物夥伴" detail={`已收服 ${world.pals.length} 種`} color={C.green} onPress={() => router.push('/pals')} />
+          <HallLink img={world.invaded ? WORLD_IMG.invade : WORLD_IMG.flag} title="世界地圖"
+            detail={world.invaded ? `${world.invaded} 塊被入侵` : `已佔領 ${world.territories} 塊`} color={world.invaded ? C.red : C.accent}
+            onPress={() => router.navigate('/map')} />
+          <HallLink pal={wildPal} title="野生魔物"
+            detail={world.wild_due ? `${world.wild_due} 隻今天可複習` : world.wild ? `${world.wild} 隻還沒淨化` : '目前沒有'} color={world.wild_due ? C.purple : C.green}
+            onPress={() => (world.wild_due ? router.push({ pathname: '/quiz', params: { mode: 'review' } }) : router.push({ pathname: '/mistakes', params: { tab: 'wild' } }))} />
           <HallLink img={WORLD_IMG.coin} title="商店" detail={`${world.gold} 金幣`} color={C.gold} onPress={() => router.push('/shop')} />
         </View>
       ) : null}
 
-      <Pressable accessibilityRole="button" accessibilityLabel={`魔物圖鑑，${monsters ? `${monsters} 隻等待再挑戰` : '目前沒有魔物'}`} onPress={() => router.push('/mistakes')}
-        style={({ pressed }) => ({ flexDirection: 'row', alignItems: 'center', gap: 14, padding: 14, borderRadius: 18, borderWidth: 1.5, borderColor: C.purple,
-          backgroundColor: '#1A1033', opacity: pressed ? 0.85 : 1 })}>
-        <View style={{ width: 56, height: 56, borderRadius: 14, backgroundColor: '#2A1650', alignItems: 'center', justifyContent: 'center' }}>
-          <Image source={monsterImg(DAILY_MONSTER[new Date().getDay() % 5])} accessibilityIgnoresInvertColors style={{ width: 52, height: 52 }} />
-        </View>
-        <View style={{ flex: 1 }}>
-          <T size={19} weight="700">魔物圖鑑</T>
-          <T size={13} color={C.inkSoft}>{monsters ? `${monsters} 隻等待再挑戰` : '目前沒有魔物，太強了！'}</T>
-        </View>
-        <Ionicons name="chevron-forward" size={24} color={C.ink} />
-      </Pressable>
-
-      {nextGrade ? (
-        <Card style={{ backgroundColor: C.accentSoft, borderColor: C.accentSoft, gap: 10 }}>
-          <T weight="700" color={C.accentDark}>新學年開始了！你升上{gradeLabel(nextGrade)}了嗎？</T>
-          <T size={13} color={C.accentDark}>確認年級後，每日練習和學期複習會換成新學期的範圍。</T>
-          <View style={{ flexDirection: 'row', gap: 10 }}>
-            <Button title={`是，升${gradeLabel(nextGrade)}`} style={{ flex: 1 }} loading={gradeBusy}
-              onPress={() => confirmGrade(nextGrade)} />
-            <Button title="還沒" kind="secondary" style={{ flex: 1 }} disabled={gradeBusy}
-              onPress={() => confirmGrade(nextGrade - 1)} />
-          </View>
-        </Card>
-      ) : null}
-
-      {data.xp === 0 && data.today_answered === 0 && data.longest_streak === 0 ? (
-        <Card style={{ borderColor: C.accent, borderWidth: 2, gap: 8 }}>
-          <T size={17} weight="700">歡迎！先做第一輪 5 題 👋</T>
-          <T size={14} color={C.inkSoft}>題目會配合你的年級和課本版本。答錯也沒關係，錯題會變成魔物自動收進魔物圖鑑，按「找小老師」就有 AI 一步一步陪你弄懂。</T>
-          <Button title="開始第一輪" onPress={() => router.push({ pathname: '/quiz', params: { mode: 'daily' } })} />
-        </Card>
-      ) : null}
+      {quests ? <DailyQuests quests={quests} onClaimed={(qs, gold) => { setQuests(qs); setWorld((w) => (w ? { ...w, gold } : w)); }} /> : null}
 
       <Card dark style={{ gap: 14 }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
@@ -286,119 +234,26 @@ function StudentHome() {
         </Pressable>
       </Card>
 
-      <LevelCard xp={data.xp} />
-
-      <Pressable accessibilityRole="button" accessibilityLabel="許願池，跟爸媽許願，達成目標換獎勵" onPress={() => router.push('/wishes')}>
-        <Card style={{ flexDirection: 'row', alignItems: 'center', gap: 12, borderColor: C.gold }}>
-          <Ionicons name="sparkles" size={26} color={C.gold} />
-          <View style={{ flex: 1 }}>
-            <T weight="700">許願池</T>
-            <T size={12} color={C.muted}>跟爸媽許願，達成修煉目標就能兌現獎勵</T>
-          </View>
-          <T color={C.gold}>›</T>
-        </Card>
-      </Pressable>
-
-      <Card style={{ gap: 14 }}>
-        <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-          <H2>每日任務</H2>
-          <T size={13} color={C.muted}>
-            完成 {[todayDone, data.due_reviews === 0, data.pending_mistakes === 0].filter(Boolean).length} / 3
-          </T>
-        </View>
-        <Task
-          done={todayDone}
-          title={`完成 ${data.daily_goal} 題練習`}
-          detail={`${Math.min(data.today_answered, data.daily_goal)} / ${data.daily_goal} 題`
-            + (!data.premium && limits ? `・免費版今天還能練 ${Math.max(limits.free_daily_questions - data.today_answered, 0)} 題` : '')}
-          progress={data.today_answered / data.daily_goal}
-          action={todayDone ? '再練習' : '開始'}
-          onPress={() => router.push({ pathname: '/quiz', params: { mode: 'daily' } })}
-        />
-        <Task
-          done={data.due_reviews === 0}
-          title="討伐到期的魔物"
-          detail={data.due_reviews === 0 ? '今天沒有到期的魔物' : `還有 ${data.due_reviews} 隻`}
-          action={data.due_reviews > 0 ? '複習' : undefined}
-          onPress={() => router.push({ pathname: '/quiz', params: { mode: 'review' } })}
-        />
-        <Task
-          done={data.pending_mistakes === 0}
-          title="單挑狂暴中的魔物"
-          detail={data.pending_mistakes === 0 ? '沒有狂暴中的魔物' : `${data.pending_mistakes} 隻還沒弄懂`}
-          action={data.pending_mistakes > 0 ? '去看看' : undefined}
-          onPress={() => router.push('/mistakes')}
-        />
-      </Card>
-
-      {data.premium ? (
-        <Card style={{ backgroundColor: C.greenSoft, borderColor: C.greenSoft }}>
-          <T weight="700" color={C.greenDark}>完整版使用中{data.subscribed ? '（訂閱）' : `（到 ${data.premium_until}）`}</T>
-          <T size={13} color={C.greenDark}>題數與小老師次數不受每日限制。</T>
-        </Card>
-      ) : (
-        <View style={{ flexDirection: 'row', gap: 12 }}>
-          {canBuy ? (
-          <Pressable accessibilityRole="button" onPress={() => router.push('/paywall')} style={{ flex: 1 }}>
-            <Card style={{ gap: 2, height: '100%' }}>
-              <T size={12} color={C.muted}>小老師今天 {data.tutor_used_today} / {data.tutor_limit_today} 次</T>
-              <T size={15} weight="700">升級完整版</T>
-              <T size={12} color={C.accent}>無限練習 ›</T>
-            </Card>
-          </Pressable>
-          ) : null}
-          <Pressable accessibilityRole="button" onPress={() => router.push('/top-three')} style={{ flex: 1 }}>
-            <Card style={{ backgroundColor: C.accentSoft, borderColor: C.accentSoft, gap: 2, height: '100%' }}>
-              <T size={12} weight="700" color={C.accentDark}>段考全校前三名</T>
-              <T size={15} weight="700">免費用一學期</T>
-              <T size={12} color={C.accentDark}>上傳證明 ›</T>
-            </Card>
-          </Pressable>
-        </View>
-      )}
     </Screen>
   );
 }
 
-function Task({ done, title, detail, progress, action, onPress }: {
-  done: boolean; title: string; detail: string; progress?: number; action?: string; onPress: () => void;
-}) {
-  return (
-    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
-      <View style={{
-        width: 28, height: 28, borderRadius: 14, alignItems: 'center', justifyContent: 'center',
-        backgroundColor: done ? C.green : 'transparent', borderWidth: done ? 0 : 2, borderColor: C.green,
-      }}>
-        {done ? <Ionicons name="checkmark" size={16} color={C.onAccent} /> : null}
-      </View>
-      <View style={{ flex: 1, gap: 4 }}>
-        <T weight="700" color={done ? C.muted : C.ink}>{title}</T>
-        {progress !== undefined && !done ? <ProgressBar value={progress} /> : null}
-        <T size={12} color={C.muted}>{detail}</T>
-      </View>
-      {action ? <Button title={action} onPress={onPress} style={{ minHeight: 44, paddingHorizontal: 14 }} /> : null}
-    </View>
-  );
-}
-
-/** 大廳的三個入口：世界地圖、魔物夥伴、商店 */
-function HallLink({ img, title, detail, color, onPress }: {
-  img: ImageSourcePropType; title: string; detail: string; color: string; onPress: () => void;
+/** 大廳的三個入口：世界地圖、野生魔物、商店 */
+function HallLink({ img, pal, title, detail, color, onPress }: {
+  img?: ImageSourcePropType; pal?: string; title: string; detail: string; color: string; onPress: () => void;
 }) {
   return (
     <Pressable accessibilityRole="button" accessibilityLabel={`${title}，${detail}`} onPress={onPress}
       style={({ pressed }) => ({ flex: 1, alignItems: 'center', gap: 2, paddingVertical: 10, borderRadius: 16, borderWidth: 1.5, borderColor: color,
         backgroundColor: C.card, opacity: pressed ? 0.85 : 1 })}>
-      <Image source={img} accessibilityIgnoresInvertColors style={{ width: 40, height: 40 }} />
+      {pal ? <WildImage species={pal} size={42} /> : <Image source={img} accessibilityIgnoresInvertColors style={{ width: 40, height: 40 }} />}
       <T size={14} weight="700">{title}</T>
       <T size={11} color={C.muted}>{detail}</T>
     </Pressable>
   );
 }
 
-/** 大廳頂部的小狀態（等級、體力、保護卡） */
-const DAILY_MONSTER = ['math', 'chinese', 'english', 'science', 'social'];
-
+/** 大廳頂部的小狀態（體力、保護卡） */
 function StatPill({ img, color, label, a11y, onPress }: {
   img: ImageSourcePropType; color: string; label: string; a11y: string; onPress?: () => void;
 }) {
@@ -409,42 +264,5 @@ function StatPill({ img, color, label, a11y, onPress }: {
       <Image source={img} accessibilityIgnoresInvertColors style={{ width: 20, height: 20 }} />
       <T size={12} weight="700" color="#FFFFFF">{label}</T>
     </Pressable>
-  );
-}
-
-/** 等級卡：等級、稱號、升級進度，加上學習花園與週排行的入口 */
-function LevelCard({ xp }: { xp: number }) {
-  const lv = levelInfo(xp);
-  return (
-    <Card style={{ gap: 12 }}>
-      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
-        <View style={{ width: 52, height: 52, borderRadius: 26, backgroundColor: C.greenSoft, alignItems: 'center', justifyContent: 'center' }}>
-          <T size={11} color={C.green} weight="700">Lv</T>
-          <T size={20} weight="700" color={C.green} style={{ lineHeight: 22 }}>{lv.level}</T>
-        </View>
-        <View style={{ flex: 1, gap: 4 }}>
-          <T weight="700" size={17}>{lv.title}</T>
-          <ProgressBar value={lv.progress} color={C.green} />
-          <T size={12} color={C.muted}>再 {lv.next - lv.current} XP 升到 Lv {lv.level + 1}（答對 1 題 +10）</T>
-        </View>
-      </View>
-      <View style={{ flexDirection: 'row', gap: 8 }}>
-        <Pressable accessibilityRole="button" onPress={() => router.push('/garden')}
-          style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 6, justifyContent: 'center', minHeight: 44, borderRadius: 12, backgroundColor: C.greenSoft }}>
-          <Ionicons name="flower-outline" size={18} color={C.green} />
-          <T weight="700" color={C.green}>學習花園</T>
-        </Pressable>
-        <Pressable accessibilityRole="button" onPress={() => router.push('/leaderboard')}
-          style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 6, justifyContent: 'center', minHeight: 44, borderRadius: 12, backgroundColor: C.accentSoft }}>
-          <Ionicons name="trophy-outline" size={18} color={C.accentDark} />
-          <T weight="700" color={C.accentDark}>本週排行</T>
-        </Pressable>
-        <Pressable accessibilityRole="button" onPress={() => router.push('/badges')}
-          style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 6, justifyContent: 'center', minHeight: 44, borderRadius: 12, backgroundColor: C.goldSoft }}>
-          <Ionicons name="ribbon-outline" size={18} color={C.gold} />
-          <T weight="700" color={C.gold}>成就徽章</T>
-        </Pressable>
-      </View>
-    </Card>
   );
 }

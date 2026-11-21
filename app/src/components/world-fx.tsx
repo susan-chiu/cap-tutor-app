@@ -38,6 +38,17 @@ export function PalImage({ species, stage, size }: { species: string; stage: num
   );
 }
 
+/** 野生魔物（錯題）：同一種夥伴的圖疊上暗紫色；已淨化（畢業）的顯示原本的樣子 */
+export function WildImage({ species, size, purified = false }: { species: string; size: number; purified?: boolean }) {
+  return (
+    <View style={{ width: size, height: size, alignItems: 'center', justifyContent: 'center' }}>
+      <Image source={palImg(species)} accessibilityIgnoresInvertColors style={{ width: size * 0.9, height: size * 0.9 }} />
+      {purified ? null : <Image source={palImg(species)} accessibilityIgnoresInvertColors
+        style={{ position: 'absolute', width: size * 0.9, height: size * 0.9, tintColor: '#3A0F5C', opacity: 0.55 }} />}
+    </View>
+  );
+}
+
 /** 領地戰結算：法陣轉動，魔物被收服成夥伴（或進化），顯示拿到的金幣 */
 export function ConquerCard({ result }: { result: ConquerResult }) {
   const spin = useState(() => new Animated.Value(0))[0];
@@ -70,7 +81,7 @@ export function ConquerCard({ result }: { result: ConquerResult }) {
       </View>
       <T size={18} weight="700">{palName(result.species)}</T>
       <T size={13} color={C.inkSoft} style={{ textAlign: 'center' }}>
-        {result.rewarded ? `${PAL_STAGE[Math.max(result.stage, 1)]}・已收服 ${result.caught} 次` : '今天已經在這塊領地收服過了，明天再來可以再收服一次。'}
+        {result.rewarded ? `${PAL_STAGE[Math.max(result.stage, 1)]}・夥伴經驗 +${result.pal_xp_gained}（共 ${result.pal_xp}）` : '今天已經在這塊領地收服過了，明天再來可以再收服一次。'}
       </T>
       {result.mastered ? <T weight="700" color={C.gold}>★ 領地熟練！升級成金旗領地</T>
         : result.rewarded && result.days < result.master_days ? <T size={12} color={C.muted}>熟練度 {result.days} / {result.master_days}（改天再打贏一次 +1）</T> : null}

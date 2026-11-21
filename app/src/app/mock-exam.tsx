@@ -367,7 +367,7 @@ function Result({ questions, answers, results, usedSec, stopped, saved, onAgain 
       {wrong.length ? (
         <Card style={{ gap: 4 }}>
           <H2>錯題與解析（{wrong.length} 題）</H2>
-          <T size={13} color={C.muted}>作答錯的題目已收進魔物圖鑑；點題目看完整詳解（錯在哪、解題步驟），或找小老師講解。</T>
+          <T size={13} color={C.muted}>作答錯的題目已變成野生魔物收進圖鑑；點題目看完整詳解（錯在哪、解題步驟），或找小老師講解。</T>
           {wrong.map((q) => {
             const r = results[q.id];
             const mine = answers[q.id];

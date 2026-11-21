@@ -72,11 +72,11 @@ for f in Path('demo/dist/app').glob('*.js'):
     f.write_text(s, encoding='utf-8')
     print(f'資源路徑 {n1} 處、頁面路徑 {n2} 處改為依實際位置（設定資料裡保留 {left} 處）')
 PY
-# 每個 App 頁面放一份同樣的 HTML（例如 me、learn），在任何頁面重新整理都打得開
+# 每個 App 頁面放一份同樣的 HTML（例如 me、map），在任何頁面重新整理都打得開
 python3 - <<'PY'
 from pathlib import Path
 src = Path('demo/dist/index.html').read_text(encoding='utf-8')
-routes = ['learn', 'mistakes', 'me', 'quiz', 'tutor', 'top-three', 'paywall', 'help', 'mock-exam', 'onboarding', 'login', 'forgot', 'map', 'pals', 'shop']
+routes = ['trials', 'mistakes', 'me', 'quiz', 'tutor', 'top-three', 'paywall', 'help', 'mock-exam', 'onboarding', 'login', 'forgot', 'map', 'shop', 'badges', 'leaderboard', 'wishes', 'heroes']
 for r in routes: (Path('demo/dist') / r).write_text(src, encoding='utf-8')
 print('頁面副本：' + '、'.join(routes))
 PY
