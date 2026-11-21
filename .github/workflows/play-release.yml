@@ -43,13 +43,15 @@ jobs:
       - name: 程式風格檢查
         working-directory: app
         run: npx expo lint
-      - name: 單元測試（資料庫規則、小老師、段考分組、訂閱）
+      - name: 單元測試（資料庫規則、遊戲、世界地圖、小老師、段考分組、訂閱）
         working-directory: tests
         env:
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
         run: |
           npm ci
           node db.test.mjs
+          node game.test.mjs
+          node world.test.mjs
           node stages.test.mjs
           node tutor_logic.test.mjs
           node subscription.test.mjs

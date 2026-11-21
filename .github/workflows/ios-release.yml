@@ -21,8 +21,49 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  check:
+    name: 檢查（型別、程式風格、題庫、單元測試）
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: |
+            app/package-lock.json
+            tests/package-lock.json
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: 題庫驗證（格式、答案、驗算式）
+        run: python3 scripts/build_seed.py
+      - name: 安裝 App 套件
+        working-directory: app
+        run: npm ci
+      - name: 型別檢查
+        working-directory: app
+        run: npx tsc --noEmit
+      - name: 程式風格檢查
+        working-directory: app
+        run: npx expo lint
+      - name: 單元測試（資料庫規則、遊戲、世界地圖、小老師、段考分組、訂閱）
+        working-directory: tests
+        env:
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
+        run: |
+          npm ci
+          node db.test.mjs
+          node game.test.mjs
+          node world.test.mjs
+          node stages.test.mjs
+          node tutor_logic.test.mjs
+          node subscription.test.mjs
+
   ios:
     name: 打包並上傳 TestFlight
+    needs: check
     runs-on: macos-15
     timeout-minutes: 75
     env:
