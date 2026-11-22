@@ -1,11 +1,19 @@
-# iOS 雲端打包：Codemagic → TestFlight（不需要 Mac）
+# 雲端打包：Codemagic → TestFlight（iOS）與 Google Play 內部測試（Android），都不需要 Mac
 # 事前設定（只要做一次）：
 # 1. Codemagic 連上 GitHub 的 cap-tutor-app 專案。
 # 2. Codemagic → Teams → Integrations → Developer Portal：加入 App Store Connect API 金鑰，目前沿用潛境的「subverse_asc」（同一個 Apple 帳號共用）。
 # 3. Codemagic → 這個 App → Environment variables：建立群組 app_env，填入和 GitHub Actions 相同的 EXPO_PUBLIC_* 值
 #    （EXPO_PUBLIC_SUPABASE_URL、EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY 必填；
-#      iOS 另外有 EXPO_PUBLIC_REVENUECAT_IOS_KEY、EXPO_PUBLIC_ADMOB_REWARDED_IOS，沒有就先空著）。
+#      iOS 另外有 EXPO_PUBLIC_REVENUECAT_IOS_KEY、EXPO_PUBLIC_ADMOB_REWARDED_IOS，
+#      Android 另外有 EXPO_PUBLIC_REVENUECAT_ANDROID_KEY、EXPO_PUBLIC_ADMOB_REWARDED_ANDROID，沒有就先空著）。
 #    這些都是可以公開的金鑰；service_role、RevenueCat Secret key 絕對不要放進來。
+# 4. Android 另外要：
+#    a. Codemagic → Teams → Code signing identities → Android keystores：上傳 upload-key.jks，
+#       Reference name 填 cap_tutor_upload，Key alias 填 upload，兩個密碼都填 GitHub密鑰設定.txt 裡的那一組。
+#       一定要用這一把（和 GitHub 打包用的是同一把），換金鑰 Google Play 會拒收。
+#    b. Google Play 服務帳號的 JSON 金鑰：在這個 App 的 Environment variables 新增 GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS，
+#       值貼上 JSON 檔的完整內容，勾選 Secure，群組填 google_play。
+#    c. Google Play 規定第一個版本要在 Play Console 手動上傳；之後才能由這裡自動上傳。
 workflows:
   ios-release:
     name: iOS → TestFlight
@@ -51,3 +59,62 @@ workflows:
       app_store_connect:
         auth: integration
         submit_to_testflight: false  # 只上傳；內部測試不需要送 Beta 審核
+
+  android-release:
+    name: Android → Google Play 內部測試
+    max_build_duration: 60
+    instance_type: linux_x2
+    environment:
+      groups:
+        - app_env
+        - google_play
+      android_signing:
+        - cap_tutor_upload
+      node: 22
+      java: 17
+      vars:
+        PACKAGE_NAME: com.susanchiu.captutor
+        SENTRY_DISABLE_AUTO_UPLOAD: "true"
+        EXPO_NO_TELEMETRY: "1"
+    scripts:
+      - name: 確認設定都填好了
+        script: |
+          missing=""
+          [ -z "$EXPO_PUBLIC_SUPABASE_URL" ] && missing="$missing EXPO_PUBLIC_SUPABASE_URL（群組 app_env）"
+          [ -z "$EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY" ] && missing="$missing EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY（群組 app_env）"
+          [ -z "$GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS" ] && missing="$missing GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS（群組 google_play）"
+          [ -z "$CM_KEYSTORE_PATH" ] && missing="$missing Android 上傳金鑰（Code signing identities，名稱 cap_tutor_upload）"
+          if [ -n "$missing" ]; then echo "還沒設定：$missing"; exit 1; fi
+      - name: 安裝套件
+        script: cd app && npm ci
+      - name: 算版本號（比 Google Play 上最新的一版大 1）
+        script: |
+          LATEST=$(google-play get-latest-build-number --package-name "$PACKAGE_NAME" \
+            --credentials @env:GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS 2>/dev/null | tail -1 || true)
+          if [ "$LATEST" -eq "$LATEST" ] 2>/dev/null; then
+            CODE=$((LATEST + 1))
+          else
+            # 查不到（例如還沒上傳過）：用 Codemagic 的打包次數加 100，避開 GitHub 打包用過的版本號
+            CODE=$((BUILD_NUMBER + 100))
+          fi
+          echo "這次的版本號：$CODE"
+          echo "ANDROID_VERSION_CODE=$CODE" >> $CM_ENV
+      - name: 產生 Android 專案
+        script: cd app && npx expo prebuild --platform android --no-install --clean
+      - name: 打包 AAB（上傳金鑰簽署）
+        script: |
+          export ANDROID_KEYSTORE_PATH="$CM_KEYSTORE_PATH"
+          export ANDROID_KEYSTORE_PASSWORD="$CM_KEYSTORE_PASSWORD"
+          cd app/android && ./gradlew bundleRelease --no-daemon
+      - name: 確認簽署正確
+        script: |
+          f=app/android/app/build/outputs/bundle/release/app-release.aab
+          keytool -printcert -jarfile "$f" | grep -E "Owner|SHA256" | head -3
+          keytool -printcert -jarfile "$f" | grep -q "CN=Susan Chiu" || { echo "AAB 不是用上傳金鑰簽的"; exit 1; }
+    artifacts:
+      - app/android/app/build/outputs/bundle/release/*.aab
+    publishing:
+      google_play:
+        credentials: $GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS
+        track: internal
+        submit_as_draft: true   # 先放成草稿，到 Play Console 按「推出」才會給測試人員
