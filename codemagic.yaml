@@ -118,3 +118,47 @@ workflows:
         credentials: $GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS
         track: internal
         submit_as_draft: true   # 先放成草稿，到 Play Console 按「推出」才會給測試人員
+
+  # 只打包 AAB、不上傳：給第一版手動上傳到 Play Console 用（Google 規定第一版要手動），也可以拿來備份
+  android-aab:
+    name: Android → 只打包 AAB（手動上傳用）
+    max_build_duration: 60
+    instance_type: linux_x2
+    environment:
+      groups:
+        - app_env
+      android_signing:
+        - cap_tutor_upload
+      node: 22
+      java: 17
+      vars:
+        SENTRY_DISABLE_AUTO_UPLOAD: "true"
+        EXPO_NO_TELEMETRY: "1"
+    scripts:
+      - name: 確認設定都填好了
+        script: |
+          missing=""
+          [ -z "$EXPO_PUBLIC_SUPABASE_URL" ] && missing="$missing EXPO_PUBLIC_SUPABASE_URL（群組 app_env）"
+          [ -z "$EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY" ] && missing="$missing EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY（群組 app_env）"
+          [ -z "$CM_KEYSTORE_PATH" ] && missing="$missing Android 上傳金鑰（Code signing identities，名稱 cap_tutor_upload）"
+          if [ -n "$missing" ]; then echo "還沒設定：$missing"; exit 1; fi
+      - name: 安裝套件
+        script: cd app && npm ci
+      - name: 版本號
+        script: |
+          # 用打包次數加 100：一定比 GitHub 打包用過的大；之後自動上傳的流程會再從 Google Play 上最新的一版往上加
+          echo "ANDROID_VERSION_CODE=$((BUILD_NUMBER + 100))" >> $CM_ENV
+      - name: 產生 Android 專案
+        script: cd app && npx expo prebuild --platform android --no-install --clean
+      - name: 打包 AAB（上傳金鑰簽署）
+        script: |
+          export ANDROID_KEYSTORE_PATH="$CM_KEYSTORE_PATH"
+          export ANDROID_KEYSTORE_PASSWORD="$CM_KEYSTORE_PASSWORD"
+          cd app/android && ./gradlew bundleRelease --no-daemon
+      - name: 確認簽署正確
+        script: |
+          f=app/android/app/build/outputs/bundle/release/app-release.aab
+          keytool -printcert -jarfile "$f" | grep -E "Owner|SHA256" | head -3
+          keytool -printcert -jarfile "$f" | grep -q "CN=Susan Chiu" || { echo "AAB 不是用上傳金鑰簽的"; exit 1; }
+    artifacts:
+      - app/android/app/build/outputs/bundle/release/*.aab
