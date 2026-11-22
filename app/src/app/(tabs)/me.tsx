@@ -155,7 +155,7 @@ export default function Me() {
                 );
               })}
             </View>
-            <T size={13} color={C.muted}>每天 5 題會從勾選的科目平均出題；學期複習可以練任何一科。</T>
+            <T size={13} color={C.muted}>每天 5 題會從勾選的科目平均出題；地圖和魔王城可以練任何一科。</T>
           </Card>
 
           {remindersSupported ? (
@@ -174,6 +174,25 @@ export default function Me() {
           ) : null}
 
           <SoundCard />
+
+          <Card style={{ gap: 4 }}>
+            <H2>紀錄與獎勵</H2>
+            {([
+              ['/badges', '成就徽章', '連勝、淨化、熟練、夥伴、魔王'],
+              ['/leaderboard', '本週排行', '和全國同學比這週的 XP'],
+              ['/wishes', '許願池', '跟爸媽許願，達成目標換獎勵'],
+            ] as const).map(([href, title, sub], i) => (
+              <Pressable key={href} accessibilityRole="button" accessibilityLabel={`${title}，${sub}`} onPress={() => router.push(href)}
+                style={{ minHeight: 52, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 8,
+                  borderTopWidth: i ? 1 : 0, borderTopColor: C.line }}>
+                <View style={{ flex: 1 }}>
+                  <T weight="700">{title}</T>
+                  <T size={12} color={C.muted}>{sub}</T>
+                </View>
+                <T color={C.muted}>›</T>
+              </Pressable>
+            ))}
+          </Card>
 
           <Card style={{ gap: 8 }}>
             <H2>方案</H2>

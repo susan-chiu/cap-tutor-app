@@ -1,4 +1,4 @@
-// 網頁試用版：遊戲化功能冒煙測試（等級卡、+XP、學習花園、週排行、段考魔王戰）
+// 網頁試用版：遊戲化功能冒煙測試（等級、+XP、週排行、魔王城的段考魔王戰、圖鑑、徽章）
 import { chromium } from 'playwright';
 const APP = process.env.DEMO_URL ?? 'http://127.0.0.1:8790/';
 const OUT = process.env.SHOTS ?? '/tmp/game-shots'; (await import('node:fs')).mkdirSync(OUT, { recursive: true });
@@ -33,10 +33,10 @@ await step('註冊並完成首次設定', async () => {
   await t('先設定一下').waitFor({ timeout: 15000 });
   await t('七年級').click(); await t('康軒').click();
   await page.getByRole('button', { name: '開始練習' }).click();
-  await page.getByText('歡迎！先做第一輪 5 題', { exact: false }).waitFor({ timeout: 15000 });
+  await t('新手任務：收服你的第一隻夥伴').waitFor({ timeout: 15000 });
 });
 await step('每日 5 題全對：飄出 +10 XP、3 連擊、升到 Lv 1 進度', async () => {
-  await page.getByRole('button', { name: '開始第一輪' }).click();
+  await page.getByRole('button', { name: '出征，3 分鐘，隨機 5 題' }).click();
   for (let i = 0; i < 5; i++) {
     await page.getByText(`第 ${i + 1} 題 / 共 5 題`, { exact: false }).waitFor({ timeout: 15000 });
     await answerCurrent(true);
@@ -44,22 +44,14 @@ await step('每日 5 題全對：飄出 +10 XP、3 連擊、升到 Lv 1 進度',
     await page.getByRole('button', { name: i === 4 ? '看結果' : '下一題' }).click();
   }
   await t('這一輪完成了！').waitFor();
-  await page.getByRole('button', { name: '回首頁' }).click();
-  await t('小種子').waitFor({ timeout: 10000 });
-  await page.getByText('再 50 XP 升到 Lv 2', { exact: false }).waitFor();
+  await page.getByRole('button', { name: '回大廳' }).click();
+  await page.getByText(/^Lv\.1 小種子$/).first().waitFor({ timeout: 10000 });
+  await page.getByText('再 50 XP 升到 Lv 2', { exact: false }).first().waitFor();
   await shot('02-home-level');
 });
-await step('學習花園：國中 87 株，有一些已經發芽', async () => {
-  await page.getByRole('button', { name: '學習花園' }).click();
-  await page.getByText('把整座花園種滿吧', { exact: false }).waitFor({ timeout: 10000 });
-  await page.getByText('/ 87 株', { exact: false }).waitFor({ timeout: 10000 });
-  const sprouted = await page.getByText(/^發芽 · 再/).count();
-  if (sprouted < 1) throw new Error('應該有單元發芽');
-  await shot('03-garden');
-  await page.getByRole('button', { name: '返回' }).click();
-});
 await step('本週排行：自己有代號、名次，沒有出現暱稱；可以隱藏', async () => {
-  await page.getByRole('button', { name: '本週排行' }).click();
+  await tab('我的');
+  await page.getByRole('button', { name: /^本週排行，/ }).click();
   await page.getByText('每週一重新開始', { exact: false }).first().waitFor({ timeout: 10000 });
   await page.getByText('（你）', { exact: false }).first().waitFor({ timeout: 10000 });
   const body = await page.evaluate(() => document.body.innerText);
@@ -70,8 +62,9 @@ await step('本週排行：自己有代號、名次，沒有出現暱稱；可�
   await page.getByRole('switch', { name: '不要出現在排行榜' }).click();
   await page.getByRole('button', { name: '返回' }).click();
 });
-await step('段考魔王戰：血條、愛心，答錯掉愛心，結算有星星', async () => {
-  await tab('副本');
+await step('段考魔王戰：從地圖的魔王城進去；血條、愛心，答錯掉愛心，結算有星星', async () => {
+  await tab('地圖');
+  await page.getByRole('button', { name: /大陸的魔王城/ }).click({ timeout: 15000 });
   const btn = page.getByRole('button', { name: /^開始第一次段考/ });
   await btn.first().click();
   await t('段考小魔王').waitFor({ timeout: 15000 });
@@ -106,14 +99,15 @@ await step('段考魔王戰：血條、愛心，答錯掉愛心，結算有星�
   await shot('06-boss-win');
 });
 await step('階段卡顯示魔王最佳星數', async () => {
-  await page.getByRole('button', { name: '回首頁' }).click();
-  await tab('副本');
+  await page.getByRole('button', { name: '回魔王城' }).click();
+  await t('魔王城').waitFor({ timeout: 15000 });
   await page.getByText('魔王已三星通關', { exact: true }).first().waitFor({ timeout: 10000 });
   await shot('07-stage-stars');
+  await page.getByRole('button', { name: '返回' }).click();
 });
 await step('許願池：許願、送給爸媽核准', async () => {
-  await tab('大廳');
-  await page.getByRole('button', { name: /^許願池/ }).click();
+  await tab('我的');
+  await page.getByRole('button', { name: /^許願池，/ }).click();
   await page.getByText('許新的願望', { exact: true }).waitFor({ timeout: 10000 });
   await page.getByRole('button', { name: '吃一次鹹酥雞' }).click();
   await page.getByRole('button', { name: '送給爸媽核准' }).click();
@@ -123,26 +117,30 @@ await step('許願池：許願、送給爸媽核准', async () => {
   await shot('08-wishes');
   await page.getByRole('button', { name: '返回' }).click();
 });
-await step('魔物圖鑑：魔王戰答錯的題目變成狂暴中的魔物', async () => {
-  await tab('魔物圖鑑');
+await step('圖鑑・野生魔物：魔王戰答錯的題目變成狂暴中的野生魔物；魔王頁有段考小魔王的三星紀錄', async () => {
+  await tab('圖鑑');
+  await page.getByRole('tab', { name: /^野生魔物/ }).click();
   await page.getByLabel(/^狂暴中 [1-9]\d* 隻$/).waitFor({ timeout: 10000 });
-  await page.getByText(/・.*捕獲|捕獲/).first().waitFor({ timeout: 10000 });
+  await page.getByText(/ · .* 出現$/).first().waitFor({ timeout: 10000 });
+  await page.getByRole('tab', { name: /^魔王/ }).click();
+  await t('段考小魔王').waitFor({ timeout: 10000 });
+  await page.getByLabel('3 顆星').first().waitFor();
   await shot('09-monsters');
 });
-await step('更換戰鬥夥伴：選緋音 → 大廳換成緋音，心眼也由她發動', async () => {
+await step('更換勇者：選緋音 → 大廳換成緋音，心眼也由她發動', async () => {
   await tab('大廳');
   await page.getByText('夜凜', { exact: true }).first().waitFor({ timeout: 10000 });
   await shot('11-hall');
   await page.getByRole('button', { name: '更換角色' }).click();
-  await page.getByText('選擇你的戰鬥夥伴', { exact: true }).waitFor({ timeout: 10000 });
+  await page.getByText('選擇你的勇者', { exact: true }).waitFor({ timeout: 10000 });
   await page.getByRole('button', { name: /^緋音，/ }).click();
   await shot('12-heroes');
-  await page.getByRole('button', { name: '選擇緋音當夥伴' }).click();
-  await page.getByLabel('你的戰鬥夥伴 緋音').waitFor({ timeout: 10000 });
+  await page.getByRole('button', { name: '選擇緋音當勇者' }).click();
+  await page.getByLabel('你的勇者 緋音').waitFor({ timeout: 10000 });
 });
 await step('成就徽章：初次討伐已點亮，其他顯示進度', async () => {
-  await tab('大廳');
-  await page.getByRole('button', { name: '成就徽章' }).click();
+  await tab('我的');
+  await page.getByRole('button', { name: /^成就徽章，/ }).click();
   await page.getByText('已點亮', { exact: true }).waitFor({ timeout: 10000 });
   await page.getByLabel(/^初次討伐，.*已達成$/).waitFor({ timeout: 10000 });
   await page.getByLabel(/^百題斬，.*進度 \d+ \/ 100$/).waitFor();

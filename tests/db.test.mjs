@@ -713,7 +713,7 @@ if (hasSeed) {
 
     const ach = (await as(u, () => db.query(`select public.achievements() r`))).rows[0].r;
     const by = Object.fromEntries(ach.map((a) => [a.id, a]));
-    assert.equal(ach.length, 18);
+    assert.equal(ach.length, 22);   // 18 個原有成就 + 4 個夥伴成就
     assert.equal(by['boss-1'].done, true); assert.deepEqual([by['boss-5'].progress, by['boss-5'].goal], [2, 5]);
     assert.equal(by['correct-100'].progress, 15); assert.equal(by['bloom-1'].done, false);
 

@@ -10,6 +10,7 @@ import { play } from '@/lib/sound';
 import { C } from '@/lib/theme';
 
 const QUEST_TEXT: Record<Quest['id'], (goal: number) => string> = {
+  review: (g) => `削弱 ${g} 隻野生魔物（複習答對錯題）`,
   answer: (g) => `今天作答 ${g} 題`,
   correct: (g) => `今天答對 ${g} 題`,
   conquer: (g) => `在世界地圖打贏 ${g} 塊領地`,
@@ -61,8 +62,9 @@ export function DailyQuests({ quests, onClaimed }: { quests: Quest[]; onClaimed:
                 <T size={13} weight="700" color="#2A1D00">領 +{q.gold}</T>
               </Pressable>
             ) : (
-              <Pressable accessibilityRole="button" accessibilityLabel={q.id === 'conquer' ? '去世界地圖' : `獎勵 ${q.gold} 金幣`} disabled={q.id !== 'conquer'}
-                onPress={() => router.push('/map')}
+              <Pressable accessibilityRole="button" accessibilityLabel={q.id === 'conquer' ? '去世界地圖' : q.id === 'review' ? '去複習野生魔物' : `獎勵 ${q.gold} 金幣`}
+                disabled={q.id !== 'conquer' && q.id !== 'review'}
+                onPress={() => (q.id === 'review' ? router.push({ pathname: '/quiz', params: { mode: 'review' } }) : router.push('/map'))}
                 style={{ width: 76, minHeight: 40, borderRadius: 12, alignItems: 'center', justifyContent: 'center', flexDirection: 'row', gap: 3,
                   borderWidth: 1, borderColor: C.line }}>
                 <Image source={WORLD_IMG.coin} accessibilityIgnoresInvertColors style={{ width: 16, height: 16 }} />

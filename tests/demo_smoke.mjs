@@ -29,11 +29,11 @@ await step('註冊學生帳號', async () => {
 await step('首次設定 → 首頁', async () => {
   await t('八年級').click(); await t('康軒').click();
   await page.getByRole('button', { name: '開始練習' }).click();
-  await page.getByText('歡迎！先做第一輪 5 題', { exact: false }).waitFor({ timeout: 15000 });
+  await t('新手任務：收服你的第一隻夥伴').waitFor({ timeout: 15000 });
   await shot('01-home');
 });
 await step('每日練習：答 5 題（第 1 題故意答錯）', async () => {
-  await page.getByRole('button', { name: '開始第一輪' }).click();
+  await page.getByRole('button', { name: '出征，3 分鐘，隨機 5 題' }).click();
   for (let i = 0; i < 5; i++) {
     await page.getByText(`第 ${i + 1} 題 / 共 5 題`, { exact: false }).waitFor({ timeout: 15000 });
     const ans = await page.evaluate(() => {
@@ -65,14 +65,16 @@ await step('每日練習：答 5 題（第 1 題故意答錯）', async () => {
   await t('這一輪完成了！').waitFor();
   await page.getByText('連勝 1 天', { exact: false }).first().waitFor();
 });
-await step('魔物圖鑑有 1 隻狂暴中的魔物', async () => {
-  await page.getByRole('button', { name: '回首頁' }).click();
-  await tab('魔物圖鑑');
+await step('圖鑑有 1 隻狂暴中的野生魔物', async () => {
+  await page.getByRole('button', { name: '回大廳' }).click();
+  await tab('圖鑑');
+  await page.getByRole('tab', { name: /^野生魔物/ }).click();
   await page.getByLabel('狂暴中 1 隻').waitFor({ timeout: 15000 });
   await shot('03b-monsters');
 });
 await step('模擬考：英語閱讀迷你 10 題 → 交卷 → 成績記錄', async () => {
-  await tab('副本');
+  await tab('地圖');
+  await page.getByRole('button', { name: /大陸的魔王城/ }).click({ timeout: 15000 });
   await page.getByText('會考模擬考', { exact: true }).first().click();
   await page.getByText('英語閱讀', { exact: true }).last().click();
   await page.getByRole('button', { name: '開始作答' }).click();
@@ -101,9 +103,10 @@ await step('英語聽力單元有播放鍵', async () => {
 await step('家長帳號綁定 → 看到練習、模擬考、防禦力雷達圖，核准孩子的願望', async () => {
   await page.getByRole('button', { name: '離開練習' }).click();
   await page.getByText('要離開練習嗎？', { exact: true }).waitFor({ timeout: 3000 }).then(() => page.getByRole('button', { name: '離開', exact: true }).click()).catch(() => {});
-  // 先許一個願，等一下家長核准
-  await tab('大廳');
-  await page.getByRole('button', { name: /^許願池/ }).click();
+  // 先許一個願，等一下家長核准（離開練習後回到魔王城，再返回地圖）
+  await page.getByRole('button', { name: '返回' }).click();
+  await tab('我的');
+  await page.getByRole('button', { name: /^許願池，/ }).click();
   await page.getByRole('button', { name: '週末看一部電影' }).click();
   await page.getByRole('button', { name: '送給爸媽核准' }).click();
   await page.getByText('願望送出了！', { exact: true }).waitFor({ timeout: 10000 });

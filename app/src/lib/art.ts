@@ -44,7 +44,6 @@ export const bossAttackImg = (name: string | null | undefined): ImageSourcePropT
 export const ITEM_IMG = {
   potion: require('@/assets/items/potion.webp') as ImageSourcePropType,
   shield: require('@/assets/items/shield.webp') as ImageSourcePropType,
-  goldFlower: require('@/assets/items/gold-flower.webp') as ImageSourcePropType,
   badgeFrame: require('@/assets/items/badge-frame.webp') as ImageSourcePropType,
 };
 
@@ -93,16 +92,6 @@ export const MEDAL_IMG: ImageSourcePropType[] = [
 export const CHEST_IMG = { closed: require('@/assets/ui/chest-closed.webp') as ImageSourcePropType, open: require('@/assets/ui/chest-open.webp') as ImageSourcePropType };
 export const BTN_IMG = { left: require('@/assets/ui/btn-left.webp') as ImageSourcePropType, mid: require('@/assets/ui/btn-mid.webp') as ImageSourcePropType, right: require('@/assets/ui/btn-right.webp') as ImageSourcePropType };
 export const CORNER_IMG: ImageSourcePropType = require('@/assets/ui/corner.webp');
-
-/** 學習花園植物：每科 5 個成長階段 */
-const PLANT: Record<string, ImageSourcePropType[]> = {
-  math: [require('@/assets/plants/math-0.webp'), require('@/assets/plants/math-1.webp'), require('@/assets/plants/math-2.webp'), require('@/assets/plants/math-3.webp'), require('@/assets/plants/math-4.webp')],
-  chinese: [require('@/assets/plants/chinese-0.webp'), require('@/assets/plants/chinese-1.webp'), require('@/assets/plants/chinese-2.webp'), require('@/assets/plants/chinese-3.webp'), require('@/assets/plants/chinese-4.webp')],
-  english: [require('@/assets/plants/english-0.webp'), require('@/assets/plants/english-1.webp'), require('@/assets/plants/english-2.webp'), require('@/assets/plants/english-3.webp'), require('@/assets/plants/english-4.webp')],
-  science: [require('@/assets/plants/science-0.webp'), require('@/assets/plants/science-1.webp'), require('@/assets/plants/science-2.webp'), require('@/assets/plants/science-3.webp'), require('@/assets/plants/science-4.webp')],
-  social: [require('@/assets/plants/social-0.webp'), require('@/assets/plants/social-1.webp'), require('@/assets/plants/social-2.webp'), require('@/assets/plants/social-3.webp'), require('@/assets/plants/social-4.webp')],
-};
-export const plantImg = (subject: string, stage: number) => (PLANT[subject] ?? PLANT.math)[Math.max(0, Math.min(4, stage))];
 
 /** 魔物夥伴（幼體）：五科各 4 種 */
 export const PAL_IMG: Record<string, ImageSourcePropType> = {

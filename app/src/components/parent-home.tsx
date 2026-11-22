@@ -100,8 +100,10 @@ function ChildCard({ s, exams, wishes, world, onChanged }: { s: ChildSummary; ex
 
       {world ? (
         <Card style={{ gap: 8 }}>
-          <H2>世界地圖進度</H2>
-          <T color={C.inkSoft}>已佔領 {world.territories} 塊領地（其中 {world.mastered} 塊熟練），收服 {world.pals} 種夥伴，最近 7 天打贏 {world.won_this_week} 塊。</T>
+          <H2>魔物夥伴與錯題</H2>
+          <T color={C.inkSoft}>這 7 天淨化了 <T weight="700" color={C.greenDark}>{world.purified_this_week ?? 0} 隻野生魔物</T>，也就是有 {world.purified_this_week ?? 0} 道錯題在隔 1、3、7 天的複習都答對，真的弄懂了。</T>
+          <T color={C.inkSoft}>還沒弄懂的錯題（野生魔物）：{world.wild ?? 0} 題。</T>
+          <T color={C.inkSoft}>已佔領 {world.territories} 塊領地（其中 {world.mastered} 塊熟練），收服 {world.pals} 種夥伴{world.awakened ? `，${world.awakened} 隻覺醒` : ''}，最近 7 天打贏 {world.won_this_week} 塊。</T>
           {world.invaded.length ? (
             <>
               <T size={13} weight="700" color={C.redDark}>有 {world.invaded.length} 塊領地被入侵（學過的單元有錯題該複習了）：</T>

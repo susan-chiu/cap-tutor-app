@@ -10,7 +10,7 @@ import { goBack } from '@/lib/nav';
 import { C } from '@/lib/theme';
 
 const GROUP_ICON: Record<string, keyof typeof Ionicons.glyphMap> = {
-  連勝: 'flame', 答題: 'checkmark-done', 錯題: 'school', 花園: 'flower', 魔王: 'skull', 等級: 'star',
+  連勝: 'flame', 答題: 'checkmark-done', 淨化: 'sparkles', 熟練: 'flower', 魔王: 'skull', 等級: 'star', 夥伴: 'paw',
 };
 const GOLD = C.gold;
 
@@ -37,7 +37,7 @@ export default function Badges() {
         <Ionicons name="chevron-back" size={26} color={C.ink} />
       </Pressable>
       <H1>成就徽章</H1>
-      <T color={C.muted}>每天練習、讓錯題畢業、種花、打魔王，都能點亮徽章。</T>
+      <T color={C.muted}>每天練習、淨化野生魔物、熟練單元、收服夥伴、打魔王，都能點亮徽章。</T>
       {error ? <ErrorBox message={error} onRetry={load} /> : !list ? <Loading /> : (
         <>
           <Card style={{ gap: 8 }}>

@@ -48,6 +48,12 @@ export interface AnswerResult {
   streak_up: boolean;
   freeze_cards: number;
   mistake_status: string | null;
+  /** 這題跟著一起打的同科隊伍夥伴（沒有就是 null） */
+  assist_pal?: string | null;
+  /** 助攻夥伴拿到的經驗值 */
+  pal_xp?: PalGain | null;
+  /** 錯題畢業＝淨化野生魔物：收服或餵養的夥伴 */
+  purified?: PalGain | null;
 }
 
 export interface GardenUnit {
@@ -92,7 +98,10 @@ export interface MapUnit {
   /** 駐守的夥伴種類 */
   guard: string | null;
 }
-export interface Pal { species: string; caught: number; stage: number }
+/** 魔物夥伴：caught＝收服幾次、xp＝夥伴經驗值（stage 由經驗值決定：1 幼體、2 成體、3 覺醒） */
+export interface Pal { species: string; caught: number; xp: number; stage: number }
+/** 夥伴拿到經驗值的結果（助攻、淨化、領地戰） */
+export interface PalGain { species: string; xp_gained: number; xp: number; new_pal: boolean; stage_before: number; stage: number }
 export interface ShopItem { id: string; kind: 'furniture' | 'consumable'; price: number; need_correct: number; need_pals: number }
 export interface WorldState {
   gold: number; gold_today: number; gold_daily_max: number; gold_correct: number;
@@ -102,18 +111,27 @@ export interface WorldState {
   /** 星晶：答對困難題掉落，用來培養夥伴 */
   gems: number; gems_today: number; gem_daily_max: number; gem_feed_cost: number;
   master_days: number; mastered: number;
-  pals: Pal[]; evolve: number[]; owned: string[]; shop: ShopItem[];
+  pals: Pal[];
+  /** 進化需要的經驗值：[成體, 覺醒] */
+  evolve: number[];
+  owned: string[]; shop: ShopItem[];
+  /** 出戰隊伍（最多 team_max 隻，第一隻是隊長） */
+  team: string[]; team_max: number;
+  /** 野生魔物＝還沒畢業的錯題；wild_due＝今天可以複習的（已弄懂、到期）；purified＝已淨化（畢業）的 */
+  wild: number; wild_due: number; purified: number;
+  pal_xp: { correct: number; purify: number; conquer: number; feed: number };
   premium: boolean; energy_max: number; today_answered: number;
   soups_left: number; soup_questions: number; bed_questions: number;
 }
-/** 每日任務：answer 今天作答、correct 今天答對、conquer 今天打贏領地 */
-export interface Quest { id: 'answer' | 'correct' | 'conquer'; goal: number; gold: number; progress: number; claimed: boolean }
+/** 每日任務：review 今天複習答對錯題（削弱野生魔物）、answer 今天作答、correct 今天答對、conquer 今天打贏領地 */
+export interface Quest { id: 'review' | 'answer' | 'correct' | 'conquer'; goal: number; gold: number; progress: number; claimed: boolean }
 /** 家長戰報：孩子的領地狀況 */
-export interface ChildWorld { territories: number; mastered: number; pals: number; won_this_week: number; invaded: { title: string; subject: string; due: number }[] }
+export interface ChildWorld { territories: number; mastered: number; pals: number; awakened: number; wild: number; purified_this_week: number;
+  won_this_week: number; invaded: { title: string; subject: string; due: number }[] }
 export interface ConquerResult {
   won: boolean; correct: number; total: number; need: number;
   first: boolean; rewarded: boolean; gold_gained: number; gold: number;
-  species: string; caught: number; new_pal: boolean; stage_before: number; stage: number;
+  species: string; caught: number; new_pal: boolean; stage_before: number; stage: number; pal_xp: number; pal_xp_gained: number;
   days: number; master_days: number; mastered: boolean; guard_bonus: number;
 }
 
@@ -177,6 +195,8 @@ export interface MistakeRow {
   next_review: string;
   wrong_count: number;
   created_at?: string;
+  /** 這道錯題是哪一種野生魔物（單元對應的夥伴種類） */
+  species?: string | null;
 }
 
 export interface Profile {
@@ -224,6 +244,8 @@ export interface ChildSummary {
 // 伺服器錯誤代碼 → 給學生看的中文
 const ERROR_TEXT: Record<string, string> = {
   daily_limit_reached: '今天的免費題數用完了，明天再來！全校前三名可以申請免費無限練習。',
+  team_too_big: '隊伍最多 3 隻夥伴。',
+  bad_team: '隊伍裡不能有重複的夥伴。',
   not_enough_gems: '星晶不夠。答對困難題會掉星晶。',
   territory_not_owned: '要先佔領這塊領地。',
   quest_not_done: '任務還沒完成。',
@@ -324,6 +346,7 @@ export const api = {
     rpc<ConquerResult>('conquer', { p_unit_id: unitId, p_question_ids: questionIds }),
   buyItem: (itemId: string) => rpc<WorldState>('buy_item', { p_item: itemId }),
   setTeamPal: (species: string) => rpc<null>('set_team_pal', { p_species: species }),
+  setTeam: (species: string[]) => rpc<null>('set_team', { p_species: species }),
   setGuard: (unitId: string, species: string | null) => rpc<null>('set_guard', { p_unit_id: unitId, p_species: species }),
   feedPal: (species: string) => rpc<WorldState>('feed_pal', { p_species: species }),
   childWorld: (studentId: string) => rpc<ChildWorld>('child_world', { p_student: studentId }),
