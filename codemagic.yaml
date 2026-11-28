@@ -43,6 +43,8 @@ workflows:
           missing=""
           [ -z "$EXPO_PUBLIC_SUPABASE_URL" ] && missing="$missing EXPO_PUBLIC_SUPABASE_URL（群組 app_env）"
           [ -z "$EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY" ] && missing="$missing EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY（群組 app_env）"
+          [ -z "$EXPO_PUBLIC_PRIVACY_URL" ] && missing="$missing EXPO_PUBLIC_PRIVACY_URL（群組 app_env，Apple 審核必備）"
+          [ -z "$EXPO_PUBLIC_TERMS_URL" ] && missing="$missing EXPO_PUBLIC_TERMS_URL（群組 app_env）"
           if [ -n "$missing" ]; then echo "還沒設定：$missing"; exit 1; fi
       - name: 安裝套件
         script: cd app && npm ci
